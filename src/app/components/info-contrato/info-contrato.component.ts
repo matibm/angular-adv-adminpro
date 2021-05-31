@@ -44,6 +44,7 @@ export class InfoContratoComponent implements OnInit {
   facturasAPagar
   showModalPdf = false
   radioValue
+  montoTotal 
   tipos_pago = [
     {
       name: 'Oficina',
@@ -65,8 +66,7 @@ export class InfoContratoComponent implements OnInit {
   async ngOnInit() {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
     this.contrato = await this._contratoService.getContratoById(this.id)
-
-    console.log(this.contrato);
+ 
     this.radioValue = this.contrato.tipo_pago
     this.titular = this.contrato.titular
     this.cliente = this.contrato.titular
@@ -85,6 +85,8 @@ export class InfoContratoComponent implements OnInit {
     // this.facturas = await this._facturaService.getFacturasByContrato(this.contrato._id)
     this.facturaOptions = { contrato: this.contrato._id }
     let respFacturas = await this._facturaService.getFacturasOptions(this.facturaOptions)
+    console.log(respFacturas);
+    this.montoTotal = respFacturas.montoTotal
     this.facturas = respFacturas.facturas
     this.facturasCount = respFacturas.count
     this.fondos = await this._usuarioService.buscarUsuarios('BANCOS','')

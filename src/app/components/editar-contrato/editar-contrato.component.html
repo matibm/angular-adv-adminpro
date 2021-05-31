@@ -288,8 +288,8 @@
                                 <table class=" table  ">
                                     <thead>
                                         <tr>
-                                            <th class="text-center">C.I.</th>
                                             <th class="text-center">Nombre</th>
+                                            <th class="text-center">C.I.</th>
                                             <th class="text-center">Fecha Nacimiento</th>
                                             <th class="text-center">edad</th>
                                             <th class="text-center">Plus por edad</th>
@@ -299,10 +299,11 @@
                                     <tbody>
                                         <tr *ngFor="let item of contrato.beneficiarios; let i = index">
                                             <td>
-                                                <input type="text" class="form-control" [(ngModel)]="item.doc" name="namea-{{i}}" placeholder="cedula de identidad">
+                                                <input type="text" class="form-control" [(ngModel)]="item.nombre" name="naaaamea-{{i}}" placeholder="nombre completo">
                                             </td>
                                             <td>
-                                                <input type="text" class="form-control" [(ngModel)]="item.nombre" name="namea-{{i}}" placeholder="nombre completo">
+                                                <input type="text" class="form-control" [(ngModel)]="item.doc" name="namsea-{{i}}" placeholder="cedula de identidad">
+
                                             </td>
                                             <td>
                                                 <mat-form-field appearance="fill">
@@ -367,7 +368,7 @@
                                                 <input required type="text" [(ngModel)]="contrato.parcela" class="form-control" name="parcela" aria-describedby="helpId" placeholder="">
                                             </td>
                                             <td>
-                                                <input required type="text" [(ngModel)]="contrato.sector" class="form-control" name="sector" aria-describedby="helpId" placeholder="">
+                                                <input type="text" [(ngModel)]="contrato.sector" class="form-control" name="sector" aria-describedby="helpId" placeholder="">
                                             </td>
                                         </tr>
                                     </tbody>

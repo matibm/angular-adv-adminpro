@@ -269,7 +269,7 @@ export class CrearContratoComponent implements OnInit {
       activo: '1',
       vendedor: this.vendedor,
       beneficiarios: this.beneficiarios,
-      saldo_pendiente: this.saldo,
+      saldo_pendiente: this.saldo + this.saldoPlusEdad,
       tipo_pago: this.radioValue,
       inhumados: this.inhumados,
       fecha_creacion_unix: this.fecha_creacion.getTime()
@@ -297,7 +297,8 @@ export class CrearContratoComponent implements OnInit {
       contrato: nuevo_contrato,
       facturas: null,
       fechaPago: this.fechaPago,
-      crearCMP: this.esUdp
+      crearCMP: this.esUdp,
+      cantidadCoutas: this.cantidadCuotaPSM
     }
 
     let contratoCreado = await this._contratoService.newContrato(send)

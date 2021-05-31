@@ -36,7 +36,9 @@ export class FacturasComponent implements OnInit {
   @Input() cerrado
   @Input() showlabel = true
   @Input() selectable = false
-  @Input() options:any
+  @Input() options: any
+  @Input() showTotal: any = false
+  @Input() total: any = false
   @Output() listItemsEvent = new EventEmitter
   @Output() AllSelectedEvent = new EventEmitter
   listItems = []
@@ -60,7 +62,7 @@ export class FacturasComponent implements OnInit {
     this.start ? options.start = this.start : ''
     this.end ? options.end = this.end : ''
     this.end ? options.end = this.end : ''
-    this.options? options = this.options : ''
+    this.options ? options = this.options : ''
     options.page = page
     // let resp = await this._facturaService.getFacturas(this.pagado, this.fondo, this.start, this.end, page, null, this.cerrado)
     let resp = await this._facturaService.getFacturasOptions(options)

@@ -45,7 +45,8 @@
                 <tbody>
                     <!--  | paginate: { itemsPerPage: 10,totalItems:count, currentPage: page } -->
                     <tr (click)="selectItem(factura._id)" id="id-{{factura._id}}" class="item-table pointer" *ngFor="let factura of facturas  | paginate: { itemsPerPage: 10,totalItems:count, currentPage: page } ; let i = index;">
-                        <td class="text-center" scope="row">{{page*10 + (i+1) - 10}}</td>
+                        <!-- <td class="text-center" scope="row">{{page*10 + (i+1) - 10}}</td> -->
+                        <td class="text-center" scope="row">{{factura.nro_factura}}</td>
                         <td class="text-center" *ngIf="factura.fondo">{{factura.fondo.NOMBRES}} {{factura.fondo.APELLIDOS}} {{factura.fondo.RAZON}}
                         </td>
                         <td class="text-center" *ngIf="!factura.fondo">Sin fondo</td>
@@ -86,6 +87,42 @@
                 </tbody>
             </table>
         </div>
-        <pagination-controls *ngIf="count>10" (pageChange)="pageChanged($event); page = $event"></pagination-controls>
+        <div style="width: 100%;">
+            <div style="display: flex;">
+                <div class="mx-auto">
+                    <pagination-controls *ngIf="count>10" (pageChange)="pageChanged($event); page = $event"></pagination-controls>
+                </div>
+            </div>
+        </div>
+        <div class="mt-2" *ngIf="total">
+            <div style="width: 100%;">
+                <div style="display: flex;">
+                    <div class="mx-auto">
+                        <table class="table  table-responsive">
+                            <thead class="table-inverse">
+                                <tr>
+
+                                    <th class="text-center ">Pagados <span class="badge badge-pill bg-info">{{total.pagadosCount}}</span>
+                                    </th>
+                                    <th class="text-center ">Deuda <span class="badge badge-pill bg-danger">{{total.deudaCount}}</span></th>
+                                    <th class="text-center ">Total <span class="badge badge-pill bg-secondary">{{total.cantidad}}</span> </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+
+                                    <td class="text-center px-4">{{total.pagados | currency: '':'':'2.0'}} Gs</td>
+                                    <td class="text-center px-4">{{total.deuda | currency: '':'':'2.0'}} Gs</td>
+                                    <td class="text-center px-4">{{total.total | currency: '':'':'2.0'}} Gs</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 </div>

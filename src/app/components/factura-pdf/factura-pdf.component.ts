@@ -283,11 +283,11 @@ export class FacturaPdfComponent implements OnInit {
     }
     this.facturaPDF = {
       _id: pago._id,
-      nombres: `${pago.cliente.NOMBRES} ${pago.cliente.APELLIDOS}`,
+      nombres: pago.nombre,
       fecha: pago.fecha_creacion,
-      direccion: `direccion de prueba`,
-      ruc: pago.cliente.RUC,
-      tel: pago.cliente.TELEFONO1,
+      direccion: pago.direccion,
+      ruc: pago.ruc,
+      tel: pago.tel,
       notaDeRemision: '123123',
       servicios: servicios
     }

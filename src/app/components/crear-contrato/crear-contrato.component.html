@@ -363,7 +363,7 @@
                                                 <!-- <input type="text" class="form-control" (ngModelChange)="item.edad = calcularEdad(fchn.value)" #fchn [(ngModel)]="item.fecha_nacimiento" name="name-{{i}}" placeholder="aaaa/mm/dd"> -->
                                                 <mat-form-field appearance="fill">
                                                     <mat-label>Fecha de nacimiento</mat-label>
-                                                    <input name="sdafgr423" matInput [autocomplete]="'off'" [(ngModel)]="item.fecha_nacimiento" [matDatepicker]="pickerfechanacimiento" (dateChange)="item.edad = calcularEdad(item.fecha_nacimiento)">
+                                                    <input name="sdafgr423{{i}}" matInput [autocomplete]="'off'" [(ngModel)]="item.fecha_nacimiento" [matDatepicker]="pickerfechanacimiento" (dateChange)="item.edad = calcularEdad(item.fecha_nacimiento)">
                                                     <mat-datepicker-toggle matSuffix [for]="pickerfechanacimiento">
                                                     </mat-datepicker-toggle>
                                                     <mat-datepicker #pickerfechanacimiento></mat-datepicker>

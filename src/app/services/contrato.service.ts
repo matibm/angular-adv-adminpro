@@ -95,10 +95,12 @@ export class ContratoService {
       return resp.contrato
     },
     (error) =>{
+      console.log(error);
+      
       swal.fire({
         icon: 'error',
         title: 'Error  al crear Contrato',
-        text: JSON.stringify(error),
+        text: `${error?.error?.message } ${error?.error?.error?.message}`,
         
       })
     }
