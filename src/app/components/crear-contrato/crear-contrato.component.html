@@ -14,7 +14,8 @@
 
                         <div *ngIf="!cliente">
 
-                            <ng-select [typeahead]="inputClientes" [loading]="loadingClientes" [items]="clientes" name="dsfdbrweqcda" [(ngModel)]="cliente" notFoundText="no se encontraron resultados" placeholder="buscar cliente" bindLabel="NOMBRES" [searchFn]="customSearchFn">
+                            <ng-select [typeahead]="inputClientes" [loading]="loadingClientes" [items]="clientes" name="dsfdbrweqcda" [(ngModel)]="cliente" (ngModelChange)="cargarDatosPagoInicial(cliente)" notFoundText="no se encontraron resultados" placeholder="buscar cliente"
+                                bindLabel="NOMBRES" [searchFn]="customSearchFn">
                                 <ng-template ng-option-tmp let-item="item">
                                     <div> {{item.APELLIDOS}} {{item.NOMBRES}} <br>
                                         <small>{{item.RUC | ruc}}</small>
@@ -203,8 +204,10 @@
                             <h5>Precio: <b>{{producto.PRECIO_MAYORISTA | currency:'':'':'2.0'}} Gs</b></h5>
                             <!-- <h5>Entrega: </h5>  -->
                             <div class="">
-                                <h5>Total: <b>{{saldo + saldoPlusEdad | currency:'':'':'2.0'}} Gs</b></h5>
+                                <h5>Total: <b>{{precioTotal + saldoPlusEdad | currency:'':'':'2.0'}} Gs</b></h5>
                             </div>
+                            <h5>Saldo: <b>{{precioTotal + saldoPlusEdad - entrega | currency:'':'':'2.0'}} Gs</b></h5>
+
                             <div *ngIf="!esPsm" class="mt-2 inline-flex">
                                 <h4 class=" mr-3">Forma de Pago: </h4>
                                 <div style="width: 90%;" class="row">
@@ -229,9 +232,9 @@
                                     <!-- <h5>saldo <b>{{saldo | currency:'':'':'2.0'}} Gs</b></h5> -->
 
                                     <div class="form-group">
-                                        <label for="">Total</label>
-                                        <input type="number" class="form-control" (ngModelChange)="calcularCuotas()" name="afdsgdfrwetgervfr" [(ngModel)]="saldo" name="sadasfswertbh" id="" aria-describedby="helpId" placeholder="">
-                                        <small>saldo <b>{{saldo | currency:'':'':'2.0'}} Gs</b></small>
+                                        <label for="">Precio Total</label>
+                                        <input type="number" class="form-control" (ngModelChange)="calcularCuotas()" name="afdsgdfrwetgervfr" [(ngModel)]="precioTotal" name="sadasfswertbh" id="" aria-describedby="helpId" placeholder="">
+                                        <small>saldo <b>{{precioTotal | currency:'':'':'2.0'}} Gs</b></small>
                                     </div>
                                 </div>
                                 <div class="col-md col-xs">
@@ -565,6 +568,42 @@
                             </div>
                         </div>
                     </div>
+
+
+                    <div *ngIf="entrega" class="card">
+                        <div class="card-body">
+                            <h4>Datos Factura:</h4>
+                            <small>Factura por la entrega inicial</small>
+                            <div class="row mt-3">
+                                <div class="col-xs col-md">
+                                    <div class="form-group">
+                                        <label for="nombre">Nombre</label>
+                                        <input type="text" class="form-control" [(ngModel)]="pagoInicial.nombre" name="nombre" id="nombre" aria-describedby="nombreid" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-xs col-md">
+                                    <div class="form-group">
+                                        <label for="ruc">RUC/CI</label>
+                                        <input type="text" class="form-control" name="ruc" [(ngModel)]="pagoInicial.ruc" id="ruc" aria-describedby="rucid" placeholder="">
+                                    </div>
+                                </div>
+
+                                <div class="col-xs col-md">
+                                    <div class="form-group">
+                                        <label for="tel">Tel</label>
+                                        <input type="text" class="form-control" name="tel" [(ngModel)]="pagoInicial.tel" id="tel" aria-describedby="telid" placeholder="">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="direccion">direccion</label>
+                                <input type="text" class="form-control" name="direccion" [(ngModel)]="pagoInicial.direccion" id="direccion" aria-describedby="direccionid" placeholder="">
+                            </div>
+
+                        </div>
+                    </div>
+
                     <button type="submit" [disabled]="disableCrearContrato()" class="btn float-right btn-primary">Crear
                         Contrato</button>
 

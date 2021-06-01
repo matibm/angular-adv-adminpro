@@ -82,8 +82,6 @@
 
                     <div class="mx-auto">
 
-
-
                     </div>
                 </div>
 
@@ -271,38 +269,33 @@
                         <button type="button" class="btn btn-sm btn-light"><i class=" ti-close  "></i></button>
                     </div>
                 </div>
-                <div class="" *ngIf="!cobrador">
-                    <ng-select [items]="cobradores" [(ngModel)]="cobrador" (search)="searchcobradores($event)" notFoundText="no se encontraron resultados" placeholder="buscar cobrador" bindLabel="NOMBRES" [searchFn]="customSearchFn">
+
+                <div *ngIf="!cliente">
+
+                    <ng-select [typeahead]="inputCobrador" [loading]="loadingCobrador" [items]="cobradores" name="dsfdbrdweqcda" [(ngModel)]="cobrador" (ngModelChange)="null" notFoundText="no se encontraron resultados" placeholder="buscar cobrador" bindLabel="NOMBRES" [searchFn]="customSearchFn">
                         <ng-template ng-option-tmp let-item="item">
-                            <div>
-                                <div *ngIf="item.APELLIDOS">{{item.APELLIDOS}} {{item.NOMBRES}}</div>
-                                <div *ngIf="item.NOMBRES && item.RAZON"> - </div>
-                                <div *ngIf="item.RAZON">{{item.RAZON}} </div>
-
-
+                            <div> {{item.APELLIDOS}} {{item.NOMBRES}} <br>
+                                <small>{{item.RUC | ruc}}</small>
                             </div>
 
                         </ng-template>
                     </ng-select>
-                </div>
 
+                </div>
 
                 <div class="" *ngIf="cobrador">
                     <div>
                         <div *ngIf="cobrador.NOMBRES">{{cobrador.NOMBRES}} {{cobrador.APELLIDOS}}</div>
                         <div *ngIf="cobrador.NOMBRES && cobrador.RAZON"> - </div>
                         <div *ngIf="cobrador.RAZON">{{cobrador.RAZON}} </div>
-
                         <small>{{cobrador.RUC | ruc}}</small>
                     </div>
                 </div>
-
             </div>
         </div>
-
     </div>
 </div>
-<div class="card">
+<div *ngIf="cliente" class="card">
     <div class="card-body">
         <h4>Datos Factura:</h4>
         <div class="row">

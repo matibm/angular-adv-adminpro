@@ -60,6 +60,7 @@ export class CobranzaComponent implements OnInit {
   sort_key = 'vencimiento'
   sort_value = 1
   showPDF = false
+   
   estados = [
     {
       id: 1,

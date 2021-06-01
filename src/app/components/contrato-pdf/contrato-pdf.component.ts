@@ -15,7 +15,7 @@ export class ContratoPdfComponent implements OnInit {
     public route: ActivatedRoute,
     private _contratoService: ContratoService
   ) { }
-  observaciones =`.
+  observaciones = `.
   .
 .
   `
@@ -28,17 +28,29 @@ export class ContratoPdfComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id');
     this.contrato = await this._contratoService.getContratoById(this.id)
     this.tipo_contrato = this.contrato.producto.COD_CORTO
+    console.log(this.contrato);
 
     this.diaCadaMes = new Date(this.contrato.fecha_creacion_unix).getDate()
 
-      if (this.printAltoke) {
-        setTimeout(() => {
-          window.print()  
-         }, 500);
-         
-         window.onafterprint = (event) => {
-           window.close()
-        };  }
-      }
+    if (this.printAltoke) {
+      setTimeout(() => {
+        window.print()
+      }, 500);
 
+      window.onafterprint = (event) => {
+        window.close()
+      };
+    }
+  }
+  sumarlosPluses(pluses) {
+    let monto = 0
+    console.log(pluses);
+    
+    for (let i = 0; i < pluses.length; i++) {
+      const element = pluses[i];
+
+      monto += parseInt(element || '0')
+    }
+    return monto
+  }
 }

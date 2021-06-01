@@ -112,7 +112,8 @@
             <div class="" *ngIf="producto">
                 <h5>Nombre: <b>{{producto.NOMBRE}} - {{producto.COD_CORTO}}</b></h5>
                 <h5>Precio: <b>{{producto.PRECIO_MAYORISTA | currency:'':'':'2.0'}} Gs</b></h5>
-                <h5>Total: <b>{{contrato.saldo_pendiente | currency:'':'':'2.0'}} Gs</b></h5>
+                <h5>Total: <b>{{contrato.precio_total | currency:'':'':'2.0'}} Gs</b></h5>
+                <h5>Saldo: <b>{{contrato.saldo_pendiente | currency:'':'':'2.0'}} Gs</b></h5>
                 <!-- <h5>Entrega: </h5>  -->
                 <div *ngIf="!esPsm" class="mt-2 inline-flex">
                     <h4 class=" mr-3"><b>Forma de Pago:</b>
@@ -121,11 +122,11 @@
                     </h4>
 
                     <h4 class=" mr-3"><b>Entrega:</b>
-                        <span *ngIf="contrato.entrega">{{contrato.entrega | currency:'':'':'2.0'}} Gs</span>
+                        <span *ngIf="contrato.entrega"> {{contrato.entrega | currency:'':'':'2.0'}} Gs</span>
                         <span *ngIf="!contrato.entrega">Sin entrega</span>
                     </h4>
 
-                    <h4 *ngIf="contrato.entrega" class=" mr-3"><b>Total:</b> {{(contrato.producto.PRECIO_MAYORISTA - contrato.entrega ) | currency: '':'':'2.0'}} Gs
+                    <h4 *ngIf="contrato.entrega" class=" mr-3"><b>Total:</b> {{contrato.precio_total | currency: '':'':'2.0'}} Gs
                     </h4>
                 </div>
                 <hr>
@@ -138,13 +139,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-md-4 col-xs">
                         <div class="form-group">
                             <label for=""><b>Numero de contrato:</b> {{contrato.nro_contrato}}</label>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

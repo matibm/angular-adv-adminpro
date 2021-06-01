@@ -189,7 +189,7 @@
             <div class="row p-0 m-0">
                 <div align="left" class=" px-0 col  ">
 
-                    <div class="m-1"><b>Direccion particular:  </b> {{contrato.titular.DIRECCION}}</div>
+                    <div class="m-1"><b>Direccion particular: </b> {{contrato.titular.DIRECCION}}</div>
                     <hr class="m-0 p-0">
                     <div class="m-1"><b>Calle: </b></div>
                     <hr class="m-0 p-0">
@@ -249,9 +249,12 @@
                         <div class="m-1"><b>Dir. Laboral:</b> {{contrato.titular_alternativo.direccion_laboral}} </div>
                         <hr class="m-0 p-0">
                         <div class="m-1 inline-flex">
-                            <div style="width: 33.34%;" class=""> <b class="">Doc. Identidad: </b>{{contrato.titular_alternativo.RUC | ruc}}</div>
-                            <div style="width: 33.34%;" class="b-l"> <b class="ml-2">Tel: {{contrato.titular_alternativo.TELEFONO1}}</b></div>
-                            <div style="width: 33.34%;" class="b-l"> <b class="ml-2">Cel: {{contrato.titular_alternativo.TELEFONO2}}</b></div>
+                            <div style="width: 33.34%;" class=""> <b class="">Doc. Identidad:
+                                </b>{{contrato.titular_alternativo.RUC | ruc}}</div>
+                            <div style="width: 33.34%;" class="b-l"> <b class="ml-2">Tel:
+                                    {{contrato.titular_alternativo.TELEFONO1}}</b></div>
+                            <div style="width: 33.34%;" class="b-l"> <b class="ml-2">Cel:
+                                    {{contrato.titular_alternativo.TELEFONO2}}</b></div>
                         </div>
                     </div>
                 </div>
@@ -431,7 +434,7 @@
                                 </div>
                                 <hr class="m-0 p-0">
 
-                                <div class="my-1">Falta dato</div>
+                                <div class="my-1">{{contrato.producto.tipo_servicio}}</div>
 
 
                             </div>
@@ -543,7 +546,7 @@
             <div class="row p-0 m-0">
                 <div align="left" class=" px-0 col  ">
 
-                    <div class="m-1"><b>Direccion particular:  </b> {{contrato.titular.DIRECCION}}</div>
+                    <div class="m-1"><b>Direccion particular: </b> {{contrato.titular.DIRECCION}}</div>
                     <hr class="m-0 p-0">
                     <div class="m-1"><b>Calle: </b></div>
                     <hr class="m-0 p-0">
@@ -596,16 +599,21 @@
                         <hr class="m-0 p-0">
                         <div class="m-1 text-capitalize"><b>Parentesco: </b></div>
                         <hr class="m-0 p-0">
-                        <div class="m-1 text-capitalize"><b>Dir. Particular:</b> {{contrato.titular_alternativo.DIRECCION}}</div>
+                        <div class="m-1 text-capitalize"><b>Dir. Particular:</b> {{contrato.titular_alternativo.DIRECCION}}
+                        </div>
                         <hr class="m-0 p-0">
-                        <div class="m-1 text-capitalize"><b>Lugar de Trabajo:</b> {{contrato.titular_alternativo.LUGAR_TRABAJO}}</div>
+                        <div class="m-1 text-capitalize"><b>Lugar de Trabajo:</b> {{contrato.titular_alternativo.LUGAR_TRABAJO}}
+                        </div>
                         <hr class="m-0 p-0">
                         <div class="m-1 text-capitalize"><b>Dir. Laboral:</b> {{contrato.titular_alternativo.direccion_laboral}} </div>
                         <hr class="m-0 p-0">
                         <div class="m-1 inline-flex">
-                            <div style="width: 33.34%;" class=""> <b class="">Doc. Identidad: </b>{{contrato.titular_alternativo.RUC | ruc}}</div>
-                            <div style="width: 33.34%;" class="b-l"> <b class="ml-2">Tel: {{contrato.titular_alternativo.TELEFONO1}}</b></div>
-                            <div style="width: 33.34%;" class="b-l"> <b class="ml-2">Cel: {{contrato.titular_alternativo.TELEFONO2}}</b></div>
+                            <div style="width: 33.34%;" class=""> <b class="">Doc. Identidad:
+                                </b>{{contrato.titular_alternativo.RUC | ruc}}</div>
+                            <div style="width: 33.34%;" class="b-l"> <b class="ml-2">Tel:
+                                    {{contrato.titular_alternativo.TELEFONO1}}</b></div>
+                            <div style="width: 33.34%;" class="b-l"> <b class="ml-2">Cel:
+                                    {{contrato.titular_alternativo.TELEFONO2}}</b></div>
                         </div>
                     </div>
                 </div>
@@ -685,8 +693,9 @@
             </div>
         </div>
         <div class="mx-3  mt-2 px-2 py-1" style="text-align: initial;">
-            <p class="fw-bolder"><i>Acepto las clausulas generales del pliego de condiciones al dorso de este contrato, solicito ser inscripto
-                como Titular del </i> Contrato de Prestacion de Servicios Vitalicios de Eduardo Clebsch S.A. (Imperial), declarando bajo fe de juramento <i>que los datos aportados son correctos</i></p>
+            <p class="fw-bolder"><i>Acepto las clausulas generales del pliego de condiciones al dorso de este contrato,
+                    solicito ser inscripto
+                    como Titular del </i> Contrato de Prestacion de Servicios Vitalicios de Eduardo Clebsch S.A. (Imperial), declarando bajo fe de juramento <i>que los datos aportados son correctos</i></p>
         </div>
 
         <div class="mx-3 border px-5 pt-5 py-1 " style="display: flex; text-align: initial;">
@@ -768,7 +777,10 @@
 
         <div style=" display: flex; text-align: initial;" class="mt-4  mx-3 ">
             <div class="mx-auto">
-                En la Ciudad de Encarnación, República del Paraguay, a los <u>{{contrato.fecha_creacion_unix | date : 'dd'}}</u> días del mes de <u>{{contrato.fecha_creacion_unix | date: 'MMMM'}}</u> del año <u>{{contrato.fecha_creacion_unix | date: 'YYYY'}}</u>                entre Eduardo Clebsch S.A. (Imperial), con domicilio en la casa de la calle Cerro Cora Nº 333, de la Ciudad de Encarnación en adelante denominado LA EMPRESA por una parte, y por la otra EL TITULAR.
+                En la Ciudad de Encarnación, República del Paraguay, a los <u>{{contrato.fecha_creacion_unix | date :
+                    'dd'}}</u> días del mes de <u>{{contrato.fecha_creacion_unix | date: 'MMMM'}}</u> del año
+                <u>{{contrato.fecha_creacion_unix | date: 'YYYY'}}</u> entre Eduardo Clebsch S.A. (Imperial), con domicilio en la casa de la calle Cerro Cora Nº 333, de la Ciudad de Encarnación en adelante denominado LA EMPRESA por una parte, y por la
+                otra EL TITULAR.
             </div>
 
 
@@ -867,18 +879,20 @@
                     <div class="row p-0 m-0">
                         <div align="left" class=" px-0 col  ">
 
-                            <div class="m-1"><b>Direccion particular:  </b> {{contrato.titular.DIRECCION}}</div>
+                            <div class="m-1"><b>Direccion particular: </b> {{contrato.titular.DIRECCION}}</div>
                             <hr class="m-0 p-0">
                             <!-- <div class="m-1"><b>Calle: </b></div> -->
                             <!-- <hr class="m-0 p-0"> -->
                             <div class="m-1 inline-flex">
                                 <div style="width: 50%;" class=""><b>Cel: </b> {{contrato.titular.TELEFONO1}}</div>
-                                <div style="width: 50%;" class="b-l"> <b class="ml-2">Tel: </b>{{contrato.titular.TELEFONO2}}
+                                <div style="width: 50%;" class="b-l"> <b class="ml-2">Tel:
+                                    </b>{{contrato.titular.TELEFONO2}}
                                 </div>
                             </div>
                             <hr class="m-0 p-0">
                             <div class="m-1 inline-flex">
-                                <div style="width: 33.34%;" class=""> <b class="">Depto: {{contrato.titular.NOMDEPAR}} </b>
+                                <div style="width: 33.34%;" class=""> <b class="">Depto: {{contrato.titular.NOMDEPAR}}
+                                    </b>
                                 </div>
                                 <div class="b-l"> <b class="ml-2">Ciudad:</b> {{contrato.titular.NOMCIUDAD}}
                                 </div>
@@ -906,7 +920,8 @@
                             <hr class="m-0 p-0">
                             <div class="m-1 inline-flex">
                                 <div style="width: 33.34%;" class=""> <b class="">Depto: </b> {{contrato.titular.DEPARTAMENTO_TRABAJO}} </div>
-                                <div class="b-l"> <b class="ml-2">Ciudad: </b> {{contrato.titular.ciudad_trabajo}} </div>
+                                <div class="b-l"> <b class="ml-2">Ciudad: </b> {{contrato.titular.ciudad_trabajo}}
+                                </div>
                                 <!-- <div style="width: 33.34%;" class="b-l"> <b class="ml-2">Cel: </b> {{contrato.titular.TELEFONO3}} </div> -->
                             </div>
                         </div>
@@ -918,8 +933,6 @@
             Convienen en celebrar el presente CONTRATO DE PRESTACIÓN DE SERVICIOS DE SEPELIO categoría HOMENAJE en adelante denominado P.S.M., que se regirá por las cláusulas y condiciones estipuladas al dorso, pudiendo solo aplicarse códigos, reglamentos y leyes
             pertinentes al caso para los puntos no contemplados.
         </div>
-
-
 
         <div class="mx-3 inline-flex">
             <div class="mr-auto mt-2 lead">
@@ -959,17 +972,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let item of contrato.beneficiarios">
-                        <td class="text-center">{{item.nombre }}</td>
-                        <td class="text-center"> {{item.doc | ruc}} </td>
-                        <td class="text-center"> {{item.fecha_nacimiento | date: 'dd/MM/yyyy'}} </td>
-                        <td class="text-center"> {{item.fecha_nacimiento | edad}}</td>
-                        <td class="text-center">{{item.plus_edad | currency: '':'':'2.0'}}</td>
+                    <tr *ngFor="let item of contrato.beneficiarios; let i = index;">
+                        <td *ngIf="i<3" class="text-center">{{item.nombre }}</td>
+                        <td *ngIf="i<3" class="text-center"> {{item.doc | ruc}} </td>
+                        <td *ngIf="i<3" class="text-center"> {{item.fecha_nacimiento | date: 'dd/MM/yyyy'}} </td>
+                        <td *ngIf="i<3" class="text-center"> {{item.fecha_nacimiento | edad}}</td>
+                        <td *ngIf="i<3" class="text-center">{{item.plus_edad | currency: '':'':'2.0'}}</td>
                     </tr>
                     <tr>
                         <td class="text-center" scope="row"></td>
                         <td class="text-center lead" colspan="3">Total Parcial: </td>
-                        <td class="text-center"></td>
+                        <td class="text-center">{{sumarlosPluses([contrato?.beneficiarios[0]?.plus_edad, contrato?.beneficiarios[1]?.plus_edad , contrato?.beneficiarios[2]?.plus_edad]) | currency: '':'':'2.0'}} </td>
                     </tr>
                 </tbody>
             </table>
@@ -987,17 +1000,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let item of contrato.beneficiarios">
-                        <td class="text-center">{{item.nombre }}</td>
-                        <td class="text-center"> {{item.doc | ruc}} </td>
-                        <td class="text-center"> {{item.fecha_nacimiento | date: 'dd/MM/yyyy'}} </td>
-                        <td class="text-center"> {{item.fecha_nacimiento | edad}}</td>
-                        <td class="text-center">{{item.plus_edad | currency: '':'':'2.0'}}</td>
+                    <tr *ngFor="let item of contrato.beneficiarios; let i = index;">
+                        <td *ngIf="i>2" class="text-center">{{item.nombre }}</td>
+                        <td *ngIf="i>2" class="text-center"> {{item.doc | ruc}} </td>
+                        <td *ngIf="i>2" class="text-center"> {{item.fecha_nacimiento | date: 'dd/MM/yyyy'}} </td>
+                        <td *ngIf="i>2" class="text-center"> {{item.fecha_nacimiento | edad}}</td>
+                        <td *ngIf="i>2" class="text-center">{{item.plus_edad | currency: '':'':'2.0'}}</td>
                     </tr>
                     <tr>
                         <td class="text-center" scope="row"></td>
                         <td class="text-center lead" colspan="3">Total Parcial: </td>
-                        <td class="text-center"></td>
+                        <td class="text-center">{{sumarlosPluses([contrato?.beneficiarios[3]?.plus_edad, contrato?.beneficiarios[4]?.plus_edad , contrato?.beneficiarios[5]?.plus_edad]) | currency: '':'':'2.0'}}</td>
                     </tr>
                 </tbody>
             </table>

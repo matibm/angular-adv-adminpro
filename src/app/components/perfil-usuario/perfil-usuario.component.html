@@ -1,6 +1,6 @@
 <div *ngIf="usuario" class="row">
     <!-- Column -->
-    <div *ngIf="false" class="col-lg-4 col-xlg-3 col-md-5">
+    <!-- <div *ngIf="false" class="col-lg-4 col-xlg-3 col-md-5">
         <div class="card"> <img class="card-img" src="../assets/images/background/socialbg.jpg" alt="Card image">
             <div class="card-img-overlay card-inverse social-profile d-flex ">
                 <div class="align-self-center"> <img src="../assets/images/users/1.jpg" class="img-circle" width="100">
@@ -25,7 +25,7 @@
                 <button class="btn btn-circle btn-secondary"><i class="fa fa-youtube"></i></button>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Column -->
     <!-- Column -->
     <!-- <div class="col-lg-8 col-xlg-9 col-md-7"> -->
@@ -75,7 +75,7 @@
                             </div>
                         </div>
                         <hr>
-                        <div *ngIf="false" class="row">
+                        <!-- <div *ngIf="false" class="row">
                             <div class="col-xs col-md b-r">
                                 <h3 class="font-medium ">Telefonos</h3>
                                 <p for=""><strong>Telefono: </strong> {{usuario.TELEFONO}}</p>
@@ -100,7 +100,7 @@
                                 <p><strong>Direccion trabajo</strong> {{usuario.DIRECCION_TRABAJO}}</p>
                                 <p><strong>Ciudad trabajo</strong> {{usuario.ciudad_trabajo}}</p>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="row">
                             <div class="col-xs text-capitalize col-md b-r">
 
@@ -125,6 +125,15 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="">Perfil de Facebook:<b> <span class="text-lowercase "> {{usuario.facebook}}</span></b>  </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Banco:<b> <span class="text-lowercase "> {{usuario.cuenta_bancaria}}</span></b>  </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Tipo de Cuenta Bancaria:<b> <span class="text-lowercase "> {{usuario.tipo_cuenta_bancaria }}</span></b>  </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Número de Cuenta:<b> <span class="text-lowercase "> {{usuario.nro_cuenta_bancaria}}</span></b>  </label>
                                     </div>
 
 
@@ -197,19 +206,17 @@
                                         <label for="">Departamento:   <b>{{usuario.DEPARTAMENTO_TRABAJO}}</b>  </label>
 
                                     </div>
+
+
+                                    <div class="form-group">
+                                        <label for="">Celular: <b>{{usuario.TELEFONO3}}</b></label>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Línea Baja: <b>{{usuario.TEL_TRABAJO}}</b></label>
+
+                                    </div>
                                 </form>
-
-
-                                <div class="form-group">
-                                    <label for="">Celular  <b>{{usuario.TELEFONO3}}</b>  :</label>
-
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Línea Baja  <b>{{usuario.TEL_TRABAJO}}</b>  :</label>
-
-                                </div>
-
-
                             </div>
                         </div>
                         <hr>
@@ -367,7 +374,19 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="">Perfil de Facebook</label>
-                                        <input [(ngModel)]="usuario.facebook" type="text" class="form-control" name="email" autocomplete="nope">
+                                        <input [(ngModel)]="usuario.facebook" type="text" class="form-control" name="facebook" autocomplete="nope">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Banco</label>
+                                        <input [(ngModel)]="usuario.cuenta_bancaria" type="text" class="form-control" name="banco" autocomplete="nope">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Tipo de Cuenta Bancaria</label>
+                                        <input [(ngModel)]="usuario.tipo_cuenta_bancaria" type="text" class="form-control" name="tipocuenta" autocomplete="nope">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Número de Cuenta</label>
+                                        <input [(ngModel)]="usuario.nro_cuenta_bancaria" type="text" class="form-control" name="nrocuenta" autocomplete="nope">
                                     </div>
                                     <div class="form-group">
                                         <label>Contraseña</label>

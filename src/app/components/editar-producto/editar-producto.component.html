@@ -12,6 +12,8 @@
                 <input type="number" [(ngModel)]="producto.PRECIO_MAYORISTA" name="precio" id="" #precio class="form-control" placeholder="" required aria-describedby="helpId">
                 <label for="">Código</label>
                 <input type="text" [(ngModel)]="producto.ID_PRODUCTO" name="codigo" id="" #codigo class="form-control" placeholder="" required aria-describedby="helpId">
+                <label for="">Tipo de Servicio</label>
+                <input type="text" [(ngModel)]="producto.tipo_servicio" name="tipo_servicio" id="tipo_servicio" #tipo class="form-control" placeholder="" required aria-describedby="helpId">
 
             </div>
             <button type="reset" (click)="cancelar()" class="btn mr-3 btn-danger">Cancelar</button>

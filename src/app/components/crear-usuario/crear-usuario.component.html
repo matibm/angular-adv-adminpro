@@ -16,7 +16,7 @@
                     <div class="form-group">
                         <label for="">RUC/CI</label>
                         <input [(ngModel)]="usuario.RUC" type="text" class="form-control" name="RUC" autocomplete="off">
-                        <button type="button" (click)="consultar(usuario.RUC)" class="btn mt-2 btn-secondary">Consultar usuario</button>
+                        <button type="button" [disabled]="!usuario.RUC" (click)="consultar(usuario.RUC)" class="btn mt-2 btn-secondary">Consultar usuario</button>
                     </div>
                     <div class=" form-group">
                         <label for="">email</label>
@@ -75,7 +75,7 @@
 
                     <div class="form-group">
                         <label for="">Nivel de Acceso</label>
-                        <input type="number" name="" [(ngModel)]="nivel" id="" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="off">
+                        <input type="number" name="" [(ngModel)]="nivel" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="off">
                     </div>
                 </div>
             </div>
@@ -90,7 +90,7 @@
 
                         <div class="form-group">
                             <label for="">Direccion: </label>
-                            <input type="text" name="" [(ngModel)]="usuario.DIRECCION" name="Direccion:" id="" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="off">
+                            <input type="text" name="" [(ngModel)]="usuario.DIRECCION" name="Direccion:" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="off">
 
                         </div>
                     </form>
@@ -98,7 +98,7 @@
                     <form class="form-material ">
                         <div class="form-group">
                             <label for="">Ciudad: </label>
-                            <input type="text" name="" [(ngModel)]="usuario.NOMCIUDAD" name="</label" id="" class="form-control" placeholder="" aria-describedby="helpId">
+                            <input type="text" name="" [(ngModel)]="usuario.NOMCIUDAD" name="</label" class="form-control" placeholder="" aria-describedby="helpId">
 
                         </div>
                     </form>
@@ -106,18 +106,18 @@
 
                         <div class="form-group">
                             <label for="">Departamento: </label>
-                            <input type="text" [(ngModel)]="usuario.NOMDEPAR" name="departamento" id="" class="form-control" placeholder="" aria-describedby="helpId">
+                            <input type="text" [(ngModel)]="usuario.NOMDEPAR" name="departamento" class="form-control" placeholder="" aria-describedby="helpId">
 
                         </div>
                     </form>
                     <div class="form-group">
                         <label for="">Celular:</label>
-                        <input type="text" [(ngModel)]="usuario.TELEFONO1" name="Telefono-1" id="" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="off">
+                        <input type="text" [(ngModel)]="usuario.TELEFONO1" name="Telefono-1" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="off">
 
                     </div>
                     <div class="form-group">
                         <label for="">Línea Baja:</label>
-                        <input type="text" [(ngModel)]="usuario.TELEFONO2" name="Telefono-1" id="" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="off">
+                        <input type="text" [(ngModel)]="usuario.TELEFONO2" name="Telefono-1" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="off">
 
                     </div>
 
@@ -129,7 +129,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="">Notas</label>
-                        <textarea class="form-control" name="" id="" rows="6"></textarea>
+                        <textarea class="form-control" name="" rows="6"></textarea>
                     </div>
 
                 </div>
@@ -143,7 +143,7 @@
 
                         <div class="form-group">
                             <label for="">Lugar de Trabajo: </label>
-                            <input type="text" [(ngModel)]="usuario.LUGAR_TRABAJO" name="" id="" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="off">
+                            <input type="text" [(ngModel)]="usuario.LUGAR_TRABAJO" name="lugartrabaho" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="off">
 
                         </div>
                     </form>
@@ -151,7 +151,7 @@
 
                         <div class="form-group">
                             <label for="">Direccion: </label>
-                            <input type="text" name="" [(ngModel)]="usuario.direccion_laboral" name="Direccion:" id="" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="off">
+                            <input type="text" name="" [(ngModel)]="usuario.direccion_laboral" name="Direccion:" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="off">
 
                         </div>
                     </form>
@@ -159,7 +159,7 @@
                     <form class="form-material ">
                         <div class="form-group">
                             <label for="">Ciudad: </label>
-                            <input type="text" name="" [(ngModel)]="usuario.ciudad_trabajo" name="</label" id="" class="form-control" placeholder="" aria-describedby="helpId">
+                            <input type="text" name="" [(ngModel)]="usuario.ciudad_trabajo" name="</label" class="form-control" placeholder="" aria-describedby="helpId">
 
                         </div>
                     </form>
@@ -167,7 +167,7 @@
 
                         <div class="form-group">
                             <label for="">Departamento: </label>
-                            <input type="text" [(ngModel)]="usuario.DEPARTAMENTO_TRABAJO" name="departamento" id="" class="form-control" placeholder="" aria-describedby="helpId">
+                            <input type="text" [(ngModel)]="usuario.DEPARTAMENTO_TRABAJO" name="departamento" class="form-control" placeholder="" aria-describedby="helpId">
 
                         </div>
                     </form>
@@ -175,15 +175,35 @@
 
                     <div class="form-group">
                         <label for="">Celular:</label>
-                        <input type="text" [(ngModel)]="usuario.TELEFONO3" name="Telefono-1" id="" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="off">
+                        <input type="text" [(ngModel)]="usuario.TELEFONO3" name="Telefono-1" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="off">
 
                     </div>
                     <div class="form-group">
                         <label for="">Línea Baja:</label>
-                        <input type="text" [(ngModel)]="usuario.TEL_TRABAJO" name="Telefono-1" id="" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="off">
+                        <input type="text" [(ngModel)]="usuario.TEL_TRABAJO" name="Telefono-1" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="off">
 
                     </div>
 
+
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h4>Bancaria</h4>
+                    <form class="form-material ">
+                        <div class="form-group">
+                            <label for="">Cuenta Bancaria: </label>
+                            <input type="text" [(ngModel)]="usuario.cuenta_bancaria" name="asas" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Tipo de Cuenta: </label>
+                            <input type="text" [(ngModel)]="usuario.tipo_cuenta_bancaria" name="tipo_cuenta_bancaria" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Número de Cuenta: </label>
+                            <input type="text" [(ngModel)]="usuario.nro_cuenta_bancaria" name="nro_cuenta_bancaria" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="off">
+                        </div>
+                    </form>
 
                 </div>
             </div>

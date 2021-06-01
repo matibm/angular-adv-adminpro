@@ -49,7 +49,7 @@ export class CrearUsuarioComponent implements OnInit {
   }
 
   allowCreate(): boolean {
-    if (this.usuario.NOMBRES && this.usuario.APELLIDOS && this.usuario.TELEFONO1 ) {
+    if (this.usuario.NOMBRES && this.usuario.APELLIDOS && this.usuario.TELEFONO1) {
       return true
     } else {
       return false
@@ -57,14 +57,23 @@ export class CrearUsuarioComponent implements OnInit {
   }
 
 
-  async consultar(ruc){
+  async consultar(ruc) {
+    if (!ruc) {
+      return
+    }
     let consulta = await this._usuarioService.buscarUsuarios('ALL', ruc)    
-    if (consulta) {
+    
+    if (consulta[0]) {
       swal.fire({
         icon: 'success',
         title: 'Usuario Existente',
-         text: `${consulta[0].NOMBRES} ${consulta[0].APELLIDOS} `,
+        text: `${consulta[0].NOMBRES} ${consulta[0].APELLIDOS} RUC/CI: ${consulta[0].RUC}`,
         timer: 3000,
+      })
+    } else {
+      swal.fire({
+        icon: 'info',
+        title: 'No se encontró ningún usuario',              
       })
     }
 
