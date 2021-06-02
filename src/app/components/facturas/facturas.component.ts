@@ -132,11 +132,8 @@ export class FacturasComponent implements OnInit {
   }
 
   async descargarExtracto() {
-    let options = this.options || {}
-    options.isExtracto = true
-    const resp = await this._facturaService.getFacturasOptions(options);
-    console.log(resp);
-    localStorage.setItem('options_extracto', JSON.stringify(options))
+    
+    localStorage.setItem('options_extracto', JSON.stringify(this.options))
     const wopen = window.open('/extracto-cuotas');
     wopen.onafterprint = (event) => {
       wopen.close();
