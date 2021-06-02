@@ -6,13 +6,16 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class SidebarService {
-  urlActual
+  constructor(private router: Router, public _usuario: UsuarioService) {
+    this.usuario = _usuario.usuario;
+  }
+  urlActual;
   menu: any[] = [
     {
       titulo: 'Usuarios',
       icono: 'mdi mdi-account-multiple',
       submenu: [
-        
+
         { titulo: 'crear usuario', url: 'crear_usuario' },
         { titulo: 'lista de usuarios', url: 'usuarios' },
       ]
@@ -46,17 +49,14 @@ export class SidebarService {
         { titulo: 'lista de productos', url: 'lista_productos' }
        ]
     }
-    
-    
-  ]
- 
-  refreshRoute() {
-    this.urlActual = this.router.url
-    console.log("cambiando url", this.urlActual);
 
-  }
-  usuario
-  constructor(private router: Router, public _usuario: UsuarioService) {
-    this.usuario = _usuario.usuario
+
+  ];
+  usuario;
+
+  refreshRoute() {
+    this.urlActual = this.router.url;
+    console.log('cambiando url', this.urlActual);
+
   }
 }

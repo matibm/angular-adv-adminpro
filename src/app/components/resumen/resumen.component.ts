@@ -19,89 +19,25 @@ export class ResumenComponent implements OnInit {
     public _usuarioService: UsuarioService,
     public _movimientoService: MovimientoService
   ) {
-    let agrupar = localStorage.getItem('agrupar_por_cierres') || 'false'
-    this.agruparPorcierres = agrupar == 'true' ? true : false
+    const agrupar = localStorage.getItem('agrupar_por_cierres') || 'false';
+    this.agruparPorcierres = agrupar == 'true' ? true : false;
   }
-  agruparPorcierres
-  filtrarPorFecha
-  cierres
-  facturas
-  movimientos
-  date_start = new Date(new Date().getTime() - (86400000 * 7)).getTime()
-  date_end = new Date().getTime()
-  facturasCount
-  cliente
-  clientes
-  vendedor
-  vendedores
-  cobrador
-  cobradores 
-  totalIngresos = 0
-  totalMovimientos = 0
-  ngOnInit(): void {
-    this.getCierres()
-    this.getFacturas()
-    this.getMovimientos()
-  }
-
-  async getCierres() {
-    this.cierres = await this._cajaService.getCierresDeCaja()
-  }
-  async getFacturas() {
-    // let respf = await this._facturaService.getFacturas(true, null, null, null, 1, null, null)
-    let respf = await this._facturaService.getFacturasOptions({pagado:true, page:1, cerrado: true})
-
-    this.facturasCount = respf.count
-    this.totalIngresos = respf.total
-    console.log(respf);
-
-    this.facturas = respf.facturas
-  }
-
-  async getMovimientos() {
-    // let respM = await this._movimientoService.getMovimientosByDate()
-    let respM = await this._movimientoService.getAllMovimientos({ page:1, cerrado: true})
-    console.log(respM);
-    this.totalMovimientos = respM.total.monto_haber - respM.total.monto_total  
-    this.movimientos = respM.movimientos
-  }
-
-
-  switchAgrupar() {
-    if (this.agruparPorcierres) {
-      this.agruparPorcierres = false
-      localStorage.setItem('agrupar_por_cierres', 'false')
-    } else {
-      this.agruparPorcierres = true
-      localStorage.setItem('agrupar_por_cierres', 'true')
-    }
-  }
-  async searchClientes(val: any) {
-    if (val.term.length > 0) {
-      this.clientes = await this._usuarioService.buscarUsuarios('CLIENTES', val.term)
-
-    }
-  }
-  async searchCobrador(val: any) {
-    if (val.term.length > 0) {
-      this.cobradores = await this._usuarioService.buscarUsuarios('COBRADORES', val.term)
-
-    }
-  }
-  async searchVendedore(val: any) {
-    if (val.term.length > 0) {
-      this.vendedores = await this._usuarioService.buscarUsuarios('VENDEDORES', val.term)
-
-    }
-  }
-
-  customSearchFn(term: string, item: any) {
-    term = term.toLowerCase();
-    return item.NOMBRES.toLowerCase().indexOf(term) > -1 ||
-      item.APELLIDOS.toLowerCase().includes(term) ||
-      item.RAZON.toLowerCase().includes(term) ||
-      item.RUC.toLowerCase().includes(term);
-  }
+  agruparPorcierres;
+  filtrarPorFecha;
+  cierres;
+  facturas;
+  movimientos;
+  date_start = new Date(new Date().getTime() - (86400000 * 7)).getTime();
+  date_end = new Date().getTime();
+  facturasCount;
+  cliente;
+  clientes;
+  vendedor;
+  vendedores;
+  cobrador;
+  cobradores;
+  totalIngresos = 0;
+  totalMovimientos = 0;
 
 
 
@@ -199,6 +135,70 @@ export class ResumenComponent implements OnInit {
   ];
   public lineChartLegend = true;
   public lineChartType: ChartType = 'line';
+  ngOnInit(): void {
+    this.getCierres();
+    this.getFacturas();
+    this.getMovimientos();
+  }
+
+  async getCierres() {
+    this.cierres = await this._cajaService.getCierresDeCaja();
+  }
+  async getFacturas() {
+    // let respf = await this._facturaService.getFacturas(true, null, null, null, 1, null, null)
+    const respf = await this._facturaService.getFacturasOptions({pagado: true, page: 1, cerrado: true});
+
+    this.facturasCount = respf.count;
+    this.totalIngresos = respf.total;
+    console.log(respf);
+
+    this.facturas = respf.facturas;
+  }
+
+  async getMovimientos() {
+    // let respM = await this._movimientoService.getMovimientosByDate()
+    const respM = await this._movimientoService.getAllMovimientos({ page: 1, cerrado: true});
+    console.log(respM);
+    this.totalMovimientos = respM.total.monto_haber - respM.total.monto_total;
+    this.movimientos = respM.movimientos;
+  }
+
+
+  switchAgrupar() {
+    if (this.agruparPorcierres) {
+      this.agruparPorcierres = false;
+      localStorage.setItem('agrupar_por_cierres', 'false');
+    } else {
+      this.agruparPorcierres = true;
+      localStorage.setItem('agrupar_por_cierres', 'true');
+    }
+  }
+  async searchClientes(val: any) {
+    if (val.term.length > 0) {
+      this.clientes = await this._usuarioService.buscarUsuarios('CLIENTES', val.term);
+
+    }
+  }
+  async searchCobrador(val: any) {
+    if (val.term.length > 0) {
+      this.cobradores = await this._usuarioService.buscarUsuarios('COBRADORES', val.term);
+
+    }
+  }
+  async searchVendedore(val: any) {
+    if (val.term.length > 0) {
+      this.vendedores = await this._usuarioService.buscarUsuarios('VENDEDORES', val.term);
+
+    }
+  }
+
+  customSearchFn(term: string, item: any) {
+    term = term.toLowerCase();
+    return item.NOMBRES.toLowerCase().indexOf(term) > -1 ||
+      item.APELLIDOS.toLowerCase().includes(term) ||
+      item.RAZON.toLowerCase().includes(term) ||
+      item.RUC.toLowerCase().includes(term);
+  }
   // public lineChartPlugins = [pluginAnnotations];
 
 

@@ -13,30 +13,30 @@ import { Component, DoCheck, OnInit } from '@angular/core';
   styleUrls: ['./movimientos.component.css']
 })
 export class MovimientosComponent implements OnInit {
-  breadCrumb = []
-  movimientos: Movimiento[] = []
-  arrayBreadCrumb = []
-  cliente: Usuario
-  clientes: Usuario[]
-  proveedor: Usuario
-  proveedores: Usuario[]
-  fondo: Usuario
-  fondos: Usuario[]
-  nro
+  breadCrumb = [];
+  movimientos: Movimiento[] = [];
+  arrayBreadCrumb = [];
+  cliente: Usuario;
+  clientes: Usuario[];
+  proveedor: Usuario;
+  proveedores: Usuario[];
+  fondo: Usuario;
+  fondos: Usuario[];
+  nro;
   showCrearMovimiento = false;
   showCrearMovimientoLocal = 'false';
-  nroFacturaProveedor
-  fechaMovimiento
-  monto: number
-  comentario
-  servicio
-  servicios
-  loading = false
-  contrato: Contrato
+  nroFacturaProveedor;
+  fechaMovimiento;
+  monto: number;
+  comentario;
+  servicio;
+  servicios;
+  loading = false;
+  contrato: Contrato;
 
 
-  egresoActive = 'btn-info'
-  ingresoActive = 'btn-light'
+  egresoActive = 'btn-info';
+  ingresoActive = 'btn-light';
 
   constructor(
     public _movimientoService: MovimientoService,
@@ -44,62 +44,62 @@ export class MovimientosComponent implements OnInit {
     public _contratoService: ContratoService,
     public _productoService: ProductosService
   ) { }
-  tipos_movimiento
-  tipo
+  tipos_movimiento;
+  tipo;
   async ngOnInit() {
 
-    let contratoOfLocal: string = localStorage.getItem('movimiento_contrato')
-    contratoOfLocal ? this.contrato = JSON.parse(contratoOfLocal) : ''
+    const contratoOfLocal: string = localStorage.getItem('movimiento_contrato');
+    contratoOfLocal ? this.contrato = JSON.parse(contratoOfLocal) : '';
     if (this.contrato) {
-      this.servicio = this.contrato.producto
-      this.cliente = this.contrato.titular
+      this.servicio = this.contrato.producto;
+      this.cliente = this.contrato.titular;
     }
 
-    this.servicios = await this._productoService.getProductos()
-    this.loading = true
-    this.tipos_movimiento = await this._movimientoService.getTipoMovimiento()
-    this.movimientos = await this._movimientoService.getMovimientos()
+    this.servicios = await this._productoService.getProductos();
+    this.loading = true;
+    this.tipos_movimiento = await this._movimientoService.getTipoMovimiento();
+    this.movimientos = await this._movimientoService.getMovimientos();
     console.log(this.movimientos);
-    this.clientes = await this._usuarioService.buscarUsuarios('CLIENTES', '')
-    this.proveedores = await this._usuarioService.buscarUsuarios('PROVEEDORES', '')
-    this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', '')
-    this.loading = false
-    this.initializeWithLocalStorage()
+    this.clientes = await this._usuarioService.buscarUsuarios('CLIENTES', '');
+    this.proveedores = await this._usuarioService.buscarUsuarios('PROVEEDORES', '');
+    this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', '');
+    this.loading = false;
+    this.initializeWithLocalStorage();
 
   }
 
   async selectCategory(tipo) {
-    this.tipo = tipo
-    history.forward()
+    this.tipo = tipo;
+    history.forward();
     console.log(tipo);
     if (!tipo) {
-      return
+      return;
     }
-    this.breadCrumb.push(tipo)
-    this.saveBreadcrumb()
-    let padre = tipo.nombre_padre ? tipo.nombre_padre : tipo.descripcion;
-    this.tipos_movimiento = await this._movimientoService.getTipoMovimiento(this.breadCrumb.length + 1, tipo.cuenta)
-    this.movimientos = await this._movimientoService.getMovimientos(tipo.cuenta)
+    this.breadCrumb.push(tipo);
+    this.saveBreadcrumb();
+    const padre = tipo.nombre_padre ? tipo.nombre_padre : tipo.descripcion;
+    this.tipos_movimiento = await this._movimientoService.getTipoMovimiento(this.breadCrumb.length + 1, tipo.cuenta);
+    this.movimientos = await this._movimientoService.getMovimientos(tipo.cuenta);
     console.log(this.movimientos);
   }
   async selectCategoryinitial(tipo) {
-    this.tipo = tipo
-    history.forward()
+    this.tipo = tipo;
+    history.forward();
     console.log(tipo);
     if (!tipo) {
-      return
+      return;
     }
-    this.saveBreadcrumb()
-    let padre = tipo.nombre_padre ? tipo.nombre_padre : tipo.descripcion;
-    this.tipos_movimiento = await this._movimientoService.getTipoMovimiento(this.breadCrumb.length + 1, tipo.cuenta)
-    this.movimientos = await this._movimientoService.getMovimientos(tipo.cuenta)
+    this.saveBreadcrumb();
+    const padre = tipo.nombre_padre ? tipo.nombre_padre : tipo.descripcion;
+    this.tipos_movimiento = await this._movimientoService.getTipoMovimiento(this.breadCrumb.length + 1, tipo.cuenta);
+    this.movimientos = await this._movimientoService.getMovimientos(tipo.cuenta);
     console.log(this.movimientos);
   }
 
 
   async searchTipoMovimientos(event) {
     if (this.breadCrumb.length > 0 && event.term) {
-      this.tipos_movimiento = await this._movimientoService.buscarTipoMovimientos(event.term, this.breadCrumb.length + 1)
+      this.tipos_movimiento = await this._movimientoService.buscarTipoMovimientos(event.term, this.breadCrumb.length + 1);
 
     }
 
@@ -107,7 +107,7 @@ export class MovimientosComponent implements OnInit {
   customSearchFnMovimientos(term: string, item: any) {
     term = term.toLowerCase();
     return item.descripcion.toLowerCase().indexOf(term) > -1 ||
-      item.nombre_padre.toLowerCase().includes(term)
+      item.nombre_padre.toLowerCase().includes(term);
 
   }
 
@@ -125,48 +125,48 @@ export class MovimientosComponent implements OnInit {
   }
 
   async navigateBreadcrumb(i) {
-    this.tipo = this.breadCrumb[i]
+    this.tipo = this.breadCrumb[i];
 
     this.breadCrumb = this.breadCrumb.slice(0, i + 1);
     console.log(this.tipo.ctapadre);
 
-    if (this.tipo.ctapadre == "0") {
-      this.tipos_movimiento = await this._movimientoService.getTipoMovimiento(2, this.tipo.cuenta)
-      console.log("cero");
+    if (this.tipo.ctapadre == '0') {
+      this.tipos_movimiento = await this._movimientoService.getTipoMovimiento(2, this.tipo.cuenta);
+      console.log('cero');
 
     } else {
-      this.tipos_movimiento = await this._movimientoService.getTipoMovimiento(2, this.tipo.cuenta)
+      this.tipos_movimiento = await this._movimientoService.getTipoMovimiento(2, this.tipo.cuenta);
     }
     console.log(this.tipos_movimiento);
-    this.movimientos = await this._movimientoService.getMovimientos(this.tipo.cuenta)
-    this.saveBreadcrumb()
+    this.movimientos = await this._movimientoService.getMovimientos(this.tipo.cuenta);
+    this.saveBreadcrumb();
 
   }
 
 
   async resetBreadcrumb() {
-    this.tipos_movimiento = await this._movimientoService.getTipoMovimiento()
-    this.breadCrumb = []
-    this.movimientos = []
-    this.saveBreadcrumb()
-    this.saveshowCrearMovimiento(false)
+    this.tipos_movimiento = await this._movimientoService.getTipoMovimiento();
+    this.breadCrumb = [];
+    this.movimientos = [];
+    this.saveBreadcrumb();
+    this.saveshowCrearMovimiento(false);
   }
 
 
   async crearMovimiento() {
 
 
-    let montoEgreso
-    let montoIngreso
+    let montoEgreso;
+    let montoIngreso;
 
     if (this.egresoActive == 'btn-info') {
-      montoEgreso = this.monto
-      montoIngreso = 0
+      montoEgreso = this.monto;
+      montoIngreso = 0;
     }else{
-      montoEgreso = 0 
-      montoIngreso = this.monto
+      montoEgreso = 0;
+      montoIngreso = this.monto;
     }
-    let movimiento: Movimiento = {
+    const movimiento: Movimiento = {
       cliente: this.cliente,
       fondo: this.fondo,
       proveedor: this.proveedor,
@@ -177,94 +177,94 @@ export class MovimientosComponent implements OnInit {
       nro_comp_banco: this.nroFacturaProveedor,
       id_cuentacaja: this.tipo.cuenta,
       nombre: this.tipo.descripcion,
-      anulado: "0",
+      anulado: '0',
       monto_haber: montoIngreso,
       monto_total: montoEgreso
-    }
-    
+    };
 
-    let resp = await this._movimientoService.crearMovimiento(movimiento)
-    
-    this.resetAll()
+
+    const resp = await this._movimientoService.crearMovimiento(movimiento);
+
+    this.resetAll();
 
 
   }
 
   async searchClientes(val) {
     if (val.term.length > 0) {
-      this.clientes = await this._usuarioService.buscarUsuarios('CLIENTES', val.term)
+      this.clientes = await this._usuarioService.buscarUsuarios('CLIENTES', val.term);
     }
   }
   async searchProveedores(val) {
     if (val.term.length > 0) {
-      this.proveedores = await this._usuarioService.buscarUsuarios('PROVEEDORES', val.term)
+      this.proveedores = await this._usuarioService.buscarUsuarios('PROVEEDORES', val.term);
 
     }
   }
   async searchBancos(val) {
-    this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', val.term)
+    this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', val.term);
   }
 
   async buscarContratoPorNro(nro_contrato) {
-    let respC = await this._contratoService.getContratos(null, { nro_contrato: nro_contrato })
+    const respC = await this._contratoService.getContratos(null, { nro_contrato });
     if (respC.contratos.length == 1) {
-      this.contrato = respC.contratos[0]
+      this.contrato = respC.contratos[0];
     }
   }
 
   saveBreadcrumb() {
-    localStorage.setItem('movimiento_breadcrumb', JSON.stringify(this.breadCrumb))
+    localStorage.setItem('movimiento_breadcrumb', JSON.stringify(this.breadCrumb));
   }
   saveshowCrearMovimiento(value) {
-    this.showCrearMovimiento = value
-    this.showCrearMovimientoLocal = `${value}`
-    localStorage.setItem('movimiento_show_crear_movimiento', this.showCrearMovimientoLocal)
+    this.showCrearMovimiento = value;
+    this.showCrearMovimientoLocal = `${value}`;
+    localStorage.setItem('movimiento_show_crear_movimiento', this.showCrearMovimientoLocal);
   }
 
 
   initializeWithLocalStorage() {
-    let showCrearMovimiento = localStorage.getItem('movimiento_show_crear_movimiento')
+    const showCrearMovimiento = localStorage.getItem('movimiento_show_crear_movimiento');
     if (showCrearMovimiento == 'true') {
-      this.showCrearMovimiento = true
+      this.showCrearMovimiento = true;
     } else if (showCrearMovimiento == 'false') {
-      this.showCrearMovimiento = false
+      this.showCrearMovimiento = false;
     }
 
-    let existsbreacrumb = JSON.parse(localStorage.getItem('movimiento_breadcrumb'))
-    existsbreacrumb ? this.breadCrumb = existsbreacrumb : ''
+    const existsbreacrumb = JSON.parse(localStorage.getItem('movimiento_breadcrumb'));
+    existsbreacrumb ? this.breadCrumb = existsbreacrumb : '';
     if (this.breadCrumb) {
-      this.selectCategoryinitial(this.breadCrumb[this.breadCrumb.length - 1])
+      this.selectCategoryinitial(this.breadCrumb[this.breadCrumb.length - 1]);
     }
 
   }
 
   removeContrato() {
-    this.contrato = null
-    localStorage.setItem('movimiento_contrato', null)
+    this.contrato = null;
+    localStorage.setItem('movimiento_contrato', null);
   }
 
   switchTipoMonto() {
     if (this.egresoActive == 'btn-info') {
-      this.egresoActive = 'btn-light'
-      this.ingresoActive = 'btn-info'
+      this.egresoActive = 'btn-light';
+      this.ingresoActive = 'btn-info';
     } else {
-      this.ingresoActive = 'btn-light'
-      this.egresoActive = 'btn-info'
+      this.ingresoActive = 'btn-light';
+      this.egresoActive = 'btn-info';
     }
   }
 
 
   allowCreateMovimiento(): boolean {
     if (this.fondo && this.monto > 0) {
-      return true
+      return true;
     } else {
-      return false
+      return false;
     }
   }
 
   resetAll(){
-    this.resetBreadcrumb()
-    this.ngOnInit()
+    this.resetBreadcrumb();
+    this.ngOnInit();
   }
 
 

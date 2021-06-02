@@ -90,7 +90,8 @@
         <div style="width: 100%;">
             <div style="display: flex;">
                 <div class="mx-auto">
-                    <pagination-controls *ngIf="count>10" (pageChange)="pageChanged($event); page = $event"></pagination-controls>
+                    <pagination-controls *ngIf="count>10" (pageChange)="pageChanged($event); page = $event">
+                    </pagination-controls>
                 </div>
             </div>
         </div>
@@ -123,6 +124,13 @@
             </div>
 
         </div>
-
+        <div class="mt-2" *ngIf="true">
+            <div style="width: 100%;">
+                <div style="display: flex;">
+                    <div class="ml-auto">
+                        <button type="button" (click)="descargarExtracto()" class="btn btn-inverse">Descargar Extracto</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>

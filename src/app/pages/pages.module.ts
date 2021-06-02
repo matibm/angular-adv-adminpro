@@ -1,5 +1,5 @@
 import { PipeModule } from './../pipes/pipe.module';
-  import { NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { RouterModule } from '@angular/router';
@@ -20,7 +20,7 @@ import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 
 import { QrCodeModule } from 'ng-qrcode';
- 
+
 
 import { NgxLoadingModule } from 'ngx-loading';
 import { AvatarModule } from 'ngx-avatar';
@@ -34,10 +34,10 @@ import { AvatarModule } from 'ngx-avatar';
     PagesComponent,
     AccountSettingsComponent,
 
-     
+
    ],
 
-  
+
   exports: [
     DashboardComponent,
     ProgressComponent,
@@ -47,8 +47,8 @@ import { AvatarModule } from 'ngx-avatar';
     ComponentsModule
   ],
 
-  imports: [ 
-    CommonModule, 
+  imports: [
+    CommonModule,
     FormsModule,
      SharedModule,
      AvatarModule,
@@ -61,4 +61,3 @@ import { AvatarModule } from 'ngx-avatar';
   ],
 })
 export class PagesModule { }
- 

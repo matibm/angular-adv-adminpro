@@ -19,19 +19,19 @@ import { title } from 'process';
   styleUrls: ['./perfil-usuario.component.css']
 })
 export class PerfilUsuarioComponent implements OnInit {
-  isVendedor
-  isCobrador
-  isCliente
-  isEmpleado
-  movimientos: Movimiento[]
-  isPersona
-  isEmpresa
-  isContratado
-  isBanco
-  manejaCaja
-  cobroOnline
-  pagos
-  facturapdf
+  isVendedor;
+  isCobrador;
+  isCliente;
+  isEmpleado;
+  movimientos: Movimiento[];
+  isPersona;
+  isEmpresa;
+  isContratado;
+  isBanco;
+  manejaCaja;
+  cobroOnline;
+  pagos;
+  facturapdf;
   constructor(
     public _usuarioService: UsuarioService,
     public route: ActivatedRoute,
@@ -41,49 +41,49 @@ export class PerfilUsuarioComponent implements OnInit {
     public _comentarioService: WhatsappService,
     public _movimientoService: MovimientoService
   ) { }
-  id
-  contratos: Contrato[]
-  usuario: Usuario
-  cuotas: Cuota[]
-  facturas
-  comentarios
+  id;
+  contratos: Contrato[];
+  usuario: Usuario;
+  cuotas: Cuota[];
+  facturas;
+  comentarios;
   async ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
 
-    this.pagos = await this._facturaService.getPagos(this.id)
+    this.pagos = await this._facturaService.getPagos(this.id);
     // console.log("pagos", this.pagos);
-    
+
     this._comentarioService.listen('push_comentarios').subscribe((data: any) => {
-      this.comentarios = data
+      this.comentarios = data;
 
-    })
+    });
     this._comentarioService.listen('push_comentario').subscribe((data: any) => {
-      this.comentarios.push(data)
+      this.comentarios.push(data);
 
-    })
-    this._comentarioService.emitir('get_comentarios', 'e')
+    });
+    this._comentarioService.emitir('get_comentarios', 'e');
 
-    this.usuario = await this._usuarioService.getUsuarioPorId(this.id)
+    this.usuario = await this._usuarioService.getUsuarioPorId(this.id);
     console.log(this.usuario);
-    
-    this.usuario.password = ''
 
-    this.facturas = (await this._facturaService.getFacturas(null, null, null, null, null, this.id)).facturas
+    this.usuario.password = '';
+
+    this.facturas = (await this._facturaService.getFacturas(null, null, null, null, null, this.id)).facturas;
 
 
-    this.isVendedor = this.usuario.VENDEDORES == '1' ? 'check_vendedor' : null
-    this.isCobrador = this.usuario.COBRADORES == '1' ? 'check_cobrador' : null
-    this.isCliente = this.usuario.CLIENTES == '1' ? 'check_cliente' : null
-    this.isEmpleado = this.usuario.EMPLEADOS == '1' ? 'check_empleado' : null
-    this.isPersona = this.usuario.PERSONA == '1' ? 'check_persona' : null
-    this.isEmpresa = this.usuario.EMPRESA == '1' ? 'check_empresa' : null
-    this.isContratado = this.usuario.CONTRATADO == '1' ? 'check_contratado' : null
-    this.isBanco = this.usuario.BANCOS == '1' ? 'check_banco' : null
-    this.manejaCaja = this.usuario.MANEJA_CAJA == '1' ? 'check_maneja_caja' : null
-    this.cobroOnline = this.usuario.fondo_online == '1' ? 'check_maneja_caja' : null
-    this.cuotas = await this._cuotaService.getCuotaByTitular(this.id)
+    this.isVendedor = this.usuario.VENDEDORES == '1' ? 'check_vendedor' : null;
+    this.isCobrador = this.usuario.COBRADORES == '1' ? 'check_cobrador' : null;
+    this.isCliente = this.usuario.CLIENTES == '1' ? 'check_cliente' : null;
+    this.isEmpleado = this.usuario.EMPLEADOS == '1' ? 'check_empleado' : null;
+    this.isPersona = this.usuario.PERSONA == '1' ? 'check_persona' : null;
+    this.isEmpresa = this.usuario.EMPRESA == '1' ? 'check_empresa' : null;
+    this.isContratado = this.usuario.CONTRATADO == '1' ? 'check_contratado' : null;
+    this.isBanco = this.usuario.BANCOS == '1' ? 'check_banco' : null;
+    this.manejaCaja = this.usuario.MANEJA_CAJA == '1' ? 'check_maneja_caja' : null;
+    this.cobroOnline = this.usuario.fondo_online == '1' ? 'check_maneja_caja' : null;
+    this.cuotas = await this._cuotaService.getCuotaByTitular(this.id);
     this.contratos = await this._contratoService.getContratosByTitular(this.id);
-    this.movimientos = (await this._movimientoService.getAllMovimientos({cliente: this.id})).movimientos
+    this.movimientos = (await this._movimientoService.getAllMovimientos({cliente: this.id})).movimientos;
   }
 
   prueba() {
@@ -103,30 +103,30 @@ export class PerfilUsuarioComponent implements OnInit {
     usuario.MANEJA_CAJA = this.manejaCaja ? '1' : '0';
     usuario.fondo_online = this.cobroOnline ? '1' : '0';
 
-    let resp = await this._usuarioService.modificarUsuarios(usuario)
+    const resp = await this._usuarioService.modificarUsuarios(usuario);
   }
 
   comentar(texto) {
-    let comentario = {
+    const comentario = {
       usuario: this.usuario,
       titular: this._usuarioService.usuario,
-      texto: texto
-    }
-    this._comentarioService.emitir('nuevo_comentario', comentario)
+      texto
+    };
+    this._comentarioService.emitir('nuevo_comentario', comentario);
 
 
     this._comentarioService.listen('error').subscribe(data => {
       console.log(data);
 
-    })
+    });
   }
 
   async mostrarModal(id){
-    let resp = await this._facturaService.getDetallePago(id)
-     
-    let pago = resp.pago
-    let facturas = resp.facturas
-    let servicios =[]
+    const resp = await this._facturaService.getDetallePago(id);
+
+    const pago = resp.pago;
+    const facturas = resp.facturas;
+    const servicios = [];
     for (let i = 0; i < facturas.length; i++) {
       const factura = facturas[i];
       servicios.push({
@@ -135,7 +135,7 @@ export class PerfilUsuarioComponent implements OnInit {
         precioUnitario: factura.haber,
         cincoPorciento: null,
         diezPorciento: factura.haber * 0.1
-      })
+      });
     }
     this.facturapdf = {
       _id: pago._id,
@@ -145,9 +145,9 @@ export class PerfilUsuarioComponent implements OnInit {
       ruc: pago.cliente.RUC,
       tel: pago.cliente.TELEFONO1,
       notaDeRemision: '123123',
-      servicios: servicios
-    }
+      servicios
+    };
     console.log(this.facturapdf);
-    
+
   }
 }

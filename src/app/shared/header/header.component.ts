@@ -17,16 +17,16 @@ export class HeaderComponent implements OnInit {
   }
 
   open(){
-    console.log("openes");
-    
+    console.log('openes');
+
     setTimeout(() => {
     // document.body.classList.remove('show-sidebar');
-      
+
     }, 300);
   }
 
   logout(){
-    this._usuarioService.logout()
+    this._usuarioService.logout();
   }
-  
+
 }

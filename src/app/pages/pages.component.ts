@@ -13,7 +13,7 @@ declare function customInitFunctions();
 export class PagesComponent implements OnInit {
 
 
-  constructor(private settingsService: SettingsService) { } //inyeccion de un servicio
+  constructor(private settingsService: SettingsService) { } // inyeccion de un servicio
 
   ngOnInit(): void {
     customInitFunctions();
@@ -24,10 +24,10 @@ export class PagesComponent implements OnInit {
     // console.log(event.target);
 
     if (!event.target) {
-      return
+      return;
     }
     if (!event.target.classList) {
-      return
+      return;
     }
     for (let i = 0; i < event.path.length; i++) {
       const element = event.path[i];
@@ -35,9 +35,9 @@ export class PagesComponent implements OnInit {
         if (!element.classList.contains('scroll-sidebar') && !event.target.classList.contains('abridor')) {
           if (document.body.classList.contains('show-sidebar')) {
             document.body.classList.remove('show-sidebar');
-            let ticlose = document.getElementById('menu-open-close')
-            ticlose.classList.remove('ti-close')
-            ticlose.classList.add('ti-menu')
+            const ticlose = document.getElementById('menu-open-close');
+            ticlose.classList.remove('ti-close');
+            ticlose.classList.add('ti-menu');
           }
 
         }

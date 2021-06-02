@@ -12,10 +12,10 @@ export class ListaProductosComponent implements OnInit {
   constructor(
     public _productoService: ProductosService
   ) { }
-    
-  productos: Producto[]
+
+  productos: Producto[];
   async ngOnInit() {
-    this.productos = await this._productoService.getProductos()
+    this.productos = await this._productoService.getProductos();
   }
 
 }

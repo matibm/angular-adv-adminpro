@@ -18,18 +18,18 @@ export class CrearProductoComponent implements OnInit {
 
 
   async crearProducto(nombre, cod, precio, codigo) {
-    let producto: Producto = {
+    const producto: Producto = {
       ID_PRODUCTO: codigo,
       NOMBRE: nombre,
       COD_CORTO: cod,
       PRECIO_MAYORISTA: precio
-    }
-    await this._productoService.crearProducto(producto)
-    window.history.back()
+    };
+    await this._productoService.crearProducto(producto);
+    window.history.back();
   }
 
   cancelar() {
-    window.history.back()
+    window.history.back();
   }
 
 }

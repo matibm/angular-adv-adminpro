@@ -17,48 +17,48 @@ export class MovimientoService {
 
   ) { }
   getTipoMovimiento(nivel?, padre?) {
-    console.log("nivel", nivel);
-    console.log("padre:", padre);
+    console.log('nivel', nivel);
+    console.log('padre:', padre);
 
     let url = `${URL_SERVICIOS}/movimientos/tipos/all`;
-    url += `?token=${this._usuarioService.token}`
-    url += `&nivel=${nivel}`
+    url += `?token=${this._usuarioService.token}`;
+    url += `&nivel=${nivel}`;
     if (padre) {
-      url += `&padre=${padre}`
+      url += `&padre=${padre}`;
 
     }
     return this.http.get(url).toPromise().then((resp: any) => {
 
-      return resp.tipos_movimiento
-    })
+      return resp.tipos_movimiento;
+    });
   }
   getMovimientos(tipo_id?) {
 
     let url = `${URL_SERVICIOS}/movimientos/by_type`;
-    url += `?token=${this._usuarioService.token}`
+    url += `?token=${this._usuarioService.token}`;
     tipo_id ? url += `&tipo_id=${tipo_id}` : null;
     return this.http.get(url).toPromise().then((resp: any) => {
-      return resp.movimientos
-    })
+      return resp.movimientos;
+    });
   }
   getAllMovimientos(options?) {
 
     let url = `${URL_SERVICIOS}/movimientos/all`;
-    url += `?token=${this._usuarioService.token}`
+    url += `?token=${this._usuarioService.token}`;
     if (options) {
       console.log(options);
-      
+
       Object.entries(options).forEach(([key, value]) => {
-        
-          url += `&${key}=${value}`        
-        
+
+          url += `&${key}=${value}`;
+
       });
     }
     return this.http.get(url).toPromise().then((resp: any) => {
       console.log(resp);
-      
-      return resp
-    })
+
+      return resp;
+    });
   }
   // getMovimientosByDate(date_start?, date_end?, fondo?, cerrado?: boolean) {
 
@@ -81,23 +81,23 @@ export class MovimientoService {
     console.log(nivel);
 
     let url = `${URL_SERVICIOS}/movimientos/search`;
-    url += `?token=${this._usuarioService.token}`
-    url += `&query=${query}`
-    url += `&nivel=${nivel}`
+    url += `?token=${this._usuarioService.token}`;
+    url += `&query=${query}`;
+    url += `&nivel=${nivel}`;
     console.log(url);
 
     return this.http.get(url).toPromise().then((resp: any) => {
       console.log(resp);
 
-      return resp.tipo_movimientos
-    })
+      return resp.tipo_movimientos;
+    });
   }
 
   async crearMovimiento(movimiento) {
-    let caja = await this._cajaService.getCajaActual()
+    const caja = await this._cajaService.getCajaActual();
     let url = `${URL_SERVICIOS}/movimientos/crear_movimiento`;
-    url += `?token=${this._usuarioService.token}`
-    url += `&caja=${caja._id}`
+    url += `?token=${this._usuarioService.token}`;
+    url += `&caja=${caja._id}`;
 
     return this.http.post(url, movimiento).toPromise().then((resp: any) => {
       console.log(resp);
@@ -107,17 +107,17 @@ export class MovimientoService {
         title: 'Movimiento creado',
         // text: 'I will close in 2 seconds.',
         timer: 2000,
-      })
-      return resp.movimiento
+      });
+      return resp.movimiento;
     }, (error) => {
       swal.fire({
         icon: 'error',
         title: 'Error al crear Movimiento',
         text: error
 
-      })
-      return error
-    })
+      });
+      return error;
+    });
   }
 
 }

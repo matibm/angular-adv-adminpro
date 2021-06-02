@@ -17,10 +17,10 @@ import { Subject } from 'rxjs';
 export class CobranzaComponent implements OnInit {
 
   constructor(public _facturaService: FacturaService,
-    public _usuarioService: UsuarioService,
-    public _contratoSerivce: ContratoService,
-    public _productoService: ProductosService,
-    notifier: NotifierService
+              public _usuarioService: UsuarioService,
+              public _contratoSerivce: ContratoService,
+              public _productoService: ProductosService,
+              notifier: NotifierService
 
   ) {
 
@@ -29,57 +29,57 @@ export class CobranzaComponent implements OnInit {
 
   private notifier: NotifierService;
 
-  showModal = false
-  opciones
-  fondo
-  fondos
-  fechaEmisionStart
-  fechaEmisionEnd
-  fechaVencimientoStart
-  fechaVencimientoEnd
-  fechaPagadoStart
-  fechaPagadoEnd
-  cliente
-  clientes
-  servicio
-  servicios
-  facturas
-  cobrador
-  cobradores
-  vendedor
-  vendedores
-  count
-  contratos
-  contrato
-  facturasAPagar
-  facturasAPagarAux = []
-  montoTotal = 0
-  lista = []
-  sort: any
-  facturaPdf
-  sort_key = 'vencimiento'
-  sort_value = 1
-  showPDF = false
-   
+  showModal = false;
+  opciones;
+  fondo;
+  fondos;
+  fechaEmisionStart;
+  fechaEmisionEnd;
+  fechaVencimientoStart;
+  fechaVencimientoEnd;
+  fechaPagadoStart;
+  fechaPagadoEnd;
+  cliente;
+  clientes;
+  servicio;
+  servicios;
+  facturas;
+  cobrador;
+  cobradores;
+  vendedor;
+  vendedores;
+  count;
+  contratos;
+  contrato;
+  facturasAPagar;
+  facturasAPagarAux = [];
+  montoTotal = 0;
+  lista = [];
+  sort: any;
+  facturaPdf;
+  sort_key = 'vencimiento';
+  sort_value = 1;
+  showPDF = false;
+
   estados = [
     {
       id: 1,
-      estado: "TODOS",
+      estado: 'TODOS',
       color: 'dark'
     },
     {
       id: 2,
-      estado: "PAGADOS",
+      estado: 'PAGADOS',
       color: 'dark'
     },
     {
       id: 3,
-      estado: "PENDIENTES",
+      estado: 'PENDIENTES',
       color: 'danger'
     },
-  ]
-  filtros = []
-  estadoSeleccionado = 'TODOS'
+  ];
+  filtros = [];
+  estadoSeleccionado = 'TODOS';
 
   rangeEmision = new FormGroup({
     start: new FormControl(),
@@ -95,23 +95,34 @@ export class CobranzaComponent implements OnInit {
   });
 
 
+  inputClientes = new Subject<string>();
+  inputCobrador = new Subject<string>();
+  loadingClientes = false;
+  loadingCobrador = false;
+
+  nombreFactura;
+  rucFactura;
+  telFactura;
+  direccionFactura;
+
+
   async ngOnInit() {
-    this.observableBuscadores()
-    let respF = await this._facturaService.getFacturasOptions(this.opciones)
-    this.count = respF.count
-    this.facturas = respF.facturas
+    this.observableBuscadores();
+    const respF = await this._facturaService.getFacturasOptions(this.opciones);
+    this.count = respF.count;
+    this.facturas = respF.facturas;
     console.log(this.facturas);
 
-    this.servicios = await this._productoService.getProductos()
-    this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', '')
+    this.servicios = await this._productoService.getProductos();
+    this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', '');
   }
 
   async filtrar() {
-    let pagado: boolean = false
+    let pagado = false;
     if (this.estadoSeleccionado == 'PAGADOS') {
-      pagado = true
+      pagado = true;
     } else if (this.estadoSeleccionado == 'PENDIENTES') {
-      pagado = false
+      pagado = false;
     }
 
 
@@ -123,24 +134,24 @@ export class CobranzaComponent implements OnInit {
       servicio: this.servicio ? this.servicio._id : null,
       fondo: this.fondo ? this.fondo._id : null,
       contrato: this.contrato ? this.contrato._id : null,
-      pagado: pagado,
+      pagado,
       vencimiento_start: this.rangeVencimiento.value.start ? new Date(this.rangeVencimiento.value.start).getTime() : null,
       vencimiento_end: this.rangeVencimiento.value.end ? new Date(this.rangeVencimiento.value.end).setHours(23, 59, 59, 59) : null,
       pagado_start: this.rangePagado.value.start ? new Date(this.rangePagado.value.start).getTime() : null,
       pagado_end: this.rangePagado.value.end ? new Date(this.rangePagado.value.end).setHours(23, 59, 59, 59) : null,
       start: this.rangeEmision.value.start ? new Date(this.rangeEmision.value.start).getTime() : null,
       end: this.rangeEmision.value.end ? new Date(this.rangeEmision.value.end).setHours(23, 59, 59, 59) : null
-    }
+    };
 
 
     console.log(this.opciones);
     this.sort = {
       key: this.sort_key,
       value: this.sort_value
-    }
-    let respF = await this._facturaService.getFacturasOptions(this.opciones, this.sort)
-    this.count = respF.count
-    this.facturas = respF.facturas
+    };
+    const respF = await this._facturaService.getFacturasOptions(this.opciones, this.sort);
+    this.count = respF.count;
+    this.facturas = respF.facturas;
   }
 
   seleccionarProducto(producto: Producto) {
@@ -151,25 +162,25 @@ export class CobranzaComponent implements OnInit {
 
   async searchClientes(val) {
     if (val.term.length > 0) {
-      this.clientes = await this._usuarioService.buscarUsuarios('CLIENTES', val.term)
+      this.clientes = await this._usuarioService.buscarUsuarios('CLIENTES', val.term);
     }
   }
 
   async searchcobradores(val) {
     if (val.term.length > 0) {
-      this.cobradores = await this._usuarioService.buscarUsuarios('COBRADORES', val.term)
+      this.cobradores = await this._usuarioService.buscarUsuarios('COBRADORES', val.term);
 
     }
   }
   async searchFondos(val) {
     if (val.term.length > 0) {
-      this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', val.term)
+      this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', val.term);
 
     }
   }
   async searchvendedores(val) {
     if (val.term.length > 0) {
-      this.vendedores = await this._usuarioService.buscarUsuarios('VENDEDORES', val.term)
+      this.vendedores = await this._usuarioService.buscarUsuarios('VENDEDORES', val.term);
 
     }
   }
@@ -182,47 +193,47 @@ export class CobranzaComponent implements OnInit {
   }
 
   async onSelectClient(cliente) {
-    this.nombreFactura = `${cliente.NOMBRES} ${cliente.APELLIDOS}`
-    this.rucFactura = cliente.RUC
-    this.telFactura = cliente.TELEFONO1
-    this.direccionFactura = cliente.DIRECCION
-    this.contratos = await this._contratoSerivce.getContratosByTitular(cliente._id)
+    this.nombreFactura = `${cliente.NOMBRES} ${cliente.APELLIDOS}`;
+    this.rucFactura = cliente.RUC;
+    this.telFactura = cliente.TELEFONO1;
+    this.direccionFactura = cliente.DIRECCION;
+    this.contratos = await this._contratoSerivce.getContratosByTitular(cliente._id);
 
     console.log(this.contratos);
-    this.filtrar()
+    this.filtrar();
 
   }
 
   onContratoSelected(contrato) {
-    this.contrato = contrato
+    this.contrato = contrato;
     console.log(contrato);
-    this.filtrar()
+    this.filtrar();
   }
 
 
   async getFacturasApagar(id, monto) {
     if (monto < 1) {
-      return
+      return;
     }
-    this.facturasAPagar = await this._facturaService.pagarPorMonto({ lista: [{ contrato: id, monto: parseInt(monto) }] })
+    this.facturasAPagar = await this._facturaService.pagarPorMonto({ lista: [{ contrato: id, monto: parseInt(monto) }] });
   }
 
   async searchBancos(val) {
-    this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', val.term)
+    this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', val.term);
   }
   async agregarIngreso(id, monto) {
     this.facturasAPagar = null;
-    this.montoTotal += parseInt(monto)
-    let obj = {
+    this.montoTotal += parseInt(monto);
+    const obj = {
       contrato: id,
-      monto: monto
-    }
-    this.lista.push(obj)
+      monto
+    };
+    this.lista.push(obj);
     // this.filtros.push()
-    this.facturasAPagarAux = await this._facturaService.pagarPorMonto({ lista: this.lista })
-    this.contrato = null
-    this.filtrar()
-    this.facturaPdf = this.crearPDF(this.facturasAPagarAux)
+    this.facturasAPagarAux = await this._facturaService.pagarPorMonto({ lista: this.lista });
+    this.contrato = null;
+    this.filtrar();
+    this.facturaPdf = this.crearPDF(this.facturasAPagarAux);
 
   }
   async confirmarPago() {
@@ -230,20 +241,20 @@ export class CobranzaComponent implements OnInit {
       lista: this.lista,
       montoTotal: this.montoTotal,
       cliente: this.cliente._id,
-      nombre:this.nombreFactura,
+      nombre: this.nombreFactura,
       ruc: this.rucFactura,
-      tel:this.telFactura,
-      direccion: this.direccionFactura,      
+      tel: this.telFactura,
+      direccion: this.direccionFactura,
       cobrador: this.cobrador?._id,
       confirmado: true,
       fondo: this.fondo._id,
       nro_timbrado: '144542331',
       nro_factura: '4544352',
       numero: '002-004'
-    })
-    this.ngOnInit()
+    });
+    this.ngOnInit();
     this.contrato = null;
-    this.facturasAPagar = null
+    this.facturasAPagar = null;
   }
 
 
@@ -251,59 +262,53 @@ export class CobranzaComponent implements OnInit {
   prueba() {
     console.log(this.notifier.getConfig());
 
-    this.notifier.notify('success', 'pasa la edad')
+    this.notifier.notify('success', 'pasa la edad');
   }
-
-
-  inputClientes = new Subject<string>();
-  inputCobrador = new Subject<string>();
-  loadingClientes = false;
-  loadingCobrador = false;
   observableBuscadores() {
     this.inputClientes.pipe(debounceTime(200), distinctUntilChanged()).subscribe(async (txt) => {
       if (!txt) {
-        return
+        return;
       }
-      this.loadingClientes = true
-      this.clientes = await this._usuarioService.buscarUsuarios('CLIENTES', txt)
-      this.loadingClientes = false
+      this.loadingClientes = true;
+      this.clientes = await this._usuarioService.buscarUsuarios('CLIENTES', txt);
+      this.loadingClientes = false;
     });
 
     this.inputCobrador.pipe(debounceTime(200), distinctUntilChanged()).subscribe(async (txt) => {
       if (!txt) {
-        return
+        return;
       }
-      this.loadingCobrador = true
-      this.cobradores = await this._usuarioService.buscarUsuarios('COBRADORES', txt)
-      this.loadingCobrador = false
+      this.loadingCobrador = true;
+      this.cobradores = await this._usuarioService.buscarUsuarios('COBRADORES', txt);
+      this.loadingCobrador = false;
     });
   }
 
   reset() {
-    this.contrato = null
-    this.lista = []
-    this.montoTotal = 0
-    this.facturasAPagar = null
-    this.cliente = null
-    this.ngOnInit()
+    this.contrato = null;
+    this.lista = [];
+    this.montoTotal = 0;
+    this.facturasAPagar = null;
+    this.cliente = null;
+    this.ngOnInit();
   }
 
   async crearPDF(facturas) {
-    let servicios = []
-    let contratosSinRepetir = []
-    let fsinrepetir = []
-     
+    let servicios = [];
+    const contratosSinRepetir = [];
+    const fsinrepetir = [];
+
     for (let i = 0; i < facturas.length; i++) {
       const factura = facturas[i];
-      let existe = false
+      let existe = false;
 
       for (let m = 0; m < fsinrepetir.length; m++) {
         const element = fsinrepetir[m];
         if (element.contrato == factura.contrato && element.haber === factura.haber) {
-          element.cantidad++
-          element.precio += factura.haber
-          element.diezPorciento += factura.haber * 0.1
-          existe = true
+          element.cantidad++;
+          element.precio += factura.haber;
+          element.diezPorciento += factura.haber * 0.1;
+          existe = true;
         }
       }
       if (!existe) {
@@ -316,7 +321,7 @@ export class CobranzaComponent implements OnInit {
           cincoPorciento: null,
           haber: factura.haber,
           diezPorciento: factura.haber * 0.1
-        })
+        });
       }
 
       // if (contratosSinRepetir.includes(factura.contrato) && !factura.parcial) {
@@ -338,26 +343,21 @@ export class CobranzaComponent implements OnInit {
       //   })
       //   contratosSinRepetir.push(factura.contrato)
       // }
-      servicios = fsinrepetir
+      servicios = fsinrepetir;
     }
-    let facturaPDF = {
+    const facturaPDF = {
       nombres: this.nombreFactura,
       fecha: Date.now(),
       direccion: this.direccionFactura,
       ruc: this.rucFactura,
       tel: this.telFactura,
       notaDeRemision: '123123',
-      servicios: servicios
-    }
-    console.log("-----------------------------------------------");
+      servicios
+    };
+    console.log('-----------------------------------------------');
     console.log(facturaPDF);
-    
-    return facturaPDF
-  }
 
-  nombreFactura
-  rucFactura
-  telFactura
-  direccionFactura
+    return facturaPDF;
+  }
 
 }

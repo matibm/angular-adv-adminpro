@@ -18,30 +18,30 @@ export class CrearFacturaComponent implements OnInit {
     public _facturaService: FacturaService,
     public route: Router
   ) { }
-  servicio: Producto
-  servicios
-  cliente
-  clientes
-  cobrador
-  cobradores
-  vencimiento
-  vencimientoString
+  servicio: Producto;
+  servicios;
+  cliente;
+  clientes;
+  cobrador;
+  cobradores;
+  vencimiento;
+  vencimientoString;
 
   async ngOnInit() {
 
-    this.servicios = await this._productoService.getProductos()
+    this.servicios = await this._productoService.getProductos();
 
   }
   async searchClientes(val) {
     if (val.term.length > 0) {
-      this.clientes = await this._usuarioService.buscarUsuarios('CLIENTES', val.term)
+      this.clientes = await this._usuarioService.buscarUsuarios('CLIENTES', val.term);
       console.log(this.clientes);
 
     }
   }
   async searchCobradores(val) {
     if (val.term.length > 0) {
-      this.cobradores = await this._usuarioService.buscarUsuarios('COBRADORES', val.term)
+      this.cobradores = await this._usuarioService.buscarUsuarios('COBRADORES', val.term);
       console.log(this.cobradores);
 
     }
@@ -59,29 +59,29 @@ export class CrearFacturaComponent implements OnInit {
   }
 
   async crearFactura() {
-    let body = {
+    const body = {
       monto: this.servicio?.PRECIO_MAYORISTA,
       titular: this.cliente?._id || '',
       servicio: this.servicio?._id || '',
       cobrador: this.cobrador?._id || '',
       vencimiento: this.vencimiento || new Date().getTime()
-    }
-    let factura = await this._facturaService.crearFactura(body);
-    this.route.navigateByUrl(`/admin/factura/${factura._id}`)
+    };
+    const factura = await this._facturaService.crearFactura(body);
+    this.route.navigateByUrl(`/admin/factura/${factura._id}`);
   }
 
   calcularFecha(stringDate) {
 
-    let d = new Date(stringDate);
-    d.setUTCHours(5)
+    const d = new Date(stringDate);
+    d.setUTCHours(5);
 
-    if (Object.prototype.toString.call(d) === "[object Date]") {
+    if (Object.prototype.toString.call(d) === '[object Date]') {
       // it is a date
       if (isNaN(d.getTime())) {  // d.valueOf() could also work
         // date is not valid
       } else {
         // date is valid
-        return d.getTime()
+        return d.getTime();
 
       }
     } else {

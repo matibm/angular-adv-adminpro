@@ -11,37 +11,37 @@ import {io} from 'socket.io-client/build/index';
   providedIn: 'root'
 })
 export class WhatsappService {
-  socket
-  readonly uri = 'http://localhost:4000'
+  socket;
+  readonly uri = 'http://localhost:4000';
   constructor(public http: HttpClient,
-    public _usuarioService: UsuarioService,
+              public _usuarioService: UsuarioService,
   ) {
-    this.socket = io(URL_SERVICIOS)
+    this.socket = io(URL_SERVICIOS);
   }
 
-  generateQr() {  
+  generateQr() {
     let url = URL_SERVICIOS + '/whatsapp/generate_qr';
-    url += `?token=${this._usuarioService.token}`
+    url += `?token=${this._usuarioService.token}`;
     return this.http.get(url).toPromise().then((resp: any) => {
-      return resp.token
-    })
+      return resp.token;
+    });
   }
 
   listen(eventName) {
     return new Observable((subscriber) => {
       this.socket.on(eventName, (data) => {
-        subscriber.next(data)
-      })
-    })
+        subscriber.next(data);
+      });
+    });
   }
   emitir(tipo, data) {
-    console.log("emitiendo");
-    
+    console.log('emitiendo');
+
     this.socket.emit(tipo, data);
 
   }
   pruebaSocket( ) {
-    
+
   }
 
 }

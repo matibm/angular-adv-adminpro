@@ -7,8 +7,8 @@ import { Component } from '@angular/core';
   ]
 })
 export class ProgressComponent  {
-    progreso1: number=15
-    progreso2: number=25
+    progreso1 = 15;
+    progreso2 = 25;
 
     get getProgreso1(){
       return `${ this.progreso1 }%`;
@@ -19,8 +19,8 @@ export class ProgressComponent  {
       return `${this.progreso2}%`;
     }
 
-    cambioValorHijo(valor:number){
-      console.log("Ha cambiado el Valor", valor);
-      
+    cambioValorHijo(valor: number){
+      console.log('Ha cambiado el Valor', valor);
+
     }
 }

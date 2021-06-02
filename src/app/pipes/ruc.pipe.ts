@@ -11,27 +11,27 @@ export class RucPipe implements PipeTransform {
   }
   transform(value: string): any {
     if (!value) {
-      return ''
+      return '';
     }
 
-    let guion = ''
-    let number: number
-    let conpuntos
+    let guion = '';
+    let number: number;
+    let conpuntos;
     if (value.includes('-')) {
-      guion += value.slice(value.indexOf('-'))
+      guion += value.slice(value.indexOf('-'));
       console.log(guion);
-      
-      number = parseInt(value.slice(0, value.indexOf('-') ))
+
+      number = parseInt(value.slice(0, value.indexOf('-') ));
     } else {
-      number = parseInt(value)
+      number = parseInt(value);
     }
-    conpuntos = this.cp.transform(number, '', '', '2.0')
-     
+    conpuntos = this.cp.transform(number, '', '', '2.0');
+
     // if (value % 1 == 0) {
     //   texto = texto.slice(0, texto.length -2 )
-    // }  
-    let texto = conpuntos + guion
-     
+    // }
+    const texto = conpuntos + guion;
+
     return conpuntos ? texto : '';
 
   }

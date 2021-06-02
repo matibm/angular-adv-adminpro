@@ -8,33 +8,33 @@ import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 export class ModalFacturaComponent implements OnInit {
 
   constructor() { }
-  @Output() onClose = new EventEmitter()
-  @Input() facturaPDF 
-  @Input() existe 
+  @Output() onClose = new EventEmitter();
+  @Input() facturaPDF;
+  @Input() existe;
+
+  style: any = {};
   ngOnInit(): void {
-    let height = window.screen.availHeight
+    const height = window.screen.availHeight;
     console.log();
-    
-    this.style.maxHeight = (height - 300) + 'px'
-    this.style.overflow = 'auto'
 
-    console.log(this.style); 
+    this.style.maxHeight = (height - 300) + 'px';
+    this.style.overflow = 'auto';
+
+    console.log(this.style);
   }
-
-  style:any = {}
 
   print(event){
      if (event.target.id == 'afuera') {
-      this.onClose.emit()
+      this.onClose.emit();
     }
   }
 
 
   printContrato() {
-    let wopen = window.open('/factura-pdf/' + this.facturaPDF._id)
+    const wopen = window.open('/factura-pdf/' + this.facturaPDF._id);
     wopen.onafterprint = (event) => {
-      wopen.close()
-    }
+      wopen.close();
+    };
   }
 
 }

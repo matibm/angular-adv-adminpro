@@ -14,15 +14,15 @@ import { NopagefoundComponent } from './nopagefound/nopagefound.component';
 
 
 const routes: Routes = [
-  
+
   // path: '/dashboard' PagesRouting
   // path: '/auth' AuthRouting
-  
-  
-  
-  {path: '', redirectTo:'/admin', pathMatch: 'full'},
+
+
+
+  {path: '', redirectTo: '/admin', pathMatch: 'full'},
   {path: '**', component: NopagefoundComponent},
-  
+
 
 ];
 
@@ -34,6 +34,6 @@ const routes: Routes = [
     AuthRoutingModule
   ],
   exports: [ RouterModule ]
-  
+
 })
 export class AppRoutingModule { }

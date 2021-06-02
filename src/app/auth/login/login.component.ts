@@ -18,16 +18,16 @@ export class LoginComponent implements OnInit {
   }
 
   async login(email, password) {
-    let usuario = {
+    const usuario = {
       EMAIL: email,
-      password: password
-    }
-    let resp = await this._usuarioService.login(usuario);
+      password
+    };
+    const resp = await this._usuarioService.login(usuario);
     if (resp.ok == true) {
       localStorage.setItem('token', resp.token);
-      this._usuarioService.token = resp.token
-      this._usuarioService.itsLogued = true
-      this.router.navigateByUrl('/')
+      this._usuarioService.token = resp.token;
+      this._usuarioService.itsLogued = true;
+      this.router.navigateByUrl('/');
     }
   }
 

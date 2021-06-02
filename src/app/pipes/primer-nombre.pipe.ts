@@ -6,10 +6,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class PrimerNombrePipe implements PipeTransform {
 
   transform(nombreCompleto: String, ...args: unknown[]): unknown {
-    let nombre = nombreCompleto
-    
-    nombre = nombre.split(' ')[0]
-  
+    let nombre = nombreCompleto;
+
+    nombre = nombre.split(' ')[0];
+
 
     return nombre;
   }

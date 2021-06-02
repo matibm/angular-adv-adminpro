@@ -9,9 +9,9 @@ import { Usuario } from '../models/usuario';
 export class UsuarioService {
 
   itsLogued = false;
-  token
-  user_id
-  usuario
+  token;
+  user_id;
+  usuario;
   constructor(
     public http: HttpClient
   ) {
@@ -19,65 +19,65 @@ export class UsuarioService {
     this.user_id = localStorage.getItem('user_id');
     this.itsLogued = this.token ? true : false;
 
-    this.inicializarUsuario()
+    this.inicializarUsuario();
   }
 
   async inicializarUsuario() {
 
     if (this.user_id) {
-      this.usuario = await this.getUsuarioPorId(this.user_id)
+      this.usuario = await this.getUsuarioPorId(this.user_id);
     }
   }
   getUsuarios() {
     let url = URL_SERVICIOS + '/usuario/all';
-    url += `?token=${this.token}`
+    url += `?token=${this.token}`;
     return this.http.get(url).toPromise().then((resp: any) => {
-      return resp.usuarios
-    })
+      return resp.usuarios;
+    });
   }
 
   getUsuarioPorId(id): Promise<Usuario> {
     let url = URL_SERVICIOS + `/usuario/id/${id}`;
-    url += `?token=${this.token}`
+    url += `?token=${this.token}`;
     return this.http.get(url).toPromise().then((resp: any) => {
-      return resp.usuario
-    })
+      return resp.usuario;
+    });
   }
 
   getClientes() {
     let url = URL_SERVICIOS + '/usuario/clientes';
-    url += `?token=${this.token}`
+    url += `?token=${this.token}`;
     return this.http.get(url).toPromise().then((resp: any) => {
-      return resp.usuarios
-    })
+      return resp.usuarios;
+    });
   }
   getVendedores() {
     let url = URL_SERVICIOS + '/usuario/vendedores';
-    url += `?token=${this.token}`
+    url += `?token=${this.token}`;
     return this.http.get(url).toPromise().then((resp: any) => {
-      return resp.usuarios
-    })
+      return resp.usuarios;
+    });
   }
   getCobradores() {
     let url = URL_SERVICIOS + '/usuario/cobradores';
-    url += `?token=${this.token}`
+    url += `?token=${this.token}`;
     return this.http.get(url).toPromise().then((resp: any) => {
-      return resp.usuarios
-    })
+      return resp.usuarios;
+    });
   }
   buscarUsuarios(tipo, busqueda) {
-    console.log("buscando", busqueda);
-    
+    console.log('buscando', busqueda);
+
     let url = `${URL_SERVICIOS}/usuario/search/${tipo}`;
-    url += `?token=${this.token}`
-    url += `&query=${busqueda}`
+    url += `?token=${this.token}`;
+    url += `&query=${busqueda}`;
     return this.http.get(url).toPromise().then((resp: any) => {
-      return resp.usuarios
-    })
+      return resp.usuarios;
+    });
   }
   modificarUsuarios(usuario) {
     let url = `${URL_SERVICIOS}/usuario/edit/${usuario._id}`;
-    url += `?token=${this.token}`
+    url += `?token=${this.token}`;
     return this.http.put(url, usuario).toPromise().then((resp: any) => {
       console.log(resp);
 
@@ -86,14 +86,14 @@ export class UsuarioService {
         title: 'Usuario modificado',
         // text: 'I will close in 2 seconds.',
         timer: 2000,
-      })
-      return resp
-    })
+      });
+      return resp;
+    });
   }
 
   crearUsuario(usuario) {
     let url = `${URL_SERVICIOS}/usuario/crear_usuario`;
-    url += `?token=${this.token}`
+    url += `?token=${this.token}`;
     return this.http.post(url, usuario).toPromise().then((resp: any) => {
       console.log(resp);
       swal.fire({
@@ -101,34 +101,34 @@ export class UsuarioService {
         title: 'Usuario creado',
         // text: 'I will close in 2 seconds.',
         timer: 2000,
-      })
-      return resp.usuario
+      });
+      return resp.usuario;
     }, (error) => {
       swal.fire({
         icon: 'error',
         title: 'Error al crear usuario',
         text: error
 
-      })
-      return error
-    })
+      });
+      return error;
+    });
   }
 
   login(usuario) {
     console.log(usuario);
 
-    let url = `${URL_SERVICIOS}/usuario/login`;
+    const url = `${URL_SERVICIOS}/usuario/login`;
     return this.http.post(url, usuario).toPromise().then((resp: any) => {
       console.log(resp);
-      this.usuario = resp.user
-      this.user_id = resp.user._id
-      localStorage.setItem('user_id', this.user_id)
-      return resp
-    })
+      this.usuario = resp.user;
+      this.user_id = resp.user._id;
+      localStorage.setItem('user_id', this.user_id);
+      return resp;
+    });
   }
 
   logout() {
-    this.token = ''
+    this.token = '';
     localStorage.removeItem('token');
     this.itsLogued = false;
   }

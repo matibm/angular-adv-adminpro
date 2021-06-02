@@ -12,69 +12,69 @@ import swal from 'sweetalert2';
 export class CrearUsuarioComponent implements OnInit {
 
   constructor(public _usuarioService: UsuarioService,
-    private router: Router
+              private router: Router
   ) { }
+
+  nivel = 1;
+  isVendedor;
+  isProveedor;
+  isCobrador;
+  isContratado;
+  isCliente;
+  isEmpleado;
+  ruc;
+  isPersona;
+  isEmpresa;
+  isBanco;
+  manejaCaja;
+  usuario: Usuario = {};
 
   ngOnInit(): void {
   }
-
-  nivel = 1
-  isVendedor
-  isProveedor
-  isCobrador
-  isContratado
-  isCliente
-  isEmpleado
-  ruc
-  isPersona
-  isEmpresa
-  isBanco
-  manejaCaja
-  usuario: Usuario = {}
   async crearUsuario() {
     console.log(this.usuario);
-    this.isVendedor == true ? this.usuario.VENDEDORES = '1' : this.usuario.VENDEDORES = '0'
-    this.isProveedor == true ? this.usuario.PROVEEDORES = '1' : this.usuario.PROVEEDORES = '0'
-    this.isCobrador == true ? this.usuario.COBRADORES = '1' : this.usuario.COBRADORES = '0'
-    this.isContratado == true ? this.usuario.CONTRATADO = '1' : this.usuario.CONTRATADO = '0'
-    this.isCliente == true ? this.usuario.CLIENTES = '1' : this.usuario.CLIENTES = '0'
-    this.isEmpleado == true ? this.usuario.EMPLEADOS = '1' : this.usuario.EMPLEADOS = '0'
-    this.isPersona == true ? this.usuario.PERSONA = '1' : this.usuario.PERSONA = '0'
-    this.isEmpresa == true ? this.usuario.EMPRESA = '1' : this.usuario.EMPRESA = '0'
-    this.isBanco == true ? this.usuario.BANCOS = '1' : this.usuario.BANCOS = '0'
-    this.manejaCaja == true ? this.usuario.MANEJA_CAJA = '1' : this.usuario.MANEJA_CAJA = '0'
+    this.isVendedor == true ? this.usuario.VENDEDORES = '1' : this.usuario.VENDEDORES = '0';
+    this.isProveedor == true ? this.usuario.PROVEEDORES = '1' : this.usuario.PROVEEDORES = '0';
+    this.isCobrador == true ? this.usuario.COBRADORES = '1' : this.usuario.COBRADORES = '0';
+    this.isContratado == true ? this.usuario.CONTRATADO = '1' : this.usuario.CONTRATADO = '0';
+    this.isCliente == true ? this.usuario.CLIENTES = '1' : this.usuario.CLIENTES = '0';
+    this.isEmpleado == true ? this.usuario.EMPLEADOS = '1' : this.usuario.EMPLEADOS = '0';
+    this.isPersona == true ? this.usuario.PERSONA = '1' : this.usuario.PERSONA = '0';
+    this.isEmpresa == true ? this.usuario.EMPRESA = '1' : this.usuario.EMPRESA = '0';
+    this.isBanco == true ? this.usuario.BANCOS = '1' : this.usuario.BANCOS = '0';
+    this.manejaCaja == true ? this.usuario.MANEJA_CAJA = '1' : this.usuario.MANEJA_CAJA = '0';
 
-    let us = await this._usuarioService.crearUsuario(this.usuario)
-    this.router.navigateByUrl('/admin/usuario/' + us._id)
+    const us = await this._usuarioService.crearUsuario(this.usuario);
+    this.router.navigateByUrl('/admin/usuario/' + us._id);
   }
 
   allowCreate(): boolean {
     if (this.usuario.NOMBRES && this.usuario.APELLIDOS && this.usuario.TELEFONO1) {
-      return true
+      return true;
     } else {
-      return false
+      return false;
     }
   }
 
 
   async consultar(ruc) {
     if (!ruc) {
-      return
+      return;
     }
-    let consulta = await this._usuarioService.buscarUsuarios('ALL', ruc)    
-    
+    const consulta = await this._usuarioService.buscarUsuarios('ALL', ruc);
+
     if (consulta[0]) {
       swal.fire({
         icon: 'success',
         title: 'Usuario Existente',
         text: `${consulta[0].NOMBRES} ${consulta[0].APELLIDOS} RUC/CI: ${consulta[0].RUC}`,
         timer: 3000,
-      })
+      });
     } else {
       swal.fire({
         icon: 'info',
-        title: 'No se encontró ningún usuario',              
-      })
+        title: 'No se encontró ningún usuario',
+      });
     }
 
   }

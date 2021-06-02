@@ -9,26 +9,26 @@ export class ModalContratosComponent implements OnInit {
 
   constructor() { }
 
-  @Output() onComplete
-  @Output() onClose = new EventEmitter()
-  @Output() contratoSelected = new EventEmitter()
+  @Output() onComplete;
+  @Output() onClose = new EventEmitter();
+  @Output() contratoSelected = new EventEmitter();
 
-  @Input() contratos 
-  @Input() cliente 
+  @Input() contratos;
+  @Input() cliente;
 
   ngOnInit(): void {
   }
 
   onContratoSelected(contrato){
-    this.contratoSelected.emit(contrato)
-    this.onClose.emit()
+    this.contratoSelected.emit(contrato);
+    this.onClose.emit();
 
   }
 
   print(event){
     console.log(event.target);
     if (event.target.id == 'afuera') {
-      this.onClose.emit()
+      this.onClose.emit();
     }
   }
 

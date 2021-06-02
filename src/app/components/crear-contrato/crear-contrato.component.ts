@@ -29,67 +29,61 @@ export class CrearContratoComponent implements OnInit {
   ) { }
 
 
-  cliente: Usuario
-  clientes: Usuario[] = null
-  clientesAlternativo: Usuario[] = null
+  cliente: Usuario;
+  clientes: Usuario[] = null;
+  clientesAlternativo: Usuario[] = null;
 
-  titularAlternativo: Usuario
-  fecha_creacion = new Date()
-  fecha_primer_pago = new Date().getTime()
-  productos: Producto[] = null
-  vendedores: Usuario[] = null
+  titularAlternativo: Usuario;
+  fecha_creacion = new Date();
+  fecha_primer_pago = new Date().getTime();
+  productos: Producto[] = null;
+  vendedores: Usuario[] = null;
   clientesSearch = this.clientes;
   prodductosSearch = this.productos;
   vendedoresSearch = this.vendedores;
   cobradoresSearch = this.vendedores;
-  entrega = 0
-  fechaMantenimiento
-  stringFechaMantenimiento
-  producto: Producto
-  saldo = 0
-  vendedor: Usuario
-  nro_contrato = ''
-  cobrador: Usuario
-  plazo: number
-  contrato: Contrato
-  montoCuotas
-  model = '2020-03-12'
-  radioLugarCobranza = 'particular'
-  manzana
-  fila
-  parcela
-  sector
-  cobradores
-  saldoPlusEdad = 0
+  entrega = 0;
+  fechaMantenimiento;
+  stringFechaMantenimiento;
+  producto: Producto;
+  saldo = 0;
+  vendedor: Usuario;
+  nro_contrato = '';
+  cobrador: Usuario;
+  plazo: number;
+  contrato: Contrato;
+  montoCuotas;
+  model = '2020-03-12';
+  radioLugarCobranza = 'particular';
+  manzana;
+  fila;
+  parcela;
+  sector;
+  cobradores;
+  saldoPlusEdad = 0;
   esUdp = false;
   esPsm = false;
   beneficiarios = [
 
-  ]
+  ];
 
   inhumados = [
 
-  ]
-  pagoInicial: any = {}
-  facturas
-  radioValue = 'OFICINA'
-  fechaPago = new Date()
-  pagoradioValue = 'contado'
-  stringFechaPago
-  servicioCMP
-  numeroFactura
-  esPsv
+  ];
+  pagoInicial: any = {};
+  facturas;
+  radioValue = 'OFICINA';
+  fechaPago = new Date();
+  pagoradioValue = 'contado';
+  stringFechaPago;
+  servicioCMP;
+  numeroFactura;
+  esPsv;
   inputClientes = new Subject<string>();
   loadingClientes = false;
   inputAlternativo = new Subject<string>();
   loadingAlternativo = false;
-  cantidadCuotaPSM = 120
-  trackItem(index, item) {
-
-    //log(item);
-
-    return index
-  }
+  cantidadCuotaPSM = 120;
   tipos_pago = [
     {
       name: 'Oficina',
@@ -107,65 +101,73 @@ export class CrearContratoComponent implements OnInit {
       name: 'Transferencia Bancaria',
       value: 'BANCARIA'
     }
-  ]
-  precioTotal
+  ];
+  precioTotal;
+  showInfoContrato = false;
+  radioDebito = false;
+  radioAdministracion = false;
+  radioCobrador = false;
+  selectedDate;
+
+  facturaMantenimiento;
+  trackItem(index, item) {
+
+    // log(item);
+
+    return index;
+  }
 
   pruebalog() {
 
-    //log(this.radioValue);
+    // log(this.radioValue);
 
   }
-  showInfoContrato = false;
-  radioDebito = false
-  radioAdministracion = false
-  radioCobrador = false
 
 
   async ngOnInit() {
-    this.observableBuscadores()
+    this.observableBuscadores();
 
-    let date = new Date()
+    const date = new Date();
 
-    this.fechaMantenimiento = new Date(`${date.getFullYear() + 1}-01-05`)
-    this.fechaMantenimiento.setUTCHours(5)
+    this.fechaMantenimiento = new Date(`${date.getFullYear() + 1}-01-05`);
+    this.fechaMantenimiento.setUTCHours(5);
 
-    //log(this.fechaMantenimiento);
+    // log(this.fechaMantenimiento);
 
-    this.productos = await this._productoService.getProductos()
+    this.productos = await this._productoService.getProductos();
     for (let i = 0; i < this.productos.length; i++) {
       const element = this.productos[i];
       if (element.COD_CORTO == 'C.M.P.') {
-        this.servicioCMP = element
+        this.servicioCMP = element;
       }
 
     }
-    //log(this.servicioCMP);
+    // log(this.servicioCMP);
 
     // this.clientes = await this._usuarioService.getClientes()
     // this.vendedores = await this._usuarioService.getVendedores()
     // this.cobradores = await this._usuarioService.getVendedores()
 
   }
-  selectedDate
   calcularEdad(date) {
     console.log(date);
 
 
 
-    let hoy = new Date()
-    let fechaNacimiento = new Date(date)
-    fechaNacimiento.setHours(5)
-    let edad = hoy.getFullYear() - fechaNacimiento.getFullYear()
-    let diferenciaMeses = hoy.getMonth() - fechaNacimiento.getMonth()
+    const hoy = new Date();
+    const fechaNacimiento = new Date(date);
+    fechaNacimiento.setHours(5);
+    let edad = hoy.getFullYear() - fechaNacimiento.getFullYear();
+    const diferenciaMeses = hoy.getMonth() - fechaNacimiento.getMonth();
     if (
       diferenciaMeses < 0 ||
       (diferenciaMeses === 0 && hoy.getDate() < fechaNacimiento.getDate())
     ) {
-      edad--
+      edad--;
     }
-    //log(edad);
+    // log(edad);
 
-    return edad
+    return edad;
 
   }
 
@@ -176,7 +178,7 @@ export class CrearContratoComponent implements OnInit {
       fecha_nacimiento: '',
       edad: '',
       plus_edad: null
-    })
+    });
   }
 
   inhumadoPush() {
@@ -186,11 +188,11 @@ export class CrearContratoComponent implements OnInit {
       nombre: '',
       ci: '',
       nro: ''
-    })
+    });
   }
 
   calcularSaldo(entrega) {
-    //log(entrega);
+    // log(entrega);
 
     if (entrega) {
       this.saldo = this.producto.PRECIO_MAYORISTA - parseInt(entrega);
@@ -198,10 +200,10 @@ export class CrearContratoComponent implements OnInit {
       this.saldo = parseInt(this.producto.PRECIO_MAYORISTA.toString());
     }
 
-    let d = new Date()
-    d.setMonth(d.getMonth() + 1)
-    d.setHours(0, 0, 0, 0)
-    this.fechaPago = d
+    const d = new Date();
+    d.setMonth(d.getMonth() + 1);
+    d.setHours(0, 0, 0, 0);
+    this.fechaPago = d;
     console.log(d);
 
     console.log(d.getMonth(), d.getUTCMonth());
@@ -212,25 +214,25 @@ export class CrearContratoComponent implements OnInit {
   }
 
   calcularCuotas() {
-    this.saldo = this.precioTotal - this.entrega
+    this.saldo = this.precioTotal - this.entrega;
     if (this.plazo > 0) {
 
-      this.pagoradioValue = 'cuota'
+      this.pagoradioValue = 'cuota';
       this.montoCuotas = this.saldo / this.plazo;
       this.facturas = this.crearFacturas(this.montoCuotas, this.plazo);
     } else {
-      this.resetPlazo()
+      this.resetPlazo();
     }
   }
   resetPlazo() {
-    this.plazo = null
+    this.plazo = null;
     this.facturas = null;
     this.montoCuotas = null;
-    this.pagoradioValue = 'contado'
+    this.pagoradioValue = 'contado';
 
   }
   calcularFechaPago() {
-    console.log("se cambio fecha", this.fecha_primer_pago);
+    console.log('se cambio fecha', this.fecha_primer_pago);
 
     // this.fechaPago = this.fecha_primer_pago
     this.facturas = this.crearFacturas(this.montoCuotas, this.plazo);
@@ -238,16 +240,16 @@ export class CrearContratoComponent implements OnInit {
   }
   calcularFechaMantenimiento() {
 
-    let d = new Date(this.stringFechaMantenimiento);
-    d.setUTCHours(5)
+    const d = new Date(this.stringFechaMantenimiento);
+    d.setUTCHours(5);
 
-    if (Object.prototype.toString.call(d) === "[object Date]") {
+    if (Object.prototype.toString.call(d) === '[object Date]') {
       // it is a date
       if (isNaN(d.getTime())) {  // d.valueOf() could also work
         // date is not valid
       } else {
         // date is valid
-        this.fechaMantenimiento = d
+        this.fechaMantenimiento = d;
         // this.facturas = this.crearFacturas(this.montoCuotas, this.plazo);
 
       }
@@ -256,20 +258,20 @@ export class CrearContratoComponent implements OnInit {
     }
   }
   currencyInputChanged(value) {
-    var num = value.replace(/[$,]/g, "");
-    this.calcularSaldo(num)
+    const num = value.replace(/[$,]/g, '');
+    this.calcularSaldo(num);
     return Number(num);
   }
   async crearContrato() {
 
     if (!this.facturas && this.pagoradioValue === 'contado') {
-      this.plazo = 1
-      this.facturas = this.crearFacturas(this.saldo, 1)
+      this.plazo = 1;
+      this.facturas = this.crearFacturas(this.saldo, 1);
     }
-    let utilizado = false
-    this.inhumados.length > 0 && this.esPsv ? utilizado = true : false
+    let utilizado = false;
+    this.inhumados.length > 0 && this.esPsv ? utilizado = true : false;
 
-    let nuevo_contrato: Contrato = {
+    const nuevo_contrato: Contrato = {
       id_contrato: new Date().getTime().toString(),   // se puede quitar
       cobrador: this.cobrador || {},
       cuota: this.montoCuotas,
@@ -289,13 +291,13 @@ export class CrearContratoComponent implements OnInit {
       tipo_pago: this.radioValue,
       inhumados: this.inhumados,
       fecha_creacion_unix: this.fecha_creacion.getTime(),
-      utilizado: utilizado
-    }
+      utilizado
+    };
     if (this.esUdp) {
-      nuevo_contrato.manzana = this.manzana
-      nuevo_contrato.fila = this.fila
-      nuevo_contrato.parcela = this.parcela
-      nuevo_contrato.sector = this.sector
+      nuevo_contrato.manzana = this.manzana;
+      nuevo_contrato.fila = this.fila;
+      nuevo_contrato.parcela = this.parcela;
+      nuevo_contrato.sector = this.sector;
 
     }
     // this.facturas.push({
@@ -306,8 +308,8 @@ export class CrearContratoComponent implements OnInit {
     //   iscmp: true,
     //   servicio: this.servicioCMP._id,
     //   fecha_creacion_unix: new Date().getTime()
-    // }) 
-    let send = {
+    // })
+    const send = {
       contrato: nuevo_contrato,
       facturas: null,
       fechaPago: this.fechaPago,
@@ -315,18 +317,18 @@ export class CrearContratoComponent implements OnInit {
       cantidadCoutas: this.cantidadCuotaPSM,
       pagoInicial: this.pagoInicial,
       facturaIngreso: this.crearFacturaEntregaInicial(this.entrega, this.cliente._id, this.producto._id, this.cobrador?._id)
-    }
+    };
 
     console.log(send);
 
 
-    let contratoCreado = await this._contratoService.newContrato(send)
-    this.router.navigateByUrl(`/admin/info_contrato/${contratoCreado._id}`)
+    const contratoCreado = await this._contratoService.newContrato(send);
+    this.router.navigateByUrl(`/admin/info_contrato/${contratoCreado._id}`);
 
   }
   async searchCobradores(val: any) {
     if (val.term.length > 0) {
-      this.cobradores = await this._usuarioService.buscarUsuarios('COBRADORES', val.term)
+      this.cobradores = await this._usuarioService.buscarUsuarios('COBRADORES', val.term);
     }
   }
 
@@ -347,7 +349,7 @@ export class CrearContratoComponent implements OnInit {
       )
         .subscribe(async (txt) => {
           // this.isSearching = true
-          this.clientes = await this._usuarioService.buscarUsuarios('CLIENTES', txt)
+          this.clientes = await this._usuarioService.buscarUsuarios('CLIENTES', txt);
           // this.isSearching = false
         });
 
@@ -356,7 +358,7 @@ export class CrearContratoComponent implements OnInit {
 
   async searchVendedores(val: any) {
     if (val.term.length > 0) {
-      this.vendedores = await this._usuarioService.buscarUsuarios('VENDEDORES', val.term)
+      this.vendedores = await this._usuarioService.buscarUsuarios('VENDEDORES', val.term);
     }
   }
 
@@ -379,21 +381,21 @@ export class CrearContratoComponent implements OnInit {
   seleccionarProducto(producto: Producto) {
     this.beneficiarios = [
 
-    ]
+    ];
 
     this.inhumados = [
 
 
-    ]
+    ];
     this.precioTotal = parseInt(producto.PRECIO_MAYORISTA.toString());
     this.producto = producto;
     this.saldo = parseInt(producto.PRECIO_MAYORISTA.toString());
-    this.manzana = producto.MANZANA
+    this.manzana = producto.MANZANA;
     this.esUdp = false;
     this.esPsm = false;
     this.esPsv = false;
     if (producto.COD_CORTO == 'U.D.P.') {
-      this.esUdp = true
+      this.esUdp = true;
     } else if (producto.COD_CORTO == 'P.S.M.') {
       this.esPsm = true;
     } else if (producto.COD_CORTO == 'P.S.V.') {
@@ -413,12 +415,12 @@ export class CrearContratoComponent implements OnInit {
     if (this.producto && this.cliente && this.vendedor && this.radioValue) {
       if (this.esUdp) {
         if (this.manzana && this.fila && this.parcela) {
-          return false
+          return false;
         } else {
-          return true
+          return true;
         }
       } else {
-        return false
+        return false;
       }
     }
     return true;
@@ -428,10 +430,10 @@ export class CrearContratoComponent implements OnInit {
     if (!cantidad) {
       return null;
     }
-    let factura = []
-    let mes = this.fechaPago.getMonth() + 1
-    let year = this.fechaPago.getFullYear()
-    let dia = this.fechaPago.getDate()
+    const factura = [];
+    let mes = this.fechaPago.getMonth() + 1;
+    let year = this.fechaPago.getFullYear();
+    const dia = this.fechaPago.getDate();
     for (let i = 0; i < cantidad; i++) {
       if (mes > 12) {
         year++;
@@ -440,18 +442,16 @@ export class CrearContratoComponent implements OnInit {
       factura.push({
         numero: i + 1,
         vencimiento: new Date(`${year}/${mes}/${dia}`),
-        monto: monto,
+        monto,
         haber: monto,
         titular: this.cliente,
         servicio: this.producto._id,
         fecha_creacion_unix: new Date().getTime()
-      })
+      });
       mes++;
     }
-    return factura
+    return factura;
   }
-
-  facturaMantenimiento
 
   refactor() {
     this.producto = null;
@@ -461,17 +461,17 @@ export class CrearContratoComponent implements OnInit {
 
 
   removeInhumaciones(index) {
-    this.inhumados.splice(index, 1)
+    this.inhumados.splice(index, 1);
   }
 
   sumarPlusPorEdad(beneficiarios) {
-    this.saldoPlusEdad = 0
+    this.saldoPlusEdad = 0;
 
 
     for (let i = 0; i < beneficiarios.length; i++) {
       const beneficiario = beneficiarios[i];
 
-      this.saldoPlusEdad += beneficiario.plus_edad
+      this.saldoPlusEdad += beneficiario.plus_edad;
 
     }
 
@@ -488,11 +488,11 @@ export class CrearContratoComponent implements OnInit {
     )
       .subscribe(async (txt) => {
         if (!txt) {
-          return
+          return;
         }
-        this.loadingClientes = true
-        this.clientes = await this._usuarioService.buscarUsuarios('CLIENTES', txt)
-        this.loadingClientes = false
+        this.loadingClientes = true;
+        this.clientes = await this._usuarioService.buscarUsuarios('CLIENTES', txt);
+        this.loadingClientes = false;
       });
 
     this.inputAlternativo.pipe(
@@ -502,36 +502,36 @@ export class CrearContratoComponent implements OnInit {
     )
       .subscribe(async (txt) => {
         if (!txt) {
-          return
+          return;
         }
-        this.loadingAlternativo = true
-        this.clientesAlternativo = await this._usuarioService.buscarUsuarios('CLIENTES', txt)
-        this.loadingAlternativo = false
+        this.loadingAlternativo = true;
+        this.clientesAlternativo = await this._usuarioService.buscarUsuarios('CLIENTES', txt);
+        this.loadingAlternativo = false;
       });
   }
 
 
   cargarDatosPagoInicial(usuario) {
-    this.pagoInicial.nombre = `${usuario.NOMBRES} ${usuario.APELLIDOS}`
-    this.pagoInicial.ruc = usuario.RUC
-    this.pagoInicial.tel = usuario.TELEFONO1
-    this.pagoInicial.direccion = usuario.DIRECCION
-    this.pagoInicial.nro_timbrado = 123123
-    this.pagoInicial.nro_factura = 999999
+    this.pagoInicial.nombre = `${usuario.NOMBRES} ${usuario.APELLIDOS}`;
+    this.pagoInicial.ruc = usuario.RUC;
+    this.pagoInicial.tel = usuario.TELEFONO1;
+    this.pagoInicial.direccion = usuario.DIRECCION;
+    this.pagoInicial.nro_timbrado = 123123;
+    this.pagoInicial.nro_factura = 999999;
   }
 
   crearFacturaEntregaInicial(monto, cliente, producto, cobrador?) {
-    let f: any = {
+    const f: any = {
       nro_factura: 0,
       vencimiento: this.fecha_creacion.getTime(),
-      monto: monto,
+      monto,
       haber: monto,
       precio_unitario: monto,
       titular: cliente,
       servicio: producto,
       fecha_creacion_unix: this.fecha_creacion.getTime()
-    }
-    cobrador ? f.cobrador = cobrador : ''
-    return f
+    };
+    cobrador ? f.cobrador = cobrador : '';
+    return f;
   }
 }

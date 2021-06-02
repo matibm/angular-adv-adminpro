@@ -1,4 +1,4 @@
-import { Usuario } from "./usuario";
+import { Usuario } from './usuario';
 
 export class Cuota {
     constructor(
@@ -43,7 +43,7 @@ export class Cuota {
         public vencimiento_a_pagar?: string,
         public conciliado?: string,
         public titular?: Usuario,
-    
+
     ) {
 
     }

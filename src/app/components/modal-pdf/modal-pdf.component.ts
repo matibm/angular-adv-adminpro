@@ -9,32 +9,32 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 export class ModalPdfComponent implements OnInit {
 
   constructor() { }
-  @Output() onClose = new EventEmitter()
-  @Input() contrato 
+  @Output() onClose = new EventEmitter();
+  @Input() contrato;
+
+  style: any = {};
   ngOnInit(): void {
-    let height = window.screen.availHeight
+    const height = window.screen.availHeight;
     console.log();
-    
-    this.style.maxHeight = (height - 300) + 'px'
-    this.style.overflow = 'auto'
 
-    console.log(this.style); 
+    this.style.maxHeight = (height - 300) + 'px';
+    this.style.overflow = 'auto';
+
+    console.log(this.style);
   }
-
-  style:any = {}
 
   print(event){
      if (event.target.id == 'afuera') {
-      this.onClose.emit()
+      this.onClose.emit();
     }
   }
 
 
   printContrato() {
-    let wopen = window.open('/contratos-pdf/' + this.contrato._id)
+    const wopen = window.open('/contratos-pdf/' + this.contrato._id);
     wopen.onafterprint = (event) => {
-      wopen.close()
-    }
+      wopen.close();
+    };
   }
 
 

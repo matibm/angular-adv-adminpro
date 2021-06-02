@@ -13,8 +13,8 @@ export class ListaMovimientosComponent implements OnInit {
 
 
 
-  @Input() movimientos: Movimiento[]
-  @Input() showTitle: boolean = true
+  @Input() movimientos: Movimiento[];
+  @Input() showTitle = true;
 
   ngOnInit(): void {
   }

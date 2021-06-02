@@ -14,19 +14,19 @@ export class CajaService {
     public http: HttpClient,
     public _usuarioService: UsuarioService
   ) {
-    this.getCajaActual()
+    this.getCajaActual();
   }
 
-  cajaActual
+  cajaActual;
 
   cerrarCaja(start, end, fondo?) {
 
     let url = URL_SERVICIOS + '/caja/cerrar_caja';
-    url += `?token=${this._usuarioService.token}`
-    url += `&caja=${this.cajaActual._id}`
-    url += `&start=${start ? start : 0}`
-    url += `&end=${end ? end : 0}`
-    fondo ? url += `&fondo=${fondo}` : null
+    url += `?token=${this._usuarioService.token}`;
+    url += `&caja=${this.cajaActual._id}`;
+    url += `&start=${start ? start : 0}`;
+    url += `&end=${end ? end : 0}`;
+    fondo ? url += `&fondo=${fondo}` : null;
 
     return this.http.get(url).toPromise().then((resp: any) => {
       console.log(resp);
@@ -36,25 +36,25 @@ export class CajaService {
         title: 'Caja cerrada',
         // text: 'I will close in 2 seconds.',
         timer: 2000,
-      })
-      return resp
-    })
+      });
+      return resp;
+    });
   }
   cerrarCajaOptions(body, options?) {
 
     let url = URL_SERVICIOS + '/caja/cerrar_caja';
-    url += `?token=${this._usuarioService.token}`
-    
-    
+    url += `?token=${this._usuarioService.token}`;
+
+
     if (options) {
       Object.entries(options).forEach(([key, value]) => {
-        
-          url += `&${key}=${value}`        
-        
+
+          url += `&${key}=${value}`;
+
       });
     }
-    url += `&caja=${this.cajaActual._id}`
-    
+    url += `&caja=${this.cajaActual._id}`;
+
     return this.http.put(url, body).toPromise().then((resp: any) => {
       console.log(resp);
 
@@ -63,30 +63,30 @@ export class CajaService {
         title: 'Caja cerrada',
         // text: 'I will close in 2 seconds.',
         timer: 2000,
-      })
-      return resp
-    })
+      });
+      return resp;
+    });
   }
 
   getCajaActual() {
     let url = URL_SERVICIOS + '/caja/caja_actual';
-    url += `?token=${this._usuarioService.token}`
+    url += `?token=${this._usuarioService.token}`;
 
     return this.http.get(url).toPromise().then((resp: any) => {
       console.log(resp);
-      this.cajaActual = resp.caja
-      return resp.caja
-    })
+      this.cajaActual = resp.caja;
+      return resp.caja;
+    });
   }
   getCierresDeCaja() {
     let url = URL_SERVICIOS + '/caja/lista_cierres';
-    url += `?token=${this._usuarioService.token}`
+    url += `?token=${this._usuarioService.token}`;
 
     return this.http.get(url).toPromise().then((resp: any) => {
       console.log(resp);
 
-      return resp.cierres
-    })
+      return resp.cierres;
+    });
   }
 
 }

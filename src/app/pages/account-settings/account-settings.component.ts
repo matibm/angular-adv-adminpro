@@ -10,29 +10,29 @@ import { SettingsService } from 'src/app/services/settings.service';
 })
 export class AccountSettingsComponent implements OnInit {
 
-  chats = []
+  chats = [];
   constructor(private settingsService: SettingsService,
 
-    private _whatsappService: WhatsappService
+              private _whatsappService: WhatsappService
   ) { }
-  tokenQr
+  tokenQr;
   authenticated = false;
 
   ngOnInit(): void {
     this._whatsappService.listen('push_actividad').subscribe((data: any) => {
       console.log(data);
-      
+
       if (data.authenticated == false) {
-        this.tokenQr = data.token
+        this.tokenQr = data.token;
       }
       if (data.authenticated == true) {
-        this.authenticated = true
+        this.authenticated = true;
         if (data.message) {
-          this.chats.push(data.message)    
+          this.chats.push(data.message);
         }
       }
-      
-    })
+
+    });
 
     this.settingsService.checkCurrentTheme();
   }
@@ -47,7 +47,7 @@ export class AccountSettingsComponent implements OnInit {
 
   async generateQr() {
     // this.tokenQr = await this._whatsappService.generateQr()
-    this._whatsappService.pruebaSocket()
+    this._whatsappService.pruebaSocket();
   }
 
 

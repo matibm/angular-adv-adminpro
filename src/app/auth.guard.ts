@@ -8,10 +8,10 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate
-// , CanActivateChild 
+// , CanActivateChild
 {
   constructor(public _usuarioService: UsuarioService,
-    public route: Router) {
+              public route: Router) {
 
   }
   canActivate(): boolean {
@@ -19,7 +19,7 @@ export class AuthGuard implements CanActivate
       return true;
 
     } else {
-      this.route.navigateByUrl('/login')
+      this.route.navigateByUrl('/login');
       return false;
     }
   }

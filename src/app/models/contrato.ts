@@ -1,7 +1,7 @@
 import { Inhumado } from './unhumado';
 import { Beneficiario } from './beneficiario';
 import { Producto } from './producto';
-import { Usuario } from "./usuario";
+import { Usuario } from './usuario';
 
 export class Contrato {
     constructor(
@@ -104,7 +104,7 @@ export class Contrato {
         public parcela?: string,
         public sector?: string,
         public fila?: string,
-       
+
 
     ) {
 

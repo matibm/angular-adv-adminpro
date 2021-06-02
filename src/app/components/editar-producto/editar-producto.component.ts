@@ -14,19 +14,19 @@ export class EditarProductoComponent implements OnInit {
     public route: ActivatedRoute,
     public _productoService: ProductosService
   ) { }
-  id
-  producto: Producto
+  id;
+  producto: Producto;
   async ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
-    this.producto = await this._productoService.getProductoById(this.id)
+    this.producto = await this._productoService.getProductoById(this.id);
   }
 
   async guardarProducto(){
-    await this._productoService.actualizarProducto(this.producto)
-    window.history.back()
+    await this._productoService.actualizarProducto(this.producto);
+    window.history.back();
   }
   cancelar(){
-    window.history.back()
+    window.history.back();
   }
 
 }

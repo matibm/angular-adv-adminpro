@@ -1,5 +1,5 @@
 import { EdadPipe } from './../../pipes/edad.pipe';
- import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Inhumado } from './../../models/unhumado';
 import { Contrato } from './../../models/contrato';
 import { Producto } from './../../models/producto';
@@ -28,45 +28,45 @@ export class EditarContratoComponent implements OnInit {
     public edadPipe: EdadPipe
   ) { }
 
-   opacity = 'disable'
-  cliente: Usuario
-  clientes: Usuario[] = null
-  productos: Producto[] = null
-  vendedores: Usuario[] = null
+   opacity = 'disable';
+  cliente: Usuario;
+  clientes: Usuario[] = null;
+  productos: Producto[] = null;
+  vendedores: Usuario[] = null;
   clientesSearch = this.clientes;
   prodductosSearch = this.productos;
   vendedoresSearch = this.vendedores;
   cobradoresSearch = this.vendedores;
-  entrega = 0
-  fechaMantenimiento
-  stringFechaMantenimiento
-  producto: Producto
-  saldo = 0
-  vendedor: Usuario
-  nro_contrato
-  cobrador: Usuario
-  plazo: number
-  contrato: Contrato
-  montoCuotas
-  model = '2020-03-12'
-  radioLugarCobranza = 'particular'
-  manzana
-  fila
-  parcela
-  sector
-  guardando = false
-  esPsm = false
-  esPsv = false
+  entrega = 0;
+  fechaMantenimiento;
+  stringFechaMantenimiento;
+  producto: Producto;
+  saldo = 0;
+  vendedor: Usuario;
+  nro_contrato;
+  cobrador: Usuario;
+  plazo: number;
+  contrato: Contrato;
+  montoCuotas;
+  model = '2020-03-12';
+  radioLugarCobranza = 'particular';
+  manzana;
+  fila;
+  parcela;
+  sector;
+  guardando = false;
+  esPsm = false;
+  esPsv = false;
   beneficiarioVacio = {
     nombre: '',
     doc: '',
     fecha_nacimiento: '',
     edad: '',
     plus_edad: 0
-  }
+  };
 
-  fecha_creacion: Date
-  cobradores
+  fecha_creacion: Date;
+  cobradores;
 
   tipos_pago = [
     {
@@ -85,7 +85,7 @@ export class EditarContratoComponent implements OnInit {
       name: 'Transferencia Bancaria',
       value: 'BANCARIA'
     }
-  ]
+  ];
   esUdp = false;
   beneficiarios = [
     {
@@ -95,76 +95,78 @@ export class EditarContratoComponent implements OnInit {
       edad: '',
       plus_edad: 0
     }
-  ]
+  ];
   inhumadoVacio = {
     fecha_fallecimiento: '',
     fecha_inhumacion: '',
     nombre: '',
     ci: '',
 
-  }
-  inhumados: Inhumado[]
-  facturas
-  radioValue
-  fechaPago
-  pagoradioValue = 'contado'
-  stringFechaPago
-  servicioCMP : Producto
-  numeroFactura
-  editarproducto = false
-  respaldoProducto
-  id
+  };
+  inhumados: Inhumado[];
+  facturas;
+  radioValue;
+  fechaPago;
+  pagoradioValue = 'contado';
+  stringFechaPago;
+  servicioCMP: Producto;
+  numeroFactura;
+  editarproducto = false;
+  respaldoProducto;
+  id;
+
+  facturaMantenimiento;
   async ngOnInit() {
-    let date = new Date()
-     
+    const date = new Date();
+
     this.id = this.route.snapshot.paramMap.get('id');
-    this.contrato = await this._contratoService.getContratoById(this.id)
-    this.fecha_creacion = new Date(this.contrato.fecha_creacion_unix)
-    //log(this.contrato);
-    this.radioValue = this.contrato.tipo_pago
-    this.saldo = this.contrato.saldo_pendiente
-    this.inhumados = this.contrato.inhumados
-    this.vendedor = this.contrato.vendedor
-    this.cobrador = this.contrato.cobrador
-    this.seleccionarProducto(this.contrato.producto)
-    this.fechaMantenimiento = new Date( new Date(new Date().setFullYear(date.getFullYear() + 1, 0, 5)).setHours(0,0,0,0) )
+    this.contrato = await this._contratoService.getContratoById(this.id);
+    this.fecha_creacion = new Date(this.contrato.fecha_creacion_unix);
+    // log(this.contrato);
+    this.radioValue = this.contrato.tipo_pago;
+    this.saldo = this.contrato.saldo_pendiente;
+    this.inhumados = this.contrato.inhumados;
+    this.vendedor = this.contrato.vendedor;
+    this.cobrador = this.contrato.cobrador;
+    this.seleccionarProducto(this.contrato.producto);
+    this.fechaMantenimiento = new Date( new Date(new Date().setFullYear(date.getFullYear() + 1, 0, 5)).setHours(0, 0, 0, 0) );
     console.log(this.fechaMantenimiento);
-    
 
-    this.cliente = this.contrato.titular
 
-    this.productos = await this._productoService.getProductos()
+    this.cliente = this.contrato.titular;
+
+    this.productos = await this._productoService.getProductos();
     for (let i = 0; i < this.productos.length; i++) {
       const element = this.productos[i];
       if (element.COD_CORTO == 'C.M.P.') {
-        this.servicioCMP = element
-      } 
+        this.servicioCMP = element;
+      }
     }
     if (this.contrato.producto.COD_CORTO == 'P.S.M.') {
-      this.esPsm = true
+      this.esPsm = true;
     }
     if (this.contrato.producto.COD_CORTO == 'P.S.V.') {
-      this.esPsv = true
-    } 
+      this.esPsv = true;
+    }
   }
 
   calcularEdad(date) {
 
     if (date.length > 4) {
-      let hoy = new Date()
-      let fechaNacimiento = new Date(date)
-      fechaNacimiento.setHours(5)
-      let edad = hoy.getFullYear() - fechaNacimiento.getFullYear()
-      let diferenciaMeses = hoy.getMonth() - fechaNacimiento.getMonth()
+      const hoy = new Date();
+      const fechaNacimiento = new Date(date);
+      fechaNacimiento.setHours(5);
+      let edad = hoy.getFullYear() - fechaNacimiento.getFullYear();
+      const diferenciaMeses = hoy.getMonth() - fechaNacimiento.getMonth();
       if (
         diferenciaMeses < 0 ||
         (diferenciaMeses === 0 && hoy.getDate() < fechaNacimiento.getDate())
       ) {
-        edad--
+        edad--;
       }
 
-      return edad
-    } else return 0
+      return edad;
+    } else { return 0; }
 
   }
 
@@ -174,7 +176,7 @@ export class EditarContratoComponent implements OnInit {
       doc: '',
       fecha_nacimiento: '',
       plus_edad: null
-    })
+    });
   }
 
   inhumadoPush() {
@@ -184,11 +186,11 @@ export class EditarContratoComponent implements OnInit {
       nombre: '',
       ci: '',
 
-    })
+    });
   }
 
   calcularSaldo(entrega) {
-    //log(entrega);
+    // log(entrega);
 
     if (entrega) {
       // this.saldo = this.producto.PRECIO_MAYORISTA - parseInt(entrega);
@@ -199,18 +201,18 @@ export class EditarContratoComponent implements OnInit {
 
   calcularCuotas() {
     if (this.plazo > 0) {
-      this.pagoradioValue = 'cuota'
+      this.pagoradioValue = 'cuota';
       this.montoCuotas = this.saldo / this.plazo;
       this.facturas = this.crearFacturas(this.montoCuotas, this.plazo);
     } else {
-      this.resetPlazo()
+      this.resetPlazo();
     }
   }
   resetPlazo() {
-    this.plazo = null
+    this.plazo = null;
     this.facturas = null;
     this.montoCuotas = null;
-    this.pagoradioValue = 'contado'
+    this.pagoradioValue = 'contado';
 
   }
   calcularFechaPago() {
@@ -220,16 +222,16 @@ export class EditarContratoComponent implements OnInit {
   }
   calcularFechaMantenimiento() {
 
-    let d = new Date(this.stringFechaMantenimiento);
-    d.setUTCHours(5)
+    const d = new Date(this.stringFechaMantenimiento);
+    d.setUTCHours(5);
 
-    if (Object.prototype.toString.call(d) === "[object Date]") {
+    if (Object.prototype.toString.call(d) === '[object Date]') {
       // it is a date
       if (isNaN(d.getTime())) {  // d.valueOf() could also work
         // date is not valid
       } else {
         // date is valid
-        this.fechaMantenimiento = d
+        this.fechaMantenimiento = d;
         // this.facturas = this.crearFacturas(this.montoCuotas, this.plazo);
 
       }
@@ -238,16 +240,16 @@ export class EditarContratoComponent implements OnInit {
     }
   }
   currencyInputChanged(value) {
-    var num = value.replace(/[$,]/g, "");
-    this.calcularSaldo(num)
+    const num = value.replace(/[$,]/g, '');
+    this.calcularSaldo(num);
     return Number(num);
   }
   async editarContrato() {
 
 
     if (!this.facturas && this.pagoradioValue === 'contado' && this.fechaPago) {
-      this.plazo = 1
-      this.facturas = this.crearFacturas(this.contrato.saldo_pendiente, 1)
+      this.plazo = 1;
+      this.facturas = this.crearFacturas(this.contrato.saldo_pendiente, 1);
     }
 
 
@@ -263,7 +265,7 @@ export class EditarContratoComponent implements OnInit {
       this.contrato.titular = this.cliente,
       this.contrato.activo = '1',
       this.contrato.vendedor = this.vendedor,
-      this.contrato.fecha_creacion_unix = this.fecha_creacion.getTime()  // falta poner campode fecha para poder modificar
+      this.contrato.fecha_creacion_unix = this.fecha_creacion.getTime();  // falta poner campode fecha para poder modificar
 
 
 
@@ -278,41 +280,41 @@ export class EditarContratoComponent implements OnInit {
     //     fecha_creacion_unix: new Date().getTime()
     //   })
     // }
-    //log(this.facturas);
-    let send = {
+    // log(this.facturas);
+    const send = {
       contrato: this.contrato,
       facturas: this.facturas,
       fechaPago: this.fechaPago ? this.fechaPago : new Date()
-    }
-    this.guardando = true
+    };
+    this.guardando = true;
     await this._contratoService.updateContrato(send, this.editarproducto).then(() => {
       swal.fire({
         icon: 'success',
         title: 'Contrato actualizado',
         // text: 'I will close in 2 seconds.',
         timer: 2000,
-      })
+      });
     });
-    this.guardando = false
+    this.guardando = false;
 
-    window.history.back()
+    window.history.back();
   }
   async searchCobradores(val: any) {
     if (val.term.length > 0) {
-      this.cobradores = await this._usuarioService.buscarUsuarios('COBRADORES', val.term)
+      this.cobradores = await this._usuarioService.buscarUsuarios('COBRADORES', val.term);
     }
   }
 
   async searchClientes(val: any) {
     if (val.term.length > 0) {
-      this.clientes = await this._usuarioService.buscarUsuarios('CLIENTES', val.term)
+      this.clientes = await this._usuarioService.buscarUsuarios('CLIENTES', val.term);
 
     }
   }
 
   async searchVendedores(val: any) {
     if (val.term.length > 0) {
-      this.vendedores = await this._usuarioService.buscarUsuarios('VENDEDORES', val.term)
+      this.vendedores = await this._usuarioService.buscarUsuarios('VENDEDORES', val.term);
     }
   }
 
@@ -341,7 +343,7 @@ export class EditarContratoComponent implements OnInit {
         edad: '',
         plus_edad: 0
       }
-    ]
+    ];
 
     this.inhumados = [
       {
@@ -351,16 +353,16 @@ export class EditarContratoComponent implements OnInit {
         ci: '',
 
       }
-    ]
+    ];
     if (this.cobrador) {
-      this.radioValue = 'cobrador'
+      this.radioValue = 'cobrador';
     }
     this.producto = producto;
     // this.saldo = producto.PRECIO_MAYORISTA;
     if (producto.COD_CORTO == 'U.D.P.') {
-      this.esUdp = true
-    } else this.esUdp = false;
-    this.respaldoProducto = this.producto
+      this.esUdp = true;
+    } else { this.esUdp = false; }
+    this.respaldoProducto = this.producto;
   }
   seleccionarCliente(cliente) {
     this.cliente = cliente;
@@ -380,10 +382,10 @@ export class EditarContratoComponent implements OnInit {
     if (!cantidad) {
       return null;
     }
-    let factura = []
-    let mes = this.fechaPago.getMonth() + 1
-    let year = this.fechaPago.getFullYear()
-    let dia = this.fechaPago.getDate()
+    const factura = [];
+    let mes = this.fechaPago.getMonth() + 1;
+    let year = this.fechaPago.getFullYear();
+    const dia = this.fechaPago.getDate();
     for (let i = 0; i < cantidad; i++) {
       if (mes > 12) {
         year++;
@@ -392,18 +394,16 @@ export class EditarContratoComponent implements OnInit {
       factura.push({
         numero: i + 1,
         vencimiento: new Date(`${year}/${mes}/${dia}`),
-        monto: monto,
+        monto,
         haber: monto,
         titular: this.cliente,
         servicio: this.producto._id,
         fecha_creacion_unix: new Date().getTime()
-      })
+      });
       mes++;
     }
-    return factura
+    return factura;
   }
-
-  facturaMantenimiento
 
   refactor() {
     this.producto = null;
@@ -411,8 +411,8 @@ export class EditarContratoComponent implements OnInit {
   }
 
   cancelarEdiciondeProducto() {
-    this.editarproducto = false
-    this.producto = this.respaldoProducto
+    this.editarproducto = false;
+    this.producto = this.respaldoProducto;
   }
 
   editarProducto() {
@@ -429,21 +429,21 @@ export class EditarContratoComponent implements OnInit {
     }).then(res => {
 
       if (res.isConfirmed == true) {
-        this.fechaPago = new Date()
-        this.editarproducto = true
+        this.fechaPago = new Date();
+        this.editarproducto = true;
       } else {
 
       }
-    })
+    });
   }
 
   removerProducto(){
-    this.esPsm = false
-    this.esUdp = false
+    this.esPsm = false;
+    this.esUdp = false;
   }
 
   cancelar(){
-    window.history.back()
+    window.history.back();
   }
 
 }

@@ -22,30 +22,30 @@ export class FacturaComponent implements OnInit {
     public router: Router,
 
   ) { }
-  fondo: Usuario
-  fondos: Usuario[]
-  id
-  factura: Factura
-  crearParcial = false
-  primeraEjecucion = true
-  montoparcial = 0
-  montoparcialCorrecto = true
-  parciales: Factura[]
-  facturaPdf
-  isOnline = false
+  fondo: Usuario;
+  fondos: Usuario[];
+  id;
+  factura: Factura;
+  crearParcial = false;
+  primeraEjecucion = true;
+  montoparcial = 0;
+  montoparcialCorrecto = true;
+  parciales: Factura[];
+  facturaPdf;
+  isOnline = false;
   async ngOnInit() {
     if (this.primeraEjecucion) {
       this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((e: NavigationEnd) => {
-        this.ngOnInit()
+        this.ngOnInit();
 
       });
-      this.primeraEjecucion = false
+      this.primeraEjecucion = false;
     }
 
 
     this.id = this.route.snapshot.paramMap.get('id');
 
-   await this.initialize()
+    await this.initialize();
     this.facturaPdf = {
       nombres: `${this.factura.titular.NOMBRES} ${this.factura.titular.APELLIDOS}`,
       fecha: this.factura.fecha_pagado_unix,
@@ -62,21 +62,21 @@ export class FacturaComponent implements OnInit {
           diezPorciento: this.factura.haber * 0.1,
         }
       ]
-    }
+    };
   }
 
   async initialize() {
     this.fondo = null;
 
     if (this.id) {
-      this.factura = await this._facturaService.getFacturaById(this.id)
-      this.parciales = (await this._facturaService.getFacturasParcial(this.id)).facturas
+      this.factura = await this._facturaService.getFacturaById(this.id);
+      this.parciales = (await this._facturaService.getFacturasParcial(this.id)).facturas;
       if (this.factura.fondo) {
-        this.fondo = this.factura.fondo
+        this.fondo = this.factura.fondo;
       }
       console.log(this.factura);
-      
-      this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', '')
+
+      this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', '');
 
     }
   }
@@ -89,47 +89,47 @@ export class FacturaComponent implements OnInit {
   }
 
   async pagar() {
-    let any: any = this.factura
-    let factura: Factura = any
-    factura.fondo = this.fondo
+    const any: any = this.factura;
+    const factura: Factura = any;
+    factura.fondo = this.fondo;
     if (this.crearParcial && this.montoparcial > 0) {
-      await this._facturaService.pagarFactura(factura, true, this.montoparcial)
+      await this._facturaService.pagarFactura(factura, true, this.montoparcial);
     } else {
-      await this._facturaService.pagarFactura(factura)
+      await this._facturaService.pagarFactura(factura);
 
     }
   }
   async searchBancos(val) {
-    this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', val.term)
+    this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', val.term);
   }
 
   verificarMontoParcial(monto) {
     if (monto > this.factura.haber && monto > 0) {
-      this.montoparcialCorrecto = false
+      this.montoparcialCorrecto = false;
     } else {
-      this.montoparcialCorrecto = true
+      this.montoparcialCorrecto = true;
 
     }
   }
 
   printFactura() {
-    let wopen = window.open('/factura-pdf/' + this.id)
+    const wopen = window.open('/factura-pdf/' + this.id);
     wopen.onafterprint = (event) => {
-      wopen.close()
-    }
+      wopen.close();
+    };
   }
 
   async crearLink(){
-    this.factura = await this._facturaService.crearLinkDePago(this.id, this.fondo._id)
-    this.fondo = this.factura.fondo
+    this.factura = await this._facturaService.crearLinkDePago(this.id, this.fondo._id);
+    this.fondo = this.factura.fondo;
   }
 
   onSelectFondo() {
     console.log(this.fondo);
-    
-    this.isOnline = this.fondo.fondo_online == '1' ? true : false
+
+    this.isOnline = this.fondo.fondo_online == '1' ? true : false;
   }
 
-  
+
 
 }

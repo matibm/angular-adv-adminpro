@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IncrementadorComponent } from './incrementador/incrementador.component';
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DonaComponent } from './dona/dona.component';
 import { ChartsModule } from 'ng2-charts';
 import { ListaContratosComponent } from './lista-contratos/lista-contratos.component';
@@ -37,7 +37,7 @@ import { CrearFacturaComponent } from './crear-factura/crear-factura.component';
 import { ModalContratosComponent } from './modal-contratos/modal-contratos.component';
 import { ModalPdfComponent } from './modal-pdf/modal-pdf.component';
 import { DatepickerModule } from 'ng2-datepicker';
-import { NgxMaskModule, IConfig } from 'ngx-mask'
+import { NgxMaskModule, IConfig } from 'ngx-mask';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -80,7 +80,7 @@ const maskConfig: Partial<IConfig> = {
     CrearContratoComponent,
     CobranzaComponent,
     ModalFacturaComponent,
-    
+
   ],
   imports: [
     AvatarModule,

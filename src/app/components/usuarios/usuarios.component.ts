@@ -1,14 +1,14 @@
 import { Usuario } from './../../models/usuario';
 import { UsuarioService } from './../../services/usuario.service';
 import { Component, DoCheck, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
-import { of } from "rxjs";
+import { of } from 'rxjs';
 
 import {
   debounceTime,
   map,
   distinctUntilChanged,
   filter
-} from "rxjs/operators";
+} from 'rxjs/operators';
 import { fromEvent } from 'rxjs';
 @Component({
   selector: 'app-usuarios',
@@ -16,13 +16,17 @@ import { fromEvent } from 'rxjs';
   styleUrls: ['./usuarios.component.css']
 })
 export class UsuariosComponent implements OnInit, DoCheck {
-  @ViewChild("searchInput", { static: true }) search: ElementRef
-  @ViewChildren("searchInput") searchInput: QueryList<ElementRef>
   constructor(
     public _usuarioService: UsuarioService
   ) { }
-  usuarios: Usuario[]
+  @ViewChild('searchInput', { static: true }) search: ElementRef;
+  @ViewChildren('searchInput') searchInput: QueryList<ElementRef>;
+  usuarios: Usuario[];
   public loading = false;
+
+  isSearching = false;
+  apiResponse = [];
+  searching;
 
   async ngOnInit() {
     this.loading = true;
@@ -51,16 +55,13 @@ export class UsuariosComponent implements OnInit, DoCheck {
 
       )
       .subscribe(async (txt) => {
-        this.isSearching = true
-        this.usuarios = await this._usuarioService.buscarUsuarios('ALL', txt)
-        this.isSearching = false
+        this.isSearching = true;
+        this.usuarios = await this._usuarioService.buscarUsuarios('ALL', txt);
+        this.isSearching = false;
       });
 
 
   }
-
-  isSearching = false;
-  apiResponse = [];
 
   async ngDoCheck() {
 
@@ -90,7 +91,7 @@ export class UsuariosComponent implements OnInit, DoCheck {
     //   // Time in milliseconds between key events
     //   , debounceTime(1000)
 
-    //   // If previous query is diffent from current   
+    //   // If previous query is diffent from current
     //   , distinctUntilChanged()
 
     //   // subscription for response
@@ -117,10 +118,9 @@ export class UsuariosComponent implements OnInit, DoCheck {
     // });
 
     // });
-  
+
 
   }
-  searching
 
 
   async searchUsuarios(val: any) {
@@ -128,7 +128,7 @@ export class UsuariosComponent implements OnInit, DoCheck {
     if (val.length > 0) {
 
 
-      this.usuarios = await this._usuarioService.buscarUsuarios('ALL', this.searching)
+      this.usuarios = await this._usuarioService.buscarUsuarios('ALL', this.searching);
 
     }
   }

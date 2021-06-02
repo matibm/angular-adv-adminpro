@@ -1,7 +1,7 @@
 import { Producto } from './producto';
 import { Contrato } from './contrato';
 import { Cuota } from './cuota';
-import { Usuario } from "./usuario";
+import { Usuario } from './usuario';
 
 export class Factura {
     constructor(
@@ -57,7 +57,7 @@ export class Factura {
         public fecha_pagado_unix?: number,
         public fondo?: Usuario,
         public parcial?: Factura
-    
+
     ) {
 
     }

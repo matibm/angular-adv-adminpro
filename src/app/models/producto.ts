@@ -46,7 +46,7 @@ export class Producto {
         public PRECIO_COMPRA?: number,
         public SERVICIO?: string,
         public PRODUCTO?: string,
-        public MANZANA?: string, 
+        public MANZANA?: string,
     ) {
 
     }

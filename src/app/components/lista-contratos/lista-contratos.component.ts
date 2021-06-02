@@ -19,41 +19,41 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class ListaContratosComponent implements OnInit {
 
   constructor(public _contratoService: ContratoService,
-    public _usuarioService: UsuarioService,
-    public _productoService: ProductosService,
-    public router: Router
+              public _usuarioService: UsuarioService,
+              public _productoService: ProductosService,
+              public router: Router
 
 
   ) { }
 
-  @Input() showFilter = true
-  @Input() selectable = false
-  @Output() selected = new EventEmitter()
-  @Input() cliente: Usuario
-  clientes: Usuario[]
-  proveedor: Usuario
-  proveedores: Usuario[]
-  cobrador: Usuario
-  cobradores: Usuario[]
-  vendedor: Usuario
-  vendedores: Usuario[]
-  servicio
-  servicios
-  fila
-  parcela
-  manzana
-  page = 1
-  date_start_StiringTemporal
-  date_end_StiringTemporal
-  nro_contrato
-  date_start
-  date_end
-  sort_key = 'fecha_creacion_unix'
-  sort_value = -1
-  options
-  sort
-  count = 0
-  model = new Date()
+  @Input() showFilter = true;
+  @Input() selectable = false;
+  @Output() selected = new EventEmitter();
+  @Input() cliente: Usuario;
+  clientes: Usuario[];
+  proveedor: Usuario;
+  proveedores: Usuario[];
+  cobrador: Usuario;
+  cobradores: Usuario[];
+  vendedor: Usuario;
+  vendedores: Usuario[];
+  servicio;
+  servicios;
+  fila;
+  parcela;
+  manzana;
+  page = 1;
+  date_start_StiringTemporal;
+  date_end_StiringTemporal;
+  nro_contrato;
+  date_start;
+  date_end;
+  sort_key = 'fecha_creacion_unix';
+  sort_value = -1;
+  options;
+  sort;
+  count = 0;
+  model = new Date();
   range = new FormGroup({
     start: new FormControl(),
     end: new FormControl()
@@ -66,7 +66,7 @@ export class ListaContratosComponent implements OnInit {
     formatTitle: 'LLLL yyyy',
     formatDays: 'EEEEE',
     firstCalendarDay: 0, // 0 - Sunday, 1 - Monday
-    locale: locale, // date-fns locale
+    locale, // date-fns locale
     position: 'bottom',
     inputClass: '', // custom input CSS class to be applied
     calendarClass: 'datepicker-default', // custom datepicker calendar CSS class to be applied
@@ -76,10 +76,12 @@ export class ListaContratosComponent implements OnInit {
 
   configDP: IDatePickerConfig = {
 
-  }
+  };
+
+  @Input() contratos: Contrato[];
   async ngOnInit() {
 
-    this.servicios = await this._productoService.getProductos()
+    this.servicios = await this._productoService.getProductos();
 
     this.options = {
       fecha_inicio: this.date_start ? this.date_start : null,
@@ -92,16 +94,16 @@ export class ListaContratosComponent implements OnInit {
       nro_contrato: '',
       cobrador: this.cobrador ? this.cobrador._id : null,
       vendedor: this.vendedor ? this.vendedor._id : null
-    }
+    };
     this.sort = {
       key: this.sort_key,
       value: this.sort_value
-    }
-    let resp = await this._contratoService.getContratos(null, this.options, this.sort)
-    this.count = resp.count
+    };
+    const resp = await this._contratoService.getContratos(null, this.options, this.sort);
+    this.count = resp.count;
 
 
-    this.contratos = resp.contratos
+    this.contratos = resp.contratos;
 
     // this.filtrar()
 
@@ -110,19 +112,17 @@ export class ListaContratosComponent implements OnInit {
 
   }
 
-  @Input() contratos: Contrato[]
-
   async pageChanged(page) {
-    let resp = await this._contratoService.getContratos(page, this.options, this.sort)
+    const resp = await this._contratoService.getContratos(page, this.options, this.sort);
 
 
-    this.contratos = resp.contratos
+    this.contratos = resp.contratos;
     // this.count = resp.count
     console.log(page);
 
   }
   seleccionarProducto(producto: Producto) {
-    this.filtrar()
+    this.filtrar();
     this.servicio = producto;
 
   }
@@ -130,19 +130,19 @@ export class ListaContratosComponent implements OnInit {
 
   async searchClientes(val) {
     if (val.term.length > 0) {
-      this.clientes = await this._usuarioService.buscarUsuarios('CLIENTES', val.term)
+      this.clientes = await this._usuarioService.buscarUsuarios('CLIENTES', val.term);
     }
   }
 
   async searchcobradores(val) {
     if (val.term.length > 0) {
-      this.cobradores = await this._usuarioService.buscarUsuarios('COBRADORES', val.term)
+      this.cobradores = await this._usuarioService.buscarUsuarios('COBRADORES', val.term);
 
     }
   }
   async searchvendedores(val) {
     if (val.term.length > 0) {
-      this.vendedores = await this._usuarioService.buscarUsuarios('VENDEDORES', val.term)
+      this.vendedores = await this._usuarioService.buscarUsuarios('VENDEDORES', val.term);
 
     }
   }
@@ -159,18 +159,18 @@ export class ListaContratosComponent implements OnInit {
       nro_contrato: '',
       cobrador: this.cobrador ? this.cobrador._id : null,
       vendedor: this.vendedor ? this.vendedor._id : null
-    }
+    };
     this.sort = {
       key: this.sort_key,
       value: this.sort_value
-    }
-    let resp = await this._contratoService.getContratos(null, this.options, this.sort)
-    this.servicios = await this._productoService.getProductos()
+    };
+    const resp = await this._contratoService.getContratos(null, this.options, this.sort);
+    this.servicios = await this._productoService.getProductos();
 
-    this.contratos = resp.contratos
+    this.contratos = resp.contratos;
     console.log(resp);
 
-    this.count = resp.count
+    this.count = resp.count;
   }
 
   customSearchFn(term: string, item: any) {
@@ -183,16 +183,16 @@ export class ListaContratosComponent implements OnInit {
 
   calcularFecha(stringDate) {
 
-    let d = new Date(stringDate);
-    d.setUTCHours(5)
+    const d = new Date(stringDate);
+    d.setUTCHours(5);
 
-    if (Object.prototype.toString.call(d) === "[object Date]") {
+    if (Object.prototype.toString.call(d) === '[object Date]') {
       // it is a date
       if (isNaN(d.getTime())) {  // d.valueOf() could also work
         // date is not valid
       } else {
         // date is valid
-        return d.getTime()
+        return d.getTime();
 
       }
     } else {
@@ -202,37 +202,37 @@ export class ListaContratosComponent implements OnInit {
 
   async ordenar(value) {
     if (value === this.sort_key) {
-      this.sort_value > 0 ? this.sort_value = -1 : this.sort_value = 1
+      this.sort_value > 0 ? this.sort_value = -1 : this.sort_value = 1;
     } else {
-      this.sort_value = 1
+      this.sort_value = 1;
     }
-    let oldKeyAsc = document.getElementsByClassName('fa-sort-asc').item(0)
+    const oldKeyAsc = document.getElementsByClassName('fa-sort-asc').item(0);
     if (oldKeyAsc) {
-      oldKeyAsc.classList.remove('fa-sort-asc')
-      oldKeyAsc.classList.add('fa-sort')
+      oldKeyAsc.classList.remove('fa-sort-asc');
+      oldKeyAsc.classList.add('fa-sort');
     }
-    let oldKeyDesc = document.getElementsByClassName('fa-sort-desc').item(0)
+    const oldKeyDesc = document.getElementsByClassName('fa-sort-desc').item(0);
     if (oldKeyDesc) {
-      oldKeyDesc.classList.remove('fa-sort-desc')
-      oldKeyDesc.classList.add('fa-sort')
+      oldKeyDesc.classList.remove('fa-sort-desc');
+      oldKeyDesc.classList.add('fa-sort');
     }
-    this.sort_key = value
+    this.sort_key = value;
     this.sort = {
       key: this.sort_key,
       value: this.sort_value
-    }
+    };
     console.log(document.getElementById(value));
 
-    let newKey: any = document.getElementById(value).childNodes.item(1)
+    const newKey: any = document.getElementById(value).childNodes.item(1);
     if (!newKey) {
-      return
+      return;
     }
-    newKey.classList.remove('fa-sort')
-    newKey.classList.add(`fa-sort-${this.sort_value > 0 ? 'asc' : 'desc'}`)
+    newKey.classList.remove('fa-sort');
+    newKey.classList.add(`fa-sort-${this.sort_value > 0 ? 'asc' : 'desc'}`);
 
-    let resp = await this._contratoService.getContratos(null, this.options, this.sort)
+    const resp = await this._contratoService.getContratos(null, this.options, this.sort);
 
-    this.contratos = resp.contratos
+    this.contratos = resp.contratos;
     console.log(resp);
 
     // this.count = resp.count
@@ -241,9 +241,9 @@ export class ListaContratosComponent implements OnInit {
 
   onSelectContrato(contrato) {
     if (this.selectable) {
-      this.selected.emit(contrato)
+      this.selected.emit(contrato);
     } else {
-      this.router.navigateByUrl('/admin/info_contrato/' + contrato._id)
+      this.router.navigateByUrl('/admin/info_contrato/' + contrato._id);
     }
   }
 }

@@ -18,39 +18,39 @@ export class ContratoPdfComponent implements OnInit {
   observaciones = `.
   .
 .
-  `
-  id
-  @Input() contrato: Contrato
-  @Input() printAltoke = true
-  tipo_contrato = ''
-  diaCadaMes
+  `;
+  id;
+  @Input() contrato: Contrato;
+  @Input() printAltoke = true;
+  tipo_contrato = '';
+  diaCadaMes;
   async ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
-    this.contrato = await this._contratoService.getContratoById(this.id)
-    this.tipo_contrato = this.contrato.producto.COD_CORTO
+    this.contrato = await this._contratoService.getContratoById(this.id);
+    this.tipo_contrato = this.contrato.producto.COD_CORTO;
     console.log(this.contrato);
 
-    this.diaCadaMes = new Date(this.contrato.fecha_creacion_unix).getDate()
+    this.diaCadaMes = new Date(this.contrato.fecha_creacion_unix).getDate();
 
     if (this.printAltoke) {
       setTimeout(() => {
-        window.print()
+        window.print();
       }, 500);
 
       window.onafterprint = (event) => {
-        window.close()
+        window.close();
       };
     }
   }
   sumarlosPluses(pluses) {
-    let monto = 0
+    let monto = 0;
     console.log(pluses);
-    
+
     for (let i = 0; i < pluses.length; i++) {
       const element = pluses[i];
 
-      monto += parseInt(element || '0')
+      monto += parseInt(element || '0');
     }
-    return monto
+    return monto;
   }
 }

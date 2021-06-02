@@ -11,7 +11,7 @@ import { AuthModule } from './auth/auth.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CurrencyPipe, CommonModule, registerLocaleData } from '@angular/common';
 
-//=====Componentes=======
+// =====Componentes=======
 import { AppComponent } from './app.component';
 import { NopagefoundComponent } from './nopagefound/nopagefound.component';
  // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -24,7 +24,7 @@ import { LOCALE_ID, NgModule } from '@angular/core';
 import localePy from '@angular/common/locales/es-PY';
 registerLocaleData(localePy, 'es-PY');
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
-import {NgxPaginationModule} from 'ngx-pagination'; 
+import {NgxPaginationModule} from 'ngx-pagination';
 
 // import { LoginComponent } from './auth/login/login.component';
 // import { RegisterComponent } from './auth/register/register.component';
@@ -36,16 +36,16 @@ import {NgxPaginationModule} from 'ngx-pagination';
 
 import { NgxLoadingModule } from 'ngx-loading';
 import { NombreCortoPipe } from './pipes/nombre-corto.pipe';
-   
+
 @NgModule({
   declarations: [
     AppComponent,
     // LoginComponent,
     // RegisterComponent,
     NopagefoundComponent,
-   
+
     PricePipe,
-     
+
     // NombreCortoPipe
      // BreadcrumbsComponent,
     // SidebarComponent,

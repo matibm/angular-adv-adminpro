@@ -14,19 +14,19 @@ export class TransferenciaComponent implements OnInit {
     public _usuarioService: UsuarioService,
     public _facturaService: FacturaService
   ) { }
-  fondoOrigen: Usuario
-  fondoDestino: Usuario
-  fondos: Usuario[]
-  facturas
-  facturaCount = 0
-  facturaPage = 1
-  listItems = []
+  fondoOrigen: Usuario;
+  fondoDestino: Usuario;
+  fondos: Usuario[];
+  facturas;
+  facturaCount = 0;
+  facturaPage = 1;
+  listItems = [];
   async ngOnInit() {
-    this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', '')
+    this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', '');
 
   }
   async searchBancos(val) {
-    this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', val.term)
+    this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', val.term);
   }
 
   customSearchFn(term: string, item: any) {
@@ -38,45 +38,45 @@ export class TransferenciaComponent implements OnInit {
   }
 
   selectFondoOrigen(value) {
-    this.getFacturas(value._id)
+    this.getFacturas(value._id);
   }
 
   async getFacturas(fondoId) {
 
 
-    let respf = await this._facturaService.getFacturasOptions({ fondo: fondoId, pagado: 'true' })
+    const respf = await this._facturaService.getFacturasOptions({ fondo: fondoId, pagado: 'true' });
     console.log(respf);
-    this.facturas = respf.facturas
-    this.facturaCount = respf.count
+    this.facturas = respf.facturas;
+    this.facturaCount = respf.count;
 
   }
   async pageChanged(page) {
     console.log(page);
 
-    let resp = await this._facturaService.getFacturasOptions({ fondo: this.fondoOrigen._id, pagado: 'true', page: page })
+    const resp = await this._facturaService.getFacturasOptions({ fondo: this.fondoOrigen._id, pagado: 'true', page });
 
-    this.facturaPage = page
-    this.facturas = resp.facturas
-    this.facturaCount = resp.count
+    this.facturaPage = page;
+    this.facturas = resp.facturas;
+    this.facturaCount = resp.count;
     console.log(page);
     setTimeout(() => {
-      this.setSelected()
+      this.setSelected();
     }, 1);
   }
 
   selectItem(id) {
-    let item = document.getElementById(`id-${id}`)
+    const item = document.getElementById(`id-${id}`);
     if (item.classList.contains('table-info')) {
-      item.classList.remove('table-info')
+      item.classList.remove('table-info');
       for (let i = 0; i < this.listItems.length; i++) {
         const element = this.listItems[i];
         if (element == id) {
-         this.listItems.splice(i, 1)
+         this.listItems.splice(i, 1);
         }
       }
     } else {
-      this.listItems.push(id)
-      item.classList.add('table-info')
+      this.listItems.push(id);
+      item.classList.add('table-info');
     }
   }
 
@@ -84,15 +84,15 @@ export class TransferenciaComponent implements OnInit {
     for (let i = 0; i < this.listItems.length; i++) {
       const item = this.listItems[i];
       console.log(item);
-      
-      let doc = document.getElementById(`id-${item}`);
+
+      const doc = document.getElementById(`id-${item}`);
       console.log(doc);
-      
+
       if (doc) {
-        doc.classList.add('table-info')      
-        
+        doc.classList.add('table-info');
+
       }
-    }    
+    }
 
   }
 
