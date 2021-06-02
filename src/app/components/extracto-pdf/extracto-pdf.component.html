@@ -1,0 +1,75 @@
+<div class="mt-4">
+    <table class="table table-sm table-hover">
+        <thead>
+            <tr>
+                <th class="text-center">#</th>
+
+                <th class="text-center" style="min-width: 130px;">
+                    Nro. Contrato
+                </th>
+                <th *ngIf="false" class="text-center" style="min-width: 200px;">
+                    Emisión
+                </th>
+                <th class="text-center" style="min-width: 150px;">
+                    Monto
+                </th>
+                <th class="text-center" style="min-width: 200px;" *ngIf="false">
+                    Cliente
+                </th>
+                <th class="text-center" style="min-width: 150px;">
+                    Vencimiento
+                </th>
+                <th class="text-center" style="min-width: 400px;">
+                    Servicio
+                </th>
+                <th class="text-center" style="min-width: 150px;">Pagado
+
+                </th>
+                <th class="text-center" *ngIf="false" style="min-width: 200px;">
+                    cobrador
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <!--  | paginate: { itemsPerPage: 10,totalItems:count, currentPage: page } -->
+            <tr (click)="selectItem(factura._id)" id="id-{{factura._id}}" class="item-table pointer" *ngFor="let factura of facturas; let i = index;">
+                <!-- <td class="text-center" scope="row">{{page*10 + (i+1) - 10}}</td> -->
+                <td class="text-center" scope="row">{{factura.nro_factura}}</td>
+
+                <td class="text-center">
+                    <div *ngIf="factura.contrato">{{factura.contrato.nro_contrato | currency:'':'':'2.0'}}</div>
+                    <div *ngIf="!factura.contrato">---</div>
+                </td>
+
+                <td *ngIf="false" class="text-center">
+                    {{factura.fecha_creacion_unix | date:' d, MMM y'}}
+                    <span class="" *ngIf="!fromOutside"> {{factura.fecha_creacion_unix | date:' h:mm a'}}</span>
+
+                </td>
+
+                <td class="text-center">{{factura.haber | currency:'':'':'2.0'}} Gs</td>
+                <td class="text-center" *ngIf="false">
+                    {{factura.titular.NOMBRES | primerNombre}} {{factura.titular.APELLIDOS | primerNombre }}
+                </td>
+                <td class="text-center">{{factura.vencimiento | date}}</td>
+                <td class="text-center" *ngIf="!fromOutside && factura.servicio">
+                    <div *ngIf="factura.servicio?.COD_CORTO == 'C.M.P.'"></div> {{factura.servicio.NOMBRE }}
+                </td>
+                <td class="text-center" *ngIf="fromOutside && factura.servicio">
+                    {{factura.servicio.COD_CORTO }}
+                </td>
+                <td class="text-center" *ngIf="factura.pagado"><b>{{factura.fecha_pagado_unix | date}}</b></td>
+                <td class="text-center text-danger" *ngIf="!factura.pagado">Pendiente</td>
+                <td class="text-center" *ngIf="false">
+                    <div *ngIf="factura.cobrador">
+                        {{factura.cobrador.NOMBRES | primerNombre}} {{factura.cobrador.APELLIDOS | primerNombre }}
+                    </div>
+                    <div *ngIf="!factura.cobrador">
+                        ---
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

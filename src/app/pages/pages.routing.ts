@@ -1,3 +1,4 @@
+import { ExtractoPdfComponent } from './../components/extracto-pdf/extracto-pdf.component';
 import { CobranzaComponent } from './../components/cobranza/cobranza.component';
 import { CrearFacturaComponent } from './../components/crear-factura/crear-factura.component';
 import { EditarProductoComponent } from './../components/editar-producto/editar-producto.component';
@@ -79,7 +80,8 @@ const routes: Routes = [
 
   },
   { path: 'contratos-pdf/:id', component: ContratoPdfComponent },
-  { path: 'factura-pdf/:id', component: FacturaPdfComponent }
+  { path: 'factura-pdf/:id', component: FacturaPdfComponent },
+  { path: 'extracto-cuotas', component: ExtractoPdfComponent }
 
 
 ];

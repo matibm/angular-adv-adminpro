@@ -46,6 +46,7 @@ import { NotifierModule } from 'angular-notifier';
 import { MatInputModule } from '@angular/material/input';
 import { CobranzaComponent } from './cobranza/cobranza.component';
 import { ModalFacturaComponent } from './modal-factura/modal-factura.component';
+import { ExtractoPdfComponent } from './extracto-pdf/extracto-pdf.component';
 
 
 const maskConfig: Partial<IConfig> = {
@@ -80,6 +81,7 @@ const maskConfig: Partial<IConfig> = {
     CrearContratoComponent,
     CobranzaComponent,
     ModalFacturaComponent,
+    ExtractoPdfComponent,
 
   ],
   imports: [
