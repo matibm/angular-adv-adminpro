@@ -32,6 +32,16 @@ export class MovimientoService {
       return resp.tipos_movimiento;
     });
   }
+
+  getUltimaCuenta(proveedorId) {
+    
+    let url = `${URL_SERVICIOS}/movimientos/get_ultima_cuenta`;
+    url += `?token=${this._usuarioService.token}`;
+    url += `&proveedor=${proveedorId}`;
+    
+    return this.http.get(url).toPromise()
+  }
+  
   getMovimientos(tipo_id?) {
 
     let url = `${URL_SERVICIOS}/movimientos/by_type`;

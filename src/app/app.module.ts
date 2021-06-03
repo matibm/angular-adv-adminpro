@@ -1,3 +1,4 @@
+// import { NestableModule } from 'ngx-nestable';
 import { PipeModule } from './pipes/pipe.module';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { URL_SERVICIOS } from './config/global';
@@ -69,6 +70,7 @@ import { NombreCortoPipe } from './pipes/nombre-corto.pipe';
     NgSelectModule,
     SweetAlert2Module.forRoot(),
     BrowserAnimationsModule
+    // NestableModule
     // NgbModule
   ],
   providers: [CurrencyPipe, { provide: LOCALE_ID, useValue: 'es-PY' }],

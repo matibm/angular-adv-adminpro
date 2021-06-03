@@ -1,17 +1,8 @@
 <div class="my-container">
 
-    <ng-template #customLoadingTemplate>
-
-    </ng-template>
-
-
-
     <div class="card">
-
-
-
         <div class="card-body">
-            <div style="justify-content: space-between;" class="inline-flex">
+            <!-- <div  style="justify-content: space-between;" class="inline-flex">
                 <h4 class="card-title">Categoria</h4>
                 <div class="pointer close-icon ml-auto">
                     <button (click)="resetBreadcrumb()" type="button" class="btn btn-sm btn-light"><i
@@ -22,8 +13,8 @@
                 <li *ngFor="let item of breadCrumb; let i = index;" class="breadcrumb-item">
                     <a (click)="navigateBreadcrumb(i)" href="javascript:void(0)"><strong>{{item.descripcion}}</strong></a>
                 </li>
-            </ol>
-            <div *ngIf="true" class="ng-autocomplete">
+            </ol> -->
+            <!-- <div *ngIf="true" class="ng-autocomplete">
                 <div class="inline-flex">
                     <ng-select style="width: 90%;" [items]="tipos_movimiento" [(ngModel)]="tipo" (ngModelChange)="selectCategory(tipo)" [searchFn]="customSearchFnMovimientos" notFoundText="no se encontraron resultados" placeholder="buscar tipo de movimiento">
                         <ng-template ng-option-tmp let-item="item">
@@ -35,13 +26,51 @@
                     <button (click)=" saveshowCrearMovimiento(true)" type="button" [disabled]="breadCrumb.length == 0" class="btn btn-primary ml-2">Crear
                         Movimiento</button>
                 </div>
-            </div>
+            </div> -->
 
 
-            <div class="" *ngIf="showCrearMovimiento"><br>
+            <div class=""><br>
 
                 <h3>Nuevo Movimiento</h3>
                 <div class="row">
+                    <div class="col-xs col-md-3 mt-2">
+                        <div class="inline-flex">
+
+                            <label class="">Proveedor</label>
+                            <div *ngIf="proveedor" class="pointer close-icon ml-auto">
+                                <button (click)="proveedor = null" type="button" class="btn btn-sm btn-light"><i
+                                        class=" ti-close  "></i></button>
+                            </div>
+                        </div>
+                        <div class="" *ngIf="!proveedor">
+                            <ng-select [items]="proveedores" [(ngModel)]="proveedor" (ngModelChange)="onSelectProveedor(proveedor)" (search)="searchProveedores($event)" notFoundText="no se encontraron resultados" placeholder="buscar proveedor" bindLabel="NOMBRES" [searchFn]="customSearchFn">
+                                <ng-template ng-option-tmp let-item="item">
+                                    <div>
+                                        <div *ngIf="item.APELLIDOS">{{item.APELLIDOS}} {{item.NOMBRES}}</div>
+                                        <div *ngIf="item.NOMBRES && item.RAZON"> - </div>
+                                        <div *ngIf="item.RAZON">{{item.RAZON}} </div>
+
+
+                                        <small>{{item.RUC | ruc}}</small>
+                                    </div>
+
+                                </ng-template>
+                            </ng-select>
+                        </div>
+
+
+                        <div class="" *ngIf="proveedor">
+                            <div>
+                                <div *ngIf="proveedor.NOMBRES">{{proveedor .NOMBRES}} {{proveedor .APELLIDOS}}</div>
+                                <div *ngIf="proveedor   .NOMBRES && proveedor  .RAZON"> - </div>
+                                <div *ngIf="proveedor   .RAZON">{{proveedor .RAZON}} </div>
+
+                                <small>{{proveedor.RUC | ruc}}</small>
+                            </div>
+                        </div>
+                    </div>
+
+
                     <div class="col-xs col-md-3 mt-2">
                         <div class="inline-flex">
                             <label class="">Origen Fondo</label>
@@ -74,66 +103,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs col-md-3 mt-2">
-                        <div class="inline-flex">
-                            <label class="">Servicio</label>
-
-                            <div *ngIf="servicio" style="height: fit-content;" class="pointer close-icon ml-auto">
-                                <button (click)="servicio = null" type="button" class="btn btn-sm btn-light"><i
-                                        class=" ti-close  "></i></button>
-                            </div>
-                        </div>
-                        <div class="" *ngIf="!servicio">
-                            <ng-select *ngIf="!servicio" [(ngModel)]="servicio" [items]="servicios" notFoundText="no se encontraron resultados" placeholder="buscar servicio" bindLabel="NOMBRE">
-                                <ng-template ng-option-tmp let-item="item">
-                                    <div> {{item.NOMBRE}} {{item.COD_CORTO}} <br>
-                                    </div>
-                                </ng-template>
-                            </ng-select>
-                        </div>
-
-                        <div class="" *ngIf="servicio">
-                            <div>
-                                <div> {{servicio.NOMBRE}} {{servicio.COD_CORTO}} </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs col-md-3 mt-2">
-                        <div class="inline-flex">
-
-                            <label class="">Proveedor</label>
-                            <div *ngIf="proveedor" class="pointer close-icon ml-auto">
-                                <button (click)="proveedor = null" type="button" class="btn btn-sm btn-light"><i
-                                        class=" ti-close  "></i></button>
-                            </div>
-                        </div>
-                        <div class="" *ngIf="!proveedor">
-                            <ng-select [items]="proveedores" [(ngModel)]="proveedor" (search)="searchProveedores($event)" notFoundText="no se encontraron resultados" placeholder="buscar proveedor" bindLabel="NOMBRES" [searchFn]="customSearchFn">
-                                <ng-template ng-option-tmp let-item="item">
-                                    <div>
-                                        <div *ngIf="item.APELLIDOS">{{item.APELLIDOS}} {{item.NOMBRES}}</div>
-                                        <div *ngIf="item.NOMBRES && item.RAZON"> - </div>
-                                        <div *ngIf="item.RAZON">{{item.RAZON}} </div>
 
 
-                                        <small>{{item.RUC | ruc}}</small>
-                                    </div>
-
-                                </ng-template>
-                            </ng-select>
-                        </div>
-
-
-                        <div class="" *ngIf="proveedor">
-                            <div>
-                                <div *ngIf="proveedor.NOMBRES">{{proveedor .NOMBRES}} {{proveedor .APELLIDOS}}</div>
-                                <div *ngIf="proveedor   .NOMBRES && proveedor  .RAZON"> - </div>
-                                <div *ngIf="proveedor   .RAZON">{{proveedor .RAZON}} </div>
-
-                                <small>{{proveedor.RUC | ruc}}</small>
-                            </div>
-                        </div>
-                    </div>
                     <div class="col-xs col-md-3 mt-2">
                         <div class="inline-flex">
                             <label class="">Cliente</label>
@@ -170,7 +141,7 @@
                     </div>
                     <div class="col-xs col-md-3 mt-2">
                         <div class=" form-group">
-                            <label for="">Nro</label>
+                            <label for="">Nro Timbrado</label>
                             <input type="text" [(ngModel)]="nro" class="form-control" name="" id="nro" aria-describedby="helpId" placeholder="">
                         </div>
 
@@ -214,24 +185,12 @@
 
 
                     <div *ngIf="!contrato" class="">
+
                         <div style="display: flex;" class="">
                             <div class="card">
                                 <div class="card-body">
-                                    <div class="form-group">
-                                        <label for="">Buscar por numero de contrato</label>
-                                        <br>
-                                        <form action="" (ngSubmit)="buscarContratoPorNro(nrocontrato.value)">
-                                            <input type="text" style="width: fit-content;" #nrocontrato class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
-                                            <button type="submit" class="btn btn-info">Buscar</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-body">
-                                    <button type="button" [routerLink]="['/admin/lista_contratos']" class="my-auto ml-2 btn btn-secondary">Buscar en lista de
-                                        contratos</button>
-
+                                    <button type="button" (click)="showModal = true" class="btn btn-inverse">Buscar
+                                        Contrato</button>
                                 </div>
                             </div>
                         </div>
@@ -250,23 +209,21 @@
                                     <span><b>Número de contrato:</b> {{contrato.nro_contrato}}</span>
                                     <br>
                                     <span><b>Fecha de creación:</b> {{contrato.fecha_creacion_unix | date }}</span>
-
                                 </div>
                             </div>
-
                         </div>
-
                     </div>
-
                     <div class="mx-auto">
-                        <label for="">Tipo de Movimiento:</label>
-                        <br>
+                        <h5>Cuenta Gasto</h5>
 
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                            <button type="button" (click)="switchTipoMonto()" class="btn" [ngClass]="egresoActive">Egreso</button>
-                            <button type="button" (click)="switchTipoMonto()" class="btn" [ngClass]="ingresoActive">Ingreso</button>
-
+                        <div *ngIf="cuentaGasto" style="display: block;">
+                            <span><b class="lead">Tipo: </b> {{cuentaGasto.nombre_padre}}</span>
+                            <br>
+                            <span><b class="lead">Descripcion: </b> {{cuentaGasto.descripcion}}</span>
                         </div>
+
+                        <button *ngIf="!cuentaGasto" type="button" (click)="showModalCuentas = true" class="btn mt-2  btn-info">Seleccionar Cuenta</button>
+                        <button *ngIf="cuentaGasto" type="button" (click)="showModalCuentas = true" class="btn mt-2 btn-inverse">Cambiar Cuenta</button>
                     </div>
 
                 </div>
@@ -281,7 +238,32 @@
         </div>
     </div>
 
-
+    <div *ngIf="false" class="card">
+        <div class="card-body">
+            <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
+                <!-- This is the tree node template for leaf nodes -->
+                <!-- There is inline padding applied to this node using styles.
+                  This padding value depends on the mat-icon-button width. -->
+                <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+                    {{node.descripcion}}
+                </mat-tree-node>
+                <!-- This is the tree node template for expandable nodes -->
+                <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+                    <div class="mat-tree-node">
+                        <b matTreeNodeToggle class="pointer px-1">
+                            <i
+                                [ngClass]="{'icon-arrow-right': treeControl.isExpanded(node) ? false : true, 'icon-arrow-down': treeControl.isExpanded(node) ? true : false}"></i>
+                        </b> {{node.descripcion}}
+                    </div>
+                    <!-- There is inline padding applied to this div using styles.
+                        This padding value depends on the mat-icon-button width.  -->
+                    <div [class.example-tree-invisible]="!treeControl.isExpanded(node)" role="group">
+                        <ng-container matTreeNodeOutlet></ng-container>
+                    </div>
+                </mat-nested-tree-node>
+            </mat-tree>
+        </div>
+    </div>
     <div class="card">
         <div class="card-body">
             <table *ngIf="!showCrearMovimiento && movimientos.length>0" class="table table-hover">
@@ -291,7 +273,6 @@
                         <th>Fecha</th>
                         <th>Nombre</th>
                         <th style="width: 25%;">Comentario</th>
-                        <th>Monto haber</th>
                         <th>Monto total</th>
                     </tr>
                 </thead>
@@ -302,7 +283,6 @@
                         <td>{{item.nombre}}</td>
                         <td>{{item.comentario}}</td>
 
-                        <td>{{item.monto_haber}}</td>
                         <td>{{item.monto_total | currency: '':'':'2.0'}} Gs</td>
 
                     </tr>
@@ -312,6 +292,7 @@
         </div>
     </div>
 
-    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate">
-    </ngx-loading>
 </div>
+
+<app-modal-contratos (contratoSelected)="onContratoSelected($event)" [showFilters]="true" [cliente]="cliente" (onClose)="showModal = false" *ngIf="showModal"></app-modal-contratos>
+<app-modal-cuentas-gastos *ngIf="showModalCuentas" (onSelected)="cuentaGasto = $event; showModalCuentas = false" (onClose)="showModalCuentas = false"></app-modal-cuentas-gastos>

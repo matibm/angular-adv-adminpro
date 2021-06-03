@@ -13,6 +13,7 @@ export class ModalContratosComponent implements OnInit {
   @Output() onClose = new EventEmitter();
   @Output() contratoSelected = new EventEmitter();
 
+  @Input() showFilters = false;
   @Input() contratos;
   @Input() cliente;
 
