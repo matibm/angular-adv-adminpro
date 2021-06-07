@@ -1,7 +1,7 @@
 {
-    "name": "adminpro",
-    "short_name": "adminpro",
-    "theme_color": "#1976d2",
+    "name": "imperial",
+    "short_name": "imperial",
+    "theme_color": "#242a33",
     "background_color": "#fafafa",
     "display": "standalone",
     "scope": "./",
