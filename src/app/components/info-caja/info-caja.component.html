@@ -1,8 +1,8 @@
 <div class="my-container">
-
+    <!-- 
     <ng-template #customLoadingTemplate>
 
-    </ng-template>
+    </ng-template> -->
 
     <div class="row">
         <div class="col-xs col-md">
@@ -122,6 +122,85 @@
         </div>
     </div>
 
-    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate">
-    </ngx-loading>
+    <!-- <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate">
+    </ngx-loading> -->
+    <div class="card">
+        <div class="card-body">
+
+            <table class="table table-hover table-sm">
+                <thead>
+                    <tr>
+                        <th>fecha</th>
+                        <th>Monto</th>
+                        <th>Cliente</th>
+                        <th>Servicio</th>
+
+                        <th>Cuenta Gasto</th>
+
+                        <th>Proveedor</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of movimientosPrueba">
+                        <td>{{item.fecha_sort | date: 'short'}}</td>
+                        <td>
+                            <div style="color: #d53032;" *ngIf="item.monto_total">
+                                {{item.monto_total | currency: '':'':'2.0'}}
+                            </div>
+                            <div style="color: #009000;" *ngIf="item.haber">
+                                {{item.haber | currency: '':'':'2.0'}}
+                            </div>
+                        </td>
+                        <td>
+                            <div *ngIf="item.cliente">
+                                {{item.cliente?.APELLIDOS}} {{item.cliente?.NOMBRES}}
+                            </div>
+                            <div *ngIf="item.titular">
+                                {{item.titular?.APELLIDOS}} {{item.titular?.NOMBRES}}
+                            </div>
+                        </td>
+                        <td>
+                            <div *ngIf="item.servicio">
+                                {{item.servicio?.NOMBRE}}
+                            </div>
+                            <div *ngIf="item.contrato">
+                                {{item.contrato?.producto?.NOMBRE}}
+                            </div>
+                        </td>
+                        <td>
+                            <div *ngIf="item.nombre">
+                                {{item.nombre}}
+                            </div>
+                            <div *ngIf="!item.nombre">
+                                ---
+                            </div>
+                        </td>
+
+
+
+
+                        <td>
+                            <div *ngIf="item.proveedor">
+                                {{item.proveedor?.APELLIDOS}} {{item.proveedor?.NOMBRES}}
+                            </div>
+                            <div *ngIf="!item.proveedor">
+                                ---
+                            </div>
+                        </td>
+
+
+
+                    </tr>
+                    <tr>
+                        <td scope="row"></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
 </div>

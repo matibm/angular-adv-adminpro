@@ -18,6 +18,7 @@ export class InfoCajaComponent implements OnInit {
     public _cajaService: CajaService
 
   ) { }
+  movimientosPrueba
   movimientos;
   HaberMovimientos = 0;
   fondo;
@@ -45,6 +46,7 @@ export class InfoCajaComponent implements OnInit {
   async ngOnInit() {
     this.loading = true;
 
+    this.movimientosPrueba = await this._movimientoService.allmovimientosCaja()
     this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', '');
 
     // let respMovimientos = await this._movimientoService.getMovimientosByDate(this.start, this.end, null, false)
@@ -107,6 +109,7 @@ export class InfoCajaComponent implements OnInit {
       item.RUC.toLowerCase().includes(term);
   }
 
+ 
   calcularFecha(isstart: boolean, date) {
 
     const d = new Date(date);

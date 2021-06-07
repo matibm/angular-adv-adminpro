@@ -12,6 +12,7 @@ export class ModalCuentasGastosComponent implements OnInit {
   constructor(public _movimientoService: MovimientoService) {}
   @Output() onClose = new EventEmitter();
   @Output() onSelected = new EventEmitter();
+  @Output() onSelectedCategory = new EventEmitter();
   dataSource = new MatTreeNestedDataSource<any>();
   treeControl = new NestedTreeControl<any>((node) => node.hijos);
   hasChild = (_: number, node: any) => !!node.hijos && node.hijos.length > 0;
@@ -32,5 +33,9 @@ export class ModalCuentasGastosComponent implements OnInit {
   onclickitem(event){
     console.log(event);
     this.onSelected.emit(event)
+  }
+
+  onclickCategory(event){
+    this.onSelectedCategory.emit(event)
   }
 }

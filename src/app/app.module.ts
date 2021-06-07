@@ -37,6 +37,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
 
 import { NgxLoadingModule } from 'ngx-loading';
 import { NombreCortoPipe } from './pipes/nombre-corto.pipe';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -69,7 +71,13 @@ import { NombreCortoPipe } from './pipes/nombre-corto.pipe';
     DpDatePickerModule,
     NgSelectModule,
     SweetAlert2Module.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
     // NestableModule
     // NgbModule
   ],

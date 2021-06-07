@@ -9,7 +9,7 @@
                         <span aria-hidden="true"  >&times;</span>
                     </button>
                 </div>
-                <div class="modal-body " align="center">
+                <div class="modal-body " style="max-height: 700px; overflow: auto;" align="center">
                     <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
                         <!-- This is the tree node template for leaf nodes -->
                         <!-- There is inline padding applied to this node using styles.
@@ -24,7 +24,7 @@
                                     <i
                                         [ngClass]="{'icon-arrow-right': treeControl.isExpanded(node) ? false : true, 'icon-arrow-down': treeControl.isExpanded(node) ? true : false}"></i>
                                
-                                        {{node.descripcion}}     </b>
+                                        <span class="px-2" (click)="onclickCategory(node)">{{node.descripcion}}</span>     </b>
                             </div>
                             <!-- There is inline padding applied to this div using styles.
                                 This padding value depends on the mat-icon-button width.  -->

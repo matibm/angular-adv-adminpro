@@ -1,3 +1,4 @@
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { ProductosService } from './../../services/productos.service';
 import { ContratoService } from './../../services/contrato.service';
 import { Contrato } from './../../models/contrato';
@@ -12,6 +13,7 @@ import {
   MatTreeNestedDataSource,
 } from '@angular/material/tree';
 import { NestedTreeControl } from '@angular/cdk/tree';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-movimientos',
@@ -47,7 +49,9 @@ export class MovimientosComponent implements OnInit {
   egresoActive = 'btn-info';
   ingresoActive = 'btn-light';
   showModalCuentas = false;
-
+  cuentasGastos 
+  categorySelected
+  
   constructor(
     public _movimientoService: MovimientoService,
     public _usuarioService: UsuarioService,
@@ -56,7 +60,9 @@ export class MovimientosComponent implements OnInit {
   ) {}
   tipos_movimiento;
   tipo;
+  pruebaDisabled = true
   async ngOnInit() {
+    this.observableBuscadores()
     const contratoOfLocal: string = localStorage.getItem('movimiento_contrato');
     contratoOfLocal ? (this.contrato = JSON.parse(contratoOfLocal)) : '';
     if (this.contrato) {
@@ -316,4 +322,81 @@ export class MovimientosComponent implements OnInit {
   onContratoSelected(contrato) {
     this.contrato = contrato;
   }
+  ocultarOnCategory = false
+  ocultarOnclickCategory(){
+    console.log(this.ocultarOnCategory);
+    
+    if (this.ocultarOnCategory) {
+      this.showModalCuentas = false
+    }
+  }
+  cuentasAbaco
+  cuentaAbaco
+  async cuentaGastoSelected(){
+    this.cuentasAbaco = await this._movimientoService.getCuentasAbaco(this.cuentaGasto._id)
+    console.log(this.cuentasAbaco);    
+    if (this.cuentasAbaco.length === 1) {
+      this.cuentaAbaco = this.cuentasAbaco[0]
+    }
+  }
+
+  crearCuentaGasto(nombre, categoria){
+    let cuenta = {
+      descripcion: nombre,
+      ctapadre: categoria.cuenta,
+      cuenta: Date.now().toString()
+    }
+    this._movimientoService.crearCuentaGasto(cuenta)
+  }
+  tipoCuentaAbaco
+  crearCuentaAbaco(codigo, descripcion, tipo, cuentaGasto){
+    let cuenta = {
+      descripcion,
+      tipo,
+      codigo,
+      tipoCuenta: cuentaGasto._id,
+      fecha_unix: new Date().getTime()
+    }
+    console.log(cuenta);    
+    this._movimientoService.crearCuentaAbaco(cuenta)
+  }
+
+  inputcuentaAbacos = new Subject<string>();
+  loadingcuentaAbacos
+  
+
+  
+  observableBuscadores() {
+    this.inputcuentaAbacos.pipe(
+
+      debounceTime(200),
+      distinctUntilChanged()
+    )
+      .subscribe(async (txt) => {
+        if (!txt) {
+          return;
+        }
+        this.loadingcuentaAbacos = true;
+        this.cuentasAbaco = await this._movimientoService.searchCuentasAbaco(txt)
+        console.log(this.cuentasAbaco);
+        
+        this.loadingcuentaAbacos = false;
+      });
+ 
+  }
+
+
+  seleccionarCuentaAbacoToEdit(cuentaAbaco){
+    console.log(cuentaAbaco);
+    
+    this.cuentaGasto = cuentaAbaco.tipoCuenta
+    this.categorySelected = this.cuentaGasto?.movimiento_padre
+  }
+  cancelarCambiosEditar(){
+    this.cuentaGasto = null;
+    this.categorySelected = null;
+    this.cuentaAbaco = null;
+    this.cuentasAbaco = null
+  }
+
 }
