@@ -344,7 +344,8 @@ export class MovimientosComponent implements OnInit {
     let cuenta = {
       descripcion: nombre,
       ctapadre: categoria.cuenta,
-      cuenta: Date.now().toString()
+      cuenta: Date.now().toString(),
+      nombre_padre: categoria.descripcion
     }
     this._movimientoService.crearCuentaGasto(cuenta)
   }
@@ -397,6 +398,10 @@ export class MovimientosComponent implements OnInit {
     this.categorySelected = null;
     this.cuentaAbaco = null;
     this.cuentasAbaco = null
+  }
+
+  eliminarCuentaGasto(id){
+    this._movimientoService.eliminarCuentaGasto(id)
   }
 
 }

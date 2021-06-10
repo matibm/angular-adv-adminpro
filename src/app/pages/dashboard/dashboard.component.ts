@@ -24,30 +24,30 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._whatsappService.listen('push_actividad').subscribe((data: any) => {
-      console.log(data);
+    // this._whatsappService.listen('push_actividad').subscribe((data: any) => {
+    //   console.log(data);
 
-      this.alertas.unshift(data);
+    //   this.alertas.unshift(data);
 
-      if (this.viendo == 'visible') {
-        setTimeout(() => {
-          // emitir que ya se vio
-        }, 3000);
-      }
+    //   if (this.viendo == 'visible') {
+    //     setTimeout(() => {
+    //       // emitir que ya se vio
+    //     }, 3000);
+    //   }
 
-    });
-    this._whatsappService.listen('push_actividades').subscribe((data: any) => {
-      console.log(data);
+    // });
+    // this._whatsappService.listen('push_actividades').subscribe((data: any) => {
+    //   console.log(data);
 
-      this.alertas = data;
-      if (this.viendo == 'visible') {
-        setTimeout(() => {
-          // emitir que ya se vio
-        }, 3000);
-      }
+    //   this.alertas = data;
+    //   if (this.viendo == 'visible') {
+    //     setTimeout(() => {
+    //       // emitir que ya se vio
+    //     }, 3000);
+    //   }
 
-    });
-    this._whatsappService.emitir('get_actividades', 'e');
+    // });
+    // this._whatsappService.emitir('get_actividades', 'e');
 
   }
 

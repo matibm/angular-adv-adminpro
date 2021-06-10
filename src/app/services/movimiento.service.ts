@@ -150,6 +150,49 @@ export class MovimientoService {
         return resp.tipo_movimientos;
       });
   }
+  eliminarCuentaGasto(id, confirmado?) {
+    let url = `${URL_SERVICIOS}/movimientos/delete_cuenta_gasto`;
+    url += `?token=${this._usuarioService.token}`;
+    url += `&id=${id}`;
+    url += `&confirmado=${confirmado || false}`;
+ 
+    return this.http
+      .delete(url)
+      .toPromise()
+      .then((resp: any) => {        
+        console.log(resp);
+        
+      if (!resp.deleted) {
+        swal.fire({
+          icon: 'warning',
+          title: 'Eliminar Cuenta Gasto',
+          text: resp.message,
+          showCancelButton: true,
+          cancelButtonText: 'cancelar',
+          cancelButtonColor: '#ef5350',
+          confirmButtonText: 'confirmar',
+          confirmButtonColor: '#06d79c',
+          showConfirmButton: true
+        }).then(res => {
+    
+          if (res.isConfirmed == true) {
+            this.eliminarCuentaGasto(id, true)
+          } else {
+            
+          }
+        });
+      } else {
+        swal.fire({
+          icon: 'success',
+          title: 'Cuenta Gasto Eliminada',
+          text: resp.message,
+          timer: 3000,
+        });
+      }
+
+        return resp.tipo_movimientos;
+      });
+  }
 
   async crearMovimiento(movimiento) {
     const caja = await this._cajaService.getCajaActual();

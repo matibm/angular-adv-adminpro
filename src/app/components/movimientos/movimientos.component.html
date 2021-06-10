@@ -2,16 +2,16 @@
 
     <div class="card">
         <ul class="nav nav-tabs profile-tab" role="tablist">
-            <li class="nav-item"> <a class="nav-link active" data-toggle="tab" (click)="ocultarOnCategory = false; cuentaGasto = null" href="#home" role="tab">Nuevo Gasto</a>
+            <li class="nav-item"> <a class="nav-link active" data-toggle="tab" (click)="cancelarCambiosEditar(); ocultarOnCategory = false; cuentaGasto = null" href="#home" role="tab">Nuevo Gasto</a>
             </li>
-            <li class="nav-item"> <a class="nav-link" data-toggle="tab" (click)="ocultarOnCategory = true; cuentaGasto = null" href="#newCuentaGasto" role="tab">Crear
+            <li class="nav-item"> <a class="nav-link" data-toggle="tab" (click)="cancelarCambiosEditar(); ocultarOnCategory = true; cuentaGasto = null" href="#newCuentaGasto" role="tab">Crear
                     Cuenta
                     Gasto</a>
             </li>
-            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#newCuentaAbaco" (click)="cuentaGasto = null  " role="tab">Cuentas
+            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#newCuentaAbaco" (click)="cancelarCambiosEditar(); cuentaGasto = null  " role="tab">Cuentas
                     Abaco</a>
             </li>
-            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#updateCuentas" (click)="ocultarOnCategory = true; cuentaGasto = null  " role="tab">Modificar Cuentas</a>
+            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#updateCuentas" (click)="cancelarCambiosEditar(); ocultarOnCategory = true; cuentaGasto = null  " role="tab">Modificar Cuentas</a>
             </li>
             <!-- <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#movimientos" role="tab">Movimientos</a>
             </li>
@@ -341,6 +341,13 @@
                                         Categoría</button>
                                     <button *ngIf="categorySelected" type="button" (click)="showModalCuentas = true" class="btn mt-2 btn-inverse">Cambiar Cuenta</button>
                                 </div>
+                                <div style="width: 100%;" class="mt-auto">
+                                    <div style="display: flex;">
+                                        <div class="mx-auto mt-2">
+                                            <button type="button" (click)="eliminarCuentaGasto(cuentaGasto._id)" class="btn mx-1 btn-rounded btn-outline-danger">Elimiar Cuenta Gasto</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="col">
@@ -381,7 +388,8 @@
                             <div style="display: flex;">
                                 <div class="mx-auto mt-2">
                                     <button type="button" (click)="cancelarCambiosEditar()" class="btn mx-1 btn-rounded btn-outline-danger">Cancelar</button>
-                                    <button type="button" class="btn mx-1 btn-rounded btn-success">Guardar Cambios</button>
+                                    <button type="button" class="btn mx-1 btn-rounded btn-success">Guardar
+                                        Cambios</button>
                                 </div>
                             </div>
                         </div>
@@ -452,5 +460,6 @@
 </div>
 
 <app-modal-contratos (contratoSelected)="onContratoSelected($event)" [showFilters]="true" [cliente]="cliente" (onClose)="showModal = false" *ngIf="showModal"></app-modal-contratos>
-<app-modal-cuentas-gastos *ngIf="showModalCuentas" (onSelectedCategory)="categorySelected = $event; ocultarOnclickCategory()" (onSelected)="cuentaGasto = $event; cuentaGastoSelected(); showModalCuentas = false" (onClose)="showModalCuentas = false">
+<app-modal-cuentas-gastos *ngIf="showModalCuentas" (onSelectedCategory)="categorySelected = $event; ocultarOnclickCategory()" (onSelected)="cuentaGasto = $event; cuentaGastoSelected(); showModalCuentas = false; ocultarOnCategory? categorySelected = $event : '' "
+    (onClose)="showModalCuentas = false">
 </app-modal-cuentas-gastos>
