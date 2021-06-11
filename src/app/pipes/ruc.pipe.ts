@@ -9,7 +9,7 @@ export class RucPipe implements PipeTransform {
   constructor(private cp: CurrencyPipe) {
 
   }
-  transform(value: string): any {
+  transform(value: string): any {    
     if (!value) {
       return '';
     }
@@ -17,13 +17,13 @@ export class RucPipe implements PipeTransform {
     let guion = '';
     let number: number;
     let conpuntos;
-    if (value.includes('-')) {
+    if (value.toString().includes('-')) {
       guion += value.slice(value.indexOf('-'));
       console.log(guion);
 
       number = parseInt(value.slice(0, value.indexOf('-') ));
     } else {
-      number = parseInt(value);
+      number = parseInt(value.toString());
     }
     conpuntos = this.cp.transform(number, '', '', '2.0');
 

@@ -83,14 +83,14 @@
                     </h4>
                     <div class="row">
                         <div class="col-xs col-md">
-                            <h4>Movimientos</h4>
+                            <h4>Gastos</h4>
                             <span><b>Monto Total: </b>{{HaberMovimientos | currency: '':'':'2.0'}} Gs</span>
                             <br>
                             <span><b>Cantidad: </b>{{movimientoCount}}</span>
                             <!-- <h4><b>Total Monto: </b>{{totalMovimientos| currency: '':'':'2.0'}} Gs</h4> -->
                         </div>
                         <div class="ml-3 col-xs col-md b-l">
-                            <h4>Facturas</h4>
+                            <h4>Ingresos</h4>
                             <span><b>Monto total: </b> {{totalFacturas | currency: '':'':'2.0'}} Gs</span>
                             <br>
                             <span><b>Cantidad: </b> {{facturaCount}}</span>
@@ -109,7 +109,7 @@
 
 
 
-    <div class="row">
+    <div *ngIf="false" class="row">
 
 
         <!-- <h4>Total en Movimientos: {{}}</h4> -->
@@ -126,79 +126,111 @@
     </ngx-loading> -->
     <div class="card">
         <div class="card-body">
+            <div style="overflow-x: auto;">
 
-            <table class="table table-hover table-sm">
-                <thead>
-                    <tr>
-                        <th>fecha</th>
-                        <th>Monto</th>
-                        <th>Cliente</th>
-                        <th>Servicio</th>
+                <table class="table  table-hover table-sm">
+                    <thead>
+                        <tr>
+                            <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '15px'}">#</th>
+                            <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '120px'}">fecha</th>
+                            <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '120px'}">Ingreso</th>
+                            <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '120px'}">Egreso</th>
+                            <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '120px'}">Saldo</th>
+                            <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '120px'}">Nro. Contrato</th>
+                            <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '120px'}">Nro. Factura</th>
+                            <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '200px'}">Cliente</th>
+                            <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '100px'}">Servicio</th>
+                            <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '400px'}">Cuenta Gasto</th>
+                            <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '400px'}">Proveedor</th>
 
-                        <th>Cuenta Gasto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of movimientosPrueba; let i = index;">
+                            <td>{{i+1}}</td>
+                            <!-- fecha -->
+                            <td [ngClass]="'text-center'">{{item.fecha_sort | date: 'dd/MM/YY'}}</td>
 
-                        <th>Proveedor</th>
+                            <!-- ingreso -->
+                            <td [ngClass]="'text-center'" [style.color]="'#009000'">
+                                <div *ngIf="item.ingreso">
+                                    {{item.ingreso | currency: '':'':'2.0'}}
+                                </div>
+                                <div *ngIf="!item.ingreso">
+                                    ---
+                                </div>
+                            </td>
+                            <td [ngClass]="'text-center'" [style.color]="' #d53032'">
+                                <div *ngIf="item.egreso">
+                                    {{item.egreso | currency: '':'':'2.0'}}
+                                </div>
+                                <div *ngIf="!item.egreso">
+                                    ---
+                                </div>
+                            </td>
+                            <td [ngClass]="'text-center'" [ngStyle]="item.total > 0? {color: '#009000'} : {color: ' #d53032'}">{{item.total | currency: '':'':'2.0'}}</td>
 
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let item of movimientosPrueba">
-                        <td>{{item.fecha_sort | date: 'short'}}</td>
-                        <td>
-                            <div style="color: #d53032;" *ngIf="item.monto_total">
-                                {{item.monto_total | currency: '':'':'2.0'}}
-                            </div>
-                            <div style="color: #009000;" *ngIf="item.haber">
-                                {{item.haber | currency: '':'':'2.0'}}
-                            </div>
-                        </td>
-                        <td>
-                            <div *ngIf="item.cliente">
-                                {{item.cliente?.APELLIDOS}} {{item.cliente?.NOMBRES}}
-                            </div>
-                            <div *ngIf="item.titular">
-                                {{item.titular?.APELLIDOS}} {{item.titular?.NOMBRES}}
-                            </div>
-                        </td>
-                        <td>
-                            <div *ngIf="item.servicio">
-                                {{item.servicio?.NOMBRE}}
-                            </div>
-                            <div *ngIf="item.contrato">
-                                {{item.contrato?.producto?.NOMBRE}}
-                            </div>
-                        </td>
-                        <td>
-                            <div *ngIf="item.nombre">
-                                {{item.nombre}}
-                            </div>
-                            <div *ngIf="!item.nombre">
-                                ---
-                            </div>
-                        </td>
+                            <!-- nro contrato -->
+                            <td [ngClass]="'text-center'">
+                                <div *ngIf="item.contrato">{{item.contrato?.nro_contrato | ruc}}</div>
+                                <div *ngIf="!item.contrato?.nro_contrato">---</div>
+                            </td>
+                            <!-- nro factura -->
+                            <td [ngClass]="'text-center'">
+                                <div *ngIf="item.nro_factura >0 ">{{item.nro_factura | ruc}}</div>
+                                <div *ngIf="!item.nro_factura">---</div>
+                            </td>
+                            <!-- cliente -->
+                            <td [ngClass]="'text-center'">
+                                <div *ngIf="item.cliente">
+                                    {{item.cliente?.APELLIDOS | primerNombre}} {{item.cliente?.NOMBRES | primerNombre}}
+                                </div>
+                                <div *ngIf="item.titular">
+                                    {{item.titular?.APELLIDOS | primerNombre}} {{item.titular?.NOMBRES | primerNombre}}
+                                </div>
+                            </td>
+                            <!-- servicio -->
+                            <td [ngClass]="'text-center'">
+                                <div *ngIf="item.servicio">
+                                    {{item.servicio?.COD_CORTO}}
+                                </div>
+                                <div *ngIf="item.contrato">
+                                    {{item.contrato?.producto?.COD_CORTO}}
+                                </div>
+                            </td>
+                            <!-- proveedor -->
+                            <td [ngClass]="'text-center'">
+                                <div *ngIf="item.nombre">
+                                    {{item.nombre}}
+                                </div>
+                                <div *ngIf="!item.nombre">
+                                    ---
+                                </div>
+                            </td>
 
 
 
 
-                        <td>
-                            <div *ngIf="item.proveedor">
-                                {{item.proveedor?.APELLIDOS}} {{item.proveedor?.NOMBRES}}
-                            </div>
-                            <div *ngIf="!item.proveedor">
-                                ---
-                            </div>
-                        </td>
+                            <td [ngClass]="'text-center'">
+                                <div *ngIf="item.proveedor">
+                                    {{item.proveedor?.APELLIDOS}} {{item.proveedor?.NOMBRES}}
+                                </div>
+                                <div *ngIf="!item.proveedor">
+                                    ---
+                                </div>
+                            </td>
 
 
 
-                    </tr>
-                    <tr>
-                        <td scope="row"></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
+                        </tr>
+                        <tr>
+                            <td scope="row"></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 

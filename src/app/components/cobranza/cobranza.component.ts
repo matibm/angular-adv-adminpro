@@ -108,10 +108,10 @@ export class CobranzaComponent implements OnInit {
 
   async ngOnInit() {
     this.observableBuscadores();
-    const respF = await this._facturaService.getFacturasOptions(this.opciones);
-    this.count = respF.count;
-    this.facturas = respF.facturas;
-    console.log(this.facturas);
+    // const respF = await this._facturaService.getFacturasOptions(this.opciones);
+    // this.count = respF.count;
+    // this.facturas = respF.facturas;
+    // console.log(this.facturas);
 
     this.servicios = await this._productoService.getProductos();
     this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', '');
@@ -231,6 +231,9 @@ export class CobranzaComponent implements OnInit {
     this.lista.push(obj);
     // this.filtros.push()
     this.facturasAPagarAux = await this._facturaService.pagarPorMonto({ lista: this.lista });
+    console.log(this.facturasAPagarAux);
+    
+
     this.contrato = null;
     this.filtrar();
     this.facturaPdf = this.crearPDF(this.facturasAPagarAux);
