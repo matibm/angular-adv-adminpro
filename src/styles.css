@@ -6,6 +6,45 @@
     cursor: pointer;
 }
 
+
+/* 
+.ng-select-container {
+    background-color: #2f3d4a !important;
+    color: azure !important;
+    border-color: #475469 !important;
+ }
+
+.ng-dropdown-panel {
+    border-color: #475469 !important;
+}
+
+.ng-option {
+    background-color: #2f3d4a !important;
+    color: azure !important;
+    border: 0px !important;
+ }
+
+.ng-input {
+    background-color: #2f3d4a;
+ } */
+
+.t1 {
+    font-size: x-large;
+}
+
+.t2 {
+    font-size: larger;
+}
+
+.t3 {
+    font-size: large;
+}
+
+
+/* .page-wrapper {
+    background-color: #212529;
+} */
+
 .inline-flex {
     display: flex;
 }

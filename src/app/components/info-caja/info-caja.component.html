@@ -7,8 +7,8 @@
     <div class="row">
         <div class="col-xs col-md">
             <div class="card">
-                <div class="card-body">
-                    <h4> <span class="lstick"></span> Filtros </h4>
+                <div class="card-body  ">
+                    <span> <span class="lstick"></span>Filtros </span>
                     <div class="row">
                         <div class="col-xs col-md-5 pl-3 mr-3">
                             <p>Fondo: </p>
@@ -30,13 +30,11 @@
                                 </div>
 
                                 <div class="ml-2" *ngIf="fondo">
-                                    <h3>
-                                        <div *ngIf="fondo.NOMBRES">{{fondo.NOMBRES}} {{fondo.APELLIDOS}}</div>
-                                        <div *ngIf="fondo.NOMBRES && fondo.RAZON"> - </div>
-                                        <div *ngIf="fondo.RAZON">{{fondo.RAZON}} </div>
+                                    <span>
+                                        <div *ngIf="fondo.APELLIDOS">{{fondo.APELLIDOS}} {{fondo.NOMBRES}} </div>
 
                                         <small>{{fondo.RUC | ruc}}</small>
-                                    </h3>
+                                    </span>
                                 </div>
                                 <div *ngIf="fondo" (click)="fondo = null" class="pointer close-icon ml-2">
                                     <button type="button" (click)="ngOnInit()" class="btn btn-sm btn-light"><i
@@ -77,20 +75,20 @@
         <div class="col-xs col-md">
 
             <div class="card">
-                <div class="card-body">
+                <div class="card-body ">
 
-                    <h4> <span class="lstick"></span> Arqueo
-                    </h4>
+                    <span class="t1"> <span class="lstick"></span>Arqueo
+                    </span>
                     <div class="row">
                         <div class="col-xs col-md">
-                            <h4>Gastos</h4>
+                            <div class="t3">Gastos</div>
                             <span><b>Monto Total: </b>{{HaberMovimientos | currency: '':'':'2.0'}} Gs</span>
                             <br>
                             <span><b>Cantidad: </b>{{movimientoCount}}</span>
-                            <!-- <h4><b>Total Monto: </b>{{totalMovimientos| currency: '':'':'2.0'}} Gs</h4> -->
+                            <!-- <span><b>Total Monto: </b>{{totalMovimientos| currency: '':'':'2.0'}} Gs</span> -->
                         </div>
                         <div class="ml-3 col-xs col-md b-l">
-                            <h4>Ingresos</h4>
+                            <div class="t3">Ingresos</div>
                             <span><b>Monto total: </b> {{totalFacturas | currency: '':'':'2.0'}} Gs</span>
                             <br>
                             <span><b>Cantidad: </b> {{facturaCount}}</span>
@@ -98,8 +96,11 @@
 
                     </div>
                     <div class="mt-3 inline-flex">
-                        <h2><b>Total: </b> {{ (totalFacturas + HaberMovimientos) | currency: '':'':'2.0'}} Gs</h2>
-                        <button type="button" [disabled]="!fondo" (click)="cerrarCaja()" class="btn ml-auto btn-success">Cerrar Caja</button>
+                        <span class="t1"><b>Total: </b> <span
+                                [ngStyle]="(totalFacturas + HaberMovimientos) >= 0? {color: '#009000'} : {color: ' #d53032'}">
+                                {{ (totalFacturas + HaberMovimientos) | currency: '':'':'2.0'}}
+                            </span> Gs</span>
+                        <button type="button" [disabled]="!fondo || listItems.length <1" (click)="cerrarCaja()" class="btn ml-auto btn-rounded btn-success">Cerrar Caja</button>
                     </div>
 
                 </div>
@@ -112,7 +113,7 @@
     <div *ngIf="false" class="row">
 
 
-        <!-- <h4>Total en Movimientos: {{}}</h4> -->
+        <!-- <span>Total en Movimientos: {{}}</span> -->
         <div class="col-xs col-md">
             <app-lista-movimientos *ngIf="movimientos" [movimientos]="movimientos"></app-lista-movimientos>
         </div>
@@ -124,11 +125,48 @@
 
     <!-- <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate">
     </ngx-loading> -->
-    <div class="card">
-        <div class="card-body">
-            <div style="overflow-x: auto;">
+    <div class="card mb-0">
+        <div class="card-body ">
+            <!-- <div style=" width: 100%;">
+                <div [style.display]="'flex'">
+                   
+                </div>
+            </div> -->
+            <div class="position:sticky; top: 0;" style="width: 100%;">
+                <div style="display: flex;">
+                    <div class="mx-auto">
+                        <table class="table  table-responsive">
+                            <thead class="table-inverse">
+                                <tr>
+                                    <th class="text-center ">Ingreso <span class="badge badge-pill bg-info">{{cantidadIngreso}}</span>
+                                    </th>
+                                    <th class="text-center ">Egreso <span class="badge badge-pill bg-danger">{{cantidadEgreso}}</span></th>
+                                    <th class="text-center ">Total <span class="badge badge-pill bg-secondary">{{cantidadTotal}}</span> </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
 
-                <table class="table  table-hover table-sm">
+                                    <td class="text-center px-4">{{montoIngreso | currency: '':'':'2.0'}} Gs</td>
+                                    <td class="text-center px-4">{{montoEgreso | currency: '':'':'2.0'}} Gs</td>
+                                    <td class="text-center px-4">{{montoTotal | currency: '':'':'2.0'}} Gs</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class=" my-1">
+                        <button type="button" (click)="switchTableColor()" class="btn  btn-rounded btn-{{tableColor}}">
+                            <i class="fa fa-{{iconTableColor}}"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div style="overflow: auto; max-height: 500px;">
+
+                <table class="table full-color-table full-{{tableColor}}-table hover-table   table-sm">
                     <thead>
                         <tr>
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '15px'}">#</th>
@@ -145,11 +183,11 @@
 
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr *ngFor="let item of movimientosPrueba; let i = index;">
+                    <tbody id="the_body">
+                        <tr class="pointer" id="id-{{item._id}}" (click)="selectItem(item)" *ngFor="let item of movimientosPrueba; let i = index;">
                             <td>{{i+1}}</td>
                             <!-- fecha -->
-                            <td [ngClass]="'text-center'">{{item.fecha_sort | date: 'dd/MM/YY'}}</td>
+                            <td [ngClass]="'text-center'">{{item.fecha_sort | date: 'dd-MM-YY'}}</td>
 
                             <!-- ingreso -->
                             <td [ngClass]="'text-center'" [style.color]="'#009000'">

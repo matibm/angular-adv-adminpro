@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="">
     <div class="row">
         <div class="col-md col-xs">
             <div class="card ">
@@ -383,11 +383,16 @@
         </div>
 
     </div>
-    <div class="float-right">
-        <button type="button" [routerLink]="['/admin/editar_contrato', this.id]" class="btn mr-2 btn-secondary">Editar
-            Contrato</button>
-        <button type="button" (click)="crearMovimiento()" class="btn  btn-primary">Crear Movimiento</button>
-        <button type="button" (click)="showModalPdf = true" class="btn mx-2 btn-primary">Ver PDF</button>
+    <div style="width: 100%;">
+        <div style="display: flex;">
+            <div class="ml-auto">
+                <button type="button" [routerLink]="['/admin/editar_contrato', this.id]" class="btn btn-rounded mr-2 btn-inverse"> <i class="fa fa-pencil" aria-hidden="true"></i> Editar Contrato</button>
+                <!-- <button type="button" (click)="crearMovimiento()" class="btn   btn-rounded btn-info">Crear
+                    Movimiento</button> -->
+                <button type="button" (click)="showModalPdf = true" class="btn btn-rounded  mx-2 btn-success">Ver
+                    PDF</button>
+            </div>
+        </div>
     </div>
 
 

@@ -1,13 +1,16 @@
 <!-- ============================================================== -->
 <!-- Bread crumb and right sidebar toggle -->
 <!-- ============================================================== -->
-<div class="row page-titles">
+<span class="t2">
+    <a class=" nav-link waves-effect " (click)="onback()" href="javascript:void(0)"><i class="ti-angle-double-left"></i></a> {{title | titleBreadcrumb | titlecase}}
+</span>
+<div *ngIf="false" class="row page-titles">
     <div class="col-md-5 inline-flex align-self-center">
-        <h3 class="  mx-1">
-            <a (click)="onback()" href="javascript:void(0)"><i class="ti-angle-double-left"></i></a>
+        <!-- <h3 class="  mx-1">
+            
 
-        </h3>
-        <h3 class="text-themecolor"> {{title | titleBreadcrumb | titlecase}}</h3>
+        </h3> -->
+
     </div>
     <div *ngIf="false" class="col-md-7 align-self-center">
         <ol class="breadcrumb">

@@ -13,12 +13,8 @@
             </li>
             <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#updateCuentas" (click)="cancelarCambiosEditar(); ocultarOnCategory = true; cuentaGasto = null  " role="tab">Modificar Cuentas</a>
             </li>
-            <!-- <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#movimientos" role="tab">Movimientos</a>
-            </li>
-            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#pagos" role="tab">Pagos</a>
-            </li>
-            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#settings" role="tab">Ajustes</a>
-            </li> -->
+            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#listaGastos" role="tab">Lista de Gastos</a> </li>
+
         </ul>
         <div class="card-body ">
             <div class="tab-content">
@@ -243,8 +239,8 @@
                         </div>
 
                         <div class="float-right">
-                            <button type="button" (click)="saveshowCrearMovimiento(false)" class="btn btn-danger">cancelar</button>
-                            <button type="submit" (click)="crearMovimiento()" [disabled]="!allowCreateMovimiento()" class="btn btn-primary ml-2">Crear</button>
+                            <button type="button" (click)="saveshowCrearMovimiento(false)" class="btn btn-inverse btn-rounded">cancelar</button>
+                            <button type="submit" (click)="crearMovimiento()" [disabled]="!allowCreateMovimiento()" class="btn btn-rounded btn-success ml-2">Crear</button>
                         </div>
 
                     </div>
@@ -395,6 +391,33 @@
                         </div>
                     </div>
                 </div>
+                <div class="tab-pane " id="listaGastos" role="tabpanel">
+                    <table *ngIf="!showCrearMovimiento && movimientos.length>0" class="table full-color-table full-{{'inverse'}}-table hover-table   table-hover">
+                        <thead>
+                            <tr>
+                                <th>Nro Factura</th>
+                                <th>Fecha</th>
+                                <th>Proveedor</th>
+                                <th>Cuenta de Gasto</th>
+                                <th style="width: 25%;">Comentario</th>
+                                <th>Monto total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of movimientos" [ngClass]="'pointer'">
+                                <td>{{item.nro_factura}}</td>
+                                <td>{{item.fecha_creacion_unix | date: 'dd-MM-YY'}}</td>
+                                <td>{{item.proveedor?.APELLIDOS}}</td>
+                                <td>{{item.nombre}}</td>
+                                <td>{{item.comentario}}</td>
+
+                                <td>{{item.monto_total | currency: '':'':'2.0'}} Gs</td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
 
             </div>
 
@@ -427,35 +450,7 @@
             </mat-tree>
         </div>
     </div>
-    <div class="card">
-        <div class="card-body">
-            <table *ngIf="!showCrearMovimiento && movimientos.length>0" class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>Nro Factura</th>
-                        <th>Fecha</th>
-                        <th>Proveedor</th>
-                        <th>Cuenta de Gasto</th>
-                        <th style="width: 25%;">Comentario</th>
-                        <th>Monto total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let item of movimientos" [ngClass]="'pointer'">
-                        <td>{{item.nro_factura}}</td>
-                        <td>{{item.fecha_creacion_unix | date}}</td>
-                        <td>{{item.proveedor?.APELLIDOS}}</td>
-                        <td>{{item.nombre}}</td>
-                        <td>{{item.comentario}}</td>
 
-                        <td>{{item.monto_total | currency: '':'':'2.0'}} Gs</td>
-
-                    </tr>
-
-                </tbody>
-            </table>
-        </div>
-    </div>
 
 </div>
 
