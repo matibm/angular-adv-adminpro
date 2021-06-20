@@ -110,18 +110,7 @@
 
 
 
-    <div *ngIf="false" class="row">
-
-
-        <!-- <span>Total en Movimientos: {{}}</span> -->
-        <div class="col-xs col-md">
-            <app-lista-movimientos *ngIf="movimientos" [movimientos]="movimientos"></app-lista-movimientos>
-        </div>
-        <div class="col-xs col-md">
-            <button type="button" (click)="print()" class="btn btn-primary">print</button>
-            <app-facturas [selectable]='true' [fondo]="fondo" (AllSelectedEvent)="isAllSelectedIngresos = $event" (listItemsEvent)="listItems = $event" [cerrado]="false" [pagado]="true" [start]="start" [end]="end" [count]="facturaCount" [fromOutside]="true" [facturas]="facturas"></app-facturas>
-        </div>
-    </div>
+   
 
     <!-- <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate">
     </ngx-loading> -->

@@ -4,6 +4,7 @@ import { UsuarioService } from './../../services/usuario.service';
 import { Producto } from './../../models/producto';
 import { ProductosService } from 'src/app/services/productos.service';
 import { Component, OnInit } from '@angular/core';
+import { Contrato } from 'src/app/models/contrato';
 
 @Component({
   selector: 'app-crear-factura',
@@ -26,7 +27,8 @@ export class CrearFacturaComponent implements OnInit {
   cobradores;
   vencimiento;
   vencimientoString;
-
+  contrato: Contrato;
+  showModal = false
   async ngOnInit() {
 
     this.servicios = await this._productoService.getProductos();
@@ -64,6 +66,7 @@ export class CrearFacturaComponent implements OnInit {
       titular: this.cliente?._id || '',
       servicio: this.servicio?._id || '',
       cobrador: this.cobrador?._id || '',
+      contrato: this.contrato?._id,
       vencimiento: this.vencimiento || new Date().getTime()
     };
     const factura = await this._facturaService.crearFactura(body);

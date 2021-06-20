@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class TitleBreadcrumbPipe implements PipeTransform {
 
-  transform(value: unknown, ...args: unknown[]): unknown {
+  transform(value: any, ...args: any[]): string {
     let data = value;
     value == 'info_contrato' ? data = 'Información de Contrato' : null;
     value == 'crear_contrato' ? data = 'Crear Contrato' : null;

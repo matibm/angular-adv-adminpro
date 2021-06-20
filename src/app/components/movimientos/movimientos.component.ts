@@ -49,15 +49,15 @@ export class MovimientosComponent implements OnInit {
   egresoActive = 'btn-info';
   ingresoActive = 'btn-light';
   showModalCuentas = false;
-  cuentasGastos 
+  cuentasGastos
   categorySelected
-  
+
   constructor(
     public _movimientoService: MovimientoService,
     public _usuarioService: UsuarioService,
     public _contratoService: ContratoService,
     public _productoService: ProductosService
-  ) {}
+  ) { }
   tipos_movimiento;
   tipo;
   pruebaDisabled = true
@@ -190,9 +190,9 @@ export class MovimientosComponent implements OnInit {
   }
 
   async onSelectProveedor(proveedor) {
-     let resp:any = await this._movimientoService.getUltimaCuenta(proveedor._id);
-     this.cuentaGasto = resp.cuenta
-     this.fondo = resp.fondo
+    let resp: any = await this._movimientoService.getUltimaCuenta(proveedor._id);
+    this.cuentaGasto = resp.cuenta
+    this.fondo = resp.fondo
   }
 
   async crearMovimiento() {
@@ -323,24 +323,27 @@ export class MovimientosComponent implements OnInit {
     this.contrato = contrato;
   }
   ocultarOnCategory = false
-  ocultarOnclickCategory(){
+  ocultarOnclickCategory() {
     console.log(this.ocultarOnCategory);
-    
+
     if (this.ocultarOnCategory) {
       this.showModalCuentas = false
     }
   }
   cuentasAbaco
+  categorias
+  categoria
   cuentaAbaco
-  async cuentaGastoSelected(){
+  async cuentaGastoSelected() {
     this.cuentasAbaco = await this._movimientoService.getCuentasAbaco(this.cuentaGasto._id)
-    console.log(this.cuentasAbaco);    
+    if (this.cuentaGasto.categoria) this.categoria = await this._movimientoService.getCategoriaById(this.cuentaGasto.categoria)
+    console.log(this.cuentasAbaco);
     if (this.cuentasAbaco.length === 1) {
       this.cuentaAbaco = this.cuentasAbaco[0]
     }
   }
 
-  crearCuentaGasto(nombre, categoria){
+  crearCuentaGasto(nombre, categoria) {
     let cuenta = {
       descripcion: nombre,
       ctapadre: categoria.cuenta,
@@ -350,7 +353,7 @@ export class MovimientosComponent implements OnInit {
     this._movimientoService.crearCuentaGasto(cuenta)
   }
   tipoCuentaAbaco
-  crearCuentaAbaco(codigo, descripcion, tipo, cuentaGasto){
+  crearCuentaAbaco(codigo, descripcion, tipo, cuentaGasto) {
     let cuenta = {
       descripcion,
       tipo,
@@ -358,15 +361,26 @@ export class MovimientosComponent implements OnInit {
       tipoCuenta: cuentaGasto._id,
       fecha_unix: new Date().getTime()
     }
-    console.log(cuenta);    
+    console.log(cuenta);
     this._movimientoService.crearCuentaAbaco(cuenta)
+  }
+  crearCategoria(codigo, descripcion) {
+    let cuenta = {
+      descripcion,
+      codigo
+      
+    }
+    console.log(cuenta);
+    this._movimientoService.crearCategoriaGasto(cuenta)
   }
 
   inputcuentaAbacos = new Subject<string>();
+  inputcategorias = new Subject<string>();
   loadingcuentaAbacos
-  
+  loadingcategorias
 
-  
+
+
   observableBuscadores() {
     this.inputcuentaAbacos.pipe(
 
@@ -380,28 +394,57 @@ export class MovimientosComponent implements OnInit {
         this.loadingcuentaAbacos = true;
         this.cuentasAbaco = await this._movimientoService.searchCuentasAbaco(txt)
         console.log(this.cuentasAbaco);
-        
+
         this.loadingcuentaAbacos = false;
       });
- 
+    this.inputcategorias.pipe(
+
+      debounceTime(200),
+      distinctUntilChanged()
+    )
+      .subscribe(async (txt) => {
+        if (!txt) {
+          return;
+        }
+        this.loadingcategorias = true;
+        this.categorias = await this._movimientoService.searchCategorias(txt)
+        console.log(this.categorias);
+
+        this.loadingcategorias = false;
+      });
+
   }
 
 
-  seleccionarCuentaAbacoToEdit(cuentaAbaco){
+  seleccionarCuentaAbacoToEdit(cuentaAbaco) {
     console.log(cuentaAbaco);
-    
+
     this.cuentaGasto = cuentaAbaco.tipoCuenta
     this.categorySelected = this.cuentaGasto?.movimiento_padre
   }
-  cancelarCambiosEditar(){
+  seleccionarCategoriaToEdit(categoria) {
+    console.log(categoria);
+
+    this.categoria = categoria
+    this.cuentaGasto.categoria = categoria._id
+  }
+  cancelarCambiosEditar() {
     this.cuentaGasto = null;
     this.categorySelected = null;
     this.cuentaAbaco = null;
     this.cuentasAbaco = null
   }
 
-  eliminarCuentaGasto(id){
+  eliminarCuentaGasto(id) {
     this._movimientoService.eliminarCuentaGasto(id)
+  }
+
+  guardarCambios() {
+    let body: any = {}
+    this.categoria ? body.categoria = this.categoria : ''
+    this.cuentaGasto ? body.cuenta_gasto = this.cuentaGasto : ''
+    this.cuentaAbaco ? body.cuenta_abaco = this.cuentaAbaco : ''
+    this._movimientoService.updateCuentas(body)
   }
 
 }

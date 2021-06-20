@@ -9,6 +9,7 @@ export class Producto {
         public NOMBRE?: string,
         public CARACTERISTICAS?: string,
         public UNIDAD_MEDIDA?: string,
+        public tipo_servicio?: string,
         public KILO_BOLSA?: string,
         public ULT_PREC_COMPRA?: string,
         public ULT_PREC_VENNTA?: string,

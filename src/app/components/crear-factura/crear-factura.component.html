@@ -13,7 +13,9 @@
                             </div>
                         </div>
                         <div class="" *ngIf="!cliente">
-                            <ng-select [items]="clientes" [(ngModel)]="cliente" (search)="searchClientes($event)" notFoundText="no se encontraron resultados" placeholder="buscar cliente" bindLabel="NOMBRES" [searchFn]="customSearchFn">
+                            <ng-select [items]="clientes" [(ngModel)]="cliente" (search)="searchClientes($event)"
+                                notFoundText="no se encontraron resultados" placeholder="buscar cliente"
+                                bindLabel="NOMBRES" [searchFn]="customSearchFn">
                                 <ng-template ng-option-tmp let-item="item">
                                     <div>
                                         <div *ngIf="item.APELLIDOS">{{item.APELLIDOS}} {{item.NOMBRES}}</div>
@@ -51,7 +53,9 @@
                             </div>
                         </div>
                         <div class="" *ngIf="!cobrador">
-                            <ng-select [items]="cobradores" [(ngModel)]="cobrador" (search)="searchCobradores($event)" notFoundText="no se encontraron resultados" placeholder="buscar cobrador" bindLabel="NOMBRES" [searchFn]="customSearchFn">
+                            <ng-select [items]="cobradores" [(ngModel)]="cobrador" (search)="searchCobradores($event)"
+                                notFoundText="no se encontraron resultados" placeholder="buscar cobrador"
+                                bindLabel="NOMBRES" [searchFn]="customSearchFn">
                                 <ng-template ng-option-tmp let-item="item">
                                     <div>
                                         <div *ngIf="item.APELLIDOS">{{item.APELLIDOS}} {{item.NOMBRES}}</div>
@@ -86,12 +90,14 @@
 
                             <div *ngIf="servicio" style="height: fit-content;" class="pointer close-icon ml-auto">
                                 <button (click)="servicio = null" type="button" class="btn btn-sm btn-light"><i
-                                    class=" ti-close  "></i></button>
+                                        class=" ti-close  "></i></button>
                             </div>
                         </div>
 
                         <div class="" *ngIf="!servicio">
-                            <ng-select *ngIf="!servicio" [(ngModel)]="servicio" [items]="servicios" notFoundText="no se encontraron resultados" placeholder="buscar servicio" bindLabel="NOMBRE">
+                            <ng-select *ngIf="!servicio" [(ngModel)]="servicio" [items]="servicios"
+                                notFoundText="no se encontraron resultados" placeholder="buscar servicio"
+                                bindLabel="NOMBRE">
                                 <ng-template ng-option-tmp let-item="item">
                                     <div> {{item.NOMBRE}} {{item.COD_CORTO}} <br>
                                     </div>
@@ -116,19 +122,55 @@
 
         <div *ngIf="servicio" class="form-group">
             <label for="">Monto</label>
-            <input type="number" class="form-control" [(ngModel)]="servicio.PRECIO_MAYORISTA" name="" id="" aria-describedby="helpId" placeholder="">
+            <input type="number" class="form-control" [(ngModel)]="servicio.PRECIO_MAYORISTA" name="" id=""
+                aria-describedby="helpId" placeholder="">
             <br>
             <label for="fecha_inicio">Vencimiento :
                 <span><b>{{vencimiento | date}}</b></span>
             </label>
-            <input type="text" name="fecha_inicio" [(ngModel)]="vencimientoString" (ngModelChange)="vencimiento = calcularFecha(vencimientoString)" id="fecha_inicio" class="form-control" placeholder="AAAA MM DD" aria-describedby="fechainicioid">
+            <input type="text" name="fecha_inicio" [(ngModel)]="vencimientoString"
+                (ngModelChange)="vencimiento = calcularFecha(vencimientoString)" id="fecha_inicio" class="form-control"
+                placeholder="AAAA MM DD" aria-describedby="fechainicioid">
 
 
         </div>
 
-
+        <button *ngIf="!contrato" type="button" class="btn btn-inverse btn-rounded" (click)="showModal = true;">
+            Relacionar Contrato
+        </button>
+        <div style="width: fit-content;">
+            <div *ngIf="contrato"style="display: flex;" class="">
+                <span>Contrato</span>
+                <div  style="height: fit-content;" class="pointer close-icon ml-auto">
+                    <button (click)="contrato = null" type="button" class="btn btn-sm btn-light"><i
+                            class=" ti-close  "></i></button>
+                </div>
+            </div>
+    
+            <div *ngIf="contrato" class="">
+                <div style="display: flex;" class="">
+    
+                    <div class="card bg-light">
+                        <div class="card-body">
+    
+                            <span><b>Titular:</b> {{contrato.titular.NOMBRES}}
+                                {{contrato.titular.APELLIDOS}}</span>
+                            <br>
+                            <span><b>Servicio:</b> {{contrato.producto.NOMBRE}}</span>
+                            <br>
+                            <span><b>Número de contrato:</b> {{contrato.nro_contrato}}</span>
+                            <br>
+                            <span><b>Fecha de creación:</b> {{contrato.fecha_creacion_unix | date
+                                }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div></div>
         <div class="d-flex">
             <button type="button" (click)="crearFactura()" class="btn mx-auto btn-info">Crear Ingreso</button>
         </div>
     </div>
 </div>
+
+<app-modal-contratos (contratoSelected)="contrato = $event" [showFilters]="true" [cliente]="cliente"
+    (onClose)="showModal = false" *ngIf="showModal"></app-modal-contratos>

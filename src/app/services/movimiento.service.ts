@@ -13,7 +13,7 @@ export class MovimientoService {
     public http: HttpClient,
     public _usuarioService: UsuarioService,
     public _cajaService: CajaService
-  ) {}
+  ) { }
   getTipoMovimiento(nivel?, padre?) {
     console.log('nivel', nivel);
     console.log('padre:', padre);
@@ -73,6 +73,32 @@ export class MovimientoService {
         return resp.cuentas;
       });
   }
+  searchCategorias(search) {
+    let url = `${URL_SERVICIOS}/movimientos/search_categorias`;
+    url += `?token=${this._usuarioService.token}`;
+    url += `&search=${search}`;
+    return this.http
+      .get(url)
+      .toPromise()
+      .then((resp: any) => {
+        return resp.categorias;
+      });
+  }
+
+  getCategoriaById(id) {
+    let url = `${URL_SERVICIOS}/movimientos/categoria_by_id`;
+    url += `?token=${this._usuarioService.token}`;
+    url += `&id=${id}`;
+    return this.http
+      .get(url)
+      .toPromise()
+      .then((resp: any) => {
+        console.log(resp);
+        
+        return resp.categoria;
+      });
+  }
+
   crearCuentaGasto(cuenta) {
     let url = `${URL_SERVICIOS}/movimientos/crer_cuenta_gasto`;
     url += `?token=${this._usuarioService.token}`;
@@ -81,6 +107,7 @@ export class MovimientoService {
       .toPromise()
       .then((resp: any) => {
         console.log(resp);
+        swal.fire('Cuenta creada', '', 'success')
 
         return resp.cuenta;
       });
@@ -93,6 +120,19 @@ export class MovimientoService {
       .toPromise()
       .then((resp: any) => {
         console.log(resp);
+        swal.fire('Cuenta creada', '', 'success')
+        return resp.cuenta;
+      });
+  }
+  crearCategoriaGasto(categoria) {
+    let url = `${URL_SERVICIOS}/movimientos/crear_categoria`;
+    url += `?token=${this._usuarioService.token}`;
+    return this.http
+      .post(url, categoria)
+      .toPromise()
+      .then((resp: any) => {
+        console.log(resp);
+        swal.fire('Categoria creada', '', 'success')
 
         return resp.cuenta;
       });
@@ -109,6 +149,19 @@ export class MovimientoService {
     }
     return this.http
       .get(url)
+      .toPromise()
+      .then((resp: any) => {
+        console.log(resp);
+
+        return resp;
+      });
+  }
+  updateCuentas(body) {
+    let url = `${URL_SERVICIOS}/movimientos/guardar_cambios`;
+    url += `?token=${this._usuarioService.token}`;
+
+    return this.http
+      .post(url, body)
       .toPromise()
       .then((resp: any) => {
         console.log(resp);
