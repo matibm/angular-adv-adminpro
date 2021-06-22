@@ -32,14 +32,21 @@ export class SidebarService {
       titulo: 'Finanzas',
       icono: 'mdi mdi-cash',
       submenu: [
-        { titulo: 'Cobranzas', url: 'cobranzas' },
-        { titulo: 'Ingresos', url: 'ingresos' },
-        { titulo: 'Gastos', url: 'gastos' },
-        { titulo: 'caja', url: 'info_caja' },
-        { titulo: 'resumen', url: 'resumen' },
-        { titulo: 'transferencias', url: 'transferencia' },
+        { titulo: 'Ingresos', url: 'cobranzas' },
+        { titulo: 'Egresos/Gastos', url: 'gastos' },
+        { titulo: 'Cajas/Bancos', url: 'info_caja' },
+        // { titulo: 'transferencias', url: 'transferencia' },
 
       ]
+    },
+    {
+      titulo: 'Reportes',
+      icono: 'mdi mdi-home',
+      submenu: [
+         { titulo: 'resumen', url: 'resumen' },
+         { titulo: 'Ingresos', url: 'ingresos' },
+
+        ]
     },
     {
       titulo: 'Productos',

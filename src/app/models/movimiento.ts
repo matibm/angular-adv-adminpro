@@ -5,6 +5,7 @@ import { Usuario } from './usuario';
 export class Movimiento {
     constructor(
         public id_movimiento?: string,
+        public categoria?: any,
         public fecha?: string,
         public id_cuentacaja?: string,
         public nombre?: string,

@@ -51,6 +51,16 @@ export class MovimientosComponent implements OnInit {
   showModalCuentas = false;
   cuentasGastos
   categorySelected
+  cuentasAbaco
+  categorias
+  categoria
+  cuentaAbaco
+  tipoCuentaAbaco
+  inputcuentaAbacos = new Subject<string>();
+  inputcategorias = new Subject<string>();
+  loadingcuentaAbacos
+  loadingcategorias
+  ocultarOnCategory = false
 
   constructor(
     public _movimientoService: MovimientoService,
@@ -76,7 +86,7 @@ export class MovimientosComponent implements OnInit {
     this.dataSource.data = this.tipos_movimiento;
 
     this.movimientos = await this._movimientoService.getMovimientos();
-    console.log(this.movimientos);
+    //this.movimientos);
     this.clientes = await this._usuarioService.buscarUsuarios('CLIENTES', '');
     this.proveedores = await this._usuarioService.buscarUsuarios(
       'PROVEEDORES',
@@ -90,7 +100,7 @@ export class MovimientosComponent implements OnInit {
   async selectCategory(tipo) {
     this.tipo = tipo;
     history.forward();
-    console.log(tipo);
+    //tipo);
     if (!tipo) {
       return;
     }
@@ -104,12 +114,12 @@ export class MovimientosComponent implements OnInit {
     this.movimientos = await this._movimientoService.getMovimientos(
       tipo.cuenta
     );
-    console.log(this.movimientos);
+    //this.movimientos);
   }
   async selectCategoryinitial(tipo) {
     this.tipo = tipo;
     history.forward();
-    console.log(tipo);
+    //tipo);
     if (!tipo) {
       return;
     }
@@ -122,7 +132,7 @@ export class MovimientosComponent implements OnInit {
     this.movimientos = await this._movimientoService.getMovimientos(
       tipo.cuenta
     );
-    console.log(this.movimientos);
+    //this.movimientos);
   }
 
   async searchTipoMovimientos(event) {
@@ -141,7 +151,6 @@ export class MovimientosComponent implements OnInit {
       item.nombre_padre.toLowerCase().includes(term)
     );
   }
-
   customSearchFn(term: string, item: any) {
     term = term.toLowerCase();
     return (
@@ -151,36 +160,33 @@ export class MovimientosComponent implements OnInit {
       item.RUC.toLowerCase().includes(term)
     );
   }
-
   add(event) {
-    console.log(event);
+    //event);
   }
-
   async navigateBreadcrumb(i) {
     this.tipo = this.breadCrumb[i];
 
     this.breadCrumb = this.breadCrumb.slice(0, i + 1);
-    console.log(this.tipo.ctapadre);
+    //this.tipo.ctapadre);
 
     if (this.tipo.ctapadre == '0') {
       this.tipos_movimiento = await this._movimientoService.getTipoMovimiento(
         2,
         this.tipo.cuenta
       );
-      console.log('cero');
+      //'cero');
     } else {
       this.tipos_movimiento = await this._movimientoService.getTipoMovimiento(
         2,
         this.tipo.cuenta
       );
     }
-    console.log(this.tipos_movimiento);
+    //this.tipos_movimiento);
     this.movimientos = await this._movimientoService.getMovimientos(
       this.tipo.cuenta
     );
     this.saveBreadcrumb();
   }
-
   async resetBreadcrumb() {
     this.tipos_movimiento = await this._movimientoService.getTipoMovimiento();
     this.breadCrumb = [];
@@ -188,13 +194,11 @@ export class MovimientosComponent implements OnInit {
     this.saveBreadcrumb();
     this.saveshowCrearMovimiento(false);
   }
-
   async onSelectProveedor(proveedor) {
     let resp: any = await this._movimientoService.getUltimaCuenta(proveedor._id);
     this.cuentaGasto = resp.cuenta
     this.fondo = resp.fondo
   }
-
   async crearMovimiento() {
     let montoEgreso;
     let montoIngreso;
@@ -220,14 +224,14 @@ export class MovimientosComponent implements OnInit {
       anulado: '0',
       monto_haber: montoIngreso,
       monto_total: montoEgreso,
-      tipo_movimiento: this.cuentaGasto._id
+      tipo_movimiento: this.cuentaGasto._id,
+      categoria: this.categoria
     };
 
     const resp = await this._movimientoService.crearMovimiento(movimiento);
 
     this.resetAll();
   }
-
   async searchClientes(val) {
     if (val.term.length > 0) {
       this.clientes = await this._usuarioService.buscarUsuarios(
@@ -247,7 +251,6 @@ export class MovimientosComponent implements OnInit {
   async searchBancos(val) {
     this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', val.term);
   }
-
   async buscarContratoPorNro(nro_contrato) {
     const respC = await this._contratoService.getContratos(null, {
       nro_contrato,
@@ -256,7 +259,6 @@ export class MovimientosComponent implements OnInit {
       this.contrato = respC.contratos[0];
     }
   }
-
   saveBreadcrumb() {
     localStorage.setItem(
       'movimiento_breadcrumb',
@@ -271,7 +273,6 @@ export class MovimientosComponent implements OnInit {
       this.showCrearMovimientoLocal
     );
   }
-
   initializeWithLocalStorage() {
     const showCrearMovimiento = localStorage.getItem(
       'movimiento_show_crear_movimiento'
@@ -290,12 +291,10 @@ export class MovimientosComponent implements OnInit {
       this.selectCategoryinitial(this.breadCrumb[this.breadCrumb.length - 1]);
     }
   }
-
   removeContrato() {
     this.contrato = null;
     localStorage.setItem('movimiento_contrato', null);
   }
-
   switchTipoMonto() {
     if (this.egresoActive == 'btn-info') {
       this.egresoActive = 'btn-light';
@@ -305,7 +304,6 @@ export class MovimientosComponent implements OnInit {
       this.egresoActive = 'btn-info';
     }
   }
-
   allowCreateMovimiento(): boolean {
     if (this.fondo && this.monto > 0) {
       return true;
@@ -313,34 +311,29 @@ export class MovimientosComponent implements OnInit {
       return false;
     }
   }
-
   resetAll() {
     this.resetBreadcrumb();
     this.ngOnInit();
   }
-
   onContratoSelected(contrato) {
     this.contrato = contrato;
   }
-  ocultarOnCategory = false
   ocultarOnclickCategory() {
-    console.log(this.ocultarOnCategory);
+    //this.ocultarOnCategory);
 
     if (this.ocultarOnCategory) {
       this.showModalCuentas = false
     }
   }
-  cuentasAbaco
-  categorias
-  categoria
-  cuentaAbaco
   async cuentaGastoSelected() {
+    this.cuentaGasto = await this._movimientoService.getCuentaGastoById(this.cuentaGasto._id)
+
     this.cuentasAbaco = await this._movimientoService.getCuentasAbaco(this.cuentaGasto._id)
     if (this.cuentaGasto.categoria) this.categoria = await this._movimientoService.getCategoriaById(this.cuentaGasto.categoria)
-    console.log(this.cuentasAbaco);
-    if (this.cuentasAbaco.length === 1) {
-      this.cuentaAbaco = this.cuentasAbaco[0]
-    }
+    //this.cuentasAbaco);
+    // if (this.cuentasAbaco.length === 1) {
+    //   this.cuentaAbaco = this.cuentasAbaco[0]
+    // }
   }
 
   crearCuentaGasto(nombre, categoria) {
@@ -352,7 +345,6 @@ export class MovimientosComponent implements OnInit {
     }
     this._movimientoService.crearCuentaGasto(cuenta)
   }
-  tipoCuentaAbaco
   crearCuentaAbaco(codigo, descripcion, tipo, cuentaGasto) {
     let cuenta = {
       descripcion,
@@ -361,25 +353,18 @@ export class MovimientosComponent implements OnInit {
       tipoCuenta: cuentaGasto._id,
       fecha_unix: new Date().getTime()
     }
-    console.log(cuenta);
+    //cuenta);
     this._movimientoService.crearCuentaAbaco(cuenta)
   }
   crearCategoria(codigo, descripcion) {
     let cuenta = {
       descripcion,
       codigo
-      
+
     }
-    console.log(cuenta);
+    //cuenta);
     this._movimientoService.crearCategoriaGasto(cuenta)
   }
-
-  inputcuentaAbacos = new Subject<string>();
-  inputcategorias = new Subject<string>();
-  loadingcuentaAbacos
-  loadingcategorias
-
-
 
   observableBuscadores() {
     this.inputcuentaAbacos.pipe(
@@ -393,7 +378,7 @@ export class MovimientosComponent implements OnInit {
         }
         this.loadingcuentaAbacos = true;
         this.cuentasAbaco = await this._movimientoService.searchCuentasAbaco(txt)
-        console.log(this.cuentasAbaco);
+        //this.cuentasAbaco);
 
         this.loadingcuentaAbacos = false;
       });
@@ -408,29 +393,28 @@ export class MovimientosComponent implements OnInit {
         }
         this.loadingcategorias = true;
         this.categorias = await this._movimientoService.searchCategorias(txt)
-        console.log(this.categorias);
+        //this.categorias);
 
         this.loadingcategorias = false;
       });
 
   }
-
-
   seleccionarCuentaAbacoToEdit(cuentaAbaco) {
-    console.log(cuentaAbaco);
+    //cuentaAbaco);
 
     this.cuentaGasto = cuentaAbaco.tipoCuenta
     this.categorySelected = this.cuentaGasto?.movimiento_padre
   }
   seleccionarCategoriaToEdit(categoria) {
-    console.log(categoria);
+    //categoria);
 
     this.categoria = categoria
-    this.cuentaGasto.categoria = categoria._id
+    if (this.cuentaGasto) this.cuentaGasto.categoria = categoria._id
   }
   cancelarCambiosEditar() {
     this.cuentaGasto = null;
     this.categorySelected = null;
+    this.categoria = null;
     this.cuentaAbaco = null;
     this.cuentasAbaco = null
   }
@@ -439,12 +423,19 @@ export class MovimientosComponent implements OnInit {
     this._movimientoService.eliminarCuentaGasto(id)
   }
 
-  guardarCambios() {
+ async guardarCambios() {
     let body: any = {}
     this.categoria ? body.categoria = this.categoria : ''
     this.cuentaGasto ? body.cuenta_gasto = this.cuentaGasto : ''
     this.cuentaAbaco ? body.cuenta_abaco = this.cuentaAbaco : ''
-    this._movimientoService.updateCuentas(body)
+    console.log(body);
+
+    await this._movimientoService.updateCuentas(body)
+    this.cuentaGasto = null;
+    this.categorySelected = null;
+    this.categoria = null;
+    this.cuentaAbaco = null;
+    this.cuentasAbaco = null
   }
 
 }

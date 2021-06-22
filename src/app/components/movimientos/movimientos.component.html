@@ -384,7 +384,7 @@
                                 <div *ngIf="!categoria">
                                     <ng-select [typeahead]="inputcategorias" [loading]="loadingcategorias"
                                         [items]="categorias" name="dsfdsbrweqcda" [(ngModel)]="categoria"
-                                        (ngModelChange)="seleccionarCuentaAbacoToEdit(categoria)"
+                                        (ngModelChange)="seleccionarCategoriaToEdit(categoria)"
                                         notFoundText="no se encontraron resultados" placeholder="buscar categoria"
                                         bindLabel="NOMBRES" [searchFn]="customSearchFn">
                                         <ng-template ng-option-tmp let-item="item">
@@ -440,7 +440,7 @@
                                         (click)="ocultarOnCategory = true" class="btn mt-2  btn-info">Seleccionar
                                         Categoría</button>
                                     <button *ngIf="categorySelected" type="button" (click)="showModalCuentas = true"
-                                        class="btn mt-2 btn-inverse">Cambiar Cuenta</button>
+                                        class="btn mt-2 btn-inverse">Cambiar Cuenta Padre</button>
                                 </div>
                                 <div style="width: 100%;" class="mt-auto">
                                     <div style="display: flex;">
@@ -459,7 +459,7 @@
                             <div class="form-input">
                                 <div *ngIf="!cuentaAbaco">
                                     <ng-select [typeahead]="inputcuentaAbacos" [loading]="loadingcuentaAbacos"
-                                        [items]="cuentasAbaco" name="dsfdbrweqcda" [(ngModel)]="cuentaAbaco"
+                                        [items]="cuentasAbaco" name="dsfdbrwseqcda" [(ngModel)]="cuentaAbaco"
                                         (ngModelChange)="seleccionarCuentaAbacoToEdit(cuentaAbaco)"
                                         notFoundText="no se encontraron resultados" placeholder="buscar Cuenta Abaco"
                                         bindLabel="NOMBRES" [searchFn]="customSearchFn">

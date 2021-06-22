@@ -91,7 +91,8 @@
                                 <label for="fecha_inicio">Fecha inicio :
                                     <span><b>{{date_start | date}}</b></span>
                                 </label>
-                                <input type="text" name="fecha_inicio" id="fecha_inicio" class="form-control" placeholder="AAAA MM DD" aria-describedby="fechainicioid">
+                                <input type="text" name="fecha_inicio" id="fecha_inicio" class="form-control"
+                                    placeholder="AAAA MM DD" aria-describedby="fechainicioid">
                                 <small id="fechainicioid" class="text-muted">Fecha de inicio en el formato
                                     indicado</small>
 
@@ -103,7 +104,8 @@
                                 <label for="fecha_fin">Fecha fin:
                                     <span><b>{{date_end | date}}</b></span>
                                 </label>
-                                <input type="text" name="fecha_fin" id="fecha_fin" class="form-control" placeholder="AAAA MM DD" aria-describedby="fechafinid">
+                                <input type="text" name="fecha_fin" id="fecha_fin" class="form-control"
+                                    placeholder="AAAA MM DD" aria-describedby="fechafinid">
                                 <small id="fechafinid" class="text-muted">Fecha de fin en el formato indicado</small>
                             </div>
                         </div>
@@ -146,7 +148,8 @@
                         <div class="form-group">
                             <label for="fecha_inicio">Fecha inicio :
                                 <span><b>{{date_start | date}}</b></span>
-                            </label> <input type="text" name="fecha_inicio" id="fecha_inicio" class="form-control" placeholder="AAAA MM DD" aria-describedby="fechainicioid">
+                            </label> <input type="text" name="fecha_inicio" id="fecha_inicio" class="form-control"
+                                placeholder="AAAA MM DD" aria-describedby="fechainicioid">
                             <!-- <small id="fechainicioid" class="text-muted">Fecha de inicio en el formato
                                 indicado</small> -->
                         </div>
@@ -155,7 +158,8 @@
                         <div class="form-group">
                             <label for="fecha_fin">Fecha fin:
                                 <span><b>{{date_end | date}}</b></span>
-                            </label> <input type="text" name="fecha_fin" id="fecha_fin" class="form-control" placeholder="AAAA MM DD" aria-describedby="fechafinid">
+                            </label> <input type="text" name="fecha_fin" id="fecha_fin" class="form-control"
+                                placeholder="AAAA MM DD" aria-describedby="fechafinid">
                             <!-- <small id="fechafinid" class="text-muted">Fecha de fin en el formato indicado</small> -->
                         </div>
                     </div>
@@ -170,7 +174,9 @@
         <div class="card">
             <div class="card-body">
                 <div style="display: block;">
-                    <canvas baseChart width="400" height="400" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"></canvas>
+                    <canvas baseChart width="400" height="400" [datasets]="lineChartData" [labels]="lineChartLabels"
+                        [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend"
+                        [chartType]="lineChartType"></canvas>
                 </div>
             </div>
         </div>
@@ -201,7 +207,9 @@
         <!-- Tab panes -->
         <div class="tab-content">
             <div class="tab-pane active" id="home" role="tabpanel">
-                <app-facturas [count]="facturasCount" [showlabel]="false" [fondo]="null" [cerrado]="null" [pagado]="true" [start]="date_start" [end]="date_end" [count]="facturasCount" [facturas]="facturas" [fromOutside]="true">
+                <app-facturas [count]="facturasCount" [showlabel]="false" [fondo]="null" [cerrado]="null"
+                    [pagado]="true" [start]="date_start" [end]="date_end" [count]="facturasCount" [facturas]="facturas"
+                    [fromOutside]="true">
                 </app-facturas>
             </div>
             <!--second tab-->
@@ -210,5 +218,44 @@
             </div>
 
         </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Fecha</th>
+                    <th>Tipo Servicio</th>
+                    <th *ngFor="let categoria of categorias">{{categoria.descripcion}}</th>
+                    <th>Venta Parcela</th>
+                    <th>Gastos</th>
+                    <th>Ingresos</th>
+                    <th>Diferencia</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let gasto of gastos; let i = index">
+                    <td scope="row">{{i+1}}</td>
+                    <td>{{gasto.fecha_creacion_unix | date: 'dd/MM/YY'}}</td>
+                    <td>{{gasto.tipo_servicio }}</td>
+                    <td *ngFor="let categoria of categorias">
+                        <div *ngFor="let itemGasto of gasto.gastos">
+                            <div *ngIf="categoria.descripcion === itemGasto.descripcion">
+                                {{itemGasto.monto_total | currency: '':'':'2.0'}}
+                            </div>
+                        </div>
+                    </td>
+                    <td>{{gasto.monto_parcela | currency: '':'':'2.0'}}</td>
+                    <td>{{gasto.total_gastos | currency: '':'':'2.0'}}</td>
+                    <td>{{gasto.total_ingresos   | currency: '':'':'2.0'}}</td>
+                    <td>{{gasto.total_ingresos - gasto.total_gastos   | currency: '':'':'2.0'}}</td>
+
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>

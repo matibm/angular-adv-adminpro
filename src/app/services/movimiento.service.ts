@@ -94,7 +94,7 @@ export class MovimientoService {
       .toPromise()
       .then((resp: any) => {
         console.log(resp);
-        
+
         return resp.categoria;
       });
   }
@@ -156,6 +156,20 @@ export class MovimientoService {
         return resp;
       });
   }
+
+  getCuentaGastoById(id: string) {
+    if (!id) throw new Error('necesitamos el id')
+    let url = `${URL_SERVICIOS}/movimientos/get_cuenta_gasto_by_id`;
+    url += `?token=${this._usuarioService.token}`;
+    url += `&id=${id}`
+    return this.http
+      .get(url)
+      .toPromise()
+      .then((resp: any) => {
+        return resp.cuentaGasto;
+      });
+  }
+
   updateCuentas(body) {
     let url = `${URL_SERVICIOS}/movimientos/guardar_cambios`;
     url += `?token=${this._usuarioService.token}`;
@@ -165,7 +179,7 @@ export class MovimientoService {
       .toPromise()
       .then((resp: any) => {
         console.log(resp);
-
+        swal.fire('Cambios Guardados', '', 'success')
         return resp;
       });
   }
@@ -248,10 +262,10 @@ export class MovimientoService {
   }
 
   async crearMovimiento(movimiento) {
-    const caja = await this._cajaService.getCajaActual();
+    // const caja = await this._cajaService.getCajaActual();
     let url = `${URL_SERVICIOS}/movimientos/crear_movimiento`;
     url += `?token=${this._usuarioService.token}`;
-    url += `&caja=${caja._id}`;
+    // url += `&caja=${caja._id}`;
 
     return this.http
       .post(url, movimiento)
@@ -290,6 +304,19 @@ export class MovimientoService {
         console.log(resp);
 
         return resp.movimientos;
+      });
+  }
+  getReporteGastoIngresoPsm() {
+    let url = `${URL_SERVICIOS}/reporte/gasto_ingreso_psm`;
+    url += `?token=${this._usuarioService.token}`;
+     
+    return this.http
+      .get(url)
+      .toPromise()
+      .then((resp: any) => {
+        console.log(resp);
+
+        return resp;
       });
   }
 }
