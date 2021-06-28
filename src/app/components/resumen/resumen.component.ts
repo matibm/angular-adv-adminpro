@@ -70,7 +70,7 @@ export class ResumenComponent implements OnInit {
     this.movimientos = respM.movimientos;
   }
 
-
+ 
   switchAgrupar() {
     if (this.agruparPorcierres) {
       this.agruparPorcierres = false;

@@ -10,6 +10,8 @@ import { IDatePickerConfig } from 'ng2-date-picker';
 import { DatepickerOptions } from 'ng2-datepicker';
 import locale from 'date-fns/locale/es';
 import { FormControl, FormGroup } from '@angular/forms';
+import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
+import { fromEvent, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-lista-contratos',
@@ -19,9 +21,9 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class ListaContratosComponent implements OnInit {
 
   constructor(public _contratoService: ContratoService,
-              public _usuarioService: UsuarioService,
-              public _productoService: ProductosService,
-              public router: Router
+    public _usuarioService: UsuarioService,
+    public _productoService: ProductosService,
+    public router: Router
 
 
   ) { }
@@ -30,6 +32,14 @@ export class ListaContratosComponent implements OnInit {
   @Input() selectable = false;
   @Output() selected = new EventEmitter();
   @Input() cliente: Usuario;
+  inputClientes = new Subject<string>();
+  loadingClientes = false
+  inputCobradores = new Subject<string>();
+  loadingCobradores = false
+  inputVendedores = new Subject<string>();
+  loadingVendedores = false
+  inputNroContrato = new Subject<string>();
+  loadingNroContrato = false
   clientes: Usuario[];
   proveedor: Usuario;
   proveedores: Usuario[];
@@ -58,6 +68,9 @@ export class ListaContratosComponent implements OnInit {
     start: new FormControl(),
     end: new FormControl()
   });
+
+  // wait .5s between keyups to emit current value
+
   optionsDP: DatepickerOptions = {
     // minYear: getYear(new Date()) - 30, // minimum available and selectable year
     // maxYear: getYear(new Date()) + 30, // maximum available and selectable year
@@ -80,7 +93,7 @@ export class ListaContratosComponent implements OnInit {
 
   @Input() contratos: Contrato[];
   async ngOnInit() {
-
+    this.observableBuscadores()
     this.servicios = await this._productoService.getProductos();
 
     this.options = {
@@ -108,7 +121,7 @@ export class ListaContratosComponent implements OnInit {
     // this.filtrar()
 
     // console.log(this.contratos);
-    console.log(this.count);
+    //(this.count);
 
   }
 
@@ -118,7 +131,7 @@ export class ListaContratosComponent implements OnInit {
 
     this.contratos = resp.contratos;
     // this.count = resp.count
-    console.log(page);
+    //(page);
 
   }
   seleccionarProducto(producto: Producto) {
@@ -156,7 +169,7 @@ export class ListaContratosComponent implements OnInit {
       manzana: this.manzana,
       parcela: this.parcela,
       producto: this.servicio ? this.servicio._id : null,
-      nro_contrato: '',
+      nro_contrato: this.nro_contrato ? this.nro_contrato : null,
       cobrador: this.cobrador ? this.cobrador._id : null,
       vendedor: this.vendedor ? this.vendedor._id : null
     };
@@ -164,11 +177,13 @@ export class ListaContratosComponent implements OnInit {
       key: this.sort_key,
       value: this.sort_value
     };
+    console.log(this.options);
+    
     const resp = await this._contratoService.getContratos(null, this.options, this.sort);
     this.servicios = await this._productoService.getProductos();
 
     this.contratos = resp.contratos;
-    console.log(resp);
+    //(resp);
 
     this.count = resp.count;
   }
@@ -221,7 +236,7 @@ export class ListaContratosComponent implements OnInit {
       key: this.sort_key,
       value: this.sort_value
     };
-    console.log(document.getElementById(value));
+    //(document.getElementById(value));
 
     const newKey: any = document.getElementById(value).childNodes.item(1);
     if (!newKey) {
@@ -233,7 +248,7 @@ export class ListaContratosComponent implements OnInit {
     const resp = await this._contratoService.getContratos(null, this.options, this.sort);
 
     this.contratos = resp.contratos;
-    console.log(resp);
+    //(resp);
 
     // this.count = resp.count
   }
@@ -246,4 +261,65 @@ export class ListaContratosComponent implements OnInit {
       this.router.navigateByUrl('/admin/info_contrato/' + contrato._id);
     }
   }
+
+
+  observableBuscadores() {
+    this.inputClientes.pipe(
+
+      debounceTime(200),
+      distinctUntilChanged()
+    )
+      .subscribe(async (txt) => {
+        if (!txt) {
+          return;
+        }
+        this.loadingClientes = true;
+        this.clientes = await this._usuarioService.buscarUsuarios('CLIENTES', txt);
+        this.loadingClientes = false;
+      });
+
+    this.inputCobradores.pipe(
+      debounceTime(200),
+      distinctUntilChanged()
+    )
+      .subscribe(async (txt) => {
+        if (!txt) {
+          return;
+        }
+        this.loadingCobradores = true;
+        this.cobradores = await this._usuarioService.buscarUsuarios('COBRADORES', txt);
+        this.loadingCobradores = false;
+      });
+
+    this.inputVendedores.pipe(
+      debounceTime(200),
+      distinctUntilChanged()
+    )
+      .subscribe(async (txt) => {
+        if (!txt) {
+          return;
+        }
+        this.loadingVendedores = true;
+        this.vendedores = await this._usuarioService.buscarUsuarios('VENDEDORES', txt);
+        this.loadingVendedores = false;
+      });
+    this.inputNroContrato.pipe(
+      debounceTime(200),
+      distinctUntilChanged()
+    )
+      .subscribe(async (txt) => {
+        if (!txt) {
+          return;
+        }
+        this.loadingNroContrato = true;
+        this.nro_contrato = txt
+        console.log("filtrando :", txt);
+
+        await this.filtrar()
+        this.loadingNroContrato = false;
+      }); 
+  }
+
+  
+
 }

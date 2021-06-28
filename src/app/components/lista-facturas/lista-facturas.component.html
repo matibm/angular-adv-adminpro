@@ -28,7 +28,8 @@
                     </div>
                 </div>
                 <div class="" *ngIf="!cliente">
-                    <ng-select [items]="clientes" [(ngModel)]="cliente" (ngModelChange)="onSelectClient(cliente)" (search)="searchClientes($event)" notFoundText="no se encontraron resultados" placeholder="buscar cliente" bindLabel="NOMBRES" [searchFn]="customSearchFn">
+                    <ng-select [typeahead]="inputClientes" [loading]="loadingClientes" [items]="clientes" name="dsfdbrweqcda" [(ngModel)]="cliente" (ngModelChange)="filtrar()" notFoundText="no se encontraron resultados" placeholder="buscar cliente"
+                    bindLabel="NOMBRES" [searchFn]="customSearchFn">
                         <ng-template ng-option-tmp let-item="item">
                             <div>
                                 <div *ngIf="item.APELLIDOS">{{item.APELLIDOS}} {{item.NOMBRES}}</div>
@@ -115,7 +116,8 @@
                     </div>
                 </div>
                 <div class="" *ngIf="!vendedor">
-                    <ng-select [items]="vendedores" [(ngModel)]="vendedor" (search)="searchvendedores($event)" notFoundText="no se encontraron resultados" placeholder="buscar vendedor" bindLabel="NOMBRES" [searchFn]="customSearchFn">
+                    <ng-select [typeahead]="inputVendedores" [loading]="loadingVendedores" [items]="vendedores" name="ddfsfdsfdgfdbrweqcda" [(ngModel)]="vendedor" (ngModelChange)="filtrar()" notFoundText="no se encontraron resultados" placeholder="buscar vendedor"
+                    bindLabel="NOMBRES" [searchFn]="customSearchFn">
                         <ng-template ng-option-tmp let-item="item">
                             <div>
                                 <div *ngIf="item.APELLIDOS">{{item.APELLIDOS}} {{item.NOMBRES}}</div>
@@ -171,7 +173,8 @@
                     </div>
                 </div>
                 <div class="" *ngIf="!cobrador">
-                    <ng-select [items]="cobradores" [(ngModel)]="cobrador" (search)="searchcobradores($event)" notFoundText="no se encontraron resultados" placeholder="buscar cobrador" bindLabel="NOMBRES" [searchFn]="customSearchFn">
+                    <ng-select [typeahead]="inputCobradores" [loading]="loadingCobradores" [items]="cobradores" name="dsfdsfdgfdbrweqcda" [(ngModel)]="cobrador" (ngModelChange)="filtrar()" notFoundText="no se encontraron resultados" placeholder="buscar cobrador"
+                    bindLabel="NOMBRES" [searchFn]="customSearchFn">
                         <ng-template ng-option-tmp let-item="item">
                             <div>
                                 <div *ngIf="item.APELLIDOS">{{item.APELLIDOS}} {{item.NOMBRES}}</div>

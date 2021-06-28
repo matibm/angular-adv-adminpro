@@ -6,6 +6,8 @@ import { ProductosService } from './../../services/productos.service';
 import { FacturaService } from './../../services/factura.service';
 import { Component, OnInit } from '@angular/core';
 import { NotifierService } from 'angular-notifier';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-lista-facturas',
@@ -15,10 +17,10 @@ import { NotifierService } from 'angular-notifier';
 export class ListaFacturasComponent implements OnInit {
 
   constructor(public _facturaService: FacturaService,
-              public _usuarioService: UsuarioService,
-              public _contratoSerivce: ContratoService,
-              public _productoService: ProductosService,
-              notifier: NotifierService
+    public _usuarioService: UsuarioService,
+    public _contratoSerivce: ContratoService,
+    public _productoService: ProductosService,
+    notifier: NotifierService
 
   ) {
 
@@ -50,7 +52,12 @@ export class ListaFacturasComponent implements OnInit {
   contratos;
   contrato;
   facturasAPagar;
-
+  inputClientes = new Subject<string>();
+  loadingClientes = false
+  inputCobradores = new Subject<string>();
+  loadingCobradores = false
+  inputVendedores = new Subject<string>();
+  loadingVendedores = false
   estados = [
     {
       id: 1,
@@ -86,11 +93,10 @@ export class ListaFacturasComponent implements OnInit {
 
 
   async ngOnInit() {
+    this.observableBuscadores()
     const respF = await this._facturaService.getFacturasOptions(this.opciones);
     this.count = respF.count;
     this.facturas = respF.facturas;
-    console.log(this.facturas);
-
     this.servicios = await this._productoService.getProductos();
     this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', '');
   }
@@ -102,8 +108,6 @@ export class ListaFacturasComponent implements OnInit {
     } else if (this.estadoSeleccionado == 'PENDIENTES') {
       pagado = false;
     }
-
-
 
     this.opciones = {
       titular: this.cliente ? this.cliente._id : null,
@@ -120,9 +124,6 @@ export class ListaFacturasComponent implements OnInit {
       start: this.rangeEmision.value.start ? new Date(this.rangeEmision.value.start).getTime() : null,
       end: this.rangeEmision.value.end ? new Date(this.rangeEmision.value.end).setHours(23, 59, 59, 59) : null
     };
-
-
-    console.log(this.opciones);
 
     const respF = await this._facturaService.getFacturasOptions(this.opciones);
     this.count = respF.count;
@@ -200,8 +201,51 @@ export class ListaFacturasComponent implements OnInit {
 
 
   prueba() {
-    console.log(this.notifier.getConfig());
 
     this.notifier.notify('success', 'pasa la edad');
   }
+
+  observableBuscadores() {
+    this.inputClientes.pipe(
+
+      debounceTime(200),
+      distinctUntilChanged()
+    )
+      .subscribe(async (txt) => {
+        if (!txt) {
+          return;
+        }
+        this.loadingClientes = true;
+        this.clientes = await this._usuarioService.buscarUsuarios('CLIENTES', txt);
+        this.loadingClientes = false;
+      });
+
+    this.inputCobradores.pipe(
+      debounceTime(200),
+      distinctUntilChanged()
+    )
+      .subscribe(async (txt) => {
+        if (!txt) {
+          return;
+        }
+        this.loadingCobradores = true;
+        this.cobradores = await this._usuarioService.buscarUsuarios('COBRADORES', txt);
+        this.loadingCobradores = false;
+      });
+
+    this.inputVendedores.pipe(
+      debounceTime(200),
+      distinctUntilChanged()
+    )
+      .subscribe(async (txt) => {
+        if (!txt) {
+          return;
+        }
+        this.loadingVendedores = true;
+        this.vendedores = await this._usuarioService.buscarUsuarios('VENDEDORES', txt);
+        this.loadingVendedores = false;
+      });
+  }
+
+
 }
