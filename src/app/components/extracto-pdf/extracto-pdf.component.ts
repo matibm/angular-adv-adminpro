@@ -16,7 +16,7 @@ export class ExtractoPdfComponent implements OnInit {
       ? JSON.parse(localStorage.getItem('options_extracto'))
       : {};
     options.isExtracto = true;
-    let resp = await this._facturaService.getFacturasOptions(options);
+    let resp = await this._facturaService.getFacturasOptions(options, {key:'vencimiento', value: 1});
     this.facturas = resp.facturas;
     setTimeout(() => {
       window.print();

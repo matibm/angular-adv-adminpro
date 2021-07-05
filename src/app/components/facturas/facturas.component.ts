@@ -64,7 +64,7 @@ export class FacturasComponent implements OnInit {
     options.page = page;
     // let resp = await this._facturaService.getFacturas(this.pagado, this.fondo, this.start, this.end, page, null, this.cerrado)
     this.options = options;
-    const resp = await this._facturaService.getFacturasOptions(options);
+    const resp = await this._facturaService.getFacturasOptions(options,{key:'vencimiento', value: 1});
 
     this.facturas = resp.facturas;
     this.count = resp.count;
