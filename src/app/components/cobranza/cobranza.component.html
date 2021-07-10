@@ -270,7 +270,7 @@
                     </div>
                 </div>
 
-                <div *ngIf="!cliente">
+                <div *ngIf="!cobrador">
 
                     <ng-select [typeahead]="inputCobrador" [loading]="loadingCobrador" [items]="cobradores" name="dsfdbrdweqcda" [(ngModel)]="cobrador" (ngModelChange)="null" notFoundText="no se encontraron resultados" placeholder="buscar cobrador" bindLabel="NOMBRES" [searchFn]="customSearchFn">
                         <ng-template ng-option-tmp let-item="item">
@@ -341,3 +341,7 @@
 <app-modal-factura *ngIf="showPDF" (onClose)="showPDF = false" [existe]="false" [facturaPDF]="facturaPdf">
 </app-modal-factura>
 <app-modal-contratos (contratoSelected)="onContratoSelected($event)" [cliente]="cliente" (onClose)="showModal = false" *ngIf="showModal"></app-modal-contratos>
+
+<div class="" *ngIf="facturapdf">
+    <app-modal-factura (onClose)="facturapdf = null" [facturaPDF]="facturapdf"></app-modal-factura>
+</div>

@@ -43,6 +43,7 @@ export class PerfilUsuarioComponent implements OnInit {
   ) { }
   id;
   contratos: Contrato[];
+  contratosInactivos: Contrato[];
   usuario: Usuario;
   cuotas: Cuota[];
   facturas;
@@ -82,7 +83,11 @@ export class PerfilUsuarioComponent implements OnInit {
     this.manejaCaja = this.usuario.MANEJA_CAJA == '1' ? 'check_maneja_caja' : null;
     this.cobroOnline = this.usuario.fondo_online == '1' ? 'check_maneja_caja' : null;
     this.cuotas = await this._cuotaService.getCuotaByTitular(this.id);
-    this.contratos = await this._contratoService.getContratosByTitular(this.id);
+    // this.contratos = await this._contratoService.getContratosByTitular(this.id);
+    this.contratos = (await this._contratoService.getContratos(1, {cliente: this.id, tipo: 'activo'})).contratos;
+    console.log(this.contratos);
+    
+    this.contratosInactivos = (await this._contratoService.getContratos(1, {cliente: this.id, tipo: 'inactivo'})).contratos;
     this.movimientos = (await this._movimientoService.getAllMovimientos({cliente: this.id})).movimientos;
   }
 

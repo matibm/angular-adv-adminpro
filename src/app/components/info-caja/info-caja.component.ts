@@ -50,7 +50,8 @@ export class InfoCajaComponent implements OnInit {
     this.fondo = null;
     this.movimientosPrueba = await this._movimientoService.allmovimientosCaja();
     this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', '');
-
+    console.log(this.movimientosPrueba);
+    
     // let respMovimientos = await this._movimientoService.getMovimientosByDate(this.start, this.end, null, false)
     const respMovimientos = await this._movimientoService.getAllMovimientos({
       cerrado: false,
@@ -64,33 +65,43 @@ export class InfoCajaComponent implements OnInit {
       0;
     let respfactura;
     if (this.fondo) {
-      respfactura = await this._facturaService.getFacturas(
-        true,
-        this.fondo._id,
-        this.start,
-        this.end,
-        null,
-        null,
-        false
-      );
+      // respfactura = await this._facturaService.getFacturas(
+      //   true,
+      //   this.fondo._id,
+      //   this.start,
+      //   this.end,
+      //   null,
+      //   null,
+      //   false
+      // );
+      let options = {
+        pagado: true,
+        start: this.start,
+        end: this.end,
+        fondo: this.fondo._id,
+        cerrado: false,
+        get_total: '1'
+      }
+      respfactura = await this._facturaService.getFacturasOptions(options);
+      console.log(respfactura);
+
     } else {
-      respfactura = await this._facturaService.getFacturas(
-        true,
-        null,
-        this.start,
-        this.end,
-        null,
-        null,
-        false
-      );
+      let options = {
+        pagado: true,
+        start: this.start,
+        end: this.end,
+        cerrado: false,
+        get_total: '1'
+      }
+      respfactura = await this._facturaService.getFacturasOptions(options);
     }
     if (respfactura.ok) {
+       
       this.facturas = respfactura.facturas;
-      this.totalFacturas = respfactura.total;
-      this.facturaCount = respfactura.count;
+      this.totalFacturas = respfactura.montoTotal.total;
+      this.facturaCount = respfactura.montoTotal.cantidad;
     }
 
-    console.log(this.facturas);
     this.loading = false;
   }
   async searchBancos(val) {
@@ -118,19 +129,30 @@ export class InfoCajaComponent implements OnInit {
       (respMovimientos.total.monto_haber - respMovimientos.total.monto_total) |
       0;
 
-    const respfactura = await this._facturaService.getFacturas(
-      true,
-      fondo._id,
-      this.start,
-      this.end,
-      null,
-      null,
-      false
-    );
+    // const respfactura = await this._facturaService.getFacturas(
+    //   true,
+    //   fondo._id,
+    //   this.start,
+    //   this.end,
+    //   null,
+    //   null,
+    //   false
+    // );
+
+    let options = {
+      pagado: true,
+      start: this.start,
+      end: this.end,
+      fondo: this.fondo._id,
+      cerrado: false,
+      get_total: '1'
+    }
+    const respfactura = await this._facturaService.getFacturasOptions(options);
+
     if (respfactura.ok) {
       this.facturas = respfactura.facturas;
-      this.totalFacturas = respfactura.total;
-      this.facturaCount = respfactura.count;
+      this.totalFacturas = respfactura.monto_total.total;
+      this.facturaCount = respfactura.monto_total.count;
     }
     this.loading = false;
     this.listItems = [];
@@ -181,7 +203,8 @@ export class InfoCajaComponent implements OnInit {
     const options: any = {};
     this.fondo ? (options.fondo = this.fondo._id) : null;
     let listas = this.crearListasSeparadas(this.listItems);
-
+    console.log(listas);
+    
     const body = {
       isAllSelectedIngresos: this.isAllSelectedIngresos,
       isAllSelectedMovimientos: this.isAllSelectedMovimientos,
@@ -213,8 +236,7 @@ export class InfoCajaComponent implements OnInit {
 
   switchTableColor() {
     let allItems = document.getElementById('the_body').childNodes;
-    console.log(allItems);
-
+ 
     if (this.tableColor === 'inverse') {
       for (let i = 0; i < allItems.length; i++) {
         const element: any = allItems[i];

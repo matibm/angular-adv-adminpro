@@ -100,7 +100,9 @@
                     <!-- <ng-select [items]="cars" bindLabel="name" bindValue="id" [(ngModel)]="selectedCar">
                     </ng-select> -->
                     <div *ngIf="!vendedor">
-                        <ng-select [items]="vendedores" name="dsfgbeqwqw" [(ngModel)]="vendedor" (search)="searchVendedores($event)" notFoundText="no se encontraron resultados" placeholder="buscar vendedor" bindLabel="NOMBRES" [searchFn]="customSearchFn">
+                        
+                        <ng-select [typeahead]="inputVendedor" [loading]="loadingVendedor" [items]="vendedores" name="dsfdbrwenkkqcda" [(ngModel)]="vendedor"   notFoundText="no se encontraron resultados" placeholder="buscar vendedor"
+                        bindLabel="NOMBRES" [searchFn]="customSearchFn">
                             <ng-template ng-option-tmp let-item="item">
                                 <div> {{item.APELLIDOS}} {{item.NOMBRES}} <br>
                                     <small>{{item.RUC | ruc}}</small>
@@ -132,7 +134,8 @@
                     </div>
                     <div class="ng-autocomplete">
                         <div *ngIf="!cobrador">
-                            <ng-select [items]="cobradores" name="dvfghngnfddssa" [(ngModel)]="cobrador" (search)="searchCobradores($event)" notFoundText="no se encontraron resultados" placeholder="buscar cobrador" bindLabel="NOMBRES" [searchFn]="customSearchFn">
+                            <ng-select [typeahead]="inputCobrador" [loading]="loadingCobrador" [items]="cobradores" name="dsfdbrwesnkkqcda" [(ngModel)]="cobrador"   notFoundText="no se encontraron resultados" placeholder="buscar cobrador"
+                            bindLabel="NOMBRES" [searchFn]="customSearchFn">
                                 <ng-template ng-option-tmp let-item="item">
                                     <div>
                                         <div class="" *ngIf="item.APELLIDOS">

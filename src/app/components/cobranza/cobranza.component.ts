@@ -215,7 +215,7 @@ export class CobranzaComponent implements OnInit {
     if (monto < 1) {
       return;
     }
-    this.facturasAPagar = await this._facturaService.pagarPorMonto({ lista: [{ contrato: id, monto: parseInt(monto) }] });
+    this.facturasAPagar = (await this._facturaService.pagarPorMonto({ lista: [{ contrato: id, monto: parseInt(monto) }] })).facturas;
   }
 
   async searchBancos(val) {
@@ -230,7 +230,7 @@ export class CobranzaComponent implements OnInit {
     };
     this.lista.push(obj);
     // this.filtros.push()
-    this.facturasAPagarAux = await this._facturaService.pagarPorMonto({ lista: this.lista });
+    this.facturasAPagarAux = (await this._facturaService.pagarPorMonto({ lista: this.lista })).facturas;
     console.log(this.facturasAPagarAux);
     
 
@@ -240,7 +240,7 @@ export class CobranzaComponent implements OnInit {
 
   }
   async confirmarPago() {
-    await this._facturaService.pagarPorMonto({
+   let pagoresp = await this._facturaService.pagarPorMonto({
       lista: this.lista,
       montoTotal: this.montoTotal,
       cliente: this.cliente._id,
@@ -255,6 +255,8 @@ export class CobranzaComponent implements OnInit {
       nro_factura: '4544352',
       numero: '002-004'
     });
+    console.log(pagoresp);
+    this.mostrarModal(pagoresp?.pago?._id) 
     this.ngOnInit();
     this.contrato = null;
     this.facturasAPagar = null;
@@ -362,5 +364,34 @@ export class CobranzaComponent implements OnInit {
 
     return facturaPDF;
   }
+  facturapdf
+  async mostrarModal(id){
+    const resp = await this._facturaService.getDetallePago(id);
 
+    const pago = resp.pago;
+    const facturas = resp.facturas;
+    const servicios = [];
+    for (let i = 0; i < facturas.length; i++) {
+      const factura = facturas[i];
+      servicios.push({
+        cantidad: 1,
+        concepto: factura.servicio.NOMBRE,
+        precioUnitario: factura.haber,
+        cincoPorciento: null,
+        diezPorciento: factura.haber * 0.1
+      });
+    }
+    this.facturapdf = {
+      _id: pago._id,
+      nombres: `${pago.cliente.NOMBRES} ${pago.cliente.APELLIDOS}`,
+      fecha: pago.fecha_creacion,
+      direccion: `direccion de prueba`,
+      ruc: pago.cliente.RUC,
+      tel: pago.cliente.TELEFONO1,
+      notaDeRemision: '123123',
+      servicios
+    };
+    console.log(this.facturapdf);
+
+  }
 }

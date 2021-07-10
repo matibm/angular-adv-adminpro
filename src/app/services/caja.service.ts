@@ -53,7 +53,7 @@ export class CajaService {
 
       });
     }
-    url += `&caja=${this.cajaActual._id}`;
+    url += `&caja=caja_id_que_no_se_usa`;
 
     return this.http.put(url, body).toPromise().then((resp: any) => {
       console.log(resp);

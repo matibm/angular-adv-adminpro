@@ -35,7 +35,7 @@ export class Contrato {
         public nombre_beneficiario2?: string,
         public nombre_beneficiario3?: string,
         public ci_beneficiario1?: string,
-         public ci_beneficiario2?: string,
+        public ci_beneficiario2?: string,
         public ci_beneficiario3?: string,
         public fecha_nac_beneficiario1?: string,
         public fecha_nac_beneficiario2?: string,

@@ -64,7 +64,7 @@ export class FacturaService {
           timer: 3000,
         });
       }
-      return resp.facturas;
+      return resp;
     });
   }
   async pagarFactura(factura, parcial?: boolean, monto_parcial?: number) {

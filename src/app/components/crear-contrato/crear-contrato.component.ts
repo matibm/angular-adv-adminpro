@@ -83,6 +83,10 @@ export class CrearContratoComponent implements OnInit {
   loadingClientes = false;
   inputAlternativo = new Subject<string>();
   loadingAlternativo = false;
+  inputVendedor = new Subject<string>();
+  loadingVendedor = false;
+  inputCobrador = new Subject<string>();
+  loadingCobrador = false;
   cantidadCuotaPSM = 120;
   tipos_pago = [
     {
@@ -263,7 +267,11 @@ export class CrearContratoComponent implements OnInit {
     return Number(num);
   }
   async crearContrato() {
-
+    if ((await this.verificar_nro_contrato(this.nro_contrato)) === false) {
+      swal.fire('Número de contrato ya existe', '', 'error') 
+      return
+    }
+  
     if (!this.facturas && this.pagoradioValue === 'contado') {
       this.plazo = 1;
       this.facturas = this.crearFacturas(this.saldo, 1);
@@ -508,6 +516,34 @@ export class CrearContratoComponent implements OnInit {
         this.clientesAlternativo = await this._usuarioService.buscarUsuarios('CLIENTES', txt);
         this.loadingAlternativo = false;
       });
+    this.inputVendedor.pipe(
+
+      debounceTime(200),
+      distinctUntilChanged()
+    )
+      .subscribe(async (txt) => {
+        if (!txt) {
+          return;
+        }
+        this.loadingVendedor = true;
+        this.vendedores = await this._usuarioService.buscarUsuarios('VENDEDORES', txt);
+        console.log(this.vendedores);
+
+        this.loadingVendedor = false;
+      });
+    this.inputCobrador.pipe(
+
+      debounceTime(200),
+      distinctUntilChanged()
+    )
+      .subscribe(async (txt) => {
+        if (!txt) {
+          return;
+        }
+        this.loadingCobrador = true;
+        this.cobradores = await this._usuarioService.buscarUsuarios('COBRADORES', txt);
+        this.loadingCobrador = false;
+      });
   }
 
 
@@ -534,4 +570,12 @@ export class CrearContratoComponent implements OnInit {
     cobrador ? f.cobrador = cobrador : '';
     return f;
   }
+
+  async verificar_nro_contrato(nro_contrato) {
+    let resp = await this._contratoService.getContratos(1, { nro_contrato: nro_contrato })
+    if (resp.count === 0) {
+      return true
+    } else return false
+  }
+
 }

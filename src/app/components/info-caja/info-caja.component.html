@@ -164,7 +164,7 @@
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '120px'}">Egreso</th>
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '120px'}">Saldo</th>
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '120px'}">Nro. Contrato</th>
-                            <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '120px'}">Nro. Factura</th>
+                            <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '120px'}">Nro. Cuota</th>
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '200px'}">Cliente</th>
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '100px'}">Servicio</th>
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '400px'}">Cuenta Gasto</th>
@@ -180,18 +180,18 @@
 
                             <!-- ingreso -->
                             <td [ngClass]="'text-center'" [style.color]="'#009000'">
-                                <div *ngIf="item.ingreso">
-                                    {{item.ingreso | currency: '':'':'2.0'}}
+                                <div *ngIf="item.haber">
+                                    {{item.haber | currency: '':'':'2.0'}}
                                 </div>
-                                <div *ngIf="!item.ingreso">
+                                <div *ngIf="!item.haber">
                                     ---
                                 </div>
                             </td>
                             <td [ngClass]="'text-center'" [style.color]="' #d53032'">
-                                <div *ngIf="item.egreso">
-                                    {{item.egreso | currency: '':'':'2.0'}}
+                                <div *ngIf="item.monto_total">
+                                    {{item.monto_total | currency: '':'':'2.0'}}
                                 </div>
-                                <div *ngIf="!item.egreso">
+                                <div *ngIf="!item.monto_total">
                                     ---
                                 </div>
                             </td>
@@ -204,7 +204,7 @@
                             </td>
                             <!-- nro factura -->
                             <td [ngClass]="'text-center'">
-                                <div *ngIf="item.nro_factura >0 ">{{item.nro_factura | ruc}}</div>
+                                <div *ngIf="item.nro_factura >0 ">{{item.nro_factura }}</div>
                                 <div *ngIf="!item.nro_factura">---</div>
                             </td>
                             <!-- cliente -->

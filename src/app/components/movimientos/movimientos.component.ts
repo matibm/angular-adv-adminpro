@@ -154,10 +154,10 @@ export class MovimientosComponent implements OnInit {
   customSearchFn(term: string, item: any) {
     term = term.toLowerCase();
     return (
-      item.NOMBRES.toLowerCase().indexOf(term) > -1 ||
-      item.APELLIDOS.toLowerCase().includes(term) ||
-      item.RAZON.toLowerCase().includes(term) ||
-      item.RUC.toLowerCase().includes(term)
+      item?.NOMBRES?.toLowerCase().indexOf(term) > -1 ||
+      item?.APELLIDOS?.toLowerCase().includes(term) ||
+      item?.RAZON?.toLowerCase().includes(term) ||
+      item?.RUC?.toLowerCase().includes(term)
     );
   }
   add(event) {
