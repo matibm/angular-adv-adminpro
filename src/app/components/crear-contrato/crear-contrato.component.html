@@ -13,7 +13,7 @@
 
                     <div *ngIf="!cliente">
 
-                        <ng-select [typeahead]="inputClientes" [loading]="loadingClientes" [items]="clientes" name="dsfdbrweqcda" [(ngModel)]="cliente" (ngModelChange)="cargarDatosPagoInicial(cliente)" notFoundText="no se encontraron resultados" placeholder="buscar cliente"
+                        <ng-select [typeahead]="inputClientes" [loading]="loadingClientes" [items]="clientes" name="dsfdbrweqcda" [(ngModel)]="cliente" (ngModelChange)="null" notFoundText="no se encontraron resultados" placeholder="buscar cliente"
                             bindLabel="NOMBRES" [searchFn]="customSearchFn">
                             <ng-template ng-option-tmp let-item="item">
                                 <div> {{item.APELLIDOS}} {{item.NOMBRES}} <br>
@@ -179,7 +179,7 @@
                     </div>
                     <mat-form-field appearance="fill">
                         <mat-label>Fecha de creacion</mat-label>
-                        <input matInput name="asdas" [(ngModel)]="fecha_creacion" [matDatepicker]="picker">
+                        <input matInput name="asdas" [(ngModel)]="fecha_creacion" [matDatepicker]="picker" (dateChange)="fechaPago = fecha_creacion ">
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
@@ -572,7 +572,7 @@
                 </div>
 
 
-                <div *ngIf="entrega" class="card">
+                <div *ngIf="false" class="card">
                     <div class="card-body">
                         <h4>Datos Factura:</h4>
                         <small>Factura por la entrega inicial</small>
