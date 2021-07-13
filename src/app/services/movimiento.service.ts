@@ -39,6 +39,13 @@ export class MovimientoService {
 
     return this.http.get(url).toPromise();
   }
+  getSaldoFondo(fondo_id) {
+    let url = `${URL_SERVICIOS}/movimientos/get_saldo_de_fondo`;
+    url += `?token=${this._usuarioService.token}`;
+    url += `&id_fondo=${fondo_id}`;
+
+    return this.http.get(url).toPromise();
+  }
 
   getMovimientos(tipo_id?) {
     let url = `${URL_SERVICIOS}/movimientos/by_type`;

@@ -15,7 +15,7 @@ export class InfoCajaComponent implements OnInit {
     public _facturaService: FacturaService,
     public _usuarioService: UsuarioService,
     public _cajaService: CajaService
-  ) {}
+  ) { }
   movimientosPrueba;
   movimientos;
   HaberMovimientos = 0;
@@ -45,13 +45,13 @@ export class InfoCajaComponent implements OnInit {
   montoIngreso = 0;
   montoEgreso = 0;
   montoTotal = 0;
-
+  saldoFondo = 0
   async ngOnInit() {
     this.fondo = null;
     this.movimientosPrueba = await this._movimientoService.allmovimientosCaja();
     this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', '');
     console.log(this.movimientosPrueba);
-    
+
     // let respMovimientos = await this._movimientoService.getMovimientosByDate(this.start, this.end, null, false)
     const respMovimientos = await this._movimientoService.getAllMovimientos({
       cerrado: false,
@@ -96,7 +96,7 @@ export class InfoCajaComponent implements OnInit {
       respfactura = await this._facturaService.getFacturasOptions(options);
     }
     if (respfactura.ok) {
-       
+
       this.facturas = respfactura.facturas;
       this.totalFacturas = respfactura.montoTotal.total;
       this.facturaCount = respfactura.montoTotal.cantidad;
@@ -125,10 +125,11 @@ export class InfoCajaComponent implements OnInit {
     this.movimientos = respMovimientos.movimientos;
 
     this.totalMovimientos = respMovimientos.total.monto_total;
-    this.HaberMovimientos =
-      (respMovimientos.total.monto_haber - respMovimientos.total.monto_total) |
-      0;
-
+    this.HaberMovimientos = (respMovimientos.total.monto_haber - respMovimientos.total.monto_total) | 0;
+    let respFondo: any = await this._movimientoService.getSaldoFondo(fondo._id)
+    console.log(respFondo);
+    
+    this.saldoFondo = respFondo.data[0].ingreso - respFondo.data[0].gasto
     // const respfactura = await this._facturaService.getFacturas(
     //   true,
     //   fondo._id,
@@ -204,7 +205,7 @@ export class InfoCajaComponent implements OnInit {
     this.fondo ? (options.fondo = this.fondo._id) : null;
     let listas = this.crearListasSeparadas(this.listItems);
     console.log(listas);
-    
+
     const body = {
       isAllSelectedIngresos: this.isAllSelectedIngresos,
       isAllSelectedMovimientos: this.isAllSelectedMovimientos,
@@ -236,7 +237,7 @@ export class InfoCajaComponent implements OnInit {
 
   switchTableColor() {
     let allItems = document.getElementById('the_body').childNodes;
- 
+
     if (this.tableColor === 'inverse') {
       for (let i = 0; i < allItems.length; i++) {
         const element: any = allItems[i];

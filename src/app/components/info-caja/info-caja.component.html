@@ -121,6 +121,9 @@
                    
                 </div>
             </div> -->
+            <div>Saldo En fondo: {{saldoFondo | currency: '':'':'2.0'}} Gs</div>
+            <div>Saldo + total: {{(saldoFondo + (totalFacturas + HaberMovimientos)) | currency: '':'':'2.0'}} Gs</div>
+            <div>Saldo + Seleccionados: {{(saldoFondo + montoTotal) | currency: '':'':'2.0'}} Gs</div>
             <div class="position:sticky; top: 0;" style="width: 100%;">
                 <div style="display: flex;">
                     <div class="mx-auto">

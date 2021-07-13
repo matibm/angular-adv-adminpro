@@ -65,7 +65,16 @@ export class FacturaService {
         });
       }
       return resp;
-    });
+    }, (error) => {
+      console.log(error);
+      
+      swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: error.error.error
+      });
+    }
+    );
   }
   async pagarFactura(factura, parcial?: boolean, monto_parcial?: number) {
     const caja = await this._cajaService.getCajaActual();

@@ -59,7 +59,7 @@ export class FacturaComponent implements OnInit {
           concepto: this.factura.servicio.NOMBRE,
           precioUnitario: this.factura.haber,
           cincoPorciento: null,
-          diezPorciento: this.factura.haber * 0.1,
+          diezPorciento: this.factura.haber / 11,
         }
       ]
     };

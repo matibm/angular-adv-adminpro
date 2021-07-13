@@ -104,7 +104,7 @@ export class CobranzaComponent implements OnInit {
   rucFactura;
   telFactura;
   direccionFactura;
-
+  fechaPago = new Date()
 
   async ngOnInit() {
     this.observableBuscadores();
@@ -215,7 +215,9 @@ export class CobranzaComponent implements OnInit {
     if (monto < 1) {
       return;
     }
-    this.facturasAPagar = (await this._facturaService.pagarPorMonto({ lista: [{ contrato: id, monto: parseInt(monto) }] })).facturas;
+    this.facturasAPagar = (await this._facturaService.pagarPorMonto({ fecha_pago: this.fechaPago, lista: [{ contrato: id, monto: parseInt(monto) }] })).facturas;
+    console.log(this.facturasAPagar);
+    
   }
 
   async searchBancos(val) {
@@ -230,7 +232,7 @@ export class CobranzaComponent implements OnInit {
     };
     this.lista.push(obj);
     // this.filtros.push()
-    this.facturasAPagarAux = (await this._facturaService.pagarPorMonto({ lista: this.lista })).facturas;
+    this.facturasAPagarAux = (await this._facturaService.pagarPorMonto({ fecha_pago: this.fechaPago, lista: this.lista })).facturas;
     console.log(this.facturasAPagarAux);
     
 
@@ -240,7 +242,7 @@ export class CobranzaComponent implements OnInit {
 
   }
   async confirmarPago() {
-   let pagoresp = await this._facturaService.pagarPorMonto({
+   let pagoresp = await this._facturaService.pagarPorMonto({ fecha_pago: this.fechaPago,
       lista: this.lista,
       montoTotal: this.montoTotal,
       cliente: this.cliente._id,
@@ -312,7 +314,7 @@ export class CobranzaComponent implements OnInit {
         if (element.contrato == factura.contrato && element.haber === factura.haber) {
           element.cantidad++;
           element.precio += factura.haber;
-          element.diezPorciento += factura.haber * 0.1;
+          element.diezPorciento += factura.haber / 11;
           existe = true;
         }
       }
@@ -325,7 +327,7 @@ export class CobranzaComponent implements OnInit {
           precio: factura.haber,
           cincoPorciento: null,
           haber: factura.haber,
-          diezPorciento: factura.haber * 0.1
+          diezPorciento: factura.haber / 11
         });
       }
 
@@ -334,7 +336,7 @@ export class CobranzaComponent implements OnInit {
       //     const element = servicios[j];
       //     element.cantidad++
       //     element.precio += factura.haber
-      //     element.diezPorciento += factura.haber * 0.1
+      //     element.diezPorciento += factura.haber / 11
       //   }
       // } else {
       //   servicios.push({
@@ -344,7 +346,7 @@ export class CobranzaComponent implements OnInit {
       //     precioUnitario: factura.precio_unitario ? factura.precio_unitario : factura.haber,
       //     precio: factura.haber,
       //     cincoPorciento: null,
-      //     diezPorciento: factura.haber * 0.1
+      //     diezPorciento: factura.haber / 11
       //   })
       //   contratosSinRepetir.push(factura.contrato)
       // }
@@ -378,7 +380,7 @@ export class CobranzaComponent implements OnInit {
         concepto: factura.servicio.NOMBRE,
         precioUnitario: factura.haber,
         cincoPorciento: null,
-        diezPorciento: factura.haber * 0.1
+        diezPorciento: factura.haber / 11
       });
     }
     this.facturapdf = {

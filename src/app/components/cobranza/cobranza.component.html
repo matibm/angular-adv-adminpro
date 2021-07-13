@@ -14,8 +14,10 @@
 
                 <div *ngIf="!cliente">
 
-                    <ng-select [typeahead]="inputClientes" [loading]="loadingClientes" [(ngModel)]="cliente" [items]="clientes" (ngModelChange)="filtrar(); onSelectClient(cliente);" name="dsfdbrweqcda" notFoundText="no se encontraron resultados" placeholder="buscar cliente"
-                        bindLabel="NOMBRES" [searchFn]="customSearchFn">
+                    <ng-select [typeahead]="inputClientes" [loading]="loadingClientes" [(ngModel)]="cliente"
+                        [items]="clientes" (ngModelChange)="filtrar(); onSelectClient(cliente);" name="dsfdbrweqcda"
+                        notFoundText="no se encontraron resultados" placeholder="buscar cliente" bindLabel="NOMBRES"
+                        [searchFn]="customSearchFn">
                         <ng-template ng-option-tmp let-item="item">
                             <div> {{item.APELLIDOS}} {{item.NOMBRES}} <br>
                                 <small>{{item.RUC | ruc}}</small>
@@ -60,7 +62,8 @@
                         <div style="display: flex;">
                             <div class="mx-auto">
 
-                                <button type="button" (click)="showModal = true" class="btn mx-auto btn-info">Seleccionar
+                                <button type="button" (click)="showModal = true"
+                                    class="btn mx-auto btn-info">Seleccionar
                                     Contrato</button>
 
 
@@ -128,14 +131,16 @@
         <div class="my-3 d-flex">
             <div class="mx-auto">
                 <div class="form-group">
-                    <input type="number" class="form-control" #montoAPagar name="" id="" aria-describedby="helpId" placeholder="ingresar monto a pagar">
+                    <input type="number" class="form-control" #montoAPagar name="" id="" aria-describedby="helpId"
+                        placeholder="ingresar monto a pagar">
                 </div>
             </div>
 
         </div>
         <div class="d-flex">
             <div class="mx-auto">
-                <button (click)="getFacturasApagar(contrato._id, montoAPagar.value)" class="btn btn-info">calcular</button>
+                <button (click)="getFacturasApagar(contrato._id, montoAPagar.value)"
+                    class="btn btn-info">calcular</button>
             </div>
 
         </div>
@@ -153,6 +158,7 @@
                                     <th>#</th>
                                     <th>Vencimiento</th>
                                     <th>Monto</th>
+                                    <th>Servicio</th>
                                 </tr>
                             </thead>
 
@@ -162,6 +168,7 @@
                                     <td scope="row">{{cuota.nro_factura}}</td>
                                     <td>{{cuota.vencimiento | date}}</td>
                                     <td>{{cuota.haber| currency:'':'':'2.0' }} Gs</td>
+                                    <td>{{cuota.servicio.NOMBRE}}</td>
                                 </tr>
 
 
@@ -180,7 +187,8 @@
 
             <div class="d-flex">
                 <div class="mx-auto">
-                    <button (click)="agregarIngreso(contrato._id, montoAPagar.value)" class="btn mx-2 btn-invert">Continuar</button>
+                    <button (click)="agregarIngreso(contrato._id, montoAPagar.value)"
+                        class="btn mx-2 btn-invert">Continuar</button>
                 </div>
 
             </div>
@@ -239,7 +247,9 @@
                     </div>
                 </div>
                 <div class="" *ngIf="!fondo">
-                    <ng-select [ngStyle]="{minWidth: '300px'}" [items]="fondos" [(ngModel)]="fondo" (search)="searchBancos($event)" notFoundText="no se encontraron resultados" placeholder="buscar destinp fondo" bindLabel="NOMBRES" [searchFn]="customSearchFn">
+                    <ng-select [ngStyle]="{minWidth: '300px'}" [items]="fondos" [(ngModel)]="fondo"
+                        (search)="searchBancos($event)" notFoundText="no se encontraron resultados"
+                        placeholder="buscar destinp fondo" bindLabel="NOMBRES" [searchFn]="customSearchFn">
                         <ng-template ng-option-tmp let-item="item">
                             <div>
                                 <div *ngIf="item.APELLIDOS">{{item.APELLIDOS}} {{item.NOMBRES}}</div>
@@ -272,7 +282,10 @@
 
                 <div *ngIf="!cobrador">
 
-                    <ng-select [typeahead]="inputCobrador" [loading]="loadingCobrador" [items]="cobradores" name="dsfdbrdweqcda" [(ngModel)]="cobrador" (ngModelChange)="null" notFoundText="no se encontraron resultados" placeholder="buscar cobrador" bindLabel="NOMBRES" [searchFn]="customSearchFn">
+                    <ng-select [typeahead]="inputCobrador" [loading]="loadingCobrador" [items]="cobradores"
+                        name="dsfdbrdweqcda" [(ngModel)]="cobrador" (ngModelChange)="null"
+                        notFoundText="no se encontraron resultados" placeholder="buscar cobrador" bindLabel="NOMBRES"
+                        [searchFn]="customSearchFn">
                         <ng-template ng-option-tmp let-item="item">
                             <div> {{item.APELLIDOS}} {{item.NOMBRES}} <br>
                                 <small>{{item.RUC | ruc}}</small>
@@ -292,6 +305,15 @@
                     </div>
                 </div>
             </div>
+            <div class="col-xs col-md">
+                <mat-form-field appearance="fill">
+                    <mat-label>Fecha de Cobro</mat-label>
+                    <input matInput name="asdrdsvet321" [(ngModel)]="fechaPago" [matDatepicker]="pickerPago">
+                    <mat-datepicker-toggle matSuffix [for]="pickerPago">
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #pickerPago></mat-datepicker>
+                </mat-form-field>
+            </div>
         </div>
     </div>
 </div>
@@ -302,27 +324,31 @@
             <div class="col-xs col-md">
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control" [(ngModel)]="nombreFactura" name="nombre" id="nombre" aria-describedby="nombreid" placeholder="">
+                    <input type="text" class="form-control" [(ngModel)]="nombreFactura" name="nombre" id="nombre"
+                        aria-describedby="nombreid" placeholder="">
                 </div>
             </div>
             <div class="col-xs col-md">
                 <div class="form-group">
                     <label for="ruc">RUC/CI</label>
-                    <input type="text" class="form-control" name="ruc" [(ngModel)]="rucFactura" id="ruc" aria-describedby="rucid" placeholder="">
+                    <input type="text" class="form-control" name="ruc" [(ngModel)]="rucFactura" id="ruc"
+                        aria-describedby="rucid" placeholder="">
                 </div>
             </div>
 
             <div class="col-xs col-md">
                 <div class="form-group">
                     <label for="tel">Tel</label>
-                    <input type="text" class="form-control" name="tel" [(ngModel)]="telFactura" id="tel" aria-describedby="telid" placeholder="">
+                    <input type="text" class="form-control" name="tel" [(ngModel)]="telFactura" id="tel"
+                        aria-describedby="telid" placeholder="">
                 </div>
             </div>
 
         </div>
         <div class="form-group">
             <label for="direccion">direccion</label>
-            <input type="text" class="form-control" name="direccion" [(ngModel)]="direccionFactura" id="direccion" aria-describedby="direccionid" placeholder="">
+            <input type="text" class="form-control" name="direccion" [(ngModel)]="direccionFactura" id="direccion"
+                aria-describedby="direccionid" placeholder="">
         </div>
 
     </div>
@@ -332,15 +358,18 @@
     <div style="display: flex;">
         <div class="ml-auto">
             <button (click)="reset()" class="btn mx-2 btn-inverse">Reestablecer</button>
-            <button (click)="facturaPdf = crearPDF(facturasAPagarAux) ;showPDF = true" [disabled]="facturasAPagarAux.length < 1" class="btn mx-2 btn-info">Vista
+            <button (click)="facturaPdf = crearPDF(facturasAPagarAux) ;showPDF = true"
+                [disabled]="facturasAPagarAux.length < 1" class="btn mx-2 btn-info">Vista
                 previa PDF</button>
-            <button (click)="confirmarPago( )" [disabled]="!fondo || facturasAPagarAux.length < 1" class="btn mx-2 btn-success">Confirmar Pago</button>
+            <button (click)="confirmarPago( )" [disabled]="!fondo || facturasAPagarAux.length < 1"
+                class="btn mx-2 btn-success">Confirmar Pago</button>
         </div>
     </div>
 </div>
 <app-modal-factura *ngIf="showPDF" (onClose)="showPDF = false" [existe]="false" [facturaPDF]="facturaPdf">
 </app-modal-factura>
-<app-modal-contratos (contratoSelected)="onContratoSelected($event)" [cliente]="cliente" (onClose)="showModal = false" *ngIf="showModal"></app-modal-contratos>
+<app-modal-contratos (contratoSelected)="onContratoSelected($event)" [cliente]="cliente" (onClose)="showModal = false"
+    *ngIf="showModal"></app-modal-contratos>
 
 <div class="" *ngIf="facturapdf">
     <app-modal-factura (onClose)="facturapdf = null" [facturaPDF]="facturapdf"></app-modal-factura>

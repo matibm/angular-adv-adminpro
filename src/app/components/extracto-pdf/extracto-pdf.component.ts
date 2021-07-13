@@ -8,7 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ExtractoPdfComponent implements OnInit {
   constructor(public _facturaService: FacturaService) {}
-
+  titular 
+  contrato
   facturas;
   // @Input() options = {};
   async ngOnInit() {
@@ -16,7 +17,15 @@ export class ExtractoPdfComponent implements OnInit {
       ? JSON.parse(localStorage.getItem('options_extracto'))
       : {};
     options.isExtracto = true;
+    
     let resp = await this._facturaService.getFacturasOptions(options, {key:'vencimiento', value: 1});
+    console.log(resp);
+    if (resp.facturas) {
+      if (resp.facturas[0]) {
+        this.titular = `${resp.facturas[0].titular.APELLIDOS} ${resp.facturas[0].titular.NOMBRES}`
+        this.contrato = `${resp.facturas[0].contrato.nombre_servicio}`
+      }
+    }
     this.facturas = resp.facturas;
     setTimeout(() => {
       window.print();

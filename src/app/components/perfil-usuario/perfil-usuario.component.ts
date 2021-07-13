@@ -31,6 +31,10 @@ export class PerfilUsuarioComponent implements OnInit {
   manejaCaja;
   cobroOnline;
   pagos;
+  contratosActivosCount = 0
+  contratosActivosPage = 1
+  contratosInactivosCount = 0
+  contratosInactivosPage = 1
   facturapdf;
   constructor(
     public _usuarioService: UsuarioService,
@@ -84,11 +88,15 @@ export class PerfilUsuarioComponent implements OnInit {
     this.cobroOnline = this.usuario.fondo_online == '1' ? 'check_maneja_caja' : null;
     this.cuotas = await this._cuotaService.getCuotaByTitular(this.id);
     // this.contratos = await this._contratoService.getContratosByTitular(this.id);
-    this.contratos = (await this._contratoService.getContratos(1, {cliente: this.id, tipo: 'activo'})).contratos;
-    console.log(this.contratos);
-    
-    this.contratosInactivos = (await this._contratoService.getContratos(1, {cliente: this.id, tipo: 'inactivo'})).contratos;
-    this.movimientos = (await this._movimientoService.getAllMovimientos({cliente: this.id})).movimientos;
+    let contratosActivosResp = (await this._contratoService.getContratos(1, { cliente: this.id, tipo: 'activo' }))
+    console.log(contratosActivosResp);
+
+    this.contratos = contratosActivosResp.contratos
+
+    const contratosInactivosResp = (await this._contratoService.getContratos(1, { cliente: this.id, tipo: 'inactivo' }))
+    this.contratosInactivosCount = contratosInactivosResp.count 
+    this.contratosInactivos = contratosInactivosResp.contratos
+    this.movimientos = (await this._movimientoService.getAllMovimientos({ cliente: this.id })).movimientos;
   }
 
   prueba() {
@@ -126,7 +134,7 @@ export class PerfilUsuarioComponent implements OnInit {
     });
   }
 
-  async mostrarModal(id){
+  async mostrarModal(id) {
     const resp = await this._facturaService.getDetallePago(id);
 
     const pago = resp.pago;
@@ -139,7 +147,7 @@ export class PerfilUsuarioComponent implements OnInit {
         concepto: factura.servicio.NOMBRE,
         precioUnitario: factura.haber,
         cincoPorciento: null,
-        diezPorciento: factura.haber * 0.1
+        diezPorciento: factura.haber / 11
       });
     }
     this.facturapdf = {
@@ -154,5 +162,12 @@ export class PerfilUsuarioComponent implements OnInit {
     };
     console.log(this.facturapdf);
 
+  }
+
+ async pageChangeContratosActivos(page) {
+  console.log(page);  
+  let contratosActivosResp = (await this._contratoService.getContratos(page, { cliente: this.id, tipo: 'inactivo' }))
+ 
+    this.contratosInactivos = contratosActivosResp.contratos
   }
 }

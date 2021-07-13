@@ -256,7 +256,7 @@ export class FacturaPdfComponent implements OnInit {
         if (element.contrato == factura.contrato && element.haber === factura.haber) {
           element.cantidad++;
           element.precio += factura.haber;
-          element.diezPorciento += factura.haber * 0.1;
+          element.diezPorciento += factura.haber / 11;
           existe = true;
         }
       }
@@ -269,7 +269,7 @@ export class FacturaPdfComponent implements OnInit {
           precio: factura.haber,
           cincoPorciento: null,
           haber: factura.haber,
-          diezPorciento: factura.haber * 0.1
+          diezPorciento: factura.haber / 11
         });
       }
 
@@ -278,7 +278,7 @@ export class FacturaPdfComponent implements OnInit {
       //     const element = servicios[j];
       //     element.cantidad++
       //     element.precio += factura.haber
-      //     element.diezPorciento += factura.haber * 0.1
+      //     element.diezPorciento += factura.haber / 11
       //   }
       // } else {
       //   servicios.push({
@@ -288,7 +288,7 @@ export class FacturaPdfComponent implements OnInit {
       //     precioUnitario: factura.precio_unitario ? factura.precio_unitario : factura.haber,
       //     precio: factura.haber,
       //     cincoPorciento: null,
-      //     diezPorciento: factura.haber * 0.1
+      //     diezPorciento: factura.haber / 11
       //   })
       //   contratosSinRepetir.push(factura.contrato)
       // }
