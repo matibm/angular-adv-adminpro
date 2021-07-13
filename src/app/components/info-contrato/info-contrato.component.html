@@ -153,7 +153,7 @@
         <div *ngIf="movimientos" class="col-md col-xs">
             <app-lista-movimientos [movimientos]="movimientos"></app-lista-movimientos>
         </div>
-        <div class="col-lg" *ngIf="facturas">
+        <div class="col-lg" >
             <app-facturas [count]="facturasCount" [total]="montoTotal" [options]="facturaOptions" [fromOutside]='true' [facturas]='facturas'>
             </app-facturas>
         </div>

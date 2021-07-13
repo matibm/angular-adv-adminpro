@@ -44,6 +44,7 @@ export class FacturasComponent implements OnInit {
     // }
   }
   async pageChanged(page) {
+    this.facturas = null
     let options: any = {};
     if (this.pagado == true) {
       options.pagado = this.pagado;

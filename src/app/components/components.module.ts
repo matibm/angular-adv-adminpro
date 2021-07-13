@@ -41,6 +41,8 @@ import { NgxMaskModule, IConfig } from 'ngx-mask';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 import {  MAT_DATE_LOCALE} from '@angular/material/core';
 import { NotifierModule } from 'angular-notifier';
 import { MatInputModule } from '@angular/material/input';
@@ -107,6 +109,7 @@ const maskConfig: Partial<IConfig> = {
     MatFormFieldModule,
     MatInputModule,
     MatNativeDateModule,
+    MatProgressSpinnerModule,
     NotifierModule.withConfig({
        behaviour: { autoHide: 2000},
        position: { horizontal: {position: 'right'}}
