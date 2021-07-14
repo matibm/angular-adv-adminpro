@@ -1,4 +1,5 @@
 import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
+import { FacturaService } from 'src/app/services/factura.service';
 
 @Component({
   selector: 'app-modal-factura',
@@ -7,15 +8,15 @@ import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 })
 export class ModalFacturaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _facturaService: FacturaService) { }
   @Output() onClose = new EventEmitter();
   @Input() facturaPDF;
   @Input() existe;
-
+  loadingCancelarPago = false
   style: any = {};
   ngOnInit(): void {
     const height = window.screen.availHeight;
-    console.log();
+    console.log(this.facturaPDF);
 
     this.style.maxHeight = (height - 300) + 'px';
     this.style.overflow = 'auto';
@@ -35,6 +36,15 @@ export class ModalFacturaComponent implements OnInit {
     wopen.onafterprint = (event) => {
       wopen.close();
     };
+  }
+
+  async cancelarPago(){
+    this.loadingCancelarPago = true
+    console.log(this.facturaPDF);
+    
+    await this._facturaService.cancelarPago(this.facturaPDF._id)
+    this.onClose.emit()
+    this.loadingCancelarPago = false
   }
 
 }

@@ -33,6 +33,7 @@ export class FacturaComponent implements OnInit {
   parciales: Factura[];
   facturaPdf;
   isOnline = false;
+  facturapdf
   async ngOnInit() {
     if (this.primeraEjecucion) {
       this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((e: NavigationEnd) => {
@@ -131,5 +132,35 @@ export class FacturaComponent implements OnInit {
   }
 
 
+  async mostrarModal(id) {
+    const resp = await this._facturaService.getDetallePago(id);
+
+    const pago = resp.pago;
+    const facturas = resp.facturas;
+    const servicios = [];
+    for (let i = 0; i < facturas.length; i++) {
+      const factura = facturas[i];
+      servicios.push({
+        cantidad: 1,
+        concepto: factura.servicio.NOMBRE,
+        precioUnitario: factura.haber,
+        cincoPorciento: null,
+        diezPorciento: factura.haber / 11
+      });
+    }
+    this.facturapdf = {
+      _id: pago._id,
+      activo: pago.activo,
+      nombres: `${pago.cliente.NOMBRES} ${pago.cliente.APELLIDOS}`,
+      fecha: pago.fecha_creacion,
+      direccion: `direccion de prueba`,
+      ruc: pago.cliente.RUC,
+      tel: pago.cliente.TELEFONO1,
+      notaDeRemision: '123123',
+      servicios
+    };
+    console.log(this.facturapdf);
+
+  }
 
 }

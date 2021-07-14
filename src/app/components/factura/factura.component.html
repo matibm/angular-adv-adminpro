@@ -164,9 +164,9 @@
 
         <div *ngIf="!factura.link_de_pago" class="float-right mt-3">
             <button *ngIf="!isOnline && !factura.pagado && !crearParcial" [disabled]="!fondo || !montoparcialCorrecto" (click)="pagar()" type="button" class="btn mr-2   btn-primary">Pagar</button>
-            <button (click)="_facturaService.elimnarFactura(id);" type="button" class="btn mr-2   btn-danger">Elimnar</button>
+            <!-- <button (click)="_facturaService.elimnarFactura(id);" type="button" class="btn mr-2   btn-danger">Elimnar</button> -->
             <button *ngIf="isOnline" (click)="crearLink()" type="button" class="btn mr-2  btn-info">crear Link de pago</button>
-            <button *ngIf="factura.pagado" (click)="printFactura()" type="button" class="btn mr-2   btn-primary">imprimir Factura</button>
+            <button *ngIf="factura.pagado" (click)="mostrarModal(factura.pago)" type="button" class="btn mr-2 btn-rounded btn-inverse">Ver Factura</button>
             <button *ngIf="!factura.pagado && crearParcial" [disabled]="!fondo || !montoparcialCorrecto" (click)="pagar()" type="button" class="btn mr-2   btn-primary">Pago parcial</button>
 
         </div>
@@ -178,4 +178,9 @@
 
     </div>
 
+</div>
+
+
+<div class="" *ngIf="facturapdf">
+    <app-modal-factura (onClose)="facturapdf = null" [facturaPDF]="facturapdf"></app-modal-factura>
 </div>

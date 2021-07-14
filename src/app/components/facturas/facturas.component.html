@@ -1,6 +1,6 @@
 <div class="card">
 
-    <div class="card-body">
+    <div style="min-height: 517.52px " class="card-body">
         <h4 *ngIf="showlabel && facturas"> <span class="lstick"></span> Extracto de Cuotas </h4>
         <div style="overflow-x: auto;" class="">
             <table class="table table-sm table-hover">
@@ -43,7 +43,7 @@
 
                     </tr>
                 </thead>
-              
+
 
                 <tbody *ngIf="facturas">
 
@@ -96,7 +96,7 @@
             <div style="width: 100%;" *ngIf="!facturas">
                 <div style="display: flex;">
                     <div class="my-5 mx-auto">
-                        <mat-spinner ></mat-spinner>
+                        <mat-spinner></mat-spinner>
 
                     </div>
                 </div>
@@ -153,3 +153,4 @@
             </div>
         </div>
     </div>
+</div>

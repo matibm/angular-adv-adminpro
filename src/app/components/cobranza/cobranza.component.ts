@@ -94,7 +94,7 @@ export class CobranzaComponent implements OnInit {
     end: new FormControl()
   });
 
-
+  loadingConfirmarPago = false
   inputClientes = new Subject<string>();
   inputCobrador = new Subject<string>();
   loadingClientes = false;
@@ -105,7 +105,11 @@ export class CobranzaComponent implements OnInit {
   telFactura;
   direccionFactura;
   fechaPago = new Date()
-
+  pruebaValue(variable){
+    console.log(getComputedStyle(variable).width);
+    
+    
+  }
   async ngOnInit() {
     this.observableBuscadores();
     // const respF = await this._facturaService.getFacturasOptions(this.opciones);
@@ -224,6 +228,8 @@ export class CobranzaComponent implements OnInit {
     this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', val.term);
   }
   async agregarIngreso(id, monto) {
+    // this.facturas = null
+
     this.facturasAPagar = null;
     this.montoTotal += parseInt(monto);
     const obj = {
@@ -237,11 +243,12 @@ export class CobranzaComponent implements OnInit {
     
 
     this.contrato = null;
-    this.filtrar();
+    // this.filtrar();
     this.facturaPdf = this.crearPDF(this.facturasAPagarAux);
 
   }
   async confirmarPago() {
+    this.loadingConfirmarPago = true 
    let pagoresp = await this._facturaService.pagarPorMonto({ fecha_pago: this.fechaPago,
       lista: this.lista,
       montoTotal: this.montoTotal,
@@ -257,11 +264,18 @@ export class CobranzaComponent implements OnInit {
       nro_factura: '4544352',
       numero: '002-004'
     });
+    this.loadingConfirmarPago = false
+
     console.log(pagoresp);
     this.mostrarModal(pagoresp?.pago?._id) 
     this.ngOnInit();
     this.contrato = null;
     this.facturasAPagar = null;
+    this.facturasAPagarAux = []
+    this.cliente = null; 
+    this.lista = []
+    this.fondo = null;
+    this.cobrador = null
   }
 
 

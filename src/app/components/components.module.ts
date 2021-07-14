@@ -3,7 +3,7 @@ import { PipeModule } from './../pipes/pipe.module';
 import { AvatarModule } from 'ngx-avatar';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { IncrementadorComponent } from './incrementador/incrementador.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DonaComponent } from './dona/dona.component';
@@ -124,6 +124,7 @@ const maskConfig: Partial<IConfig> = {
 
   ],
   providers: [
+    DatePipe,
     {provide: MAT_DATE_LOCALE, useValue: 'es-PY'},
   ]
 

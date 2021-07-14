@@ -24,12 +24,13 @@ export class ContratoPdfComponent implements OnInit {
   @Input() printAltoke = true;
   tipo_contrato = '';
   diaCadaMes;
+  precioContrato = 0
   async ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
     this.contrato = await this._contratoService.getContratoById(this.id);
     this.tipo_contrato = this.contrato.producto.COD_CORTO;
     console.log(this.contrato);
-
+    this.precioContrato = parseInt(this.contrato.producto.PRECIO_MAYORISTA) 
     this.diaCadaMes = new Date(this.contrato.fecha_creacion_unix).getDate();
 
     if (this.printAltoke) {

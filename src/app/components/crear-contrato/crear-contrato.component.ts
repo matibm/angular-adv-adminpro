@@ -12,7 +12,6 @@ import { SwalPortalTargets, SwalDirective } from '@sweetalert2/ngx-sweetalert2';
 import swal from 'sweetalert2';
 import { fromEvent, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
-
 @Component({
   selector: 'app-crear-contrato',
   templateUrl: './crear-contrato.component.html',
@@ -24,7 +23,7 @@ export class CrearContratoComponent implements OnInit {
     public _usuarioService: UsuarioService,
     public readonly swalTargets: SwalPortalTargets,
     public _contratoService: ContratoService,
-    public router: Router
+    public router: Router,
 
   ) { }
 
@@ -96,6 +95,10 @@ export class CrearContratoComponent implements OnInit {
     {
       name: 'PAGOPAR',
       value: 'PAGOPAR'
+    },
+    {
+      name: 'COBRADOR',
+      value: 'COBRADOR'
     },
     {
       name: 'Débito Automático',
@@ -317,6 +320,7 @@ export class CrearContratoComponent implements OnInit {
     //   servicio: this.servicioCMP._id,
     //   fecha_creacion_unix: new Date().getTime()
     // })
+    
     const send = {
       contrato: nuevo_contrato,
       facturas: null,

@@ -78,6 +78,10 @@ export class EditarContratoComponent implements OnInit {
       value: 'PAGOPAR'
     },
     {
+      name: 'COBRADOR',
+      value: 'COBRADOR'
+    },
+    {
       name: 'Débito Automático',
       value: 'DEBITO'
     },

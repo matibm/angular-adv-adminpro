@@ -57,17 +57,17 @@ export class FacturaService {
     return this.http.post(url, body).toPromise().then((resp: any) => {
       console.log(resp);
       if (body.confirmado) {
-        swal.fire({
-          icon: 'success',
-          title: 'Pago realizado',
-          text: `Se pagaron ${resp.total} cuota(s)`,
-          timer: 3000,
-        });
+        // swal.fire({
+        //   icon: 'success',
+        //   title: 'Pago realizado',
+        //   text: `Se pagaron ${resp.total} cuota(s)`,
+        //   timer: 3000,
+        // });
       }
       return resp;
     }, (error) => {
       console.log(error);
-      
+
       swal.fire({
         icon: 'error',
         title: 'Error',
@@ -219,6 +219,27 @@ export class FacturaService {
       console.log(resp);
 
       return resp;
+    });
+  }
+  cancelarPago(pago_id) {
+    let url = URL_SERVICIOS + '/factura/cancelar_pago';
+    url += `?token=${this._usuarioService.token}`;
+    url += `&pago_id=${pago_id}`;
+    return this.http.get(url).toPromise().then((resp: any) => {
+      console.log(resp);
+      swal.fire({
+        icon: 'success',
+        title: 'Pago cancelado',
+        timer: 5000
+      });
+      return resp;
+    }, (error) => {
+      console.error(error)
+      swal.fire({
+        icon: 'error',
+        title: 'Error al cancelar el pago',
+        text: error.error.message
+      });
     });
   }
 

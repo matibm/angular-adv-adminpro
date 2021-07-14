@@ -152,6 +152,7 @@ export class PerfilUsuarioComponent implements OnInit {
     }
     this.facturapdf = {
       _id: pago._id,
+      activo: pago.activo,
       nombres: `${pago.cliente.NOMBRES} ${pago.cliente.APELLIDOS}`,
       fecha: pago.fecha_creacion,
       direccion: `direccion de prueba`,

@@ -315,6 +315,10 @@
                 <i *ngIf="contrato.tipo_pago != 'PAGOPAR' " style="font-size: 20px;" class="mdi mdi-checkbox-blank-outline"></i> PAGOPAR
             </div>
             <div class="mr-auto ">
+                <i *ngIf="contrato.tipo_pago == 'COBRADOR' " style="font-size: 20px;" class="mdi mdi-checkbox-marked-outline"></i>
+                <i *ngIf="contrato.tipo_pago != 'COBRADOR' " style="font-size: 20px;" class="mdi mdi-checkbox-blank-outline"></i> COBRADOR
+            </div>
+            <div class="mr-auto ">
                 <i *ngIf="contrato.tipo_pago == 'DEBITO' " style="font-size: 20px;" class="mdi mdi-checkbox-marked-outline"></i>
                 <i *ngIf="contrato.tipo_pago != 'DEBITO' " style="font-size: 20px;" class="mdi mdi-checkbox-blank-outline"></i> DEB. AUTOM.
             </div>
@@ -329,7 +333,7 @@
         </div>
         <div class="mx-3 border mt-2 px-2 py-1" style="text-align: initial;">
             <P> &nbsp;&nbsp;&nbsp;&nbsp; *EL MANTENIMIENTO ANUAL TENDRA UN RECARGO MENSUAL SI EL MISMO NO SE ABONA EN SU TOTALIDAD EN EL MES DE ENERO DE CADA AÑO. <br> &nbsp;&nbsp;&nbsp;&nbsp; *LA EMPRESA CANCELARÁ ESTE CONTRATO ANTE LA FALTA DE PAGO DE DOS
-                (2) CUOTAS POR LA PARCELA (UDP) Y/O EL MANENIMIENOT ANUAL (CMP). <br> &nbsp;&nbsp;&nbsp;&nbsp;*PARA REALIZAR LA INHUMACION EN LA PARCELA EL TITULAR DEBERA ABONAR EL MONTO DE INHUMACION (ACF) ESTIPULADO POR LA EMPRESA Y COMO MINIMO EL 50%
+                (2) CUOTAS POR LA PARCELA (UDP) Y/O EL MANTENIMIENTO ANUAL (CMP). <br> &nbsp;&nbsp;&nbsp;&nbsp;*PARA REALIZAR LA INHUMACION EN LA PARCELA EL TITULAR DEBERA ABONAR EL MONTO DE INHUMACION (ACF) ESTIPULADO POR LA EMPRESA Y COMO MINIMO EL 50%
                 DEL VALOR DE LA PARCELA
             </P>
         </div>
@@ -674,6 +678,10 @@
                 <i *ngIf="contrato.tipo_pago != 'PAGOPAR' " style="font-size: 20px;" class="mdi mdi-checkbox-blank-outline"></i> PAGOPAR
             </div>
             <div class="mr-auto ">
+                <i *ngIf="contrato.tipo_pago == 'COBRADOR' " style="font-size: 20px;" class="mdi mdi-checkbox-marked-outline"></i>
+                <i *ngIf="contrato.tipo_pago != 'COBRADOR' " style="font-size: 20px;" class="mdi mdi-checkbox-blank-outline"></i> COBRADOR
+            </div>
+            <div class="mr-auto ">
                 <i *ngIf="contrato.tipo_pago == 'DEBITO' " style="font-size: 20px;" class="mdi mdi-checkbox-marked-outline"></i>
                 <i *ngIf="contrato.tipo_pago != 'DEBITO' " style="font-size: 20px;" class="mdi mdi-checkbox-blank-outline"></i> DEB. AUTOM.
             </div>
@@ -946,6 +954,10 @@
                 <i *ngIf="contrato.tipo_pago != 'PAGOPAR' " style="font-size: 20px;" class="mdi mdi-checkbox-blank-outline"></i> PAGOPAR
             </div>
             <div class="mr-auto ">
+                <i *ngIf="contrato.tipo_pago == 'COBRADOR' " style="font-size: 20px;" class="mdi mdi-checkbox-marked-outline"></i>
+                <i *ngIf="contrato.tipo_pago != 'COBRADOR' " style="font-size: 20px;" class="mdi mdi-checkbox-blank-outline"></i> COBRADOR
+            </div>
+            <div class="mr-auto ">
                 <i *ngIf="contrato.tipo_pago == 'DEBITO' " style="font-size: 20px;" class="mdi mdi-checkbox-marked-outline"></i>
                 <i *ngIf="contrato.tipo_pago != 'DEBITO' " style="font-size: 20px;" class="mdi mdi-checkbox-blank-outline"></i> DEB. AUTOM.
             </div>
@@ -1015,6 +1027,10 @@
                 </tbody>
             </table>
         </div>
+        <div class="mx-3 mt-2 ">
+           <h2>Total: {{ precioContrato + sumarlosPluses([contrato?.beneficiarios[3]?.plus_edad, contrato?.beneficiarios[4]?.plus_edad , contrato?.beneficiarios[5]?.plus_edad]) +  sumarlosPluses([contrato?.beneficiarios[0]?.plus_edad, contrato?.beneficiarios[1]?.plus_edad , contrato?.beneficiarios[2]?.plus_edad]) | currency: '':'':'2.0' }}</h2>
+        </div>
+
         <div class="mx-3 border px-5 pt-5 py-1 " style="display: flex; text-align: initial;">
             <div class="mr-auto" style="display: block;">
                 <div class=" " style="display: block; width: fit-content;">

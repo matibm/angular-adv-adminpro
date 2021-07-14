@@ -43,7 +43,7 @@ export class Producto {
         public proveedor2?: string,
         public proveedor3?: string,
         public PRECIO_MINORISTA?: number,
-        public PRECIO_MAYORISTA?: number,
+        public PRECIO_MAYORISTA?: any,
         public PRECIO_COMPRA?: number,
         public SERVICIO?: string,
         public PRODUCTO?: string,

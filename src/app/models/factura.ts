@@ -7,6 +7,7 @@ export class Factura {
     constructor(
         public id_movimiento?: string,
         public fecha?: string,
+        public pago?: string,
         public id_concepto?: string,
         public nombre_concepto?: string,
         public id_cliente?: string,

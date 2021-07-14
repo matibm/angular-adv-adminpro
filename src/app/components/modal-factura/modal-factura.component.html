@@ -5,17 +5,38 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Factura</h5>
-                    <button (click)="onClose.emit()" type="button" class="close" aria-label="Close">
+                    <button (click)="onClose.emit()" type="button" class="pointer close" aria-label="Close">
                         <span aria-hidden="true"  >&times;</span>
                     </button>
                 </div>
+                <div *ngIf="facturaPDF?.activo === false" style="width: 100%;">
+                    <div style="display: flex;">
+
+                        <div class="mx-auto">
+                            <h1 class="text-danger">Cancelado</h1>
+                        </div>
+                    </div>
+                </div>
+
                 <div *ngIf="style" [ngStyle]="style" class=" modal-body " align="center">
                     <app-factura-pdf [printAltoke]="false" [existe]="existe" [facturaPDF]="facturaPDF"></app-factura-pdf>
                 </div>
 
                 <div class="modal-footer">
-                    <button class="btn btn-danger">cerrar</button>
-                    <button (click)="printContrato()" class='btn btn-info'>Imprimir</button>
+                    <button style="width: 143.84px;" [disabled]="loadingCancelarPago || facturaPDF?.activo === false" (click)="cancelarPago()" class="btn btn-rounded btn-inverse">
+                        <span *ngIf="!loadingCancelarPago">Cancelar Pago</span>
+                        <div *ngIf="loadingCancelarPago" style="width: 100%;">
+                            <div style="display: flex;">
+        
+                                <div class="mx-auto">
+                                    <mat-spinner [color]="'accent'" [diameter]="20"></mat-spinner>
+                                </div>
+                            </div>
+                        </div>
+
+                    </button>
+                    <button (click)="onClose.emit()"  class="btn btn-rounded btn-outline-secondary">Cerrar</button>
+                    <button (click)="printContrato()" class='btn btn-rounded btn-success'>Imprimir</button>
 
                 </div>
             </div>
