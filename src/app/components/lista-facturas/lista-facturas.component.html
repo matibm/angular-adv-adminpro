@@ -305,7 +305,7 @@
         </div>
     </div>
 </div>
-<app-facturas *ngIf="!showModal" [count]="count" [options]="opciones" [facturas]="facturas"></app-facturas>
+<app-facturas *ngIf="!showModal" [count]="count" [total]="montoTotal" [options]="opciones" [sort]="sort" [total]="true" [facturas]="facturas"></app-facturas>
 
 <div *ngIf="contrato" class="card">
     <div class="card-body">

@@ -22,19 +22,23 @@
                         <th *ngIf="false" class="text-center" style="min-width: 200px;">
                             Emisión
                         </th>
-                        <th class="text-center" style="min-width: 150px;">
+                        <th (click)="ordenar('haber')" class="pointer text-center" style="min-width: 150px;">
                             Monto
+                            <i *ngIf="sort.key === 'haber'" class="ml-1 fa "   [ngClass]="{'fa-sort-asc': sort.value === 1 , 'fa-sort-desc': sort.value === -1 }"></i>
                         </th>
                         <th class="text-center" style="min-width: 200px;" *ngIf="!fromOutside">
                             Cliente
                         </th>
-                        <th class="text-center" style="min-width: 150px;">
+                        <th (click)="ordenar('vencimiento')" class="pointer text-center" style="min-width: 150px;">
                             Vencimiento
+                            <i *ngIf="sort.key === 'vencimiento'" class="ml-1 fa "   [ngClass]="{'fa-sort-asc': sort.value === 1 , 'fa-sort-desc': sort.value === -1 }"></i>
                         </th>
                         <th class="text-center" style="min-width: 400px;">
                             Servicio
                         </th>
-                        <th class="text-center" style="min-width: 150px;">Pagado
+                        <th (click)="ordenar('fecha_pagado_unix')" class="pointer text-center" style="min-width: 150px;">
+                            Pagado
+                            <i *ngIf="sort.key === 'fecha_pagado_unix'" class="ml-1 fa "   [ngClass]="{'fa-sort-asc': sort.value === 1 , 'fa-sort-desc': sort.value === -1 }"></i>
 
                         </th>
                         <th class="text-center" *ngIf="!fromOutside" style="min-width: 200px;">
@@ -72,14 +76,14 @@
                         <td class="text-center" *ngIf="!fromOutside">
                             {{factura.titular.NOMBRES | primerNombre}} {{factura.titular.APELLIDOS | primerNombre }}
                         </td>
-                        <td class="text-center">{{factura.vencimiento | date}}</td>
+                        <td class="text-center">{{factura.vencimiento | date: 'dd-MM-YYYY'}}</td>
                         <td class="text-center" *ngIf="!fromOutside && factura.servicio">
                             <div *ngIf="factura.servicio?.COD_CORTO == 'C.M.P.'"></div> {{factura.servicio.NOMBRE }}
                         </td>
                         <td class="text-center" *ngIf="fromOutside && factura.servicio">
                             {{factura.servicio.COD_CORTO }}
                         </td>
-                        <td class="text-center" *ngIf="factura.pagado"><b>{{factura.fecha_pagado_unix | date}}</b></td>
+                        <td class="text-center" *ngIf="factura.pagado"><b>{{factura.fecha_pagado_unix | date: 'dd/MM/YYYY'}}</b></td>
                         <td class="text-center text-danger" *ngIf="!factura.pagado">Pendiente</td>
                         <td class="text-center" *ngIf="!fromOutside">
                             <div *ngIf="factura.cobrador">

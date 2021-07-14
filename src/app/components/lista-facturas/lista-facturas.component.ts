@@ -30,7 +30,8 @@ export class ListaFacturasComponent implements OnInit {
   private notifier: NotifierService;
 
   showModal = false;
-  opciones;
+  opciones:any = { get_total: '1' }
+  montoTotal
   fondo;
   fondos;
   fechaEmisionStart;
@@ -91,17 +92,25 @@ export class ListaFacturasComponent implements OnInit {
     end: new FormControl()
   });
 
-
+  sort = {
+    key: 'haber', value: -1
+  }
   async ngOnInit() {
     this.observableBuscadores()
-    const respF = await this._facturaService.getFacturasOptions(this.opciones);
+    const respF = await this._facturaService.getFacturasOptions(this.opciones, this.sort);
+    console.log(respF);
+
     this.count = respF.count;
     this.facturas = respF.facturas;
+    this.montoTotal = respF.montoTotal
     this.servicios = await this._productoService.getProductos();
     this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', '');
   }
 
   async filtrar() {
+    this.facturas = null;
+    this.montoTotal = null
+
     let pagado: boolean;
     if (this.estadoSeleccionado == 'PAGADOS') {
       pagado = true;
@@ -110,6 +119,7 @@ export class ListaFacturasComponent implements OnInit {
     }
 
     this.opciones = {
+      get_total: '1',
       titular: this.cliente ? this.cliente._id : null,
       vendedor: this.vendedor ? this.vendedor._id : null,
       cobrador: this.cobrador ? this.cobrador._id : null,
@@ -125,9 +135,11 @@ export class ListaFacturasComponent implements OnInit {
       end: this.rangeEmision.value.end ? new Date(this.rangeEmision.value.end).setHours(23, 59, 59, 59) : null
     };
 
-    const respF = await this._facturaService.getFacturasOptions(this.opciones);
+    const respF = await this._facturaService.getFacturasOptions(this.opciones, this.sort);
     this.count = respF.count;
     this.facturas = respF.facturas;
+    this.montoTotal = respF.montoTotal
+
   }
 
   seleccionarProducto(producto: Producto) {

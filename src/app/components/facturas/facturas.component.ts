@@ -15,7 +15,7 @@ export class FacturasComponent implements OnInit {
   constructor(
     public _facturaService: FacturaService,
     protected router: Router
-  ) {}
+  ) { }
   todos;
   page = 1;
   @Input() fromOutside = false;
@@ -43,6 +43,9 @@ export class FacturasComponent implements OnInit {
     // } else {
     // }
   }
+  @Input() sort = {
+    key: 'haber', value: 0
+  }
   async pageChanged(page) {
     this.facturas = null
     let options: any = {};
@@ -65,7 +68,7 @@ export class FacturasComponent implements OnInit {
     options.page = page;
     // let resp = await this._facturaService.getFacturas(this.pagado, this.fondo, this.start, this.end, page, null, this.cerrado)
     this.options = options;
-    const resp = await this._facturaService.getFacturasOptions(options,{key:'vencimiento', value: 1});
+    const resp = await this._facturaService.getFacturasOptions(options, this.sort);
 
     this.facturas = resp.facturas;
     this.count = resp.count;
@@ -133,11 +136,24 @@ export class FacturasComponent implements OnInit {
   }
 
   async descargarExtracto() {
-    
+
     localStorage.setItem('options_extracto', JSON.stringify(this.options))
     const wopen = window.open('/extracto-cuotas');
     // wopen.onafterprint = (event) => {
     //   wopen.close();
     // };
+  }
+
+  async ordenar(key){
+    this.facturas = null
+    this.sort.key = key
+    if (this.sort.value === 1) {
+      this.sort.value = -1
+    } else{
+      this.sort.value = 1
+    }
+    const resp = await this._facturaService.getFacturasOptions(this.options, this.sort);
+
+    this.facturas = resp.facturas;
   }
 }
