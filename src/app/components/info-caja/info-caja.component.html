@@ -10,7 +10,7 @@
                 <div class="card-body  ">
                     <span> <span class="lstick"></span>Filtros </span>
                     <div class="row">
-                        <div class="col-xs col-md-5 pl-3 mr-3">
+                        <div class="col-xs col-md pl-3 mr-3">
                             <p>Fondo: </p>
                             <div class="inline-flex">
                                 <div style="min-width: 100%;" *ngIf="!fondo">
@@ -37,11 +37,48 @@
                                     </span>
                                 </div>
                                 <div *ngIf="fondo" (click)="fondo = null" class="pointer close-icon ml-2">
-                                    <button type="button" (click)="ngOnInit()" class="btn btn-sm btn-light"><i
+                                    <button type="button" (click)="seleccionarFondo(null)" class="btn btn-sm btn-light"><i
                                             class=" ti-close  "></i></button>
                                 </div>
-                                <!-- <button type="button" (click)="ngOnInit()" class="btn float-right mt-1 btn-primary">Filtrar</button> -->
 
+                                
+                            </div>
+
+                        </div>
+                        <div class="col-xs col-md pl-3 mr-3">
+                            <p>Estado: </p>
+                            <div class="inline-flex">
+                                <div style="min-width: 100%;" >
+                                    <ng-select [items]="['CONCILIADOS', 'PENDIENTES']" [(ngModel)]="estado" (ngModelChange)="filtrarPorEstado(estado)"  notFoundText="no se encontraron resultados" placeholder="Filtrar por estado" bindLabel="NOMBRES" >
+                                        <ng-template ng-option-tmp let-item="item">
+                                            <div>
+                                                {{item}}
+                                            </div>
+
+                                        </ng-template>
+                                    </ng-select>
+                                </div>
+                                
+                            </div>
+
+                        </div>
+                        <div class="col-xs col-md pl-3 mr-3">
+                            <p>Fecha: </p>
+                            <div class="inline-flex">
+                                <div style="min-width: 100%;" >
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Rango de Fecha</mat-label>
+                                        <mat-date-range-input [formGroup]="rangeFecha" [rangePicker]="pickerFecha">
+                                            <input autocomplete="off" matStartDate formControlName="start" placeholder="fecha inicio">
+                                            <input matEndDate formControlName="end" (dateChange)="filtroPorFecha()" placeholder="fecha fin">
+                                        </mat-date-range-input>
+                                        <mat-datepicker-toggle matSuffix [for]="pickerFecha"></mat-datepicker-toggle>
+                                        <mat-date-range-picker #pickerFecha></mat-date-range-picker>
+                                        <mat-error *ngIf="rangeFecha.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+                                        <mat-error *ngIf="rangeFecha.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                
                             </div>
 
                         </div>
@@ -172,10 +209,98 @@
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '100px'}">Servicio</th>
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '400px'}">Cuenta Gasto</th>
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '400px'}">Proveedor</th>
+                            <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '120px'}">Conciliado</th>
 
                         </tr>
                     </thead>
                     <tbody id="the_body">
+                        <tr class="pointer" id="id-{{item._id}}" (click)="selectItem(item)" *ngFor="let item of movimientosPrueba; let i = index;">
+                            <td>{{i+1}}</td>
+                            <!-- fecha -->
+                            <td [ngClass]="'text-center'">{{item.fecha | date: 'dd-MM-YY'}}</td>
+
+                            <!-- ingreso -->
+                            <td [ngClass]="'text-center'" [style.color]="'#009000'">
+                                <div *ngIf="item.tipo === 'INGRESO'">
+                                    {{item.monto | currency: '':'':'2.0'}}
+                                </div>
+                                <div *ngIf="item.tipo != 'INGRESO'">
+                                    ---
+                                </div>
+                            </td>
+                            <td [ngClass]="'text-center'" [style.color]="' #d53032'">
+                                <div *ngIf="item.tipo === 'EGRESO'">
+                                    {{item.monto | currency: '':'':'2.0'}}
+                                </div>
+                                <div *ngIf="item.tipo != 'EGRESO'">
+                                    ---
+                                </div>
+                            </td>
+                            <td [ngClass]="'text-center'" [ngStyle]="item.total > 0? {color: '#009000'} : {color: ' #d53032'}">{{item.total | currency: '':'':'2.0'}}</td>
+
+                            <!-- nro contrato -->
+                            <td [ngClass]="'text-center'">
+                                <div *ngIf="item.contrato">{{item.contrato?.nro_contrato | ruc}}</div>
+                                <div *ngIf="!item.contrato?.nro_contrato">---</div>
+                            </td>
+                            <!-- nro factura -->
+                            <td [ngClass]="'text-center'">
+                                <div *ngIf="item.nro_factura >0 ">{{item.nro_factura }}</div>
+                                <div *ngIf="!item.nro_factura">---</div>
+                            </td>
+                            <!-- cliente -->
+                            <td [ngClass]="'text-center'">
+                                <div *ngIf="item.cliente">
+                                    {{item.cliente?.APELLIDOS | primerNombre}} {{item.cliente?.NOMBRES | primerNombre}}
+                                </div>
+                                <div *ngIf="item.titular">
+                                    {{item.titular?.APELLIDOS | primerNombre}} {{item.titular?.NOMBRES | primerNombre}}
+                                </div>
+                            </td>
+                            <!-- servicio -->
+                            <td [ngClass]="'text-center'">
+                                <div *ngIf="item.servicio">
+                                    {{item.servicio?.COD_CORTO}}    
+                                </div>
+                                <div *ngIf="item.contrato?.producto && item.tipo != 'INGRESO'">
+                                    {{item.contrato?.producto?.COD_CORTO}}
+                                </div>
+                            </td>
+                            <!-- proveedor -->
+                            <td [ngClass]="'text-center'">
+                                <div *ngIf="item.nombre">
+                                    {{item.nombre}}
+                                </div>
+                                <div *ngIf="!item.nombre">
+                                    nombre de gasto falta
+                                </div>
+                            </td>
+ 
+                            <td [ngClass]="'text-center'">
+                                <div *ngIf="item.proveedor">
+                                    {{item.proveedor?.APELLIDOS}} {{item.proveedor?.NOMBRES}}
+                                </div>
+                                <div *ngIf="!item.proveedor">
+                                    ---
+                                </div>
+                            </td>
+                            <td [ngClass]="'text-center'">
+                                <div *ngIf="item.cerrado">
+                                    SI
+                                </div>
+                                <div *ngIf="!item.cerrado">
+                                    NO
+                                </div>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td scope="row"></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                    <tbody *ngIf="false" id="the_body">
                         <tr class="pointer" id="id-{{item._id}}" (click)="selectItem(item)" *ngFor="let item of movimientosPrueba; let i = index;">
                             <td>{{i+1}}</td>
                             <!-- fecha -->

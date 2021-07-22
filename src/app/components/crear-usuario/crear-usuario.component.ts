@@ -12,10 +12,12 @@ import swal from 'sweetalert2';
 export class CrearUsuarioComponent implements OnInit {
 
   constructor(public _usuarioService: UsuarioService,
-              private router: Router
+    private router: Router
   ) { }
 
   nivel = 1;
+  nro_factura_actual
+  nro_talonario
   isVendedor;
   isProveedor;
   isCobrador;
@@ -28,7 +30,8 @@ export class CrearUsuarioComponent implements OnInit {
   isBanco;
   manejaCaja;
   usuario: Usuario = {};
-
+  notas = ''
+  fechaCreacion = new Date()
   ngOnInit(): void {
   }
   async crearUsuario() {
@@ -43,7 +46,10 @@ export class CrearUsuarioComponent implements OnInit {
     this.isEmpresa == true ? this.usuario.EMPRESA = '1' : this.usuario.EMPRESA = '0';
     this.isBanco == true ? this.usuario.BANCOS = '1' : this.usuario.BANCOS = '0';
     this.manejaCaja == true ? this.usuario.MANEJA_CAJA = '1' : this.usuario.MANEJA_CAJA = '0';
-
+    this.usuario.NOTAS = this.notas
+    this.usuario.nro_talonario = this.nro_talonario
+    this.usuario.nro_factura_actual = this.nro_factura_actual
+    this.usuario.fecha_creacion = this.fechaCreacion.getTime()
     const us = await this._usuarioService.crearUsuario(this.usuario);
     this.router.navigateByUrl('/admin/usuario/' + us._id);
   }

@@ -313,10 +313,23 @@ export class MovimientoService {
         return resp.movimientos;
       });
   }
+  getCajaBancos(page?, options?) {
+    let url = `${URL_SERVICIOS}/movimientos/get_caja_bancos`;
+    url += `?token=${this._usuarioService.token}`;
+    page ? (url += `&page=${page}`) : '';
+    return this.http
+      .post(url, options)
+      .toPromise()
+      .then((resp: any) => {
+        console.log(resp);
+
+        return resp.movimientos;
+      });
+  }
   getReporteGastoIngresoPsm() {
     let url = `${URL_SERVICIOS}/reporte/gasto_ingreso_psm`;
     url += `?token=${this._usuarioService.token}`;
-     
+
     return this.http
       .get(url)
       .toPromise()

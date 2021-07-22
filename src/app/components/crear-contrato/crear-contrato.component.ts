@@ -62,13 +62,8 @@ export class CrearContratoComponent implements OnInit {
   saldoPlusEdad = 0;
   esUdp = false;
   esPsm = false;
-  beneficiarios = [
-
-  ];
-
-  inhumados = [
-
-  ];
+  beneficiarios = [ ]; 
+  inhumados = [ ];
   pagoInicial: any = {};
   facturas;
   radioValue = 'OFICINA';
@@ -117,19 +112,7 @@ export class CrearContratoComponent implements OnInit {
   selectedDate;
 
   facturaMantenimiento;
-  trackItem(index, item) {
-
-    // log(item);
-
-    return index;
-  }
-
-  pruebalog() {
-
-    // log(this.radioValue);
-
-  }
-
+   
 
   async ngOnInit() {
     this.observableBuscadores();
@@ -298,7 +281,7 @@ export class CrearContratoComponent implements OnInit {
       activo: '1',
       vendedor: this.vendedor,
       beneficiarios: this.beneficiarios,
-      saldo_pendiente: this.precioTotal + this.saldoPlusEdad - this.entrega,
+      saldo_pendiente: this.precioTotal + this.saldoPlusEdad  ,
       tipo_pago: this.radioValue,
       inhumados: this.inhumados,
       fecha_creacion_unix: this.fecha_creacion.getTime(),
@@ -311,15 +294,6 @@ export class CrearContratoComponent implements OnInit {
       nuevo_contrato.sector = this.sector;
 
     }
-    // this.facturas.push({
-    //   vencimiento: this.fechaMantenimiento,
-    //   monto: 150000,
-    //   haber: 150000,
-    //   titular: this.cliente,
-    //   iscmp: true,
-    //   servicio: this.servicioCMP._id,
-    //   fecha_creacion_unix: new Date().getTime()
-    // })
     
     const send = {
       contrato: nuevo_contrato,
@@ -343,7 +317,6 @@ export class CrearContratoComponent implements OnInit {
       this.cobradores = await this._usuarioService.buscarUsuarios('COBRADORES', val.term);
     }
   }
-
   async searchClientes(val: any) {
     if (val.term.length > 0) {
       //   this.clientes = await this._usuarioService.buscarUsuarios('CLIENTES', val.term)
@@ -367,17 +340,14 @@ export class CrearContratoComponent implements OnInit {
 
     }
   }
-
   async searchVendedores(val: any) {
     if (val.term.length > 0) {
       this.vendedores = await this._usuarioService.buscarUsuarios('VENDEDORES', val.term);
     }
   }
-
   onFocused(e) {
     // do something when input is focused
   }
-
   customSearchFn(term: string, item: any) {
     term = term.toLowerCase();
     return item.NOMBRES.toLowerCase().indexOf(term) > -1 ||
@@ -385,8 +355,6 @@ export class CrearContratoComponent implements OnInit {
       item.RAZON?.toLowerCase().includes(term) ||
       item.RUC?.toLowerCase().includes(term);
   }
-
-
   seleccionarVendedor(vendedor) {
     this.vendedor = vendedor;
   }
@@ -422,7 +390,6 @@ export class CrearContratoComponent implements OnInit {
   seleccionarCobrador(cobrador) {
     this.cobrador = cobrador;
   }
-
   disableCrearContrato() {
     if (this.producto && this.cliente && this.vendedor && this.radioValue) {
       if (this.esUdp) {
@@ -437,7 +404,6 @@ export class CrearContratoComponent implements OnInit {
     }
     return true;
   }
-
   crearFacturas(monto, cantidad) {
     if (!cantidad) {
       return null;
@@ -464,18 +430,13 @@ export class CrearContratoComponent implements OnInit {
     }
     return factura;
   }
-
   refactor() {
     this.producto = null;
 
   }
-
-
-
   removeInhumaciones(index) {
     this.inhumados.splice(index, 1);
   }
-
   sumarPlusPorEdad(beneficiarios) {
     this.saldoPlusEdad = 0;
 
@@ -490,8 +451,6 @@ export class CrearContratoComponent implements OnInit {
     console.log(this.saldoPlusEdad);
 
   }
-
-
   observableBuscadores() {
     this.inputClientes.pipe(
 

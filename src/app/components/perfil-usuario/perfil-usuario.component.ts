@@ -19,6 +19,8 @@ import { title } from 'process';
   styleUrls: ['./perfil-usuario.component.css']
 })
 export class PerfilUsuarioComponent implements OnInit {
+  nro_factura_actual
+  nro_talonario
   isVendedor;
   isCobrador;
   isCliente;
@@ -71,7 +73,7 @@ export class PerfilUsuarioComponent implements OnInit {
     this.usuario = await this._usuarioService.getUsuarioPorId(this.id);
     console.log(this.usuario);
 
-    this.usuario.password = '';
+    this.usuario.password = null;
 
     this.facturas = (await this._facturaService.getFacturas(null, null, null, null, null, this.id)).facturas;
 
@@ -94,7 +96,7 @@ export class PerfilUsuarioComponent implements OnInit {
     this.contratos = contratosActivosResp.contratos
 
     const contratosInactivosResp = (await this._contratoService.getContratos(1, { cliente: this.id, tipo: 'inactivo' }))
-    this.contratosInactivosCount = contratosInactivosResp.count 
+    this.contratosInactivosCount = contratosInactivosResp.count
     this.contratosInactivos = contratosInactivosResp.contratos
     this.movimientos = (await this._movimientoService.getAllMovimientos({ cliente: this.id })).movimientos;
   }
@@ -103,7 +105,8 @@ export class PerfilUsuarioComponent implements OnInit {
 
   }
 
-  async actualizarUsuario(usuario) {
+  async actualizarUsuario(usuario: Usuario) {
+    console.log(this.nro_factura_actual);
 
     usuario.VENDEDORES = this.isVendedor ? '1' : '0';
     usuario.COBRADORES = this.isCobrador ? '1' : '0';
@@ -115,7 +118,8 @@ export class PerfilUsuarioComponent implements OnInit {
     usuario.BANCOS = this.isBanco ? '1' : '0';
     usuario.MANEJA_CAJA = this.manejaCaja ? '1' : '0';
     usuario.fondo_online = this.cobroOnline ? '1' : '0';
-
+    // usuario.nro_factura_actual = this.nro_factura_actual
+    // usuario.nro_talonario = this.nro_talonario
     const resp = await this._usuarioService.modificarUsuarios(usuario);
   }
 
@@ -159,16 +163,17 @@ export class PerfilUsuarioComponent implements OnInit {
       ruc: pago.cliente.RUC,
       tel: pago.cliente.TELEFONO1,
       notaDeRemision: '123123',
-      servicios
+      servicios,
+      nro_talonario: this.usuario.nro_talonario,
+      nro_factura: this.usuario.nro_factura_actual + 1
     };
-    console.log(this.facturapdf);
 
   }
 
- async pageChangeContratosActivos(page) {
-  console.log(page);  
-  let contratosActivosResp = (await this._contratoService.getContratos(page, { cliente: this.id, tipo: 'inactivo' }))
- 
+  async pageChangeContratosActivos(page) {
+    console.log(page);
+    let contratosActivosResp = (await this._contratoService.getContratos(page, { cliente: this.id, tipo: 'inactivo' }))
+
     this.contratosInactivos = contratosActivosResp.contratos
   }
 }

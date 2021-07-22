@@ -26,15 +26,18 @@ export class FacturaPdfComponent implements OnInit {
   @Input() contrato: Contrato;
   tipo_contrato = '';
   id;
-
+  nro_factura
+  nro_talonario
   items: any[] = [0, 0, 0, 0, 0, 0, 0, 0, 0];
   async ngOnInit() {
 
     this.id = this.route.snapshot.paramMap.get('id');
 
-
+    console.log(this.facturaPDF);
+    
 
     if (this.facturaPDF) {
+      
       if (this.facturaPDF._id) {
         this.factura = await this.getDetallePago(this.facturaPDF._id);
 
@@ -42,6 +45,8 @@ export class FacturaPdfComponent implements OnInit {
         this.factura = (await this.facturaPDF);
 
       }
+      
+      
     } else
       if (this.id) {
         this.factura = await this.getDetallePago(this.id);
@@ -241,7 +246,8 @@ export class FacturaPdfComponent implements OnInit {
 
     const pago = resp.pago;
     console.log(pago);
-
+    this.nro_factura = pago.nro_factura
+    this.nro_talonario = pago.numero
     const facturas = resp.facturas;
     let servicios = [];
     const contratosSinRepetir = [];

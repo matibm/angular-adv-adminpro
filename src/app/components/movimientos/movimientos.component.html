@@ -263,6 +263,15 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="mx-auto">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Fecha de Creacion</mat-label>
+                                    <input matInput name="asdsdrdsvet321" [(ngModel)]="fechaCreacion" [matDatepicker]="pickerPago">
+                                    <mat-datepicker-toggle matSuffix [for]="pickerPago">
+                                    </mat-datepicker-toggle>
+                                    <mat-datepicker #pickerPago></mat-datepicker>
+                                </mat-form-field>
+                            </div>
 
                         </div>
 

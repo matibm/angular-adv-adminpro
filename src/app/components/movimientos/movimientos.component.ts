@@ -61,6 +61,7 @@ export class MovimientosComponent implements OnInit {
   loadingcuentaAbacos
   loadingcategorias
   ocultarOnCategory = false
+  fechaCreacion = new Date()
 
   constructor(
     public _movimientoService: MovimientoService,
@@ -215,7 +216,7 @@ export class MovimientosComponent implements OnInit {
       fondo: this.fondo,
       proveedor: this.proveedor,
       comentario: this.comentario,
-      fecha_creacion_unix: new Date().getTime(),
+      fecha_creacion_unix: this.fechaCreacion.getTime(),
       nro_factura: this.nro,
       contrato: this.contrato,
       nro_comp_banco: this.nroFacturaProveedor,

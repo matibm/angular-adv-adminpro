@@ -302,7 +302,7 @@
 
                 <div class="" *ngIf="cobrador">
                     <div>
-                        <div *ngIf="cobrador.NOMBRES">{{cobrador.NOMBRES}} {{cobrador.APELLIDOS}}</div>
+                        <div *ngIf="cobrador.APELLIDOS">{{cobrador.NOMBRES}} {{cobrador.APELLIDOS}}</div>
                         <div *ngIf="cobrador.NOMBRES && cobrador.RAZON"> - </div>
                         <div *ngIf="cobrador.RAZON">{{cobrador.RAZON}} </div>
                         <small>{{cobrador.RUC | ruc}}</small>
@@ -361,6 +361,8 @@
 <div class="" style="width: 100%;">
     <div style="display: flex;">
         <div class="ml-auto">
+            <button type="button" [routerLink]="['/admin/crear_ingreso']" routerLinkActive="router-link-active" class="btn btn-info mx-auto">Crear Nuevo Ingreso</button>
+
             <button   (click)="reset()" class="btn mx-2 btn-inverse">
                 <span   > Reestablecer</span>
                  

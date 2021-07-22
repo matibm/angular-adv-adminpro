@@ -8,6 +8,7 @@ import { FacturaService } from './../../services/factura.service';
 import { Component, OnInit } from '@angular/core';
 import { NotifierService } from 'angular-notifier';
 import { Subject } from 'rxjs';
+import { Usuario } from 'src/app/models/usuario';
 
 @Component({
   selector: 'app-cobranza',
@@ -44,7 +45,7 @@ export class CobranzaComponent implements OnInit {
   servicio;
   servicios;
   facturas;
-  cobrador;
+  cobrador : Usuario;
   cobradores;
   vendedor;
   vendedores;
@@ -248,6 +249,8 @@ export class CobranzaComponent implements OnInit {
 
   }
   async confirmarPago() {
+    console.log(this.cobrador);
+    
     this.loadingConfirmarPago = true 
    let pagoresp = await this._facturaService.pagarPorMonto({ fecha_pago: this.fechaPago,
       lista: this.lista,
@@ -261,8 +264,8 @@ export class CobranzaComponent implements OnInit {
       confirmado: true,
       fondo: this.fondo._id,
       nro_timbrado: '144542331',
-      nro_factura: '4544352',
-      numero: '002-004'
+      nro_factura: this.cobrador.nro_factura_actual +1,
+      numero: this.cobrador.nro_talonario
     });
     this.loadingConfirmarPago = false
 

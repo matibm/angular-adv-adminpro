@@ -33,7 +33,11 @@ export class FacturaComponent implements OnInit {
   parciales: Factura[];
   facturaPdf;
   isOnline = false;
-  facturapdf
+  facturapdf 
+  nombreFactura;
+  rucFactura;
+  telFactura;
+  direccionFactura;
   async ngOnInit() {
     if (this.primeraEjecucion) {
       this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((e: NavigationEnd) => {
@@ -64,6 +68,11 @@ export class FacturaComponent implements OnInit {
         }
       ]
     };
+
+    this.nombreFactura = `${this.factura.titular.NOMBRES} ${this.factura.titular.APELLIDOS}`;
+    this.rucFactura = this.factura.titular.RUC;
+    this.telFactura = this.factura.titular.TELEFONO1;
+    this.direccionFactura = this.factura.titular.DIRECCION;
   }
 
   async initialize() {
@@ -96,7 +105,17 @@ export class FacturaComponent implements OnInit {
     if (this.crearParcial && this.montoparcial > 0) {
       await this._facturaService.pagarFactura(factura, true, this.montoparcial);
     } else {
-      await this._facturaService.pagarFactura(factura);
+      let body = {
+        factura,
+        fecha_pago: new Date(),
+        comentario: '',
+        nombre: this.nombreFactura,
+        ruc: this.rucFactura,
+        tel: this.telFactura,
+        direccion: this.direccionFactura,
+        nro_timbrado: Date.now()
+      }
+      await this._facturaService.pagarFactura(body);
 
     }
   }

@@ -6,48 +6,62 @@
                     <h4>General</h4>
                     <div class="form-group">
                         <label for="">Apellidos/Razon</label>
-                        <input [(ngModel)]="usuario.APELLIDOS" type="text" class="form-control" name="apellidos" autocomplete="nope">
+                        <input [(ngModel)]="usuario.APELLIDOS" type="text" class="form-control" name="apellidos"
+                            autocomplete="nope">
                     </div>
                     <div class="form-group">
                         <label for="">Nombres</label>
-                        <input [(ngModel)]="usuario.NOMBRES" type="text" class="form-control" name="nombres" autocomplete="nope">
+                        <input [(ngModel)]="usuario.NOMBRES" type="text" class="form-control" name="nombres"
+                            autocomplete="nope">
                     </div>
 
                     <div class="form-group">
                         <label for="">RUC/CI</label>
                         <input [(ngModel)]="usuario.RUC" type="text" class="form-control" name="RUC" autocomplete="off">
-                        <button type="button" [disabled]="!usuario.RUC" (click)="consultar(usuario.RUC)" class="btn mt-2 btn-secondary">Consultar usuario</button>
+                        <button type="button" [disabled]="!usuario.RUC" (click)="consultar(usuario.RUC)"
+                            class="btn mt-2 btn-secondary">Consultar usuario</button>
                     </div>
                     <div class=" form-group">
                         <label for="">email</label>
-                        <input [(ngModel)]="usuario.EMAIL" type="text" autocomplete="nppe" class="form-control" name="emaisssssssssssssssl">
+                        <input [(ngModel)]="usuario.EMAIL" type="text" autocomplete="nppe" class="form-control"
+                            name="emaisssssssssssssssl">
                     </div>
                     <div class="form-group">
                         <label for="">Perfil de Facebook</label>
-                        <input [(ngModel)]="usuario.facebook" type="text" class="form-control" name="facebook" autocomplete="off">
+                        <input [(ngModel)]="usuario.facebook" type="text" class="form-control" name="facebook"
+                            autocomplete="off">
                     </div>
                     <div *ngIf="false" class="form-group">
                         <label for="">contraseña</label>
-                        <input type="password" [(ngModel)]="usuario.password" class="form-control" name="password" autocomplete="off">
+                        <input type="password" [(ngModel)]="usuario.password" class="form-control" name="password"
+                            autocomplete="off">
                     </div>
 
                     <div class="d-flex">
                         <div class="mt-1 mr-auto ">
-                            <input [(ngModel)]="isCliente" type="checkbox" id="check_cliente" name="check_cliente-name" class="filled-in chk-col-light-blue" (click)="isCliente? null :isCliente='check_cliente' " checked>
+                            <input [(ngModel)]="isCliente" type="checkbox" id="check_cliente" name="check_cliente-name"
+                                class="filled-in chk-col-light-blue"
+                                (click)="isCliente? null :isCliente='check_cliente' " checked>
                             <label for="check_cliente">Cliente</label>
                         </div>
 
                         <div class="mt-1 mr-auto ">
-                            <input [(ngModel)]="isProveedor" type="checkbox" id="check_proveedor" name="check_proveedor-name" class="filled-in chk-col-light-blue" (click)="isProveedor? null :isProveedor='check_proveedor' " checked>
+                            <input [(ngModel)]="isProveedor" type="checkbox" id="check_proveedor"
+                                name="check_proveedor-name" class="filled-in chk-col-light-blue"
+                                (click)="isProveedor? null :isProveedor='check_proveedor' " checked>
                             <label for="check_proveedor">Proveedor</label>
                         </div>
 
                         <div class="mt-1 mr-auto ">
-                            <input [(ngModel)]="isCobrador" type="checkbox" id="check_cobrador" name="check_cobrador-name" class="filled-in chk-col-light-blue" (click)="isCobrador? null :isCobrador='check_cobrador' " checked>
+                            <input [(ngModel)]="isCobrador" type="checkbox" id="check_cobrador"
+                                name="check_cobrador-name" class="filled-in chk-col-light-blue"
+                                (click)="isCobrador? null :isCobrador='check_cobrador' " checked>
                             <label for="check_cobrador">Cobrador</label>
                         </div>
                         <div class="mt-1 mr-auto ">
-                            <input [(ngModel)]="isContratado" type="checkbox" id="check_contratado" name="check_contratado-name" class="filled-in chk-col-light-blue" (click)="isContratado? null :isContratado='check_contratado' " checked>
+                            <input [(ngModel)]="isContratado" type="checkbox" id="check_contratado"
+                                name="check_contratado-name" class="filled-in chk-col-light-blue"
+                                (click)="isContratado? null :isContratado='check_contratado' " checked>
                             <label for="check_contratado">Contratado</label>
                         </div>
 
@@ -58,26 +72,57 @@
                     <div class="d-flex">
 
                         <div class="mt-1 mr-auto ">
-                            <input [(ngModel)]="isBanco" type="checkbox" id="check_banco" name="check_banco-name" class="filled-in chk-col-light-blue" (click)="isBanco? null :isBanco='check_banco' " checked>
+                            <input [(ngModel)]="isBanco" type="checkbox" id="check_banco" name="check_banco-name"
+                                class="filled-in chk-col-light-blue" (click)="isBanco? null :isBanco='check_banco' "
+                                checked>
                             <label for="check_banco">Banco</label>
                         </div>
 
                         <div class="mt-1 mr-auto ">
-                            <input [(ngModel)]="isEmpleado" type="checkbox" id="check_empleado" name="check_empleado-name" class="filled-in chk-col-light-blue" (click)="isEmpleado? null :isEmpleado='check_empleado' " checked>
+                            <input [(ngModel)]="isEmpleado" type="checkbox" id="check_empleado"
+                                name="check_empleado-name" class="filled-in chk-col-light-blue"
+                                (click)="isEmpleado? null :isEmpleado='check_empleado' " checked>
                             <label for="check_empleado">Empleado</label>
                         </div>
 
                         <div class="mt-1 mr-auto ">
-                            <input [(ngModel)]="isVendedor" type="checkbox" id="check_vendedor" name="check_vendedor-name" class="filled-in chk-col-light-blue" (click)="isVendedor? null :isVendedor='check_vendedor' " checked>
+                            <input [(ngModel)]="isVendedor" type="checkbox" id="check_vendedor"
+                                name="check_vendedor-name" class="filled-in chk-col-light-blue"
+                                (click)="isVendedor? null :isVendedor='check_vendedor' " checked>
                             <label for="check_vendedor">Vendedor</label>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="">Nivel de Acceso</label>
-                        <input type="number" name="" [(ngModel)]="nivel" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="off">
+                        <input type="number" name="" [(ngModel)]="nivel" class="form-control" placeholder=""
+                            aria-describedby="helpId" autocomplete="off">
                     </div>
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Fecha de Creacion</mat-label>
+                        <input matInput name="asdrdssvet321" [(ngModel)]="fechaCreacion"
+                            [matDatepicker]="pickerCreacion">
+                        <mat-datepicker-toggle matSuffix [for]="pickerCreacion">
+                        </mat-datepicker-toggle>
+                        <mat-datepicker #pickerCreacion></mat-datepicker>
+                    </mat-form-field>
+
+                    <div *ngIf="isCobrador === true">
+                        <div class="form-group">
+                            <label for="">Numero de Talonario</label>
+                            <input type="number" name="" [(ngModel)]="nro_talonario" class="form-control" placeholder=""
+                                aria-describedby="helpId" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Numero de Factura</label>
+                            <input type="number" name="" [(ngModel)]="nro_factura_actual" class="form-control"
+                                placeholder="" aria-describedby="helpId" autocomplete="off">
+                        </div>
+                    </div>
+
                 </div>
+
             </div>
 
         </div>
@@ -90,7 +135,8 @@
 
                         <div class="form-group">
                             <label for="">Direccion: </label>
-                            <input type="text" name="" [(ngModel)]="usuario.DIRECCION" name="Direccion:" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="off">
+                            <input type="text" name="" [(ngModel)]="usuario.DIRECCION" name="Direccion:"
+                                class="form-control" placeholder="" aria-describedby="helpId" autocomplete="off">
 
                         </div>
                     </form>
@@ -98,7 +144,8 @@
                     <form class="form-material ">
                         <div class="form-group">
                             <label for="">Ciudad: </label>
-                            <input type="text" name="" [(ngModel)]="usuario.NOMCIUDAD" name="</label" class="form-control" placeholder="" aria-describedby="helpId">
+                            <input type="text" name="" [(ngModel)]="usuario.NOMCIUDAD" name="</label"
+                                class="form-control" placeholder="" aria-describedby="helpId">
 
                         </div>
                     </form>
@@ -106,22 +153,23 @@
 
                         <div class="form-group">
                             <label for="">Departamento: </label>
-                            <input type="text" [(ngModel)]="usuario.NOMDEPAR" name="departamento" class="form-control" placeholder="" aria-describedby="helpId">
+                            <input type="text" [(ngModel)]="usuario.NOMDEPAR" name="departamento" class="form-control"
+                                placeholder="" aria-describedby="helpId">
 
                         </div>
                     </form>
                     <div class="form-group">
                         <label for="">Celular:</label>
-                        <input type="text" [(ngModel)]="usuario.TELEFONO1" name="Telefono-1" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="off">
+                        <input type="text" [(ngModel)]="usuario.TELEFONO1" name="Telefono-1" class="form-control"
+                            placeholder="" aria-describedby="helpId" autocomplete="off">
 
                     </div>
                     <div class="form-group">
                         <label for="">Línea Baja:</label>
-                        <input type="text" [(ngModel)]="usuario.TELEFONO2" name="Telefono-1" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="off">
+                        <input type="text" [(ngModel)]="usuario.TELEFONO2" name="Telefono-1" class="form-control"
+                            placeholder="" aria-describedby="helpId" autocomplete="off">
 
                     </div>
-
-
 
                 </div>
             </div>
@@ -129,7 +177,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="">Notas</label>
-                        <textarea class="form-control" name="" rows="6"></textarea>
+                        <textarea [(ngModel)]="notas" class="form-control" name="" rows="6"></textarea>
                     </div>
 
                 </div>
@@ -143,7 +191,8 @@
 
                         <div class="form-group">
                             <label for="">Lugar de Trabajo: </label>
-                            <input type="text" [(ngModel)]="usuario.LUGAR_TRABAJO" name="lugartrabaho" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="off">
+                            <input type="text" [(ngModel)]="usuario.LUGAR_TRABAJO" name="lugartrabaho"
+                                class="form-control" placeholder="" aria-describedby="helpId" autocomplete="off">
 
                         </div>
                     </form>
@@ -151,7 +200,8 @@
 
                         <div class="form-group">
                             <label for="">Direccion: </label>
-                            <input type="text" name="" [(ngModel)]="usuario.direccion_laboral" name="Direccion:" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="off">
+                            <input type="text" name="" [(ngModel)]="usuario.direccion_laboral" name="Direccion:"
+                                class="form-control" placeholder="" aria-describedby="helpId" autocomplete="off">
 
                         </div>
                     </form>
@@ -159,7 +209,8 @@
                     <form class="form-material ">
                         <div class="form-group">
                             <label for="">Ciudad: </label>
-                            <input type="text" name="" [(ngModel)]="usuario.ciudad_trabajo" name="</label" class="form-control" placeholder="" aria-describedby="helpId">
+                            <input type="text" name="" [(ngModel)]="usuario.ciudad_trabajo" name="</label"
+                                class="form-control" placeholder="" aria-describedby="helpId">
 
                         </div>
                     </form>
@@ -167,7 +218,8 @@
 
                         <div class="form-group">
                             <label for="">Departamento: </label>
-                            <input type="text" [(ngModel)]="usuario.DEPARTAMENTO_TRABAJO" name="departamento" class="form-control" placeholder="" aria-describedby="helpId">
+                            <input type="text" [(ngModel)]="usuario.DEPARTAMENTO_TRABAJO" name="departamento"
+                                class="form-control" placeholder="" aria-describedby="helpId">
 
                         </div>
                     </form>
@@ -175,12 +227,14 @@
 
                     <div class="form-group">
                         <label for="">Celular:</label>
-                        <input type="text" [(ngModel)]="usuario.TELEFONO3" name="Telefono-1" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="off">
+                        <input type="text" [(ngModel)]="usuario.TELEFONO3" name="Telefono-1" class="form-control"
+                            placeholder="" aria-describedby="helpId" autocomplete="off">
 
                     </div>
                     <div class="form-group">
                         <label for="">Línea Baja:</label>
-                        <input type="text" [(ngModel)]="usuario.TEL_TRABAJO" name="Telefono-1" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="off">
+                        <input type="text" [(ngModel)]="usuario.TEL_TRABAJO" name="Telefono-1" class="form-control"
+                            placeholder="" aria-describedby="helpId" autocomplete="off">
 
                     </div>
 
@@ -193,15 +247,18 @@
                     <form class="form-material ">
                         <div class="form-group">
                             <label for="">Cuenta Bancaria: </label>
-                            <input type="text" [(ngModel)]="usuario.cuenta_bancaria" name="asas" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="off">
+                            <input type="text" [(ngModel)]="usuario.cuenta_bancaria" name="asas" class="form-control"
+                                placeholder="" aria-describedby="helpId" autocomplete="off">
                         </div>
                         <div class="form-group">
                             <label for="">Tipo de Cuenta: </label>
-                            <input type="text" [(ngModel)]="usuario.tipo_cuenta_bancaria" name="tipo_cuenta_bancaria" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="off">
+                            <input type="text" [(ngModel)]="usuario.tipo_cuenta_bancaria" name="tipo_cuenta_bancaria"
+                                class="form-control" placeholder="" aria-describedby="helpId" autocomplete="off">
                         </div>
                         <div class="form-group">
                             <label for="">Número de Cuenta: </label>
-                            <input type="text" [(ngModel)]="usuario.nro_cuenta_bancaria" name="nro_cuenta_bancaria" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="off">
+                            <input type="text" [(ngModel)]="usuario.nro_cuenta_bancaria" name="nro_cuenta_bancaria"
+                                class="form-control" placeholder="" aria-describedby="helpId" autocomplete="off">
                         </div>
                     </form>
 
@@ -215,7 +272,8 @@
             <div class="card-body">
                 <div class="" style="width: 100%; display: flex;">
 
-                    <button type="button" [disabled]="!allowCreate()" (click)="crearUsuario()" class="mx-auto btn btn-primary">Crear
+                    <button type="button" [disabled]="!allowCreate()" (click)="crearUsuario()"
+                        class="mx-auto btn btn-primary">Crear
                         Usuario</button>
                 </div>
             </div>

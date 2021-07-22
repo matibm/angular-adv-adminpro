@@ -3,6 +3,7 @@ import { UsuarioService } from './../../services/usuario.service';
 import { FacturaService } from './../../services/factura.service';
 import { MovimientoService } from './../../services/movimiento.service';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-info-caja',
@@ -20,6 +21,7 @@ export class InfoCajaComponent implements OnInit {
   movimientos;
   HaberMovimientos = 0;
   fondo;
+  estado = 'PENDIENTES'
   fondos;
   totalMovimientos;
   totalFacturas = 0;
@@ -46,9 +48,17 @@ export class InfoCajaComponent implements OnInit {
   montoEgreso = 0;
   montoTotal = 0;
   saldoFondo = 0
+  rangeFecha = new FormGroup({
+    start: new FormControl(),
+    end: new FormControl()
+  });
+  isAllSelected
+  options: any = { cerrado: false }
   async ngOnInit() {
     this.fondo = null;
-    this.movimientosPrueba = await this._movimientoService.allmovimientosCaja();
+    // this.movimientosPrueba = await this._movimientoService.allmovimientosCaja();
+    this.movimientosPrueba = await this._movimientoService.getCajaBancos(1, this.options);
+
     this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', '');
     console.log(this.movimientosPrueba);
 
@@ -108,14 +118,26 @@ export class InfoCajaComponent implements OnInit {
     this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', val.term);
   }
 
+  async filtrarPorEstado(estado) {
+    this.options.cerrado = estado === 'CONCILIADOS' ? true : false
+    if (!estado) delete this.options.cerrado
+    this.movimientosPrueba = await this._movimientoService.getCajaBancos(1, this.options);
+
+  }
+
   async seleccionarFondo(fondo) {
     if (!fondo) {
+
+      delete this.options.fondo
+      console.log(this.options);
+
+      this.movimientosPrueba = await this._movimientoService.getCajaBancos(1, this.options);
       return;
     }
     this.loading = true;
-    this.movimientosPrueba = await this._movimientoService.allmovimientosCaja(
-      fondo._id
-    );
+    // this.movimientosPrueba = await this._movimientoService.allmovimientosCaja(
+    this.options.fondo = fondo._id
+    this.movimientosPrueba = await this._movimientoService.getCajaBancos(1, this.options);
 
     const respMovimientos = await this._movimientoService.getAllMovimientos({
       cerrado: false,
@@ -128,7 +150,7 @@ export class InfoCajaComponent implements OnInit {
     this.HaberMovimientos = (respMovimientos.total.monto_haber - respMovimientos.total.monto_total) | 0;
     let respFondo: any = await this._movimientoService.getSaldoFondo(fondo._id)
     console.log(respFondo);
-    
+
     this.saldoFondo = respFondo.data[0].ingreso - respFondo.data[0].gasto
     // const respfactura = await this._facturaService.getFacturas(
     //   true,
@@ -200,17 +222,16 @@ export class InfoCajaComponent implements OnInit {
   }
 
   async cerrarCaja() {
-    // await this._cajaService.cerrarCaja(this.start, this.end, this.fondo ? this.fondo._id : null)
     const options: any = {};
     this.fondo ? (options.fondo = this.fondo._id) : null;
-    let listas = this.crearListasSeparadas(this.listItems);
+    let listas = this.listItems;
     console.log(listas);
 
     const body = {
-      isAllSelectedIngresos: this.isAllSelectedIngresos,
-      isAllSelectedMovimientos: this.isAllSelectedMovimientos,
-      listItemsIngresos: listas.listaIngresos || [],
-      listItemsMovimientos: listas.listaEgresos,
+      isAllSelected: this.isAllSelected,
+      
+      listItems: this.listItems || [],
+      
     };
     await this._cajaService.cerrarCajaOptions(body, options);
     this.ngOnInit()
@@ -298,4 +319,12 @@ export class InfoCajaComponent implements OnInit {
     }
     return { listaIngresos, listaEgresos };
   }
+
+  async filtroPorFecha() {
+    this.options.date_start = this.rangeFecha.value.start ? new Date(this.rangeFecha.value.start).getTime() : null,
+    this.options.date_end = this.rangeFecha.value.end ? new Date(this.rangeFecha.value.end).setHours(23, 59, 59, 59) : null
+    this.movimientosPrueba = await this._movimientoService.getCajaBancos(1, this.options);
+
+  }
+
 }

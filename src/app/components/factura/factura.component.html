@@ -101,7 +101,7 @@
                 <div style="width: fit-content;">
                     <div style="justify-content: space-between; display: flex;">
                         <h4 class="card-title">Fondo</h4>
-                        <div *ngIf="fondo" (click)="fondo = null" class="pointer close-icon ml-auto">
+                        <div *ngIf="fondo && !factura.pagado " (click)="fondo = null" class="pointer close-icon ml-auto">
                             <button type="button" class="btn btn-sm btn-light"><i class=" ti-close  "></i></button>
                         </div>
                     </div>
@@ -162,11 +162,54 @@
             </div>
         </div>
 
+
+    </div>
+
+</div>
+
+<div *ngIf="factura" class="card">
+    <div class="card-body">
+       <div *ngIf="!factura.pagado">
+        <h4>Datos Factura:</h4>
+        <div class="row">
+            <div class="col-xs col-md">
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" class="form-control" [(ngModel)]="nombreFactura" name="nombre" id="nombre"
+                        aria-describedby="nombreid" placeholder="">
+                </div>
+            </div>
+            <div class="col-xs col-md">
+                <div class="form-group">
+                    <label for="ruc">RUC/CI</label>
+                    <input type="text" class="form-control" name="ruc" [(ngModel)]="rucFactura" id="ruc"
+                        aria-describedby="rucid" placeholder="">
+                </div>
+            </div>
+
+            <div class="col-xs col-md">
+                <div class="form-group">
+                    <label for="tel">Tel</label>
+                    <input type="text" class="form-control" name="tel" [(ngModel)]="telFactura" id="tel"
+                        aria-describedby="telid" placeholder="">
+                </div>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <label for="direccion">direccion</label>
+            <input type="text" class="form-control" name="direccion" [(ngModel)]="direccionFactura" id="direccion"
+                aria-describedby="direccionid" placeholder="">
+        </div>
+
+
+       </div>
+        
         <div *ngIf="!factura.link_de_pago" class="float-right mt-3">
             <button *ngIf="!isOnline && !factura.pagado && !crearParcial" [disabled]="!fondo || !montoparcialCorrecto" (click)="pagar()" type="button" class="btn mr-2   btn-primary">Pagar</button>
             <!-- <button (click)="_facturaService.elimnarFactura(id);" type="button" class="btn mr-2   btn-danger">Elimnar</button> -->
             <button *ngIf="isOnline" (click)="crearLink()" type="button" class="btn mr-2  btn-info">crear Link de pago</button>
-            <button *ngIf="factura.pagado" (click)="mostrarModal(factura.pago)" type="button" class="btn mr-2 btn-rounded btn-inverse">Ver Factura</button>
+            <button *ngIf="factura.pagado" (click)="mostrarModal(factura.pago)" type="button" class="btn mr-2 btn-rounded btn-inverse">Ver Pago</button>
             <button *ngIf="!factura.pagado && crearParcial" [disabled]="!fondo || !montoparcialCorrecto" (click)="pagar()" type="button" class="btn mr-2   btn-primary">Pago parcial</button>
 
         </div>
@@ -175,9 +218,7 @@
 
         </div>
 
-
     </div>
-
 </div>
 
 

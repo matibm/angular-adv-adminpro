@@ -82,7 +82,9 @@ export class Usuario {
         public direccion_particular?: string,
         public direccion_laboral?: string,
         public fecha_alta?: string,
-        public fecha_creacion?: string,
+        public fecha_creacion?: number,
+        public nro_factura_actual?: number,
+        public nro_talonario?: string,
         public ciudad_trabajo?: string,
     ) {
 

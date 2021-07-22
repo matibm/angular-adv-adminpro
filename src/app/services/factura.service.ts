@@ -77,10 +77,11 @@ export class FacturaService {
     );
   }
   async pagarFactura(factura, parcial?: boolean, monto_parcial?: number) {
-    const caja = await this._cajaService.getCajaActual();
+    console.log(factura);
+    
     let url = URL_SERVICIOS + '/factura/pagar';
     url += `?token=${this._usuarioService.token}`;
-    url += `&caja=${caja._id}`;
+    // url += `&caja=${caja._id}`;
     parcial ? url += `&parcial=${parcial}` : null;
     monto_parcial ? url += `&monto_parcial=${monto_parcial}` : null;
     return this.http.post(url, factura).toPromise().then((resp: any) => {
@@ -92,6 +93,13 @@ export class FacturaService {
         timer: 2000,
       });
       return resp.factura;
+    }, (error) => {
+      console.error(error)
+      swal.fire({
+        icon: 'error',
+        title: 'Error al pagar',
+        text: error.error.error,
+      });
     });
   }
   getFacturaById(id) {

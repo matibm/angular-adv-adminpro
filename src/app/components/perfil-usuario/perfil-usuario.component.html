@@ -595,6 +595,19 @@
 
                                     </div>
 
+                                    <div *ngIf="usuario.COBRADORES === '1'">
+                                        <div class="form-group">
+                                            <label for="">Numero de Talonario</label>
+                                            <input type="number" name="asasdsdasasdsadstgfd" [(ngModel)]="usuario.nro_talonario" class="form-control" placeholder=""
+                                                aria-describedby="helpId" autocomplete="off">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Numero de Factura</label>
+                                            <input type="number" name="asasdsdasasdsads" [(ngModel)]="usuario.nro_factura_actual" class="form-control"
+                                                placeholder="" aria-describedby="helpId" autocomplete="off">
+                                        </div>
+                                    </div>
+        
 
                                 </div>
                             </div>
@@ -663,8 +676,6 @@
                                     <label for="check_cobro_online">Cobro Online</label>
                                 </div>
                             </div>
-
-
 
                             <div class="d-flex mt-3 form-group">
 
