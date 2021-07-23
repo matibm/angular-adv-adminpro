@@ -33,7 +33,7 @@ export class FacturaComponent implements OnInit {
   parciales: Factura[];
   facturaPdf;
   isOnline = false;
-  facturapdf 
+  facturapdf
   nombreFactura;
   rucFactura;
   telFactura;
@@ -58,6 +58,8 @@ export class FacturaComponent implements OnInit {
       ruc: this.factura.titular.RUC,
       tel: this.factura.titular.TELEFONO1,
       notaDeRemision: '123123',
+      nro_factura: this.factura.cobrador.nro_factura_actual,
+      numero: this.factura.cobrador.nro_talonario,
       servicios: [
         {
           cantidad: 1,
@@ -68,6 +70,9 @@ export class FacturaComponent implements OnInit {
         }
       ]
     };
+
+    console.log(this.factura);
+
 
     this.nombreFactura = `${this.factura.titular.NOMBRES} ${this.factura.titular.APELLIDOS}`;
     this.rucFactura = this.factura.titular.RUC;
@@ -113,7 +118,9 @@ export class FacturaComponent implements OnInit {
         ruc: this.rucFactura,
         tel: this.telFactura,
         direccion: this.direccionFactura,
-        nro_timbrado: Date.now()
+        nro_timbrado: Date.now(),
+        nro_factura: this.factura.cobrador.nro_factura_actual + 1,
+        nro_talonario: this.factura.cobrador.nro_talonario,
       }
       await this._facturaService.pagarFactura(body);
 
@@ -139,7 +146,7 @@ export class FacturaComponent implements OnInit {
     };
   }
 
-  async crearLink(){
+  async crearLink() {
     this.factura = await this._facturaService.crearLinkDePago(this.id, this.fondo._id);
     this.fondo = this.factura.fondo;
   }
@@ -181,5 +188,62 @@ export class FacturaComponent implements OnInit {
     console.log(this.facturapdf);
 
   }
+
+
+
+
+  async crearPDF(facturas) {
+    let servicios = [];
+    const contratosSinRepetir = [];
+    const fsinrepetir = [];
+
+    for (let i = 0; i < facturas.length; i++) {
+      const factura = facturas[i];
+      let existe = false;
+
+      for (let m = 0; m < fsinrepetir.length; m++) {
+        const element = fsinrepetir[m];
+        if (element.contrato == factura.contrato && element.haber === factura.haber) {
+          element.cantidad++;
+          element.precio += factura.haber;
+          element.diezPorciento += factura.haber / 11;
+          existe = true;
+        }
+      }
+      if (!existe) {
+        fsinrepetir.push({
+          contrato: factura.contrato,
+          cantidad: 1,
+          concepto: `${factura.servicio.NOMBRE}`,
+          precioUnitario: factura.precio_unitario ? factura.precio_unitario : factura.haber,
+          precio: factura.haber,
+          cincoPorciento: null,
+          haber: factura.haber,
+          diezPorciento: factura.haber / 11
+        });
+      }
+ 
+      servicios = fsinrepetir;
+    }
+    const facturaPDF = {
+      nombres: this.nombreFactura,
+      fecha: Date.now(),
+      direccion: this.direccionFactura,
+      ruc: this.rucFactura,
+      tel: this.telFactura,
+      notaDeRemision: '123123',
+      servicios,
+      numero: this.factura.cobrador.nro_talonario,
+      nro_factura: this.factura.cobrador.nro_factura_actual +1
+    };
+    console.log('-----------------------------------------------');
+    console.log(facturaPDF);
+
+    return facturaPDF;
+  }
+
+
+
+
 
 }

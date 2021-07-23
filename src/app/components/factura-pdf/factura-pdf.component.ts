@@ -33,11 +33,12 @@ export class FacturaPdfComponent implements OnInit {
 
     this.id = this.route.snapshot.paramMap.get('id');
 
-    console.log(this.facturaPDF);
+  console.log(await this.facturaPDF);
     
 
     if (this.facturaPDF) {
-      
+      this.nro_factura = (await this.facturaPDF).nro_factura
+      this.nro_talonario = (await this.facturaPDF).numero
       if (this.facturaPDF._id) {
         this.factura = await this.getDetallePago(this.facturaPDF._id);
 

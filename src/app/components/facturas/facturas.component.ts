@@ -44,7 +44,7 @@ export class FacturasComponent implements OnInit {
     // }
   }
   @Input() sort = {
-    key: 'haber', value: 0
+    key: 'vencimiento', value: 1
   }
   async pageChanged(page) {
     this.facturas = null
