@@ -19,12 +19,12 @@ export class InfoCajaComponent implements OnInit {
   ) { }
   movimientosPrueba;
   movimientos;
-  HaberMovimientos = 0;
+  totalEgreso = 0;
   fondo;
   estado = 'PENDIENTES'
   fondos;
   totalMovimientos;
-  totalFacturas = 0;
+  totalIngreso = 0;
   ngmodelstart;
   listItems = [];
   listaMovimientos = [];
@@ -52,77 +52,32 @@ export class InfoCajaComponent implements OnInit {
     start: new FormControl(),
     end: new FormControl()
   });
+  count
   isAllSelected
+  showModalBilletes = false
+  TotalArqueo = 0
   options: any = { cerrado: false }
   async ngOnInit() {
     this.fondo = null;
-    // this.movimientosPrueba = await this._movimientoService.allmovimientosCaja();
-    this.movimientosPrueba = await this._movimientoService.getCajaBancos(1, this.options);
+    const resp = await this._movimientoService.getCajaBancos(1, this.options);
+     this.cargarValores(resp)
 
     this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', '');
-    console.log(this.movimientosPrueba);
-
-    // let respMovimientos = await this._movimientoService.getMovimientosByDate(this.start, this.end, null, false)
-    const respMovimientos = await this._movimientoService.getAllMovimientos({
-      cerrado: false,
-    });
-    this.movimientoCount = respMovimientos.count;
-    this.movimientos = respMovimientos.movimientos;
-
-    this.totalMovimientos = respMovimientos.total.monto_total;
-    this.HaberMovimientos =
-      (respMovimientos.total.monto_haber - respMovimientos.total.monto_total) |
-      0;
-    let respfactura;
-    if (this.fondo) {
-      // respfactura = await this._facturaService.getFacturas(
-      //   true,
-      //   this.fondo._id,
-      //   this.start,
-      //   this.end,
-      //   null,
-      //   null,
-      //   false
-      // );
-      let options = {
-        pagado: true,
-        start: this.start,
-        end: this.end,
-        fondo: this.fondo._id,
-        cerrado: false,
-        get_total: '1'
-      }
-      respfactura = await this._facturaService.getFacturasOptions(options);
-      console.log(respfactura);
-
-    } else {
-      let options = {
-        pagado: true,
-        start: this.start,
-        end: this.end,
-        cerrado: false,
-        get_total: '1'
-      }
-      respfactura = await this._facturaService.getFacturasOptions(options);
-    }
-    if (respfactura.ok) {
-
-      this.facturas = respfactura.facturas;
-      this.totalFacturas = respfactura.montoTotal.total;
-      this.facturaCount = respfactura.montoTotal.cantidad;
-    }
-
     this.loading = false;
   }
+
+
   async searchBancos(val) {
     this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', val.term);
   }
 
   async filtrarPorEstado(estado) {
     this.options.cerrado = estado === 'CONCILIADOS' ? true : false
+    if (estado === 'TODOS') delete this.options.cerrado
     if (!estado) delete this.options.cerrado
-    this.movimientosPrueba = await this._movimientoService.getCajaBancos(1, this.options);
-
+    this.page = 1
+    const resp = await this._movimientoService.getCajaBancos(this.page, this.options);
+    this.cargarValores(resp)
   }
 
   async seleccionarFondo(fondo) {
@@ -131,13 +86,15 @@ export class InfoCajaComponent implements OnInit {
       delete this.options.fondo
       console.log(this.options);
 
-      this.movimientosPrueba = await this._movimientoService.getCajaBancos(1, this.options);
+      const resp = await this._movimientoService.getCajaBancos(1, this.options);
+      this.cargarValores(resp)
       return;
     }
     this.loading = true;
     // this.movimientosPrueba = await this._movimientoService.allmovimientosCaja(
     this.options.fondo = fondo._id
-    this.movimientosPrueba = await this._movimientoService.getCajaBancos(1, this.options);
+    const resp = await this._movimientoService.getCajaBancos(1, this.options);
+    this.cargarValores(resp)
 
     const respMovimientos = await this._movimientoService.getAllMovimientos({
       cerrado: false,
@@ -147,7 +104,6 @@ export class InfoCajaComponent implements OnInit {
     this.movimientos = respMovimientos.movimientos;
 
     this.totalMovimientos = respMovimientos.total.monto_total;
-    this.HaberMovimientos = (respMovimientos.total.monto_haber - respMovimientos.total.monto_total) | 0;
     let respFondo: any = await this._movimientoService.getSaldoFondo(fondo._id)
     console.log(respFondo);
 
@@ -170,13 +126,13 @@ export class InfoCajaComponent implements OnInit {
       cerrado: false,
       get_total: '1'
     }
-    const respfactura = await this._facturaService.getFacturasOptions(options);
+    // const respfactura = await this._facturaService.getFacturasOptions(options);
 
-    if (respfactura.ok) {
-      this.facturas = respfactura.facturas;
-      this.totalFacturas = respfactura.monto_total.total;
-      this.facturaCount = respfactura.monto_total.count;
-    }
+    // if (respfactura.ok) {
+    //   this.facturas = respfactura.facturas;
+    //   this.totalFacturas = respfactura.monto_total.total;
+    //   this.facturaCount = respfactura.monto_total.count;
+    // }
     this.loading = false;
     this.listItems = [];
     this.calcularSeleccionados();
@@ -229,9 +185,9 @@ export class InfoCajaComponent implements OnInit {
 
     const body = {
       isAllSelected: this.isAllSelected,
-      
+
       listItems: this.listItems || [],
-      
+
     };
     await this._cajaService.cerrarCajaOptions(body, options);
     this.ngOnInit()
@@ -293,16 +249,16 @@ export class InfoCajaComponent implements OnInit {
     this.montoTotal = 0;
     for (let i = 0; i < this.listItems.length; i++) {
       const item = this.listItems[i];
-      if (item.haber) {
+      if (item.tipo == 'INGRESO') {
         this.cantidadIngreso++;
-        this.montoIngreso += item.haber;
+        this.montoIngreso += item.monto;
       }
-      if (item.monto_total) {
+      if (item.tipo == 'EGRESO') {
         this.cantidadEgreso++;
-        this.montoEgreso += item.monto_total;
+        this.montoEgreso += item.monto;
       }
     }
-    this.montoTotal = this.montoIngreso - this.montoEgreso;
+    this.montoTotal = this.montoIngreso + this.montoEgreso;
     this.cantidadTotal = this.cantidadIngreso + this.cantidadEgreso;
   }
 
@@ -321,10 +277,25 @@ export class InfoCajaComponent implements OnInit {
   }
 
   async filtroPorFecha() {
-    this.options.date_start = this.rangeFecha.value.start ? new Date(this.rangeFecha.value.start).getTime() : null,
+    this.options.date_start = this.rangeFecha.value.start ? new Date(this.rangeFecha.value.start).getTime() : null
     this.options.date_end = this.rangeFecha.value.end ? new Date(this.rangeFecha.value.end).setHours(23, 59, 59, 59) : null
-    this.movimientosPrueba = await this._movimientoService.getCajaBancos(1, this.options);
-
+    const resp = await this._movimientoService.getCajaBancos(1, this.options);
+    this.cargarValores(resp)
   }
 
+  page = 1
+  async pageChanged(page) {
+
+    this.page = page
+    const resp = await this._movimientoService.getCajaBancos(this.page, this.options);
+    this.cargarValores(resp)
+  }
+
+  cargarValores(data){
+    this.movimientosPrueba = data.movimientos
+    this.count = data.count
+    this.TotalArqueo = data.totalEgreso + data.totalIngreso 
+    this.totalEgreso = data.totalEgreso
+    this.totalIngreso = data.totalIngreso
+  }
 }

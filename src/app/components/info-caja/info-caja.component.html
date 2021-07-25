@@ -49,7 +49,7 @@
                             <p>Estado: </p>
                             <div class="inline-flex">
                                 <div style="min-width: 100%;" >
-                                    <ng-select [items]="['CONCILIADOS', 'PENDIENTES']" [(ngModel)]="estado" (ngModelChange)="filtrarPorEstado(estado)"  notFoundText="no se encontraron resultados" placeholder="Filtrar por estado" bindLabel="NOMBRES" >
+                                    <ng-select [items]="['CONCILIADOS', 'PENDIENTES', 'TODOS']" [(ngModel)]="estado" (ngModelChange)="filtrarPorEstado(estado)"  notFoundText="no se encontraron resultados" placeholder="Filtrar por estado" bindLabel="NOMBRES" >
                                         <ng-template ng-option-tmp let-item="item">
                                             <div>
                                                 {{item}}
@@ -109,7 +109,7 @@
         </div>
 
 
-        <div class="col-xs col-md">
+        <div class="col-xs col-md-5">
 
             <div class="card">
                 <div class="card-body ">
@@ -119,25 +119,30 @@
                     <div class="row">
                         <div class="col-xs col-md">
                             <div class="t3">Gastos</div>
-                            <span><b>Monto Total: </b>{{HaberMovimientos | currency: '':'':'2.0'}} Gs</span>
+                            <span><b>Monto Total: </b>{{totalEgreso | currency: '':'':'2.0'}} Gs</span>
                             <br>
-                            <span><b>Cantidad: </b>{{movimientoCount}}</span>
+                            <!-- <span><b>Cantidad: </b>{{0}}</span> -->
                             <!-- <span><b>Total Monto: </b>{{totalMovimientos| currency: '':'':'2.0'}} Gs</span> -->
                         </div>
                         <div class="ml-3 col-xs col-md b-l">
                             <div class="t3">Ingresos</div>
-                            <span><b>Monto total: </b> {{totalFacturas | currency: '':'':'2.0'}} Gs</span>
+                            <span><b>Monto total: </b> {{totalIngreso | currency: '':'':'2.0'}} Gs</span>
                             <br>
-                            <span><b>Cantidad: </b> {{facturaCount}}</span>
+                            <!-- <span><b>Cantidad: </b> {{facturaCount}}</span> -->
                         </div>
 
                     </div>
                     <div class="mt-3 inline-flex">
-                        <span class="t1"><b>Total: </b> <span
+                        <!-- <span class="t1"><b>Total: </b> <span
                                 [ngStyle]="(totalFacturas + HaberMovimientos) >= 0? {color: '#009000'} : {color: ' #d53032'}">
                                 {{ (totalFacturas + HaberMovimientos) | currency: '':'':'2.0'}}
+                            </span> Gs</span> -->
+                        <span class="t1"><b>Total: </b> <span
+                                [ngStyle]="TotalArqueo >= 0? {color: '#009000'} : {color: ' #d53032'}">
+                                {{ TotalArqueo | currency: '':'':'2.0'}}
                             </span> Gs</span>
-                        <button type="button" [disabled]="!fondo || listItems.length <1" (click)="cerrarCaja()" class="btn ml-auto btn-rounded btn-success">Cerrar Caja</button>
+                        <button type="button"  (click)="showModalBilletes = true" class="btn ml-auto btn-rounded btn-inverse">Contar Billetes</button>
+                        <button type="button" [disabled]="!fondo || listItems.length <1" (click)="cerrarCaja()" class="btn ml-2 btn-rounded btn-success">Cerrar Caja</button>
                     </div>
 
                 </div>
@@ -158,9 +163,9 @@
                    
                 </div>
             </div> -->
-            <div>Saldo En fondo: {{saldoFondo | currency: '':'':'2.0'}} Gs</div>
-            <div>Saldo + total: {{(saldoFondo + (totalFacturas + HaberMovimientos)) | currency: '':'':'2.0'}} Gs</div>
-            <div>Saldo + Seleccionados: {{(saldoFondo + montoTotal) | currency: '':'':'2.0'}} Gs</div>
+            <!-- <div>Saldo En fondo: {{saldoFondo | currency: '':'':'2.0'}} Gs</div> -->
+            <!-- <div>Saldo + total: {{(saldoFondo + (totalFacturas + HaberMovimientos)) | currency: '':'':'2.0'}} Gs</div> -->
+            <!-- <div>Saldo + Seleccionados: {{(saldoFondo + montoTotal) | currency: '':'':'2.0'}} Gs</div> -->
             <div class="position:sticky; top: 0;" style="width: 100%;">
                 <div style="display: flex;">
                     <div class="mx-auto">
@@ -214,7 +219,7 @@
                         </tr>
                     </thead>
                     <tbody id="the_body">
-                        <tr class="pointer" id="id-{{item._id}}" (click)="selectItem(item)" *ngFor="let item of movimientosPrueba; let i = index;">
+                        <tr class="pointer" id="id-{{item._id}}" (click)="selectItem(item)" *ngFor="let item of movimientosPrueba | paginate: { itemsPerPage: 100,totalItems:count, currentPage: page }; let i = index;">
                             <td>{{i+1}}</td>
                             <!-- fecha -->
                             <td [ngClass]="'text-center'">{{item.fecha | date: 'dd-MM-YY'}}</td>
@@ -385,9 +390,19 @@
                         </tr>
                     </tbody>
                 </table>
+
+                <div style="width: 100%;">
+                    <div style="display: flex;">
+                        <div class="mx-auto">
+                            <pagination-controls *ngIf="count>10" (pageChange)="pageChanged($event); page = $event">
+                            </pagination-controls>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-
 </div>
+
+<app-modal-billetes *ngIf="showModalBilletes" [montoTotal]="TotalArqueo" (onClose)="showModalBilletes= false"></app-modal-billetes>

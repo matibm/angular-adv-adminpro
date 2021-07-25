@@ -53,6 +53,7 @@ import { ExtractoPdfComponent } from './extracto-pdf/extracto-pdf.component';
 import { NestableModule } from 'ngx-nestable';
 import {MatTreeModule} from '@angular/material/tree';
 import { ModalCuentasGastosComponent } from './modal-cuentas-gastos/modal-cuentas-gastos.component';
+import { ModalBilletesComponent } from './modal-billetes/modal-billetes.component';
 
 
 const maskConfig: Partial<IConfig> = {
@@ -89,6 +90,7 @@ const maskConfig: Partial<IConfig> = {
     ModalFacturaComponent,
     ExtractoPdfComponent,
     ModalCuentasGastosComponent,
+    ModalBilletesComponent,
 
   ],
   imports: [

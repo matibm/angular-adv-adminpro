@@ -323,7 +323,7 @@ export class MovimientoService {
       .then((resp: any) => {
         console.log(resp);
 
-        return resp.movimientos;
+        return resp;
       });
   }
   getReporteGastoIngresoPsm() {
