@@ -146,7 +146,7 @@
 
                                     </div>
                                     <div class="col">
-                                        <input class="form-control" type="number">
+                                        <input [(ngModel)]="cheque"  class="form-control" type="number">
 
                                     </div>
                                 </div>
@@ -177,7 +177,7 @@
 
                 <div class="modal-footer">
                     <button (click)="onClose.emit()" class="btn btn-secondary"> Cancelar</button>
-                    <button class='btn btn-primary'>Seleccionar</button>
+                    <button (click)="cerrarCaja.emit()" [disabled]="montoTotal != sumaTotal()" class='btn btn-rounded btn-info'>Cerrar Caja</button>
 
                 </div>
             </div>

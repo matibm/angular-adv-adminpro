@@ -14,7 +14,10 @@
                             <p>Fondo: </p>
                             <div class="inline-flex">
                                 <div style="min-width: 100%;" *ngIf="!fondo">
-                                    <ng-select [items]="fondos" [(ngModel)]="fondo" (ngModelChange)="seleccionarFondo(fondo)" (search)="searchBancos($event)" notFoundText="no se encontraron resultados" placeholder="Filtrar por fondo" bindLabel="NOMBRES" [searchFn]="customSearchFn">
+                                    <ng-select [items]="fondos" [(ngModel)]="fondo"
+                                        (ngModelChange)="seleccionarFondo(fondo)" (search)="searchBancos($event)"
+                                        notFoundText="no se encontraron resultados" placeholder="Filtrar por fondo"
+                                        bindLabel="NOMBRES" [searchFn]="customSearchFn">
                                         <ng-template ng-option-tmp let-item="item">
                                             <div>
                                                 <div *ngIf="item.APELLIDOS">{{item.APELLIDOS}} {{item.NOMBRES}}</div>
@@ -37,19 +40,22 @@
                                     </span>
                                 </div>
                                 <div *ngIf="fondo" (click)="fondo = null" class="pointer close-icon ml-2">
-                                    <button type="button" (click)="seleccionarFondo(null)" class="btn btn-sm btn-light"><i
-                                            class=" ti-close  "></i></button>
+                                    <button type="button" (click)="seleccionarFondo(null)"
+                                        class="btn btn-sm btn-light"><i class=" ti-close  "></i></button>
                                 </div>
 
-                                
+
                             </div>
 
                         </div>
                         <div class="col-xs col-md pl-3 mr-3">
                             <p>Estado: </p>
                             <div class="inline-flex">
-                                <div style="min-width: 100%;" >
-                                    <ng-select [items]="['CONCILIADOS', 'PENDIENTES', 'TODOS']" [(ngModel)]="estado" (ngModelChange)="filtrarPorEstado(estado)"  notFoundText="no se encontraron resultados" placeholder="Filtrar por estado" bindLabel="NOMBRES" >
+                                <div style="min-width: 100%;">
+                                    <ng-select [items]="['CONCILIADOS', 'PENDIENTES', 'TODOS']" [(ngModel)]="estado"
+                                        (ngModelChange)="filtrarPorEstado(estado)"
+                                        notFoundText="no se encontraron resultados" placeholder="Filtrar por estado"
+                                        bindLabel="NOMBRES">
                                         <ng-template ng-option-tmp let-item="item">
                                             <div>
                                                 {{item}}
@@ -58,27 +64,31 @@
                                         </ng-template>
                                     </ng-select>
                                 </div>
-                                
+
                             </div>
 
                         </div>
                         <div class="col-xs col-md pl-3 mr-3">
                             <p>Fecha: </p>
                             <div class="inline-flex">
-                                <div style="min-width: 100%;" >
+                                <div style="min-width: 100%;">
                                     <mat-form-field appearance="fill">
                                         <mat-label>Rango de Fecha</mat-label>
                                         <mat-date-range-input [formGroup]="rangeFecha" [rangePicker]="pickerFecha">
-                                            <input autocomplete="off" matStartDate formControlName="start" placeholder="fecha inicio">
-                                            <input matEndDate formControlName="end" (dateChange)="filtroPorFecha()" placeholder="fecha fin">
+                                            <input autocomplete="off" matStartDate formControlName="start"
+                                                placeholder="fecha inicio">
+                                            <input matEndDate formControlName="end" (dateChange)="filtroPorFecha()"
+                                                placeholder="fecha fin">
                                         </mat-date-range-input>
                                         <mat-datepicker-toggle matSuffix [for]="pickerFecha"></mat-datepicker-toggle>
                                         <mat-date-range-picker #pickerFecha></mat-date-range-picker>
-                                        <mat-error *ngIf="rangeFecha.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
-                                        <mat-error *ngIf="rangeFecha.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+                                        <mat-error *ngIf="rangeFecha.controls.start.hasError('matStartDateInvalid')">
+                                            Invalid start date</mat-error>
+                                        <mat-error *ngIf="rangeFecha.controls.end.hasError('matEndDateInvalid')">Invalid
+                                            end date</mat-error>
                                     </mat-form-field>
                                 </div>
-                                
+
                             </div>
 
                         </div>
@@ -141,8 +151,10 @@
                                 [ngStyle]="TotalArqueo >= 0? {color: '#009000'} : {color: ' #d53032'}">
                                 {{ TotalArqueo | currency: '':'':'2.0'}}
                             </span> Gs</span>
-                        <button type="button"  (click)="showModalBilletes = true" class="btn ml-auto btn-rounded btn-inverse">Contar Billetes</button>
-                        <button type="button" [disabled]="!fondo || listItems.length <1" (click)="cerrarCaja()" class="btn ml-2 btn-rounded btn-success">Cerrar Caja</button>
+                        <button type="button" [disabled]="!fondo " (click)="showModalBilletes = true"
+                            class="btn ml-auto btn-rounded btn-inverse">Contar Billetes</button>
+                        <button type="button" [disabled]="!fondo " (click)="cerrarCaja()"
+                            class="btn ml-2 btn-rounded btn-success">Cerrar Caja</button>
                     </div>
 
                 </div>
@@ -152,7 +164,7 @@
 
 
 
-   
+
 
     <!-- <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate">
     </ngx-loading> -->
@@ -172,10 +184,13 @@
                         <table class="table  table-responsive">
                             <thead class="table-inverse">
                                 <tr>
-                                    <th class="text-center ">Ingreso <span class="badge badge-pill bg-info">{{cantidadIngreso}}</span>
+                                    <th class="text-center ">Ingreso <span
+                                            class="badge badge-pill bg-info">{{cantidadIngreso}}</span>
                                     </th>
-                                    <th class="text-center ">Egreso <span class="badge badge-pill bg-danger">{{cantidadEgreso}}</span></th>
-                                    <th class="text-center ">Total <span class="badge badge-pill bg-secondary">{{cantidadTotal}}</span> </th>
+                                    <th class="text-center ">Egreso <span
+                                            class="badge badge-pill bg-danger">{{cantidadEgreso}}</span></th>
+                                    <th class="text-center ">Total <span
+                                            class="badge badge-pill bg-secondary">{{cantidadTotal}}</span> </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -196,15 +211,13 @@
                     </div>
                 </div>
             </div>
-
-
             <div style="overflow: auto; max-height: 500px;">
-
                 <table class="table full-color-table full-{{tableColor}}-table hover-table   table-sm">
                     <thead>
                         <tr>
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '15px'}">#</th>
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '120px'}">fecha</th>
+                            <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '120px'}">Conciliado</th>
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '120px'}">Ingreso</th>
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '120px'}">Egreso</th>
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '120px'}">Saldo</th>
@@ -214,16 +227,24 @@
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '100px'}">Servicio</th>
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '400px'}">Cuenta Gasto</th>
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '400px'}">Proveedor</th>
-                            <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '120px'}">Conciliado</th>
 
                         </tr>
                     </thead>
                     <tbody id="the_body">
-                        <tr class="pointer" id="id-{{item._id}}" (click)="selectItem(item)" *ngFor="let item of movimientosPrueba | paginate: { itemsPerPage: 100,totalItems:count, currentPage: page }; let i = index;">
+                        <tr class="pointer" id="id-{{item._id}}" (click)="selectItem(item)"
+                            *ngFor="let item of movimientosPrueba | paginate: { itemsPerPage: 10,totalItems:count, currentPage: page }; let i = index;">
                             <td>{{i+1}}</td>
                             <!-- fecha -->
                             <td [ngClass]="'text-center'">{{item.fecha | date: 'dd-MM-YY'}}</td>
-
+                            <!-- cerrado -->
+                            <td [ngClass]="'text-center'">
+                                <div *ngIf="item.cerrado">
+                                    SI
+                                </div>
+                                <div *ngIf="!item.cerrado">
+                                    NO
+                                </div>
+                            </td>
                             <!-- ingreso -->
                             <td [ngClass]="'text-center'" [style.color]="'#009000'">
                                 <div *ngIf="item.tipo === 'INGRESO'">
@@ -241,7 +262,15 @@
                                     ---
                                 </div>
                             </td>
-                            <td [ngClass]="'text-center'" [ngStyle]="item.total > 0? {color: '#009000'} : {color: ' #d53032'}">{{item.total | currency: '':'':'2.0'}}</td>
+                            <td *ngIf="estado == 'TODOS'" [ngClass]="'text-center'"
+                                [ngStyle]="item.total > 0? {color: '#009000'} : {color: ' #d53032'}">
+                                {{item.total |  currency: '':'':'2.0'}}
+                            
+                            </td>
+                            <td *ngIf="estado != 'TODOS'" [ngClass]="'text-center'">
+                                ---
+                            
+                            </td>
 
                             <!-- nro contrato -->
                             <td [ngClass]="'text-center'">
@@ -265,7 +294,7 @@
                             <!-- servicio -->
                             <td [ngClass]="'text-center'">
                                 <div *ngIf="item.servicio">
-                                    {{item.servicio?.COD_CORTO}}    
+                                    {{item.servicio?.COD_CORTO}}
                                 </div>
                                 <div *ngIf="item.contrato?.producto && item.tipo != 'INGRESO'">
                                     {{item.contrato?.producto?.COD_CORTO}}
@@ -280,7 +309,7 @@
                                     nombre de gasto falta
                                 </div>
                             </td>
- 
+
                             <td [ngClass]="'text-center'">
                                 <div *ngIf="item.proveedor">
                                     {{item.proveedor?.APELLIDOS}} {{item.proveedor?.NOMBRES}}
@@ -289,14 +318,7 @@
                                     ---
                                 </div>
                             </td>
-                            <td [ngClass]="'text-center'">
-                                <div *ngIf="item.cerrado">
-                                    SI
-                                </div>
-                                <div *ngIf="!item.cerrado">
-                                    NO
-                                </div>
-                            </td>
+
 
                         </tr>
                         <tr>
@@ -306,7 +328,8 @@
                         </tr>
                     </tbody>
                     <tbody *ngIf="false" id="the_body">
-                        <tr class="pointer" id="id-{{item._id}}" (click)="selectItem(item)" *ngFor="let item of movimientosPrueba; let i = index;">
+                        <tr class="pointer" id="id-{{item._id}}" (click)="selectItem(item)"
+                            *ngFor="let item of movimientosPrueba; let i = index;">
                             <td>{{i+1}}</td>
                             <!-- fecha -->
                             <td [ngClass]="'text-center'">{{item.fecha_sort | date: 'dd-MM-YY'}}</td>
@@ -328,7 +351,9 @@
                                     ---
                                 </div>
                             </td>
-                            <td [ngClass]="'text-center'" [ngStyle]="item.total > 0? {color: '#009000'} : {color: ' #d53032'}">{{item.total | currency: '':'':'2.0'}}</td>
+                            <td [ngClass]="'text-center'"
+                                [ngStyle]="item.total > 0? {color: '#009000'} : {color: ' #d53032'}">{{item.total |
+                                currency: '':'':'2.0'}}</td>
 
                             <!-- nro contrato -->
                             <td [ngClass]="'text-center'">
@@ -405,4 +430,5 @@
 
 </div>
 
-<app-modal-billetes *ngIf="showModalBilletes" [montoTotal]="TotalArqueo" (onClose)="showModalBilletes= false"></app-modal-billetes>
+<app-modal-billetes *ngIf="showModalBilletes" [montoTotal]="TotalArqueo"
+    (cerrarCaja)="cerrarCaja(); showModalBilletes= false" (onClose)="showModalBilletes= false"></app-modal-billetes>

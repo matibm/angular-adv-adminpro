@@ -10,6 +10,7 @@ export class ModalBilletesComponent implements OnInit {
   constructor() { }
   @Output() onClose = new EventEmitter();
   @Input() montoTotal = 0
+  @Output() cerrarCaja = new EventEmitter();
   ngOnInit(): void {
   }
   cienmil = 0

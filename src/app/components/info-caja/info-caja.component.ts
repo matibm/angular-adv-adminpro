@@ -21,7 +21,7 @@ export class InfoCajaComponent implements OnInit {
   movimientos;
   totalEgreso = 0;
   fondo;
-  estado = 'PENDIENTES'
+  estado = 'TODOS'
   fondos;
   totalMovimientos;
   totalIngreso = 0;
@@ -56,7 +56,7 @@ export class InfoCajaComponent implements OnInit {
   isAllSelected
   showModalBilletes = false
   TotalArqueo = 0
-  options: any = { cerrado: false }
+  options: any = {  }
   async ngOnInit() {
     this.fondo = null;
     const resp = await this._movimientoService.getCajaBancos(1, this.options);
@@ -184,7 +184,7 @@ export class InfoCajaComponent implements OnInit {
     console.log(listas);
 
     const body = {
-      isAllSelected: this.isAllSelected,
+      isAll: true,
 
       listItems: this.listItems || [],
 
