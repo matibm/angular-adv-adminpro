@@ -22,6 +22,7 @@ export class ModalBilletesComponent implements OnInit {
   mil = 0
   quinientos = 0
   cien = 0
+  cincuenta = 0
   total = 0
   cheque = 0
   print(event) {
@@ -45,6 +46,7 @@ export class ModalBilletesComponent implements OnInit {
     this.total += this.mil * 1000
     this.total += this.quinientos * 500
     this.total += this.cien * 100
+    this.total += this.cincuenta * 50
     this.total += this.cheque
 
     return this.total

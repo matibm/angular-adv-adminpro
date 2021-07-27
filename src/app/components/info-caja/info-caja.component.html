@@ -232,7 +232,7 @@
                     </thead>
                     <tbody id="the_body">
                         <tr class="pointer" id="id-{{item._id}}" (click)="selectItem(item)"
-                            *ngFor="let item of movimientosPrueba | paginate: { itemsPerPage: 10,totalItems:count, currentPage: page }; let i = index;">
+                            *ngFor="let item of movimientosPrueba | paginate: { itemsPerPage: 100,totalItems:count, currentPage: page }; let i = index;">
                             <td>{{i+1}}</td>
                             <!-- fecha -->
                             <td [ngClass]="'text-center'">{{item.fecha | date: 'dd-MM-YY'}}</td>
