@@ -21,7 +21,7 @@ export class ModalCuentasGastosComponent implements OnInit {
     this.dataSource.data = await this._movimientoService.getTipoMovimiento();
     console.log(this.dataSource.data);
     this.treeControl.expand(this.dataSource.data[0]);
-    this.treeControl.expandDescendants(this.dataSource.data[1]);
+    // this.treeControl.expandDescendants(this.dataSource.data[1]);
     Object.keys(this.dataSource.data).forEach((x) => {
       this.setParent(this.dataSource.data[x], null);
     });
@@ -56,14 +56,14 @@ export class ModalCuentasGastosComponent implements OnInit {
     console.log(this.dataSource.data);
     
     node.forEach((x) => {
-      x.ok = x.descripcion.indexOf(text) >= 0;
+      x.ok = x.descripcion.indexOf(text.toUpperCase()) >= 0;
       if (x.parent) this.setParentOk(text, x.parent, x.ok);
       if (x.hijos) this.setChildOk(text, x.hijos);
     });
   }
 
   setParentOk(text, node, ok) {
-    node.ok = ok || node.ok || node.descripcion.indexOf(text) >= 0;
+    node.ok = ok || node.ok || node.descripcion.indexOf(text.toUpperCase()) >= 0;
     if (node.parent) this.setParentOk(text, node.parent, node.ok);
   }
 }

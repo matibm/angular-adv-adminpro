@@ -32,10 +32,10 @@ export class SidebarService {
       titulo: 'Finanzas',
       icono: 'mdi mdi-cash',
       submenu: [
-        { titulo: 'Ingresos', url: 'cobranzas' },
+        { titulo: 'Ingresos', url: 'ingresos' },
         { titulo: 'Egresos/Gastos', url: 'gastos' },
         { titulo: 'Cajas/Bancos', url: 'info_caja' },
-        { titulo: 'transferencias', url: 'transferencia' },
+        { titulo: 'Transf. Deposito', url: 'transferencia' },
 
       ]
     },
