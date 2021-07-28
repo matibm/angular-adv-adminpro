@@ -605,7 +605,26 @@
 
                     </div>
                 </div>
-
+                <div class="row">
+                    <div class="col-xs  col-md">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4>Notas</h4>
+                                <textarea class="form-control" [(ngModel)]="notas" name="notas"
+                                id="notas" rows="5"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs  col-md">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4>Lugar de Inhumación</h4>
+                                <input class="form-control" [(ngModel)]="lugar_inhumacion" name="lugar_inhumacion"
+                                id="lugar_inhumacion" >
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <button type="submit" [disabled]="disableCrearContrato()" class="btn float-right btn-primary">Crear
                         Contrato</button>
 

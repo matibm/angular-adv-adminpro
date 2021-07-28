@@ -35,7 +35,7 @@ export class SidebarService {
         { titulo: 'Ingresos', url: 'cobranzas' },
         { titulo: 'Egresos/Gastos', url: 'gastos' },
         { titulo: 'Cajas/Bancos', url: 'info_caja' },
-        // { titulo: 'transferencias', url: 'transferencia' },
+        { titulo: 'transferencias', url: 'transferencia' },
 
       ]
     },

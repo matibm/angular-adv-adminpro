@@ -31,7 +31,8 @@ export class CrearContratoComponent implements OnInit {
   cliente: Usuario;
   clientes: Usuario[] = null;
   clientesAlternativo: Usuario[] = null;
-
+  notas = ''
+  lugar_inhumacion = ''
   titularAlternativo: Usuario;
   fecha_creacion = new Date();
   fecha_primer_pago = new Date().getTime();
@@ -285,7 +286,9 @@ export class CrearContratoComponent implements OnInit {
       tipo_pago: this.radioValue,
       inhumados: this.inhumados,
       fecha_creacion_unix: this.fecha_creacion.getTime(),
-      utilizado
+      utilizado,
+      notas: this.notas,
+      lugar_inhumacion: this.lugar_inhumacion
     };
     if (this.esUdp) {
       nuevo_contrato.manzana = this.manzana;

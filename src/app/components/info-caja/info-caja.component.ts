@@ -86,8 +86,8 @@ export class InfoCajaComponent implements OnInit {
       delete this.options.fondo
       console.log(this.options);
 
-      const resp = await this._movimientoService.getCajaBancos(1, this.options);
-      this.cargarValores(resp)
+      // const resp = await this._movimientoService.getCajaBancos(1, this.options);
+      // this.cargarValores(resp)
       return;
     }
     this.loading = true;
@@ -107,7 +107,7 @@ export class InfoCajaComponent implements OnInit {
     let respFondo: any = await this._movimientoService.getSaldoFondo(fondo._id)
     console.log(respFondo);
 
-    this.saldoFondo = respFondo.data[0].ingreso - respFondo.data[0].gasto
+    // this.saldoFondo = respFondo.data[0].ingreso - respFondo.data[0].gasto
     // const respfactura = await this._facturaService.getFacturas(
     //   true,
     //   fondo._id,

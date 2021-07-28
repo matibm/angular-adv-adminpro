@@ -64,8 +64,12 @@ export class FacturaPdfComponent implements OnInit {
       };
     }
 
+    // console.log(this.factura);
+    
     for (let i = 0; i < this.factura.servicios.length; i++) {
       const element = this.factura.servicios[i];
+      console.log(element);
+      
       this.items[i] = element;
       this.total += element.precio,
         this.totalIva += element.diezPorciento;

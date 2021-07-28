@@ -271,20 +271,7 @@ export class EditarContratoComponent implements OnInit {
       this.contrato.vendedor = this.vendedor,
       this.contrato.fecha_creacion_unix = this.fecha_creacion.getTime();  // falta poner campode fecha para poder modificar
 
-
-
-    // if (this.editarproducto && this.esUdp) {
-    //   this.facturas.push({
-    //     vencimiento: this.fechaMantenimiento,
-    //     monto: 150000,
-    //     haber: 150000,
-    //     titular: this.cliente,
-    //     iscmp: true,
-    //     servicio: this.servicioCMP._id,
-    //     fecha_creacion_unix: new Date().getTime()
-    //   })
-    // }
-    // log(this.facturas);
+ 
     const send = {
       contrato: this.contrato,
       facturas: this.facturas,
@@ -446,6 +433,28 @@ export class EditarContratoComponent implements OnInit {
     this.esUdp = false;
   }
 
+  eliminarContrato(){
+    swal.fire({
+      icon: 'warning',
+      title: 'Eliminar Contrato',
+      text: 'Esta acción no se puede deshacer',
+      showCancelButton: true,
+      cancelButtonText: 'cancelar',
+      cancelButtonColor: '#ef5350',
+      confirmButtonText: 'Eliminar',
+      confirmButtonColor: '#06d79c',
+      showConfirmButton: true
+    }).then(res => {
+
+      if (res.isConfirmed == true) {
+        this.contrato.eliminado = true
+
+        this.editarContrato()
+      } else {
+
+      }
+    });
+   }
   cancelar(){
     window.history.back();
   }

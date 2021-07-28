@@ -2,6 +2,8 @@ import { FacturaService } from './../../services/factura.service';
 import { UsuarioService } from './../../services/usuario.service';
 import { Usuario } from './../../models/usuario';
 import { Component, OnInit } from '@angular/core';
+import { MovimientoService } from 'src/app/services/movimiento.service';
+import { Movimiento } from 'src/app/models/movimiento';
 
 @Component({
   selector: 'app-transferencia',
@@ -12,7 +14,9 @@ export class TransferenciaComponent implements OnInit {
 
   constructor(
     public _usuarioService: UsuarioService,
-    public _facturaService: FacturaService
+    public _facturaService: FacturaService,
+    public _movimientoService: MovimientoService,
+
   ) { }
   fondoOrigen: Usuario;
   fondoDestino: Usuario;
@@ -21,6 +25,10 @@ export class TransferenciaComponent implements OnInit {
   facturaCount = 0;
   facturaPage = 1;
   listItems = [];
+  saldoDisponible = 0
+  montoATransferir = 0
+  comentario = ''
+  nro_factura = ''
   async ngOnInit() {
     this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', '');
 
@@ -38,18 +46,61 @@ export class TransferenciaComponent implements OnInit {
   }
 
   selectFondoOrigen(value) {
-    this.getFacturas(value._id);
+    this.getSaldoDeFondo(value._id);
   }
 
-  async getFacturas(fondoId) {
-
-
-    const respf = await this._facturaService.getFacturasOptions({ fondo: fondoId, pagado: 'true' });
-    console.log(respf);
-    this.facturas = respf.facturas;
-    this.facturaCount = respf.count;
+  async getSaldoDeFondo(fondo) {
+    const options = {
+      fondo
+    }
+    const resp = await this._movimientoService.getCajaBancos(1, options);
+    console.log(resp);
+    this.saldoDisponible = resp.movimientos[0]?.total || 0
 
   }
+
+  async realizarTransferencia() {
+    let movimientoOrigen: Movimiento = {
+      fondo: this.fondoOrigen,
+      comentario: this.comentario,
+      fecha_creacion_unix: new Date().getTime(),
+      nro_factura: this.nro_factura,
+      nro_comp_banco: this.nro_factura,
+      nombre: 'TRANSFERENCIA',
+      anulado: '0',
+      monto_total: this.montoATransferir
+    }
+
+    let origen = await this._movimientoService.crearMovimiento(movimientoOrigen)
+
+    let movimientoDestino: Movimiento = {
+      fondo: this.fondoDestino,
+      comentario: this.comentario,
+      fecha_creacion_unix: new Date().getTime(),
+      nro_factura: this.nro_factura,
+      nro_comp_banco: this.nro_factura,
+      nombre: 'TRANSFERENCIA',
+      anulado: '0',
+      monto_total: this.montoATransferir * -1
+    }
+
+    let destino = await this._movimientoService.crearMovimiento(movimientoDestino)
+
+    console.log(origen);
+    console.log(destino);
+    
+  }
+
+
+  // async getFacturas(fondoId) {
+
+
+  //   const respf = await this._facturaService.getFacturasOptions({ fondo: fondoId, pagado: 'true' });
+  //   console.log(respf);
+  //   this.facturas = respf.facturas;
+  //   this.facturaCount = respf.count;
+
+  // }
   async pageChanged(page) {
     console.log(page);
 
@@ -71,7 +122,7 @@ export class TransferenciaComponent implements OnInit {
       for (let i = 0; i < this.listItems.length; i++) {
         const element = this.listItems[i];
         if (element == id) {
-         this.listItems.splice(i, 1);
+          this.listItems.splice(i, 1);
         }
       }
     } else {
@@ -80,7 +131,7 @@ export class TransferenciaComponent implements OnInit {
     }
   }
 
-  setSelected(){
+  setSelected() {
     for (let i = 0; i < this.listItems.length; i++) {
       const item = this.listItems[i];
       console.log(item);

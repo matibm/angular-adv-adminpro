@@ -140,7 +140,8 @@ export class PerfilUsuarioComponent implements OnInit {
 
   async mostrarModal(id) {
     const resp = await this._facturaService.getDetallePago(id);
-
+    console.log(resp);
+    
     const pago = resp.pago;
     const facturas = resp.facturas;
     const servicios = [];

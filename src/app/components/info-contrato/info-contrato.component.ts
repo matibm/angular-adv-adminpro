@@ -7,6 +7,7 @@ import { Contrato } from './../../models/contrato';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ContratoService } from './../../services/contrato.service';
 import { Component, OnInit } from '@angular/core';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-info-contrato',
@@ -66,7 +67,15 @@ export class InfoContratoComponent implements OnInit {
   async ngOnInit() {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
     this.contrato = await this._contratoService.getContratoById(this.id);
-
+    if (this.contrato.eliminado === true) {
+      swal.fire({
+        icon: 'error',
+        title: 'Contrato No Disponible',
+        // text: 'I will close in 2 seconds.',
+        confirmButtonText: 'OK' 
+      });
+      this.router.navigateByUrl('/')
+    }
     this.radioValue = this.contrato.tipo_pago;
     this.titular = this.contrato.titular;
     this.cliente = this.contrato.titular;

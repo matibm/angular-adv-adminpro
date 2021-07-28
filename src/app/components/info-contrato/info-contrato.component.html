@@ -382,6 +382,36 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="col-xs  col-md">
+                <div class="card">
+                    <div class="card-body">
+                        <h4>Notas</h4>
+                        <textarea readonly class="form-control" [(ngModel)]="contrato.notas" name="notas"
+                        id="notas" rows="5"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs  col-md">
+                <div class="card">
+                    <div class="card-body">
+                        <h4>Lugar de Inhumación</h4>
+                        <input readonly class="form-control" [(ngModel)]="contrato.lugar_inhumacion" name="lugar_inhumacion"
+                        id="lugar_inhumacion" >
+                        <div class="mt-3">
+                            <h4>Estado</h4>
+                            <input [(ngModel)]="contrato.utilizado" type="checkbox" name="check_utilizado"
+                                id="check_utilizado" class="filled-in chk-col-light-blue" (click)="$event.preventDefault()" checked />
+                            <label class="mx-3" for="check_utilizado">Utilizado</label>
+
+                            <input [(ngModel)]="contrato.de_baja" type="checkbox" name="check_de_baja"
+                                id="check_de_baja" class="filled-in chk-col-light-blue" (click)="$event.preventDefault()" checked />
+                            <label class="mx-3" for="check_de_baja">de baja</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div style="width: 100%;">
         <div style="display: flex;">

@@ -11,7 +11,10 @@
                     </div>
                 </div>
                 <div class="" *ngIf="!fondoOrigen">
-                    <ng-select [items]="fondos" [(ngModel)]="fondoOrigen" (ngModelChange)="selectFondoOrigen(fondoOrigen)" (search)="searchBancos($event)" notFoundText="no se encontraron resultados" placeholder="buscar origen fondo" bindLabel="NOMBRES" [searchFn]="customSearchFn">
+                    <ng-select [items]="fondos" [(ngModel)]="fondoOrigen"
+                        (ngModelChange)="selectFondoOrigen(fondoOrigen)" (search)="searchBancos($event)"
+                        notFoundText="no se encontraron resultados" placeholder="buscar origen fondo"
+                        bindLabel="NOMBRES" [searchFn]="customSearchFn">
                         <ng-template ng-option-tmp let-item="item">
                             <div>
                                 <div *ngIf="item.APELLIDOS">{{item.APELLIDOS}} {{item.NOMBRES}}</div>
@@ -50,7 +53,9 @@
                     </div>
                 </div>
                 <div class="" *ngIf="!fondoDestino">
-                    <ng-select [items]="fondos" [(ngModel)]="fondoDestino" (search)="searchBancos($event)" notFoundText="no se encontraron resultados" placeholder="buscar origen fondo" bindLabel="NOMBRES" [searchFn]="customSearchFn">
+                    <ng-select [items]="fondos" [(ngModel)]="fondoDestino" (search)="searchBancos($event)"
+                        notFoundText="no se encontraron resultados" placeholder="buscar origen fondo"
+                        bindLabel="NOMBRES" [searchFn]="customSearchFn">
                         <ng-template ng-option-tmp let-item="item">
                             <div>
                                 <div *ngIf="item.APELLIDOS">{{item.APELLIDOS}} {{item.NOMBRES}}</div>
@@ -80,7 +85,40 @@
     </div>
 </div>
 
-<div class="card">
+<div style="width: 100%;">
+    <div style="display: flex;">
+        <div style="min-width: 400px;" class="mx-auto">
+
+            <div *ngIf="fondoOrigen" class="card">
+                <div class="card-body">
+                    <h4>Saldo Disponible: {{saldoDisponible | currency: '':'':'2.0'}} Gs</h4>
+                    <div *ngIf="!fondoDestino"> Seleccione Fondo Destino</div>
+                    <div *ngIf="fondoDestino">
+                        <div class="form-group">
+                            <label for="">Monto A transferir</label>
+                            <input [(ngModel)]="montoATransferir" type="number" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Nro Transacción</label>
+                            <input [(ngModel)]="nro_factura" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Comentario</label>
+                            <input [(ngModel)]="comentario" type="text" class="form-control">
+                        </div>
+
+                        <button (click)="realizarTransferencia()" [disabled]="montoATransferir<1 || montoATransferir > saldoDisponible"
+                            class="btn mt-3 btn-inverse">Transferir</button>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div *ngIf="false" class="card">
     <div class="card-body">
         <table class="table table-hover">
             <thead>
@@ -97,7 +135,8 @@
             </thead>
             <tbody>
                 <!--  | paginate: { itemsPerPage: 10,totalItems:count, currentPage: page } -->
-                <tr class="pointer" (click)="selectItem(factura._id)" id="id-{{factura._id}}" *ngFor="let factura of facturas  | paginate: { itemsPerPage: 10,totalItems:facturaCount, currentPage: facturaPage } ; let i = index;">
+                <tr class="pointer" (click)="selectItem(factura._id)" id="id-{{factura._id}}"
+                    *ngFor="let factura of facturas  | paginate: { itemsPerPage: 10,totalItems:facturaCount, currentPage: facturaPage } ; let i = index;">
                     <td scope="row">{{facturaPage*10 + (i+1) - 10}}</td>
                     <td *ngIf="factura.fondo">{{factura.fondo.RAZON}}</td>
                     <td *ngIf="!factura.fondo">Sin fondo</td>
