@@ -252,19 +252,19 @@
                             <tr *ngFor="let item of contrato.beneficiarios; let i = index">
 
                                 <td class="text-center">
-                                    {{item.nombre}}
+                                    {{item?.nombre}}
                                 </td>
                                 <td class="text-center">
-                                    {{item.doc| ruc}}
+                                    {{item?.doc| ruc}}
                                 </td>
                                 <td class="text-center">
-                                    {{item.fecha_nacimiento | date}}
+                                    {{item?.fecha_nacimiento | date}}
                                 </td>
                                 <td class="text-center">
-                                    {{item.fecha_nacimiento | edad}}
+                                    {{item?.fecha_nacimiento | edad}}
                                 </td>
                                 <td class="text-center">
-                                    {{item.plus_edad}}
+                                    {{item?.plus_edad}}
                                 </td>
                             </tr>
                         </tbody>
@@ -362,16 +362,16 @@
                             <tr *ngFor="let item of contrato.inhumados; let i = index">
 
                                 <td>
-                                    {{item.nombre}}
+                                    {{item?.nombre}}
                                 </td>
                                 <td>
-                                    {{item.ci}}
+                                    {{item?.ci}}
                                 </td>
                                 <td>
-                                    {{item.fecha_fallecimiento}}
+                                    {{item?.fecha_fallecimiento}}
                                 </td>
                                 <td>
-                                    {{item.fecha_inhumacion}}
+                                    {{item?.fecha_inhumacion}}
                                 </td>
 
 
