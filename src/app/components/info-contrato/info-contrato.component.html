@@ -317,6 +317,7 @@
                             <tr>
                                 <th class="text-center">Nombre</th>
                                 <th class="text-center">C.I.</th>
+                                <th class="text-center">Nro Inhumacion</th>
 
 
                                 <th class="text-center">Fecha fallecimiento</th>
@@ -326,16 +327,19 @@
                         <tbody>
                             <tr *ngFor="let item of contrato.inhumados; let i = index">
                                 <td class="text-center">
-                                    {{item.nombre}}
+                                    {{item?.nombre}}
                                 </td>
                                 <td class="text-center">
-                                    {{item.ci | ruc}}
+                                    {{item?.ci | ruc}}
                                 </td>
                                 <td class="text-center">
-                                    {{item.fecha_fallecimiento| date}}
+                                    {{item?.nro}}
                                 </td>
                                 <td class="text-center">
-                                    {{item.fecha_inhumacion | date}}
+                                    {{item?.fecha_fallecimiento| date}}
+                                </td>
+                                <td class="text-center">
+                                    {{item?.fecha_inhumacion | date}}
                                 </td>
                             </tr>
                         </tbody>
@@ -354,6 +358,7 @@
                             <tr>
                                 <th class="text-center">Nombres y Apellidos</th>
                                 <th class="text-center">C.I.</th>
+                                <th class="text-center">Nro Inhumacion</th>
                                 <th class="text-center">Fecha fallecimiento</th>
                                 <th class="text-center">Fecha Inhumacion</th>
                             </tr>
@@ -366,6 +371,9 @@
                                 </td>
                                 <td>
                                     {{item?.ci}}
+                                </td>
+                                <td>
+                                    {{item?.nro}}
                                 </td>
                                 <td>
                                     {{item?.fecha_fallecimiento}}
