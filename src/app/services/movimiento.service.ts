@@ -28,6 +28,8 @@ export class MovimientoService {
       .get(url)
       .toPromise()
       .then((resp: any) => {
+        console.log(resp);
+        
         return resp.tipos_movimiento;
       });
   }

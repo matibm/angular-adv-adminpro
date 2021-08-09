@@ -20,6 +20,7 @@ export class CrearFacturaComponent implements OnInit {
     public route: Router
   ) { }
   servicio: Producto;
+  nota
   servicios;
   cliente;
   clientes;
@@ -63,14 +64,15 @@ export class CrearFacturaComponent implements OnInit {
   async crearFactura() {
     const body = {
       monto: this.servicio?.PRECIO_MAYORISTA,
+      nota: this.nota,
       titular: this.cliente?._id || '',
       servicio: this.servicio?._id || '',
       cobrador: this.cobrador?._id || '',
       contrato: this.contrato?._id,
-      vencimiento: this.vencimiento || new Date().getTime()
+      vencimiento: new Date(this.vencimiento).getTime() || new Date().getTime()
     };
     const factura = await this._facturaService.crearFactura(body);
-    this.route.navigateByUrl(`/admin/factura/${factura._id}`);
+    this.route.navigateByUrl(`/admin/ingreso/${factura._id}`);
   }
 
   calcularFecha(stringDate) {

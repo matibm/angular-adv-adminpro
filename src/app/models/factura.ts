@@ -49,6 +49,7 @@ export class Factura {
         public vencimiento_a_pagar?: number,
         public fecha_creacion_unix?: string,
         public conciliado?: string,
+        public nota?: string,
         public titular?: Usuario,
         public vendedor?: Usuario,
         public cobrador?: Usuario,

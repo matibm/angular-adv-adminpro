@@ -125,6 +125,10 @@
             <input type="number" class="form-control" [(ngModel)]="servicio.PRECIO_MAYORISTA" name="" id=""
                 aria-describedby="helpId" placeholder="">
             <br>
+            <label for="">Nota</label>
+            <input type="text" class="form-control" [(ngModel)]="nota" name="nota" id=""
+                aria-describedby="helpId" placeholder="">
+            <br>
             <label for="fecha_inicio">Vencimiento :
                 <span><b>{{vencimiento | date}}</b></span>
             </label>
