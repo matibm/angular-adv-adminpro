@@ -203,7 +203,13 @@
                 aria-describedby="direccionid" placeholder="">
         </div>
 
-
+        <mat-form-field appearance="fill">
+            <mat-label>Fecha</mat-label>
+            <input matInput name="asdrdsvet321" [(ngModel)]="fechaPago" [matDatepicker]="pickerPago">
+            <mat-datepicker-toggle matSuffix [for]="pickerPago">
+            </mat-datepicker-toggle>
+            <mat-datepicker #pickerPago></mat-datepicker>
+        </mat-form-field>
        </div>
         
         <div *ngIf="!factura.link_de_pago" class="float-right mt-3">

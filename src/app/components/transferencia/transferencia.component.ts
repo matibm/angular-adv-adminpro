@@ -29,6 +29,7 @@ export class TransferenciaComponent implements OnInit {
   montoATransferir = 0
   comentario = ''
   nro_factura = ''
+  fecha_creacion = new Date()
   async ngOnInit() {
     this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', '');
 
@@ -63,7 +64,7 @@ export class TransferenciaComponent implements OnInit {
     let movimientoOrigen: Movimiento = {
       fondo: this.fondoOrigen,
       comentario: this.comentario,
-      fecha_creacion_unix: new Date().getTime(),
+      fecha_creacion_unix: this.fecha_creacion.getTime(),
       nro_factura: this.nro_factura,
       nro_comp_banco: this.nro_factura,
       nombre: 'TRANSFERENCIA',
@@ -76,7 +77,7 @@ export class TransferenciaComponent implements OnInit {
     let movimientoDestino: Movimiento = {
       fondo: this.fondoDestino,
       comentario: this.comentario,
-      fecha_creacion_unix: new Date().getTime(),
+      fecha_creacion_unix: this.fecha_creacion.getTime(),
       nro_factura: this.nro_factura,
       nro_comp_banco: this.nro_factura,
       nombre: 'TRANSFERENCIA',

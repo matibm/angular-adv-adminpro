@@ -37,6 +37,7 @@ export class FacturaComponent implements OnInit {
   nombreFactura;
   rucFactura;
   telFactura;
+  fechaPago = new Date()
   direccionFactura;
   async ngOnInit() {
     if (this.primeraEjecucion) {
@@ -53,7 +54,7 @@ export class FacturaComponent implements OnInit {
     await this.initialize();
     this.facturaPdf = {
       nombres: `${this.factura.titular.NOMBRES} ${this.factura.titular.APELLIDOS}`,
-      fecha: this.factura.fecha_pagado_unix,
+      fecha: this.fechaPago.getTime(),
       direccion: `${this.factura.titular.direccion_particular}`,
       ruc: this.factura.titular.RUC,
       tel: this.factura.titular.TELEFONO1,
@@ -112,7 +113,7 @@ export class FacturaComponent implements OnInit {
     } else {
       let body = {
         factura,
-        fecha_pago: new Date(),
+        fecha_pago: this.fechaPago,
         comentario: '',
         nombre: this.nombreFactura,
         ruc: this.rucFactura,

@@ -18,10 +18,10 @@ import { Usuario } from 'src/app/models/usuario';
 export class CobranzaComponent implements OnInit {
 
   constructor(public _facturaService: FacturaService,
-              public _usuarioService: UsuarioService,
-              public _contratoSerivce: ContratoService,
-              public _productoService: ProductosService,
-              notifier: NotifierService
+    public _usuarioService: UsuarioService,
+    public _contratoSerivce: ContratoService,
+    public _productoService: ProductosService,
+    notifier: NotifierService
 
   ) {
 
@@ -45,7 +45,7 @@ export class CobranzaComponent implements OnInit {
   servicio;
   servicios;
   facturas;
-  cobrador : Usuario;
+  cobrador: Usuario;
   cobradores;
   vendedor;
   vendedores;
@@ -106,10 +106,10 @@ export class CobranzaComponent implements OnInit {
   telFactura;
   direccionFactura;
   fechaPago = new Date()
-  pruebaValue(variable){
+  pruebaValue(variable) {
     console.log(getComputedStyle(variable).width);
-    
-    
+
+
   }
   async ngOnInit() {
     this.observableBuscadores();
@@ -222,7 +222,7 @@ export class CobranzaComponent implements OnInit {
     }
     this.facturasAPagar = (await this._facturaService.pagarPorMonto({ fecha_pago: this.fechaPago, lista: [{ contrato: id, monto: parseInt(monto) }] })).facturas;
     console.log(this.facturasAPagar);
-    
+
   }
 
   async searchBancos(val) {
@@ -241,7 +241,7 @@ export class CobranzaComponent implements OnInit {
     // this.filtros.push()
     this.facturasAPagarAux = (await this._facturaService.pagarPorMonto({ fecha_pago: this.fechaPago, lista: this.lista })).facturas;
     console.log(this.facturasAPagarAux);
-    
+
 
     this.contrato = null;
     // this.filtrar();
@@ -250,9 +250,10 @@ export class CobranzaComponent implements OnInit {
   }
   async confirmarPago() {
     console.log(this.cobrador);
-    
-    this.loadingConfirmarPago = true 
-   let pagoresp = await this._facturaService.pagarPorMonto({ fecha_pago: this.fechaPago,
+
+    this.loadingConfirmarPago = true
+    let pagoresp = await this._facturaService.pagarPorMonto({
+      fecha_pago: this.fechaPago,
       lista: this.lista,
       montoTotal: this.montoTotal,
       cliente: this.cliente._id,
@@ -264,21 +265,16 @@ export class CobranzaComponent implements OnInit {
       confirmado: true,
       fondo: this.fondo._id,
       nro_timbrado: '144542331',
-      nro_factura: this.cobrador.nro_factura_actual +1,
+      nro_factura: this.cobrador.nro_factura_actual + 1,
       numero: this.cobrador.nro_talonario
     });
     this.loadingConfirmarPago = false
 
     console.log(pagoresp);
-    this.mostrarModal(pagoresp?.pago?._id) 
+    this.mostrarModal(pagoresp?.pago?._id)
     this.ngOnInit();
-    this.contrato = null;
-    this.facturasAPagar = null;
-    this.facturasAPagarAux = []
-    this.cliente = null; 
-    this.lista = []
-    this.fondo = null;
-    this.cobrador = null
+
+    this.reset()
   }
 
 
@@ -310,6 +306,18 @@ export class CobranzaComponent implements OnInit {
 
   reset() {
     this.contrato = null;
+    this.cobrador = null;
+    this.cobradores = null
+    this.fondos = null;
+    this.facturaPdf = null;
+    this.contrato = null;
+    this.facturasAPagar = null;
+    this.facturasAPagarAux = []
+    this.clientes = []
+    this.cliente = null;
+    this.lista = []
+    this.fondo = null;
+    this.cobrador = null
     this.lista = [];
     this.montoTotal = 0;
     this.facturasAPagar = null;
@@ -348,25 +356,6 @@ export class CobranzaComponent implements OnInit {
         });
       }
 
-      // if (contratosSinRepetir.includes(factura.contrato) && !factura.parcial) {
-      //   for (let j = 0; j < servicios.length; j++) {
-      //     const element = servicios[j];
-      //     element.cantidad++
-      //     element.precio += factura.haber
-      //     element.diezPorciento += factura.haber / 11
-      //   }
-      // } else {
-      //   servicios.push({
-      //     contrato: factura.contrato,
-      //     cantidad: 1,
-      //     concepto: `${factura.servicio.NOMBRE}`,
-      //     precioUnitario: factura.precio_unitario ? factura.precio_unitario : factura.haber,
-      //     precio: factura.haber,
-      //     cincoPorciento: null,
-      //     diezPorciento: factura.haber / 11
-      //   })
-      //   contratosSinRepetir.push(factura.contrato)
-      // }
       servicios = fsinrepetir;
     }
     const facturaPDF = {
@@ -384,7 +373,7 @@ export class CobranzaComponent implements OnInit {
     return facturaPDF;
   }
   facturapdf
-  async mostrarModal(id){
+  async mostrarModal(id) {
     const resp = await this._facturaService.getDetallePago(id);
 
     const pago = resp.pago;

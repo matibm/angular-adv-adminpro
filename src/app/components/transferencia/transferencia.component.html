@@ -106,7 +106,13 @@
                             <label for="">Comentario</label>
                             <input [(ngModel)]="comentario" type="text" class="form-control">
                         </div>
-
+                        <mat-form-field appearance="fill">
+                            <mat-label>Fecha</mat-label>
+                            <input matInput name="asdrdsvet321" [(ngModel)]="fecha_creacion" [matDatepicker]="pickerPago">
+                            <mat-datepicker-toggle matSuffix [for]="pickerPago">
+                            </mat-datepicker-toggle>
+                            <mat-datepicker #pickerPago></mat-datepicker>
+                        </mat-form-field>
                         <button (click)="realizarTransferencia()" [disabled]="montoATransferir<1 || montoATransferir > saldoDisponible"
                             class="btn mt-3 btn-inverse">Transferir</button>
 
