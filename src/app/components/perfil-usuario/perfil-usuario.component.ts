@@ -30,6 +30,7 @@ export class PerfilUsuarioComponent implements OnInit {
   isEmpresa;
   isContratado;
   isBanco;
+  isProveedor;
   manejaCaja;
   cobroOnline;
   pagos;
@@ -86,6 +87,7 @@ export class PerfilUsuarioComponent implements OnInit {
     this.isEmpresa = this.usuario.EMPRESA == '1' ? 'check_empresa' : null;
     this.isContratado = this.usuario.CONTRATADO == '1' ? 'check_contratado' : null;
     this.isBanco = this.usuario.BANCOS == '1' ? 'check_banco' : null;
+    this.isProveedor = this.usuario.PROVEEDORES == '1' ? 'check_proveedor' : null;
     this.manejaCaja = this.usuario.MANEJA_CAJA == '1' ? 'check_maneja_caja' : null;
     this.cobroOnline = this.usuario.fondo_online == '1' ? 'check_maneja_caja' : null;
     this.cuotas = await this._cuotaService.getCuotaByTitular(this.id);
@@ -116,6 +118,7 @@ export class PerfilUsuarioComponent implements OnInit {
     usuario.EMPRESA = this.isEmpresa ? '1' : '0';
     usuario.CONTRATADO = this.isContratado ? '1' : '0';
     usuario.BANCOS = this.isBanco ? '1' : '0';
+    usuario.PROVEEDORES = this.isProveedor ? '1' : '0';
     usuario.MANEJA_CAJA = this.manejaCaja ? '1' : '0';
     usuario.fondo_online = this.cobroOnline ? '1' : '0';
     // usuario.nro_factura_actual = this.nro_factura_actual

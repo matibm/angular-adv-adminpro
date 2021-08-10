@@ -681,6 +681,12 @@
                                         (click)="cobroOnline? null: cobroOnline = 'check_cobro_online'" checked />
                                     <label for="check_cobro_online">Cobro Online</label>
                                 </div>
+                                <div class="col-xs col-md-2 mt-1">
+                                    <input [(ngModel)]="isProveedor" type="checkbox" name="check_proveedor"
+                                        id="check_proveedor" class="filled-in chk-col-light-blue"
+                                        (click)="isProveedor? null: isProveedor = 'check_proveedor'" checked />
+                                    <label for="check_proveedor">Proveedor</label>
+                                </div>
                             </div>
 
                             <div class="d-flex mt-3 form-group">
