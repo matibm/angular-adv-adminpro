@@ -108,8 +108,11 @@ export class FacturaComponent implements OnInit {
     const any: any = this.factura;
     const factura: Factura = any;
     factura.fondo = this.fondo;
+    let id 
     if (this.crearParcial && this.montoparcial > 0) {
-      await this._facturaService.pagarFactura(factura, true, this.montoparcial);
+     let data = await this._facturaService.pagarFactura(factura, true, this.montoparcial);
+     id = data.pago
+
     } else {
       let body = {
         factura,
@@ -123,10 +126,20 @@ export class FacturaComponent implements OnInit {
         nro_factura: this.factura.cobrador.nro_factura_actual + 1,
         nro_talonario: this.factura.cobrador.nro_talonario,
       }
-      await this._facturaService.pagarFactura(body);
-
+      let data = await this._facturaService.pagarFactura(body)
+      id = data.pago
     }
+    if (id) {
+      this.mostrarModal(id)
+    }
+
+
+
   }
+
+
+
+  
   async searchBancos(val) {
     this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', val.term);
   }
@@ -161,7 +174,8 @@ export class FacturaComponent implements OnInit {
 
   async mostrarModal(id) {
     const resp = await this._facturaService.getDetallePago(id);
-
+    console.log(resp);
+    
     const pago = resp.pago;
     const facturas = resp.facturas;
     const servicios = [];
