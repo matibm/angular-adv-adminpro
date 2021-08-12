@@ -171,6 +171,7 @@ export class PerfilUsuarioComponent implements OnInit {
       nro_talonario: this.usuario.nro_talonario,
       nro_factura: this.usuario.nro_factura_actual + 1
     };
+console.log(this.facturapdf);
 
   }
 

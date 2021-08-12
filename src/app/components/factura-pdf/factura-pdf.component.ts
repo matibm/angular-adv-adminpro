@@ -64,7 +64,7 @@ export class FacturaPdfComponent implements OnInit {
       };
     }
 
-    // console.log(this.factura);
+    console.log(this.factura);
     
     for (let i = 0; i < this.factura.servicios.length; i++) {
       const element = this.factura.servicios[i];

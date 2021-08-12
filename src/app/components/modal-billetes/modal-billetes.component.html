@@ -178,6 +178,7 @@
                                         </div>
                                         <div class="col">
                                             <h2>suma: {{sumaTotal() | currency: '':'':'2.0'}}</h2>
+                                            <h2>restante: {{montoTotal- sumaTotal() | currency: '':'':'2.0'}}</h2>
                                         </div>
                                     </div>
                                     <div *ngIf="montoTotal === sumaTotal()" class="alert alert-success" role="alert">

@@ -161,7 +161,7 @@ overflow: hidden;
                         <span class="m-auto">{{item.cantidad}}</span>
                     </div>
                     <div style=" width: 50%; display: flex; border-bottom: 1px solid; border-right: 1px solid;">
-                        <span class="m-auto">{{item.contrato.nro_contrato | ruc}} {{item.concepto}}</span>
+                        <span class="m-auto">{{item.contrato?.nro_contrato | ruc}} {{item.concepto}}</span>
                     </div>
                     <div style="width: 10%; display: flex; border-bottom: 1px solid; border-right: 1px solid;">
                         <span class="m-auto">{{item.precioUnitario | currency: '':'':'2.0'}}</span>
