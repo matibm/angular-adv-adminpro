@@ -265,7 +265,6 @@ export class EditarContratoComponent implements OnInit {
       this.editarproducto = true
       this.contrato.saldo_pendiente = this.saldo
 
-      tipoContrato = 'psm'
       if (!this.plazo) {
         return swal.fire({
           title: 'Error, no existe plazo',
@@ -284,7 +283,10 @@ export class EditarContratoComponent implements OnInit {
     }
 
 
-
+if (this.esPsm) {
+  tipoContrato = 'psm'
+  
+}
     this.contrato.id_contrato = new Date().getTime().toString(),   // se puede quitar
       this.contrato.cobrador = this.cobrador || {},
       this.contrato.cuota = this.montoCuotas,
