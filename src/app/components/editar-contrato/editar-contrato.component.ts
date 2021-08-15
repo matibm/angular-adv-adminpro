@@ -209,7 +209,7 @@ export class EditarContratoComponent implements OnInit {
     if (this.plazo > 0) {
       if (this.esPsm) {
         this.pagoradioValue = 'cuota';
-        this.montoCuotas = this.contrato.precio_total || this.saldo
+        this.montoCuotas = this.saldo
         this.facturas = this.crearFacturas(this.montoCuotas, this.plazo);
       } else {
         this.pagoradioValue = 'cuota';
@@ -261,6 +261,7 @@ export class EditarContratoComponent implements OnInit {
     let tipoContrato = ''
 
     if (this.esPsm && this.saldoOriginal != this.saldo) {
+
       this.editarproducto = true
       this.contrato.saldo_pendiente = this.saldo
 
@@ -272,6 +273,10 @@ export class EditarContratoComponent implements OnInit {
           text: 'por favor edite el producto e introdizca la cantidad de cuotas a crear'
         })
       }
+    }
+    if (this.editarproducto) {
+      this.contrato.saldo_pendiente = this.saldo
+
     }
     if (!this.facturas && this.pagoradioValue === 'contado' && this.fechaPago) {
       this.plazo = 1;
@@ -288,6 +293,7 @@ export class EditarContratoComponent implements OnInit {
       this.contrato.nombre_servicio = this.producto.NOMBRE,
       this.contrato.plazo = this.plazo,
       // this.contrato.precio_total = this.producto.PRECIO_MAYORISTA,
+
       this.contrato.producto = this.producto,
       this.contrato.titular = this.cliente,
       this.contrato.activo = '1',
@@ -484,16 +490,16 @@ export class EditarContratoComponent implements OnInit {
   }
 
   calcularSaldoPendiente(contrato) {
-      this.saldo = 0
-  
-      for (let i = 0; i < contrato.beneficiarios.length; i++) {
-        const beneficiario = contrato.beneficiarios[i];
-        this.saldo += parseInt((beneficiario.plus_edad || '0').toString()) || 0
-      }
-  
+    this.saldo = 0
 
-      this.saldo += contrato.precio_total || 0
-      return this.saldo
+    for (let i = 0; i < contrato.beneficiarios.length; i++) {
+      const beneficiario = contrato.beneficiarios[i];
+      this.saldo += parseInt((beneficiario.plus_edad || '0').toString()) || 0
+    }
+
+
+    this.saldo += contrato.precio_total || 0
+    return this.saldo
   }
 
   calcularPrecioConPlusPorEdad() {
