@@ -203,7 +203,7 @@
 
                     <div class="" *ngIf="producto">
                         <h5>Nombre: <b>{{producto.NOMBRE}} - {{producto.COD_CORTO}}</b></h5>
-                        <h5>Precio: <b>{{producto.PRECIO_MAYORISTA | currency:'':'':'2.0'}} Gs</b></h5>
+                        <h5>Precio actual: <b>{{producto.PRECIO_MAYORISTA | currency:'':'':'2.0'}} Gs</b></h5>
                         <!-- <h5>Entrega: </h5>  -->
                         <div class="">
                             <h5>Total: <b>{{precioTotal + saldoPlusEdad | currency:'':'':'2.0'}} Gs</b></h5>

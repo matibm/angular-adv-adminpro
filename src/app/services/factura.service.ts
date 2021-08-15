@@ -194,6 +194,10 @@ export class FacturaService {
 
 
       return resp;
+    }, (error) =>{
+      console.log(error);
+      
+      swal.fire({title: 'error', icon:'error', text: error.error})
     });
   }
   getFacturasOptions(options?: any, sort?) {
@@ -217,6 +221,10 @@ export class FacturaService {
       console.log('respuesta ');
 
       return resp;
+    }, (error) =>{
+      console.log(error);
+      
+      swal.fire({title: 'error', icon:'error', text: error.error.error})
     });
   }
   getFacturasParcial(facturaId) {

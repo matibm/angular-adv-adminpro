@@ -46,6 +46,7 @@ export class InfoContratoComponent implements OnInit {
   showModalPdf = false;
   radioValue;
   montoTotal;
+  saldo = 0
   tipos_pago = [
     {
       name: 'Oficina',
@@ -67,6 +68,7 @@ export class InfoContratoComponent implements OnInit {
   async ngOnInit() {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
     this.contrato = await this._contratoService.getContratoById(this.id);
+    this.calcularSaldoPendiente(this.contrato)
     if (this.contrato.eliminado === true) {
       swal.fire({
         icon: 'error',
@@ -148,6 +150,20 @@ export class InfoContratoComponent implements OnInit {
       item.APELLIDOS.toLowerCase().includes(term) ||
       item.RAZON.toLowerCase().includes(term) ||
       item.RUC.toLowerCase().includes(term);
+  }
+
+  
+  calcularSaldoPendiente(contrato) {
+    this.saldo = 0
+ 
+    for (let i = 0; i < contrato.beneficiarios.length; i++) {
+      const beneficiario = contrato.beneficiarios[i];
+      this.saldo += parseInt((beneficiario.plus_edad || '0').toString()) || 0
+    }
+ 
+
+    this.saldo += contrato.precio_total || 0
+    return this.saldo
   }
 
 }

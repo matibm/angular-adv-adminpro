@@ -28,7 +28,7 @@ export class EditarContratoComponent implements OnInit {
     public edadPipe: EdadPipe
   ) { }
 
-   opacity = 'disable';
+  opacity = 'disable';
   cliente: Usuario;
   clientes: Usuario[] = null;
   productos: Producto[] = null;
@@ -64,7 +64,7 @@ export class EditarContratoComponent implements OnInit {
     edad: '',
     plus_edad: 0
   };
-
+  precioOriginal = 0
   fecha_creacion: Date;
   cobradores;
 
@@ -118,22 +118,24 @@ export class EditarContratoComponent implements OnInit {
   editarproducto = false;
   respaldoProducto;
   id;
-
+  saldoOriginal = 0
   facturaMantenimiento;
   async ngOnInit() {
     const date = new Date();
 
     this.id = this.route.snapshot.paramMap.get('id');
     this.contrato = await this._contratoService.getContratoById(this.id);
+    this.saldoOriginal = this.calcularSaldoPendiente(this.contrato)
+    this.precioOriginal = this.contrato.saldo_pendiente || this.contrato.precio_total || 0
     this.fecha_creacion = new Date(this.contrato.fecha_creacion_unix);
     // log(this.contrato);
     this.radioValue = this.contrato.tipo_pago;
-    this.saldo = this.contrato.saldo_pendiente;
+
     this.inhumados = this.contrato.inhumados;
     this.vendedor = this.contrato.vendedor;
     this.cobrador = this.contrato.cobrador;
     this.seleccionarProducto(this.contrato.producto);
-    this.fechaMantenimiento = new Date( new Date(new Date().setFullYear(date.getFullYear() + 1, 0, 5)).setHours(0, 0, 0, 0) );
+    this.fechaMantenimiento = new Date(new Date(new Date().setFullYear(date.getFullYear() + 1, 0, 5)).setHours(0, 0, 0, 0));
     console.log(this.fechaMantenimiento);
 
 
@@ -205,9 +207,16 @@ export class EditarContratoComponent implements OnInit {
 
   calcularCuotas() {
     if (this.plazo > 0) {
-      this.pagoradioValue = 'cuota';
-      this.montoCuotas = this.saldo / this.plazo;
-      this.facturas = this.crearFacturas(this.montoCuotas, this.plazo);
+      if (this.esPsm) {
+        this.pagoradioValue = 'cuota';
+        this.montoCuotas = this.contrato.precio_total || this.saldo
+        this.facturas = this.crearFacturas(this.montoCuotas, this.plazo);
+      } else {
+        this.pagoradioValue = 'cuota';
+        this.montoCuotas = this.saldo / this.plazo;
+        this.facturas = this.crearFacturas(this.montoCuotas, this.plazo);
+      }
+
     } else {
       this.resetPlazo();
     }
@@ -249,12 +258,26 @@ export class EditarContratoComponent implements OnInit {
     return Number(num);
   }
   async editarContrato() {
+    let tipoContrato = ''
 
+    if (this.esPsm && this.saldoOriginal != this.saldo) {
+      this.editarproducto = true
+      this.contrato.saldo_pendiente = this.saldo
 
+      tipoContrato = 'psm'
+      if (!this.plazo) {
+        return swal.fire({
+          title: 'Error, no existe plazo',
+          icon: 'error',
+          text: 'por favor edite el producto e introdizca la cantidad de cuotas a crear'
+        })
+      }
+    }
     if (!this.facturas && this.pagoradioValue === 'contado' && this.fechaPago) {
       this.plazo = 1;
       this.facturas = this.crearFacturas(this.contrato.saldo_pendiente, 1);
     }
+
 
 
     this.contrato.id_contrato = new Date().getTime().toString(),   // se puede quitar
@@ -264,31 +287,30 @@ export class EditarContratoComponent implements OnInit {
       this.contrato.id_servicio = this.producto.ID_PRODUCTO, // se puede quitar
       this.contrato.nombre_servicio = this.producto.NOMBRE,
       this.contrato.plazo = this.plazo,
-      this.contrato.precio_total = this.producto.PRECIO_MAYORISTA,
+      // this.contrato.precio_total = this.producto.PRECIO_MAYORISTA,
       this.contrato.producto = this.producto,
       this.contrato.titular = this.cliente,
       this.contrato.activo = '1',
       this.contrato.vendedor = this.vendedor,
       this.contrato.fecha_creacion_unix = this.fecha_creacion.getTime();  // falta poner campode fecha para poder modificar
 
- 
+
     const send = {
       contrato: this.contrato,
       facturas: this.facturas,
       fechaPago: this.fechaPago ? this.fechaPago : new Date()
     };
     this.guardando = true;
-    await this._contratoService.updateContrato(send, this.editarproducto).then(() => {
-      swal.fire({
-        icon: 'success',
-        title: 'Contrato actualizado',
-        // text: 'I will close in 2 seconds.',
-        timer: 2000,
-      });
+    await this._contratoService.updateContrato(send, this.editarproducto, tipoContrato).then(() => {
+      // swal.fire({
+      //   icon: 'success',
+      //   title: 'Contrato actualizado',
+      //   // text: 'I will close in 2 seconds.',
+      //   timer: 2000,
+      // });
     });
     this.guardando = false;
 
-    window.history.back();
   }
   async searchCobradores(val: any) {
     if (val.term.length > 0) {
@@ -404,6 +426,8 @@ export class EditarContratoComponent implements OnInit {
   cancelarEdiciondeProducto() {
     this.editarproducto = false;
     this.producto = this.respaldoProducto;
+    this.facturas = null
+    this.plazo = null
   }
 
   editarProducto() {
@@ -428,12 +452,12 @@ export class EditarContratoComponent implements OnInit {
     });
   }
 
-  removerProducto(){
+  removerProducto() {
     this.esPsm = false;
     this.esUdp = false;
   }
 
-  eliminarContrato(){
+  eliminarContrato() {
     swal.fire({
       icon: 'warning',
       title: 'Eliminar Contrato',
@@ -454,9 +478,31 @@ export class EditarContratoComponent implements OnInit {
 
       }
     });
-   }
-  cancelar(){
+  }
+  cancelar() {
     window.history.back();
+  }
+
+  calcularSaldoPendiente(contrato) {
+      this.saldo = 0
+  
+      for (let i = 0; i < contrato.beneficiarios.length; i++) {
+        const beneficiario = contrato.beneficiarios[i];
+        this.saldo += parseInt((beneficiario.plus_edad || '0').toString()) || 0
+      }
+  
+
+      this.saldo += contrato.precio_total || 0
+      return this.saldo
+  }
+
+  calcularPrecioConPlusPorEdad() {
+    if (this.saldoOriginal != this.saldo) {
+      this.editarproducto = true
+
+    }
+    this.calcularSaldoPendiente(this.contrato)
+
   }
 
 }

@@ -107,14 +107,16 @@ export class ContratoService {
       }
     );
   }
-  updateContrato(contrato, modifica_producto: boolean) {
+  updateContrato(contrato, modifica_producto: boolean, tipoContrato?) {
     console.log(modifica_producto);
 
     let url = URL_SERVICIOS + '/contrato/edit';
     url += `?token=${this._usuarioService.token}`;
     url += `&modifica_producto=${modifica_producto}`;
+    url += `&tipo_contrato=${tipoContrato || ''}`;
     return this.http.post(url, contrato).toPromise().then((resp: any) => {
       console.log(resp);
+      window.history.back();
 
       swal.fire({
         icon: 'success',
@@ -123,6 +125,15 @@ export class ContratoService {
         timer: 2000,
       });
       return resp.contrato;
+    }, (error) => {
+      console.log(error);
+
+      swal.fire({
+        icon: 'error',
+        title: 'error al actualizar',
+        text: error.error.message,
+
+      });
     });
   }
 

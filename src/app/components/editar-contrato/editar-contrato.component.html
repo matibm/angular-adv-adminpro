@@ -193,8 +193,9 @@
                             </ng-select>
                             <div class="" *ngIf="producto">
                                 <h5>Nombre: <b>{{producto.NOMBRE}} - {{producto.COD_CORTO}}</b></h5>
-                                <h5>Precio: <b>{{producto.PRECIO_MAYORISTA | currency:'':'':'2.0'}} Gs</b></h5>
-                                <h5>Saldo: <b>{{contrato.saldo_pendiente | currency:'':'':'2.0'}} Gs</b></h5>
+                                <h5>Precio actual: <b>{{producto.PRECIO_MAYORISTA | currency:'':'':'2.0'}} Gs</b></h5>
+                                <h5>Total: <b>{{contrato.precio_total | currency:'':'':'2.0'}} Gs</b></h5>
+                                <h5>Saldo: <b>{{saldo | currency:'':'':'2.0'}} Gs</b></h5>
                                 <!-- <h5>Entrega: </h5>  -->
                                 <hr>
                                 <div *ngIf="!esPsm" class="mt-2 inline-flex">
@@ -225,14 +226,20 @@
                                         </div>
                                         <h5>saldo <b>{{saldo | currency:'':'':'2.0'}} Gs</b></h5>
                                     </div>
-                                    <div *ngIf="!esPsm" class="col-md col-xs">
-                                        <div class="form-group">
+                                    <div class="col-md col-xs">
+                                        <div class="form-group" [ngClass]="{'has-danger':  !plazo && editarproducto}">
                                             <label for="">plazo</label>
-                                            <input [disabled]='!editarproducto' name="plazo" type="number"
-                                                class="form-control" [(ngModel)]="plazo"
+                                            <input [required]="!plazo && editarproducto" [disabled]='!editarproducto'
+                                                name="plazo" type="number" class="form-control" [(ngModel)]="plazo"
                                                 (ngModelChange)="calcularCuotas()">
+                                            <div>
+                                                <small class="form-control-feedback " *ngIf=" !plazo && editarproducto">
+                                                    plazo es obligatorio</small>
+                                            </div>
                                         </div>
-                                        <h5>Monto Cuotas: <b>{{montoCuotas | currency:'':'':'2.0' }} Gs</b></h5>
+                                        <h5 *ngIf="!esPsm">Monto Cuotas: <b>{{montoCuotas | currency:'':'':'2.0' }}
+                                                Gs</b></h5>
+                                        <h5 *ngIf="esPsm">Monto Cuotas: <b>{{saldo | currency:'':'':'2.0' }} Gs</b></h5>
                                     </div>
                                     <div class="col-md col-xs">
 
@@ -364,6 +371,7 @@
                                                         [required]="edadPipe.transform(item.fecha_nacimiento) > 64  && !item.plus_edad"
                                                         type="text" class="form-control fcorm-control-danger "
                                                         [(ngModel)]="item.plus_edad" name="name-{{i}}"
+                                                        (ngModelChange)="calcularPrecioConPlusPorEdad()"
                                                         placeholder="plus por edad">
                                                     <div>
                                                         <small class="form-control-feedback "
@@ -611,14 +619,34 @@
                         </div>
                     </div>
 
-                    <button type="submit" [disabled]="disableCrearContrato()"
-                        class="btn float-right btn-success">Guardar
-                        <i *ngIf="!guardando" class="fa fa-check"></i>
-                        <i *ngIf="guardando" class="fa fa-spin fa-circle-o-notch"> </i>
-                    </button>
-                    <button type="reset" (click)="cancelar()" class="btn mx-2 float-right btn-inverse">Cancelar</button>
-                    <button type="button" (click)="eliminarContrato()" class="btn float-right btn-danger">Eliminar contrato</button>
+                    <div style="width: 100%;">
+                        <div style="display: flex;">
+                            <div class="ml-auto">
+                                <button type="button" (click)="eliminarContrato()" class="btn  btn-danger">Eliminar
+                                    contrato</button>
 
+                                <button type="reset" (click)="cancelar()"
+                                    class="btn mx-2  btn-inverse">Cancelar</button>
+
+                                <button type="submit" [disabled]="disableCrearContrato()"
+                                    class="btn  btn-success">Guardar
+                                    <i *ngIf="!guardando" class="fa fa-check"></i>
+                                    <i *ngIf="guardando" class="fa fa-spin fa-circle-o-notch"> </i>
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="esPsm && saldoOriginal != saldo" style="width: 100%;">
+                        <div style="display: flex;">
+                            <div class=" mt-1 ml-auto">
+
+                                <span class="mt-2 ml-5 s-right">*Todas las cuotas pendientes tendrán un precio de
+                                    {{saldo |currency: '':'':'2.0'}}*</span>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
