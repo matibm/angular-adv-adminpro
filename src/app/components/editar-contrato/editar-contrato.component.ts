@@ -303,8 +303,7 @@ export class EditarContratoComponent implements OnInit {
 
     const send = {
       contrato: this.contrato,
-      facturas: this.facturas,
-      fechaPago: this.fechaPago ? this.fechaPago : new Date()
+       fechaPago: this.fechaPago ? this.fechaPago : new Date()
     };
     this.guardando = true;
     await this._contratoService.updateContrato(send, this.editarproducto, tipoContrato).then(() => {
