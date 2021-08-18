@@ -39,6 +39,8 @@ export class PerfilUsuarioComponent implements OnInit {
   contratosInactivosCount = 0
   contratosInactivosPage = 1
   facturapdf;
+  contratosActivosOptios: any = {}
+  contratosInactivosOptios: any = {}
   constructor(
     public _usuarioService: UsuarioService,
     public route: ActivatedRoute,
@@ -57,7 +59,12 @@ export class PerfilUsuarioComponent implements OnInit {
   comentarios;
   async ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
-
+    this.contratosActivosOptios.cliente = this.id
+    this.contratosActivosOptios.utilizado = false
+    this.contratosActivosOptios.de_baja = false
+    this.contratosInactivosOptios.cliente = this.id
+    this.contratosInactivosOptios.utilizado = true
+    this.contratosInactivosOptios.de_baja = false
     this.pagos = await this._facturaService.getPagos(this.id);
     // console.log("pagos", this.pagos);
 
@@ -92,14 +99,16 @@ export class PerfilUsuarioComponent implements OnInit {
     this.cobroOnline = this.usuario.fondo_online == '1' ? 'check_maneja_caja' : null;
     this.cuotas = await this._cuotaService.getCuotaByTitular(this.id);
     // this.contratos = await this._contratoService.getContratosByTitular(this.id);
-    let contratosActivosResp = (await this._contratoService.getContratos(1, { cliente: this.id, tipo: 'activo' }))
+    let contratosActivosResp = (await this._contratoService.getContratos(1, { cliente: this.id, utilizado: false }))
     console.log(contratosActivosResp);
 
     this.contratos = contratosActivosResp.contratos
 
-    const contratosInactivosResp = (await this._contratoService.getContratos(1, { cliente: this.id, tipo: 'inactivo' }))
+    const contratosInactivosResp = (await this._contratoService.getContratos(1, { cliente: this.id, utilizado: null }))
     this.contratosInactivosCount = contratosInactivosResp.count
     this.contratosInactivos = contratosInactivosResp.contratos
+    console.log(contratosInactivosResp);
+
     this.movimientos = (await this._movimientoService.getAllMovimientos({ cliente: this.id })).movimientos;
   }
 
@@ -144,7 +153,7 @@ export class PerfilUsuarioComponent implements OnInit {
   async mostrarModal(id) {
     const resp = await this._facturaService.getDetallePago(id);
     console.log(resp);
-    
+
     const pago = resp.pago;
     const facturas = resp.facturas;
     const servicios = [];
@@ -171,14 +180,20 @@ export class PerfilUsuarioComponent implements OnInit {
       nro_talonario: this.usuario.nro_talonario,
       nro_factura: this.usuario.nro_factura_actual + 1
     };
-console.log(this.facturapdf);
+    console.log(this.facturapdf);
 
   }
 
+  async pageChangeContratosInactivos(page) {
+    console.log(page);
+    let contratosInactivosResp = (await this._contratoService.getContratos(page, { cliente: this.id, tipo: 'inactivo' }))
+
+    this.contratosInactivos = contratosInactivosResp.contratos
+  }
   async pageChangeContratosActivos(page) {
     console.log(page);
-    let contratosActivosResp = (await this._contratoService.getContratos(page, { cliente: this.id, tipo: 'inactivo' }))
+    let contratosActivosResp = (await this._contratoService.getContratos(page, { cliente: this.id, utilizado: false }))
 
-    this.contratosInactivos = contratosActivosResp.contratos
+    this.contratos = contratosActivosResp.contratos
   }
 }

@@ -68,6 +68,8 @@ export class InfoContratoComponent implements OnInit {
   async ngOnInit() {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
     this.contrato = await this._contratoService.getContratoById(this.id);
+    console.log(this.contrato);
+    
     this.calcularSaldoPendiente(this.contrato)
     if (this.contrato.eliminado === true) {
       swal.fire({

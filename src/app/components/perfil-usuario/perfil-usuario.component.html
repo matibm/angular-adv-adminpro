@@ -79,32 +79,7 @@
                             </div>
                         </div>
                         <hr>
-                        <!-- <div *ngIf="false" class="row">
-                            <div class="col-xs col-md b-r">
-                                <h3 class="font-medium ">Telefonos</h3>
-                                <p for=""><strong>Telefono: </strong> {{usuario.TELEFONO}}</p>
-                                <p for=""><strong>Telefono 1: </strong> {{usuario.TELEFONO1}}</p>
-                                <p for=""><strong>Telefono 2: </strong> {{usuario.TELEFONO2}}</p>
-                                <p for=""><strong>Telefono 3: </strong> {{usuario.TELEFONO3}}</p>
-                                <p for=""><strong>Telefono fax: </strong> {{usuario.TELEFONO_FAX}}</p>
-                                <p for=""><strong>Telefono trabajo: </strong> {{usuario.TEL_TRABAJO}}</p>
-                                <p for=""><strong>Telefono contacto 1: </strong>{{usuario.TEL_CONTACTO}}</p>
-                                <p for=""><strong>Telefono contacto 2: </strong>{{usuario.TEL_CONTA2}}</p>
-                                <p for=""><strong>Telefono contacto 3: </strong>{{usuario.TEL_CONTA3}}</p>
-                                <p for=""><strong>Telefono contacto 4: </strong>{{usuario.TEL_CONTA4}}</p>
-                                <p for=""><strong>Telefono contacto 5: </strong>{{usuario.TEL_CONTA5}}</p>
-                            </div>
-                            <div class="col-xs col-md">
-                                <h3 class="font-medium ">Direcciones</h3>
-                                <p><strong>Ciudad: </strong> {{usuario.NOMCIUDAD}}</p>
-                                <p><strong>Departamento: </strong> {{usuario.NOMDEPAR}}</p>
-                                <p><strong>Direccion: </strong> {{usuario.DIRECCION}}</p>
-                                <p><strong>Direccion laboral: </strong> {{usuario.direccion_laboral}}</p>
-                                <p><strong>Direccion particular: </strong> {{usuario.direccion_particular}}</p>
-                                <p><strong>Direccion trabajo</strong> {{usuario.DIRECCION_TRABAJO}}</p>
-                                <p><strong>Ciudad trabajo</strong> {{usuario.ciudad_trabajo}}</p>
-                            </div>
-                        </div> -->
+
                         <div class="row">
                             <div class="col-xs text-capitalize col-md b-r">
 
@@ -283,7 +258,8 @@
                 <div class="tab-pane" id="profile" role="tabpanel">
                     <div class="card-body">
 
-                        <div *ngIf="contratos" class="card">
+                        <app-lista-contratos [showFilter]="false" [options]="contratosActivosOptios" ></app-lista-contratos>
+                        <!-- <div *ngIf="contratos" class="card">
 
                             <div class="card-body">
                                 <h4 class="card-title">Contratos</h4>
@@ -302,32 +278,90 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <!-- -->
-                                        <tr [routerLink]="['/admin/info_contrato', contrato._id]" class="pointer"
-                                            *ngFor="let contrato of contratos; let i = index;">
-                                            <td scope="row">{{i+1}}</td>
-                                            <td>{{contrato.fecha_creacion_unix | date}}</td>
-                                            <td>{{contrato.nro_contrato}}</td>
-                                            <td>{{contrato.nombre_servicio}}</td>
+                                        <tr style="text-decoration: none;" [routerLink]="['/admin/info_contrato', contrato._id]" class="pointer"
+                                            *ngFor="let contrato of contratos | paginate: { itemsPerPage: 10,totalItems:contratosActivosCount, currentPage: contratosActivosPage }; let i = index;">
+                                            <td scope="row">
+                                                <a [routerLink]="['/admin/info_contrato', contrato._id]" href="">
+                                                    {{i+1}}
+                                                </a>
 
-                                            <td *ngIf="!contrato.manzana">---</td>
-                                            <td *ngIf="!contrato.fila">---</td>
-                                            <td *ngIf="!contrato.parcela">---</td>
-                                            <td *ngIf="contrato.manzana">{{contrato.manzana}}</td>
-                                            <td *ngIf="contrato.fila">{{contrato.fila}}</td>
-                                            <td *ngIf="contrato.parcela">{{contrato.parcela}}</td>
+                                            </td>
+                                            <td>
+                                                <a [routerLink]="['/admin/info_contrato', contrato._id]" href="">
+                                                    {{contrato.fecha_creacion_unix | date}}
+                                                </a>
+
+                                            </td>
+                                            <td>
+                                                <a [routerLink]="['/admin/info_contrato', contrato._id]" href="">
+                                                    {{contrato.nro_contrato}}
+                                                </a>
+
+                                            </td>
+                                            <td>
+                                                <a [routerLink]="['/admin/info_contrato', contrato._id]" href="">
+                                                    {{contrato.nombre_servicio}}
+                                                </a>
+
+                                            </td>
+                                            <td *ngIf="!contrato.manzana">
+                                                <a [routerLink]="['/admin/info_contrato', contrato._id]" href="">
+                                                    ---
+                                                </a>
+
+                                            </td>
+                                            <td *ngIf="!contrato.fila">
+                                                <a [routerLink]="['/admin/info_contrato', contrato._id]" href="">
+                                                    ---
+                                                </a>
+
+                                            </td>
+                                            <td *ngIf="!contrato.parcela">
+                                                <a [routerLink]="['/admin/info_contrato', contrato._id]" href="">
+                                                    ---
+                                                </a>
+
+                                            </td>
+                                            <td *ngIf="contrato.manzana">
+                                                <a [routerLink]="['/admin/info_contrato', contrato._id]" href="">
+                                                    {{contrato.manzana}}
+                                                </a>
+
+                                            </td>
+                                            <td *ngIf="contrato.fila">
+                                                <a [routerLink]="['/admin/info_contrato', contrato._id]" href="">
+                                                    {{contrato.fila}}
+                                                </a>
+
+                                            </td>
+                                            <td *ngIf="contrato.parcela">
+                                                <a href="">
+                                                    {{contrato.parcela}}
+                                                </a>
+
+                                            </td>
                                         </tr>
 
                                     </tbody>
                                 </table>
+                                <div style="width: 100%;">
+                                    <div style="display: flex;">
+                                        <div class="mx-auto">
+                                            <pagination-controls
+                                                (pageChange)="pageChangeContratosActivos($event); contratosActivosPage = $event">
+                                            </pagination-controls>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="tab-pane" id="contratos_inactivos" role="tabpanel">
                     <div class="card-body">
 
-                        <div *ngIf="contratosInactivos" class="card">
+                        <app-lista-contratos [showFilter]="false" [options]="contratosInactivosOptios" ></app-lista-contratos>
+                        <!-- <div *ngIf="contratosInactivos" class="card">
 
                             <div class="card-body">
                                 <h4 class="card-title">Contratos</h4>
@@ -346,7 +380,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <!-- -->
+
                                         <tr [routerLink]="['/admin/info_contrato', contrato._id]" class="pointer"
                                             *ngFor="let contrato of contratosInactivos | paginate: { itemsPerPage: 10,totalItems:contratosInactivosCount, currentPage: contratosInactivosPage }; let i = index;">
                                             <td scope="row">{{i+1}}</td>
@@ -368,12 +402,13 @@
                                     <div style="display: flex;">
                                         <div class="mx-auto">
                                             <pagination-controls
-                                                (pageChange)="pageChangeContratosActivos($event); contratosInactivosPage = $event"></pagination-controls>
+                                                (pageChange)="pageChangeContratosActivos($event); contratosInactivosPage = $event">
+                                            </pagination-controls>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="tab-pane" id="facturas" role="tabpanel">
@@ -604,16 +639,18 @@
                                     <div *ngIf="usuario.COBRADORES === '1'">
                                         <div class="form-group">
                                             <label for="">Numero de Talonario</label>
-                                            <input type="text" name="asasdsdasasdsadstgfd" [(ngModel)]="usuario.nro_talonario" class="form-control" placeholder=""
+                                            <input type="text" name="asasdsdasasdsadstgfd"
+                                                [(ngModel)]="usuario.nro_talonario" class="form-control" placeholder=""
                                                 aria-describedby="helpId" autocomplete="off">
                                         </div>
                                         <div class="form-group">
                                             <label for="">Numero de Factura</label>
-                                            <input type="number" name="asasdsdasasdsads" [(ngModel)]="usuario.nro_factura_actual" class="form-control"
+                                            <input type="number" name="asasdsdasasdsads"
+                                                [(ngModel)]="usuario.nro_factura_actual" class="form-control"
                                                 placeholder="" aria-describedby="helpId" autocomplete="off">
                                         </div>
                                     </div>
-        
+
 
                                 </div>
                             </div>

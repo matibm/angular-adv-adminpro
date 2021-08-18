@@ -60,7 +60,7 @@ export class ListaContratosComponent implements OnInit {
   date_end;
   sort_key = 'fecha_creacion_unix';
   sort_value = -1;
-  options;
+  @Input() options: any = {};
   sort;
   count = 0;
   model = new Date();
@@ -90,24 +90,34 @@ export class ListaContratosComponent implements OnInit {
   configDP: IDatePickerConfig = {
 
   };
-
+  algo = false
   @Input() contratos: Contrato[];
   async ngOnInit() {
     this.observableBuscadores()
     this.servicios = await this._productoService.getProductos();
+    console.log(this.options);
+    if (!this.options.de_baja) this.options.de_baja = false
+    if (!this.options.utilizado) this.options.utilizado = false
 
-    this.options = {
-      fecha_inicio: this.date_start ? this.date_start : null,
-      fecha_fin: this.date_end ? this.date_end : null,
-      cliente: this.cliente ? this.cliente._id : null,
-      fila: this.fila,
-      manzana: this.manzana,
-      parcela: this.parcela,
-      producto: this.servicio ? this.servicio._id : null,
-      nro_contrato: '',
-      cobrador: this.cobrador ? this.cobrador._id : null,
-      vendedor: this.vendedor ? this.vendedor._id : null
-    };
+    if (!this.options.cliente) {
+      this.options = {
+        fecha_inicio: this.date_start ? this.date_start : null,
+        fecha_fin: this.date_end ? this.date_end : null,
+        cliente: this.cliente ? this.cliente._id : null,
+        fila: this.fila,
+        manzana: this.manzana,
+        parcela: this.parcela,
+        producto: this.servicio ? this.servicio._id : null,
+        nro_contrato: '',
+        cobrador: this.cobrador ? this.cobrador._id : null,
+        vendedor: this.vendedor ? this.vendedor._id : null
+      };
+    } else {
+      if (this.options.cliente) {
+        this.cliente = await this._usuarioService.getUsuarioPorId(this.options.cliente)
+      }
+
+    }
     this.sort = {
       key: this.sort_key,
       value: this.sort_value
@@ -161,24 +171,24 @@ export class ListaContratosComponent implements OnInit {
   }
 
   async filtrar() {
-    this.options = {
-      fecha_inicio: this.range.value.start ? new Date(this.range.value.start).getTime() : null,
-      fecha_fin: this.range.value.end ? new Date(this.range.value.end).setHours(59, 59, 59, 59) : null,
-      cliente: this.cliente ? this.cliente._id : null,
-      fila: this.fila,
-      manzana: this.manzana,
-      parcela: this.parcela,
-      producto: this.servicio ? this.servicio._id : null,
-      nro_contrato: this.nro_contrato ? this.nro_contrato : null,
-      cobrador: this.cobrador ? this.cobrador._id : null,
-      vendedor: this.vendedor ? this.vendedor._id : null
-    };
+
+    this.options.fecha_inicio = this.range.value.start ? new Date(this.range.value.start).getTime() : null
+    this.options.fecha_fin = this.range.value.end ? new Date(this.range.value.end).setHours(59, 59, 59, 59) : null
+    this.options.cliente = this.cliente ? this.cliente._id : null
+    this.options.fila = this.fila
+    this.options.manzana = this.manzana
+    this.options.parcela = this.parcela
+    this.options.producto = this.servicio ? this.servicio._id : null
+    this.options.nro_contrato = this.nro_contrato ? this.nro_contrato : null
+    this.options.cobrador = this.cobrador ? this.cobrador._id : null
+    this.options.vendedor = this.vendedor ? this.vendedor._id : null
+
     this.sort = {
       key: this.sort_key,
       value: this.sort_value
     };
     console.log(this.options);
-    
+
     const resp = await this._contratoService.getContratos(null, this.options, this.sort);
     this.servicios = await this._productoService.getProductos();
 
@@ -221,16 +231,16 @@ export class ListaContratosComponent implements OnInit {
     } else {
       this.sort_value = 1;
     }
-    const oldKeyAsc = document.getElementsByClassName('fa-sort-asc').item(0);
-    if (oldKeyAsc) {
-      oldKeyAsc.classList.remove('fa-sort-asc');
-      oldKeyAsc.classList.add('fa-sort');
-    }
-    const oldKeyDesc = document.getElementsByClassName('fa-sort-desc').item(0);
-    if (oldKeyDesc) {
-      oldKeyDesc.classList.remove('fa-sort-desc');
-      oldKeyDesc.classList.add('fa-sort');
-    }
+    // const oldKeyAsc = document.getElementsByClassName('fa-sort-asc').item(0);
+    // if (oldKeyAsc) {
+    //   oldKeyAsc.classList.remove('fa-sort-asc');
+    //   oldKeyAsc.classList.add('fa-sort');
+    // }
+    // const oldKeyDesc = document.getElementsByClassName('fa-sort-desc').item(0);
+    // if (oldKeyDesc) {
+    //   oldKeyDesc.classList.remove('fa-sort-desc');
+    //   oldKeyDesc.classList.add('fa-sort');
+    // }
     this.sort_key = value;
     this.sort = {
       key: this.sort_key,
@@ -238,12 +248,12 @@ export class ListaContratosComponent implements OnInit {
     };
     //(document.getElementById(value));
 
-    const newKey: any = document.getElementById(value).childNodes.item(1);
-    if (!newKey) {
-      return;
-    }
-    newKey.classList.remove('fa-sort');
-    newKey.classList.add(`fa-sort-${this.sort_value > 0 ? 'asc' : 'desc'}`);
+    // const newKey: any = document.getElementById(value).childNodes.item(1);
+    // if (!newKey) {
+    //   return;
+    // }
+    // newKey.classList.remove('fa-sort');
+    // newKey.classList.add(`fa-sort-${this.sort_value > 0 ? 'asc' : 'desc'}`);
 
     const resp = await this._contratoService.getContratos(null, this.options, this.sort);
 
@@ -317,9 +327,9 @@ export class ListaContratosComponent implements OnInit {
 
         await this.filtrar()
         this.loadingNroContrato = false;
-      }); 
+      });
   }
 
-  
+
 
 }

@@ -21,7 +21,7 @@
                                         <ng-template ng-option-tmp let-item="item">
                                             <div>
                                                 <div *ngIf="item.APELLIDOS">{{item.APELLIDOS}} {{item.NOMBRES}}</div>
-                                                
+
 
 
                                                 <small>{{item.RUC | ruc}}</small>
@@ -210,11 +210,12 @@
                     </div>
                 </div>
             </div>
-            <div style="overflow: auto; max-height: 500px;">
+            <div *ngIf="movimientosPrueba" style="overflow: auto; max-height: 500px;">
                 <table class="table full-color-table full-{{tableColor}}-table hover-table   table-sm">
                     <thead>
                         <tr>
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '15px'}">#</th>
+                            <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '30px'}">info</th>
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '120px'}">fecha</th>
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '120px'}">Conciliado</th>
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '120px'}">Ingreso</th>
@@ -233,6 +234,14 @@
                         <tr class="pointer" id="id-{{item._id}}" (click)="selectItem(item)"
                             *ngFor="let item of movimientosPrueba | paginate: { itemsPerPage: 100,totalItems:count, currentPage: page }; let i = index;">
                             <td>{{i+1}}</td>
+                            <td>
+                                <div *ngIf="item.tipo == 'INGRESO'">
+                                    <a [routerLink]="['/admin/ingreso', item.factura]" routerLinkActive="router-link-active">
+                                        <i class="mdi mdi-information"> </i>
+                                    </a>
+                                </div>
+                                 
+                            </td>
                             <!-- fecha -->
                             <td [ngClass]="'text-center'">{{item.fecha | date: 'dd-MM-YY'}}</td>
                             <!-- cerrado -->
@@ -263,12 +272,12 @@
                             </td>
                             <td *ngIf="estado == 'TODOS'" [ngClass]="'text-center'"
                                 [ngStyle]="item.total > 0? {color: '#009000'} : {color: ' #d53032'}">
-                                {{item.total |  currency: '':'':'2.0'}}
-                            
+                                {{item.total | currency: '':'':'2.0'}}
+
                             </td>
                             <td *ngIf="estado != 'TODOS'" [ngClass]="'text-center'">
                                 ---
-                            
+
                             </td>
 
                             <!-- nro contrato -->
@@ -420,6 +429,16 @@
                         <div class="mx-auto">
                             <pagination-controls *ngIf="count>10" (pageChange)="pageChanged($event); page = $event">
                             </pagination-controls>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="!movimientosPrueba" style="overflow: auto; max-height: 500px;">
+                <div style="width: 100%;">
+                    <div style="display: flex;">
+                        <div class="my-5 mx-auto">
+                            <span class="display-4">Seleccione un fondo </span>
+                            
                         </div>
                     </div>
                 </div>

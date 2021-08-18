@@ -109,8 +109,21 @@ export class FacturaComponent implements OnInit {
     const factura: Factura = any;
     factura.fondo = this.fondo;
     let id 
+
     if (this.crearParcial && this.montoparcial > 0) {
-     let data = await this._facturaService.pagarFactura(factura, true, this.montoparcial);
+      let body = {
+        factura,
+        fecha_pago: this.fechaPago,
+        comentario: '',
+        nombre: this.nombreFactura,
+        ruc: this.rucFactura,
+        tel: this.telFactura,
+        direccion: this.direccionFactura,
+        nro_timbrado: Date.now(),
+        nro_factura: this.factura.cobrador.nro_factura_actual + 1,
+        nro_talonario: this.factura.cobrador.nro_talonario,
+      }
+     let data = await this._facturaService.pagarFactura(body, true, this.montoparcial);
      id = data.pago
 
     } else {

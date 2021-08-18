@@ -59,8 +59,8 @@ export class InfoCajaComponent implements OnInit {
   options: any = {  }
   async ngOnInit() {
     this.fondo = null;
-    const resp = await this._movimientoService.getCajaBancos(1, this.options);
-     this.cargarValores(resp)
+    // const resp = await this._movimientoService.getCajaBancos(1, this.options);
+    //  this.cargarValores(resp)
 
     this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', '');
     this.loading = false;
