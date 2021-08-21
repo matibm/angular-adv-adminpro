@@ -124,6 +124,8 @@ export class FacturaComponent implements OnInit {
         nro_talonario: this.factura.cobrador.nro_talonario,
       }
      let data = await this._facturaService.pagarFactura(body, true, this.montoparcial);
+    console.log(data);
+
      id = data.pago
 
     } else {
@@ -142,12 +144,13 @@ export class FacturaComponent implements OnInit {
       let data = await this._facturaService.pagarFactura(body)
       id = data.pago
     }
+    
     if (id) {
       this.mostrarModal(id)
     }
 
 
-
+this.ngOnInit()
   }
 
 

@@ -6,6 +6,7 @@ import { Usuario } from './usuario';
 export class Factura {
     constructor(
         public id_movimiento?: string,
+        public precio_unitario?: number,
         public fecha?: string,
         public pago?: string,
         public id_concepto?: string,

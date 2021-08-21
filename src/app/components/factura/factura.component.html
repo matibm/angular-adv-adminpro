@@ -89,7 +89,8 @@
                 <h4><b>Fecha de Vencimientio:</b> {{factura.vencimiento | date:' d, MMM y'}}</h4>
                 <h4 *ngIf="factura.pagado"><b>Fecha de pago:</b> {{factura.fecha_pagado_unix | date:' d, MMM y - h:mm a'}}
                 </h4>
-                <h4><b>Monto:</b> {{factura.haber | currency: '':'':'2.0'}} Gs</h4>
+                <h4><b>Monto:</b> {{factura.precio_unitario || factura.haber | currency: '':'':'2.0'}} Gs</h4>
+                <h4><b>Saldo:</b> {{factura.haber | currency: '':'':'2.0'}} Gs</h4>
                 <h4><b>Nota:</b> {{factura.nota}}</h4>
 
                 <h4 *ngIf="factura.parcial">Pago parcial correspondiente a
