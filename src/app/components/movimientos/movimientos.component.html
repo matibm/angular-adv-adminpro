@@ -54,7 +54,7 @@
                                         <ng-template ng-option-tmp let-item="item">
                                             <div>
                                                 <div *ngIf="item.APELLIDOS">{{item.APELLIDOS}} {{item.NOMBRES}}</div>
-                                                
+
 
 
                                                 <small>{{item.RUC | ruc}}</small>
@@ -91,7 +91,7 @@
                                         <ng-template ng-option-tmp let-item="item">
                                             <div>
                                                 <div *ngIf="item.APELLIDOS">{{item.APELLIDOS}} {{item.NOMBRES}}</div>
-                                                
+
                                                 <small>{{item.RUC | ruc}}</small>
                                             </div>
 
@@ -124,7 +124,7 @@
                                         <ng-template ng-option-tmp let-item="item">
                                             <div>
                                                 <div *ngIf="item.APELLIDOS">{{item.APELLIDOS}} {{item.NOMBRES}}</div>
-                                                
+
 
 
                                                 <small>{{item.RUC | ruc}}</small>
@@ -246,7 +246,10 @@
                                     <span for=""><b class="lead">Descripcion:</b> {{cuentaAbaco.descripcion}}</span><br>
                                     <span for=""><b class="lead">Tipo:</b> {{cuentaAbaco.tipo}}</span>
                                 </div>
-                                <div *ngIf="cuentasAbaco && !cuentaAbaco">
+                                <div *ngIf="!cuentaAbaco" class="form-input">
+                                    <small>Seleccione una cuenta gasto</small>
+                                </div>
+                                <!-- <div *ngIf="cuentasAbaco && !cuentaAbaco">
                                     <div style="min-width: 300px;" class="form-group">
                                         <label for="">Selecciona una cuenta</label>
 
@@ -258,12 +261,13 @@
                                             </ng-option>
                                         </ng-select>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="mx-auto">
                                 <mat-form-field appearance="fill">
                                     <mat-label>Fecha de Creacion</mat-label>
-                                    <input matInput name="asdsdrdsvet321" [(ngModel)]="fechaCreacion" [matDatepicker]="pickerPago">
+                                    <input matInput name="asdsdrdsvet321" [(ngModel)]="fechaCreacion"
+                                        [matDatepicker]="pickerPago">
                                     <mat-datepicker-toggle matSuffix [for]="pickerPago">
                                     </mat-datepicker-toggle>
                                     <mat-datepicker #pickerPago></mat-datepicker>
@@ -283,28 +287,48 @@
                 </div>
                 <div class="tab-pane " id="newCuentaGasto" role="tabpanel">
                     <div class="form-group">
+                        <label for="">id</label>
+                        <input type="text" #cuentaid class="form-control" aria-describedby="helpId" placeholder="">
                         <label for="">Nombre</label>
                         <input type="text" #nombre class="form-control" aria-describedby="helpId" placeholder="">
                     </div>
-                    <div class="mx-auto">
-                        <h5>Seleccionar Categoría</h5>
-
-                        <div *ngIf="categorySelected" style="display: block;">
-                            <span><b class="lead">Tipo: </b> {{categorySelected.nombre_padre}}</span>
-                            <br>
-                            <span><b class="lead">Descripcion: </b> {{categorySelected.descripcion}}</span>
+                    <div style="width: 100%;">
+                        <div style="display: flex;">
+                            <div class="mx-auto">
+                                <h5>Cuenta Abaco</h5>
+                                <div *ngIf="cuentasAbaco">
+                                    <div style="min-width: 300px;" class="form-group">
+                                        <label for="">Selecciona una cuenta</label>
+                                        <ng-select [(ngModel)]="tipoCuentaAbaco">
+                                            <ng-option *ngFor="let item of cuentasAbaco" [value]="item">
+                                                <div>
+                                                    {{item.codigo}} - {{item.descripcion}}
+                                                </div>
+                                            </ng-option>
+                                        </ng-select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mx-auto">
+                                <h5>Seleccionar Categoría</h5>
+                                <div *ngIf="categorySelected" style="display: block;">
+                                    <span><b class="lead">Tipo: </b> {{categorySelected.nombre_padre}}</span>
+                                    <br>
+                                    <span><b class="lead">Descripcion: </b> {{categorySelected.descripcion}}</span>
+                                </div>
+                                <button *ngIf="!categorySelected" type="button" (click)="showModalCuentas = true"
+                                    (click)="ocultarOnCategory = true" class="btn mt-2  btn-info">Seleccionar
+                                    Categoría</button>
+                                <button *ngIf="categorySelected" type="button" (click)="showModalCuentas = true"
+                                    class="btn mt-2 btn-inverse">Cambiar Cuenta</button>
+                            </div>
                         </div>
-
-                        <button *ngIf="!categorySelected" type="button" (click)="showModalCuentas = true"
-                            (click)="ocultarOnCategory = true" class="btn mt-2  btn-info">Seleccionar Categoría</button>
-                        <button *ngIf="categorySelected" type="button" (click)="showModalCuentas = true"
-                            class="btn mt-2 btn-inverse">Cambiar Cuenta</button>
                     </div>
                     <div style="width: 100%;">
                         <div style="display: flex;">
                             <div class="mx-auto mt-2">
                                 <button type="button" [disabled]="!nombre.value || !categorySelected"
-                                    (click)="crearCuentaGasto(nombre.value, categorySelected)"
+                                    (click)="crearCuentaGasto(cuentaid.value, nombre.value, categorySelected,tipoCuentaAbaco )"
                                     class="btn btn-rounded btn-inverse   ">Crear Cuenta Gasto</button>
                             </div>
                         </div>
@@ -355,8 +379,9 @@
                         <label for="">Código</label>
                         <input type="text" class="form-control" #codigocat aria-describedby="helpId" placeholder="">
                         <label for="">Descripción</label>
-                        <input type="text" class="form-control" #descripcioncat aria-describedby="helpId" placeholder="">
-                         
+                        <input type="text" class="form-control" #descripcioncat aria-describedby="helpId"
+                            placeholder="">
+
                     </div>
                     <!-- <div class="mx-auto">
                         <h5>Cuenta Gasto</h5>
@@ -383,131 +408,238 @@
                     </div>
                 </div>
                 <div class="tab-pane " id="updateCuentas" role="tabpanel">
-                    <div class="row" style="min-height: 300px;">
-                        <div class="col-xs col-md">
-                            <h5>Buscar Categoria</h5>
-                            <div class="form-input">
-                                <div *ngIf="!categoria">
-                                    <ng-select [typeahead]="inputcategorias" [loading]="loadingcategorias"
-                                        [items]="categorias" name="dsfdsbrweqcda" [(ngModel)]="categoria"
-                                        (ngModelChange)="seleccionarCategoriaToEdit(categoria)"
-                                        notFoundText="no se encontraron resultados" placeholder="buscar categoria"
-                                        bindLabel="NOMBRES" [searchFn]="customSearchFn">
-                                        <ng-template ng-option-tmp let-item="item">
-                                            <div> {{item.codigo}} - {{item.descripcion}}
+                    <div style="min-height: 300px;">
+                        <h2 *ngIf="!tipoEdicion">Seleccion cuenta a editar</h2>
 
-                                            </div>
+                        <div class="row my-3" *ngIf="!tipoEdicion">
+                            <div class="col-xs col-md">
+                                <button type="button" class="btn btn-info">Cuenta Categoria</button>
+                            </div>
+                            <div class="col-xs col-md">
+                                <button (click)="tipoEdicion = 'cuenta_gasto'" type="button" class="btn btn-info">Cuenta
+                                    Gasto</button>
+                            </div>
+                            <div class="col-xs col-md">
+                                <button type="button" class="btn btn-info">Cuenta Abaco</button>
 
-                                        </ng-template>
-                                    </ng-select>
+                            </div>
 
-                                </div>
+                        </div>
 
-                                <div *ngIf="categoria" class="form-group">
-                                    <label for="">Código</label>
-                                    <input type="text" class="form-control" [(ngModel)]="categoria.codigo"
-                                        aria-describedby="helpId" placeholder="">
-                                    <label for="">Descripción</label>
-                                    <input type="text" class="form-control" [(ngModel)]="categoria.descripcion"
-                                        aria-describedby="helpId" placeholder="">
-                                    
+                        <div class="row" *ngIf="tipoEdicion === 'cuenta_categoria'">
+                            <div class="col-xs col-md">
+                                <h5>Buscar Categoria</h5>
+                                <div class="form-input">
+                                    <div *ngIf="!categoria">
+                                        <ng-select [typeahead]="inputcategorias" [loading]="loadingcategorias"
+                                            [items]="categorias" name="dsfdsbrweqcda" [(ngModel)]="categoria"
+                                            (ngModelChange)="seleccionarCategoriaToEdit(categoria)"
+                                            notFoundText="no se encontraron resultados" placeholder="buscar categoria"
+                                            bindLabel="NOMBRES" [searchFn]="customSearchFn">
+                                            <ng-template ng-option-tmp let-item="item">
+                                                <div> {{item.codigo}} - {{item.descripcion}}
+
+                                                </div>
+
+                                            </ng-template>
+                                        </ng-select>
+
+                                    </div>
+
+                                    <div *ngIf="categoria" class="form-group">
+                                        <label for="">Código</label>
+                                        <input type="text" class="form-control" [(ngModel)]="categoria.codigo"
+                                            aria-describedby="helpId" placeholder="">
+                                        <label for="">Descripción</label>
+                                        <input type="text" class="form-control" [(ngModel)]="categoria.descripcion"
+                                            aria-describedby="helpId" placeholder="">
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xs col-md">
-                            <div style="display: block;">
+                        <div *ngIf="tipoEdicion === 'cuenta_gasto'">
+
+                            <div *ngIf="!cuentaGastoToEdit" style="display: block;">
                                 <div style="width: 100%; " class="py-auto">
                                     <div style="display: flex;">
                                         <div class="mx-auto">
-                                            <button *ngIf="!cuentaGasto"
-                                                (click)=" ocultarOnCategory = false; showModalCuentas = true;"
+                                            <button
+                                                (click)=" editandoCuentaGasto= true; ocultarOnCategory = true; showModalCuentas = true;"
                                                 type="button" class="btn btn-info">Seleccionar Cuenta Gasto</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
- 
-                            <div *ngIf="cuentaGasto">
-                                <div class="form-group">
-                                    <label for="">Nombre</label>
-                                    <input type="text" [(ngModel)]="cuentaGasto.descripcion" class="form-control"
-                                        aria-describedby="helpId" placeholder="">
-                                </div>
-                                <div class="mx-auto">
-                                    <h5>Seleccionar Categoría</h5>
 
-                                    <div *ngIf="categorySelected" style="display: block;">
-                                        <span><b class="lead">Tipo: </b> {{categorySelected.nombre_padre}}</span>
-                                        <br>
-                                        <span><b class="lead">Descripcion: </b> {{categorySelected.descripcion}}</span>
-                                    </div>
+                            <div *ngIf="cuentaGastoToEdit" class="row">
+                                <div class="col-xs col-md">
 
-                                    <button *ngIf="!categorySelected" type="button" (click)="showModalCuentas = true"
-                                        (click)="ocultarOnCategory = true" class="btn mt-2  btn-info">Seleccionar
-                                        Categoría</button>
-                                    <button *ngIf="categorySelected" type="button" (click)="showModalCuentas = true"
-                                        class="btn mt-2 btn-inverse">Cambiar Cuenta Padre</button>
-                                </div>
-                                <div style="width: 100%;" class="mt-auto">
-                                    <div style="display: flex;">
-                                        <div class="mx-auto mt-2">
-                                            <button type="button" (click)="eliminarCuentaGasto(cuentaGasto._id)"
-                                                class="btn mx-1 btn-rounded btn-outline-danger">Elimiar Cuenta
-                                                Gasto</button>
+                                    <div *ngIf="cuentaGastoToEdit">
+                                        <div class="form-group">
+                                            <label for="">id</label>
+                                            <input type="text" [(ngModel)]="cuentaGastoToEdit.cuenta"
+                                                class="form-control" aria-describedby="helpId" placeholder="">
+                                            <label for="">Nombre</label>
+                                            <input type="text" [(ngModel)]="cuentaGastoToEdit.descripcion"
+                                                class="form-control" aria-describedby="helpId" placeholder="">
+                                        </div>
+                                        <div class="mx-auto">
+                                            <h5>Seleccionar Cuenta Padre</h5>
+
+                                            <div *ngIf="cuentaPadreToEdit" style="display: block;">
+                                                <span><b class="lead">Id: </b>
+                                                    {{cuentaPadreToEdit.cuenta}}</span>
+                                                <br>
+                                                <span><b class="lead">Descripcion: </b>
+                                                    {{cuentaPadreToEdit.descripcion}}</span>
+                                            </div>
+
+                                            <button *ngIf="!cuentaPadreToEdit" type="button"
+                                                (click)="showModalCuentas = true" (click)="ocultarOnCategory = true"
+                                                class="btn mt-2  btn-info">Seleccionar
+                                            </button>
+                                            <button *ngIf="cuentaPadreToEdit" type="button"
+                                                (click)="editandoCuentaPadre = true; showModalCuentas = true" class="btn mt-2 btn-inverse">Cambiar
+                                                Cuenta Padre</button>
+                                        </div>
+                                        <div style="width: 100%;" class="mt-auto">
+                                            <div style="display: flex;">
+                                                <div class="mx-auto mt-2">
+                                                    <button type="button"
+                                                        (click)="eliminarCuentaGasto(cuentaGastoToEdit._id)"
+                                                        class="btn mx-1 btn-rounded btn-outline-danger">Elimiar Cuenta
+                                                        Gasto</button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-xs col-md">
-                            <h5>Buscar Cuenta Abaco</h5>
-                            <div class="form-input">
-                                <div *ngIf="!cuentaAbaco">
-                                    <ng-select [typeahead]="inputcuentaAbacos" [loading]="loadingcuentaAbacos"
-                                        [items]="cuentasAbaco" name="dsfdbrwseqcda" [(ngModel)]="cuentaAbaco"
-                                        (ngModelChange)="seleccionarCuentaAbacoToEdit(cuentaAbaco)"
-                                        notFoundText="no se encontraron resultados" placeholder="buscar Cuenta Abaco"
-                                        bindLabel="NOMBRES" [searchFn]="customSearchFn">
-                                        <ng-template ng-option-tmp let-item="item">
-                                            <div> {{item.codigo}} - {{item.descripcion}}
 
-                                            </div>
+                                <div class="col-xs col-md">
 
-                                        </ng-template>
-                                    </ng-select>
-
+                                    <div class="form-input">
+                                        <div *ngIf="!cuentaAbaco">
+                                            <ng-select [typeahead]="inputcuentaAbacos" [loading]="loadingcuentaAbacos"
+                                                [items]="cuentasAbaco" name="dsfdbrwseqcda" [(ngModel)]="cuentaAbaco"
+                                                (ngModelChange)="seleccionarCuentaAbacoToEdit(cuentaAbaco)"
+                                                notFoundText="no se encontraron resultados"
+                                                placeholder="buscar Cuenta Abaco" bindLabel="NOMBRES"
+                                                [searchFn]="customSearchFn">
+                                                <ng-template ng-option-tmp let-item="item">
+                                                    <div> {{item.codigo}} - {{item.descripcion}}
+                                                    </div>
+                                                </ng-template>
+                                            </ng-select>
+                                        </div>
+                                        <div *ngIf="cuentaAbaco" class="form-group">
+                                            <h3>Cuenta Abaco</h3>
+                                            <div for="">Código: {{cuentaAbaco.codigo}}</div>
+                                            <!-- <input type="text" class="form-control" [(ngModel)]="cuentaAbaco.codigo"
+                                                aria-describedby="helpId" placeholder=""> -->
+                                            <div for="">Descripción: {{cuentaAbaco.descripcion}}</div>
+                                            <!-- <input type="text" class="form-control" [(ngModel)]="cuentaAbaco.descripcion"
+                                                aria-describedby="helpId" placeholder=""> -->
+                                            <div for="">Tipo: {{cuentaAbaco.tipo}}</div>
+                                            <!-- <ng-select [(ngModel)]="cuentaAbaco.tipo">
+                                                <ng-option *ngFor="let item of ['MAYORIZADOR','IMPUTABLE']" [value]="item">
+                                                    <div>
+                                                        {{item}}
+                                                    </div>
+                                                </ng-option>
+                                            </ng-select> -->
+                                            <button type="button" (click)="cuentaAbaco = null"
+                                                class="btn mx-1 mt-2 btn-rounded btn-inverse">Cambiar</button>
+                                        </div>
+                                    </div>
                                 </div>
 
+                                <div style="width: 100%;" class="mt-auto">
+                                    <div style="display: flex;">
+                                        <div class="mx-auto mt-2">
+                                            <button type="button" (click)="cancelarEditar()"
+                                                class="btn mx-1 btn-rounded btn-outline-danger">Cancelar</button>
+                                            <button type="button" (click)="guardarCambios()"
+                                                class="btn mx-1 btn-rounded btn-success">Guardar Cambios</button>
+                                        </div>
+                                    </div>
+                                </div>
 
-                                <div *ngIf="cuentaAbaco" class="form-group">
-                                    <label for="">Código</label>
-                                    <input type="text" class="form-control" [(ngModel)]="cuentaAbaco.codigo"
-                                        aria-describedby="helpId" placeholder="">
-                                    <label for="">Descripción</label>
-                                    <input type="text" class="form-control" [(ngModel)]="cuentaAbaco.descripcion"
-                                        aria-describedby="helpId" placeholder="">
-                                    <label for="">Tipo</label>
-                                    <ng-select [(ngModel)]="cuentaAbaco.tipo">
-                                        <ng-option *ngFor="let item of ['MAYORIZADOR','IMPUTABLE']" [value]="item">
-                                            <div>
-                                                {{item}}
-                                            </div>
-                                        </ng-option>
-                                    </ng-select>
+                            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                        </div>
+                        <div *ngIf="tipoEdicion === 'cuenta_abaco'">
+
+                            <div class="col-xs col-md">
+                                <h5>Buscar Cuenta Abaco</h5>
+                                <div class="form-input">
+                                    <div *ngIf="!cuentaAbaco">
+                                        <ng-select [typeahead]="inputcuentaAbacos" [loading]="loadingcuentaAbacos"
+                                            [items]="cuentasAbaco" name="dsfdbrwseqcda" [(ngModel)]="cuentaAbaco"
+                                            (ngModelChange)="seleccionarCuentaAbacoToEdit(cuentaAbaco)"
+                                            notFoundText="no se encontraron resultados"
+                                            placeholder="buscar Cuenta Abaco" bindLabel="NOMBRES"
+                                            [searchFn]="customSearchFn">
+                                            <ng-template ng-option-tmp let-item="item">
+                                                <div> {{item.codigo}} - {{item.descripcion}}
+
+                                                </div>
+
+                                            </ng-template>
+                                        </ng-select>
+
+                                    </div>
+
+
+                                    <div *ngIf="cuentaAbaco" class="form-group">
+                                        <label for="">Código</label>
+                                        <input type="text" class="form-control" [(ngModel)]="cuentaAbaco.codigo"
+                                            aria-describedby="helpId" placeholder="">
+                                        <label for="">Descripción</label>
+                                        <input type="text" class="form-control" [(ngModel)]="cuentaAbaco.descripcion"
+                                            aria-describedby="helpId" placeholder="">
+                                        <label for="">Tipo</label>
+                                        <ng-select [(ngModel)]="cuentaAbaco.tipo">
+                                            <ng-option *ngFor="let item of ['MAYORIZADOR','IMPUTABLE']" [value]="item">
+                                                <div>
+                                                    {{item}}
+                                                </div>
+                                            </ng-option>
+                                        </ng-select>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div style="width: 100%;" class="mt-auto">
-                            <div style="display: flex;">
-                                <div class="mx-auto mt-2">
-                                    <button type="button" (click)="cancelarCambiosEditar()"
-                                        class="btn mx-1 btn-rounded btn-outline-danger">Cancelar</button>
-                                    <button type="button" (click)="guardarCambios()" class="btn mx-1 btn-rounded btn-success">Guardar Cambios</button>
-                                </div>
-                            </div>
-                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     </div>
                 </div>
                 <div class="tab-pane " id="listaGastos" role="tabpanel">
@@ -577,7 +709,22 @@
 <app-modal-contratos (contratoSelected)="onContratoSelected($event)" [showFilters]="true" [cliente]="cliente"
     (onClose)="showModal = false" *ngIf="showModal"></app-modal-contratos>
 <app-modal-cuentas-gastos *ngIf="showModalCuentas"
-    (onSelectedCategory)="categorySelected = $event; ocultarOnclickCategory()"
-    (onSelected)="cuentaGasto = $event; cuentaGastoSelected(); showModalCuentas = false; ocultarOnCategory? categorySelected = $event : '' "
-    (onClose)="showModalCuentas = false">
+ (onSelectedCategory)="
+    editandoCuentaGasto? seleccionarCuentaGastoAEditar($event) : categorySelected = $event; 
+    editandoCuentaPadre? seleccionarCuentaPadreToEdit($event) : categorySelected = $event; 
+     
+    ocultarOnclickCategory()" 
+    
+(onSelected)="
+    editandoCuentaGasto? seleccionarCuentaGastoAEditar($event) : ''; 
+    editandoCuentaPadre? seleccionarCuentaPadreToEdit($event) : ''; 
+    cuentaGasto = $event; 
+    cuentaGastoSelected();
+    showModalCuentas = false;
+    ocultarOnCategory? categorySelected = $event : '' 
+    "
+(onClose)="
+showModalCuentas = false
+
+">
 </app-modal-cuentas-gastos>

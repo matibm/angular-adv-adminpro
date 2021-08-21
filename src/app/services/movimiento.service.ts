@@ -29,7 +29,7 @@ export class MovimientoService {
       .toPromise()
       .then((resp: any) => {
         console.log(resp);
-        
+
         return resp.tipos_movimiento;
       });
   }
@@ -60,10 +60,10 @@ export class MovimientoService {
         return resp.movimientos;
       });
   }
-  getCuentasAbaco(tipoCuenta) {
+  getCuentasAbaco(tipoCuenta?) {
     let url = `${URL_SERVICIOS}/movimientos/get_cuentas_abaco`;
     url += `?token=${this._usuarioService.token}`;
-    url += `&tipo_cuenta=${tipoCuenta}`;
+    if (tipoCuenta) url += `&tipo_cuenta=${tipoCuenta}`
     return this.http
       .get(url)
       .toPromise()
@@ -166,12 +166,24 @@ export class MovimientoService {
       });
   }
 
-  getCuentaGastoById(id: string) {
+  getCuentaGastoById(id: string, ctapadre?) {
     if (!id) throw new Error('necesitamos el id')
     let url = `${URL_SERVICIOS}/movimientos/get_cuenta_gasto_by_id`;
     url += `?token=${this._usuarioService.token}`;
     url += `&id=${id}`
+    url += `&id=${id}`
     return this.http
+      .get(url)
+      .toPromise()
+      .then((resp: any) => {
+        return resp.cuentaGasto;
+      });
+  }
+  getCuentaGastoByCtaPadre(ctapadre) {
+    let url = `${URL_SERVICIOS}/movimientos/get_cuenta_gasto_by_ctapadre`;
+    url += `?token=${this._usuarioService.token}`;
+    url += `&ctapadre=${ctapadre}`
+     return this.http
       .get(url)
       .toPromise()
       .then((resp: any) => {

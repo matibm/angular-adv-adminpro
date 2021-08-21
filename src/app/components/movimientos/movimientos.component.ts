@@ -46,6 +46,7 @@ export class MovimientosComponent implements OnInit {
   hasChild = (_: number, node: any) => !!node.hijos && node.hijos.length > 0;
   showModal;
   cuentaGasto;
+  cuentaGastoToEdit;
   egresoActive = 'btn-info';
   ingresoActive = 'btn-light';
   showModalCuentas = false;
@@ -62,7 +63,8 @@ export class MovimientosComponent implements OnInit {
   loadingcategorias
   ocultarOnCategory = false
   fechaCreacion = new Date()
-
+  tipoEdicion
+  editandoCuentaGasto = false
   constructor(
     public _movimientoService: MovimientoService,
     public _usuarioService: UsuarioService,
@@ -73,6 +75,9 @@ export class MovimientosComponent implements OnInit {
   tipo;
   pruebaDisabled = true
   async ngOnInit() {
+    this.cuentasAbaco = await this._movimientoService.getCuentasAbaco()
+    console.log(this.cuentasAbaco);
+
     this.observableBuscadores()
     const contratoOfLocal: string = localStorage.getItem('movimiento_contrato');
     contratoOfLocal ? (this.contrato = JSON.parse(contratoOfLocal)) : '';
@@ -320,7 +325,6 @@ export class MovimientosComponent implements OnInit {
     this.contrato = contrato;
   }
   ocultarOnclickCategory() {
-    //this.ocultarOnCategory);
 
     if (this.ocultarOnCategory) {
       this.showModalCuentas = false
@@ -328,8 +332,12 @@ export class MovimientosComponent implements OnInit {
   }
   async cuentaGastoSelected() {
     this.cuentaGasto = await this._movimientoService.getCuentaGastoById(this.cuentaGasto._id)
+    this.cuentaAbaco = this.cuentaGasto.cuentaGasto
 
-    this.cuentasAbaco = await this._movimientoService.getCuentasAbaco(this.cuentaGasto._id)
+    console.log(this.cuentaAbaco);
+
+    this.categorySelected = await this._movimientoService.getCuentaGastoByCtaPadre(this.cuentaGasto.ctapadre)
+    this.cuentasAbaco = await this._movimientoService.getCuentasAbaco()
     if (this.cuentaGasto.categoria) this.categoria = await this._movimientoService.getCategoriaById(this.cuentaGasto.categoria)
     //this.cuentasAbaco);
     // if (this.cuentasAbaco.length === 1) {
@@ -337,12 +345,33 @@ export class MovimientosComponent implements OnInit {
     // }
   }
 
-  crearCuentaGasto(nombre, categoria) {
+
+  async seleccionarCuentaGastoAEditar(cuentaGasto) {
+    this.cuentaGastoToEdit = await this._movimientoService.getCuentaGastoById(cuentaGasto._id)
+    this.cuentaAbaco = this.cuentaGastoToEdit.cuentaGasto
+
+    this.cuentaPadreToEdit = await this._movimientoService.getCuentaGastoByCtaPadre(this.cuentaGastoToEdit.ctapadre)
+    this.cuentasAbaco = await this._movimientoService.getCuentasAbaco()
+    if (this.cuentaGastoToEdit.categoria) this.categoria = await this._movimientoService.getCategoriaById(this.cuentaGastoToEdit.categoria)
+    this.editandoCuentaGasto = false
+  }
+  cuentaPadreToEdit
+  editandoCuentaPadre = false;
+  async seleccionarCuentaPadreToEdit(cuentaPadre) {
+    this.cuentaPadreToEdit =  await this._movimientoService.getCuentaGastoById(cuentaPadre._id)
+    this.cuentaGastoToEdit.ctapadre = this.cuentaPadreToEdit.cuenta
+  this.editandoCuentaPadre = false;
+
+  }
+ 
+  crearCuentaGasto(id, nombre, categoria, cuentaAbaco) {
     let cuenta = {
       descripcion: nombre,
       ctapadre: categoria.cuenta,
-      cuenta: Date.now().toString(),
-      nombre_padre: categoria.descripcion
+      cuenta: id,
+      nombre_padre: categoria.descripcion,
+      id_cuentas: Date.now().toString(),
+      cuentaGasto: cuentaAbaco._id
     }
     this._movimientoService.crearCuentaGasto(cuenta)
   }
@@ -351,7 +380,7 @@ export class MovimientosComponent implements OnInit {
       descripcion,
       tipo,
       codigo,
-      tipoCuenta: cuentaGasto._id,
+
       fecha_unix: new Date().getTime()
     }
     //cuenta);
@@ -402,41 +431,58 @@ export class MovimientosComponent implements OnInit {
   }
   seleccionarCuentaAbacoToEdit(cuentaAbaco) {
     //cuentaAbaco);
-
-    this.cuentaGasto = cuentaAbaco.tipoCuenta
-    this.categorySelected = this.cuentaGasto?.movimiento_padre
+    this.cuentaGastoToEdit.cuentaGasto = cuentaAbaco._id
+    // this.cuentaGasto = cuentaAbaco.tipoCuenta
+    // this.categorySelected = this.cuentaGasto?.movimiento_padre
   }
   seleccionarCategoriaToEdit(categoria) {
     //categoria);
 
     this.categoria = categoria
-    if (this.cuentaGasto) this.cuentaGasto.categoria = categoria._id
+    console.log(categoria);
+
+    if (this.cuentaGasto) {
+      this.cuentaGasto.categoria = categoria._id
+      this.cuentaAbaco = this.cuentaGasto.cuentaGasto
+
+    }
   }
   cancelarCambiosEditar() {
     this.cuentaGasto = null;
     this.categorySelected = null;
     this.categoria = null;
     this.cuentaAbaco = null;
-    this.cuentasAbaco = null
+
   }
 
   eliminarCuentaGasto(id) {
     this._movimientoService.eliminarCuentaGasto(id)
   }
 
- async guardarCambios() {
+  async guardarCambios() {
     let body: any = {}
     this.categoria ? body.categoria = this.categoria : ''
-    this.cuentaGasto ? body.cuenta_gasto = this.cuentaGasto : ''
+    this.cuentaGasto ? body.cuenta_gasto = this.cuentaGastoToEdit : ''
     this.cuentaAbaco ? body.cuenta_abaco = this.cuentaAbaco : ''
     console.log(body);
 
     await this._movimientoService.updateCuentas(body)
     this.cuentaGasto = null;
     this.categorySelected = null;
+    this.cuentaGastoToEdit = null;
+    this.tipoEdicion =''    
     this.categoria = null;
     this.cuentaAbaco = null;
-    this.cuentasAbaco = null
+
   }
 
+
+  cancelarEditar(){
+    this.cuentaGasto = null;
+    this.categorySelected = null;
+    this.cuentaGastoToEdit = null;
+    this.tipoEdicion =''    
+    this.categoria = null;
+    this.cuentaAbaco = null;
+  }
 }
