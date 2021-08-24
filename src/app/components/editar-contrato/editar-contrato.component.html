@@ -195,6 +195,8 @@
                                 <h5>Nombre: <b>{{producto.NOMBRE}} - {{producto.COD_CORTO}}</b></h5>
                                 <h5>Precio actual: <b>{{producto.PRECIO_MAYORISTA | currency:'':'':'2.0'}} Gs</b></h5>
                                 <h5>Total: <b>{{contrato.precio_total | currency:'':'':'2.0'}} Gs</b></h5>
+                                <h5 *ngIf="!esPsm">Deuda: <b>{{montoTotal.deuda | currency:'':'':'2.0'}} Gs</b></h5>
+
                                 <h5 *ngIf="esPsm" >Saldo: <b>{{saldo | currency:'':'':'2.0'}} Gs</b></h5>
                                 <!-- <h5>Entrega: </h5>  -->
                                 <hr>
@@ -225,6 +227,13 @@
                                                 [(ngModel)]="entrega">
                                         </div>
                                         <h5>saldo <b>{{saldo | currency:'':'':'2.0'}} Gs</b></h5>
+                                        <div class="form-group">
+                                            <label for="">Modificar Deuda</label>
+                                            <input [disabled]='!editarproducto' name="deuda" type="number"
+                                                class="form-control"  #deuda
+                                                [(ngModel)]="montoTotal.deuda">
+                                        </div>
+                                        <h5>Deuda <b>{{montoTotal.deuda | currency:'':'':'2.0'}} Gs</b></h5>
                                     </div>
                                     <div class="col-md col-xs">
                                         <div class="form-group" [ngClass]="{'has-danger':  !plazo && editarproducto}">

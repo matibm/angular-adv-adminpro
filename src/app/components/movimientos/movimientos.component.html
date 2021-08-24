@@ -2,37 +2,38 @@
 
     <div class="card">
         <ul class="nav nav-tabs profile-tab" role="tablist">
-            <li class="nav-item"> <a class="nav-link active" data-toggle="tab"
-                    (click)="cancelarCambiosEditar(); ocultarOnCategory = false; cuentaGasto = null" href="#home"
+            <li class="nav-item"> <a class="nav-link " [ngClass]="{'active': secction === 'home'}" data-toggle="tab"
+                    (click)="cancelarCambiosEditar('home'); ocultarOnCategory = false; cuentaGasto = null" href="#home"
                     role="tab">Nuevo Gasto</a>
             </li>
-            <li class="nav-item"> <a class="nav-link" data-toggle="tab"
-                    (click)="cancelarCambiosEditar(); ocultarOnCategory = true; cuentaGasto = null"
+            <li class="nav-item"> <a class="nav-link" [ngClass]="{'active': secction === 'newCuentaGasto'}" data-toggle="tab"
+                    (click)="cancelarCambiosEditar('newCuentaGasto'); ocultarOnCategory = true; cuentaGasto = null"
                     href="#newCuentaGasto" role="tab">Crear
                     Cuenta
                     Gasto</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" data-toggle="tab"
-                    (click)="cancelarCambiosEditar(); ocultarOnCategory = true; cuentaGasto = null" href="#newCategoria"
+                    (click)="cancelarCambiosEditar('newCategoria');  ocultarOnCategory = true; cuentaGasto = null" [ngClass]="{'active': secction === 'newCategoria'}"
+                     href="#newCategoria"
                     role="tab">Crear Categoria
                 </a>
             </li>
-            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#newCuentaAbaco"
-                    (click)="cancelarCambiosEditar(); cuentaGasto = null  " role="tab">Cuentas
+            <li class="nav-item"> <a class="nav-link" data-toggle="tab"  href="#newCuentaAbaco" [ngClass]="{'active': secction === 'newCuentaAbaco'}"
+                    (click)="cancelarCambiosEditar('newCuentaAbaco'); cuentaGasto = null  " role="tab">Cuentas
                     Abaco</a>
             </li>
-            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#updateCuentas"
-                    (click)="cancelarCambiosEditar(); ocultarOnCategory = true; cuentaGasto = null  "
+            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#updateCuentas" [ngClass]="{'active': secction === 'updateCuentas'}" 
+                    (click)="cancelarCambiosEditar('updateCuentas'); ocultarOnCategory = true; cuentaGasto = null  "
                     role="tab">Modificar Cuentas</a>
             </li>
-            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#listaGastos" role="tab">Lista de
+            <li class="nav-item"> <a class="nav-link"  (click)="cancelarCambiosEditar('listaGastos');" data-toggle="tab" href="#listaGastos" [ngClass]="{'active': secction === 'listaGastos'}" role="tab">Lista de
                     Gastos</a> </li>
 
         </ul>
         <div class="card-body ">
             <div class="tab-content">
-                <div class="tab-pane active" id="home" role="tabpanel">
+                <div class="tab-pane " id="home" [ngClass]="{'active': secction === 'home'}" role="tabpanel">
                     <div class="">
 
                         <!-- <h3>Nuevo Movimiento</h3> -->
@@ -42,7 +43,7 @@
 
                                     <label class="">Proveedor</label>
                                     <div *ngIf="proveedor" class="pointer close-icon ml-auto">
-                                        <button (click)="proveedor = null" type="button" class="btn btn-sm btn-light"><i
+                                        <button (click)="proveedor = null; removeQueryParam('proveedor')" type="button" class="btn btn-sm btn-light"><i
                                                 class=" ti-close  "></i></button>
                                     </div>
                                 </div>
@@ -285,7 +286,7 @@
 
                     </div>
                 </div>
-                <div class="tab-pane " id="newCuentaGasto" role="tabpanel">
+                <div class="tab-pane  " id="newCuentaGasto"  [ngClass]="{'active': secction === 'newCuentaGasto'}"role="tabpanel">
                     <div class="form-group">
                         <label for="">id</label>
                         <input type="text" #cuentaid class="form-control" aria-describedby="helpId" placeholder="">
@@ -335,7 +336,7 @@
                     </div>
 
                 </div>
-                <div class="tab-pane " id="newCuentaAbaco" role="tabpanel">
+                <div class="tab-pane " id="newCuentaAbaco" [ngClass]="{'active': secction === 'newCuentaAbaco'}" role="tabpanel">
                     <div class="form-group">
                         <label for="">Código</label>
                         <input type="text" class="form-control" #codigo aria-describedby="helpId" placeholder="">
@@ -374,7 +375,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane " id="newCategoria" role="tabpanel">
+                <div class="tab-pane " id="newCategoria" [ngClass]="{'active': secction === 'newCategoria'}" role="tabpanel">
                     <div class="form-group">
                         <label for="">Código</label>
                         <input type="text" class="form-control" #codigocat aria-describedby="helpId" placeholder="">
@@ -407,7 +408,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane " id="updateCuentas" role="tabpanel">
+                <div class="tab-pane " id="updateCuentas" [ngClass]="{'active': secction === 'updateCuentas'}" role="tabpanel">
                     <div style="min-height: 300px;">
                         <h2 *ngIf="!tipoEdicion">Seleccion cuenta a editar</h2>
 
@@ -642,7 +643,7 @@
 
                     </div>
                 </div>
-                <div class="tab-pane " id="listaGastos" role="tabpanel">
+                <div class="tab-pane " id="listaGastos" [ngClass]="{'active': secction === 'listaGastos'}" role="tabpanel">
                     <table *ngIf="!showCrearMovimiento && movimientos.length>0"
                         class="table full-color-table full-{{'inverse'}}-table hover-table   table-hover">
                         <thead>
@@ -656,7 +657,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let item of movimientos" [ngClass]="'pointer'">
+                            <tr [routerLink]="['/admin/gasto', item._id]"   *ngFor="let item of movimientos" [ngClass]="'pointer'">
                                 <td>{{item.nro_factura}}</td>
                                 <td>{{item.fecha_creacion_unix | date: 'dd-MM-YY'}}</td>
                                 <td>{{item.proveedor?.APELLIDOS}}</td>

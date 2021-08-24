@@ -45,7 +45,7 @@ export class InfoContratoComponent implements OnInit {
   facturasAPagar;
   showModalPdf = false;
   radioValue;
-  montoTotal;
+  montoTotal:any = {};
   saldo = 0
   tipos_pago = [
     {

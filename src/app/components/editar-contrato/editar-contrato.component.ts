@@ -10,6 +10,7 @@ import { ProductosService } from './../../services/productos.service';
 import { Component, OnInit } from '@angular/core';
 import { SwalPortalTargets, SwalDirective } from '@sweetalert2/ngx-sweetalert2';
 import swal from 'sweetalert2';
+import { FacturaService } from 'src/app/services/factura.service';
 
 @Component({
   selector: 'app-editar-contrato',
@@ -25,7 +26,9 @@ export class EditarContratoComponent implements OnInit {
     public _contratoService: ContratoService,
     public route: ActivatedRoute,
     public router: Router,
-    public edadPipe: EdadPipe
+    public edadPipe: EdadPipe,
+    public _facturaService: FacturaService,
+
   ) { }
 
   opacity = 'disable';
@@ -120,6 +123,8 @@ export class EditarContratoComponent implements OnInit {
   id;
   saldoOriginal = 0
   facturaMantenimiento;
+  montoTotal: any = {}
+  facturaOptions
   async ngOnInit() {
     const date = new Date();
 
@@ -138,6 +143,10 @@ export class EditarContratoComponent implements OnInit {
     this.fechaMantenimiento = new Date(new Date(new Date().setFullYear(date.getFullYear() + 1, 0, 5)).setHours(0, 0, 0, 0));
     console.log(this.fechaMantenimiento);
 
+    this.facturaOptions = { contrato: this.contrato._id, get_total:'1' };
+    const respFacturas = await this._facturaService.getFacturasOptions(this.facturaOptions,  {key:'vencimiento', value: 1});
+    
+    this.montoTotal = respFacturas.montoTotal;
 
     this.cliente = this.contrato.titular;
 
@@ -213,7 +222,7 @@ export class EditarContratoComponent implements OnInit {
         this.facturas = this.crearFacturas(this.montoCuotas, this.plazo);
       } else {
         this.pagoradioValue = 'cuota';
-        this.montoCuotas = this.saldo / this.plazo;
+        this.montoCuotas = (this.montoTotal.deuda || this.saldo) / this.plazo;
         this.facturas = this.crearFacturas(this.montoCuotas, this.plazo);
       }
 

@@ -1,0 +1,7 @@
+<p>gasto works!</p>
+<h3 *ngIf="movimiento">
+    <div>Decripcion: {{movimiento.comentario}}</div>
+    <div>Nro Factura: {{movimiento.nro_comp_banco}}</div>
+    <div>Nro Timbrado: {{movimiento.nro_factura}}</div>
+    <div>Monto: {{movimiento.monto_total| currency: '':'':'2.0'}}</div>
+</h3>

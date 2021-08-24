@@ -142,6 +142,7 @@
                 <h5>Nombre: <b>{{producto.NOMBRE}} - {{producto.COD_CORTO}}</b></h5>
                 <h5>Precio actual: <b>{{producto.PRECIO_MAYORISTA | currency:'':'':'2.0'}} Gs</b></h5>
                 <h5>Total: <b>{{contrato.precio_total | currency:'':'':'2.0'}} Gs</b></h5>
+                <h5 *ngIf="!esPsm">Deuda: <b>{{montoTotal.deuda | currency:'':'':'2.0'}} Gs</b></h5>
                 <!-- <h5 *ngIf="!esPsm" >Saldo: <b>{{contrato.saldo_pendiente | currency:'':'':'2.0'}} Gs</b></h5> -->
                 <h5 *ngIf="esPsm">Saldo: <b>{{saldo | currency:'':'':'2.0'}} Gs</b></h5>
                 <!-- <h5>Entrega: </h5>  -->

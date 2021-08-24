@@ -60,6 +60,17 @@ export class MovimientoService {
         return resp.movimientos;
       });
   }
+  getMovimientoById(id?) {
+    let url = `${URL_SERVICIOS}/movimientos/by_id`;
+    url += `?token=${this._usuarioService.token}`;
+    id ? (url += `&id=${id}`) : null;
+    return this.http
+      .get(url)
+      .toPromise()
+      .then((resp: any) => {
+        return resp.movimiento;
+      });
+  }
   getCuentasAbaco(tipoCuenta?) {
     let url = `${URL_SERVICIOS}/movimientos/get_cuentas_abaco`;
     url += `?token=${this._usuarioService.token}`;

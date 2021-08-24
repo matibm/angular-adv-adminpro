@@ -94,7 +94,7 @@
                 <h4><b>Nota:</b> {{factura.nota}}</h4>
 
                 <h4 *ngIf="factura.parcial">Pago parcial correspondiente a
-                    <a (click)="this.id = factura.parcial._id; initialize()" [routerLink]="['/admin/factura', factura.parcial._id]">Factura</a>
+                    <a (click)="this.id = factura.parcial._id; initialize()" [routerLink]="['/admin/ingreso', factura.parcial._id]">Factura</a>
                 </h4>
                 <h4 *ngIf="factura.link_de_pago"><b>Link de pago:</b>
                     <a [href]="factura.link_de_pago">{{factura.link_de_pago}}</a>
@@ -141,7 +141,7 @@
 
                 <div class="" *ngIf="parciales">
                     <h4 *ngFor="let item of parciales">
-                        <a [routerLink]="['/admin/factura', item._id]">
+                        <a [routerLink]="['/admin/ingreso', item._id]">
                             Pago Parcial 
                         </a> de {{item.haber | currency: '':'':'2.0'}} Gs en {{item.fecha_pagado_unix | date: 'short'}} Hs
                     </h4>

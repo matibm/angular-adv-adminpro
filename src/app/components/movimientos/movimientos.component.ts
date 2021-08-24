@@ -14,6 +14,7 @@ import {
 } from '@angular/material/tree';
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { Subject } from 'rxjs';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-movimientos',
@@ -65,18 +66,23 @@ export class MovimientosComponent implements OnInit {
   fechaCreacion = new Date()
   tipoEdicion
   editandoCuentaGasto = false
+  secction = 'listaGastos'
   constructor(
     public _movimientoService: MovimientoService,
     public _usuarioService: UsuarioService,
     public _contratoService: ContratoService,
-    public _productoService: ProductosService
+    public _productoService: ProductosService,
+    // public route: ActivatedRoute,
+    // private router: Router
   ) { }
   tipos_movimiento;
   tipo;
   pruebaDisabled = true
   async ngOnInit() {
+    // this.route.snapshot.queryParams.seccion ? this.secction = this.route.snapshot.queryParams.seccion : this.secction = 'home'
     this.cuentasAbaco = await this._movimientoService.getCuentasAbaco()
-    console.log(this.cuentasAbaco);
+    // console.log(this.route.snapshot.queryParams);
+    // this.revisarRuta()
 
     this.observableBuscadores()
     const contratoOfLocal: string = localStorage.getItem('movimiento_contrato');
@@ -102,6 +108,13 @@ export class MovimientosComponent implements OnInit {
     this.loading = false;
     this.initializeWithLocalStorage();
   }
+
+  async revisarRuta(){
+    // if (this.route.snapshot.queryParams['proveedor']) {
+    //  this.proveedor = await this._usuarioService.getUsuarioPorId(this.route.snapshot.queryParams['proveedor'])
+    // }
+  }
+
 
   async selectCategory(tipo) {
     this.tipo = tipo;
@@ -201,6 +214,7 @@ export class MovimientosComponent implements OnInit {
     this.saveshowCrearMovimiento(false);
   }
   async onSelectProveedor(proveedor) {
+    // this.cambioDeQueryParams('proveedor', proveedor._id)
     let resp: any = await this._movimientoService.getUltimaCuenta(proveedor._id);
     this.cuentaGasto = resp.cuenta
     this.fondo = resp.fondo
@@ -358,12 +372,12 @@ export class MovimientosComponent implements OnInit {
   cuentaPadreToEdit
   editandoCuentaPadre = false;
   async seleccionarCuentaPadreToEdit(cuentaPadre) {
-    this.cuentaPadreToEdit =  await this._movimientoService.getCuentaGastoById(cuentaPadre._id)
+    this.cuentaPadreToEdit = await this._movimientoService.getCuentaGastoById(cuentaPadre._id)
     this.cuentaGastoToEdit.ctapadre = this.cuentaPadreToEdit.cuenta
-  this.editandoCuentaPadre = false;
+    this.editandoCuentaPadre = false;
 
   }
- 
+
   crearCuentaGasto(id, nombre, categoria, cuentaAbaco) {
     let cuenta = {
       descripcion: nombre,
@@ -447,7 +461,8 @@ export class MovimientosComponent implements OnInit {
 
     }
   }
-  cancelarCambiosEditar() {
+  cancelarCambiosEditar(seccion?) {
+    // if (seccion) this.cambioDeQueryParams('seccion',seccion)
     this.cuentaGasto = null;
     this.categorySelected = null;
     this.categoria = null;
@@ -455,6 +470,31 @@ export class MovimientosComponent implements OnInit {
 
   }
 
+  cambioDeQueryParams(key, seccion) {
+    // let queryParams: Params = {... this.route.snapshot.queryParams}
+    // queryParams[key] = seccion
+    // this.router.navigate(
+    //   [],
+    //   {
+    //     relativeTo: this.route,
+    //     queryParams: queryParams,
+    //     skipLocationChange: true
+    //     // queryParamsHandling: 'merge', // remove to replace all query params by provided
+    //   });
+  }
+
+  removeQueryParam(key){
+    // let queryParams: Params = {... this.route.snapshot.queryParams}
+    // delete queryParams[key]
+     
+    // this.router.navigate(
+    //   [],
+    //   {
+    //     relativeTo: this.route,
+    //     queryParams: queryParams,
+    //     // queryParamsHandling: 'merge', // remove to replace all query params by provided
+    //   });
+  }
   eliminarCuentaGasto(id) {
     this._movimientoService.eliminarCuentaGasto(id)
   }
@@ -470,18 +510,18 @@ export class MovimientosComponent implements OnInit {
     this.cuentaGasto = null;
     this.categorySelected = null;
     this.cuentaGastoToEdit = null;
-    this.tipoEdicion =''    
+    this.tipoEdicion = ''
     this.categoria = null;
     this.cuentaAbaco = null;
 
   }
 
 
-  cancelarEditar(){
+  cancelarEditar() {
     this.cuentaGasto = null;
     this.categorySelected = null;
     this.cuentaGastoToEdit = null;
-    this.tipoEdicion =''    
+    this.tipoEdicion = ''
     this.categoria = null;
     this.cuentaAbaco = null;
   }
