@@ -95,8 +95,8 @@ export class MovimientosComponent implements OnInit, OnDestroy {
 
     // this.servicios = await this._productoService.getProductos();
     // this.loading = true;
-    // this.tipos_movimiento = await this._movimientoService.getTipoMovimiento();
-    // this.dataSource.data = this.tipos_movimiento;
+    this.tipos_movimiento = await this._movimientoService.getTipoMovimiento();
+    this.dataSource.data = this.tipos_movimiento;
 
     // //this.movimientos);
     // this.clientes = await this._usuarioService.buscarUsuarios('CLIENTES', '');
