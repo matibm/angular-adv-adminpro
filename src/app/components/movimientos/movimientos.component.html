@@ -649,15 +649,15 @@
                         <thead>
                             <tr>
                                 <th>Nro Factura</th>
-                                <th>Fecha</th>
+                                <th style="min-width: 100px">Fecha</th>
                                 <th>Proveedor</th>
                                 <th>Cuenta de Gasto</th>
-                                <th style="width: 25%;">Comentario</th>
-                                <th>Monto total</th>
+                                <th  >Comentario</th>
+                                <th style="min-width: 150px">Monto total</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr [routerLink]="['/admin/gasto', item._id]"   *ngFor="let item of movimientos" [ngClass]="'pointer'">
+                            <tr (click)="goToInfo(item._id)"  *ngFor="let item of movimientos" [ngClass]="'pointer'">
                                 <td>{{item.nro_factura}}</td>
                                 <td>{{item.fecha_creacion_unix | date: 'dd-MM-YY'}}</td>
                                 <td>{{item.proveedor?.APELLIDOS}}</td>

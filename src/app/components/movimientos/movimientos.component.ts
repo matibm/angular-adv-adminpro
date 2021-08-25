@@ -6,14 +6,14 @@ import { UsuarioService } from './../../services/usuario.service';
 import { Usuario } from './../../models/usuario';
 import { Movimiento } from './../../models/movimiento';
 import { MovimientoService } from './../../services/movimiento.service';
-import { Component, DoCheck, OnInit } from '@angular/core';
+import { Component, DoCheck, OnDestroy, OnInit } from '@angular/core';
 import { NestableSettings } from 'ngx-nestable/lib/nestable.models';
 import {
   MatTreeFlatDataSource,
   MatTreeNestedDataSource,
 } from '@angular/material/tree';
 import { NestedTreeControl } from '@angular/cdk/tree';
-import { Subject } from 'rxjs';
+import { Observable, Subject, Subscriber } from 'rxjs';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
@@ -21,7 +21,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
   templateUrl: './movimientos.component.html',
   styleUrls: ['./movimientos.component.css'],
 })
-export class MovimientosComponent implements OnInit {
+export class MovimientosComponent implements OnInit, OnDestroy {
   breadCrumb = [];
   movimientos: Movimiento[] = [];
   arrayBreadCrumb = [];
@@ -73,7 +73,7 @@ export class MovimientosComponent implements OnInit {
     public _contratoService: ContratoService,
     public _productoService: ProductosService,
     // public route: ActivatedRoute,
-    // private router: Router
+    private router: Router
   ) { }
   tipos_movimiento;
   tipo;
@@ -91,22 +91,22 @@ export class MovimientosComponent implements OnInit {
       this.servicio = this.contrato.producto;
       this.cliente = this.contrato.titular;
     }
-
-    this.servicios = await this._productoService.getProductos();
-    this.loading = true;
-    this.tipos_movimiento = await this._movimientoService.getTipoMovimiento();
-    this.dataSource.data = this.tipos_movimiento;
-
     this.movimientos = await this._movimientoService.getMovimientos();
-    //this.movimientos);
-    this.clientes = await this._usuarioService.buscarUsuarios('CLIENTES', '');
-    this.proveedores = await this._usuarioService.buscarUsuarios(
-      'PROVEEDORES',
-      ''
-    );
-    this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', '');
-    this.loading = false;
-    this.initializeWithLocalStorage();
+
+    // this.servicios = await this._productoService.getProductos();
+    // this.loading = true;
+    // this.tipos_movimiento = await this._movimientoService.getTipoMovimiento();
+    // this.dataSource.data = this.tipos_movimiento;
+
+    // //this.movimientos);
+    // this.clientes = await this._usuarioService.buscarUsuarios('CLIENTES', '');
+    // this.proveedores = await this._usuarioService.buscarUsuarios(
+    //   'PROVEEDORES',
+    //   ''
+    // );
+    // this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', '');
+    // this.loading = false;
+    // this.initializeWithLocalStorage();
   }
 
   async revisarRuta() {
@@ -241,7 +241,7 @@ export class MovimientosComponent implements OnInit {
       nro_comp_banco: this.nroFacturaProveedor,
       id_cuentacaja: this.cuentaGasto.cuenta,
       nombre: this.cuentaGasto.descripcion,
-      anulado: '0',
+      
       monto_haber: montoIngreso,
       monto_total: montoEgreso,
       tipo_movimiento: this.cuentaGasto._id,
@@ -423,14 +423,13 @@ export class MovimientosComponent implements OnInit {
     //cuenta);
     this._movimientoService.crearCategoriaGasto(cuenta)
   }
-
+  inputcuentaAbacosPromise
   observableBuscadores() {
-    this.inputcuentaAbacos.pipe(
+    this.inputcuentaAbacosPromise = this.inputcuentaAbacos.pipe(
 
       debounceTime(200),
       distinctUntilChanged()
-    )
-      .subscribe(async (txt) => {
+    ).toPromise().then(async (txt) => {
         if (!txt) {
           return;
         }
@@ -439,13 +438,13 @@ export class MovimientosComponent implements OnInit {
         //this.cuentasAbaco);
 
         this.loadingcuentaAbacos = false;
-      });
+      })
     this.inputcategorias.pipe(
 
       debounceTime(200),
       distinctUntilChanged()
     )
-      .subscribe(async (txt) => {
+      .toPromise().then(async (txt) => {
         if (!txt) {
           return;
         }
@@ -529,8 +528,7 @@ export class MovimientosComponent implements OnInit {
     this.cuentaAbaco = null;
 
   }
-
-
+ 
   cancelarEditar() {
     this.cuentaGasto = null;
     this.categorySelected = null;
@@ -539,4 +537,11 @@ export class MovimientosComponent implements OnInit {
     this.categoria = null;
     this.cuentaAbaco = null;
   }
+
+  goToInfo(id){
+    this.router.navigateByUrl('/admin/gasto/'+id)
+  }
+  ngOnDestroy(){
+    // this.inputcuentaAbacosPromise.unsubscribe()
+   }
 }
