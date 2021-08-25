@@ -495,12 +495,12 @@
                                         <tr *ngFor="let item of contrato.inhumados; let i = index">
 
                                             <td>
-                                                <input required type="text" class="form-control" name="name-inhu-{{i}}"
+                                                <input required type="text" class="form-control" name="name-infhu-{{i}}"
                                                     [(ngModel)]="item.nombre">
                                             </td>
                                             <td>
                                                 <input required type="text" class="form-control" [(ngModel)]="item.ci"
-                                                    name="name-inhu-{{i}}">
+                                                    name="name-ianhu-{{i}}">
                                             </td>
                                             <td>
                                                 <mat-form-field appearance="fill">
@@ -525,7 +525,7 @@
                                                 </mat-form-field>
                                             </td>
                                             <td>
-                                                <input type="text" class="form-control" name="name-inhu-{{i}}"
+                                                <input type="text" class="form-control" name="name-inshu-{{i}}"
                                                     [(ngModel)]="item.nro">
                                             </td>
                                             <td class="text-center">
