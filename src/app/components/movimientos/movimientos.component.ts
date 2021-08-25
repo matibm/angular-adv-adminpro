@@ -93,20 +93,20 @@ export class MovimientosComponent implements OnInit, OnDestroy {
     }
     this.movimientos = await this._movimientoService.getMovimientos();
 
-    // this.servicios = await this._productoService.getProductos();
+    this.servicios = await this._productoService.getProductos();
     // this.loading = true;
     this.tipos_movimiento = await this._movimientoService.getTipoMovimiento();
     this.dataSource.data = this.tipos_movimiento;
 
-    // //this.movimientos);
-    // this.clientes = await this._usuarioService.buscarUsuarios('CLIENTES', '');
-    // this.proveedores = await this._usuarioService.buscarUsuarios(
-    //   'PROVEEDORES',
-    //   ''
-    // );
-    // this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', '');
-    // this.loading = false;
-    // this.initializeWithLocalStorage();
+    //this.movimientos);
+    this.clientes = await this._usuarioService.buscarUsuarios('CLIENTES', '');
+    this.proveedores = await this._usuarioService.buscarUsuarios(
+      'PROVEEDORES',
+      ''
+    );
+    this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', '');
+    this.loading = false;
+    this.initializeWithLocalStorage();
   }
 
   async revisarRuta() {
