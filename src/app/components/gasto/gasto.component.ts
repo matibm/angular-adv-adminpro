@@ -20,6 +20,8 @@ export class GastoComponent implements OnInit {
     this.movimiento = await this._movimientoService.getMovimientoById(this.id)
   }
 
-
+eliminar(){
+  this._movimientoService.eliminarGasto(this.id)
+}
 
 }

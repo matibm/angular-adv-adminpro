@@ -2,34 +2,39 @@
     <form ngNativeValidate ngForm (ngSubmit)="editarContrato()">
         <div class="row">
             <div class="col-md-6 col-xs">
-                <div class="card ">
+                <div style="min-width: fit-content;" class="card ">
                     <div class="card-body">
                         <div style="justify-content: space-between;" class="inline-flex">
-                            <h3 class="card-title">Cliente</h3>
-                            <div *ngIf="cliente" (click)="cliente = null" class="pointer close-icon ml-auto">
+                            <h4 class="card-title">Cliente</h4>
+                            <div *ngIf="contrato.titular" (click)="contrato.titular = null" class="pointer close-icon ml-auto">
                                 <button type="button" class="btn btn-sm btn-light"><i class=" ti-close  "></i></button>
                             </div>
                         </div>
-                        <div *ngIf="!cliente">
-                            <ng-select [items]="clientes" [(ngModel)]="cliente" name="cliente"
-                                (search)="searchClientes($event)" notFoundText="no se encontraron resultados"
-                                placeholder="buscar cliente" bindLabel="NOMBRES" [searchFn]="customSearchFn">
+    
+                        <div *ngIf="!contrato.titular">
+    
+                            <ng-select [typeahead]="inputClientes" [loading]="loadingClientes" [items]="clientes" name="dsfdbrweqcda" [(ngModel)]="contrato.titular" (ngModelChange)="null" notFoundText="no se encontraron resultados" placeholder="buscar cliente"
+                                bindLabel="NOMBRES" [searchFn]="customSearchFn">
                                 <ng-template ng-option-tmp let-item="item">
                                     <div> {{item.APELLIDOS}} {{item.NOMBRES}} <br>
                                         <small>{{item.RUC | ruc}}</small>
                                     </div>
+    
                                 </ng-template>
                             </ng-select>
+    
                         </div>
-                        <div style="width: 100%; " *ngIf="cliente ">
-                            <h5>Apellidos: <b>{{cliente.APELLIDOS}}</b></h5>
-                            <h5>Nombres: <b>{{cliente.NOMBRES}}</b></h5>
-                            <h5>RUC: <b>{{cliente.RUC | ruc}}</b></h5>
-                            <h5>Direccion P: <b>{{cliente.DIRECCION}}</b></h5>
-                            <h5>Ciudad P: <b>{{cliente.NOMCIUDAD}}</b></h5>
-                            <h5>Direccion L: <b>{{cliente.direccion_laboral}}</b></h5>
-                            <h5>Ciudad L: <b>{{cliente.ciudad_trabajo}}</b></h5>
-                            <h5>Telefonos: <b>{{cliente.TELEFONO1}}</b></h5>
+                        <div style="width: 100%; " *ngIf="contrato.titular ">
+                            <h5>Apellidos: <b>{{contrato.titular.APELLIDOS}}</b></h5>
+                            <h5>Nombres: <b>{{contrato.titular.NOMBRES}}</b></h5>
+    
+                            <h5>RUC: <b>{{contrato.titular.RUC | ruc}}</b></h5>
+                            <h5>Direccion P: <b>{{contrato.titular.DIRECCION}}</b></h5>
+                            <h5>Ciudad P: <b>{{contrato.titular.NOMCIUDAD}}</b></h5>
+                            <h5>Direccion L: <b>{{contrato.titular.direccion_laboral}}</b></h5>
+                            <h5>Ciudad L: <b>{{contrato.titular.ciudad_trabajo}}</b></h5>
+                            <h5>Telefonos: <b>{{contrato.titular.TELEFONO1}}</b></h5>
+    
                             <div class="row ">
                                 <div class="col ">
                                 </div>
@@ -41,26 +46,27 @@
                 </div>
             </div>
             <div class="col-md-6 col-xs">
-                <div class="card ">
+                <div style="min-width: fit-content;" class="card ">
                     <div class="card-body">
                         <div style="justify-content: space-between;" class="inline-flex">
-                            <h3 class="card-title">Titular Alternativo</h3>
-                            <div *ngIf="contrato.titular_alternativo" (click)="contrato.titular_alternativo = null"
-                                class="pointer close-icon ml-auto">
+                            <h4 class="card-title">Titular Alternativo</h4>
+                            <div *ngIf="contrato.titular_alternativo" (click)="contrato.titular_alternativo = null" class="pointer close-icon ml-auto">
                                 <button type="button" class="btn btn-sm btn-light"><i class=" ti-close  "></i></button>
                             </div>
                         </div>
+    
                         <div *ngIf="!contrato.titular_alternativo">
-                            <ng-select [items]="clientes" [(ngModel)]="contrato.titular_alternativo"
-                                name="titular_alternativo" (search)="searchClientes($event)"
-                                notFoundText="no se encontraron resultados" placeholder="buscar titular"
-                                bindLabel="NOMBRES" [searchFn]="customSearchFn">
+    
+                            <ng-select [items]="clientesAlternativo" name="tyhhytgrfedca" [(ngModel)]="contrato.titular_alternativo" [typeahead]="inputAlternativo" [loading]="loadingAlternativo" notFoundText="no se encontraron resultados" placeholder="buscar titular alternativo" bindLabel="NOMBRES"
+                                [searchFn]="customSearchFn">
                                 <ng-template ng-option-tmp let-item="item">
                                     <div> {{item.APELLIDOS}} {{item.NOMBRES}} <br>
                                         <small>{{item.RUC | ruc}}</small>
                                     </div>
+    
                                 </ng-template>
                             </ng-select>
+    
                         </div>
                         <div style="width: 100%; " *ngIf="contrato.titular_alternativo ">
                             <h5>Apellidos: <b>{{contrato.titular_alternativo.APELLIDOS}}</b></h5>
@@ -71,6 +77,7 @@
                             <h5>Direccion L: <b>{{contrato.titular_alternativo.direccion_laboral}}</b></h5>
                             <h5>Ciudad L: <b>{{contrato.titular_alternativo.ciudad_trabajo}}</b></h5>
                             <h5>Telefonos: <b>{{contrato.titular_alternativo.TELEFONO1}}</b></h5>
+    
                             <div class="row ">
                                 <div class="col ">
                                 </div>
@@ -82,18 +89,20 @@
                 </div>
             </div>
             <div class="col-md-6 col-xs">
-                <div class="card ">
+                <div style="min-width: fit-content;" class="card ">
                     <div class="card-body">
                         <div style="justify-content: space-between;" class="inline-flex">
                             <h4 class="card-title">Vendedor</h4>
-                            <div *ngIf="vendedor" (click)="vendedor = null" class="pointer close-icon ml-auto">
+                            <div *ngIf="contrato.vendedor" (click)="contrato.vendedor = null" class="pointer close-icon ml-auto">
                                 <button type="button" class="btn btn-sm btn-light"><i class=" ti-close  "></i></button>
                             </div>
                         </div>
-                        <div *ngIf="!vendedor">
-                            <ng-select [items]="vendedores" name="vendedor" [(ngModel)]="vendedor"
-                                (search)="searchVendedores($event)" notFoundText="no se encontraron resultados"
-                                placeholder="buscar vendedor" bindLabel="NOMBRES" [searchFn]="customSearchFn">
+                        <!-- <ng-select [items]="cars" bindLabel="name" bindValue="id" [(ngModel)]="selectedCar">
+                        </ng-select> -->
+                        <div *ngIf="!contrato.vendedor">
+                            
+                            <ng-select [typeahead]="inputVendedor" [loading]="loadingVendedor" [items]="vendedores" name="dsfdbrwenkkqcda" [(ngModel)]="contrato.vendedor"   notFoundText="no se encontraron resultados" placeholder="buscar vendedor"
+                            bindLabel="NOMBRES" [searchFn]="customSearchFn">
                                 <ng-template ng-option-tmp let-item="item">
                                     <div> {{item.APELLIDOS}} {{item.NOMBRES}} <br>
                                         <small>{{item.RUC | ruc}}</small>
@@ -101,51 +110,56 @@
                                 </ng-template>
                             </ng-select>
                         </div>
-                        <div style="width: 100%; " *ngIf="vendedor ">
-                            <h5>Apellidos: <b>{{vendedor.APELLIDOS}}</b></h5>
-                            <h5>Nombres: <b>{{vendedor.NOMBRES}}</b></h5>
-                            <h5>RUC: <b>{{vendedor.RUC | ruc}}</b></h5>
-                            <h5>Direccion P: <b>{{vendedor.DIRECCION}}</b></h5>
-                            <h5>Ciudad P: <b>{{vendedor.NOMCIUDAD}}</b></h5>
-                            <h5>Direccion L: <b>{{vendedor.direccion_laboral}}</b></h5>
-                            <h5>Ciudad L: <b>{{vendedor.ciudad_trabajo}}</b></h5>
-                            <h5>Telefonos: <b>{{vendedor.TELEFONO1}}</b></h5>
+                        <div style="width: 100%; " *ngIf="contrato.vendedor ">
+                            <h5>Apellidos: <b>{{contrato.vendedor.APELLIDOS}}</b></h5>
+                            <h5>Nombres: <b>{{contrato.vendedor.NOMBRES}}</b></h5>
+                            <h5>RUC: <b>{{contrato.vendedor.RUC | ruc}}</b></h5>
+                            <h5>Direccion P: <b>{{contrato.vendedor.DIRECCION}}</b></h5>
+                            <h5>Ciudad P: <b>{{contrato.vendedor.NOMCIUDAD}}</b></h5>
+                            <h5>Direccion L: <b>{{contrato.vendedor.direccion_laboral}}</b></h5>
+                            <h5>Ciudad L: <b>{{contrato.vendedor.ciudad_trabajo}}</b></h5>
+                            <h5>Telefonos: <b>{{contrato.vendedor.TELEFONO1}}</b></h5>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 col-xs">
-                <div class="card ">
+                <div style="min-width: fit-content;" class="card ">
                     <div class="card-body">
                         <div style="justify-content: space-between;" class="inline-flex">
                             <h4 class="card-title">Cobrador</h4>
-                            <div *ngIf="cobrador" (click)="cobrador = null" class="pointer close-icon ml-auto">
+                            <div *ngIf="contrato.cobrador" (click)="contrato.cobrador = null" class="pointer close-icon ml-auto">
                                 <button type="button" class="btn btn-sm btn-light"><i class=" ti-close  "></i></button>
                             </div>
                         </div>
                         <div class="ng-autocomplete">
-                            <div *ngIf="!cobrador">
-                                <ng-select [items]="cobradores" name="cobrador" [(ngModel)]="cobrador"
-                                    (search)="searchCobradores($event)" notFoundText="no se encontraron resultados"
-                                    placeholder="buscar cobrador" bindLabel="NOMBRES" [searchFn]="customSearchFn">
+                            <div *ngIf="!contrato.cobrador">
+                                <ng-select [typeahead]="inputCobrador" [loading]="loadingCobrador" [items]="cobradores" name="dsfdbrwesnkkqcda" [(ngModel)]="contrato.cobrador"   notFoundText="no se encontraron resultados" placeholder="buscar cobrador"
+                                bindLabel="NOMBRES" [searchFn]="customSearchFn">
                                     <ng-template ng-option-tmp let-item="item">
-                                        <div> {{item.APELLIDOS}} {{item.NOMBRES}} <br>
+                                        <div>
+                                            <div class="" *ngIf="item.APELLIDOS">
+                                                {{item.APELLIDOS}} {{item.NOMBRES}}
+                                            </div>
+    
+                                            <div *ngIf="item.RAZON"> {{item.RAZON}} </div>
+    
                                             <small>{{item.RUC | ruc}}</small>
                                         </div>
-
+    
                                     </ng-template>
                                 </ng-select>
                             </div>
                         </div>
-                        <div style="width: 100%; " *ngIf="cobrador">
-                            <h5>Apellidos: <b>{{cobrador.APELLIDOS}}</b></h5>
-                            <h5>Nombres: <b>{{cobrador.NOMBRES}}</b></h5>
-                            <h5>RUC: <b>{{cobrador.RUC | ruc}}</b></h5>
-                            <h5>Direccion P: <b>{{cobrador.DIRECCION}}</b></h5>
-                            <h5>Ciudad P: <b>{{cobrador.NOMCIUDAD}}</b></h5>
-                            <h5>Direccion L: <b>{{cobrador.direccion_laboral}}</b></h5>
-                            <h5>Ciudad L: <b>{{cobrador.ciudad_trabajo}}</b></h5>
-                            <h5>Telefonos: <b>{{cobrador.TELEFONO1}}</b></h5>
+                        <div style="width: 100%; " *ngIf="contrato.cobrador">
+                            <h5>Apellidos: <b>{{contrato.cobrador.APELLIDOS}}</b></h5>
+                            <h5>Nombres: <b>{{contrato.cobrador.NOMBRES}}</b></h5>
+                            <h5>RUC: <b>{{contrato.cobrador.RUC | ruc}}</b></h5>
+                            <h5>Direccion P: <b>{{contrato.cobrador.DIRECCION}}</b></h5>
+                            <h5>Ciudad P: <b>{{contrato.cobrador.NOMCIUDAD}}</b></h5>
+                            <h5>Direccion L: <b>{{contrato.cobrador.direccion_laboral}}</b></h5>
+                            <h5>Ciudad L: <b>{{contrato.cobrador.ciudad_trabajo}}</b></h5>
+                            <h5>Telefonos: <b>{{contrato.cobrador.TELEFONO1}}</b></h5>
                         </div>
                     </div>
                 </div>

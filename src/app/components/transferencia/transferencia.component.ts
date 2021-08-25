@@ -89,7 +89,7 @@ export class TransferenciaComponent implements OnInit {
 
     console.log(origen);
     console.log(destino);
-    
+    this.resetAll()
   }
 
 
@@ -148,4 +148,16 @@ export class TransferenciaComponent implements OnInit {
 
   }
 
+
+  resetAll(){
+    this.fondoOrigen = null 
+    this.fondoDestino = null
+    this.fondos = null
+    this.facturas = null;
+    this.saldoDisponible = 0
+    this.montoATransferir = 0
+    this.comentario = ''
+    this.nro_factura = ''
+    this.fecha_creacion = new Date()
+  }
 }

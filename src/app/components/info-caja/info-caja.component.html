@@ -38,7 +38,7 @@
                                         <small>{{fondo.RUC | ruc}}</small>
                                     </span>
                                 </div>
-                                <div *ngIf="fondo" (click)="fondo = null" class="pointer close-icon ml-2">
+                                <div *ngIf="fondo" (click)="fondo = null; movimientosPrueba = null" class="pointer close-icon ml-2">
                                     <button type="button" (click)="seleccionarFondo(null)"
                                         class="btn btn-sm btn-light"><i class=" ti-close  "></i></button>
                                 </div>
@@ -235,11 +235,21 @@
                             *ngFor="let item of movimientosPrueba | paginate: { itemsPerPage: 100,totalItems:count, currentPage: page }; let i = index;">
                             <td>{{i+1}}</td>
                             <td>
-                                <div *ngIf="item.tipo == 'INGRESO'">
+                                <div *ngIf="item.tipo == 'INGRESO' && item.factura">
                                     <a [routerLink]="['/admin/ingreso', item.factura]" routerLinkActive="router-link-active">
                                         <i class="mdi mdi-information"> </i>
                                     </a>
                                 </div>
+                                <div *ngIf="item.tipo == 'EGRESO' && item.movimiento">
+                                    <a [routerLink]="['/admin/gasto', item.movimiento]" routerLinkActive="router-link-active">
+                                        <i class="mdi mdi-information"> </i>
+                                    </a>
+                                </div>  
+                                <div *ngIf="item.tipo == 'INGRESO' && item.movimiento">
+                                    <a [routerLink]="['/admin/gasto', item.movimiento]" routerLinkActive="router-link-active">
+                                        <i class="mdi mdi-information"> </i>
+                                    </a>
+                                </div>  
                                  
                             </td>
                             <!-- fecha -->

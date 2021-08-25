@@ -11,6 +11,8 @@ import { Component, OnInit } from '@angular/core';
 import { SwalPortalTargets, SwalDirective } from '@sweetalert2/ngx-sweetalert2';
 import swal from 'sweetalert2';
 import { FacturaService } from 'src/app/services/factura.service';
+import { Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-editar-contrato',
@@ -34,6 +36,7 @@ export class EditarContratoComponent implements OnInit {
   opacity = 'disable';
   cliente: Usuario;
   clientes: Usuario[] = null;
+  alternativos: Usuario[] = null;
   productos: Producto[] = null;
   vendedores: Usuario[] = null;
   clientesSearch = this.clientes;
@@ -50,6 +53,7 @@ export class EditarContratoComponent implements OnInit {
   cobrador: Usuario;
   plazo: number;
   contrato: Contrato;
+  clientesAlternativo: Usuario[] = null;
   montoCuotas;
   model = '2020-03-12';
   radioLugarCobranza = 'particular';
@@ -125,9 +129,17 @@ export class EditarContratoComponent implements OnInit {
   facturaMantenimiento;
   montoTotal: any = {}
   facturaOptions
+  inputClientes = new Subject<string>();
+  loadingClientes = false;
+  inputAlternativo = new Subject<string>();
+  loadingAlternativo = false;
+  inputVendedor = new Subject<string>();
+  loadingVendedor = false;
+  inputCobrador = new Subject<string>();
+  loadingCobrador = false;
   async ngOnInit() {
     const date = new Date();
-
+    this.observableBuscadores()
     this.id = this.route.snapshot.paramMap.get('id');
     this.contrato = await this._contratoService.getContratoById(this.id);
     this.saldoOriginal = this.calcularSaldoPendiente(this.contrato)
@@ -143,9 +155,9 @@ export class EditarContratoComponent implements OnInit {
     this.fechaMantenimiento = new Date(new Date(new Date().setFullYear(date.getFullYear() + 1, 0, 5)).setHours(0, 0, 0, 0));
     console.log(this.fechaMantenimiento);
 
-    this.facturaOptions = { contrato: this.contrato._id, get_total:'1' };
-    const respFacturas = await this._facturaService.getFacturasOptions(this.facturaOptions,  {key:'vencimiento', value: 1});
-    
+    this.facturaOptions = { contrato: this.contrato._id, get_total: '1' };
+    const respFacturas = await this._facturaService.getFacturasOptions(this.facturaOptions, { key: 'vencimiento', value: 1 });
+
     this.montoTotal = respFacturas.montoTotal;
 
     this.cliente = this.contrato.titular;
@@ -292,12 +304,12 @@ export class EditarContratoComponent implements OnInit {
     }
 
 
-if (this.esPsm) {
-  tipoContrato = 'psm'
-  
-}
+    if (this.esPsm) {
+      tipoContrato = 'psm'
+
+    }
     this.contrato.id_contrato = new Date().getTime().toString(),   // se puede quitar
-      this.contrato.cobrador = this.cobrador || {},
+      // this.contrato.cobrador = this.cobrador || {},
       this.contrato.cuota = this.montoCuotas,
       this.contrato.entrega = this.entrega,
       this.contrato.id_servicio = this.producto.ID_PRODUCTO, // se puede quitar
@@ -306,15 +318,15 @@ if (this.esPsm) {
       // this.contrato.precio_total = this.producto.PRECIO_MAYORISTA,
 
       this.contrato.producto = this.producto,
-      this.contrato.titular = this.cliente,
+      // this.contrato.titular = this.cliente,
       this.contrato.activo = '1',
-      this.contrato.vendedor = this.vendedor,
+      // this.contrato.vendedor = this.vendedor,
       this.contrato.fecha_creacion_unix = this.fecha_creacion.getTime();  // falta poner campode fecha para poder modificar
 
 
     const send = {
       contrato: this.contrato,
-       fechaPago: this.fechaPago ? this.fechaPago : new Date()
+      fechaPago: this.fechaPago ? this.fechaPago : new Date()
     };
     this.guardando = true;
     await this._contratoService.updateContrato(send, this.editarproducto, tipoContrato).then(() => {
@@ -337,6 +349,12 @@ if (this.esPsm) {
   async searchClientes(val: any) {
     if (val.term.length > 0) {
       this.clientes = await this._usuarioService.buscarUsuarios('CLIENTES', val.term);
+
+    }
+  }
+  async searchClientesAlternativos(val: any) {
+    if (val.term.length > 0) {
+      this.alternativos = await this._usuarioService.buscarUsuarios('CLIENTES', val.term);
 
     }
   }
@@ -520,5 +538,64 @@ if (this.esPsm) {
     this.calcularSaldoPendiente(this.contrato)
 
   }
+
+  observableBuscadores() {
+    this.inputClientes.pipe(
+
+      debounceTime(200),
+      distinctUntilChanged()
+    )
+      .subscribe(async (txt) => {
+        if (!txt) {
+          return;
+        }
+        this.loadingClientes = true;
+        this.clientes = await this._usuarioService.buscarUsuarios('CLIENTES', txt);
+        this.loadingClientes = false;
+      });
+
+    this.inputAlternativo.pipe(
+
+      debounceTime(200),
+      distinctUntilChanged()
+    )
+      .subscribe(async (txt) => {
+        if (!txt) {
+          return;
+        }
+        this.loadingAlternativo = true;
+        this.clientesAlternativo = await this._usuarioService.buscarUsuarios('CLIENTES', txt);
+        this.loadingAlternativo = false;
+      });
+    this.inputVendedor.pipe(
+
+      debounceTime(200),
+      distinctUntilChanged()
+    )
+      .subscribe(async (txt) => {
+        if (!txt) {
+          return;
+        }
+        this.loadingVendedor = true;
+        this.vendedores = await this._usuarioService.buscarUsuarios('VENDEDORES', txt);
+        console.log(this.vendedores);
+
+        this.loadingVendedor = false;
+      });
+    this.inputCobrador.pipe(
+
+      debounceTime(200),
+      distinctUntilChanged()
+    )
+      .subscribe(async (txt) => {
+        if (!txt) {
+          return;
+        }
+        this.loadingCobrador = true;
+        this.cobradores = await this._usuarioService.buscarUsuarios('COBRADORES', txt);
+        this.loadingCobrador = false;
+      });
+  }
+
 
 }

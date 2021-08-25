@@ -109,7 +109,7 @@ export class MovimientosComponent implements OnInit {
     this.initializeWithLocalStorage();
   }
 
-  async revisarRuta(){
+  async revisarRuta() {
     // if (this.route.snapshot.queryParams['proveedor']) {
     //  this.proveedor = await this._usuarioService.getUsuarioPorId(this.route.snapshot.queryParams['proveedor'])
     // }
@@ -332,6 +332,20 @@ export class MovimientosComponent implements OnInit {
     }
   }
   resetAll() {
+    this.fondos = null;
+    this.fondo = null;
+    this.cliente = null;
+    this.clientes = null;
+    this.clientes = null;
+    this.proveedor = null;
+    this.proveedores = null;
+    this.nroFacturaProveedor = null;
+    this.comentario = null;
+    this.monto = null;
+    this.nro = null;
+    this.cuentaGasto = null;
+    this.contrato = null;
+    this.fechaCreacion = new Date()
     this.resetBreadcrumb();
     this.ngOnInit();
   }
@@ -483,10 +497,10 @@ export class MovimientosComponent implements OnInit {
     //   });
   }
 
-  removeQueryParam(key){
+  removeQueryParam(key) {
     // let queryParams: Params = {... this.route.snapshot.queryParams}
     // delete queryParams[key]
-     
+
     // this.router.navigate(
     //   [],
     //   {

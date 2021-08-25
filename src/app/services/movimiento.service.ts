@@ -71,6 +71,20 @@ export class MovimientoService {
         return resp.movimiento;
       });
   }
+  eliminarGasto(id?) {
+    let url = `${URL_SERVICIOS}/movimientos/delete_gasto`;
+    url += `?token=${this._usuarioService.token}`;
+    id ? (url += `&id=${id}`) : null;
+    return this.http
+      .delete(url)
+      .toPromise()
+      .then((resp: any) => {
+        swal.fire(resp.message, '', 'success')
+        return {}
+      }, (err) => {
+        swal.fire('Error', err.error.message, 'error')
+      });
+  }
   getCuentasAbaco(tipoCuenta?) {
     let url = `${URL_SERVICIOS}/movimientos/get_cuentas_abaco`;
     url += `?token=${this._usuarioService.token}`;
@@ -194,7 +208,7 @@ export class MovimientoService {
     let url = `${URL_SERVICIOS}/movimientos/get_cuenta_gasto_by_ctapadre`;
     url += `?token=${this._usuarioService.token}`;
     url += `&ctapadre=${ctapadre}`
-     return this.http
+    return this.http
       .get(url)
       .toPromise()
       .then((resp: any) => {
