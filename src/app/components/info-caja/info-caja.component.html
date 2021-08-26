@@ -217,12 +217,13 @@
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '15px'}">#</th>
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '30px'}">info</th>
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '120px'}">fecha</th>
+                            <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '120px'}">Nro. Cuota</th>
+
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '120px'}">Conciliado</th>
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '120px'}">Ingreso</th>
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '120px'}">Egreso</th>
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '120px'}">Saldo</th>
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '120px'}">Nro. Contrato</th>
-                            <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '120px'}">Nro. Cuota</th>
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '200px'}">Cliente</th>
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '100px'}">Servicio</th>
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '400px'}">Cuenta Gasto</th>
@@ -254,6 +255,17 @@
                             </td>
                             <!-- fecha -->
                             <td [ngClass]="'text-center'">{{item.fecha | date: 'dd-MM-YY'}}</td>
+                             <!-- nro factura -->
+                             <td [ngClass]="'text-center'">
+                                <div *ngIf="item.factura">
+                                    <div *ngIf="item.nro_factura >0 ">{{item.nro_factura }}</div>
+                                <div *ngIf="!item.nro_factura">---</div>
+                                </div>
+                                <div *ngIf="item.movimiento">
+                                    <div *ngIf="item.nro_factura">{{item.nro_factura }}</div>
+                                <div *ngIf="!item.nro_factura">---</div>
+                                </div>
+                            </td>
                             <!-- cerrado -->
                             <td [ngClass]="'text-center'">
                                 <div *ngIf="item.cerrado">
@@ -295,11 +307,7 @@
                                 <div *ngIf="item.contrato">{{item.contrato?.nro_contrato | ruc}}</div>
                                 <div *ngIf="!item.contrato?.nro_contrato">---</div>
                             </td>
-                            <!-- nro factura -->
-                            <td [ngClass]="'text-center'">
-                                <div *ngIf="item.nro_factura >0 ">{{item.nro_factura }}</div>
-                                <div *ngIf="!item.nro_factura">---</div>
-                            </td>
+                           
                             <!-- cliente -->
                             <td [ngClass]="'text-center'">
                                 <div *ngIf="item.cliente">

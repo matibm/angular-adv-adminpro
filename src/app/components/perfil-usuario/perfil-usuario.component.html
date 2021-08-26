@@ -172,7 +172,7 @@
                                 <form class="form-material ">
 
                                     <div class="form-group">
-                                        <label for="">Direccion: <b>{{usuario.DIRECCION_TRABAJO}}</b> </label>
+                                        <label for="">Direccion: <b>{{usuario.direccion_laboral}}</b> </label>
 
                                     </div>
                                 </form>
@@ -432,6 +432,7 @@
                                     <th>Nro Factura</th>
                                     <th>Fecha de creacion</th>
                                     <th>Monto</th>
+                                    <th>Estado</th>
 
                                 </tr>
                             </thead>
@@ -440,6 +441,11 @@
                                     <td>{{ item.nro_factura }}</td>
                                     <td> {{item.fecha_creacion | date}} </td>
                                     <td> {{item.monto | currency: '':'':'2.0'}} Gs</td>
+                                    <td> 
+                                    <div *ngIf="item.activo ">Activo</div>    
+                                    <div style="color: red;" *ngIf="!item.activo ">Cancelado</div>    
+                                       
+                                    </td>
                                 </tr>
 
                             </tbody>

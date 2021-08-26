@@ -96,7 +96,7 @@ export class InfoContratoComponent implements OnInit {
       this.esPsv = true;
     }
     // this.facturas = await this._facturaService.getFacturasByContrato(this.contrato._id)
-    this.facturaOptions = { contrato: this.contrato._id, get_total:'1' };
+    this.facturaOptions = { contrato: this.contrato._id, get_total:'1', pagado:false };
     const respFacturas = await this._facturaService.getFacturasOptions(this.facturaOptions,  {key:'vencimiento', value: 1});
     console.log(respFacturas);
     this.montoTotal = respFacturas.montoTotal;

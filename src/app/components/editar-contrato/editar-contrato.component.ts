@@ -137,7 +137,7 @@ export class EditarContratoComponent implements OnInit {
   loadingVendedor = false;
   inputCobrador = new Subject<string>();
   loadingCobrador = false;
-  async ngOnInit() {
+   async ngOnInit() {
     const date = new Date();
     this.observableBuscadores()
     this.id = this.route.snapshot.paramMap.get('id');
@@ -322,7 +322,8 @@ export class EditarContratoComponent implements OnInit {
       this.contrato.activo = '1',
       // this.contrato.vendedor = this.vendedor,
       this.contrato.fecha_creacion_unix = this.fecha_creacion.getTime();  // falta poner campode fecha para poder modificar
-
+      this.contrato.nro_contrato_relacionado = parseInt(this.contrato.nro_contrato_relacionado.toString())
+    
 
     const send = {
       contrato: this.contrato,

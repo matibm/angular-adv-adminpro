@@ -18,6 +18,7 @@ export class Contrato {
         public titular_alternativo?: Usuario,
         public tipo_servicio?: string,
         public lugar_inhumacion?: string,
+        public nro_contrato_relacionado?: number,
         // public v2_precio_total?: number,
         public plazo?: number,
         // public v2_plazo?: string,

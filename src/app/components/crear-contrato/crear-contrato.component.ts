@@ -33,6 +33,7 @@ export class CrearContratoComponent implements OnInit {
   clientesAlternativo: Usuario[] = null;
   notas = ''
   lugar_inhumacion = ''
+  nro_contrato_relacionado: number
   titularAlternativo: Usuario;
   fecha_creacion = new Date();
   fecha_primer_pago = new Date().getTime();
@@ -63,8 +64,8 @@ export class CrearContratoComponent implements OnInit {
   saldoPlusEdad = 0;
   esUdp = false;
   esPsm = false;
-  beneficiarios = [ ]; 
-  inhumados = [ ];
+  beneficiarios = [];
+  inhumados = [];
   pagoInicial: any = {};
   facturas;
   radioValue = 'OFICINA';
@@ -101,7 +102,7 @@ export class CrearContratoComponent implements OnInit {
       value: 'DEBITO'
     },
     {
-      name: 'Transferencia Bancaria',
+      name: 'Cobro Electronico',
       value: 'BANCARIA'
     }
   ];
@@ -113,7 +114,7 @@ export class CrearContratoComponent implements OnInit {
   selectedDate;
 
   facturaMantenimiento;
-   
+
 
   async ngOnInit() {
     this.observableBuscadores();
@@ -255,10 +256,10 @@ export class CrearContratoComponent implements OnInit {
   }
   async crearContrato() {
     if ((await this.verificar_nro_contrato(this.nro_contrato)) === false) {
-      swal.fire('Número de contrato ya existe', '', 'error') 
+      swal.fire('Número de contrato ya existe', '', 'error')
       return
     }
-  
+
     if (!this.facturas && this.pagoradioValue === 'contado') {
       this.plazo = 1;
       this.facturas = this.crearFacturas(this.saldo, 1);
@@ -282,13 +283,14 @@ export class CrearContratoComponent implements OnInit {
       activo: '1',
       vendedor: this.vendedor,
       beneficiarios: this.beneficiarios,
-      saldo_pendiente: this.precioTotal + this.saldoPlusEdad  ,
+      saldo_pendiente: this.precioTotal + this.saldoPlusEdad,
       tipo_pago: this.radioValue,
       inhumados: this.inhumados,
       fecha_creacion_unix: this.fecha_creacion.getTime(),
       utilizado,
       notas: this.notas,
-      lugar_inhumacion: this.lugar_inhumacion
+      lugar_inhumacion: this.lugar_inhumacion,
+      nro_contrato_relacionado: this.nro_contrato_relacionado
     };
     if (this.esUdp) {
       nuevo_contrato.manzana = this.manzana;
@@ -297,7 +299,7 @@ export class CrearContratoComponent implements OnInit {
       nuevo_contrato.sector = this.sector;
 
     }
-    
+
     const send = {
       contrato: nuevo_contrato,
       facturas: null,

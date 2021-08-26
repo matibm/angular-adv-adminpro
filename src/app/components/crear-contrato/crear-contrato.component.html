@@ -361,7 +361,7 @@
                                             <input type="text" class="form-control" [(ngModel)]="item.nombre" name="nadsme-{{i}}" placeholder="nombre completo">
                                         </td>
                                         <td>
-                                            <input type="text" class="form-control" [(ngModel)]="item.doc" name="nvfame-{{i}}" placeholder="cedula de identidad">
+                                            <input type="text" class="form-control" [(ngModel)]="item.ci" name="nvfame-{{i}}" placeholder="cedula de identidad">
                                         </td>
 
                                         <td>
@@ -612,13 +612,16 @@
                                 <h4>Notas</h4>
                                 <textarea class="form-control" [(ngModel)]="notas" name="notas"
                                 id="notas" rows="5"></textarea>
-                            </div>
+                            </div>  
                         </div>
                     </div>
                     <div class="col-xs  col-md">
                         <div class="card">
                             <div class="card-body">
-                                <h4>Lugar de Inhumación</h4>
+                                <h4>Relacionar Contrato</h4>
+                                <input class="form-control" type="number" placeholder="nro de contrato sin puntos" [(ngModel)]="nro_contrato_relacionado" name="contrato_relacionado"
+                                id="contrato_relacionado" >
+                                <h4 class="mt-3 ">Lugar de Inhumación</h4>
                                 <input class="form-control" [(ngModel)]="lugar_inhumacion" name="lugar_inhumacion"
                                 id="lugar_inhumacion" >
                             </div>

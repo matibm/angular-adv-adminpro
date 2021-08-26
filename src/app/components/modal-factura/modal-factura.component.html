@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button style="width: 143.84px;" [disabled]="loadingCancelarPago || facturaPDF?.activo === false" (click)="cancelarPago()" class="btn btn-rounded btn-inverse">
+                    <button style="width: 143.84px;" [disabled]="loadingCancelarPago || facturaPDF?.activo === false" (click)="cancelarPago()" class="btn btn-rounded mr-auto btn-inverse">
                         <span *ngIf="!loadingCancelarPago">Cancelar Pago</span>
                         <div *ngIf="loadingCancelarPago" style="width: 100%;">
                             <div style="display: flex;">
