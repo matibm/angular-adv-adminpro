@@ -388,24 +388,24 @@
                                                 <label #edad for="">{{ item.fecha_nacimiento | edad}}</label>
                                             </td>
                                             <td>
-                                                <div [ngClass]="{'has-danger': edadPipe.transform(item.fecha_nacimiento) > 64  && !item.plus_edad}"
+                                                <div [ngClass]="{'has-danger': false}"
                                                     class="form-group ">
                                                     <input
-                                                        [required]="edadPipe.transform(item.fecha_nacimiento) > 64  && !item.plus_edad"
+                                                        
                                                         type="text" class="form-control fcorm-control-danger "
                                                         [(ngModel)]="item.plus_edad" name="name-{{i}}"
                                                         (ngModelChange)="calcularPrecioConPlusPorEdad()"
                                                         placeholder="plus por edad">
                                                     <div>
                                                         <small class="form-control-feedback "
-                                                            *ngIf=" edadPipe.transform(item.fecha_nacimiento)  > 64  && !item.plus_edad">plus
+                                                            *ngIf=" false">plus
                                                             por edad es
                                                             obligatorio</small>
                                                     </div>
                                                     <div>
-                                                        <small class="form-control-feedback"
+                                                        <!-- <small class="form-control-feedback"
                                                             *ngIf="i > 2 && !item.plus_edad">plus
-                                                            por cantidad es obligatorio</small>
+                                                            por cantidad es obligatorio</small> -->
                                                     </div>
                                                 </div>
                                             </td>

@@ -322,7 +322,7 @@ export class EditarContratoComponent implements OnInit {
       this.contrato.activo = '1',
       // this.contrato.vendedor = this.vendedor,
       this.contrato.fecha_creacion_unix = this.fecha_creacion.getTime();  // falta poner campode fecha para poder modificar
-      this.contrato.nro_contrato_relacionado = parseInt(this.contrato.nro_contrato_relacionado.toString())
+      this.contrato.nro_contrato_relacionado = parseInt(this.contrato?.nro_contrato_relacionado?.toString() ||'0') || 0
     
 
     const send = {
