@@ -284,7 +284,7 @@ export class EditarContratoComponent implements OnInit {
     if (this.esPsm && this.saldoOriginal != this.saldo) {
 
       this.editarproducto = true
-      this.contrato.saldo_pendiente = this.saldo
+      this.contrato.saldo_pendiente = this.montoTotal.deuda
 
       if (!this.plazo) {
         return swal.fire({
@@ -295,7 +295,7 @@ export class EditarContratoComponent implements OnInit {
       }
     }
     if (this.editarproducto) {
-      this.contrato.saldo_pendiente = this.saldo
+      this.contrato.saldo_pendiente = this.montoTotal.deuda
 
     }
     if (!this.facturas && this.pagoradioValue === 'contado' && this.fechaPago) {
