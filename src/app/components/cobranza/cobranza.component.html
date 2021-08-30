@@ -128,22 +128,23 @@
     <div class="card-body">
         <h4> <span class="lstick"></span>Cuotas a pagar</h4>
         <small>Contrato # {{contrato.nro_contrato | ruc}} </small>
-        <div class="my-3 d-flex">
-            <div class="mx-auto">
-                <div class="form-group">
-                    <input type="number" class="form-control" #montoAPagar name="" id="" aria-describedby="helpId"
-                        placeholder="ingresar monto a pagar">
+        <form (ngSubmit)="getFacturasApagar(contrato._id, montoAPagar.value)" #form="ngForm">
+            <div class="my-3 d-flex">
+                <div class="mx-auto">
+                    <div class="form-group">
+                        <input type="number" class="form-control" #montoAPagar name="" id="" aria-describedby="helpId"
+                            placeholder="ingresar monto a pagar">
+                    </div>
                 </div>
-            </div>
 
-        </div>
-        <div class="d-flex">
-            <div class="mx-auto">
-                <button (click)="getFacturasApagar(contrato._id, montoAPagar.value)"
-                    class="btn btn-info">calcular</button>
             </div>
+            <div class="d-flex">
+                <div class="mx-auto">
+                    <button type="submit" class="btn btn-info">calcular</button>
+                </div>
 
-        </div>
+            </div>
+        </form>
         <div class="" *ngIf="facturasAPagar">
 
             <div class="card">
@@ -361,18 +362,19 @@
 <div class="" style="width: 100%;">
     <div style="display: flex;">
         <div class="ml-auto">
-            <button type="button" [routerLink]="['/admin/crear_ingreso']" routerLinkActive="router-link-active" class="btn btn-info mx-auto">Crear Nuevo Ingreso</button>
+            <button type="button" [routerLink]="['/admin/crear_ingreso']" routerLinkActive="router-link-active"
+                class="btn btn-info mx-auto">Crear Nuevo Ingreso</button>
 
-            <button   (click)="reset()" class="btn mx-2 btn-inverse">
-                <span   > Reestablecer</span>
-                 
+            <button (click)="reset()" class="btn mx-2 btn-inverse">
+                <span> Reestablecer</span>
+
 
             </button>
             <button (click)="facturaPdf = crearPDF(facturasAPagarAux) ;showPDF = true"
-                [disabled]="facturasAPagarAux.length < 1" class="btn mx-2 btn-info">Vista
-                previa PDF</button>
-            <button [disabled]="!loadingConfirmarPago" style="width: 138px;" (click)="confirmarPago( )" [disabled]="!fondo || facturasAPagarAux.length < 1"
-                class="btn mx-2 btn-success">
+                [disabled]="facturasAPagarAux.length < 1" class="btn mx-2 btn-info">
+                Vista previa PDF</button>
+            <button [disabled]="!loadingConfirmarPago" style="width: 138px;" (click)="confirmarPago( )"
+                [disabled]="!fondo || facturasAPagarAux.length < 1" class="btn mx-2 btn-success">
                 <span *ngIf="!loadingConfirmarPago">Confirmar Pago</span>
                 <div *ngIf="loadingConfirmarPago" style="width: 100%;">
                     <div style="display: flex;">

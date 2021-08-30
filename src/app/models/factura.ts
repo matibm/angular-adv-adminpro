@@ -25,6 +25,7 @@ export class Factura {
         public nombre_caja?: string,
         public obs?: string,
         public vencimiento?: string,
+        public nro_factura?: number,
         public contado?: string,
         public credito?: string,
         public plazo?: string,

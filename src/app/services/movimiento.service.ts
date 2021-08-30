@@ -4,6 +4,8 @@ import { UsuarioService } from './usuario.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import swal from 'sweetalert2';
+import { Interface } from 'readline';
+import { Movimiento } from '../models/movimiento';
 
 @Injectable({
   providedIn: 'root',
@@ -171,7 +173,7 @@ export class MovimientoService {
         return resp.cuenta;
       });
   }
-  getAllMovimientos(options?) {
+  getAllMovimientos(options?): Promise<getAllMovimientos> {
     let url = `${URL_SERVICIOS}/movimientos/all`;
     url += `?token=${this._usuarioService.token}`;
     if (options) {
@@ -378,4 +380,11 @@ export class MovimientoService {
         return resp;
       });
   }
+}
+
+interface getAllMovimientos {
+  ok: boolean,
+  movimientos: Movimiento[],
+  total: any,
+  count: number
 }

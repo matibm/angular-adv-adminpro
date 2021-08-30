@@ -15,6 +15,7 @@ import {
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { Observable, Subject, Subscriber } from 'rxjs';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { MovimientoOptions } from 'src/app/models/interfaces/MovimientoOptions';
 
 @Component({
   selector: 'app-movimientos',
@@ -67,6 +68,7 @@ export class MovimientosComponent implements OnInit, OnDestroy {
   tipoEdicion
   editandoCuentaGasto = false
   secction = 'listaGastos'
+  movimientosOptions: MovimientoOptions = {}
   constructor(
     public _movimientoService: MovimientoService,
     public _usuarioService: UsuarioService,
@@ -94,8 +96,7 @@ export class MovimientosComponent implements OnInit, OnDestroy {
     this.movimientos = await this._movimientoService.getMovimientos();
 
     this.servicios = await this._productoService.getProductos();
-    // this.loading = true;
-    this.tipos_movimiento = await this._movimientoService.getTipoMovimiento();
+     this.tipos_movimiento = await this._movimientoService.getTipoMovimiento();
     this.dataSource.data = this.tipos_movimiento;
 
     //this.movimientos);
@@ -105,8 +106,7 @@ export class MovimientosComponent implements OnInit, OnDestroy {
       ''
     );
     this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', '');
-    this.loading = false;
-    this.initializeWithLocalStorage();
+    this.loading = false; 
   }
 
   async revisarRuta() {

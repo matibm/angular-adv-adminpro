@@ -7,6 +7,7 @@
                 <tr>
                     <th>#</th>
                     <th>Fondo</th>
+                    <th>Nro Factura</th>
                     <th style="min-width: 120px;">Fecha</th>
                     <th>Nombre</th>
                     <th style="width: 25%;">Comentario</th>
@@ -15,13 +16,15 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of movimientos; let i = index;" [ngClass]="'pointer'">
-                    <td>{{i+1}}</td>
+                <tr *ngFor="let item of movimientos | paginate: { itemsPerPage: 10,totalItems:count, currentPage: page } ; let i = index; " [ngClass]="'pointer'">
+                    <td>{{page*10 + (i+1) - 10}}</td>
                     <td *ngIf="item.fondo">{{item.fondo.RAZON}}</td>
                     <td *ngIf="!item.fondo">--</td>
+                    <td>{{item.nro_comp_banco}}</td>
+
                     <td>
                         {{item.fecha_creacion_unix | date:' d, MMM y'}}
-                        <br> {{item.fecha_creacion_unix | date:' h:mm a'}}
+                        <!-- <br> {{item.fecha_creacion_unix | date:' h:mm a'}} -->
 
 
                     </td>
@@ -30,11 +33,19 @@
 
 
                     <td *ngIf="item.monto_haber">{{item.monto_haber | currency: '':'':'2.0'}} Gs</td>
-                    <td *ngIf="item.monto_total" class="text-danger">-{{item.monto_total | currency: '':'':'2.0'}} Gs</td>
+                    <td *ngIf="item.monto_total"  >{{item.monto_total | currency: '':'':'2.0'}} Gs</td>
 
                 </tr>
 
             </tbody>
         </table>
+        <div style="width: 100%;">
+            <div style="display: flex;">
+                <div class="mx-auto">
+                    <pagination-controls *ngIf="count>10" (pageChange)="pageChanged($event); page = $event">
+                    </pagination-controls>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

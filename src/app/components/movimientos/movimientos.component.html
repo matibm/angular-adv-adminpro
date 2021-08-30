@@ -644,7 +644,8 @@
                     </div>
                 </div>
                 <div class="tab-pane " id="listaGastos" [ngClass]="{'active': secction === 'listaGastos'}" role="tabpanel">
-                    <table *ngIf="!showCrearMovimiento && movimientos.length>0"
+                    <app-lista-movimientos  [options]="movimientosOptions"></app-lista-movimientos>
+                    <!-- <table *ngIf="!showCrearMovimiento && movimientos.length>0"
                         class="table full-color-table full-{{'inverse'}}-table hover-table   table-hover">
                         <thead>
                             <tr>
@@ -669,7 +670,7 @@
                             </tr>
 
                         </tbody>
-                    </table>
+                    </table> -->
                 </div>
 
             </div>

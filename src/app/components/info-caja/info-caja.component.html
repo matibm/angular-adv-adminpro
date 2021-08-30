@@ -160,11 +160,7 @@
             </div>
         </div>
     </div>
-
-
-
-
-
+ 
     <!-- <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate">
     </ngx-loading> -->
     <div class="card mb-0">
@@ -217,7 +213,7 @@
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '15px'}">#</th>
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '30px'}">info</th>
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '120px'}">fecha</th>
-                            <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '120px'}">Nro. Cuota</th>
+                            <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '180px'}">Nro. Cuota/Factura</th>
 
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '120px'}">Conciliado</th>
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '120px'}">Ingreso</th>
@@ -242,12 +238,12 @@
                                     </a>
                                 </div>
                                 <div *ngIf="item.tipo == 'EGRESO' && item.movimiento">
-                                    <a [routerLink]="['/admin/gasto', item.movimiento]" routerLinkActive="router-link-active">
+                                    <a [routerLink]="['/admin/gasto', item.movimiento._id]" routerLinkActive="router-link-active">
                                         <i class="mdi mdi-information"> </i>
                                     </a>
                                 </div>  
                                 <div *ngIf="item.tipo == 'INGRESO' && item.movimiento">
-                                    <a [routerLink]="['/admin/gasto', item.movimiento]" routerLinkActive="router-link-active">
+                                    <a [routerLink]="['/admin/gasto', item.movimiento._id]" routerLinkActive="router-link-active">
                                         <i class="mdi mdi-information"> </i>
                                     </a>
                                 </div>  
@@ -262,8 +258,8 @@
                                 <div *ngIf="!item.nro_factura">---</div>
                                 </div>
                                 <div *ngIf="item.movimiento">
-                                    <div *ngIf="item.nro_factura">{{item.nro_factura }}</div>
-                                <div *ngIf="!item.nro_factura">---</div>
+                                    <div *ngIf="item.movimiento.nro_comp_banco">{{item.movimiento.nro_comp_banco }}</div>
+                                <div *ngIf="!item.movimiento.nro_comp_banco">---</div>
                                 </div>
                             </td>
                             <!-- cerrado -->
@@ -328,19 +324,19 @@
                             </td>
                             <!-- proveedor -->
                             <td [ngClass]="'text-center'">
-                                <div *ngIf="item.nombre">
-                                    {{item.nombre}}
+                                <div *ngIf="item.movimiento">
+                                    {{item.movimiento.nombre}}
                                 </div>
-                                <div *ngIf="!item.nombre">
-                                    nombre de gasto falta
+                                <div *ngIf="!item.movimiento">
+                                    ---
                                 </div>
                             </td>
 
                             <td [ngClass]="'text-center'">
-                                <div *ngIf="item.proveedor">
-                                    {{item.proveedor?.APELLIDOS}} {{item.proveedor?.NOMBRES}}
+                                <div *ngIf="item.movimiento">
+                                    {{item.movimiento.proveedor?.APELLIDOS | primerNombre}} {{item.movimiento.proveedor?.NOMBRES | primerNombre}}
                                 </div>
-                                <div *ngIf="!item.proveedor">
+                                <div *ngIf="!item.movimiento">
                                     ---
                                 </div>
                             </td>

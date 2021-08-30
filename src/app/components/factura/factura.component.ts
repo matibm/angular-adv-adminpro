@@ -5,7 +5,8 @@ import { FacturaService } from '../../services/factura.service';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { CuotaService } from '../../services/cuota.service';
 import { Component, OnInit } from '@angular/core';
-import { filter } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-factura',
@@ -36,10 +37,15 @@ export class FacturaComponent implements OnInit {
   facturapdf
   nombreFactura;
   rucFactura;
+  cobrador: Usuario;
+  cobradores;
   telFactura;
   fechaPago = new Date()
   direccionFactura;
+  inputCobrador = new Subject<string>();
+
   async ngOnInit() {
+    this.observableBuscadores()
     if (this.primeraEjecucion) {
       this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((e: NavigationEnd) => {
         this.ngOnInit();
@@ -52,47 +58,52 @@ export class FacturaComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id');
 
     await this.initialize();
-    this.facturaPdf = {
-      nombres: `${this.factura.titular.NOMBRES} ${this.factura.titular.APELLIDOS}`,
-      fecha: this.fechaPago.getTime(),
-      direccion: `${this.factura.titular.direccion_particular}`,
-      ruc: this.factura.titular.RUC,
-      tel: this.factura.titular.TELEFONO1,
-      notaDeRemision: '123123',
-      nro_factura: this.factura.cobrador.nro_factura_actual,
-      numero: this.factura.cobrador.nro_talonario,
-      servicios: [
-        {
-          cantidad: 1,
-          concepto: this.factura.servicio.NOMBRE,
-          precioUnitario: this.factura.haber,
-          cincoPorciento: null,
-          diezPorciento: this.factura.haber / 11,
-        }
-      ]
-    };
-
+    
     console.log(this.factura);
 
-
-    this.nombreFactura = `${this.factura.titular.NOMBRES} ${this.factura.titular.APELLIDOS}`;
-    this.rucFactura = this.factura.titular.RUC;
-    this.telFactura = this.factura.titular.TELEFONO1;
-    this.direccionFactura = this.factura.titular.DIRECCION;
   }
 
   async initialize() {
     this.fondo = null;
 
+    this._usuarioService.buscarUsuarios('BANCOS', '').then(data => {
+      this.fondos = data
+    })
+
+
     if (this.id) {
       this.factura = await this._facturaService.getFacturaById(this.id);
-      this.parciales = (await this._facturaService.getFacturasParcial(this.id)).facturas;
+      this.facturaPdf = {
+        nombres: `${this.factura.titular.NOMBRES} ${this.factura.titular.APELLIDOS}`,
+        fecha: this.fechaPago.getTime(),
+        direccion: `${this.factura.titular.direccion_particular}`,
+        ruc: this.factura.titular.RUC,
+        tel: this.factura.titular.TELEFONO1,
+        notaDeRemision: '123123',
+        nro_factura: this.factura.cobrador.nro_factura_actual,
+        numero: this.factura.cobrador.nro_talonario,
+        servicios: [
+          {
+            cantidad: 1,
+            concepto: this.factura.servicio.NOMBRE,
+            precioUnitario: this.factura.haber,
+            cincoPorciento: null,
+            diezPorciento: this.factura.haber / 11,
+          }
+        ]
+      };
       if (this.factura.fondo) {
         this.fondo = this.factura.fondo;
       }
+
+      this.nombreFactura = `${this.factura.titular.NOMBRES} ${this.factura.titular.APELLIDOS}`;
+      this.rucFactura = this.factura.titular.RUC;
+      this.telFactura = this.factura.titular.TELEFONO1;
+      this.direccionFactura = this.factura.titular.DIRECCION;
+      this.parciales = (await this._facturaService.getFacturasParcial(this.id)).facturas;
+      
       console.log(this.factura);
 
-      this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', '');
 
     }
   }
@@ -108,11 +119,13 @@ export class FacturaComponent implements OnInit {
     const any: any = this.factura;
     const factura: Factura = any;
     factura.fondo = this.fondo;
-    let id 
+    let id
 
     if (this.crearParcial && this.montoparcial > 0) {
       let body = {
         factura,
+        cobrador: this.cobrador?._id || this.factura.cobrador?._id,
+
         fecha_pago: this.fechaPago,
         comentario: '',
         nombre: this.nombreFactura,
@@ -123,14 +136,15 @@ export class FacturaComponent implements OnInit {
         nro_factura: this.factura.cobrador.nro_factura_actual + 1,
         nro_talonario: this.factura.cobrador.nro_talonario,
       }
-     let data = await this._facturaService.pagarFactura(body, true, this.montoparcial);
-    console.log(data);
+      let data = await this._facturaService.pagarFactura(body, true, this.montoparcial);
+      console.log(data);
 
-     id = data.pago
+      id = data.pago
 
     } else {
       let body = {
         factura,
+        cobrador: this.cobrador?._id || this.factura.cobrador?._id,
         fecha_pago: this.fechaPago,
         comentario: '',
         nombre: this.nombreFactura,
@@ -144,18 +158,18 @@ export class FacturaComponent implements OnInit {
       let data = await this._facturaService.pagarFactura(body)
       id = data.pago
     }
-    
+
     if (id) {
       this.mostrarModal(id)
     }
 
 
-this.ngOnInit()
+    this.ngOnInit()
   }
 
 
 
-  
+
   async searchBancos(val) {
     this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', val.term);
   }
@@ -191,7 +205,7 @@ this.ngOnInit()
   async mostrarModal(id) {
     const resp = await this._facturaService.getDetallePago(id);
     console.log(resp);
-    
+
     const pago = resp.pago;
     const facturas = resp.facturas;
     const servicios = [];
@@ -253,7 +267,7 @@ this.ngOnInit()
           diezPorciento: factura.haber / 11
         });
       }
- 
+
       servicios = fsinrepetir;
     }
     const facturaPDF = {
@@ -265,7 +279,7 @@ this.ngOnInit()
       notaDeRemision: '123123',
       servicios,
       numero: this.factura.cobrador.nro_talonario,
-      nro_factura: this.factura.cobrador.nro_factura_actual +1
+      nro_factura: this.factura.cobrador.nro_factura_actual + 1
     };
     console.log('-----------------------------------------------');
     console.log(facturaPDF);
@@ -273,8 +287,18 @@ this.ngOnInit()
     return facturaPDF;
   }
 
+  loadingCobrador = false
+  observableBuscadores() {
 
-
+    this.inputCobrador.pipe(debounceTime(200), distinctUntilChanged()).subscribe(async (txt) => {
+      if (!txt) {
+        return;
+      }
+      this.loadingCobrador = true;
+      this.cobradores = await this._usuarioService.buscarUsuarios('COBRADORES', txt);
+      this.loadingCobrador = false;
+    });
+  }
 
 
 }

@@ -284,7 +284,7 @@ export class EditarContratoComponent implements OnInit {
     if (this.esPsm && this.saldoOriginal != this.saldo) {
 
       this.editarproducto = true
-      this.contrato.saldo_pendiente = this.montoTotal.deuda
+      this.contrato.saldo_pendiente = this.saldo
 
       if (!this.plazo) {
         return swal.fire({
@@ -294,7 +294,13 @@ export class EditarContratoComponent implements OnInit {
         })
       }
     }
-    if (this.editarproducto) {
+    if (this.esPsm && this.saldoOriginal == this.saldo) {
+
+      this.editarproducto = true
+      this.contrato.saldo_pendiente = this.saldo
+ 
+    }
+    if (this.editarproducto && !this.esPsm) {
       this.contrato.saldo_pendiente = this.montoTotal.deuda
 
     }
@@ -324,6 +330,9 @@ export class EditarContratoComponent implements OnInit {
       this.contrato.fecha_creacion_unix = this.fecha_creacion.getTime();  // falta poner campode fecha para poder modificar
       this.contrato.nro_contrato_relacionado = parseInt(this.contrato?.nro_contrato_relacionado?.toString() ||'0') || 0
     
+      console.log(this.saldo);
+      console.log(this.contrato);
+      
 
     const send = {
       contrato: this.contrato,

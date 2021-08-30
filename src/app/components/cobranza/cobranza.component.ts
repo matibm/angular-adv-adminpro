@@ -363,7 +363,9 @@ export class CobranzaComponent implements OnInit {
       ruc: this.rucFactura,
       tel: this.telFactura,
       notaDeRemision: '123123',
-      servicios
+      servicios,
+      numero: this.cobrador.nro_talonario,
+      nro_factura: this.cobrador.nro_factura_actual + 1
     };
     console.log('-----------------------------------------------');
     console.log(facturaPDF);

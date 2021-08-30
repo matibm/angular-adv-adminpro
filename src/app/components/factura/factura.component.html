@@ -5,7 +5,8 @@
                 <div class="card bg-light">
                     <div class="card-body">
                         <div align="center">
-                            <img class="pointer" [routerLink]="['/admin/info_contrato', factura.contrato._id]" style="width: 70px;" src="{{'CONTRATO' | icon}}" alt="user" />
+                            <img class="pointer" [routerLink]="['/admin/info_contrato', factura.contrato._id]"
+                                style="width: 70px;" src="{{'CONTRATO' | icon}}" alt="user" />
 
                         </div>
                         <h4 class="card-title"><b>Contrato:</b></h4>
@@ -24,7 +25,9 @@
                 <div class="card bg-light">
                     <div class="card-body">
                         <div align="center">
-                            <ngx-avatar class="pointer" [routerLink]="['/admin/usuario', factura.titular._id]" [size]="70" name="{{[factura.titular.NOMBRES, factura.titular.APELLIDOS ] | nombreCorto }}">
+                            <ngx-avatar class="pointer" [routerLink]="['/admin/usuario', factura.titular._id]"
+                                [size]="70"
+                                name="{{[factura.titular.NOMBRES, factura.titular.APELLIDOS ] | nombreCorto }}">
                             </ngx-avatar>
 
                         </div>
@@ -44,7 +47,9 @@
                 <div class="card bg-light">
                     <div class="card-body">
                         <div align="center">
-                            <ngx-avatar class="pointer" [routerLink]="['/admin/usuario', factura.vendedor?._id]" [size]="70" name="{{[factura.vendedor.NOMBRES, factura.contrato.vendedor.APELLIDOS ] | nombreCorto }}">
+                            <ngx-avatar class="pointer" [routerLink]="['/admin/usuario', factura.vendedor?._id]"
+                                [size]="70"
+                                name="{{[factura.vendedor.NOMBRES, factura.contrato.vendedor.APELLIDOS ] | nombreCorto }}">
                             </ngx-avatar>
 
                         </div>
@@ -64,7 +69,9 @@
                 <div class="card bg-light">
                     <div *ngIf="factura.cobrador" class="card-body">
                         <div align="center">
-                            <ngx-avatar class="pointer" [routerLink]="['/admin/usuario', factura.cobrador._id]" [size]="70" name="{{[factura.cobrador.NOMBRES, factura.cobrador.APELLIDOS ] | nombreCorto }}">
+                            <ngx-avatar class="pointer" [routerLink]="['/admin/usuario', factura.cobrador._id]"
+                                [size]="70"
+                                name="{{[factura.cobrador.NOMBRES, factura.cobrador.APELLIDOS ] | nombreCorto }}">
                             </ngx-avatar>
 
                         </div>
@@ -87,14 +94,17 @@
 
                 <h4><b>Fecha de emision:</b> {{factura.fecha_creacion_unix | date:' d, MMM y - h:mm a'}}</h4>
                 <h4><b>Fecha de Vencimientio:</b> {{factura.vencimiento | date:' d, MMM y'}}</h4>
-                <h4 *ngIf="factura.pagado"><b>Fecha de pago:</b> {{factura.fecha_pagado_unix | date:' d, MMM y - h:mm a'}}
+                <h4><b>Nro Cuota: </b> {{factura.nro_factura }}</h4>
+                <h4 *ngIf="factura.pagado"><b>Fecha de pago:</b> {{factura.fecha_pagado_unix |
+                    date:' d, MMM y -h:mma'}}
                 </h4>
                 <h4><b>Monto:</b> {{factura.precio_unitario || factura.haber | currency: '':'':'2.0'}} Gs</h4>
                 <h4><b>Saldo:</b> {{factura.haber | currency: '':'':'2.0'}} Gs</h4>
                 <h4><b>Nota:</b> {{factura.nota}}</h4>
 
                 <h4 *ngIf="factura.parcial">Pago parcial correspondiente a
-                    <a (click)="this.id = factura.parcial._id; initialize()" [routerLink]="['/admin/ingreso', factura.parcial._id]">Factura</a>
+                    <a (click)="this.id = factura.parcial._id; initialize()"
+                        [routerLink]="['/admin/ingreso', factura.parcial._id]">Factura</a>
                 </h4>
                 <h4 *ngIf="factura.link_de_pago"><b>Link de pago:</b>
                     <a [href]="factura.link_de_pago">{{factura.link_de_pago}}</a>
@@ -103,12 +113,16 @@
                 <div style="width: fit-content;">
                     <div style="justify-content: space-between; display: flex;">
                         <h4 class="card-title">Fondo</h4>
-                        <div *ngIf="fondo && !factura.pagado " (click)="fondo = null" class="pointer close-icon ml-auto">
+                        <div *ngIf="fondo && !factura.pagado " (click)="fondo = null"
+                            class="pointer close-icon ml-auto">
                             <button type="button" class="btn btn-sm btn-light"><i class=" ti-close  "></i></button>
                         </div>
                     </div>
                     <div class="" *ngIf="!fondo">
-                        <ng-select [ngStyle]="{minWidth: '300px'}" [items]="fondos" [(ngModel)]="fondo" (ngModelChange)="onSelectFondo( )" (search)="searchBancos($event)" notFoundText="no se encontraron resultados" placeholder="buscar destino fondo" bindLabel="NOMBRES" [searchFn]="customSearchFn">
+                        <ng-select [ngStyle]="{minWidth: '300px'}" [items]="fondos" [(ngModel)]="fondo"
+                            (ngModelChange)="onSelectFondo( )" (search)="searchBancos($event)"
+                            notFoundText="no se encontraron resultados" placeholder="buscar destino fondo"
+                            bindLabel="NOMBRES" [searchFn]="customSearchFn">
                             <ng-template ng-option-tmp let-item="item">
                                 <div>
                                     <div *ngIf="item.APELLIDOS">{{item.APELLIDOS}} {{item.NOMBRES}} </div>
@@ -142,15 +156,19 @@
                 <div class="" *ngIf="parciales">
                     <h4 *ngFor="let item of parciales">
                         <a [routerLink]="['/admin/ingreso', item._id]">
-                            Pago Parcial 
-                        </a> de {{item.haber | currency: '':'':'2.0'}} Gs en {{item.fecha_pagado_unix | date: 'short'}} Hs
+                            Pago Parcial
+                        </a> de {{item.haber | currency: '':'':'2.0'}} Gs en {{item.fecha_pagado_unix | date: 'short'}}
+                        Hs
                     </h4>
                 </div>
 
-                <button *ngIf="!crearParcial" type="button" (click)="crearParcial = true" class="btn btn-light">Crear pago parcial</button>
+                <button *ngIf="!crearParcial" type="button" (click)="crearParcial = true" class="btn btn-light">Crear
+                    pago parcial</button>
                 <div *ngIf="crearParcial" class="form-group">
                     <label for="">monto parcial a pagar</label>
-                    <input type="number" class="form-control" name="montoparcial" [(ngModel)]="montoparcial" (ngModelChange)="verificarMontoParcial(montoparcial)" id="" aria-describedby="helpId" placeholder="">
+                    <input type="number" class="form-control" name="montoparcial" [(ngModel)]="montoparcial"
+                        (ngModelChange)="verificarMontoParcial(montoparcial)" id="" aria-describedby="helpId"
+                        placeholder="">
                     <small *ngIf="!montoparcialCorrecto" id="helpId" class="form-text text-danger">
                         El monto debe ser menor al monto total de la
                         factura</small>
@@ -160,6 +178,16 @@
                     <button type="button" (click)="crearParcial = false" class="btn mt-2 btn-danger">Cancelar</button>
 
                 </div>
+
+                <div style="width: 100%;" *ngIf="!parciales">
+                    <div style="display: flex;">
+                        <div class="my-5 mx-auto">
+                            <mat-spinner></mat-spinner>
+
+                        </div>
+                    </div>
+                </div>
+
 
             </div>
         </div>
@@ -171,66 +199,130 @@
 
 <div *ngIf="factura" class="card">
     <div class="card-body">
-       <div *ngIf="!factura.pagado">
-        <h4>Datos Factura:</h4>
-        <div class="row">
-            <div class="col-xs col-md">
-                <div class="form-group">
-                    <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control" [(ngModel)]="nombreFactura" name="nombre" id="nombre"
-                        aria-describedby="nombreid" placeholder="">
+        <div *ngIf="!factura.pagado">
+            <h4>Datos Factura:</h4>
+            <div class="row">
+                <div class="col-xs col-md">
+                    <div class="form-group">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" class="form-control" [(ngModel)]="nombreFactura" name="nombre" id="nombre"
+                            aria-describedby="nombreid" placeholder="">
+                    </div>
                 </div>
+                <div class="col-xs col-md">
+                    <div class="form-group">
+                        <label for="ruc">RUC/CI</label>
+                        <input type="text" class="form-control" name="ruc" [(ngModel)]="rucFactura" id="ruc"
+                            aria-describedby="rucid" placeholder="">
+                    </div>
+                </div>
+
+                <div class="col-xs col-md">
+                    <div class="form-group">
+                        <label for="tel">Tel</label>
+                        <input type="text" class="form-control" name="tel" [(ngModel)]="telFactura" id="tel"
+                            aria-describedby="telid" placeholder="">
+                    </div>
+                </div>
+
             </div>
-            <div class="col-xs col-md">
-                <div class="form-group">
-                    <label for="ruc">RUC/CI</label>
-                    <input type="text" class="form-control" name="ruc" [(ngModel)]="rucFactura" id="ruc"
-                        aria-describedby="rucid" placeholder="">
+            <div class="form-group">
+                <label for="direccion">direccion</label>
+                <input type="text" class="form-control" name="direccion" [(ngModel)]="direccionFactura" id="direccion"
+                    aria-describedby="direccionid" placeholder="">
+            </div>
+            <div class="row">
+                <div class="col-md col-xs">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Fecha</mat-label>
+                        <input matInput name="asdrdsvet321" [(ngModel)]="fechaPago" [matDatepicker]="pickerPago">
+                        <mat-datepicker-toggle matSuffix [for]="pickerPago">
+                        </mat-datepicker-toggle>
+                        <mat-datepicker #pickerPago></mat-datepicker>
+                    </mat-form-field>
                 </div>
+
+                <div class="col-md col-sx">
+                    <div style="min-width: 300px; ;max-width: min-content;">
+                        <div style="justify-content: space-between;" class="inline-flex">
+                            <h4>Cobrador</h4>
+                            <div *ngIf="cobrador" (click)="cobrador = null; " class="pointer close-icon ml-auto">
+                                <button type="button" class="btn btn-sm btn-light"><i class=" ti-close  "></i></button>
+                            </div>
+                        </div>
+
+                        <div *ngIf="!cobrador">
+
+                            <ng-select [typeahead]="inputCobrador" [loading]="loadingCobrador" [items]="cobradores"
+                                name="dsfdbrdweqcda" [(ngModel)]="cobrador" (ngModelChange)="null"
+                                notFoundText="no se encontraron resultados" placeholder="buscar cobrador"
+                                bindLabel="NOMBRES" [searchFn]="customSearchFn">
+                                <ng-template ng-option-tmp let-item="item">
+                                    <div> {{item.APELLIDOS}} {{item.NOMBRES}} <br>
+                                        <small>{{item.RUC | ruc}}</small>
+                                    </div>
+
+                                </ng-template>
+                            </ng-select>
+
+                        </div>
+
+                        <div class="" *ngIf="cobrador">
+                            <div>
+                                <div *ngIf="cobrador.APELLIDOS">{{cobrador.NOMBRES}} {{cobrador.APELLIDOS}}</div>
+                                <div *ngIf="cobrador.NOMBRES && cobrador.RAZON"> - </div>
+                                <div *ngIf="cobrador.RAZON">{{cobrador.RAZON}} </div>
+                                <small>{{cobrador.RUC | ruc}}</small>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
             </div>
 
-            <div class="col-xs col-md">
-                <div class="form-group">
-                    <label for="tel">Tel</label>
-                    <input type="text" class="form-control" name="tel" [(ngModel)]="telFactura" id="tel"
-                        aria-describedby="telid" placeholder="">
-                </div>
-            </div>
 
         </div>
-        <div class="form-group">
-            <label for="direccion">direccion</label>
-            <input type="text" class="form-control" name="direccion" [(ngModel)]="direccionFactura" id="direccion"
-                aria-describedby="direccionid" placeholder="">
-        </div>
 
-        <mat-form-field appearance="fill">
-            <mat-label>Fecha</mat-label>
-            <input matInput name="asdrdsvet321" [(ngModel)]="fechaPago" [matDatepicker]="pickerPago">
-            <mat-datepicker-toggle matSuffix [for]="pickerPago">
-            </mat-datepicker-toggle>
-            <mat-datepicker #pickerPago></mat-datepicker>
-        </mat-form-field>
-       </div>
-        
+
+
+
         <div *ngIf="!factura.link_de_pago" class="float-right mt-3">
-            <button *ngIf="!isOnline && !factura.pagado && !crearParcial" [disabled]="!fondo || !montoparcialCorrecto" (click)="pagar()" type="button" class="btn mr-2   btn-primary">Pagar</button>
-            <button *ngIf="!isOnline && !factura.pagado && !crearParcial" [disabled]="!fondo || !montoparcialCorrecto" (click)="facturapdf = crearPDF([factura])" type="button" class="btn mr-2   btn-primary">Vista Previa PDF</button>
-            <button *ngIf="!factura.pagado" (click)="_facturaService.elimnarFactura(id);" type="button" class="btn mr-2   btn-danger">Elimnar</button>
-            <button *ngIf="isOnline" (click)="crearLink()" type="button" class="btn mr-2  btn-info">crear Link de pago</button>
-            <button *ngIf="factura.pagado" (click)="mostrarModal(factura.pago)" type="button" class="btn mr-2 btn-rounded btn-inverse">Ver Pago</button>
-            <button *ngIf="!factura.pagado && crearParcial" [disabled]="!fondo || !montoparcialCorrecto" (click)="pagar()" type="button" class="btn mr-2   btn-primary">Pago parcial</button>
+            <button *ngIf="!isOnline && !factura.pagado && !crearParcial" [disabled]="!fondo || !montoparcialCorrecto"
+                (click)="pagar()" type="button" class="btn mr-2   btn-primary">Pagar</button>
+            <button *ngIf="!isOnline && !factura.pagado && !crearParcial" [disabled]="!fondo || !montoparcialCorrecto"
+                (click)="facturapdf = crearPDF([factura])" type="button" class="btn mr-2   btn-primary">Vista Previa
+                PDF</button>
+            <button *ngIf="!factura.pagado" (click)="_facturaService.elimnarFactura(id);" type="button"
+                class="btn mr-2   btn-danger">Elimnar</button>
+            <button *ngIf="isOnline" (click)="crearLink()" type="button" class="btn mr-2  btn-info">crear Link de
+                pago</button>
+            <button *ngIf="factura.pagado" (click)="mostrarModal(factura.pago)" type="button"
+                class="btn mr-2 btn-rounded btn-inverse">Ver Pago</button>
+            <button *ngIf="!factura.pagado && crearParcial" [disabled]="!fondo || !montoparcialCorrecto"
+                (click)="pagar()" type="button" class="btn mr-2   btn-primary">Pago parcial</button>
 
         </div>
         <div *ngIf="factura.link_de_pago" class="float-right mt-3">
             <label for="">Esperando pago online...</label>
 
         </div>
+    </div>
 
+
+
+    <div class="" *ngIf="facturapdf">
+        <app-modal-factura (onClose)="facturapdf = null" [facturaPDF]="facturapdf"></app-modal-factura>
     </div>
 </div>
 
+<div style="width: 100%;" *ngIf="!factura">
+    <div style="display: flex;">
+        <div class="my-5 mx-auto">
+            <mat-spinner></mat-spinner>
 
-<div class="" *ngIf="facturapdf">
-    <app-modal-factura (onClose)="facturapdf = null" [facturaPDF]="facturapdf"></app-modal-factura>
+        </div>
+    </div>
 </div>
