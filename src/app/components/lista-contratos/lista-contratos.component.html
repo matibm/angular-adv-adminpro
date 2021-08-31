@@ -235,7 +235,7 @@
                         <th style="min-width: 120px;" id="nro_contrato" (click)="ordenar('nro_contrato')">Nro. Contrato
                             <i *ngIf="false" class="ml-1 fa fa-sort"></i>
                         </th>
-                        <th style="min-width: 500px;" id="producto" (click)="ordenar('producto')">Servicio o Producto <i
+                        <th style="min-width: 80px;" id="producto" (click)="ordenar('producto')">Servicio <i
                                 *ngIf="false" class="ml-1 fa fa-sort"></i></th>
                         <th style="min-width: 200px;">Cliente </th>
                         <th style="min-width: 120px;">RUC/CI</th>
@@ -255,7 +255,7 @@
                         <td scope="row">{{page*10 + (i+1) - 10}}</td>
                         <td>{{contrato.fecha_creacion_unix | date}}</td>
                         <td>{{contrato.nro_contrato | ruc}}</td>
-                        <td>{{contrato.nombre_servicio}}</td>
+                        <td>{{contrato.producto.COD_CORTO}}</td>
                         <td *ngIf="contrato.titular">{{contrato.titular.NOMBRES | primerNombre}}
                             {{contrato.titular.APELLIDOS | primerNombre}}</td>
                         <td *ngIf="!contrato.titular">---</td>

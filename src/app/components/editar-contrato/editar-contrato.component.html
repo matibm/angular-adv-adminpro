@@ -262,7 +262,11 @@
                                         </div>
                                         <h5 *ngIf="!esPsm">Monto Cuotas: <b>{{montoCuotas | currency:'':'':'2.0' }}
                                                 Gs</b></h5>
-                                        <h5 *ngIf="esPsm">Monto Cuotas: <b>{{saldo | currency:'':'':'2.0' }} Gs</b></h5>
+                                        <h5 *ngIf="esPsm">Monto Cuotas: <b></b></h5>
+                                        <input [disabled]='!editarproducto' name="saldos" type="number"
+                                        class="form-control"  #deuda
+                                        [(ngModel)]="saldo">
+                                        <h5 *ngIf="esPsm"> <b>{{saldo | currency:'':'':'2.0' }} Gs</b></h5>
                                     </div>
                                     <div class="col-md col-xs">
 
