@@ -80,6 +80,9 @@ export class FacturaPdfComponent implements OnInit {
 
   }
 
+  fill = (number, len) => "0".repeat(len - number.toString().length) + number.toString();
+
+
   // crearPDF(facturas) {
   //   let servicios = [];
   //   const contratosSinRepetir = [];

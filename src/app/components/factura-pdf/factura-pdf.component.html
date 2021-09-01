@@ -3,6 +3,13 @@ padding: 0 !important;
 overflow: hidden;
 ">
     <div style="width: 1000px; " class="mx-auto bg-white  ">
+        <div style="width: 100%;">
+            <div style="display: flex;" >
+                <div class="mx-auto">
+                    Factura Autoimpresor
+                </div>
+            </div>
+        </div>
         <div style="margin-left: 16px;" class="mt-3 row mr-3">
             <div class="p-0 col-8">
                 <div style=" padding: 8px;
@@ -43,17 +50,18 @@ overflow: hidden;
                 border: 2px solid;
                 border-radius: 15px;">
                     <span style="font-size: 18px;">
-                        <b>TMBRADO Nº 144542331
-                            <br> Fecha Inicio Vigencia: 09/11/2020
-                            <br> Fecha Fin Vigencia: 30/11/2021
+                        <b>TMBRADO Nº 15074643
+                            <br> Fecha Inicio Vigencia: 01/09/2021
+                            <br> Fecha Fin Vigencia: 30/09/2022
                             <br> RUC: 80022091-9
                         </b>
-                        <div style="display: flex;">
+                        <div style="display: block;">
                             <div>
-                                FACTURA:<br> Nº {{nro_talonario}}
+                                FACTURA Nº: 
                             </div>
-                            <div style="font-size: 28px; margin-left: 16px;" class="text-danger">
-                                {{nro_factura}}
+                             
+                            <div style="font-size: 24px; margin-left: 16px;" class="text-danger">
+                                {{nro_talonario}}-{{fill(nro_factura, 7)}}                               
                             </div>
                         </div>
 
@@ -227,7 +235,6 @@ overflow: hidden;
 
 
             </div>
-
 
             <!-- <div class="row mr-3">
             <div class="col-5">
@@ -469,4 +476,13 @@ overflow: hidden;
         </div> -->
 
         </div>
+
+<div style="margin-left: 50px; text-align:left ;">
+    Autorizado como Autoimpresor por la SET
+    <br>
+    Solicitud Nº 350010010198
+    <br>
+    Fecha: 31/08/2021 
+</div>
     </div>
+ 
