@@ -32,6 +32,40 @@ export class FacturaService {
       return resp.factura;
     });
   }
+  aplicarInteres(options, interes) {
+
+    let url = URL_SERVICIOS + '/factura/aplicar_interes';
+    url += `?token=${this._usuarioService.token}`;
+    if (options) {
+      Object.entries(options).forEach(([key, value]) => {
+        if (value) {
+          url += `&${key}=${value}`;
+        } else if (value == false) {
+          url += `&${key}=${value}`;
+        }
+      });
+    }
+    url += `&interes=${interes}`;
+
+    return this.http.get(url).toPromise().then((resp: any) => {
+      console.log(resp);
+      swal.fire({
+        icon: 'success',
+        title: 'Interes aplicado',
+        // text: 'I will close in 2 seconds.',
+        timer: 3000,
+      });
+      return resp.factura;
+    }, (err) => {
+      console.error(err);
+      swal.fire({
+        icon: 'error',
+        title: 'Ocurrió un error',
+        text: err.error.message,
+
+      });
+    });
+  }
   elimnarFactura(id) {
 
     let url = URL_SERVICIOS + '/factura/eliminar_factura/' + id;
@@ -78,7 +112,7 @@ export class FacturaService {
   }
   async pagarFactura(factura, parcial?: boolean, monto_parcial?: number) {
     console.log(factura);
-    
+
     let url = URL_SERVICIOS + '/factura/pagar';
     url += `?token=${this._usuarioService.token}`;
     // url += `&caja=${caja._id}`;
@@ -194,10 +228,10 @@ export class FacturaService {
 
 
       return resp;
-    }, (error) =>{
+    }, (error) => {
       console.log(error);
-      
-      swal.fire({title: 'error', icon:'error', text: error.error})
+
+      swal.fire({ title: 'error', icon: 'error', text: error.error })
     });
   }
   getFacturasOptions(options?: any, sort?) {
@@ -221,10 +255,10 @@ export class FacturaService {
       console.log('respuesta ');
 
       return resp;
-    }, (error) =>{
+    }, (error) => {
       console.log(error);
-      
-      swal.fire({title: 'error', icon:'error', text: error.error.error})
+
+      swal.fire({ title: 'error', icon: 'error', text: error.error.error })
     });
   }
   getFacturasParcial(facturaId) {

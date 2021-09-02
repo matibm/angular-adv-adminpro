@@ -307,6 +307,25 @@
 </div>
 <app-facturas *ngIf="!showModal" [count]="count" [total]="montoTotal" [options]="opciones" [sort]="sort" [total]="true" [facturas]="facturas"></app-facturas>
 
+<div class="card">
+    <div class="card-body">
+        <div class="d-flex">
+           <div class="mx-auto">
+            <span>Aplicar Interes por mora</span>
+            <div class="form-group">
+                <input type="number" class="form-control" #interes name="" id="" aria-describedby="helpId" placeholder="interes a agregar">
+                <small>EL interes aplicará a todo el filtro establecido</small>
+
+            </div>
+ 
+            <button type="button" (click)="aplicarInteres(interes.value)" class="btn btn-info mx-auto">Aplicar Interes</button>
+           </div>
+        </div>
+    </div>
+</div>
+
+
+
 <div *ngIf="contrato" class="card">
     <div class="card-body">
         <h4> <span class="lstick"></span>Pagar Cuotas</h4>

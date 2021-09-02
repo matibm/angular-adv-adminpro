@@ -260,4 +260,7 @@ export class ListaFacturasComponent implements OnInit {
   }
 
 
+  async aplicarInteres(monto){
+    await this._facturaService.aplicarInteres(this.opciones, monto)
+  }
 }
