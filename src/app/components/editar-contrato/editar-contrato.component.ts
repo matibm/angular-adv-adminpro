@@ -295,8 +295,7 @@ export class EditarContratoComponent implements OnInit {
       }
     }
     if (this.esPsm && this.saldoOriginal == this.saldo) {
-
-      this.editarproducto = true
+ 
       this.contrato.saldo_pendiente = this.saldo
  
     }

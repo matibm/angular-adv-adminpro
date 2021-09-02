@@ -2,7 +2,7 @@
 
     <div id="afuera" class="modal" style="display: block;" role="dialog">
         <div class="modal-dialog modal-xl" role="document">
-            <div class="modal-content">
+            <div *ngIf="style" [ngStyle]="style"  class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Cuentas</h5>
                     <button (click)="onClose.emit()" type="button" class="close" aria-label="Close">

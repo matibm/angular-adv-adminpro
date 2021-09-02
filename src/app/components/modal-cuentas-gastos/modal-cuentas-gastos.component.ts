@@ -17,7 +17,15 @@ export class ModalCuentasGastosComponent implements OnInit {
   treeControl = new NestedTreeControl<any>((node) => node.hijos);
   hasChild = (_: number, node: any) => !!node.hijos && node.hijos.length > 0;
   search;
+  
+  style: any = {};
   async ngOnInit() {
+    const height = window.screen.availHeight;
+    console.log();
+
+    this.style.maxHeight = (height - 150) + 'px';
+    this.style.overflow = 'auto';
+
     this.dataSource.data = await this._movimientoService.getTipoMovimiento();
     console.log(this.dataSource.data);
     this.treeControl.expand(this.dataSource.data[0]);
