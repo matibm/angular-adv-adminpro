@@ -6,18 +6,20 @@ import { UsuarioService } from '../../services/usuario.service';
 import { ProductosService } from '../../services/productos.service';
 import { Producto } from '../../models/producto';
 import { Usuario } from '../../models/usuario';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 // import { Options } from 'select2';
 import { SwalPortalTargets, SwalDirective } from '@sweetalert2/ngx-sweetalert2';
 import swal from 'sweetalert2';
 import { fromEvent, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { NgSelectComponent } from '@ng-select/ng-select';
+
 @Component({
   selector: 'app-crear-contrato',
   templateUrl: './crear-contrato.component.html',
   styleUrls: ['./crear-contrato.component.css']
 })
-export class CrearContratoComponent implements OnInit {
+export class CrearContratoComponent implements OnInit, AfterViewInit {
   constructor(
     public _productoService: ProductosService,
     public _usuarioService: UsuarioService,
@@ -26,7 +28,8 @@ export class CrearContratoComponent implements OnInit {
     public router: Router,
 
   ) { }
-
+  @ViewChild('select') select: any;
+  @ViewChild('productsearch', { static: false }) productsearch;
 
   cliente: Usuario;
   clientes: Usuario[] = null;
@@ -115,10 +118,17 @@ export class CrearContratoComponent implements OnInit {
 
   facturaMantenimiento;
 
+  ngAfterViewInit() {
+    this.productsearch.focus();
 
+  }
   async ngOnInit() {
     this.observableBuscadores();
+    setTimeout(() => {
 
+
+
+    }, 100);
     const date = new Date();
 
     this.fechaMantenimiento = new Date(`${date.getFullYear() + 1}-01-05`);

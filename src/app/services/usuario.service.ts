@@ -71,7 +71,7 @@ export class UsuarioService {
     let url = `${URL_SERVICIOS}/usuario/search/${tipo}`;
     url += `?token=${this.token}`;
     url += `&query=${busqueda}`;
-    return this.http.get(url).toPromise().then((resp: any) => {
+    return this.http.post(url, {type: tipo, query: busqueda}).toPromise().then((resp: any) => {
       return resp.usuarios;
     });
   }

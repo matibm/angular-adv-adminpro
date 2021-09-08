@@ -392,7 +392,7 @@ export class MovimientosComponent implements OnInit, OnDestroy {
 
   }
 
-  crearCuentaGasto(id, nombre, categoria, cuentaAbaco) {
+  async crearCuentaGasto(id, nombre, categoria, cuentaAbaco) {
     let cuenta = {
       descripcion: nombre,
       ctapadre: categoria.cuenta,
@@ -401,7 +401,8 @@ export class MovimientosComponent implements OnInit, OnDestroy {
       id_cuentas: Date.now().toString(),
       cuentaGasto: cuentaAbaco._id
     }
-    this._movimientoService.crearCuentaGasto(cuenta)
+   await this._movimientoService.crearCuentaGasto(cuenta)
+   window.location.reload()
   }
   crearCuentaAbaco(codigo, descripcion, tipo, cuentaGasto) {
     let cuenta = {

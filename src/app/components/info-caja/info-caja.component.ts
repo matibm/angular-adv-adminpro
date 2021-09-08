@@ -4,6 +4,7 @@ import { FacturaService } from './../../services/factura.service';
 import { MovimientoService } from './../../services/movimiento.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-info-caja',
@@ -15,7 +16,10 @@ export class InfoCajaComponent implements OnInit {
     public _movimientoService: MovimientoService,
     public _facturaService: FacturaService,
     public _usuarioService: UsuarioService,
-    public _cajaService: CajaService
+    public _cajaService: CajaService,
+    public route: ActivatedRoute,
+    private router: Router
+
   ) { }
   movimientosPrueba;
   movimientos;
@@ -56,32 +60,70 @@ export class InfoCajaComponent implements OnInit {
   isAllSelected
   showModalBilletes = false
   TotalArqueo = 0
-  options: any = {  }
+  options: any = {}
   async ngOnInit() {
     this.fondo = null;
     // const resp = await this._movimientoService.getCajaBancos(1, this.options);
     //  this.cargarValores(resp)
+    if (!this.route.snapshot.queryParams.start && !this.route.snapshot.queryParams.end) {
+      let month = new Date().getMonth() + 1
+      let year = new Date().getFullYear()
+      this.rangeFecha.setValue({ start: new Date(`${year}-${month}-01`), end: new Date() })
+      this.cambiarQueryParams([
+        {
+          start: new Date(`${year}-${month}-01`).toLocaleDateString('fr-CA', { year: "numeric", month: "2-digit", day: "2-digit" })
+        },
+        {
+          end: new Date().toLocaleDateString('fr-CA', { year: "numeric", month: "2-digit", day: "2-digit" })
+        }
+      ])
+    }
+    if (this.route.snapshot.queryParams.start && this.route.snapshot.queryParams.end) {
+      let value = { start: new Date(`${this.route.snapshot.queryParams.start} 00:00`), end: new Date(`${this.route.snapshot.queryParams.end} 00:00`) }
+      this.rangeFecha.setValue(value)
+    }
+    if (this.route.snapshot.queryParams.estado) {
+      this.estado = 'TODOS'
+
+      if (this.route.snapshot.queryParams.estado == 'PENDIENTES') {
+        this.estado = this.route.snapshot.queryParams.estado
+      }
+      if (this.route.snapshot.queryParams.estado == 'CONCILIADOS') {
+        this.estado = this.route.snapshot.queryParams.estado
+      }
+    }
+    this.route.snapshot.queryParams.fondo ? await this.seleccionarFondo(this.route.snapshot.queryParams.fondo) : ''
+
 
     this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', '');
     this.loading = false;
   }
 
 
+
   async searchBancos(val) {
     this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', val.term);
   }
+  fill = (number, len) => "0".repeat(len - number.toString().length) + number.toString();
 
   async filtrarPorEstado(estado) {
+    this.loading = true
+    this.movimientosPrueba = null
+    this.cambiarQueryParams([{estado: estado}])
     this.options.cerrado = estado === 'CONCILIADOS' ? true : false
     if (estado === 'TODOS') delete this.options.cerrado
     if (!estado) delete this.options.cerrado
     this.page = 1
     const resp = await this._movimientoService.getCajaBancos(this.page, this.options);
     this.cargarValores(resp)
+    this.loading = false
+
   }
 
-  async seleccionarFondo(fondo) {
-    if (!fondo) {
+  async seleccionarFondo(fondoId) {
+    console.log(fondoId);
+
+    if (!fondoId) {
 
       delete this.options.fondo
       console.log(this.options);
@@ -91,20 +133,28 @@ export class InfoCajaComponent implements OnInit {
       return;
     }
     this.loading = true;
+
+    this.fondo = await this._usuarioService.getUsuarioPorId(fondoId)
+    this.options.cerrado = this.estado === 'CONCILIADOS' ? true : false
+    if (this.estado === 'TODOS') delete this.options.cerrado
+    if (!this.estado) delete this.options.cerrado
     // this.movimientosPrueba = await this._movimientoService.allmovimientosCaja(
-    this.options.fondo = fondo._id
+    this.options.fondo = fondoId
+    this.options.date_start = this.rangeFecha.value.start ? new Date(this.rangeFecha.value.start).getTime() : null
+    this.options.date_end = this.rangeFecha.value.end ? new Date(this.rangeFecha.value.end).setHours(23, 59, 59, 59) : null
+    this.cambiarQueryParams([{ fondo: this.fondo._id }])
     const resp = await this._movimientoService.getCajaBancos(1, this.options);
     this.cargarValores(resp)
 
     const respMovimientos = await this._movimientoService.getAllMovimientos({
       cerrado: false,
-      fondo: fondo._id,
+      fondo: fondoId,
     });
     this.movimientoCount = respMovimientos.count;
     this.movimientos = respMovimientos.movimientos;
 
     this.totalMovimientos = respMovimientos.total.monto_total;
-    let respFondo: any = await this._movimientoService.getSaldoFondo(fondo._id)
+    let respFondo: any = await this._movimientoService.getSaldoFondo(fondoId)
     console.log(respFondo);
 
     // this.saldoFondo = respFondo.data[0].ingreso - respFondo.data[0].gasto
@@ -136,6 +186,8 @@ export class InfoCajaComponent implements OnInit {
     this.loading = false;
     this.listItems = [];
     this.calcularSeleccionados();
+
+
   }
 
   customSearchFn(term: string, item: any) {
@@ -277,10 +329,27 @@ export class InfoCajaComponent implements OnInit {
   }
 
   async filtroPorFecha() {
+    if (!this.rangeFecha.value.end) {
+      console.log("vacio");
+      return
+    }
+    this.loading = true
+    this.movimientosPrueba = null
     this.options.date_start = this.rangeFecha.value.start ? new Date(this.rangeFecha.value.start).getTime() : null
     this.options.date_end = this.rangeFecha.value.end ? new Date(this.rangeFecha.value.end).setHours(23, 59, 59, 59) : null
+    this.options.date_start ? this.cambiarQueryParams([
+      {
+        start: new Date(this.options.date_start).toLocaleDateString('fr-CA', { year: "numeric", month: "2-digit", day: "2-digit" })
+      },
+      {
+        end: new Date(this.options.date_end).toLocaleDateString('fr-CA', { year: "numeric", month: "2-digit", day: "2-digit" })
+      }
+    ]) : null
+    // this.options.date_end ? this.cambiarQueryParams('end', new Date(this.options.date_end).toLocaleDateString('fr-CA', { year: "numeric", month: "2-digit", day: "2-digit" })) : null
     const resp = await this._movimientoService.getCajaBancos(1, this.options);
     this.cargarValores(resp)
+    this.loading = false
+
   }
 
   page = 1
@@ -291,10 +360,31 @@ export class InfoCajaComponent implements OnInit {
     this.cargarValores(resp)
   }
 
-  cargarValores(data){
+  cambiarQueryParams(paths) {
+    let queryParams: Params = { ... this.route.snapshot.queryParams }
+    for (let i = 0; i < paths.length; i++) {
+      const element = paths[i];
+      Object.keys(element).forEach((key, index) => {
+        queryParams[key] = element[key]
+
+      })
+
+    }
+    console.log(queryParams);
+
+    this.router.navigate(
+      [],
+      {
+        relativeTo: this.route,
+        queryParams: queryParams,
+        // skipLocationChange: true
+        // queryParamsHandling: 'merge', // remove to replace all query params by provided
+      });
+  }
+  cargarValores(data) {
     this.movimientosPrueba = data.movimientos
     this.count = data.count
-    this.TotalArqueo = data.totalEgreso + data.totalIngreso 
+    this.TotalArqueo = data.totalEgreso + data.totalIngreso
     this.totalEgreso = data.totalEgreso
     this.totalIngreso = data.totalIngreso
   }

@@ -13,7 +13,7 @@
 
                     <div *ngIf="!cliente">
 
-                        <ng-select [typeahead]="inputClientes" [loading]="loadingClientes" [items]="clientes" name="dsfdbrweqcda" [(ngModel)]="cliente" (ngModelChange)="null" notFoundText="no se encontraron resultados" placeholder="buscar cliente"
+                        <ng-select #productsearch   id="searchclient" [typeahead]="inputClientes" [loading]="loadingClientes" [items]="clientes" name="dsfdbrweqcda" [(ngModel)]="cliente" (ngModelChange)="null" notFoundText="no se encontraron resultados" placeholder="buscar cliente"
                             bindLabel="NOMBRES" [searchFn]="customSearchFn">
                             <ng-template ng-option-tmp let-item="item">
                                 <div> {{item.APELLIDOS}} {{item.NOMBRES}} <br>
