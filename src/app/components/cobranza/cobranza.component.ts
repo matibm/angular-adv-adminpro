@@ -283,7 +283,7 @@ export class CobranzaComponent implements OnInit {
     this.notifier.notify('success', 'pasa la edad');
   }
   observableBuscadores() {
-    this.inputClientes.pipe(debounceTime(200), distinctUntilChanged()).subscribe(async (txt) => {
+    this.inputClientes.pipe(debounceTime(500), distinctUntilChanged()).subscribe(async (txt) => {
       if (!txt) {
         return;
       }
@@ -292,7 +292,7 @@ export class CobranzaComponent implements OnInit {
       this.loadingClientes = false;
     });
 
-    this.inputCobrador.pipe(debounceTime(200), distinctUntilChanged()).subscribe(async (txt) => {
+    this.inputCobrador.pipe(debounceTime(500), distinctUntilChanged()).subscribe(async (txt) => {
       if (!txt) {
         return;
       }

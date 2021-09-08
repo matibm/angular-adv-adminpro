@@ -16,8 +16,7 @@ export class ModalFacturaComponent implements OnInit {
   style: any = {};
   ngOnInit(): void {
     const height = window.screen.availHeight;
-    console.log(this.facturaPDF);
-
+ 
     this.style.maxHeight = (height - 300) + 'px';
     this.style.overflow = 'auto';
 

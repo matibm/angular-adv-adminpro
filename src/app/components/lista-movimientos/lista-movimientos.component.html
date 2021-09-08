@@ -1,3 +1,129 @@
+<div>
+    <div class="row">
+        <div class="col-xs col-md-3 mt-2">
+            <div class="inline-flex">
+
+                <label class="">Proveedor</label>
+                <div *ngIf="proveedor" class="pointer close-icon ml-auto">
+                    <button (click)="proveedor = null; buscar() " type="button" class="btn btn-sm btn-light"><i
+                            class=" ti-close  "></i></button>
+                </div>
+            </div>
+            <div class="" *ngIf="!proveedor">
+                <ng-select    
+                [typeahead]="inputProveedores" [loading]="loadingProveedores"
+                            [items]="proveedores" name="dsfdbrdafwseqcda" [(ngModel)]="proveedor"
+                            (ngModelChange)="buscar()"
+
+                            notFoundText="no se encontraron resultados"
+                            placeholder="Buscar Proveedor" bindLabel="NOMBRES"
+                            [searchFn]="customSearchFn"
+                 >
+                    <ng-template ng-option-tmp let-item="item">
+                        <div>
+                            <div *ngIf="item.APELLIDOS">{{item.APELLIDOS}} {{item.NOMBRES}}</div>
+
+
+
+                            <small>{{item.RUC | ruc}}</small>
+                        </div>
+
+                    </ng-template>
+                </ng-select>
+            </div>
+
+
+            <div class="" *ngIf="proveedor">
+                <div>
+                    <div *ngIf="proveedor.APELLIDOS">{{proveedor .NOMBRES}} {{proveedor .APELLIDOS}}
+                    </div>
+
+                    <small>{{proveedor.RUC | ruc}}</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs col-md-3 mt-2">
+            <div class="inline-flex">
+
+                <label class="">Cliente</label>
+                <div *ngIf="cliente" class="pointer close-icon ml-auto">
+                    <button (click)="cliente = null;buscar() " type="button" class="btn btn-sm btn-light"><i
+                            class=" ti-close  "></i></button>
+                </div>
+            </div>
+            <div class="" *ngIf="!cliente">
+                <ng-select    
+                [typeahead]="inputClientes" [loading]="loadingClientes"
+                            [items]="clientes" name="dsfdbrdafwseqcda" [(ngModel)]="cliente"
+                            (ngModelChange)="buscar()"
+                            notFoundText="no se encontraron resultados"
+                            placeholder="Buscar Cliente" bindLabel="NOMBRES"
+                            [searchFn]="customSearchFn"
+                 >
+                    <ng-template ng-option-tmp let-item="item">
+                        <div>
+                            <div *ngIf="item.APELLIDOS">{{item.APELLIDOS}} {{item.NOMBRES}}</div>
+
+                            <small>{{item.RUC | ruc}}</small>
+                        </div>
+
+                    </ng-template>
+                </ng-select>
+            </div>
+
+
+            <div class="" *ngIf="cliente">
+                <div>
+                    <div *ngIf="cliente.APELLIDOS">{{cliente .NOMBRES}} {{cliente .APELLIDOS}}
+                    </div>
+
+                    <small>{{cliente.RUC | ruc}}</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs col-md-3 mt-2">
+            <div style="display: flex;" class="">
+                <span>Contrato</span>
+                <div *ngIf="contrato" style="height: fit-content;" class="pointer close-icon ml-auto">
+                    <button (click)="contrato = null; buscar()" type="button" class="btn btn-sm btn-light"><i
+                            class=" ti-close  "></i></button>
+                </div>
+            </div>
+
+            <div *ngIf="!contrato" class="">
+
+                <div style="display: flex;" class="">
+                    <div class="card">
+                        <div class="card-body">
+                            <button type="button" (click)="showModal = true"
+                                class="btn btn-inverse">Buscar
+                                Contrato</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="contrato" class="">
+                <div style="display: flex;" class="">
+
+                    <div class="card bg-light">
+                        <div class="card-body">
+
+                            <span><b>Titular:</b> {{contrato.titular.NOMBRES}}
+                                {{contrato.titular.APELLIDOS}}</span>
+                            <br>
+                            <span><b>Servicio:</b> {{contrato.producto.NOMBRE}}</span>
+                            <br>
+                            <span><b>Número de contrato:</b> {{contrato.nro_contrato}}</span>
+                            <br>
+                            <span><b>Fecha de creación:</b> {{contrato.fecha_creacion_unix | date
+                                }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="card">
     <div class="card-body">
         <h4 *ngIf="showTitle"> <span class="lstick"></span> Egresos </h4>
@@ -16,7 +142,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of movimientos | paginate: { itemsPerPage: 10,totalItems:count, currentPage: page } ; let i = index; " [ngClass]="'pointer'">
+                <tr [routerLink]="['/admin/gasto', item._id]" routerLinkActive="router-link-active"  *ngFor="let item of movimientos | paginate: { itemsPerPage: 10,totalItems:count, currentPage: page } ; let i = index; " [ngClass]="'pointer'">
                     <td>{{page*10 + (i+1) - 10}}</td>
                     <td *ngIf="item.fondo">{{item.fondo.RAZON}}</td>
                     <td *ngIf="!item.fondo">--</td>
@@ -49,3 +175,6 @@
         </div>
     </div>
 </div>
+
+<app-modal-contratos (contratoSelected)="contrato  = $event; buscar()" [showFilters]="true" [cliente]="cliente"
+    (onClose)="showModal = false" *ngIf="showModal"></app-modal-contratos>

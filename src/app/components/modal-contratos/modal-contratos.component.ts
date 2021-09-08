@@ -16,8 +16,13 @@ export class ModalContratosComponent implements OnInit {
   @Input() showFilters = false;
   @Input() contratos;
   @Input() cliente;
+  style: any = {};
 
   ngOnInit(): void {
+    const height = window.screen.availHeight;
+ 
+    this.style.maxHeight = (height - 300) + 'px';
+    this.style.overflow = 'auto';
   }
 
   onContratoSelected(contrato){

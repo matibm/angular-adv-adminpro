@@ -48,10 +48,17 @@
                                     </div>
                                 </div>
                                 <div class="" *ngIf="!proveedor">
-                                    <ng-select [items]="proveedores" [(ngModel)]="proveedor"
-                                        (ngModelChange)="onSelectProveedor(proveedor)"
-                                        (search)="searchProveedores($event)" notFoundText="no se encontraron resultados"
-                                        placeholder="buscar proveedor" bindLabel="NOMBRES" [searchFn]="customSearchFn">
+                                    <ng-select 
+                                    
+                                    [typeahead]="inputProveedores" [loading]="loadingProveedores"
+                                                [items]="proveedores" name="dsfdbrdafwseqcda" [(ngModel)]="proveedor"
+                                                
+                                                notFoundText="no se encontraron resultados"
+                                                placeholder="Buscar Proveedor" bindLabel="NOMBRES"
+                                                [searchFn]="customSearchFn"
+                                     
+                                    
+                                     >
                                         <ng-template ng-option-tmp let-item="item">
                                             <div>
                                                 <div *ngIf="item.APELLIDOS">{{item.APELLIDOS}} {{item.NOMBRES}}</div>

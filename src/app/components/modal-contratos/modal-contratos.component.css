@@ -14,3 +14,9 @@
         max-width: 1200px;
     }
 }
+
+.scroll {
+    overflow: auto;
+    height: 700px;
+}
+

@@ -60,8 +60,10 @@ export class MovimientosComponent implements OnInit, OnDestroy {
   cuentaAbaco
   tipoCuentaAbaco
   inputcuentaAbacos = new Subject<string>();
+  inputProveedores = new Subject<string>();
   inputcategorias = new Subject<string>();
   loadingcuentaAbacos
+  loadingProveedores
   loadingcategorias
   ocultarOnCategory = false
   fechaCreacion = new Date()
@@ -101,10 +103,10 @@ export class MovimientosComponent implements OnInit, OnDestroy {
 
     //this.movimientos);
     this.clientes = await this._usuarioService.buscarUsuarios('CLIENTES', '');
-    this.proveedores = await this._usuarioService.buscarUsuarios(
-      'PROVEEDORES',
-      ''
-    );
+    // this.proveedores = await this._usuarioService.buscarUsuarios(
+    //   'PROVEEDORES',
+    //   ''
+    // );
     this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', '');
     this.loading = false; 
   }
@@ -425,10 +427,11 @@ export class MovimientosComponent implements OnInit, OnDestroy {
     this._movimientoService.crearCategoriaGasto(cuenta)
   }
   inputcuentaAbacosPromise
+  inputProveedoresPromise
   observableBuscadores() {
     this.inputcuentaAbacosPromise = this.inputcuentaAbacos.pipe(
 
-      debounceTime(200),
+      debounceTime(300),
       distinctUntilChanged()
     ).toPromise().then(async (txt) => {
         if (!txt) {
@@ -440,9 +443,28 @@ export class MovimientosComponent implements OnInit, OnDestroy {
 
         this.loadingcuentaAbacos = false;
       })
+    this.inputProveedoresPromise = this.inputProveedores.pipe(
+
+      debounceTime(500),
+      distinctUntilChanged()
+    ).subscribe((async (txt) => {
+        if (!txt) {
+          return;
+        }
+         
+        this.loadingProveedores = true;
+        this.proveedores = await this._usuarioService.buscarUsuarios(
+          'PROVEEDORES',
+          txt
+        );
+
+        this.loadingProveedores = false;
+      })
+    )
+      
     this.inputcategorias.pipe(
 
-      debounceTime(200),
+      debounceTime(300),
       distinctUntilChanged()
     )
       .toPromise().then(async (txt) => {

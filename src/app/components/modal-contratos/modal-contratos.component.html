@@ -1,6 +1,6 @@
 <div (click)="print($event)" class="fondo-negro animated fadeIn">
 
-    <div id="afuera" class="modal" style="display: block;" role="dialog">
+    <div id="afuera" class="modal"  style="z-index: 200; display: block;" role="dialog">
         <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -9,7 +9,7 @@
                         <span aria-hidden="true"  >&times;</span>
                     </button>
                 </div>
-                <div class="modal-body " align="center">
+                <div [ngStyle]="style" class="modal-body " align="center">
 
                     <app-lista-contratos (selected)="onContratoSelected($event)" [cliente]="cliente" [selectable]='true' [showFilter]='showFilters'></app-lista-contratos>
                 </div>
