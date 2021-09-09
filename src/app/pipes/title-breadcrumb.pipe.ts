@@ -7,6 +7,9 @@ export class TitleBreadcrumbPipe implements PipeTransform {
 
   transform(value: any, ...args: any[]): string {
     let data = value;
+    if (!value) {
+      return
+    }
     value == 'info_contrato' ? data = 'Información de Contrato' : null;
     value == 'crear_contrato' ? data = 'Crear Contrato' : null;
     value == 'lista_contratos' ? data = 'Lista de Contratos' : null;
