@@ -382,6 +382,8 @@ export class InfoCajaComponent implements OnInit {
       });
   }
   cargarValores(data) {
+    console.log(data.movimientos);
+    
     this.movimientosPrueba = data.movimientos
     this.count = data.count
     this.TotalArqueo = data.totalEgreso + data.totalIngreso

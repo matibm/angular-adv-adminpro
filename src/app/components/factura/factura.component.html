@@ -95,6 +95,7 @@
                 <h4><b>Fecha de emision:</b> {{factura.fecha_creacion_unix | date:' d, MMM y - h:mm a'}}</h4>
                 <h4><b>Fecha de Vencimientio:</b> {{factura.vencimiento | date:' d, MMM y'}}</h4>
                 <h4><b>Nro Cuota: </b> {{factura.nro_factura }}</h4>
+                <h4 *ngIf="factura.numero_factura"><b>Nro Factura: </b> {{factura.numero_talonario}}-{{fill(factura.numero_factura, 7) }}</h4>
                 <h4 *ngIf="factura.pagado"><b>Fecha de pago:</b> {{factura.fecha_pagado_unix |
                     date:' d, MMM y -h:mma'}}
                 </h4>

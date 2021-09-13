@@ -299,6 +299,7 @@ export class FacturaComponent implements OnInit {
       this.loadingCobrador = false;
     });
   }
+  fill = (number, len) => "0".repeat(len - number.toString().length) + number.toString();
 
 
 }

@@ -26,6 +26,8 @@ export class Factura {
         public obs?: string,
         public vencimiento?: string,
         public nro_factura?: number,
+        public numero_factura?: number,
+        public numero_talonario?: string,
         public contado?: string,
         public credito?: string,
         public plazo?: string,

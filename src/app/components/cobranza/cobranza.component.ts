@@ -239,16 +239,13 @@ export class CobranzaComponent implements OnInit {
     // this.filtros.push()
     this.facturasAPagarAux = (await this._facturaService.pagarPorMonto({ fecha_pago: this.fechaPago, lista: this.lista })).facturas;
     console.log(this.facturasAPagarAux);
-
-
     this.contrato = null;
     // this.filtrar();
     this.facturaPdf = this.crearPDF(this.facturasAPagarAux);
 
   }
   async confirmarPago() {
-    console.log(this.cobrador);
-
+ 
     this.loadingConfirmarPago = true
     let pagoresp = await this._facturaService.pagarPorMonto({
       fecha_pago: this.fechaPago,
@@ -260,7 +257,7 @@ export class CobranzaComponent implements OnInit {
       tel: this.telFactura,
       direccion: this.direccionFactura,
       cobrador: this.cobrador?._id,
-      confirmado: true,
+      confirmado: true, 
       fondo: this.fondo._id,
       nro_timbrado: '144542331',
       nro_factura: this.cobrador.nro_factura_actual + 1,

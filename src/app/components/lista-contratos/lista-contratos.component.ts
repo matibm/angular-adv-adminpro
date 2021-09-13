@@ -68,6 +68,10 @@ export class ListaContratosComponent implements OnInit {
     start: new FormControl(),
     end: new FormControl()
   });
+  beneficiarioNombre
+  beneficiarioCi
+  inhumadoNombre
+  inhumadoCi
 
   // wait .5s between keyups to emit current value
 
@@ -172,6 +176,10 @@ export class ListaContratosComponent implements OnInit {
 
   async filtrar() {
 
+    this.options.inhumados_nombre = this.inhumadoNombre ? this.inhumadoNombre : null
+    this.options.inhumados_ci = this.inhumadoCi ? this.inhumadoCi : null
+    this.options.beneficiarios_ci = this.beneficiarioCi ? this.beneficiarioCi : null
+    this.options.beneficiarios_nombre = this.beneficiarioNombre ? this.beneficiarioNombre : null
     this.options.fecha_inicio = this.range.value.start ? new Date(this.range.value.start).getTime() : null
     this.options.fecha_fin = this.range.value.end ? new Date(this.range.value.end).setHours(59, 59, 59, 59) : null
     this.options.cliente = this.cliente ? this.cliente._id : null
