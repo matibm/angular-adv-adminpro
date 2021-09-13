@@ -5,7 +5,7 @@ import { Producto } from './../../models/producto';
 import { UsuarioService } from './../../services/usuario.service';
 import { ProductosService } from './../../services/productos.service';
 import { FacturaService } from './../../services/factura.service';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { NotifierService } from 'angular-notifier';
 import { Subject } from 'rxjs';
 import { Usuario } from 'src/app/models/usuario';
@@ -15,7 +15,7 @@ import { Usuario } from 'src/app/models/usuario';
   templateUrl: './cobranza.component.html',
   styleUrls: ['./cobranza.component.css']
 })
-export class CobranzaComponent implements OnInit {
+export class CobranzaComponent implements OnInit, AfterViewInit {
 
   constructor(public _facturaService: FacturaService,
     public _usuarioService: UsuarioService,
@@ -29,7 +29,11 @@ export class CobranzaComponent implements OnInit {
   }
 
   private notifier: NotifierService;
-
+  @ViewChild('search', { static: false }) searchCliente;
+  @ViewChild('btnContinuar', { static: false }) btnContinuar;
+  ngAfterViewInit(){
+    this.searchCliente.focus()
+  }
   showModal = false;
   opciones;
   fondo;
@@ -61,7 +65,7 @@ export class CobranzaComponent implements OnInit {
   sort_key = 'vencimiento';
   sort_value = 1;
   showPDF = false;
-
+  comentario
   estados = [
     {
       id: 1,
@@ -220,8 +224,9 @@ export class CobranzaComponent implements OnInit {
     }
     this.facturasAPagar = (await this._facturaService.pagarPorMonto({ fecha_pago: this.fechaPago, lista: [{ contrato: id, monto: parseInt(monto) }] })).facturas;
     console.log(this.facturasAPagar);
-
-  }
+    let btnContinuar = document.getElementById('btnContinuar')
+    btnContinuar.focus()
+    }
 
   async searchBancos(val) {
     this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', val.term);
@@ -252,6 +257,7 @@ export class CobranzaComponent implements OnInit {
       lista: this.lista,
       montoTotal: this.montoTotal,
       cliente: this.cliente._id,
+      comentario: this.comentario,
       nombre: this.nombreFactura,
       ruc: this.rucFactura,
       tel: this.telFactura,
@@ -355,7 +361,7 @@ export class CobranzaComponent implements OnInit {
     }
     const facturaPDF = {
       nombres: this.nombreFactura,
-      fecha: Date.now(),
+      fecha: this.fechaPago.getTime(),
       direccion: this.direccionFactura,
       ruc: this.rucFactura,
       tel: this.telFactura,

@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { Usuario } from './../../models/usuario';
 import { UsuarioService } from './../../services/usuario.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
 import swal from 'sweetalert2';
 
 @Component({
@@ -14,6 +14,7 @@ export class CrearUsuarioComponent implements OnInit {
   constructor(public _usuarioService: UsuarioService,
     private router: Router
   ) { }
+  @ViewChildren('searchInput') searchInput: QueryList<ElementRef>;
 
   nivel = 1;
   nro_factura_actual
@@ -33,6 +34,10 @@ export class CrearUsuarioComponent implements OnInit {
   notas = ''
   fechaCreacion = new Date()
   ngOnInit(): void {
+    setTimeout(() => {
+      this.searchInput.first.nativeElement.focus();
+
+    }, 100);
   }
   async crearUsuario() {
     console.log(this.usuario);

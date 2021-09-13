@@ -17,7 +17,7 @@
 
                     <div class="form-group">
                         <label for="">RUC/CI</label>
-                        <input [(ngModel)]="usuario.RUC" type="text" class="form-control" name="RUC" autocomplete="off">
+                        <input [(ngModel)]="usuario.RUC" type="text" class="form-control" #searchInput id="search" type="text" name="RUC" autocomplete="off">
                         <button type="button" [disabled]="!usuario.RUC" (click)="consultar(usuario.RUC)"
                             class="btn mt-2 btn-secondary">Consultar usuario</button>
                     </div>

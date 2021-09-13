@@ -1,7 +1,7 @@
 import { FacturaService } from './../../services/factura.service';
 import { UsuarioService } from './../../services/usuario.service';
 import { Usuario } from './../../models/usuario';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MovimientoService } from 'src/app/services/movimiento.service';
 import { Movimiento } from 'src/app/models/movimiento';
 
@@ -10,7 +10,7 @@ import { Movimiento } from 'src/app/models/movimiento';
   templateUrl: './transferencia.component.html',
   styleUrls: ['./transferencia.component.css']
 })
-export class TransferenciaComponent implements OnInit {
+export class TransferenciaComponent implements OnInit, AfterViewInit {
 
   constructor(
     public _usuarioService: UsuarioService,
@@ -18,6 +18,10 @@ export class TransferenciaComponent implements OnInit {
     public _movimientoService: MovimientoService,
 
   ) { }
+  @ViewChild('search', { static: false }) searchOrigen;
+  ngAfterViewInit(){
+    this.searchOrigen.focus()
+  }
   fondoOrigen: Usuario;
   fondoDestino: Usuario;
   fondos: Usuario[];

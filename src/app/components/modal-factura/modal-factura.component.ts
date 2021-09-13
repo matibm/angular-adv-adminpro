@@ -14,12 +14,13 @@ export class ModalFacturaComponent implements OnInit {
   @Input() existe;
   loadingCancelarPago = false
   style: any = {};
-  ngOnInit(): void {
+  async ngOnInit(){
     const height = window.screen.availHeight;
  
-    this.style.maxHeight = (height - 300) + 'px';
+    this.style.maxHeight = (height - 340) + 'px';
     this.style.overflow = 'auto';
-
+    console.log(this.facturaPDF);
+    this.facturaPDF = await this.facturaPDF
     console.log(this.style);
   }
 

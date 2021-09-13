@@ -14,7 +14,7 @@
 
                 <div *ngIf="!cliente">
 
-                    <ng-select [typeahead]="inputClientes" [loading]="loadingClientes" [(ngModel)]="cliente"
+                    <ng-select [typeahead]="inputClientes" [loading]="loadingClientes" #search [(ngModel)]="cliente"
                         [items]="clientes" (ngModelChange)="filtrar(); onSelectClient(cliente);" name="dsfdbrweqcda"
                         notFoundText="no se encontraron resultados" placeholder="buscar cliente" bindLabel="NOMBRES"
                         [searchFn]="customSearchFn">
@@ -188,7 +188,7 @@
 
             <div class="d-flex">
                 <div class="mx-auto">
-                    <button (click)="agregarIngreso(contrato._id, montoAPagar.value)"
+                    <button id="btnContinuar" (click)="agregarIngreso(contrato._id, montoAPagar.value)"
                         class="btn mx-2 btn-invert">Continuar</button>
                 </div>
 
@@ -355,6 +355,11 @@
             <input type="text" class="form-control" name="direccion" [(ngModel)]="direccionFactura" id="direccion"
                 aria-describedby="direccionid" placeholder="">
         </div>
+        <div class="form-group">
+            <label for="direccion">Notas</label>
+            <textarea class="form-control" [(ngModel)]="comentario" name="notas"
+            id="notas" rows="3"></textarea>
+        </div>
 
     </div>
 </div>
@@ -371,7 +376,7 @@
 
             </button>
             <button (click)="facturaPdf = crearPDF(facturasAPagarAux) ;showPDF = true"
-                [disabled]="facturasAPagarAux.length < 1" class="btn mx-2 btn-info">
+                [disabled]="!cobrador || facturasAPagarAux.length < 1" class="btn mx-2 btn-info">
                 Vista previa PDF</button>
             <button [disabled]="!loadingConfirmarPago" style="width: 138px;" (click)="confirmarPago( )"
                 [disabled]="!fondo || facturasAPagarAux.length < 1" class="btn mx-2 btn-success">

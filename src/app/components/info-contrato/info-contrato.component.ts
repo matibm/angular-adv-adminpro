@@ -57,6 +57,10 @@ export class InfoContratoComponent implements OnInit {
       value: 'PAGOPAR'
     },
     {
+      name: 'Cobrador',
+      value: 'COBRADOR'
+    },
+    {
       name: 'Débito Automático',
       value: 'DEBITO'
     },

@@ -21,7 +21,9 @@
                 <div *ngIf="style" [ngStyle]="style" class=" modal-body " align="center">
                     <app-factura-pdf [printAltoke]="false" [existe]="existe" [facturaPDF]="facturaPDF"></app-factura-pdf>
                 </div>
-
+                <div class="p-2">
+                    <span>Nota: {{facturaPDF.comentario}}</span>
+                </div>
                 <div class="modal-footer">
                     <button style="width: 143.84px;" [disabled]="loadingCancelarPago || facturaPDF?.activo === false" (click)="cancelarPago()" class="btn btn-rounded mr-auto btn-inverse">
                         <span *ngIf="!loadingCancelarPago">Cancelar Pago</span>

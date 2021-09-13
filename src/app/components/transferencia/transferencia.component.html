@@ -11,7 +11,7 @@
                     </div>
                 </div>
                 <div class="" *ngIf="!fondoOrigen">
-                    <ng-select [items]="fondos" [(ngModel)]="fondoOrigen"
+                    <ng-select #search [items]="fondos" [(ngModel)]="fondoOrigen"
                         (ngModelChange)="selectFondoOrigen(fondoOrigen)" (search)="searchBancos($event)"
                         notFoundText="no se encontraron resultados" placeholder="buscar origen fondo"
                         bindLabel="NOMBRES" [searchFn]="customSearchFn">

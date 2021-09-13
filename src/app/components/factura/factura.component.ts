@@ -79,6 +79,7 @@ export class FacturaComponent implements OnInit {
         direccion: `${this.factura.titular.direccion_particular}`,
         ruc: this.factura.titular.RUC,
         tel: this.factura.titular.TELEFONO1,
+        comentario: this.comentario,
         notaDeRemision: '123123',
         nro_factura: this.factura.cobrador.nro_factura_actual,
         numero: this.factura.cobrador.nro_talonario,
@@ -127,7 +128,7 @@ export class FacturaComponent implements OnInit {
         cobrador: this.cobrador?._id || this.factura.cobrador?._id,
 
         fecha_pago: this.fechaPago,
-        comentario: '',
+        comentario: this.comentario,
         nombre: this.nombreFactura,
         ruc: this.rucFactura,
         tel: this.telFactura,
@@ -146,7 +147,7 @@ export class FacturaComponent implements OnInit {
         factura,
         cobrador: this.cobrador?._id || this.factura.cobrador?._id,
         fecha_pago: this.fechaPago,
-        comentario: '',
+        comentario: this.comentario,
         nombre: this.nombreFactura,
         ruc: this.rucFactura,
         tel: this.telFactura,
@@ -167,7 +168,7 @@ export class FacturaComponent implements OnInit {
     this.ngOnInit()
   }
 
-
+  comentario  
 
 
   async searchBancos(val) {
@@ -225,6 +226,7 @@ export class FacturaComponent implements OnInit {
       nombres: `${pago.cliente.NOMBRES} ${pago.cliente.APELLIDOS}`,
       fecha: pago.fecha_creacion,
       direccion: `direccion de prueba`,
+      comentario: pago.comentario,
       ruc: pago.cliente.RUC,
       tel: pago.cliente.TELEFONO1,
       notaDeRemision: '123123',
@@ -233,9 +235,6 @@ export class FacturaComponent implements OnInit {
     console.log(this.facturapdf);
 
   }
-
-
-
 
   async crearPDF(facturas) {
     let servicios = [];
@@ -272,7 +271,8 @@ export class FacturaComponent implements OnInit {
     }
     const facturaPDF = {
       nombres: this.nombreFactura,
-      fecha: Date.now(),
+      fecha: this.fechaPago.getTime(),
+      comentario: this.comentario,
       direccion: this.direccionFactura,
       ruc: this.rucFactura,
       tel: this.telFactura,
