@@ -94,6 +94,7 @@ export class TransferenciaComponent implements OnInit, AfterViewInit {
     console.log(origen);
     console.log(destino);
     this.resetAll()
+    window.location.reload()
   }
 
 

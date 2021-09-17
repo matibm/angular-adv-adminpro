@@ -18,6 +18,7 @@ export class GastoComponent implements OnInit {
   async ngOnInit() {
     this.id = this.activatedRoute.snapshot.paramMap.get('id')
     this.movimiento = await this._movimientoService.getMovimientoById(this.id)
+    console.log(this.movimiento);    
   }
 
 eliminar(){

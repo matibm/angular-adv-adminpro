@@ -142,25 +142,25 @@
                         </div>
 
                     </div>
-                    <div  class="row mt-3">
+                    <div class="row mt-3">
                         <div class="col">
-                            
-                        <div style="min-width: max-content;">
-                            <span  class="t1"><b>Total: </b> <span
-                                [ngStyle]="TotalArqueo >= 0? {color: '#009000'} : {color: ' #d53032'}">
-                                {{ TotalArqueo | currency: '':'':'2.0'}}
-                            </span> Gs</span>
-                        </div>
+
+                            <div style="min-width: max-content;">
+                                <span class="t1"><b>Total: </b> <span
+                                        [ngStyle]="TotalArqueo >= 0? {color: '#009000'} : {color: ' #d53032'}">
+                                        {{ TotalArqueo | currency: '':'':'2.0'}}
+                                    </span> Gs</span>
+                            </div>
                         </div>
                         <div class="col">
                             <div style="min-width: max-content;">
                                 <button type="button" [disabled]="!fondo " (click)="showModalBilletes = true"
-                                class="btn ml-auto btn-rounded btn-inverse">Contar Billetes</button>
-                            <button type="button" [disabled]="!fondo " (click)="cerrarCaja()"
-                                class="btn ml-2 btn-rounded btn-success">Cerrar Caja</button>
+                                    class="btn ml-auto btn-rounded btn-inverse">Contar Billetes</button>
+                                <button type="button" [disabled]="!fondo " (click)="cerrarCaja()"
+                                    class="btn ml-2 btn-rounded btn-success">Cerrar Caja</button>
                             </div>
                         </div>
-                        
+
                     </div>
 
                 </div>
@@ -232,6 +232,7 @@
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '100px'}">Servicio</th>
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '400px'}">Cuenta Gasto</th>
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '400px'}">Proveedor</th>
+                            <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '400px'}">Nota</th>
 
                         </tr>
                     </thead>
@@ -275,7 +276,7 @@
                                     <div *ngIf="!item.movimiento.nro_comp_banco">---</div>
                                 </div>
                             </td>
-                            
+
                             <!-- cerrado -->
                             <td [ngClass]="'text-center'">
                                 <div *ngIf="item.cerrado">
@@ -311,15 +312,15 @@
                                 ---
 
                             </td>
-<!-- nro cuota -->
-<td [ngClass]="'text-center'">
-    <div *ngIf="item.factura">
-        <div *ngIf="item.factura.nro_factura   ">
-            {{item.factura.nro_factura}}</div>
-        <div *ngIf="!item.factura">---</div>
-    </div>
-    
-</td>
+                            <!-- nro cuota -->
+                            <td [ngClass]="'text-center'">
+                                <div *ngIf="item.factura">
+                                    <div *ngIf="item.factura.nro_factura   ">
+                                        {{item.factura.nro_factura}}</div>
+                                    <div *ngIf="!item.factura">---</div>
+                                </div>
+
+                            </td>
                             <!-- nro contrato -->
                             <td [ngClass]="'text-center'">
                                 <div *ngIf="item.contrato">{{item.contrato?.nro_contrato | ruc}}</div>
@@ -362,6 +363,12 @@
                                 <div *ngIf="!item.movimiento">
                                     ---
                                 </div>
+                            </td>
+                            <td [ngClass]="'text-center'">
+                                <div *ngIf="item.factura?.nota">
+                                    {{item.factura?.nota || '---' }}                                    
+                                </div>
+                                
                             </td>
 
 
@@ -483,7 +490,7 @@
                     <div style="display: flex;">
                         <div class="my-5 mx-auto">
                             <mat-spinner></mat-spinner>
-                
+
                         </div>
                     </div>
                 </div>

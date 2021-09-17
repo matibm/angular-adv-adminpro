@@ -1,9 +1,48 @@
-<p>gasto works!</p>
 <h3 *ngIf="movimiento">
-    <div>Decripcion: {{movimiento.comentario}}</div>
-    <div>Nro Factura: {{movimiento.nro_comp_banco}}</div>
-    <div>Nro Timbrado: {{movimiento.nro_factura}}</div>
-    <div>Monto: {{movimiento.monto_total| currency: '':'':'2.0'}}</div>
+    <div *ngIf="movimiento.proveedor"><b>Proveedor:</b> {{movimiento.proveedor.APELLIDOS}} {{movimiento.proveedor.NOMBRES}}
+    </div>
+    <div *ngIf="movimiento.cliente"><b>Usuario:</b> {{movimiento.cliente.APELLIDOS}} {{movimiento.cliente.NOMBRES}}</div>
+   
+
+    <div><b>Fondo:</b> {{movimiento.fondo.APELLIDOS}}</div>
+    <div><b>Decripcion:</b> {{movimiento.comentario}}</div>
+    <div><b>Nro Factura:</b> {{movimiento.nro_comp_banco}}</div>
+    <div><b>Nro Timbrado:</b> {{movimiento.nro_factura}}</div>
+    <div><b>Fecha:</b> {{movimiento.fecha_creacion_unix | date}}</div>
+    <div><b>Monto:</b> {{movimiento.monto_total| currency: '':'':'2.0'}}</div>
+    <div *ngIf="movimiento.contrato">
+        <hr>
+        <div  class="">
+            Contrato:
+            <br>
+ 
+                    <span><b>Titular:</b> {{movimiento.contrato.titular.NOMBRES}}
+                        {{movimiento.contrato.titular.APELLIDOS}}</span>
+                    <br>
+                    <span><b>Servicio:</b> {{movimiento.contrato.producto.NOMBRE}}</span>
+                    <br>
+                    <span><b>Número de contrato:</b> {{movimiento.contrato.nro_contrato | ruc}}</span>
+                    <br>
+                    <span><b>Fecha de creación:</b> {{movimiento.contrato.fecha_creacion_unix | date
+                        }}</span>
+               
+
+        </div>
+    </div>
+    <div *ngIf="movimiento.tipo_movimiento">
+        <hr>
+        <div class="">
+            Cuenta gasto:
+            <br>
+
+                    <span><b>Cuenta Padre:</b> {{movimiento.tipo_movimiento.nombre_padre}}</span>
+                    <br>
+                    <span><b>Nombre:</b> {{movimiento.tipo_movimiento.descripcion}}</span>
+                     
+
+        </div>
+    </div>
+    <hr>
 </h3>
-    
+
 <button type="button" (click)="eliminar()" class="btn  btn-danger">Eliminar gasto</button>
