@@ -1,11 +1,13 @@
 <div class="mt-4">
-    <h2>Titular: {{titular}}</h2>
-    <h2>Contrato: {{contrato}}</h2>
+    
     <table class="table table-sm table-hover">
         <thead>
             <tr>
-                <th class="text-center">#</th>
-
+                <th class="text-center"  style="min-width: 200px;">
+                    titular
+                </th>
+                <th class="text-center">Nro cuota</th>
+                
                 <th class="text-center" style="min-width: 130px;">
                     Nro. Contrato
                 </th>
@@ -21,12 +23,13 @@
                 <th class="text-center" style="min-width: 150px;">
                     Vencimiento
                 </th>
-                <th class="text-center" style="min-width: 400px;">
+                <th class="text-center" style="min-width: 100px;">
                     Servicio
                 </th>
                 <th class="text-center" style="min-width: 150px;">Pagado
 
                 </th>
+                
                 <th class="text-center" *ngIf="false" style="min-width: 200px;">
                     cobrador
                 </th>
@@ -37,6 +40,15 @@
             <!--  | paginate: { itemsPerPage: 10,totalItems:count, currentPage: page } -->
             <tr   id="id-{{factura._id}}" class="item-table pointer" *ngFor="let factura of facturas; let i = index;">
                 <!-- <td class="text-center" scope="row">{{page*10 + (i+1) - 10}}</td> -->
+               
+                <td class="text-center" >
+                    <div *ngIf="factura.titular">
+                        {{factura.titular.NOMBRES | primerNombre}} {{factura.titular.APELLIDOS | primerNombre }}
+                    </div>
+                    <div *ngIf="!factura.titular">
+                        ---
+                    </div>
+                </td>
                 <td class="text-center" scope="row">{{factura.nro_factura}}</td>
 
                 <td class="text-center">
@@ -57,6 +69,7 @@
                 </td>
                 <td class="text-center" *ngIf="factura.pagado"><b>{{factura.fecha_pagado_unix | date}}</b></td>
                 <td class="text-center text-danger" *ngIf="!factura.pagado">Pendiente</td>
+                
                 <td class="text-center" *ngIf="false">
                     <div *ngIf="factura.cobrador">
                         {{factura.cobrador.NOMBRES | primerNombre}} {{factura.cobrador.APELLIDOS | primerNombre }}

@@ -20,12 +20,7 @@ export class ExtractoPdfComponent implements OnInit {
     
     let resp = await this._facturaService.getFacturasOptions(options, {key:'vencimiento', value: 1});
     console.log(resp);
-    if (resp.facturas) {
-      if (resp.facturas[0]) {
-        this.titular = `${resp.facturas[0].titular.APELLIDOS} ${resp.facturas[0].titular.NOMBRES}`
-        this.contrato = `${resp.facturas[0].contrato.nombre_servicio}`
-      }
-    }
+     
     this.facturas = resp.facturas;
     setTimeout(() => {
       window.print();
