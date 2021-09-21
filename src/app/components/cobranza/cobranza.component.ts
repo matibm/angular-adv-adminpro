@@ -21,7 +21,9 @@ export class CobranzaComponent implements OnInit, AfterViewInit {
     public _usuarioService: UsuarioService,
     public _contratoSerivce: ContratoService,
     public _productoService: ProductosService,
-    notifier: NotifierService
+    notifier: NotifierService,
+    private _userService: UsuarioService
+
 
   ) {
 
@@ -250,7 +252,7 @@ export class CobranzaComponent implements OnInit, AfterViewInit {
 
   }
   async confirmarPago() {
- 
+    let timbrado = (await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body
     this.loadingConfirmarPago = true
     let pagoresp = await this._facturaService.pagarPorMonto({
       fecha_pago: this.fechaPago,
@@ -267,7 +269,8 @@ export class CobranzaComponent implements OnInit, AfterViewInit {
       fondo: this.fondo._id,
       nro_timbrado: '144542331',
       nro_factura: this.cobrador.nro_factura_actual + 1,
-      numero: this.cobrador.nro_talonario
+      numero: this.cobrador.nro_talonario,
+      timbrado
     });
     this.loadingConfirmarPago = false
 
@@ -359,6 +362,8 @@ export class CobranzaComponent implements OnInit, AfterViewInit {
 
       servicios = fsinrepetir;
     }
+    let timbrado = (await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body
+    
     const facturaPDF = {
       nombres: this.nombreFactura,
       fecha: this.fechaPago.getTime(),
@@ -368,7 +373,8 @@ export class CobranzaComponent implements OnInit, AfterViewInit {
       notaDeRemision: '123123',
       servicios,
       numero: this.cobrador.nro_talonario,
-      nro_factura: this.cobrador.nro_factura_actual + 1
+      nro_factura: this.cobrador.nro_factura_actual + 1,
+      timbrado
     };
     console.log('-----------------------------------------------');
     console.log(facturaPDF);
@@ -392,6 +398,8 @@ export class CobranzaComponent implements OnInit, AfterViewInit {
         diezPorciento: factura.haber / 11
       });
     }
+    let timbrado = (await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body
+
     this.facturapdf = {
       _id: pago._id,
       nombres: `${pago.cliente.NOMBRES} ${pago.cliente.APELLIDOS}`,
@@ -400,7 +408,8 @@ export class CobranzaComponent implements OnInit, AfterViewInit {
       ruc: pago.cliente.RUC,
       tel: pago.cliente.TELEFONO1,
       notaDeRemision: '123123',
-      servicios
+      servicios,
+      timbrado
     };
     console.log(this.facturapdf);
 

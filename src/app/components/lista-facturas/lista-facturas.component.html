@@ -53,39 +53,7 @@
                 </div>
             </div>
             <!-- Fondo -->
-            <div class="col-xs col-md">
-                <div style="justify-content: space-between;" class="inline-flex">
-                    <label>Fondo</label>
-                    <div *ngIf="fondo" (click)="fondo = null; filtrar()" class="pointer close-icon ml-auto">
-                        <button type="button" class="btn btn-sm btn-light"><i class=" ti-close  "></i></button>
-                    </div>
-                </div>
-                <div class="" *ngIf="!fondo">
-                    <ng-select [items]="fondos" [(ngModel)]="fondo" (ngModelChange)="filtrar()" (search)="searchFondos($event)" notFoundText="no se encontraron resultados" placeholder="buscar fondo" bindLabel="NOMBRES" [searchFn]="customSearchFn">
-                        <ng-template ng-option-tmp let-item="item">
-                            <div>
-                                <div *ngIf="item.APELLIDOS">{{item.APELLIDOS}} {{item.NOMBRES}}</div>
-                                <div *ngIf="item.NOMBRES && item.RAZON"> - </div>
-                                <div *ngIf="item.RAZON">{{item.RAZON}} </div>
-
-
-                                <small>{{item.RUC | ruc}}</small>
-                            </div>
-
-                        </ng-template>
-                    </ng-select>
-                </div>
-
-                <div class="" *ngIf="fondo">
-                    <div>
-                        <div *ngIf="fondo.NOMBRES">{{fondo.NOMBRES}} {{fondo.APELLIDOS}}</div>
-                        <div *ngIf="fondo.NOMBRES && fondo.RAZON"> - </div>
-                        <div *ngIf="fondo.RAZON">{{fondo.RAZON}} </div>
-
-                        <small>{{fondo.RUC | ruc}}</small>
-                    </div>
-                </div>
-            </div>
+           
             <!-- Servicio -->
             <div style="min-width: 550px;" class="col-xs col-md">
                 <div style="justify-content: space-between;" class="inline-flex">
@@ -199,8 +167,38 @@
                     </div>
                 </div>
             </div>
+            <div class="col-xs col-md">
+                <div style="justify-content: space-between;" class="inline-flex">
+                    <label>Fondo</label>
+                    <div *ngIf="fondo" (click)="fondo = null; filtrar()" class="pointer close-icon ml-auto">
+                        <button type="button" class="btn btn-sm btn-light"><i class=" ti-close  "></i></button>
+                    </div>
+                </div>
+                <div class="" *ngIf="!fondo">
+                    <ng-select [items]="fondos" [(ngModel)]="fondo" (ngModelChange)="filtrar()" (search)="searchFondos($event)" notFoundText="no se encontraron resultados" placeholder="buscar fondo" bindLabel="NOMBRES" [searchFn]="customSearchFn">
+                        <ng-template ng-option-tmp let-item="item">
+                            <div>
+                                <div *ngIf="item.APELLIDOS">{{item.APELLIDOS}} {{item.NOMBRES}}</div>
+                                 
 
-            <div class="col-xs mt-3  col-md">
+
+                                <small>{{item.RUC | ruc}}</small>
+                            </div>
+
+                        </ng-template>
+                    </ng-select>
+                </div>
+
+                <div class="" *ngIf="fondo">
+                    <div>
+                        <div  >{{fondo.NOMBRES}} {{fondo.APELLIDOS}}</div>
+                       
+
+                        <small>{{fondo.RUC | ruc}}</small>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="false" class="col-xs mt-3  col-md">
                 <!-- <label for="fecha_fin">Fecha de emision</label> -->
                 <mat-form-field appearance="fill">
                     <mat-label>Fecha de Emision</mat-label>
@@ -222,7 +220,7 @@
                     <mat-label>Fecha de vencimiento</mat-label>
                     <mat-date-range-input [formGroup]="rangeVencimiento" [rangePicker]="pickerVencimiento">
                         <input matStartDate formControlName="start" placeholder="fecha inicio">
-                        <input matEndDate formControlName="end" (dateInput)="filtrar()" placeholder="fecha fin">
+                        <input matEndDate formControlName="end" (dateInput)="filtrar('fecha_vencimiento')" placeholder="fecha fin">
                     </mat-date-range-input>
                     <mat-datepicker-toggle matSuffix [for]="pickerVencimiento"></mat-datepicker-toggle>
                     <mat-date-range-picker #pickerVencimiento></mat-date-range-picker>
@@ -238,7 +236,7 @@
                     <mat-label>Fecha de Pago</mat-label>
                     <mat-date-range-input [formGroup]="rangePagado" [rangePicker]="pickerPagado">
                         <input matStartDate formControlName="start" placeholder="fecha inicio">
-                        <input matEndDate formControlName="end" (dateInput)="filtrar()" placeholder="fecha fin">
+                        <input matEndDate formControlName="end" (dateInput)="filtrar('fecha_pago')" placeholder="fecha fin">
                     </mat-date-range-input>
                     <mat-datepicker-toggle matSuffix [for]="pickerPagado"></mat-datepicker-toggle>
                     <mat-date-range-picker #pickerPagado></mat-date-range-picker>
@@ -248,6 +246,17 @@
                 </mat-form-field>
 
                 <!-- <p>Selected range: {{range.value | json}}</p> -->
+            </div>
+
+            <div class="col-xs col-md mt-3">
+                <h4>Estado</h4>
+                <input [(ngModel)]="utilizado" (ngModelChange)="filtrar()" type="checkbox"
+                    name="check_utilizado" id="check_utilizado" class="filled-in chk-col-light-blue" checked />
+                <label class="mx-3" for="check_utilizado">Utilizado</label>
+
+                <input [(ngModel)]="de_baja"  (ngModelChange)="filtrar()" type="checkbox" name="check_de_baja" id="check_de_baja"
+                    class="filled-in chk-col-light-blue" checked />
+                <label class="mx-3" for="check_de_baja">de baja</label>
             </div>
 
             <!-- contrato -->
@@ -298,13 +307,13 @@
     </div>
 </div>
 
-<div class="card">
+<!-- <div  class="card">
     <div class="card-body">
         <div class="d-flex">
             <button type="button" [routerLink]="['/admin/crear_ingreso']" routerLinkActive="router-link-active" class="btn btn-info mx-auto">Crear Nuevo Ingreso</button>
         </div>
     </div>
-</div>
+</div> -->
 <app-facturas *ngIf="!showModal" [count]="count" [total]="montoTotal" [options]="opciones" [sort]="sort" [total]="true" [facturas]="facturas"></app-facturas>
 
 <div class="card">

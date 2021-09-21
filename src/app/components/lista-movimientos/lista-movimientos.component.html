@@ -1,6 +1,6 @@
 <div>
     <div class="row">
-        <div class="col-xs col-md-3 mt-2">
+        <div class="col-xs col-md-3 ">
             <div class="inline-flex">
 
                 <label class="">Proveedor</label>
@@ -10,15 +10,10 @@
                 </div>
             </div>
             <div class="" *ngIf="!proveedor">
-                <ng-select    
-                [typeahead]="inputProveedores" [loading]="loadingProveedores"
-                            [items]="proveedores" name="dsfdbrdafwseqcda" [(ngModel)]="proveedor"
-                            (ngModelChange)="buscar()"
-
-                            notFoundText="no se encontraron resultados"
-                            placeholder="Buscar Proveedor" bindLabel="NOMBRES"
-                            [searchFn]="customSearchFn"
-                 >
+                <ng-select [typeahead]="inputProveedores" [loading]="loadingProveedores" [items]="proveedores"
+                    name="dsfdbrdafwseqcda" [(ngModel)]="proveedor" (ngModelChange)="buscar()"
+                    notFoundText="no se encontraron resultados" placeholder="Buscar Proveedor" bindLabel="NOMBRES"
+                    [searchFn]="customSearchFn">
                     <ng-template ng-option-tmp let-item="item">
                         <div>
                             <div *ngIf="item.APELLIDOS">{{item.APELLIDOS}} {{item.NOMBRES}}</div>
@@ -42,7 +37,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xs col-md-3 mt-2">
+        <div class="col-xs col-md-3 ">
             <div class="inline-flex">
 
                 <label class="">Cliente</label>
@@ -52,14 +47,10 @@
                 </div>
             </div>
             <div class="" *ngIf="!cliente">
-                <ng-select    
-                [typeahead]="inputClientes" [loading]="loadingClientes"
-                            [items]="clientes" name="dsfdbrdafwseqcda" [(ngModel)]="cliente"
-                            (ngModelChange)="buscar()"
-                            notFoundText="no se encontraron resultados"
-                            placeholder="Buscar Cliente" bindLabel="NOMBRES"
-                            [searchFn]="customSearchFn"
-                 >
+                <ng-select [typeahead]="inputClientes" [loading]="loadingClientes" [items]="clientes"
+                    name="dsfdbrdafwseqcda" [(ngModel)]="cliente" (ngModelChange)="buscar()"
+                    notFoundText="no se encontraron resultados" placeholder="Buscar Cliente" bindLabel="NOMBRES"
+                    [searchFn]="customSearchFn">
                     <ng-template ng-option-tmp let-item="item">
                         <div>
                             <div *ngIf="item.APELLIDOS">{{item.APELLIDOS}} {{item.NOMBRES}}</div>
@@ -81,7 +72,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xs col-md-3 mt-2">
+        <div class="col-xs col-md-3 ">
             <div style="display: flex;" class="">
                 <span>Contrato</span>
                 <div *ngIf="contrato" style="height: fit-content;" class="pointer close-icon ml-auto">
@@ -93,13 +84,10 @@
             <div *ngIf="!contrato" class="">
 
                 <div style="display: flex;" class="">
-                    <div class="card">
-                        <div class="card-body">
-                            <button type="button" (click)="showModal = true"
-                                class="btn btn-inverse">Buscar
+                    
+                            <button type="button" (click)="showModal = true" class="btn btn-inverse">Buscar
                                 Contrato</button>
-                        </div>
-                    </div>
+                       
                 </div>
             </div>
             <div *ngIf="contrato" class="">
@@ -122,6 +110,72 @@
                 </div>
             </div>
         </div>
+        <div class="col-xs col-md-3 ">
+
+            <p>Fondo: </p>
+            <div style="min-width: max-content;" class="inline-flex">
+                <div style="min-width: 100%;" *ngIf="!fondo">
+                    <ng-select [items]="fondos" [(ngModel)]="fondo" (ngModelChange)="seleccionarFondo(fondo._id)"
+                        (search)="searchBancos($event)" notFoundText="no se encontraron resultados"
+                        placeholder="Filtrar por fondo" bindLabel="NOMBRES" [searchFn]="customSearchFn">
+                        <ng-template ng-option-tmp let-item="item">
+                            <div>
+                                <div *ngIf="item.APELLIDOS">{{item.APELLIDOS}} {{item.NOMBRES}}</div>
+                                <small>{{item.RUC | ruc}}</small>
+                            </div>
+
+                        </ng-template>
+                    </ng-select>
+                </div>
+
+                <div class="ml-2" *ngIf="fondo">
+                    <span>
+                        <div *ngIf="fondo.APELLIDOS">{{fondo.APELLIDOS}} {{fondo.NOMBRES}} </div>
+
+                        <small>{{fondo.RUC | ruc}}</small>
+                    </span>
+                </div>
+                <div *ngIf="fondo" (click)="fondo = null; " class="pointer close-icon ml-2">
+                    <button type="button" (click)="seleccionarFondo(null)" class="btn btn-sm btn-light"><i
+                            class=" ti-close  "></i></button>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-xs col-md-3 ">
+            <div class="form-group">
+                <label for="nro_factura">Nro Factura</label>
+                <input type="text" #nroContrato [(ngModel)]="nro_factura" (ngModelChange)=" buscar()"
+                    id='nro_factura_search' name="nro_factura" class="form-control"
+                    placeholder="numero de factura" aria-describedby="nrofacturaid">
+            </div>
+        </div>
+        <div class="col-xs col-md-3 "> 
+            <div class="inline-flex">
+                <div style="min-width: 100%;">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Filtrar por Fecha</mat-label>
+                        <mat-date-range-input [formGroup]="rangeFecha" [rangePicker]="pickerFecha">
+                            <input autocomplete="off" matStartDate formControlName="start"
+                                placeholder="fecha inicio">
+                            <input matEndDate formControlName="end" (dateChange)="filtroPorFecha()"
+                                placeholder="fecha fin">
+                        </mat-date-range-input>
+                        <mat-datepicker-toggle matSuffix [for]="pickerFecha"></mat-datepicker-toggle>
+                        <mat-date-range-picker #pickerFecha></mat-date-range-picker>
+                        <mat-error *ngIf="rangeFecha.controls.start.hasError('matStartDateInvalid')">
+                            Invalid start date</mat-error>
+                        <mat-error *ngIf="rangeFecha.controls.end.hasError('matEndDateInvalid')">Invalid
+                            end date</mat-error>
+                    </mat-form-field>
+                </div>
+        </div>
     </div>
 </div>
 <div class="card">
@@ -142,7 +196,9 @@
                 </tr>
             </thead>
             <tbody>
-                <tr [routerLink]="['/admin/gasto', item._id]" routerLinkActive="router-link-active"  *ngFor="let item of movimientos | paginate: { itemsPerPage: 10,totalItems:count, currentPage: page } ; let i = index; " [ngClass]="'pointer'">
+                <tr [routerLink]="['/admin/gasto', item._id]" routerLinkActive="router-link-active"
+                    *ngFor="let item of movimientos | paginate: { itemsPerPage: 10,totalItems:count, currentPage: page } ; let i = index; "
+                    [ngClass]="'pointer'">
                     <td>{{page*10 + (i+1) - 10}}</td>
                     <td *ngIf="item.fondo">{{item.fondo.RAZON}}</td>
                     <td *ngIf="!item.fondo">--</td>
@@ -159,7 +215,7 @@
 
 
                     <td *ngIf="item.monto_haber">{{item.monto_haber | currency: '':'':'2.0'}} Gs</td>
-                    <td *ngIf="item.monto_total"  >{{item.monto_total | currency: '':'':'2.0'}} Gs</td>
+                    <td *ngIf="item.monto_total">{{item.monto_total | currency: '':'':'2.0'}} Gs</td>
 
                 </tr>
 

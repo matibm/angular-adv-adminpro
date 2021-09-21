@@ -55,6 +55,8 @@ import {MatTreeModule} from '@angular/material/tree';
 import { ModalCuentasGastosComponent } from './modal-cuentas-gastos/modal-cuentas-gastos.component';
 import { ModalBilletesComponent } from './modal-billetes/modal-billetes.component';
 import { GastoComponent } from './gasto/gasto.component';
+import { PagosComponent } from './pagos/pagos.component';
+import { AccountSettingsComponent } from '../pages/account-settings/account-settings.component';
 
 
 const maskConfig: Partial<IConfig> = {
@@ -93,7 +95,8 @@ const maskConfig: Partial<IConfig> = {
     ModalCuentasGastosComponent,
     ModalBilletesComponent,
     GastoComponent,
-
+    PagosComponent,
+    AccountSettingsComponent
   ],
   imports: [
     AvatarModule,

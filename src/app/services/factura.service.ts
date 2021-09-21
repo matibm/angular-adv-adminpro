@@ -145,6 +145,37 @@ export class FacturaService {
       return resp.factura;
     });
   }
+  getPagosAll(body) {
+    let url = `${URL_SERVICIOS}/factura/facturas_excel/listar`;
+    url += `?token=${this._usuarioService.token}`;
+    return this.http.post(url, body).toPromise().then((resp: any) => {
+      console.log(resp);
+
+      return resp;
+    });
+  }
+  getPagosExcel(body) {
+    let url = `${URL_SERVICIOS}/factura/pagos_excel`;
+    url += `?token=${this._usuarioService.token}`;
+    // return this.http.post(url, body).toPromise().then((resp: any) => {
+    //   window.open(resp)
+    // });
+
+    this.http.post(url, body, { responseType: 'blob' as 'json' }).subscribe(
+      (response: any) => {
+        let dataType = response.type;
+        let binaryData = [];
+        binaryData.push(response);
+        let downloadLink = document.createElement('a');
+        downloadLink.href = window.URL.createObjectURL(new Blob(binaryData, { type: dataType }));
+
+        downloadLink.setAttribute('download', 'ventas.xlsx');
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        downloadLink.remove()
+      }
+    )
+  }
   getPagos(cliente_id) {
     let url = `${URL_SERVICIOS}/factura/get_pagos/` + cliente_id;
     url += `?token=${this._usuarioService.token}`;

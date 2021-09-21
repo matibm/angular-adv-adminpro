@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 import { NotifierService } from 'angular-notifier';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-lista-facturas',
@@ -20,7 +21,9 @@ export class ListaFacturasComponent implements OnInit {
     public _usuarioService: UsuarioService,
     public _contratoSerivce: ContratoService,
     public _productoService: ProductosService,
-    notifier: NotifierService
+    notifier: NotifierService,
+    public route: ActivatedRoute,
+    private router: Router
 
   ) {
 
@@ -30,7 +33,7 @@ export class ListaFacturasComponent implements OnInit {
   private notifier: NotifierService;
 
   showModal = false;
-  opciones:any = { get_total: '1' }
+  opciones: any = { get_total: '1' }
   montoTotal
   fondo;
   fondos;
@@ -59,6 +62,8 @@ export class ListaFacturasComponent implements OnInit {
   loadingCobradores = false
   inputVendedores = new Subject<string>();
   loadingVendedores = false
+  utilizado = false
+  de_baja = false
   estados = [
     {
       id: 1,
@@ -93,21 +98,69 @@ export class ListaFacturasComponent implements OnInit {
   });
 
   sort = {
-    key: 'haber', value: -1
+    key: 'vencimiento', value: 1
+  }
+  cambiarQueryParams(paths) {
+    let queryParams: Params = { ... this.route.snapshot.queryParams }
+    for (let i = 0; i < paths.length; i++) {
+      const element = paths[i];
+      Object.keys(element).forEach((key, index) => {
+        queryParams[key] = element[key]
+
+      })
+
+    }
+    console.log(queryParams);
+
+    this.router.navigate(
+      [],
+      {
+        relativeTo: this.route,
+        queryParams: queryParams,
+        // skipLocationChange: true
+        // queryParamsHandling: 'merge', // remove to replace all query params by provided
+      });
   }
   async ngOnInit() {
-    this.observableBuscadores()
-    const respF = await this._facturaService.getFacturasOptions(this.opciones, this.sort);
-    console.log(respF);
+    if (!this.route.snapshot.queryParams.vencimiento_start && !this.route.snapshot.queryParams.vencimiento_end) {
+      let month = new Date().getMonth() + 1
+      let year = new Date().getFullYear()
+      this.rangeVencimiento.setValue({ start: new Date(`${year}-${month}-01`), end: new Date() })
+      this.cambiarQueryParams([
+        {
+          vencimiento_start: new Date(`${year}-${month}-01`).toLocaleDateString('fr-CA', { year: "numeric", month: "2-digit", day: "2-digit" })
+        },
+        {
+          vencimiento_end: new Date().toLocaleDateString('fr-CA', { year: "numeric", month: "2-digit", day: "2-digit" })
+        }
+      ])
+    }
+    if (this.route.snapshot.queryParams.vencimiento_start && this.route.snapshot.queryParams.vencimiento_end) {
+      let value = { start: new Date(`${this.route.snapshot.queryParams.vencimiento_start} 00:00`), end: new Date(`${this.route.snapshot.queryParams.vencimiento_end} 00:00`) }
+      this.rangeVencimiento.setValue(value)
+    }
+    this.route.snapshot.queryParams.estado ? null : this.cambiarQueryParams([{ estado: 'PENDIENTES' }])
+    this.estadoSeleccionado = this.route.snapshot.queryParams?.estado || 'PENDIENTES'
 
-    this.count = respF.count;
-    this.facturas = respF.facturas;
-    this.montoTotal = respF.montoTotal
+    this.filtrar();
+    this.observableBuscadores()
+
     this.servicios = await this._productoService.getProductos();
     this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', '');
   }
 
-  async filtrar() {
+  async filtrar(condicion?) {
+
+    if (condicion === 'fecha_vencimiento') {
+      console.log("returning");
+
+      if (!this.rangeVencimiento.value.end) return
+    }
+    if (condicion === 'fecha_pago') {
+      console.log("returning");
+
+      if (!this.rangePagado.value.end) return
+    }
     this.facturas = null;
     this.montoTotal = null
 
@@ -121,6 +174,8 @@ export class ListaFacturasComponent implements OnInit {
     this.opciones = {
       get_total: '1',
       titular: this.cliente ? this.cliente._id : null,
+      utilizado: this.utilizado,
+      de_baja: this.de_baja,
       vendedor: this.vendedor ? this.vendedor._id : null,
       cobrador: this.cobrador ? this.cobrador._id : null,
       servicio: this.servicio ? this.servicio._id : null,
@@ -260,7 +315,7 @@ export class ListaFacturasComponent implements OnInit {
   }
 
 
-  async aplicarInteres(monto){
+  async aplicarInteres(monto) {
     await this._facturaService.aplicarInteres(this.opciones, monto)
   }
 }

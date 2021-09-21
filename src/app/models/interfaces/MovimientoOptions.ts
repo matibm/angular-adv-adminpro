@@ -1,4 +1,5 @@
 export interface MovimientoOptions {
+    nro_factura?: string,
     cliente?: string,
     proveedor?: string,
     fecha_inicio?: number,

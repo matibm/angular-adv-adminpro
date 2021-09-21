@@ -14,6 +14,8 @@ export class TitleBreadcrumbPipe implements PipeTransform {
     value == 'crear_contrato' ? data = 'Crear Contrato' : null;
     value == 'lista_contratos' ? data = 'Lista de Contratos' : null;
     value.indexOf('info_caja') !=-1 ? data = 'Caja/Bancos' : null;
+    value.indexOf('pagos') !=-1 ? data = 'Pagos' : null;
+    value.indexOf('ingresos') !=-1 ? data = 'Ingresos' : null;
     value == 'usuarios' ? data = 'Lista de usuarios' : null;
 
     return data;

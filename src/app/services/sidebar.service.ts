@@ -45,6 +45,7 @@ export class SidebarService {
       submenu: [
          { titulo: 'resumen', url: 'resumen' },
          { titulo: 'Ingresos', url: 'ingresos' },
+         { titulo: 'Pagos', url: 'pagos' },
 
         ]
     },

@@ -1,0 +1,111 @@
+<div class="card">
+    <div class="card-body  ">
+        <span> <span class="lstick"></span>Filtros </span>
+        <div class="row">
+            <div class="col-xs col-md pl-3 mr-3">
+                <p>Fondo: </p>
+                <div style="min-width: max-content;" class="inline-flex">
+                    <div style="min-width: 100%;" *ngIf="!fondo">
+                        <ng-select [items]="fondos" [(ngModel)]="fondo" (ngModelChange)="seleccionarFondo(fondo._id)"
+                            (search)="searchBancos($event)" notFoundText="no se encontraron resultados"
+                            placeholder="Filtrar por fondo" bindLabel="NOMBRES" [searchFn]="customSearchFn">
+                            <ng-template ng-option-tmp let-item="item">
+                                <div>
+                                    <div *ngIf="item.APELLIDOS">{{item.APELLIDOS}} {{item.NOMBRES}}</div>
+                                    <small>{{item.RUC | ruc}}</small>
+                                </div>
+
+                            </ng-template>
+                        </ng-select>
+                    </div>
+
+                    <div class="ml-2" *ngIf="fondo">
+                        <span>
+                            <div *ngIf="fondo.APELLIDOS">{{fondo.APELLIDOS}} {{fondo.NOMBRES}} </div>
+
+                            <small>{{fondo.RUC | ruc}}</small>
+                        </span>
+                    </div>
+                    <div *ngIf="fondo" (click)="fondo = null; " class="pointer close-icon ml-2">
+                        <button type="button" (click)="seleccionarFondo(null)" class="btn btn-sm btn-light"><i
+                                class=" ti-close  "></i></button>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            <div class="col-xs col-md pl-3 mr-3">
+                <p>Fecha: </p>
+                <div class="inline-flex">
+                    <div style="min-width: 100%;">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Rango de Fecha</mat-label>
+                            <mat-date-range-input [formGroup]="rangeFecha" [rangePicker]="pickerFecha">
+                                <input autocomplete="off" matStartDate formControlName="start"
+                                    placeholder="fecha inicio">
+                                <input matEndDate formControlName="end" (dateChange)="filtroPorFecha()"
+                                    placeholder="fecha fin">
+                            </mat-date-range-input>
+                            <mat-datepicker-toggle matSuffix [for]="pickerFecha"></mat-datepicker-toggle>
+                            <mat-date-range-picker #pickerFecha></mat-date-range-picker>
+                            <mat-error *ngIf="rangeFecha.controls.start.hasError('matStartDateInvalid')">
+                                Invalid start date</mat-error>
+                            <mat-error *ngIf="rangeFecha.controls.end.hasError('matEndDateInvalid')">Invalid
+                                end date</mat-error>
+                        </mat-form-field>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<div *ngIf="pagos" class="card">
+    <div class="card-body">
+        <table  class="table table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Fecha</th>
+                    <th>Fondo</th>                    
+                    <th>Documento</th>
+                    <th style="min-width: 120px;">Razon Social</th>
+                    <th>RUC</th>
+                    <th style="width: 25%;">Monto</th>                    
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr [routerLink]="['/admin/gasto', item._id]" routerLinkActive="router-link-active"  *ngFor="let item of pagos | paginate: { itemsPerPage: 10,totalItems:count, currentPage: page } ; let i = index; " [ngClass]="'pointer'">
+                    <td>{{page*10 + (i+1) - 10}}</td>
+
+                    <td>
+                        {{item.fecha_creacion | date}}
+                        
+                    </td>
+                    <td >{{item.fondo?.RAZON}}</td>
+                    
+                    <td> {{item.numero}}-{{fill(item.nro_factura, 7) }}</td>
+
+                    <td>{{item.nombre}}</td>
+                    <td>{{item.ruc}}</td>
+
+
+                    <td>{{item.monto | currency: '':'':'2.0'}} Gs</td>
+
+                </tr>
+
+            </tbody>
+        </table>
+
+        <button type="button" (click)="generarExcel()" class="btn float-right mt-1 btn-primary">Generar Excel</button>
+
+    </div>
+</div>

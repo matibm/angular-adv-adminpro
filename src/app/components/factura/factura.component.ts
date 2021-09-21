@@ -21,6 +21,7 @@ export class FacturaComponent implements OnInit {
     public _facturaService: FacturaService,
     public _usuarioService: UsuarioService,
     public router: Router,
+    private _userService: UsuarioService
 
   ) { }
   fondo: Usuario;
@@ -121,12 +122,13 @@ export class FacturaComponent implements OnInit {
     const factura: Factura = any;
     factura.fondo = this.fondo;
     let id
+    let timbrado = (await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body
 
     if (this.crearParcial && this.montoparcial > 0) {
       let body = {
         factura,
         cobrador: this.cobrador?._id || this.factura.cobrador?._id,
-
+        timbrado,
         fecha_pago: this.fechaPago,
         comentario: this.comentario,
         nombre: this.nombreFactura,
@@ -155,6 +157,7 @@ export class FacturaComponent implements OnInit {
         nro_timbrado: Date.now(),
         nro_factura: this.factura.cobrador.nro_factura_actual + 1,
         nro_talonario: this.factura.cobrador.nro_talonario,
+        timbrado
       }
       let data = await this._facturaService.pagarFactura(body)
       id = data.pago
@@ -206,6 +209,7 @@ export class FacturaComponent implements OnInit {
   async mostrarModal(id) {
     const resp = await this._facturaService.getDetallePago(id);
     console.log(resp);
+    let timbrado = (await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body
 
     const pago = resp.pago;
     const facturas = resp.facturas;
@@ -230,7 +234,8 @@ export class FacturaComponent implements OnInit {
       ruc: pago.cliente.RUC,
       tel: pago.cliente.TELEFONO1,
       notaDeRemision: '123123',
-      servicios
+      servicios,
+      timbrado
     };
     console.log(this.facturapdf);
 
@@ -240,6 +245,7 @@ export class FacturaComponent implements OnInit {
     let servicios = [];
     const contratosSinRepetir = [];
     const fsinrepetir = [];
+    let timbrado = (await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body
 
     for (let i = 0; i < facturas.length; i++) {
       const factura = facturas[i];
@@ -279,7 +285,8 @@ export class FacturaComponent implements OnInit {
       notaDeRemision: '123123',
       servicios,
       numero: this.factura.cobrador.nro_talonario,
-      nro_factura: this.factura.cobrador.nro_factura_actual + 1
+      nro_factura: this.factura.cobrador.nro_factura_actual + 1,
+      timbrado
     };
     console.log('-----------------------------------------------');
     console.log(facturaPDF);

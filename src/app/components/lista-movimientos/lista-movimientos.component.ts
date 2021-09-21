@@ -5,6 +5,7 @@ import { MovimientoService } from 'src/app/services/movimiento.service';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-lista-movimientos',
@@ -28,7 +29,23 @@ export class ListaMovimientosComponent implements OnInit {
   cliente
   contrato
   showModal
+
+  inputProveedores = new Subject<string>();
+  inputClientes = new Subject<string>();
+  loadingProveedores
+  proveedores
+  loadingClientes
+  clientes
+  fondo
+  fondos
+  nro_factura
+  rangeFecha = new FormGroup({
+    start: new FormControl(),
+    end: new FormControl()
+  });
+
   async ngOnInit() {
+    this.searchBancos('')
     this.observableBuscadores()
     if (this.options) {
       let resp = await this._movimientoService.getAllMovimientos(this.options)
@@ -45,12 +62,28 @@ export class ListaMovimientosComponent implements OnInit {
       this.count = resp.count
     }
   }
-  inputProveedores = new Subject<string>();
-  inputClientes = new Subject<string>();
-  loadingProveedores
-  proveedores
-  loadingClientes
-  clientes
+  async searchBancos(val) {
+    this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', val.term);
+  }
+  async seleccionarFondo(fondoId) {
+    if (!fondoId) {
+      delete this.options.fondo
+      this.buscar()
+
+      return
+    }
+    this.options.fondo = fondoId
+    this.buscar()
+    this.fondo = await this._usuarioService.getUsuarioPorId(fondoId)
+  }
+  async filtroPorFecha() {
+    if (this.rangeFecha.value.end) {
+      this.options.fecha_inicio = new Date(this.rangeFecha.value.start).getTime()
+      this.options.fecha_fin = new Date(this.rangeFecha.value.end).setHours(23, 59, 59, 59)
+      this.buscar()
+    }
+
+  }
   observableBuscadores() {
 
     this.inputProveedores.pipe(
@@ -91,16 +124,15 @@ export class ListaMovimientosComponent implements OnInit {
       item?.RUC?.toLowerCase().includes(term)
     );
   }
-
-
   async buscar() {
-    this.cliente? this.options.cliente = this.cliente._id : ''
-    this.proveedor? this.options.proveedor = this.proveedor._id : ''
-    this.contrato? this.options.contrato = this.contrato._id : ''
+    this.nro_factura ? this.options.nro_factura = this.nro_factura : delete this.options.nro_factura
+    this.cliente ? this.options.cliente = this.cliente._id : null
+    this.proveedor ? this.options.proveedor = this.proveedor._id : null
+    this.contrato ? this.options.contrato = this.contrato._id : null;
     const resp = await this._movimientoService.getAllMovimientos(this.options)
     this.movimientos = resp.movimientos
-    this.count = resp.count 
-    this.page =1
+    this.count = resp.count
+    this.page = 1
   }
 
 }

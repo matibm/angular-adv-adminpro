@@ -406,7 +406,7 @@ export class MovimientosComponent implements OnInit, OnDestroy {
    await this._movimientoService.crearCuentaGasto(cuenta)
    window.location.reload()
   }
-  crearCuentaAbaco(codigo, descripcion, tipo, cuentaGasto) {
+  async crearCuentaAbaco(codigo, descripcion, tipo, cuentaGasto) {
     let cuenta = {
       descripcion,
       tipo,
@@ -415,7 +415,8 @@ export class MovimientosComponent implements OnInit, OnDestroy {
       fecha_unix: new Date().getTime()
     }
     //cuenta);
-    this._movimientoService.crearCuentaAbaco(cuenta)
+    await this._movimientoService.crearCuentaAbaco(cuenta)
+    window.location.reload()
   }
   crearCategoria(codigo, descripcion) {
     let cuenta = {

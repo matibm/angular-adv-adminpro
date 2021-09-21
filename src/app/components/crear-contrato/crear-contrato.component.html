@@ -90,7 +90,7 @@
         </div>
         <div class="col-md-6 col-xs">
             <div style="min-width: fit-content;" class="card ">
-                <div class="card-body">
+                <div class="c   ard-body">
                     <div style="justify-content: space-between;" class="inline-flex">
                         <h4 class="card-title">Vendedor</h4>
                         <div *ngIf="vendedor" (click)="vendedor = null" class="pointer close-icon ml-auto">
@@ -269,7 +269,19 @@
 
                                 </div>
                             </div>
-
+                            <div class="col-md col-xs">
+                                <div class="d-block ">
+                                    <!-- <label for="">Fecha de primer pago </label> -->
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Fecha de primer pago</mat-label>
+                                        <input matInput name="asfdvbntr" [(ngModel)]="fechaPago" [matDatepicker]="pickerPrimerPago" (dateChange)="calcularFechaPago()">
+                                        <mat-datepicker-toggle matSuffix [for]="pickerPrimerPago">
+                                        </mat-datepicker-toggle>
+                                        <mat-datepicker #pickerPrimerPago></mat-datepicker>
+                                    </mat-form-field>
+                                </div>
+                                <!-- <h5> <b>{{fechaPago |date}}</b></h5> -->
+                            </div>
                         </div>
                         <hr>
                         <div class="mt-2 inline-flex">

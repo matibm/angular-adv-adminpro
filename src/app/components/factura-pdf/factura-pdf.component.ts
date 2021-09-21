@@ -2,6 +2,7 @@ import { FacturaService } from './../../services/factura.service';
 import { ActivatedRoute } from '@angular/router';
 import { Contrato } from './../../models/contrato';
 import { Component, OnInit, Input } from '@angular/core';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-factura-pdf',
@@ -11,7 +12,9 @@ import { Component, OnInit, Input } from '@angular/core';
 export class FacturaPdfComponent implements OnInit {
   constructor(
     public route: ActivatedRoute,
-    public _facturaService: FacturaService
+    public _facturaService: FacturaService,
+    private _userService: UsuarioService
+
 
   ) { }
 
@@ -29,8 +32,17 @@ export class FacturaPdfComponent implements OnInit {
   nro_factura
   nro_talonario
   items: any[] = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+  timbrado
   async ngOnInit() {
-
+    // this.timbrado = (await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body ||
+    // {
+    //   timbrado: '15074643',
+    //   fecha_vigencia_inicio: '01/09/2021',
+    //   fecha_vigencia_fin: '30/09/2022',
+    //   ruc: '80022091-9',
+    //   nro_solicitud: '350010010198',
+    //   fecha_solicitud: '31/08/2021'
+    // }
     this.id = this.route.snapshot.paramMap.get('id');
 
     console.log(await this.facturaPDF);
@@ -77,7 +89,7 @@ export class FacturaPdfComponent implements OnInit {
 
 
     this.totalTexto = this.Millones(this.total);
-
+    
   }
 
   fill = (number, len) => "0".repeat(len - number.toString().length) + number.toString();
@@ -307,6 +319,14 @@ export class FacturaPdfComponent implements OnInit {
 
     const pago = resp.pago;
     console.log(pago);
+    this.timbrado = resp.pago.timbrado || {
+      timbrado: '15074643',
+      fecha_vigente_inicio: new Date('2021/09/01'),
+      fecha_vigente_fin: new Date('2022/09/30'),
+      ruc: '80022091-9',
+      nro_solicitud: '350010010198',
+      fecha_solicitud: new Date('2021/08/31')
+    }
     this.nro_factura = pago.nro_factura
     this.nro_talonario = pago.numero
     const facturas = resp.facturas;

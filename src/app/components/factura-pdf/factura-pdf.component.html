@@ -50,10 +50,10 @@ overflow: hidden;
                 border: 2px solid;
                 border-radius: 15px;">
                     <span style="font-size: 18px;">
-                        <b>TMBRADO Nº 15074643
-                            <br> Fecha Inicio Vigencia: 01/09/2021
-                            <br> Fecha Fin Vigencia: 30/09/2022
-                            <br> RUC: 80022091-9
+                        <b>TMBRADO Nº {{timbrado.timbrado}}
+                            <br> Fecha Inicio Vigencia: {{timbrado.fecha_vigente_inicio | date}}
+                            <br> Fecha Fin Vigencia: {{timbrado.fecha_vigente_fin | date}}
+                            <br> RUC: {{timbrado.ruc}}
                         </b>
                         <div style="display: block;">
                             <div>
@@ -480,9 +480,9 @@ overflow: hidden;
 <div style="margin-left: 50px; text-align:left ;">
     Autorizado como Autoimpresor por la SET
     <br>
-    Solicitud Nº 350010010198
+    Solicitud Nº {{timbrado.nro_solicitud}}
     <br>
-    Fecha: 31/08/2021 
+    Fecha: {{timbrado.fecha_solicitud | date}}
 </div>
     </div>
  

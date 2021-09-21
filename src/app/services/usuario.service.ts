@@ -71,7 +71,7 @@ export class UsuarioService {
     let url = `${URL_SERVICIOS}/usuario/search/${tipo}`;
     url += `?token=${this.token}`;
     url += `&query=${busqueda}`;
-    return this.http.post(url, {type: tipo, query: busqueda}).toPromise().then((resp: any) => {
+    return this.http.post(url, { type: tipo, query: busqueda }).toPromise().then((resp: any) => {
       return resp.usuarios;
     });
   }
@@ -132,7 +132,25 @@ export class UsuarioService {
     localStorage.removeItem('token');
     this.itsLogued = false;
   }
+  getConfigurations(body) {
 
 
+    let url = `${URL_SERVICIOS}/configurations/get_configurations`;
+    url += `?token=${this.token}`;
+
+    return this.http.post(url, body).toPromise().then((resp: any) => {
+      return resp.data;
+    });
+  }
+
+  createConfiguration(body) {
+   
+    let url = `${URL_SERVICIOS}/configurations/create_configuration`;
+    url += `?token=${this.token}`;
+
+    return this.http.post(url, body).toPromise().then((resp: any) => {
+      return resp.data;
+    }); 
+  }
 
 }

@@ -32,7 +32,7 @@ import { AvatarModule } from 'ngx-avatar';
     ProgressComponent,
     Grafica1Component,
     PagesComponent,
-    AccountSettingsComponent,
+    // AccountSettingsComponent,
 
 
    ],
@@ -43,7 +43,7 @@ import { AvatarModule } from 'ngx-avatar';
     ProgressComponent,
     Grafica1Component,
     PagesComponent,
-    AccountSettingsComponent,
+    // AccountSettingsComponent,
     ComponentsModule
   ],
 
