@@ -43,7 +43,7 @@ export class SidebarService {
       titulo: 'Reportes',
       icono: 'mdi mdi-home',
       submenu: [
-         { titulo: 'resumen', url: 'resumen' },
+        //  { titulo: 'resumen', url: 'resumen' },
          { titulo: 'Ingresos', url: 'ingresos' },
          { titulo: 'Pagos', url: 'pagos' },
 
