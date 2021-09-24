@@ -31,6 +31,7 @@ import { Grafica1Component } from './grafica1/grafica1.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { GastoComponent } from '../components/gasto/gasto.component';
 import { PagosComponent } from '../components/pagos/pagos.component';
+import { AdminGuard } from './admin.guard';
 const routes: Routes = [
   // {
   //   path: 'contrato',
@@ -69,13 +70,14 @@ const routes: Routes = [
       { path: 'contrato_pdf/:id', component: ContratoPdfComponent },
       { path: 'editar_contrato/:id', component: EditarContratoComponent },
       { path: 'gasto/:id', component: GastoComponent },
-      { path: 'info_caja', component: InfoCajaComponent },
+      { path: 'info_caja', component: InfoCajaComponent, canActivate: [AdminGuard] },
       { path: 'resumen', component: ResumenComponent },
-      { path: 'transferencia', component: TransferenciaComponent },
+      { path: 'transferencia', component: TransferenciaComponent , canActivate: [AdminGuard]},
       { path: 'crear_producto', component: CrearProductoComponent },
       { path: 'editar_producto/:id', component: EditarProductoComponent },
       { path: 'lista_productos', component: ListaProductosComponent },
       { path: 'pagos', component: PagosComponent },
+      { path: '**', component: DashboardComponent },
 
       { path: 'account-settings', component: AccountSettingsComponent },
 

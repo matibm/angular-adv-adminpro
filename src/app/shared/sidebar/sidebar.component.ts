@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { SidebarService } from 'src/app/services/sidebar.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { SidebarService } from 'src/app/services/sidebar.service';
   styles: [
   ]
 })
-export class SidebarComponent implements OnInit {
+export class SidebarComponent implements OnInit, AfterViewInit {
   class = '';
   menuItems: any[];
   constructor(public sidebarService: SidebarService) {
@@ -16,12 +16,45 @@ export class SidebarComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
+  async ngAfterViewInit() {
+    let doc = document.getElementById('info_caja')
+    let trans = document.getElementById('transferencia')
+
+    doc.style.display = 'none'
+    trans.style.display = 'none'
+    console.log(this.sidebarService.usuario?.role);
+
+    let usuario = await this.sidebarService._usuario.inicializarUsuario()
+    if (usuario.role === 'ADMIN_ROLE') {
+      doc.style.display = 'block'
+      trans.style.display = 'block'
+    }
+  }
+  async ngOnInit() {
+
   }
 
+
+  async onclickParent() {
+    let doc = document.getElementById('info_caja')
+    let trans = document.getElementById('transferencia')
+
+    trans.style.display = 'none'
+
+    doc.style.display = 'none'
+    console.log(this.sidebarService.usuario?.role);
+
+    let usuario = await this.sidebarService._usuario.inicializarUsuario()
+    if (usuario.role === 'ADMIN_ROLE') {
+      doc.style.display = 'block'
+      trans.style.display = 'block'
+
+    }
+
+  }
   onclickItem(event) {
-     this.sidebarService.refreshRoute();
-     for (let u = 0; u < event.target.parentElement.parentElement.childNodes.length; u++) {
+    this.sidebarService.refreshRoute();
+    for (let u = 0; u < event.target.parentElement.parentElement.childNodes.length; u++) {
       const element = event.target.parentElement.parentElement.childNodes[u];
       if (element.firstChild) {
         element.firstChild.classList.remove('active');
@@ -29,7 +62,7 @@ export class SidebarComponent implements OnInit {
       }
 
     }
-     event.target.classList.add('active');
+    event.target.classList.add('active');
   }
 
 }

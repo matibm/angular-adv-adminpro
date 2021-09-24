@@ -6,24 +6,24 @@
                     (click)="cancelarCambiosEditar('home'); ocultarOnCategory = false; cuentaGasto = null" href="#home"
                     role="tab">Nuevo Gasto</a>
             </li>
-            <li class="nav-item"> <a class="nav-link" [ngClass]="{'active': secction === 'newCuentaGasto'}" data-toggle="tab"
+            <li *ngIf="is_admin_role" class="nav-item"> <a class="nav-link" [ngClass]="{'active': secction === 'newCuentaGasto'}" data-toggle="tab"
                     (click)="cancelarCambiosEditar('newCuentaGasto'); ocultarOnCategory = true; cuentaGasto = null"
                     href="#newCuentaGasto" role="tab">Crear
                     Cuenta
                     Gasto</a>
             </li>
-            <li class="nav-item">
+            <li *ngIf="is_admin_role" class="nav-item">
                 <a class="nav-link" data-toggle="tab"
                     (click)="cancelarCambiosEditar('newCategoria');  ocultarOnCategory = true; cuentaGasto = null" [ngClass]="{'active': secction === 'newCategoria'}"
                      href="#newCategoria"
                     role="tab">Crear Categoria
                 </a>
             </li>
-            <li class="nav-item"> <a class="nav-link" data-toggle="tab"  href="#newCuentaAbaco" [ngClass]="{'active': secction === 'newCuentaAbaco'}"
+            <li *ngIf="is_admin_role" class="nav-item"> <a class="nav-link" data-toggle="tab"  href="#newCuentaAbaco" [ngClass]="{'active': secction === 'newCuentaAbaco'}"
                     (click)="cancelarCambiosEditar('newCuentaAbaco'); cuentaGasto = null  " role="tab">Cuentas
                     Abaco</a>
             </li>
-            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#updateCuentas" [ngClass]="{'active': secction === 'updateCuentas'}" 
+            <li *ngIf="is_admin_role" class="nav-item"> <a class="nav-link" data-toggle="tab" href="#updateCuentas" [ngClass]="{'active': secction === 'updateCuentas'}" 
                     (click)="cancelarCambiosEditar('updateCuentas'); ocultarOnCategory = true; cuentaGasto = null  "
                     role="tab">Modificar Cuentas</a>
             </li>

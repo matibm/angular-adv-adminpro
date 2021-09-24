@@ -6,10 +6,10 @@
     <div class="scroll-sidebar">
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav">
-            <ul id="sidebarnav">
+            <ul *ngIf="menuItems" id="sidebarnav">
                 <li class="user-profile">
                     <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
-                        <div *ngIf="sidebarService._usuario.usuario" class="inline-flex">
+                        <div *ngIf="sidebarService?._usuario?.usuario" class="inline-flex">
                             <ngx-avatar size='30' name="{{[sidebarService._usuario.usuario.NOMBRES, sidebarService._usuario.usuario.APELLIDOS ] | nombreCorto }}"></ngx-avatar>
 
                             <span class="hide-menu ml-2 mt-2">{{[sidebarService._usuario.usuario.NOMBRES, sidebarService._usuario.usuario.APELLIDOS ] | nombreCorto }}</span>
@@ -25,12 +25,12 @@
                 </li>
                 <li class="nav-devider"></li>
                 <li class="nav-small-cap">MENU</li>
-                <li *ngFor="let item of menuItems"> <a class="has-arrow waves-effect waves-dark" href="javascript:void()" aria-expanded="false"><i
+                <li (click)="onclickParent()" *ngFor="let item of menuItems"> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0);" aria-expanded="false"><i
                             [ngClass]="item.icono" ></i><span class="hide-menu"> {{item.titulo}} <span
-                                class="label label-rouded label-themecolor pull-right">{{item.submenu.length}}</span></span></a>
+                                class="label label-rouded label-themecolor pull-right">{{item?.submenu?.length}}</span></span></a>
                     <ul aria-expanded="false" class="collapse">
 
-                        <li *ngFor="let submenu of item.submenu"><a (click)="onclickItem($event)" routerLinkActive="crear_contrato" [routerLink]="submenu.url">{{submenu.titulo}} </a></li>
+                        <li *ngFor="let submenu of item.submenu"><a (click)="onclickItem($event)" id="{{submenu.url}}" routerLinkActive="crear_contrato" [routerLink]="submenu.url">{{submenu.titulo}} </a></li>
 
 
                     </ul>

@@ -15,6 +15,8 @@ export class UsuarioService {
   constructor(
     public http: HttpClient
   ) {
+    console.log("constructor usuariooooooooooooooooooo");
+    
     this.token = localStorage.getItem('token');
     this.user_id = localStorage.getItem('user_id');
     this.itsLogued = this.token ? true : false;
@@ -22,11 +24,15 @@ export class UsuarioService {
     this.inicializarUsuario();
   }
 
-  async inicializarUsuario() {
+  async inicializarUsuario():Promise<Usuario> {
 
     if (this.user_id) {
       this.usuario = await this.getUsuarioPorId(this.user_id);
+      return this.usuario
+    }else{
+      return null
     }
+    
   }
   getUsuarios() {
     let url = URL_SERVICIOS + '/usuario/all';

@@ -136,7 +136,7 @@
             <div class="col-xs col-md">
                 <div style="justify-content: space-between;" class="inline-flex">
                     <label>Cobrador</label>
-                    <div *ngIf="cobrador" (click)="cobrador = null; filtrar()" class="pointer close-icon ml-auto">
+                    <div *ngIf="cobrador && is_admin_role" (click)="cobrador = null; filtrar()" class="pointer close-icon ml-auto">
                         <button type="button" class="btn btn-sm btn-light"><i class=" ti-close  "></i></button>
                     </div>
                 </div>
@@ -316,7 +316,7 @@
 </div> -->
 <app-facturas *ngIf="!showModal" [count]="count" [total]="montoTotal" [options]="opciones" [sort]="sort" [total]="true" [facturas]="facturas"></app-facturas>
 
-<div class="card">
+<div *ngIf="is_admin_role" class="card">
     <div class="card-body">
         <div class="d-flex">
            <div class="mx-auto">

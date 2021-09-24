@@ -84,7 +84,7 @@
                             <div class="col-xs text-capitalize col-md b-r">
 
                                 <h4>General</h4>
-                                <form class="form-material ">
+                                <div class="form-dsamaterial ">
                                     <div class=" form-group">
                                         <label>Nombres: <b>{{usuario.NOMBRES}}</b></label>
 
@@ -120,14 +120,14 @@
                                     </div>
 
 
-                                </form>
+                                </div>
 
                                 <label for=""><b>Nota:</b> {{usuario.NOTAS}}</label>
 
                             </div>
                             <div class="col-xs b-r  col-md">
                                 <h4>Particular</h4>
-                                <form class="form-material ">
+                                <form class="form-dsamaterial ">
 
                                     <div class="form-group">
                                         <label for="">Direccion: <b>{{usuario.DIRECCION}}</b> </label>
@@ -162,14 +162,14 @@
                             <div class="col-xs col-md">
 
                                 <h4>Laboral</h4>
-                                <form class="form-material ">
+                                <form class="form-dsamaterial ">
 
                                     <div class="form-group">
                                         <label for="">Lugar de Trabajo: <b>{{usuario.LUGAR_TRABAJO}}</b> </label>
 
                                     </div>
                                 </form>
-                                <form class="form-material ">
+                                <form class="form-dsamaterial ">
 
                                     <div class="form-group">
                                         <label for="">Direccion: <b>{{usuario.direccion_laboral}}</b> </label>
@@ -177,13 +177,13 @@
                                     </div>
                                 </form>
 
-                                <form class="form-material ">
+                                <form class="form-dsamaterial ">
                                     <div class="form-group">
                                         <label for="">Ciudad: <b>{{usuario.ciudad_trabajo}}</b> </label>
 
                                     </div>
                                 </form>
-                                <form class="form-material ">
+                                <form class="form-dsamaterial ">
 
                                     <div class="form-group">
                                         <label for="">Departamento: <b>{{usuario.DEPARTAMENTO_TRABAJO}}</b> </label>
@@ -206,27 +206,27 @@
                         <h3 class="font-medium ">Características de Usuario</h3>
                         <div class="row">
                             <div class="col-xs col-md-2 mt-1">
-                                <input [(ngModel)]="isVendedor" type="checkbox" id="check_vendedor"
+                                <input  [(ngModel)]="isVendedor" type="checkbox" name="check_vendedor" id="check_vendedor"
                                     class="filled-in chk-col-light-blue" (click)="$event.preventDefault()" checked />
                                 <label for="check_vendedor">Vendedor</label>
                             </div>
                             <div class="col-xs col-md-2 mt-1">
-                                <input [(ngModel)]="isCobrador" type="checkbox" id="check_cobrador"
+                                <input [(ngModel)]="isCobrador" type="checkbox" name="check_cobrador" id="check_cobrador"
                                     class="filled-in chk-col-light-blue" (click)="$event.preventDefault()" checked />
                                 <label for="check_cobrador">Cobrador</label>
                             </div>
                             <div class="col-xs col-md-2 mt-1">
-                                <input [(ngModel)]="isCliente" type="checkbox" id="check_cliente"
+                                <input [(ngModel)]="isCliente" type="checkbox" name="check_cliente" id="check_cliente"
                                     class="filled-in chk-col-light-blue" (click)="$event.preventDefault()" checked />
                                 <label for="check_cliente">Cliente</label>
                             </div>
                             <div class="col-xs col-md-2 mt-1">
-                                <input [(ngModel)]="isEmpleado" type="checkbox" id="check_empleado"
+                                <input [(ngModel)]="isEmpleado" type="checkbox" name="check_empleado" id="check_empleado"
                                     class="filled-in chk-col-light-blue" (click)="$event.preventDefault()" checked />
                                 <label for="check_empleado">Empleado</label>
                             </div>
                             <div class="col-xs col-md-2 mt-1">
-                                <input [(ngModel)]="isPersona" type="checkbox" id="check_persona"
+                                <input [(ngModel)]="isPersona" type="checkbox" name="check_persona" id="check_persona"
                                     class="filled-in chk-col-light-blue" (click)="$event.preventDefault()" checked />
                                 <label for="check_persona">Persona</label>
                             </div>
@@ -237,17 +237,17 @@
                                 <label for="check_contratado">Contratado</label>
                             </div>
                             <div class="col-xs col-md-2 mt-1">
-                                <input [(ngModel)]="isEmpresa" type="checkbox" id="check_empresa"
+                                <input [(ngModel)]="isEmpresa" type="checkbox" name="check_empresa" id="check_empresa"
                                     class="filled-in chk-col-light-blue" (click)="$event.preventDefault()" checked />
                                 <label for="check_empresa">Empresa</label>
                             </div>
                             <div class="col-xs col-md-2 mt-1">
-                                <input [(ngModel)]="isBanco" type="checkbox" id="check_banco"
+                                <input [(ngModel)]="isBanco" type="checkbox" name="check_banco" id="check_banco"
                                     class="filled-in chk-col-light-blue" (click)="$event.preventDefault()" checked />
                                 <label for="check_banco">Banco</label>
                             </div>
                             <div class="col-xs col-md-2 mt-1">
-                                <input [(ngModel)]="manejaCaja" type="checkbox" id="check_maneja_caja"
+                                <input [(ngModel)]="manejaCaja" type="checkbox" name="check_maneja_caja" id="check_maneja_caja"
                                     class="filled-in chk-col-light-blue" (click)="$event.preventDefault()" checked />
                                 <label for="check_maneja_caja">Maneja Caja</label>
                             </div>
@@ -454,7 +454,7 @@
                 </div>
                 <div class="tab-pane" id="settings" role="tabpanel">
                     <div class="card-body">
-                        <form (ngSubmit)="actualizarUsuario(usuario)" class="form-horizontal form-material">
+                        <div  class="form-horizsontal forms-material">
                             <div class="row">
                                 <div class="col-xs col-md b-r">
 
@@ -462,7 +462,7 @@
                                     <div class="form-group">
                                         <label>Nombres</label>
                                         <div>
-                                            <input autocomplete="nope" [(ngModel)]="usuario.NOMBRES" name="nombre"
+                                            <input autocomplete="nope" [(ngModel)]="usuario.NOMBRES" name="nomdbre"
                                                 type="text" placeholder="Johnathan Doe"
                                                 class="form-control form-control-line">
                                         </div>
@@ -521,12 +521,31 @@
                                         </div>
                                     </div>
 
+                                    
+                                        <div style="justify-content: space-between;" class="inline-flex">
+                                            <label>Rol de Usuario</label>
+                        
+                                        </div>
+                                        <div *ngIf="usuario" class="">
+                                            <ng-select [(ngModel)]="role"
+                                           
+                                            >
+                                                <ng-option name="asdasdasdasgrefwvefrv" *ngFor="let item of roles" [value]="item.role">
+                                                    <div >
+                                                        {{item.role}}
+                                                    </div>
+                        
+                                                </ng-option>
+                                            </ng-select>
+                                        </div>
+                                    
+                                    
 
 
                                 </div>
                                 <div class="col-xs b-r  col-md">
                                     <h4>Particular</h4>
-                                    <form class="form-material ">
+                                    <form class="form-dsamaterial ">
 
                                         <div class="form-group">
                                             <label for="">Direccion: </label>
@@ -537,15 +556,15 @@
                                         </div>
                                     </form>
 
-                                    <form class="form-material ">
+                                    <form class="form-dsamaterial ">
                                         <div class="form-group">
                                             <label for="">Ciudad: </label>
-                                            <input type="text" [(ngModel)]="usuario.NOMCIUDAD" name="</label"
+                                            <input type="text" [(ngModel)]="usuario.NOMCIUDAD" name="</lserrabel"
                                                 class="form-control" placeholder="" aria-describedby="helpId">
 
                                         </div>
                                     </form>
-                                    <form class="form-material ">
+                                    <form class="form-dsamaterial ">
 
                                         <div class="form-group">
                                             <label for="">Departamento: </label>
@@ -586,7 +605,7 @@
                                 <div class="col-xs col-md">
 
                                     <h4>Laboral</h4>
-                                    <form class="form-material ">
+                                    <form class="form-dsamaterial ">
 
                                         <div class="form-group">
                                             <label for="">Lugar de Trabajo: </label>
@@ -596,7 +615,7 @@
 
                                         </div>
                                     </form>
-                                    <form class="form-material ">
+                                    <form class="form-dsamaterial ">
 
                                         <div class="form-group">
                                             <label for="">Direccion: </label>
@@ -607,20 +626,20 @@
                                         </div>
                                     </form>
 
-                                    <form class="form-material ">
+                                    <form class="form-dsamaterial ">
                                         <div class="form-group">
                                             <label for="">Ciudad: </label>
-                                            <input type="text" [(ngModel)]="usuario.ciudad_trabajo" name="</label"
+                                            <input type="text" [(ngModel)]="usuario.ciudad_trabajo" name="</ldwwwwabel"
                                                 class="form-control" placeholder="" aria-describedby="helpId">
 
                                         </div>
                                     </form>
-                                    <form class="form-material ">
+                                    <form class="form-dsamaterial ">
 
                                         <div class="form-group">
                                             <label for="">Departamento: </label>
                                             <input type="text" [(ngModel)]="usuario.DEPARTAMENTO_TRABAJO"
-                                                name="departamento" class="form-control" placeholder=""
+                                                name="departsamento" class="form-control" placeholder=""
                                                 aria-describedby="helpId">
 
                                         </div>
@@ -734,10 +753,10 @@
 
                             <div class="d-flex mt-3 form-group">
 
-                                <button type="submit" class="btn mx-auto btn-success">Guardar Cambios</button>
+                                <button type="button" (click)="actualizarUsuario(usuario)" class="btn mx-auto btn-success">Guardar Cambios</button>
 
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>

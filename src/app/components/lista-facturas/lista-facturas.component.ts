@@ -64,6 +64,7 @@ export class ListaFacturasComponent implements OnInit {
   loadingVendedores = false
   utilizado = false
   de_baja = false
+  is_admin_role = false
   estados = [
     {
       id: 1,
@@ -122,6 +123,20 @@ export class ListaFacturasComponent implements OnInit {
       });
   }
   async ngOnInit() {
+    this._usuarioService.usuario = await this._usuarioService.inicializarUsuario()
+    console.log(this._usuarioService?.usuario?.role);
+    
+    if (this._usuarioService?.usuario?.role != 'ADMIN_ROLE') {
+      console.log(await this.setUsuarioCobrador(this._usuarioService?.usuario?._id));
+      
+      this.is_admin_role = false 
+    } else{ 
+      this.is_admin_role = true
+
+    }
+
+
+
     if (!this.route.snapshot.queryParams.vencimiento_start && !this.route.snapshot.queryParams.vencimiento_end) {
       let month = new Date().getMonth() + 1
       let year = new Date().getFullYear()
@@ -318,4 +333,10 @@ export class ListaFacturasComponent implements OnInit {
   async aplicarInteres(monto) {
     await this._facturaService.aplicarInteres(this.opciones, monto)
   }
+
+  async setUsuarioCobrador(id){
+    this.cobrador = await this._usuarioService.getUsuarioPorId(id) 
+    this.opciones.cobrador = id
+  }
+
 }

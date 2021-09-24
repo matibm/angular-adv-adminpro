@@ -71,6 +71,7 @@ export class MovimientosComponent implements OnInit, OnDestroy {
   editandoCuentaGasto = false
   secction = 'listaGastos'
   movimientosOptions: MovimientoOptions = {}
+  is_admin_role = false
   constructor(
     public _movimientoService: MovimientoService,
     public _usuarioService: UsuarioService,
@@ -83,6 +84,22 @@ export class MovimientosComponent implements OnInit, OnDestroy {
   tipo;
   pruebaDisabled = true
   async ngOnInit() {
+    this._usuarioService.usuario = await this._usuarioService.inicializarUsuario()
+    console.log(this._usuarioService?.usuario?.role);
+    
+    if (this._usuarioService?.usuario?.role != 'ADMIN_ROLE') {            
+      this.is_admin_role = false 
+    } else{ 
+      this.is_admin_role = true
+
+    }
+
+
+
+
+
+
+
     // this.route.snapshot.queryParams.seccion ? this.secction = this.route.snapshot.queryParams.seccion : this.secction = 'home'
     this.cuentasAbaco = await this._movimientoService.getCuentasAbaco()
     // console.log(this.route.snapshot.queryParams);

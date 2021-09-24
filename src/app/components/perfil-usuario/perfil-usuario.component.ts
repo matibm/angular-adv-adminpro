@@ -41,6 +41,17 @@ export class PerfilUsuarioComponent implements OnInit {
   facturapdf;
   contratosActivosOptios: any = {}
   contratosInactivosOptios: any = {}
+  roles = [
+    {
+      id: 1,
+      role: 'ADMIN_ROLE'
+    },
+    {
+      id: 2,
+      role: 'USER_ROLE'
+    },
+    
+  ]
   constructor(
     public _usuarioService: UsuarioService,
     public route: ActivatedRoute,
@@ -57,6 +68,7 @@ export class PerfilUsuarioComponent implements OnInit {
   cuotas: Cuota[];
   facturas;
   comentarios;
+  role 
   async ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
     this.contratosActivosOptios.cliente = this.id
@@ -79,8 +91,8 @@ export class PerfilUsuarioComponent implements OnInit {
     this._comentarioService.emitir('get_comentarios', 'e');
 
     this.usuario = await this._usuarioService.getUsuarioPorId(this.id);
-    console.log(this.usuario);
-
+    console.log(this.usuario.role);
+    this.role = this.usuario.role
     this.usuario.password = null;
 
     this.facturas = (await this._facturaService.getFacturas(null, null, null, null, null, this.id)).facturas;
@@ -116,6 +128,7 @@ export class PerfilUsuarioComponent implements OnInit {
 
   }
 
+
   async actualizarUsuario(usuario: Usuario) {
     console.log(this.nro_factura_actual);
 
@@ -130,8 +143,11 @@ export class PerfilUsuarioComponent implements OnInit {
     usuario.PROVEEDORES = this.isProveedor ? '1' : '0';
     usuario.MANEJA_CAJA = this.manejaCaja ? '1' : '0';
     usuario.fondo_online = this.cobroOnline ? '1' : '0';
+    usuario.role = this.role
     // usuario.nro_factura_actual = this.nro_factura_actual
     // usuario.nro_talonario = this.nro_talonario
+    console.log(usuario);
+    
     const resp = await this._usuarioService.modificarUsuarios(usuario);
   }
 
