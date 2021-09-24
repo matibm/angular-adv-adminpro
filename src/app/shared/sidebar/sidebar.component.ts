@@ -15,7 +15,7 @@ export class SidebarComponent implements OnInit, AfterViewInit {
     console.log(this.menuItems);
 
   }
-
+  usuario
   async ngAfterViewInit() {
     let doc = document.getElementById('info_caja')
     let trans = document.getElementById('transferencia')
@@ -24,8 +24,8 @@ export class SidebarComponent implements OnInit, AfterViewInit {
     trans.style.display = 'none'
     console.log(this.sidebarService.usuario?.role);
 
-    let usuario = await this.sidebarService._usuario.inicializarUsuario()
-    if (usuario.role === 'ADMIN_ROLE') {
+    this.usuario = await this.sidebarService._usuario.inicializarUsuario()
+    if (this.usuario.role === 'ADMIN_ROLE') {
       doc.style.display = 'block'
       trans.style.display = 'block'
     }
@@ -44,8 +44,8 @@ export class SidebarComponent implements OnInit, AfterViewInit {
     doc.style.display = 'none'
     console.log(this.sidebarService.usuario?.role);
 
-    let usuario = await this.sidebarService._usuario.inicializarUsuario()
-    if (usuario.role === 'ADMIN_ROLE') {
+    this.usuario = await this.sidebarService._usuario.inicializarUsuario()
+    if (this.usuario.role === 'ADMIN_ROLE') {
       doc.style.display = 'block'
       trans.style.display = 'block'
 

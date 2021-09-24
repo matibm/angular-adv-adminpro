@@ -45,7 +45,7 @@
                 <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#movimientos"
                         role="tab">Movimientos</a>
                 </li>
-                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#pagos" role="tab">Pagos</a>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#pagosa" role="tab">Pagos</a>
                 </li>
                 <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#settings" role="tab">Ajustes</a>
                 </li>
@@ -258,7 +258,7 @@
                 <div class="tab-pane" id="profile" role="tabpanel">
                     <div class="card-body">
 
-                        <app-lista-contratos [showFilter]="false" [options]="contratosActivosOptios" ></app-lista-contratos>
+                        <!-- <app-lista-contratos [showFilter]="false" [options]="contratosActivosOptios" ></app-lista-contratos> -->
                         <!-- <div *ngIf="contratos" class="card">
 
                             <div class="card-body">
@@ -360,7 +360,7 @@
                 <div class="tab-pane" id="contratos_inactivos" role="tabpanel">
                     <div class="card-body">
 
-                        <app-lista-contratos [showFilter]="false" [options]="contratosInactivosOptios" ></app-lista-contratos>
+                        <!-- <app-lista-contratos [showFilter]="false" [options]="contratosInactivosOptios" ></app-lista-contratos> -->
                         <!-- <div *ngIf="contratosInactivos" class="card">
 
                             <div class="card-body">
@@ -418,12 +418,12 @@
                     </div>
                 </div>
                 <div class="tab-pane" id="movimientos" role="tabpanel">
-                    <div *ngIf="facturas" class="card-body">
+                    <div *ngIf="facturas" class="card-body">    
 
                         <app-lista-movimientos [movimientos]="movimientos"></app-lista-movimientos>
                     </div>
                 </div>
-                <div class="tab-pane" id="pagos" role="tabpanel">
+                <div class="tab-pane" id="pagosa" role="tabpanel">
                     <div *ngIf="pagos" class="card-body">
 
                         <table class="table table-hover">
@@ -521,7 +521,8 @@
                                         </div>
                                     </div>
 
-                                    
+                                    <div *ngIf="is_admin_role">
+                                        
                                         <div style="justify-content: space-between;" class="inline-flex">
                                             <label>Rol de Usuario</label>
                         
@@ -538,6 +539,7 @@
                                                 </ng-option>
                                             </ng-select>
                                         </div>
+                                    </div>
                                     
                                     
 

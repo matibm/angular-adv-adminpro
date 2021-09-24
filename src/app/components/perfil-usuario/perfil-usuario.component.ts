@@ -68,8 +68,13 @@ export class PerfilUsuarioComponent implements OnInit {
   cuotas: Cuota[];
   facturas;
   comentarios;
-  role 
+  role
+  is_admin_role = false
   async ngOnInit() {
+    let user = await this._usuarioService.inicializarUsuario()
+    if (user?.role == 'ADMIN_ROLE') {
+     this.is_admin_role = true 
+    }
     this.id = this.route.snapshot.paramMap.get('id');
     this.contratosActivosOptios.cliente = this.id
     this.contratosActivosOptios.utilizado = false
