@@ -228,6 +228,7 @@
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '120px'}">Saldo</th>
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '90px'}">Nro. Cuota</th>
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '120px'}">Nro. Contrato</th>
+                            <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '120px'}">Vencimiento</th>
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '200px'}">Cliente</th>
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '100px'}">Servicio</th>
                             <th [ngClass]="'text-center'" [ngStyle]="{minWidth: '400px'}">Cuenta Gasto</th>
@@ -325,6 +326,10 @@
                             <td [ngClass]="'text-center'">
                                 <div *ngIf="item.contrato">{{item.contrato?.nro_contrato | ruc}}</div>
                                 <div *ngIf="!item.contrato?.nro_contrato">---</div>
+                            </td>
+                            <td [ngClass]="'text-center'">
+                                <div *ngIf="item.factura">{{item.factura?.vencimiento | date}}</div>
+                                <div *ngIf="!item.factura">---</div>
                             </td>
 
                             <!-- cliente -->

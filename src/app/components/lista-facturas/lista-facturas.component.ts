@@ -62,7 +62,7 @@ export class ListaFacturasComponent implements OnInit {
   loadingCobradores = false
   inputVendedores = new Subject<string>();
   loadingVendedores = false
-  utilizado = false
+  utilizado
   de_baja = false
   is_admin_role = false
   estados = [
@@ -125,12 +125,12 @@ export class ListaFacturasComponent implements OnInit {
   async ngOnInit() {
     this._usuarioService.usuario = await this._usuarioService.inicializarUsuario()
     console.log(this._usuarioService?.usuario?.role);
-    
+
     if (this._usuarioService?.usuario?.role != 'ADMIN_ROLE') {
       console.log(await this.setUsuarioCobrador(this._usuarioService?.usuario?._id));
-      
-      this.is_admin_role = false 
-    } else{ 
+
+      this.is_admin_role = false
+    } else {
       this.is_admin_role = true
 
     }
@@ -140,15 +140,15 @@ export class ListaFacturasComponent implements OnInit {
     if (!this.route.snapshot.queryParams.vencimiento_start && !this.route.snapshot.queryParams.vencimiento_end) {
       let month = new Date().getMonth() + 1
       let year = new Date().getFullYear()
-      this.rangeVencimiento.setValue({ start: new Date(`${year}-${month}-01`), end: new Date() })
-      this.cambiarQueryParams([
-        {
-          vencimiento_start: new Date(`${year}-${month}-01`).toLocaleDateString('fr-CA', { year: "numeric", month: "2-digit", day: "2-digit" })
-        },
-        {
-          vencimiento_end: new Date().toLocaleDateString('fr-CA', { year: "numeric", month: "2-digit", day: "2-digit" })
-        }
-      ])
+      // this.rangeVencimiento.setValue({ start: new Date(`${year}-${month}-01`), end: new Date() })
+      // this.cambiarQueryParams([
+      //   {
+      //     vencimiento_start: new Date(`${year}-${month}-01`).toLocaleDateString('fr-CA', { year: "numeric", month: "2-digit", day: "2-digit" })
+      //   },
+      //   {
+      //     vencimiento_end: new Date().toLocaleDateString('fr-CA', { year: "numeric", month: "2-digit", day: "2-digit" })
+      //   }
+      // ])
     }
     if (this.route.snapshot.queryParams.vencimiento_start && this.route.snapshot.queryParams.vencimiento_end) {
       let value = { start: new Date(`${this.route.snapshot.queryParams.vencimiento_start} 00:00`), end: new Date(`${this.route.snapshot.queryParams.vencimiento_end} 00:00`) }
@@ -189,7 +189,7 @@ export class ListaFacturasComponent implements OnInit {
     this.opciones = {
       get_total: '1',
       titular: this.cliente ? this.cliente._id : null,
-      utilizado: this.utilizado,
+      utilizado: this.utilizado ? this.utilizado : null,
       de_baja: this.de_baja,
       vendedor: this.vendedor ? this.vendedor._id : null,
       cobrador: this.cobrador ? this.cobrador._id : null,
@@ -334,8 +334,8 @@ export class ListaFacturasComponent implements OnInit {
     await this._facturaService.aplicarInteres(this.opciones, monto)
   }
 
-  async setUsuarioCobrador(id){
-    this.cobrador = await this._usuarioService.getUsuarioPorId(id) 
+  async setUsuarioCobrador(id) {
+    this.cobrador = await this._usuarioService.getUsuarioPorId(id)
     this.opciones.cobrador = id
   }
 

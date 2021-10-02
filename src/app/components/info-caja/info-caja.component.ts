@@ -386,7 +386,7 @@ export class InfoCajaComponent implements OnInit {
     
     this.movimientosPrueba = data.movimientos
     this.count = data.count
-    this.TotalArqueo = data.totalEgreso + data.totalIngreso
+    this.TotalArqueo = data.movimientos[0].total
     this.totalEgreso = data.totalEgreso
     this.totalIngreso = data.totalIngreso
   }

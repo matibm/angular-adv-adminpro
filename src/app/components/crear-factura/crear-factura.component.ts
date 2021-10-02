@@ -67,6 +67,7 @@ export class CrearFacturaComponent implements OnInit {
       nota: this.nota,
       titular: this.cliente?._id || '',
       servicio: this.servicio?._id || '',
+      producto : this.servicio,
       cobrador: this.cobrador?._id || '',
       contrato: this.contrato?._id,
       vencimiento: new Date(this.vencimiento).getTime() || new Date().getTime()

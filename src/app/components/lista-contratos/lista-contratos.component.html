@@ -282,7 +282,9 @@
                         <th id="fila" (click)="ordenar('fila')">Fila <i *ngIf="false" class="ml-1 fa fa-sort"></i> </th>
                         <th id="parcela" (click)="ordenar('parcela')">Parcela <i *ngIf="false"
                                 class="ml-1 fa fa-sort"></i> </th>
-                        <th id="estado" (click)="ordenar('utilizado')">Estado <i *ngIf="false"
+                        <th id="estado" (click)="ordenar('utilizado')">Utilizado <i *ngIf="false"
+                                class="ml-1 fa fa-sort"></i> </th>
+                        <th id="estado" (click)="ordenar('utilizado')">De baja <i *ngIf="false"
                                 class="ml-1 fa fa-sort"></i> </th>
                     </tr>
                 </thead>
@@ -305,8 +307,13 @@
                         <td *ngIf="contrato.fila">{{contrato.fila}}</td>
                         <td *ngIf="contrato.parcela">{{contrato.parcela}}</td>
                         <td>
-                            <div *ngIf="!contrato.utilizado">Activo</div>
-                            <div *ngIf="contrato.utilizado">Utilizado</div>
+                            <div *ngIf="contrato.utilizado">SI</div>
+                            <div *ngIf="!contrato.utilizado">NO</div>
+
+                        </td>
+                        <td>
+                            <div *ngIf="contrato.de_baja">SI</div>
+                            <div *ngIf="!contrato.de_baja">NO</div>
 
                         </td>
 

@@ -191,6 +191,7 @@
                     <th style="min-width: 120px;">Fecha</th>
                     <th>Nombre</th>
                     <th style="width: 25%;">Comentario</th>
+                    <th style="min-width: 150px;">Proveedor</th>
                     <th>Monto</th>
 
                 </tr>
@@ -212,6 +213,8 @@
                     </td>
                     <td>{{item.nombre}}</td>
                     <td>{{item.comentario}}</td>
+                    <td *ngIf="item.proveedor">{{item.proveedor.APELLIDOS}} {{item.proveedor.NOMBRES}}</td>
+                    <td *ngIf="!item.proveedor">---</td>
 
 
                     <td *ngIf="item.monto_haber">{{item.monto_haber | currency: '':'':'2.0'}} Gs</td>
