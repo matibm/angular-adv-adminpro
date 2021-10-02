@@ -1,4 +1,4 @@
-<div class="my-container">
+<div class="my-k">
     <!-- 
     <ng-template #customLoadingTemplate>
 
@@ -371,9 +371,9 @@
                             </td>
                             <td [ngClass]="'text-center'">
                                 <div *ngIf="item.factura?.nota">
-                                    {{item.factura?.nota || '---' }}                                    
+                                    {{item.factura?.nota || '---' }}
                                 </div>
-                                
+
                             </td>
 
 
@@ -504,6 +504,33 @@
     </div>
 
 </div>
+<div style="margin-top: 25px;"></div>
+<div class="card">
+    <div class="card-body">
+        <h3>Reporte ingreso contra egreso</h3>
+        <div class="d-flex">
+            <div class="mx-auto">
+                <mat-form-field appearance="fill">
+                    <mat-label>Fecha</mat-label>
+                    <mat-date-range-input [formGroup]="rangeReporte" [rangePicker]="pickerReporte">
+                        <input autocomplete="off" matStartDate formControlName="start" placeholder="fecha inicio">
+                        <input matEndDate formControlName="end" placeholder="fecha fin">
+                    </mat-date-range-input>
+                    <mat-datepicker-toggle matSuffix [for]="pickerReporte"></mat-datepicker-toggle>
+                    <mat-date-range-picker #pickerReporte></mat-date-range-picker>
+                    <mat-error *ngIf="rangeReporte.controls.start.hasError('matStartDateInvalid')">Invalid start date
+                    </mat-error>
+                    <mat-error *ngIf="rangeReporte.controls.end.hasError('matEndDateInvalid')">Invalid end date
+                    </mat-error>
+                </mat-form-field>
+                <div style="display: block;">
 
+                    <button type="button" (click)="generarReporte()"
+                        class="btn btn-rounded btn-inverse mx-auto">Descargar Excel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <app-modal-billetes *ngIf="showModalBilletes" [montoTotal]="TotalArqueo"
     (cerrarCaja)="cerrarCaja(); showModalBilletes= false" (onClose)="showModalBilletes= false"></app-modal-billetes>

@@ -381,6 +381,10 @@ export class InfoCajaComponent implements OnInit {
         // queryParamsHandling: 'merge', // remove to replace all query params by provided
       });
   }
+  rangeReporte = new FormGroup({
+    start: new FormControl(),
+    end: new FormControl()
+  });
   cargarValores(data) {
     console.log(data.movimientos);
     
@@ -390,4 +394,15 @@ export class InfoCajaComponent implements OnInit {
     this.totalEgreso = data.totalEgreso
     this.totalIngreso = data.totalIngreso
   }
+  generarReporte(){
+    let body = { 
+      
+      fecha: {
+         $gte: new Date(`${new Date(this.rangeReporte.value.start).toLocaleDateString('en-US')} 00:00`).getTime(),
+       $lte: new Date(`${new Date(this.rangeReporte.value.end).toLocaleDateString('en-US')} 23:59:59`).getTime() }
+    }
+    this._movimientoService.getReporteIngresoEgreso(body)
+  }
+
+
 }

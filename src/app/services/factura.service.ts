@@ -176,6 +176,26 @@ export class FacturaService {
       }
     )
   }
+  getReporteIngresos(body) {
+    let url = `${URL_SERVICIOS}/factura/cuadro_ingreso`;
+    url += `?token=${this._usuarioService.token}`;
+    
+    this.http.post(url, body, { responseType: 'blob' as 'json' }).subscribe(
+      (response: any) => {
+        let dataType = response.type;
+        let binaryData = [];
+        binaryData.push(response);
+        let downloadLink = document.createElement('a');
+        downloadLink.href = window.URL.createObjectURL(new Blob(binaryData, { type: dataType }));
+
+        downloadLink.setAttribute('download', 'cuadro_ingreso.xlsx');
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        downloadLink.remove()
+      }
+    )
+  }
+
   getPagos(cliente_id) {
     let url = `${URL_SERVICIOS}/factura/get_pagos/` + cliente_id;
     url += `?token=${this._usuarioService.token}`;

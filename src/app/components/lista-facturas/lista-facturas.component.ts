@@ -89,6 +89,10 @@ export class ListaFacturasComponent implements OnInit {
     start: new FormControl(),
     end: new FormControl()
   });
+  rangeReporte = new FormGroup({
+    start: new FormControl(),
+    end: new FormControl()
+  });
   rangeVencimiento = new FormGroup({
     start: new FormControl(),
     end: new FormControl()
@@ -157,14 +161,14 @@ export class ListaFacturasComponent implements OnInit {
     this.route.snapshot.queryParams.estado ? null : this.cambiarQueryParams([{ estado: 'PENDIENTES' }])
     this.estadoSeleccionado = this.route.snapshot.queryParams?.estado || 'PENDIENTES'
 
-    this.filtrar();
+    this.filtrar(null, '0');
     this.observableBuscadores()
 
     this.servicios = await this._productoService.getProductos();
     this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', '');
   }
 
-  async filtrar(condicion?) {
+  async filtrar(condicion?, total?) {
 
     if (condicion === 'fecha_vencimiento') {
       console.log("returning");
@@ -187,7 +191,7 @@ export class ListaFacturasComponent implements OnInit {
     }
 
     this.opciones = {
-      get_total: '1',
+      get_total: total || '1',
       titular: this.cliente ? this.cliente._id : null,
       utilizado: this.utilizado ? this.utilizado : null,
       de_baja: this.de_baja,
@@ -337,6 +341,17 @@ export class ListaFacturasComponent implements OnInit {
   async setUsuarioCobrador(id) {
     this.cobrador = await this._usuarioService.getUsuarioPorId(id)
     this.opciones.cobrador = id
+  }
+
+  generarReporte(){
+    let body = { 
+      pagado: true,
+      fecha_pagado_unix: {
+         $gte: new Date(`${new Date(this.rangeReporte.value.start).toLocaleDateString('en-US')} 00:00`).getTime(),
+       $lte: new Date(`${new Date(this.rangeReporte.value.end).toLocaleDateString('en-US')} 23:59:59`).getTime() },
+      con_error: false
+    }
+    this._facturaService.getReporteIngresos(body)
   }
 
 }
