@@ -83,7 +83,11 @@ export class ListaFacturasComponent implements OnInit {
     },
 
   ];
+
+
+  cod_servicios = ['P.S.V.', 'P.S.M.', 'C.M.P.', 'A.C.F.', 'U.D.P.']
   estadoSeleccionado = 'TODOS';
+  codSeleccionado = null
 
   rangeEmision = new FormGroup({
     start: new FormControl(),
@@ -201,6 +205,7 @@ export class ListaFacturasComponent implements OnInit {
       fondo: this.fondo ? this.fondo._id : null,
       contrato: this.contrato ? this.contrato._id : null,
       pagado,
+      codigo_producto: this.codSeleccionado? this.codSeleccionado : null,
       vencimiento_start: this.rangeVencimiento.value.start ? new Date(this.rangeVencimiento.value.start).getTime() : null,
       vencimiento_end: this.rangeVencimiento.value.end ? new Date(this.rangeVencimiento.value.end).setHours(23, 59, 59, 59) : null,
       pagado_start: this.rangePagado.value.start ? new Date(this.rangePagado.value.start).getTime() : null,

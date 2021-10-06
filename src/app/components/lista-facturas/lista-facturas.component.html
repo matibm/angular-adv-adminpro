@@ -258,6 +258,19 @@
                     class="filled-in chk-col-light-blue" checked />
                 <label class="mx-3" for="check_de_baja">de baja</label>
             </div>
+            <div class="col-xs col-md mt-3">
+                <h4>Cod Servicio</h4>
+                <div class="">
+                    <ng-select [(ngModel)]="codSeleccionado" (ngModelChange)="filtrar()">
+                        <ng-option *ngFor="let item of cod_servicios" [value]="item">
+                            <div >
+                                {{item}}
+                            </div>
+
+                        </ng-option>
+                    </ng-select>
+                </div>
+            </div>
 
             <!-- contrato -->
             <div class="col-xs col-md">
