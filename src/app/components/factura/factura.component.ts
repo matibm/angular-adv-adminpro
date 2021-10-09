@@ -31,6 +31,7 @@ export class FacturaComponent implements OnInit {
   crearParcial = false;
   primeraEjecucion = true;
   montoparcial = 0;
+  montoModificado 
   montoparcialCorrecto = true;
   parciales: Factura[];
   facturaPdf;
@@ -106,7 +107,7 @@ export class FacturaComponent implements OnInit {
       
       console.log(this.factura);
 
-
+      this.montoModificado = this.factura.haber
     }
   }
   customSearchFn(term: string, item: any) {
@@ -308,5 +309,9 @@ export class FacturaComponent implements OnInit {
   }
   fill = (number, len) => "0".repeat(len - number.toString().length) + number.toString();
 
+  async modificarMonto(id, amount){
+    await this._facturaService.modificarMonto({ id, amount })
+    // window.location.reload()
+  }
 
 }
