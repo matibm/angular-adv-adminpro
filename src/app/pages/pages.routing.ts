@@ -77,6 +77,7 @@ const routes: Routes = [
       { path: 'editar_producto/:id', component: EditarProductoComponent },
       { path: 'lista_productos', component: ListaProductosComponent },
       { path: 'pagos', component: PagosComponent },
+      { path: 'account-settings', component: AccountSettingsComponent },
       { path: '**', component: DashboardComponent },
 
       { path: 'account-settings', component: AccountSettingsComponent },
