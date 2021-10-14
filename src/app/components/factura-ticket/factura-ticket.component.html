@@ -1,0 +1,111 @@
+<div *ngIf="factura" class="" style=" height: fit-content; margin: 0 !important; 
+padding: 0 !important;
+overflow: hidden;
+">
+    <div  class="mx-auto bg-white  ">
+        <div style="width: 100%;">
+            <div style="display: flex; color: black;" >
+                <div class="mx-auto">
+                    <div align="center" style="display: block;justify-content: center;" class="">
+                        <img width="190px" src="../../../assets/images/imperialnegro.png" alt="">
+                        <!-- <h1>IMPERIAL</h1> -->
+                        <br>
+                        <h4 style="color: black;" class="mx-0 mt-1">Cementerio Privado - Servicios Funerarios</h4>
+                        <span>de <b>EDUARDO CLEBSCH S.A.</b></span>
+                        <hr class="m-1">
+                        <!-- <span style="font-size: 14px;" for="">
+
+                            <b>Suc.:</b> Cerro Cora Nº 333 - Encarnación
+                            <br><b>Central:</b> Santo Domingo a 200 Mts de la Ruta 1 - (071) 202803
+                            <br>
+                            Itapúa - Paraguay
+                        </span> -->
+                        <!-- <hr> -->
+                        
+                    </div>
+                    <span style="font-size: 12px;">
+                        <b>
+                            Factura Autoimpresor
+                            <br> Autorizado como Autoimpresor por la SET
+                            <br> Solicitud Nº {{timbrado.nro_solicitud}}
+                            <br> Fecha: {{timbrado.fecha_solicitud | date}}
+                            <br> TMBRADO Nº {{timbrado.timbrado}}
+                            <br> Fecha Inicio Vigencia: {{timbrado.fecha_vigente_inicio | date}}
+                            <br> Fecha Fin Vigencia: {{timbrado.fecha_vigente_fin | date}}
+                            <br> RUC: {{timbrado.ruc}}
+                        </b>
+                        <br>
+                        <b>
+                            FACTURA Nº: {{nro_talonario}}-{{fill(nro_factura, 7)}}                               
+                        </b>
+                        
+                        
+                    </span>
+                    <hr class="m-1">
+                    <span style="font-size: 14px;">
+
+                        <b>
+                            Cond de Venta: CONTADO
+                            <br> Emisión: {{factura.fecha | date: 'dd/MM/YYYY - hh:mm'}}
+                            <br> RUC: {{factura.ruc | ruc}}
+                            <br> CLIENTE: {{factura.nombres}}
+                            
+                        </b>                    
+                        
+                    </span>
+                    <div *ngFor="let item of items">
+                        <hr class="m-1">
+                        <span style="font-size: 14px;">
+    
+                            <b >
+                                Cant: {{item.cantidad}} Nro Contrato: {{item.contrato?.nro_contrato | ruc}}
+                                <br> {{item.concepto}}
+                                <br> Precio Unit: {{item.precioUnitario | currency: '':'':'2.0'}}
+                                <br> 10%: {{item.precio | currency: '':'':'2.0'}}
+                                
+                            </b>   
+                                             
+                            
+                        </span>
+                    </div>
+                    <hr class="m-1">
+                    <span style="font-size: 14px;">
+
+                        <b>
+                           Liquidacion del IVA: 
+                           <br> (5%): 0
+                           <br> (10%): {{totalIva | currency: '':'':'2.0'}}
+                           <br> (Exenta): 0
+                           <br> Forma de Pago: Efectivo
+
+                           <br> Total IVA: {{totalIva | currency: '':'':'2.0'}} Gs
+                           
+                            
+                        </b>                    
+                        
+                    </span>
+                    <hr class="m-1">
+                    <span style="font-size: 16px;">
+
+                        <b>
+                             TOTAL A PAGAR en Gs: {{total | currency: '':'':'2.0'}}
+
+                            
+                        </b>                    
+                        
+                    </span>
+                    
+                </div>
+            </div>
+        </div>
+        </div>
+
+<!-- <div style="margin-left: 50px; text-align:left ;">
+    Autorizado como Autoimpresor por la SET
+    <br>
+    Solicitud Nº {{timbrado.nro_solicitud}}
+    <br>
+    Fecha: {{timbrado.fecha_solicitud | date}}
+</div> -->
+    </div>
+ 

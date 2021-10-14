@@ -31,6 +31,12 @@ export class ModalFacturaComponent implements OnInit {
   }
 
 
+  printTicket() {
+    const wopen = window.open(`/factura-ticket/${this.facturaPDF._id}`);
+    // wopen.onafterprint = (event) => {
+    //   wopen.close();
+    // };
+  }
   printContrato() {
     const wopen = window.open('/factura-pdf/' + this.facturaPDF._id);
     wopen.onafterprint = (event) => {

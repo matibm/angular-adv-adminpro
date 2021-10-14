@@ -57,6 +57,7 @@ import { ModalBilletesComponent } from './modal-billetes/modal-billetes.componen
 import { GastoComponent } from './gasto/gasto.component';
 import { PagosComponent } from './pagos/pagos.component';
 import { AccountSettingsComponent } from '../pages/account-settings/account-settings.component';
+import { FacturaTicketComponent } from './factura-ticket/factura-ticket.component';
 
 
 const maskConfig: Partial<IConfig> = {
@@ -96,7 +97,8 @@ const maskConfig: Partial<IConfig> = {
     ModalBilletesComponent,
     GastoComponent,
     PagosComponent,
-    AccountSettingsComponent
+    AccountSettingsComponent,
+    FacturaTicketComponent
   ],
   imports: [
     AvatarModule,

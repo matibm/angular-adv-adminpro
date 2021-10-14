@@ -32,6 +32,7 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 import { GastoComponent } from '../components/gasto/gasto.component';
 import { PagosComponent } from '../components/pagos/pagos.component';
 import { AdminGuard } from './admin.guard';
+import { FacturaTicketComponent } from '../components/factura-ticket/factura-ticket.component';
 const routes: Routes = [
   // {
   //   path: 'contrato',
@@ -88,7 +89,8 @@ const routes: Routes = [
   },
   { path: 'contratos-pdf/:id', component: ContratoPdfComponent },
   { path: 'factura-pdf/:id', component: FacturaPdfComponent },
-  { path: 'extracto-cuotas', component: ExtractoPdfComponent }
+  { path: 'extracto-cuotas', component: ExtractoPdfComponent },
+  { path: 'factura-ticket/:id', component: FacturaTicketComponent }
 
 
 ];
