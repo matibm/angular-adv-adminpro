@@ -1,6 +1,7 @@
 
 export class Producto {
     constructor(
+        public cantidad?: number,
         public ID_PRODUCTO?: string,
         public COD_PRODUCTO?: string,
         public COD_BARRAS?: string,

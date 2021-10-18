@@ -212,7 +212,7 @@ export class EditarContratoComponent implements OnInit {
       fecha_inhumacion: '',
       nombre: '',
       ci: '',
-
+      producto: null
     });
   }
 
@@ -311,6 +311,10 @@ export class EditarContratoComponent implements OnInit {
 
     if (this.esPsm) {
       tipoContrato = 'psm'
+
+    }
+    if (this.esPsv) {
+      tipoContrato = 'psv'
 
     }
     this.contrato.id_contrato = new Date().getTime().toString(),   // se puede quitar

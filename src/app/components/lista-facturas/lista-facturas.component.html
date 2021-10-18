@@ -23,12 +23,12 @@
             <div class="col-xs col-md">
                 <div style="justify-content: space-between;" class="inline-flex">
                     <label>Cliente</label>
-                    <div *ngIf="cliente" (click)="cliente = null; filtrar()" class="pointer close-icon ml-auto">
+                    <div *ngIf="cliente" (click)="cliente = null; cambiarQueryParams([{cliente: null}])" class="pointer close-icon ml-auto">
                         <button type="button" class="btn btn-sm btn-light"><i class=" ti-close  "></i></button>
                     </div>
                 </div>
                 <div class="" *ngIf="!cliente">
-                    <ng-select [typeahead]="inputClientes" [loading]="loadingClientes" [items]="clientes" name="dsfdbrweqcda" [(ngModel)]="cliente" (ngModelChange)="filtrar()" notFoundText="no se encontraron resultados" placeholder="buscar cliente"
+                    <ng-select [typeahead]="inputClientes" [loading]="loadingClientes" [items]="clientes" name="dsfdbrweqcda" [(ngModel)]="cliente" (ngModelChange)="cambiarQueryParams([{cliente: cliente._id}]);filtrar()" notFoundText="no se encontraron resultados" placeholder="buscar cliente"
                     bindLabel="NOMBRES" [searchFn]="customSearchFn">
                         <ng-template ng-option-tmp let-item="item">
                             <div>

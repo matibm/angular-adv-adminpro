@@ -115,7 +115,9 @@ export class ListaFacturasComponent implements OnInit {
       const element = paths[i];
       Object.keys(element).forEach((key, index) => {
         queryParams[key] = element[key]
-
+        if (!element[key]) {
+          delete queryParams[key]
+        }
       })
 
     }
@@ -162,6 +164,10 @@ export class ListaFacturasComponent implements OnInit {
       let value = { start: new Date(`${this.route.snapshot.queryParams.vencimiento_start} 00:00`), end: new Date(`${this.route.snapshot.queryParams.vencimiento_end} 00:00`) }
       this.rangeVencimiento.setValue(value)
     }
+    
+    if (this.route.snapshot.queryParams.cliente) this.cliente = await this._usuarioService.getUsuarioPorId(this.route.snapshot.queryParams.cliente) 
+    // if (this.route.snapshot.queryParams.servicio) this.cliente = await this._usuarioService.getUsuarioPorId(this.route.snapshot.queryParams.cliente) 
+
     this.route.snapshot.queryParams.estado ? null : this.cambiarQueryParams([{ estado: 'PENDIENTES' }])
     this.estadoSeleccionado = this.route.snapshot.queryParams?.estado || 'PENDIENTES'
 
@@ -205,7 +211,7 @@ export class ListaFacturasComponent implements OnInit {
       fondo: this.fondo ? this.fondo._id : null,
       contrato: this.contrato ? this.contrato._id : null,
       pagado,
-      codigo_producto: this.codSeleccionado? this.codSeleccionado : null,
+      codigo_producto: this.codSeleccionado ? this.codSeleccionado : null,
       vencimiento_start: this.rangeVencimiento.value.start ? new Date(this.rangeVencimiento.value.start).getTime() : null,
       vencimiento_end: this.rangeVencimiento.value.end ? new Date(this.rangeVencimiento.value.end).setHours(23, 59, 59, 59) : null,
       pagado_start: this.rangePagado.value.start ? new Date(this.rangePagado.value.start).getTime() : null,
@@ -348,12 +354,13 @@ export class ListaFacturasComponent implements OnInit {
     this.opciones.cobrador = id
   }
 
-  generarReporte(){
-    let body = { 
+  generarReporte() {
+    let body = {
       pagado: true,
       fecha_pagado_unix: {
-         $gte: new Date(`${new Date(this.rangeReporte.value.start).toLocaleDateString('en-US')} 00:00`).getTime(),
-       $lte: new Date(`${new Date(this.rangeReporte.value.end).toLocaleDateString('en-US')} 23:59:59`).getTime() },
+        $gte: new Date(`${new Date(this.rangeReporte.value.start).toLocaleDateString('en-US')} 00:00`).getTime(),
+        $lte: new Date(`${new Date(this.rangeReporte.value.end).toLocaleDateString('en-US')} 23:59:59`).getTime()
+      },
       con_error: false
     }
     this._facturaService.getReporteIngresos(body)

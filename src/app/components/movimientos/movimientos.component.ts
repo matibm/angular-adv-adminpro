@@ -198,6 +198,13 @@ export class MovimientosComponent implements OnInit, OnDestroy {
       item?.RUC?.toLowerCase().includes(term)
     );
   }
+  customSearchFnCuentaAbaco(term: string, item: any) {
+    term = term.toLowerCase();
+    return (
+      item?.codigo?.toLowerCase().indexOf(term) > -1 ||
+      item?.descripcion?.toLowerCase().includes(term)       
+    );
+  }
   add(event) {
     //event);
   }
@@ -452,6 +459,8 @@ export class MovimientosComponent implements OnInit, OnDestroy {
       debounceTime(300),
       distinctUntilChanged()
     ).toPromise().then(async (txt) => {
+      console.log(txt);
+      
         if (!txt) {
           return;
         }

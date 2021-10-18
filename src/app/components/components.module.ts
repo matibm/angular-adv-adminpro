@@ -58,6 +58,8 @@ import { GastoComponent } from './gasto/gasto.component';
 import { PagosComponent } from './pagos/pagos.component';
 import { AccountSettingsComponent } from '../pages/account-settings/account-settings.component';
 import { FacturaTicketComponent } from './factura-ticket/factura-ticket.component';
+import { ExportarContratosPdfComponent } from './exportar-contratos-pdf/exportar-contratos-pdf.component';
+import { ExportarGastosPdfComponent } from './exportar-gastos-pdf/exportar-gastos-pdf.component';
 
 
 const maskConfig: Partial<IConfig> = {
@@ -98,7 +100,9 @@ const maskConfig: Partial<IConfig> = {
     GastoComponent,
     PagosComponent,
     AccountSettingsComponent,
-    FacturaTicketComponent
+    FacturaTicketComponent,
+    ExportarContratosPdfComponent,
+    ExportarGastosPdfComponent
   ],
   imports: [
     AvatarModule,

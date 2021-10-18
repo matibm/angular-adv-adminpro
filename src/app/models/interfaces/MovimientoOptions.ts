@@ -8,5 +8,6 @@ export interface MovimientoOptions {
     contrato?: string,
     tipo_movimiento?: string,
     fondo?: string,
-    page?:number
+    page?:number,
+    unlimit?:boolean
 }

@@ -33,6 +33,8 @@ import { GastoComponent } from '../components/gasto/gasto.component';
 import { PagosComponent } from '../components/pagos/pagos.component';
 import { AdminGuard } from './admin.guard';
 import { FacturaTicketComponent } from '../components/factura-ticket/factura-ticket.component';
+import { ExportarContratosPdfComponent } from '../components/exportar-contratos-pdf/exportar-contratos-pdf.component';
+import { ExportarGastosPdfComponent } from '../components/exportar-gastos-pdf/exportar-gastos-pdf.component';
 const routes: Routes = [
   // {
   //   path: 'contrato',
@@ -90,6 +92,8 @@ const routes: Routes = [
   { path: 'contratos-pdf/:id', component: ContratoPdfComponent },
   { path: 'factura-pdf/:id', component: FacturaPdfComponent },
   { path: 'extracto-cuotas', component: ExtractoPdfComponent },
+  { path: 'extracto-contratos', component: ExportarContratosPdfComponent },
+  { path: 'extracto-gastos', component: ExportarGastosPdfComponent },
   { path: 'factura-ticket/:id', component: FacturaTicketComponent }
 
 

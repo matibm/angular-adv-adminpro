@@ -311,7 +311,7 @@ export class FacturaComponent implements OnInit {
 
   async modificarMonto(id, amount){
     await this._facturaService.modificarMonto({ id, amount })
-    // window.location.reload()
+    window.location.reload()
   }
 
 }

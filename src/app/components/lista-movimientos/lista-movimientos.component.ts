@@ -25,6 +25,7 @@ export class ListaMovimientosComponent implements OnInit {
   @Input() showTitle = true;
   @Input() count;
   @Input() page = 1;
+  @Input() isToExport = false;
   proveedor
   cliente
   contrato
@@ -39,6 +40,7 @@ export class ListaMovimientosComponent implements OnInit {
   fondo
   fondos
   nro_factura
+  total = 0
   rangeFecha = new FormGroup({
     start: new FormControl(),
     end: new FormControl()
@@ -48,9 +50,18 @@ export class ListaMovimientosComponent implements OnInit {
     this.searchBancos('')
     this.observableBuscadores()
     if (this.options) {
+      if (this.isToExport) {
+       this.options.unlimit = true
+      }
       let resp = await this._movimientoService.getAllMovimientos(this.options)
       this.movimientos = resp.movimientos
       this.count = resp.count
+      this.total = resp.total.monto_total
+    }
+    if (this.isToExport) {
+      setTimeout(() => {
+        window.print()
+      }, 500);
     }
   }
 
@@ -133,6 +144,17 @@ export class ListaMovimientosComponent implements OnInit {
     this.movimientos = resp.movimientos
     this.count = resp.count
     this.page = 1
+    this.total = resp.total.monto_total
+
+  }
+
+  excelAbaco(){
+    this._movimientoService.getGastoExcel(this.options)
+  }
+  exportarPDF(){
+    
+    localStorage.setItem('options_extracto_gastos', JSON.stringify(this.options))
+    const wopen = window.open('/extracto-gastos');
   }
 
 }

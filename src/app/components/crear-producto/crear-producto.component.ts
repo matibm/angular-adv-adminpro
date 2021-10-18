@@ -17,12 +17,13 @@ export class CrearProductoComponent implements OnInit {
   }
 
 
-  async crearProducto(nombre, cod, precio, codigo) {
+  async crearProducto(nombre, cod, precio, codigo, cantidad) {
     const producto: Producto = {
       ID_PRODUCTO: codigo,
       NOMBRE: nombre,
       COD_CORTO: cod,
-      PRECIO_MAYORISTA: precio
+      PRECIO_MAYORISTA: precio,
+      cantidad
     };
     await this._productoService.crearProducto(producto);
     window.history.back();

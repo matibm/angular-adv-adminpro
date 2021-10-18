@@ -400,6 +400,25 @@ export class MovimientoService {
       }
     )
   }
+  getGastoExcel(body) {
+    let url = `${URL_SERVICIOS}/movimientos/gastos_excel`;
+    url += `?token=${this._usuarioService.token}`;
+    
+    this.http.post(url, body, { responseType: 'blob' as 'json' }).subscribe(
+      (response: any) => {
+        let dataType = response.type;
+        let binaryData = [];
+        binaryData.push(response);
+        let downloadLink = document.createElement('a');
+        downloadLink.href = window.URL.createObjectURL(new Blob(binaryData, { type: dataType }));
+
+        downloadLink.setAttribute('download', 'gastos.xlsx');
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        downloadLink.remove()
+      }
+    )
+  }
 }
 
 interface getAllMovimientos {

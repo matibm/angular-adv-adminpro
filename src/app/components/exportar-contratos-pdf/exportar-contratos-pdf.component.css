@@ -1,0 +1,8 @@
+.thead th {
+    cursor: pointer;
+    
+}
+
+td {
+    width: max-content;
+}

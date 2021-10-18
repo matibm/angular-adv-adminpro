@@ -68,10 +68,10 @@ export class InfoCajaComponent implements OnInit {
     if (!this.route.snapshot.queryParams.start && !this.route.snapshot.queryParams.end) {
       let month = new Date().getMonth() + 1
       let year = new Date().getFullYear()
-      this.rangeFecha.setValue({ start: new Date(`${year}-${month}-01`), end: new Date() })
+      this.rangeFecha.setValue({ start: new Date(`${year}-${month}-01 00:00`), end: new Date() })
       this.cambiarQueryParams([
         {
-          start: new Date(`${year}-${month}-01`).toLocaleDateString('fr-CA', { year: "numeric", month: "2-digit", day: "2-digit" })
+          start: new Date(`${year}-${month}-01 00:00`).toLocaleDateString('fr-CA', { year: "numeric", month: "2-digit", day: "2-digit" })
         },
         {
           end: new Date().toLocaleDateString('fr-CA', { year: "numeric", month: "2-digit", day: "2-digit" })

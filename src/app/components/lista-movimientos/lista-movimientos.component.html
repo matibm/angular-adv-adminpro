@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="!isToExport">
     <div class="row">
         <div class="col-xs col-md-3 ">
             <div class="inline-flex">
@@ -84,10 +84,10 @@
             <div *ngIf="!contrato" class="">
 
                 <div style="display: flex;" class="">
-                    
-                            <button type="button" (click)="showModal = true" class="btn btn-inverse">Buscar
-                                Contrato</button>
-                       
+
+                    <button type="button" (click)="showModal = true" class="btn btn-inverse">Buscar
+                        Contrato</button>
+
                 </div>
             </div>
             <div *ngIf="contrato" class="">
@@ -152,18 +152,17 @@
             <div class="form-group">
                 <label for="nro_factura">Nro Factura</label>
                 <input type="text" #nroContrato [(ngModel)]="nro_factura" (ngModelChange)=" buscar()"
-                    id='nro_factura_search' name="nro_factura" class="form-control"
-                    placeholder="numero de factura" aria-describedby="nrofacturaid">
+                    id='nro_factura_search' name="nro_factura" class="form-control" placeholder="numero de factura"
+                    aria-describedby="nrofacturaid">
             </div>
         </div>
-        <div class="col-xs col-md-3 "> 
+        <div class="col-xs col-md-3 ">
             <div class="inline-flex">
                 <div style="min-width: 100%;">
                     <mat-form-field appearance="fill">
                         <mat-label>Filtrar por Fecha</mat-label>
                         <mat-date-range-input [formGroup]="rangeFecha" [rangePicker]="pickerFecha">
-                            <input autocomplete="off" matStartDate formControlName="start"
-                                placeholder="fecha inicio">
+                            <input autocomplete="off" matStartDate formControlName="start" placeholder="fecha inicio">
                             <input matEndDate formControlName="end" (dateChange)="filtroPorFecha()"
                                 placeholder="fecha fin">
                         </mat-date-range-input>
@@ -175,6 +174,7 @@
                             end date</mat-error>
                     </mat-form-field>
                 </div>
+            </div>
         </div>
     </div>
 </div>
@@ -224,13 +224,19 @@
 
             </tbody>
         </table>
-        <div style="width: 100%;">
-            <div style="display: flex;">
-                <div class="mx-auto">
-                    <pagination-controls *ngIf="count>10" (pageChange)="pageChanged($event); page = $event">
-                    </pagination-controls>
+        <div *ngIf="!isToExport"> 
+            <div style="width: 100%;">
+                <div style="display: flex;">
+                    <div class="mx-auto">
+                        <pagination-controls *ngIf="count>10" (pageChange)="pageChanged($event); page = $event">
+                        </pagination-controls>
+                    </div>
                 </div>
             </div>
+            <div>Total: {{total | currency: '':'':'2.0'}} Gs</div>
+    
+            <button type="button" (click)="exportarPDF()" class="btn btn-info">Exportar PDF</button>
+            <button type="button" (click)="excelAbaco()" class="btn btn-info">Excel Abaco</button>
         </div>
     </div>
 </div>

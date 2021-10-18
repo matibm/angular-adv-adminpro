@@ -339,6 +339,11 @@ export class ListaContratosComponent implements OnInit {
       });
   }
 
+  exportarPDF() {
+    this.options.unlimit = true
+    localStorage.setItem('options_extracto_contratos', JSON.stringify(this.options))
+    const wopen = window.open('/extracto-contratos');
+  }
 
-
+  
 }

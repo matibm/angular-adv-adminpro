@@ -19,6 +19,9 @@
                         <th class="text-center" style="min-width: 130px;">
                             Nro. Contrato
                         </th>
+                        <th class="text-center" style="min-width: 130px;">
+                            Nro. Factura
+                        </th>
                         <th *ngIf="false" class="text-center" style="min-width: 200px;">
                             Emisión
                         </th>
@@ -64,6 +67,10 @@
                         <td class="text-center">
                             <div *ngIf="factura.contrato">{{factura.contrato.nro_contrato | currency:'':'':'2.0'}}</div>
                             <div *ngIf="!factura.contrato">---</div>
+                        </td>
+                        <td class="text-center">
+                            <div *ngIf="factura.pago?.numero">{{factura.pago?.numero}}-{{factura.pago?.nro_factura}}</div>
+                            <div *ngIf="!factura.pago">---</div>
                         </td>
 
                         <td *ngIf="false" class="text-center">

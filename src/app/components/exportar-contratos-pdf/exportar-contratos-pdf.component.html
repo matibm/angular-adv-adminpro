@@ -1,0 +1,45 @@
+<div class="table-responsive">
+    <table class="table table-sm table-hover">
+        <thead>
+            <tr #tableHeaad class="thead">
+                <th>#</th>
+                <th style="min-width: 80px;" id="fecha_creacion_unix">
+                    fecha <i *ngIf="false" class="ml-1 fa fa-sort-desc"></i></th>
+                <th style="min-width: 80px;" id="nro_contrato">Nro. Contrato
+                    <i *ngIf="false" class="ml-1 fa fa-sort"></i>
+                </th>
+                <th style="min-width: 80px;" id="producto">Servicio <i
+                        *ngIf="false" class="ml-1 fa fa-sort"></i></th>
+                <th style="min-width: 200px;">Cliente </th>
+                
+                <th id="manzana" >Manz <i *ngIf="false"
+                        class="ml-1 fa fa-sort"></i> </th>
+                <th id="fila" >Fila <i *ngIf="false" class="ml-1 fa fa-sort"></i> </th>
+                <th id="parcela" >Parc <i *ngIf="false"
+                        class="ml-1 fa fa-sort"></i> </th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <!-- -->
+            <tr  class="pointer"
+                *ngFor="let contrato of contratos ; let i = index;">
+                <td scope="row">{{ i+1}}</td>
+                <td>{{contrato.fecha_creacion_unix | date: 'dd/MM/YY'}}</td>
+                <td>{{contrato.nro_contrato | ruc}}</td>
+                <td>{{contrato.producto.COD_CORTO}}</td>
+                <td *ngIf="contrato.titular">{{contrato.titular.NOMBRES | primerNombre}}
+                    {{contrato.titular.APELLIDOS | primerNombre}}</td>
+                
+                <td *ngIf="!contrato.manzana">---</td>
+                <td *ngIf="!contrato.fila">---</td>
+                <td *ngIf="!contrato.parcela">---</td>
+                <td *ngIf="contrato.manzana">{{contrato.manzana}}</td>
+                <td *ngIf="contrato.fila">{{contrato.fila}}</td>
+                <td *ngIf="contrato.parcela">{{contrato.parcela}}</td>
+                
+            </tr>
+
+        </tbody>
+    </table>
+</div>

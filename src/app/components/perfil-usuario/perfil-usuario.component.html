@@ -40,7 +40,7 @@
                 <!-- <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#contratos_inactivos"
                         role="tab">Contratos Inactivos</a>
                 </li> -->
-                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#facturas" role="tab">Facturas</a>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" [routerLink]="['/admin/ingresos']" [queryParams]="{cliente: id, estado: 'TODOS'}" routerLinkActive="router-link-active"  role="tab">Facturas</a>
                 </li>
                 <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#movimientos"
                         role="tab">Movimientos</a>

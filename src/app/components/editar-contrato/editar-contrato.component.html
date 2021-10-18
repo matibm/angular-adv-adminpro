@@ -6,35 +6,38 @@
                     <div class="card-body">
                         <div style="justify-content: space-between;" class="inline-flex">
                             <h4 class="card-title">Cliente</h4>
-                            <div *ngIf="contrato.titular" (click)="contrato.titular = null" class="pointer close-icon ml-auto">
+                            <div *ngIf="contrato.titular" (click)="contrato.titular = null"
+                                class="pointer close-icon ml-auto">
                                 <button type="button" class="btn btn-sm btn-light"><i class=" ti-close  "></i></button>
                             </div>
                         </div>
-    
+
                         <div *ngIf="!contrato.titular">
-    
-                            <ng-select [typeahead]="inputClientes" [loading]="loadingClientes" [items]="clientes" name="dsfdbrweqcda" [(ngModel)]="contrato.titular" (ngModelChange)="null" notFoundText="no se encontraron resultados" placeholder="buscar cliente"
+
+                            <ng-select [typeahead]="inputClientes" [loading]="loadingClientes" [items]="clientes"
+                                name="dsfdbrweqcda" [(ngModel)]="contrato.titular" (ngModelChange)="null"
+                                notFoundText="no se encontraron resultados" placeholder="buscar cliente"
                                 bindLabel="NOMBRES" [searchFn]="customSearchFn">
                                 <ng-template ng-option-tmp let-item="item">
                                     <div> {{item.APELLIDOS}} {{item.NOMBRES}} <br>
                                         <small>{{item.RUC | ruc}}</small>
                                     </div>
-    
+
                                 </ng-template>
                             </ng-select>
-    
+
                         </div>
                         <div style="width: 100%; " *ngIf="contrato.titular ">
                             <h5>Apellidos: <b>{{contrato.titular.APELLIDOS}}</b></h5>
                             <h5>Nombres: <b>{{contrato.titular.NOMBRES}}</b></h5>
-    
+
                             <h5>RUC: <b>{{contrato.titular.RUC | ruc}}</b></h5>
                             <h5>Direccion P: <b>{{contrato.titular.DIRECCION}}</b></h5>
                             <h5>Ciudad P: <b>{{contrato.titular.NOMCIUDAD}}</b></h5>
                             <h5>Direccion L: <b>{{contrato.titular.direccion_laboral}}</b></h5>
                             <h5>Ciudad L: <b>{{contrato.titular.ciudad_trabajo}}</b></h5>
                             <h5>Telefonos: <b>{{contrato.titular.TELEFONO1}}</b></h5>
-    
+
                             <div class="row ">
                                 <div class="col ">
                                 </div>
@@ -50,23 +53,27 @@
                     <div class="card-body">
                         <div style="justify-content: space-between;" class="inline-flex">
                             <h4 class="card-title">Titular Alternativo</h4>
-                            <div *ngIf="contrato.titular_alternativo" (click)="contrato.titular_alternativo = null" class="pointer close-icon ml-auto">
+                            <div *ngIf="contrato.titular_alternativo" (click)="contrato.titular_alternativo = null"
+                                class="pointer close-icon ml-auto">
                                 <button type="button" class="btn btn-sm btn-light"><i class=" ti-close  "></i></button>
                             </div>
                         </div>
-    
+
                         <div *ngIf="!contrato.titular_alternativo">
-    
-                            <ng-select [items]="clientesAlternativo" name="tyhhytgrfedca" [(ngModel)]="contrato.titular_alternativo" [typeahead]="inputAlternativo" [loading]="loadingAlternativo" notFoundText="no se encontraron resultados" placeholder="buscar titular alternativo" bindLabel="NOMBRES"
+
+                            <ng-select [items]="clientesAlternativo" name="tyhhytgrfedca"
+                                [(ngModel)]="contrato.titular_alternativo" [typeahead]="inputAlternativo"
+                                [loading]="loadingAlternativo" notFoundText="no se encontraron resultados"
+                                placeholder="buscar titular alternativo" bindLabel="NOMBRES"
                                 [searchFn]="customSearchFn">
                                 <ng-template ng-option-tmp let-item="item">
                                     <div> {{item.APELLIDOS}} {{item.NOMBRES}} <br>
                                         <small>{{item.RUC | ruc}}</small>
                                     </div>
-    
+
                                 </ng-template>
                             </ng-select>
-    
+
                         </div>
                         <div style="width: 100%; " *ngIf="contrato.titular_alternativo ">
                             <h5>Apellidos: <b>{{contrato.titular_alternativo.APELLIDOS}}</b></h5>
@@ -77,7 +84,7 @@
                             <h5>Direccion L: <b>{{contrato.titular_alternativo.direccion_laboral}}</b></h5>
                             <h5>Ciudad L: <b>{{contrato.titular_alternativo.ciudad_trabajo}}</b></h5>
                             <h5>Telefonos: <b>{{contrato.titular_alternativo.TELEFONO1}}</b></h5>
-    
+
                             <div class="row ">
                                 <div class="col ">
                                 </div>
@@ -93,16 +100,19 @@
                     <div class="card-body">
                         <div style="justify-content: space-between;" class="inline-flex">
                             <h4 class="card-title">Vendedor</h4>
-                            <div *ngIf="contrato.vendedor" (click)="contrato.vendedor = null" class="pointer close-icon ml-auto">
+                            <div *ngIf="contrato.vendedor" (click)="contrato.vendedor = null"
+                                class="pointer close-icon ml-auto">
                                 <button type="button" class="btn btn-sm btn-light"><i class=" ti-close  "></i></button>
                             </div>
                         </div>
                         <!-- <ng-select [items]="cars" bindLabel="name" bindValue="id" [(ngModel)]="selectedCar">
                         </ng-select> -->
                         <div *ngIf="!contrato.vendedor">
-                            
-                            <ng-select [typeahead]="inputVendedor" [loading]="loadingVendedor" [items]="vendedores" name="dsfdbrwenkkqcda" [(ngModel)]="contrato.vendedor"   notFoundText="no se encontraron resultados" placeholder="buscar vendedor"
-                            bindLabel="NOMBRES" [searchFn]="customSearchFn">
+
+                            <ng-select [typeahead]="inputVendedor" [loading]="loadingVendedor" [items]="vendedores"
+                                name="dsfdbrwenkkqcda" [(ngModel)]="contrato.vendedor"
+                                notFoundText="no se encontraron resultados" placeholder="buscar vendedor"
+                                bindLabel="NOMBRES" [searchFn]="customSearchFn">
                                 <ng-template ng-option-tmp let-item="item">
                                     <div> {{item.APELLIDOS}} {{item.NOMBRES}} <br>
                                         <small>{{item.RUC | ruc}}</small>
@@ -128,25 +138,28 @@
                     <div class="card-body">
                         <div style="justify-content: space-between;" class="inline-flex">
                             <h4 class="card-title">Cobrador</h4>
-                            <div *ngIf="contrato.cobrador" (click)="contrato.cobrador = null" class="pointer close-icon ml-auto">
+                            <div *ngIf="contrato.cobrador" (click)="contrato.cobrador = null"
+                                class="pointer close-icon ml-auto">
                                 <button type="button" class="btn btn-sm btn-light"><i class=" ti-close  "></i></button>
                             </div>
                         </div>
                         <div class="ng-autocomplete">
                             <div *ngIf="!contrato.cobrador">
-                                <ng-select [typeahead]="inputCobrador" [loading]="loadingCobrador" [items]="cobradores" name="dsfdbrwesnkkqcda" [(ngModel)]="contrato.cobrador"   notFoundText="no se encontraron resultados" placeholder="buscar cobrador"
-                                bindLabel="NOMBRES" [searchFn]="customSearchFn">
+                                <ng-select [typeahead]="inputCobrador" [loading]="loadingCobrador" [items]="cobradores"
+                                    name="dsfdbrwesnkkqcda" [(ngModel)]="contrato.cobrador"
+                                    notFoundText="no se encontraron resultados" placeholder="buscar cobrador"
+                                    bindLabel="NOMBRES" [searchFn]="customSearchFn">
                                     <ng-template ng-option-tmp let-item="item">
                                         <div>
                                             <div class="" *ngIf="item.APELLIDOS">
                                                 {{item.APELLIDOS}} {{item.NOMBRES}}
                                             </div>
-    
+
                                             <div *ngIf="item.RAZON"> {{item.RAZON}} </div>
-    
+
                                             <small>{{item.RUC | ruc}}</small>
                                         </div>
-    
+
                                     </ng-template>
                                 </ng-select>
                             </div>
@@ -211,7 +224,7 @@
                                 <h5>Total: <b>{{contrato.precio_total | currency:'':'':'2.0'}} Gs</b></h5>
                                 <h5 *ngIf="!esPsm">Deuda: <b>{{montoTotal.deuda | currency:'':'':'2.0'}} Gs</b></h5>
 
-                                <h5 *ngIf="esPsm" >Saldo: <b>{{saldo | currency:'':'':'2.0'}} Gs</b></h5>
+                                <h5 *ngIf="esPsm">Saldo: <b>{{saldo | currency:'':'':'2.0'}} Gs</b></h5>
                                 <!-- <h5>Entrega: </h5>  -->
                                 <hr>
                                 <div *ngIf="!esPsm" class="mt-2 inline-flex">
@@ -244,8 +257,7 @@
                                         <div class="form-group">
                                             <label for="">Modificar Deuda</label>
                                             <input [disabled]='!editarproducto' name="deuda" type="number"
-                                                class="form-control"  #deuda
-                                                [(ngModel)]="montoTotal.deuda">
+                                                class="form-control" #deuda [(ngModel)]="montoTotal.deuda">
                                         </div>
                                         <h5>Deuda <b>{{montoTotal.deuda | currency:'':'':'2.0'}} Gs</b></h5>
                                     </div>
@@ -264,8 +276,7 @@
                                                 Gs</b></h5>
                                         <h5 *ngIf="esPsm">Monto Cuotas: <b></b></h5>
                                         <input [disabled]='!editarproducto' name="saldos" type="number"
-                                        class="form-control"  #deuda
-                                        [(ngModel)]="saldo">
+                                            class="form-control" #deuda [(ngModel)]="saldo">
                                         <h5 *ngIf="esPsm"> <b>{{saldo | currency:'':'':'2.0' }} Gs</b></h5>
                                     </div>
                                     <div class="col-md col-xs">
@@ -392,17 +403,13 @@
                                                 <label #edad for="">{{ item.fecha_nacimiento | edad}}</label>
                                             </td>
                                             <td>
-                                                <div [ngClass]="{'has-danger': false}"
-                                                    class="form-group ">
-                                                    <input
-                                                        
-                                                        type="text" class="form-control fcorm-control-danger "
+                                                <div [ngClass]="{'has-danger': false}" class="form-group ">
+                                                    <input type="text" class="form-control fcorm-control-danger "
                                                         [(ngModel)]="item.plus_edad" name="name-{{i}}"
                                                         (ngModelChange)="calcularPrecioConPlusPorEdad()"
                                                         placeholder="plus por edad">
                                                     <div>
-                                                        <small class="form-control-feedback "
-                                                            *ngIf=" false">plus
+                                                        <small class="form-control-feedback " *ngIf=" false">plus
                                                             por edad es
                                                             obligatorio</small>
                                                     </div>
@@ -552,15 +559,16 @@
                         <div class="card">
                             <div class="card-body">
                                 <h3>Servicio utilizado en:</h3>
-                                <table class=" table  ">
+                                <table class=" table " style="min-width: 400px  ; display: block;  overflow-x: auto;">
                                     <thead>
                                         <tr>
-                                            <th class="text-center">Nombres y Apellidos</th>
-                                            <th class="text-center">C.I.</th>
-                                            <th class="text-center">Fecha fallecimiento</th>
-                                            <th class="text-center">Fecha Inhumacion</th>
+                                            <th style="min-width: 360px;" class="text-center">Nombres y Apellidos</th>
+                                            <th style="min-width: 160px;" class="text-center">C.I.</th>
+                                            <th style="min-width: 160px;" class="text-center">Fecha fallecimiento</th>
+                                            <th style="min-width: 160px;" class="text-center">Fecha Inhumacion</th>
                                             <th *ngIf="false" class="text-center">Nro Inhumacion</th>
-                                            <th class="text-center">quitar</th>
+                                            <th style="min-width: 360px;" class="text-center">Producto</th>
+                                            <th style="min-width: 160px;" class="text-center">quitar</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -600,6 +608,17 @@
                                                     [(ngModel)]="item.nro">
                                             </td>
                                             <td class="text-center">
+                                                <ng-select name="sssssssasdasd{{i}}" [(ngModel)]="item.producto"
+                                                     [items]="productos"
+                                                    notFoundText="no se encontraron resultados"
+                                                    placeholder="buscar producto" bindLabel="NOMBRE">
+                                                    <ng-template ng-option-tmp let-item="item">
+                                                        <div> {{item.NOMBRE}} {{item.COD_CORTO}} <br>
+                                                        </div>
+                                                    </ng-template>
+                                                </ng-select>
+                                            </td>
+                                            <td class="text-center">
                                                 <i [ngStyle]="{fontSize: '20px'}"
                                                     (click)="contrato.inhumados.splice(i, 1)"
                                                     class="fa fa-trash pointer text-danger" aria-hidden="true"></i>
@@ -629,13 +648,15 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4>Relacionar Contrato</h4>
-                                    <input class="form-control" type="number" placeholder="nro de contrato sin puntos" [(ngModel)]="contrato.nro_contrato_relacionado" name="contrato_relacionado"
-                                    id="contrato_relacionado" >
-                                    <div *ngIf="esPsv"> <h4>Lugar de Inhumación</h4>
+                                    <input class="form-control" type="number" placeholder="nro de contrato sin puntos"
+                                        [(ngModel)]="contrato.nro_contrato_relacionado" name="contrato_relacionado"
+                                        id="contrato_relacionado">
+                                    <div *ngIf="esPsv">
+                                        <h4>Lugar de Inhumación</h4>
 
-                                    <input class="form-control" [(ngModel)]="contrato.lugar_inhumacion"
-                                        name="lugar_inhumacion" id="lugar_inhumacion">
-                                        </div>
+                                        <input class="form-control" [(ngModel)]="contrato.lugar_inhumacion"
+                                            name="lugar_inhumacion" id="lugar_inhumacion">
+                                    </div>
                                     <div class="mt-3">
                                         <h4>Estado</h4>
                                         <input [(ngModel)]="contrato.utilizado" type="checkbox" name="check_utilizado"
@@ -657,7 +678,7 @@
                                 contrato</button>
 
                             <div class="ml-auto">
-                              
+
                                 <button type="reset" (click)="cancelar()"
                                     class="btn mx-2  btn-inverse">Cancelar</button>
 

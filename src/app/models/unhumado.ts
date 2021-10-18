@@ -1,3 +1,5 @@
+import { Producto } from "./producto";
+
 export class Inhumado {
     constructor(
 
@@ -6,7 +8,7 @@ export class Inhumado {
       public fecha_inhumacion?: string,
       public ci?: string,
       public nro?: string,
-
+      public producto?: Producto
     ) {
 
     }

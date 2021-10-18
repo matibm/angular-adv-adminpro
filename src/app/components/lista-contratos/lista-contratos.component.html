@@ -325,3 +325,17 @@
         <pagination-controls *ngIf="count> 10" (pageChange)="pageChanged($event); page = $event"></pagination-controls>
     </div>
 </div>
+
+
+<div *ngIf="_usuarioService.usuario.role == 'ADMIN_ROLE'" class="card">
+    <div class="card-body">
+        <div style="width: 100%;" >
+            <div style="display: flex;">
+                <div class="my-5 mx-auto">
+
+                    <button type="button" (click)="exportarPDF()" class="btn mt-2 btn-info">Exportar PDF</button>
+                </div>
+            </div>
+        </div>  
+    </div>
+</div>

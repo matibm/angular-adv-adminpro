@@ -440,7 +440,7 @@
                                 <div class="form-input">
                                     <div *ngIf="!categoria">
                                         <ng-select [typeahead]="inputcategorias" [loading]="loadingcategorias"
-                                            [items]="categorias" name="dsfdsbrweqcda" [(ngModel)]="categoria"
+                                            [items]="categorias" name="dsfdsbraweqcda" [(ngModel)]="categoria"
                                             (ngModelChange)="seleccionarCategoriaToEdit(categoria)"
                                             notFoundText="no se encontraron resultados" placeholder="buscar categoria"
                                             bindLabel="NOMBRES" [searchFn]="customSearchFn">
@@ -528,12 +528,12 @@
 
                                     <div class="form-input">
                                         <div *ngIf="!cuentaAbaco">
-                                            <ng-select [typeahead]="inputcuentaAbacos" [loading]="loadingcuentaAbacos"
-                                                [items]="cuentasAbaco" name="dsfdbrwseqcda" [(ngModel)]="cuentaAbaco"
+                                            <ng-select 
+                                                [items]="cuentasAbaco" name="dsfdbsasdrwseqcda" [(ngModel)]="cuentaAbaco"
                                                 (ngModelChange)="seleccionarCuentaAbacoToEdit(cuentaAbaco)"
                                                 notFoundText="no se encontraron resultados"
-                                                placeholder="buscar Cuenta Abaco" bindLabel="NOMBRES"
-                                                [searchFn]="customSearchFn">
+                                                placeholder="buscar Cuenta Abaco" bindLabel="descripcion"
+                                                >
                                                 <ng-template ng-option-tmp let-item="item">
                                                     <div> {{item.codigo}} - {{item.descripcion}}
                                                     </div>
@@ -597,7 +597,7 @@
                                             [items]="cuentasAbaco" name="dsfdbrwseqcda" [(ngModel)]="cuentaAbaco"
                                             (ngModelChange)="seleccionarCuentaAbacoToEdit(cuentaAbaco)"
                                             notFoundText="no se encontraron resultados"
-                                            placeholder="buscar Cuenta Abaco" bindLabel="NOMBRES"
+                                            placeholder="buscar Cuenta sAbaco" bindLabel="NOMBRES"
                                             [searchFn]="customSearchFn">
                                             <ng-template ng-option-tmp let-item="item">
                                                 <div> {{item.codigo}} - {{item.descripcion}}
