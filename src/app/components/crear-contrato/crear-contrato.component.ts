@@ -275,7 +275,7 @@ export class CrearContratoComponent implements OnInit, AfterViewInit {
       this.facturas = this.crearFacturas(this.saldo, 1);
     }
     let utilizado = false;
-    this.inhumados.length > 0 && this.esPsv ? utilizado = true : false;
+    // this.inhumados.length > 0 && this.esPsv ? utilizado = true : false;
 
     const nuevo_contrato: Contrato = {
       id_contrato: new Date().getTime().toString(),   // se puede quitar
