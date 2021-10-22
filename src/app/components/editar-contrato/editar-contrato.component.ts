@@ -432,7 +432,7 @@ export class EditarContratoComponent implements OnInit {
   }
 
   disableCrearContrato() {
-    if (this.producto && this.cliente && this.vendedor  ) {
+    if (this.producto && this.contrato.vendedor && this.contrato.vendedor  ) {
       return false;
     }
     return true;
