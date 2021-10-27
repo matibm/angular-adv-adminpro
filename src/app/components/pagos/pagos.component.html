@@ -83,8 +83,8 @@
                 </tr>
             </thead>
             <tbody>
-                <tr [routerLink]="['/admin/gasto', item._id]" routerLinkActive="router-link-active"  *ngFor="let item of pagos | paginate: { itemsPerPage: 10,totalItems:count, currentPage: page } ; let i = index; " [ngClass]="'pointer'">
-                    <td>{{page*10 + (i+1) - 10}}</td>
+                <tr (click)="mostrarModal(item._id)"  *ngFor="let item of pagos | paginate: { itemsPerPage: 20,totalItems:count, currentPage: page } ; let i = index; " [ngClass]="'pointer'">
+                    <td>{{page*20 + (i+1) - 20}}</td>
 
                     <td>
                         {{item.fecha_creacion | date}}
@@ -104,8 +104,19 @@
 
             </tbody>
         </table>
-
+        <div style="width: 100%;">
+            <div style="display: flex;">
+                <div class="mx-auto">
+                    <pagination-controls *ngIf="count>10" (pageChange)="pageChanged($event); page = $event">
+                    </pagination-controls>
+                </div>
+            </div>
+        </div>
         <button type="button" (click)="generarExcel()" class="btn float-right mt-1 btn-primary">Generar Excel</button>
 
     </div>
+</div>
+
+<div class="" *ngIf="facturapdf">
+    <app-modal-factura (onClose)="facturapdf = null" [facturaPDF]="facturapdf"></app-modal-factura>
 </div>

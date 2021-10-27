@@ -32,10 +32,10 @@ export class PagosComponent implements OnInit {
     if (!this.route.snapshot.queryParams.start && !this.route.snapshot.queryParams.end) {
       let month = new Date().getMonth() + 1
       let year = new Date().getFullYear()
-      this.rangeFecha.setValue({ start: new Date(`${year}-${month}-01`), end: new Date() })
+      this.rangeFecha.setValue({ start: new Date(`${year}-${month}-01 00:00`), end: new Date() })
       this.cambiarQueryParams([
         {
-          start: new Date(`${year}-${month}-01`).toLocaleDateString('fr-CA', { year: "numeric", month: "2-digit", day: "2-digit" })
+          start: new Date(`${year}-${month}-01 00:00`).toLocaleDateString('fr-CA', { year: "numeric", month: "2-digit", day: "2-digit" })
         },
         {
           end: new Date().toLocaleDateString('fr-CA', { year: "numeric", month: "2-digit", day: "2-digit" })
@@ -57,6 +57,7 @@ export class PagosComponent implements OnInit {
       this.count = 0
       return
     }
+    this.page = 1
     this.body.options.fondo = fondoId
     const resp = await this._facturaService.getPagosAll(this.body)
     this.pagos = resp.pagos
@@ -77,6 +78,7 @@ export class PagosComponent implements OnInit {
     this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', val.term);
   }
   async filtroPorFecha() {
+    this.page = 1
     if (!this.rangeFecha.value.end) {
       console.log("vacio");
       return
@@ -88,10 +90,10 @@ export class PagosComponent implements OnInit {
     this.body.options['fecha_creacion'] = { $lte: new Date(this.rangeFecha.value.end).setHours(23, 59, 59, 59), $gte: new Date(this.rangeFecha.value.start).getTime() }
     this.body.options.date_start ? this.cambiarQueryParams([
       {
-        start: new Date(this.body.date_start).toLocaleDateString('fr-CA', { year: "numeric", month: "2-digit", day: "2-digit" })
+        start: new Date(`${this.body.date_start} 00:00`).toLocaleDateString('fr-CA', { year: "numeric", month: "2-digit", day: "2-digit" })
       },
       {
-        end: new Date(this.body.date_end).toLocaleDateString('fr-CA', { year: "numeric", month: "2-digit", day: "2-digit" })
+        end: new Date(`${this.body.date_end} 00:00`).toLocaleDateString('fr-CA', { year: "numeric", month: "2-digit", day: "2-digit" })
       }
     ]) : null
     const resp = await this._facturaService.getPagosAll(this.body)
@@ -101,6 +103,14 @@ export class PagosComponent implements OnInit {
 
   }
 
+  async pageChanged(page) {
+    this.loading = true
+    this.body['page'] = page
+    const resp = await this._facturaService.getPagosAll(this.body)
+    this.pagos = resp.pagos
+    this.count = resp.count
+    this.loading = false
+  }
 
   cambiarQueryParams(paths) {
     let queryParams: Params = { ... this.route.snapshot.queryParams }
@@ -124,8 +134,42 @@ export class PagosComponent implements OnInit {
       });
   }
   fill = (number = 0, len = 0) => "0".repeat(len - number?.toString()?.length) + number?.toString();
-
+  facturapdf
   generarExcel() {
     this._facturaService.getPagosExcel(this.body.options)
+  }
+  async mostrarModal(id) {
+    const resp = await this._facturaService.getDetallePago(id);
+    console.log(resp);
+
+    const pago = resp.pago;
+    const facturas = resp.facturas;
+    const servicios = [];
+    for (let i = 0; i < facturas.length; i++) {
+      const factura = facturas[i];
+      servicios.push({
+        cantidad: 1,
+        concepto: factura.servicio.NOMBRE,
+        precioUnitario: factura.haber,
+        cincoPorciento: null,
+        diezPorciento: factura.haber / 11
+      });
+    }
+    this.facturapdf = {
+      _id: pago._id,
+      comentario: pago.comentario,
+      activo: pago.activo,
+      nombres: `${pago.cliente.NOMBRES} ${pago.cliente.APELLIDOS}`,
+      fecha: pago.fecha_creacion,
+      direccion: `direccion de prueba`,
+      ruc: pago.cliente.RUC,
+      tel: pago.cliente.TELEFONO1,
+      notaDeRemision: '123123',
+      servicios,
+      nro_talonario: '1212',
+      nro_factura: '1212' + 1
+    };
+    console.log(this.facturapdf);
+
   }
 }

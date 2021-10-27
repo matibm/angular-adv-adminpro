@@ -72,9 +72,9 @@ export class ListaContratosComponent implements OnInit {
   beneficiarioCi
   inhumadoNombre
   inhumadoCi
-
+  codSeleccionado
   // wait .5s between keyups to emit current value
-
+  cod_servicios = ['P.S.V.', 'P.S.M.', 'C.M.P.', 'A.C.F.', 'U.D.P.']
   optionsDP: DatepickerOptions = {
     // minYear: getYear(new Date()) - 30, // minimum available and selectable year
     // maxYear: getYear(new Date()) + 30, // maximum available and selectable year
@@ -191,6 +191,7 @@ export class ListaContratosComponent implements OnInit {
     this.options.nro_contrato = this.nro_contrato ? this.nro_contrato : null
     this.options.cobrador = this.cobrador ? this.cobrador._id : null
     this.options.vendedor = this.vendedor ? this.vendedor._id : null
+    this.options.codigo_producto = this.codSeleccionado ? this.codSeleccionado : null
 
     this.sort = {
       key: this.sort_key,
