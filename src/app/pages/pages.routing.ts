@@ -35,6 +35,7 @@ import { AdminGuard } from './admin.guard';
 import { FacturaTicketComponent } from '../components/factura-ticket/factura-ticket.component';
 import { ExportarContratosPdfComponent } from '../components/exportar-contratos-pdf/exportar-contratos-pdf.component';
 import { ExportarGastosPdfComponent } from '../components/exportar-gastos-pdf/exportar-gastos-pdf.component';
+import { MapaComponent } from '../components/mapa/mapa.component';
 const routes: Routes = [
   // {
   //   path: 'contrato',
@@ -81,9 +82,9 @@ const routes: Routes = [
       { path: 'lista_productos', component: ListaProductosComponent },
       { path: 'pagos', component: PagosComponent },
       { path: 'account-settings', component: AccountSettingsComponent },
+      { path: 'mapa', component: MapaComponent },      
       { path: '**', component: DashboardComponent },
-
-      { path: 'account-settings', component: AccountSettingsComponent },
+      
 
     ]
 

@@ -26,10 +26,11 @@ export class BreadcrumbsComponent implements OnInit {
     this.urlbrm = this.route.url.slice(1).split('/');
     this.title = this.urlbrm[1];
     this.route.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((e: NavigationEnd) => {
-      this.urlbrm = e.url.slice(1).split('/');
-      // console.log(this.activedRoute);
-      this.title = this.urlbrm[1];
-
+      // this.urlbrm = e.url.slice(1).split('/');
+      
+      // this.title = this.urlbrm[1];
+      console.log(e);
+      
     });
 
 

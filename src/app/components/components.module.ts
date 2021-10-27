@@ -60,6 +60,7 @@ import { AccountSettingsComponent } from '../pages/account-settings/account-sett
 import { FacturaTicketComponent } from './factura-ticket/factura-ticket.component';
 import { ExportarContratosPdfComponent } from './exportar-contratos-pdf/exportar-contratos-pdf.component';
 import { ExportarGastosPdfComponent } from './exportar-gastos-pdf/exportar-gastos-pdf.component';
+import { MapaComponent } from './mapa/mapa.component';
 
 
 const maskConfig: Partial<IConfig> = {
@@ -102,7 +103,8 @@ const maskConfig: Partial<IConfig> = {
     AccountSettingsComponent,
     FacturaTicketComponent,
     ExportarContratosPdfComponent,
-    ExportarGastosPdfComponent
+    ExportarGastosPdfComponent,
+    MapaComponent
   ],
   imports: [
     AvatarModule,

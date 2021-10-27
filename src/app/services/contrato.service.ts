@@ -67,6 +67,14 @@ export class ContratoService {
       return resp.contrato;
     });
   }
+  getMapa(): Promise<any> {
+
+    let url = URL_SERVICIOS + '/contrato/mapa';
+    url += `?token=${this._usuarioService.token}`;
+    return this.http.get(url).toPromise().then((resp: any) => {
+      return resp.ubicaciones;
+    });
+  }
   newContrato(contrato) {
     let url = URL_SERVICIOS + '/contrato/new';
     url += `?token=${this._usuarioService.token}`;
