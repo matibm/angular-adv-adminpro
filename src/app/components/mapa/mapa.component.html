@@ -1,19 +1,36 @@
-<div *ngFor="let ubicacion of ubicaciones">
-    <h3>Manzana: {{ubicacion.manzana}}</h3>
-    <div style="display: flex;">
-        <div  *ngFor="let itemuno of ubicacion.parcelas" style="width: 10%; display: flex; border-right: 1px solid;">
-            <span style="width: 100%; display: block;">
-                <div  style="width: 100%; display: flex; border-bottom: 1px black solid;">                    
-                        <div  class="m-auto">{{itemuno.col}}</div>
-                </div>
-                <div *ngFor="let item of itemuno.filas" [ngClass]="{'rojo': item.contrato }" style="width: 100%; display: flex; border-bottom: 1px black solid;">                    
-                        <div (click)="goToContrato(item.contrato?._id)" class="m-auto">{{item.index}}</div>
-                </div>
-            </span>
-        </div> 
-    </div>
-</div>
+<div style="font-size: small; overflow-x: scroll;">
+    <div class="row" style="width: 3300px;  ">
+        <div class="col-xs col-md-3" style="max-width: fit-content" *ngFor="let ubicacion of ubicaciones">
+            <h3>Manzana: {{ubicacion.manzana}}</h3>
+            <div style="display: flex;">
+                <div *ngFor="let itemuno of ubicacion.parcelas; let i = index;"
+                    style="width: 40px; display: flex; border-right: 1px solid;"
+                    [ngClass]="{'mr-5': ubicacion?.parcelas[i+1]?.col != itemuno.col}">
+                    <span style="width: 100%; display: block;">
+                        <div style="width: 100%; display: flex; border-bottom: 1px black solid;">
+                            <div class="m-auto">F {{itemuno.col}}</div>
+                        </div>
+                        <div *ngFor="let item of itemuno.filas">
+                            <div *ngIf="item.index != -1" (click)="goToContrato(item.contrato?._id)"
+                                [ngClass]="{'rojo': item.contrato, 'pointer': item.contrato  }"
+                                style="width: 100%; display: flex; border-bottom: 1px black solid;">
+                                <div class="m-auto">{{item.index}}</div>
 
+                            </div>
+                            <div *ngIf="item.index == -1" (click)="goToContrato(item.contrato?._id)"
+                                [ngClass]="{'rojo': item.contrato, 'pointer': item.contrato  }"
+                                style="width: 100%; display: flex; ">
+                                <div class="m-auto">&nbsp;</div>
+                            </div>
+                        </div>
+
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
 
 
 
