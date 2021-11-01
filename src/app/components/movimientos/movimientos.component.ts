@@ -380,8 +380,7 @@ export class MovimientosComponent implements OnInit, OnDestroy {
     this.cuentaGasto = null;
     this.contrato = null;
     this.fechaCreacion = new Date()
-    this.resetBreadcrumb();
-    this.ngOnInit();
+    window.location.reload()
   }
   onContratoSelected(contrato) {
     this.contrato = contrato;
