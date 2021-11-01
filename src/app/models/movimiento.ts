@@ -18,6 +18,7 @@ export class Movimiento {
         public id_cajas?: string,
         public id_concepto?: string,
         public contrato?: Contrato  ,
+        public vencimiento_timbrado?: number  ,
 
         public nro_factura?: string,
         public id_moneda?: string,

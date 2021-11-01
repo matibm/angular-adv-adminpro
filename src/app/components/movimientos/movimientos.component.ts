@@ -278,7 +278,8 @@ export class MovimientosComponent implements OnInit, OnDestroy {
       monto_haber: montoIngreso,
       monto_total: montoEgreso,
       tipo_movimiento: this.cuentaGasto._id,
-      categoria: this.categoria
+      categoria: this.categoria,
+      vencimiento_timbrado: new Date(this.fechaVencimientoTimbrado).getTime()
     };
 
     const resp = await this._movimientoService.crearMovimiento(movimiento);
@@ -358,7 +359,7 @@ export class MovimientosComponent implements OnInit, OnDestroy {
     }
   }
   allowCreateMovimiento(): boolean {
-    if (this.fondo && this.monto > 0) {
+    if (this.fondo && this.monto > 0 && this.fechaVencimientoTimbrado) {
       return true;
     } else {
       return false;
