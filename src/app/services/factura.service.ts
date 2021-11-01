@@ -176,10 +176,51 @@ export class FacturaService {
       }
     )
   }
+
+  getExtractoExcel(options?: any, sort?) {
+    let url = `${URL_SERVICIOS}/factura/all_excel`;
+    url += `?token=${this._usuarioService.token}`;
+    if (options) {
+      Object.entries(options).forEach(([key, value]) => {
+        if (value) {
+          url += `&${key}=${value}`;
+        } else if (value == false) {
+          url += `&${key}=${value}`;
+        }
+      });
+    }
+    if (sort) {
+      url += `&sort_key=${sort.key}`;
+      url += `&sort_value=${sort.value}`;
+    }
+
+
+    return this.http.get(url, { responseType: 'blob' as 'json' }).toPromise().then(
+      (response: any) => {
+        let dataType = response.type;
+        let binaryData = [];
+        binaryData.push(response);  
+        let downloadLink = document.createElement('a');
+        downloadLink.href = window.URL.createObjectURL(new Blob(binaryData, { type: dataType }));
+
+        downloadLink.setAttribute('download', 'ventas.xlsx');
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        downloadLink.remove()
+      },
+      (error) => {
+        console.log(error);
+        
+        swal.fire({ title: 'error', icon: 'error', text: error })
+      }
+    )
+
+  }
+
   getReporteIngresos(body) {
     let url = `${URL_SERVICIOS}/factura/cuadro_ingreso`;
     url += `?token=${this._usuarioService.token}`;
-    
+
     this.http.post(url, body, { responseType: 'blob' as 'json' }).subscribe(
       (response: any) => {
         let dataType = response.type;
@@ -214,12 +255,12 @@ export class FacturaService {
     );
   }
   modificarMonto(body) {
-    let url = `${URL_SERVICIOS}/factura/modificar_monto` ;
+    let url = `${URL_SERVICIOS}/factura/modificar_monto`;
     url += `?token=${this._usuarioService.token}`;
     console.log("modificar monto", body);
-    
+
     return this.http.put(url, body).toPromise().then((resp: any) => {
-      
+
       return resp;
     },
       (err) => {

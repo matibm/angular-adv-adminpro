@@ -127,9 +127,6 @@
                             <ng-template ng-option-tmp let-item="item">
                                 <div>
                                     <div *ngIf="item.APELLIDOS">{{item.APELLIDOS}} {{item.NOMBRES}} </div>
-                                    <div *ngIf="item.NOMBRES && item.RAZON"> - </div>
-                                    <div *ngIf="item.RAZON">{{item.RAZON}} </div>
-
 
                                     <small>{{item.RUC | ruc}}</small>
                                 </div>
@@ -141,9 +138,7 @@
                     <div class="" *ngIf="fondo">
                         <h4>
                             <div *ngIf="fondo.APELLIDOS">{{fondo.NOMBRES}} {{fondo.APELLIDOS}}</div>
-                            <div *ngIf="fondo.NOMBRES && fondo.RAZON"> - </div>
-                            <div *ngIf="fondo.RAZON">{{fondo.RAZON}} </div>
-
+                            
                             <small>{{fondo.RUC | ruc}}</small>
                         </h4>
                     </div>

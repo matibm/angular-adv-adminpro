@@ -6,7 +6,8 @@
                     (click)="cancelarCambiosEditar('home'); ocultarOnCategory = false; cuentaGasto = null" href="#home"
                     role="tab">Nuevo Gasto</a>
             </li>
-            <li *ngIf="is_admin_role" class="nav-item"> <a class="nav-link" [ngClass]="{'active': secction === 'newCuentaGasto'}" data-toggle="tab"
+            <li *ngIf="is_admin_role" class="nav-item"> <a class="nav-link"
+                    [ngClass]="{'active': secction === 'newCuentaGasto'}" data-toggle="tab"
                     (click)="cancelarCambiosEditar('newCuentaGasto'); ocultarOnCategory = true; cuentaGasto = null"
                     href="#newCuentaGasto" role="tab">Crear
                     Cuenta
@@ -14,20 +15,22 @@
             </li>
             <li *ngIf="is_admin_role" class="nav-item">
                 <a class="nav-link" data-toggle="tab"
-                    (click)="cancelarCambiosEditar('newCategoria');  ocultarOnCategory = true; cuentaGasto = null" [ngClass]="{'active': secction === 'newCategoria'}"
-                     href="#newCategoria"
-                    role="tab">Crear Categoria
+                    (click)="cancelarCambiosEditar('newCategoria');  ocultarOnCategory = true; cuentaGasto = null"
+                    [ngClass]="{'active': secction === 'newCategoria'}" href="#newCategoria" role="tab">Crear Categoria
                 </a>
             </li>
-            <li *ngIf="is_admin_role" class="nav-item"> <a class="nav-link" data-toggle="tab"  href="#newCuentaAbaco" [ngClass]="{'active': secction === 'newCuentaAbaco'}"
+            <li *ngIf="is_admin_role" class="nav-item"> <a class="nav-link" data-toggle="tab" href="#newCuentaAbaco"
+                    [ngClass]="{'active': secction === 'newCuentaAbaco'}"
                     (click)="cancelarCambiosEditar('newCuentaAbaco'); cuentaGasto = null  " role="tab">Cuentas
                     Abaco</a>
             </li>
-            <li *ngIf="is_admin_role" class="nav-item"> <a class="nav-link" data-toggle="tab" href="#updateCuentas" [ngClass]="{'active': secction === 'updateCuentas'}" 
+            <li *ngIf="is_admin_role" class="nav-item"> <a class="nav-link" data-toggle="tab" href="#updateCuentas"
+                    [ngClass]="{'active': secction === 'updateCuentas'}"
                     (click)="cancelarCambiosEditar('updateCuentas'); ocultarOnCategory = true; cuentaGasto = null  "
                     role="tab">Modificar Cuentas</a>
             </li>
-            <li class="nav-item"> <a class="nav-link"  (click)="cancelarCambiosEditar('listaGastos');" data-toggle="tab" href="#listaGastos" [ngClass]="{'active': secction === 'listaGastos'}" role="tab">Lista de
+            <li class="nav-item"> <a class="nav-link" (click)="cancelarCambiosEditar('listaGastos');" data-toggle="tab"
+                    href="#listaGastos" [ngClass]="{'active': secction === 'listaGastos'}" role="tab">Lista de
                     Gastos</a> </li>
 
         </ul>
@@ -43,22 +46,15 @@
 
                                     <label class="">Proveedor</label>
                                     <div *ngIf="proveedor" class="pointer close-icon ml-auto">
-                                        <button (click)="proveedor = null; removeQueryParam('proveedor')" type="button" class="btn btn-sm btn-light"><i
-                                                class=" ti-close  "></i></button>
+                                        <button (click)="proveedor = null; removeQueryParam('proveedor')" type="button"
+                                            class="btn btn-sm btn-light"><i class=" ti-close  "></i></button>
                                     </div>
                                 </div>
                                 <div class="" *ngIf="!proveedor">
-                                    <ng-select 
-                                    
-                                    [typeahead]="inputProveedores" [loading]="loadingProveedores"
-                                                [items]="proveedores" name="dsfdbrdafwseqcda" [(ngModel)]="proveedor"
-                                                
-                                                notFoundText="no se encontraron resultados"
-                                                placeholder="Buscar Proveedor" bindLabel="NOMBRES"
-                                                [searchFn]="customSearchFn"
-                                     
-                                    
-                                     >
+                                    <ng-select [typeahead]="inputProveedores" [loading]="loadingProveedores"
+                                        [items]="proveedores" name="dsfdbrdafwseqcda" [(ngModel)]="proveedor"
+                                        notFoundText="no se encontraron resultados" placeholder="Buscar Proveedor"
+                                        bindLabel="NOMBRES" [searchFn]="customSearchFn">
                                         <ng-template ng-option-tmp let-item="item">
                                             <div>
                                                 <div *ngIf="item.APELLIDOS">{{item.APELLIDOS}} {{item.NOMBRES}}</div>
@@ -183,6 +179,19 @@
                                         aria-describedby="helpId" placeholder="">
                                 </div>
                             </div>
+                            <div class="col-xs col-md-3 mt-2">
+                                <div class=" form-group">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Vencimiento Timbrado</mat-label>
+                                        <input matInput name="asdsadrdsvet321" [(ngModel)]="fechaVencimientoTimbrado"
+                                            [matDatepicker]="pickerVencimiento">
+                                        <mat-datepicker-toggle matSuffix [for]="pickerVencimiento">
+                                        </mat-datepicker-toggle>
+                                        <mat-datepicker #pickerVencimiento></mat-datepicker>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            
                         </div>
 
 
@@ -246,6 +255,18 @@
                                 <button *ngIf="cuentaGasto" type="button" (click)="showModalCuentas = true"
                                     class="btn mt-2 btn-inverse">Cambiar Cuenta</button>
                             </div>
+                            <div class="mx-auto" style="min-width: 180px;">
+                                <div class=" form-group">
+                                    Tipo de IVA
+                                    <ng-select [(ngModel)]="tipoIva">
+                                        <ng-option *ngFor="let item of ['IVA 10%','IVA 5%', 'EXENTAS']" [value]="item">
+                                            <div>
+                                                {{item}}
+                                            </div>
+                                        </ng-option>
+                                    </ng-select>
+                                </div>
+                            </div>
                             <div class="mx-auto">
                                 <h5>Cuenta Abaco</h5>
 
@@ -293,7 +314,8 @@
 
                     </div>
                 </div>
-                <div class="tab-pane  " id="newCuentaGasto"  [ngClass]="{'active': secction === 'newCuentaGasto'}"role="tabpanel">
+                <div class="tab-pane  " id="newCuentaGasto" [ngClass]="{'active': secction === 'newCuentaGasto'}"
+                    role="tabpanel">
                     <div class="form-group">
                         <label for="">id</label>
                         <input type="text" #cuentaid class="form-control" aria-describedby="helpId" placeholder="">
@@ -343,7 +365,8 @@
                     </div>
 
                 </div>
-                <div class="tab-pane " id="newCuentaAbaco" [ngClass]="{'active': secction === 'newCuentaAbaco'}" role="tabpanel">
+                <div class="tab-pane " id="newCuentaAbaco" [ngClass]="{'active': secction === 'newCuentaAbaco'}"
+                    role="tabpanel">
                     <div class="form-group">
                         <label for="">Código</label>
                         <input type="text" class="form-control" #codigo aria-describedby="helpId" placeholder="">
@@ -382,7 +405,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane " id="newCategoria" [ngClass]="{'active': secction === 'newCategoria'}" role="tabpanel">
+                <div class="tab-pane " id="newCategoria" [ngClass]="{'active': secction === 'newCategoria'}"
+                    role="tabpanel">
                     <div class="form-group">
                         <label for="">Código</label>
                         <input type="text" class="form-control" #codigocat aria-describedby="helpId" placeholder="">
@@ -415,7 +439,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane " id="updateCuentas" [ngClass]="{'active': secction === 'updateCuentas'}" role="tabpanel">
+                <div class="tab-pane " id="updateCuentas" [ngClass]="{'active': secction === 'updateCuentas'}"
+                    role="tabpanel">
                     <div style="min-height: 300px;">
                         <h2 *ngIf="!tipoEdicion">Seleccion cuenta a editar</h2>
 
@@ -508,7 +533,8 @@
                                                 class="btn mt-2  btn-info">Seleccionar
                                             </button>
                                             <button *ngIf="cuentaPadreToEdit" type="button"
-                                                (click)="editandoCuentaPadre = true; showModalCuentas = true" class="btn mt-2 btn-inverse">Cambiar
+                                                (click)="editandoCuentaPadre = true; showModalCuentas = true"
+                                                class="btn mt-2 btn-inverse">Cambiar
                                                 Cuenta Padre</button>
                                         </div>
                                         <div style="width: 100%;" class="mt-auto">
@@ -528,12 +554,11 @@
 
                                     <div class="form-input">
                                         <div *ngIf="!cuentaAbaco">
-                                            <ng-select 
-                                                [items]="cuentasAbaco" name="dsfdbsasdrwseqcda" [(ngModel)]="cuentaAbaco"
+                                            <ng-select [items]="cuentasAbaco" name="dsfdbsasdrwseqcda"
+                                                [(ngModel)]="cuentaAbaco"
                                                 (ngModelChange)="seleccionarCuentaAbacoToEdit(cuentaAbaco)"
                                                 notFoundText="no se encontraron resultados"
-                                                placeholder="buscar Cuenta Abaco" bindLabel="descripcion"
-                                                >
+                                                placeholder="buscar Cuenta Abaco" bindLabel="descripcion">
                                                 <ng-template ng-option-tmp let-item="item">
                                                     <div> {{item.codigo}} - {{item.descripcion}}
                                                     </div>
@@ -650,8 +675,9 @@
 
                     </div>
                 </div>
-                <div class="tab-pane " id="listaGastos" [ngClass]="{'active': secction === 'listaGastos'}" role="tabpanel">
-                    <app-lista-movimientos  [options]="movimientosOptions"></app-lista-movimientos>
+                <div class="tab-pane " id="listaGastos" [ngClass]="{'active': secction === 'listaGastos'}"
+                    role="tabpanel">
+                    <app-lista-movimientos [options]="movimientosOptions"></app-lista-movimientos>
                     <!-- <table *ngIf="!showCrearMovimiento && movimientos.length>0"
                         class="table full-color-table full-{{'inverse'}}-table hover-table   table-hover">
                         <thead>
@@ -717,22 +743,18 @@
 
 <app-modal-contratos (contratoSelected)="onContratoSelected($event)" [showFilters]="true" [cliente]="cliente"
     (onClose)="showModal = false" *ngIf="showModal"></app-modal-contratos>
-<app-modal-cuentas-gastos *ngIf="showModalCuentas"
- (onSelectedCategory)="
+<app-modal-cuentas-gastos *ngIf="showModalCuentas" (onSelectedCategory)="
     editandoCuentaGasto? seleccionarCuentaGastoAEditar($event) : categorySelected = $event; 
     editandoCuentaPadre? seleccionarCuentaPadreToEdit($event) : categorySelected = $event; 
      
-    ocultarOnclickCategory()" 
-    
-(onSelected)="
+    ocultarOnclickCategory()" (onSelected)="
     editandoCuentaGasto? seleccionarCuentaGastoAEditar($event) : ''; 
     editandoCuentaPadre? seleccionarCuentaPadreToEdit($event) : ''; 
     cuentaGasto = $event; 
     cuentaGastoSelected();
     showModalCuentas = false;
     ocultarOnCategory? categorySelected = $event : '' 
-    "
-(onClose)="
+    " (onClose)="
 showModalCuentas = false
 
 ">

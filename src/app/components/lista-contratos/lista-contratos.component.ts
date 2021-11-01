@@ -92,8 +92,9 @@ export class ListaContratosComponent implements OnInit {
   };
 
   configDP: IDatePickerConfig = {
-
+  
   };
+  cantidadServicios
   algo = false
   @Input() contratos: Contrato[];
   async ngOnInit() {
@@ -114,6 +115,7 @@ export class ListaContratosComponent implements OnInit {
         producto: this.servicio ? this.servicio._id : null,
         nro_contrato: '',
         utilizado: false,
+        de_baja: false,
         cobrador: this.cobrador ? this.cobrador._id : null,
         vendedor: this.vendedor ? this.vendedor._id : null
       };
@@ -132,6 +134,7 @@ export class ListaContratosComponent implements OnInit {
 
 
     this.contratos = resp.contratos;
+    this.cantidadServicios = resp.cantidadServicios;
 
     // this.filtrar()
 
@@ -145,6 +148,8 @@ export class ListaContratosComponent implements OnInit {
 
 
     this.contratos = resp.contratos;
+    this.cantidadServicios = resp.cantidadServicios;
+
     // this.count = resp.count
     //(page);
 
@@ -203,6 +208,8 @@ export class ListaContratosComponent implements OnInit {
     this.servicios = await this._productoService.getProductos();
 
     this.contratos = resp.contratos;
+    this.cantidadServicios = resp.cantidadServicios;
+
     //(resp);
 
     this.count = resp.count;
@@ -268,6 +275,8 @@ export class ListaContratosComponent implements OnInit {
     const resp = await this._contratoService.getContratos(null, this.options, this.sort);
 
     this.contratos = resp.contratos;
+    this.cantidadServicios = resp.cantidadServicios;
+
     //(resp);
 
     // this.count = resp.count

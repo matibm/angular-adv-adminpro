@@ -143,7 +143,15 @@ export class FacturasComponent implements OnInit {
     //   wopen.close();
     // };
   }
+  loadingDescargarExtracto = false
+  async descargarExtractoExcel() {
+    this.loadingDescargarExtracto = true
+   await this._facturaService.getExtractoExcel(this.options, this.sort)
+   this.loadingDescargarExtracto = false
 
+  }
+
+  
   async ordenar(key){
     this.facturas = null
     this.sort.key = key

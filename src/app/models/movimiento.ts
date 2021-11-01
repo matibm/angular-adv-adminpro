@@ -6,6 +6,7 @@ export class Movimiento {
     constructor(
         public id_movimiento?: string,
         public categoria?: any,
+        public tipo_iva?: string,
         public fecha?: string,
         public id_cuentacaja?: string,
         public nombre?: string,

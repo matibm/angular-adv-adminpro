@@ -1,7 +1,7 @@
-<div class="card">
+<div class="card ribbon-wrapper">
 
     <div style="min-height: 517.52px " class="card-body">
-        <h4 *ngIf="showlabel && facturas"> <span class="lstick"></span> Extracto de Cuotas </h4>
+        <h4 *ngIf="showlabel && facturas" class="ribbon ribbon-success"> Extracto de Cuotas </h4>
         <div style="overflow-x: auto;" class="">
             <table class="table table-sm table-hover">
                 <thead>
@@ -158,7 +158,20 @@
                 <div style="display: flex;">
                     <div class="ml-auto">
                         <button type="button" (click)="descargarExtracto()" class="btn btn-inverse">Descargar
-                            Extracto</button>
+                            Extracto PDF</button> 
+                            <button style="width: 206.52px;" [disabled]="loadingDescargarExtracto || total?.cantidad > 30000 || total?.cantidad < 1 " (click)="descargarExtractoExcel()" class="btn mr-auto btn-info">
+                                <span *ngIf="!loadingDescargarExtracto">Descargar Extracto Excel </span>
+                                <div *ngIf="loadingDescargarExtracto" style="width: 100%;">                                    
+                                    <div style="display: flex;">
+                
+                                        <div class="mx-auto">
+                                            <mat-spinner [color]="'secondary'" [diameter]="20"></mat-spinner>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                            </button>
+
                     </div>
                 </div>
             </div>

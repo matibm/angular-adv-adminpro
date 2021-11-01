@@ -59,6 +59,7 @@ export class MovimientosComponent implements OnInit, OnDestroy {
   categoria
   cuentaAbaco
   tipoCuentaAbaco
+  tipoIva
   inputcuentaAbacos = new Subject<string>();
   inputProveedores = new Subject<string>();
   inputcategorias = new Subject<string>();
@@ -72,6 +73,7 @@ export class MovimientosComponent implements OnInit, OnDestroy {
   secction = 'listaGastos'
   movimientosOptions: MovimientoOptions = {}
   is_admin_role = false
+  fechaVencimientoTimbrado
   constructor(
     public _movimientoService: MovimientoService,
     public _usuarioService: UsuarioService,
@@ -256,6 +258,11 @@ export class MovimientosComponent implements OnInit, OnDestroy {
       montoEgreso = 0;
       montoIngreso = this.monto;
     }
+    let tipoIVA = 'iva10'
+    if (this.tipoIva == 'IVA 10%') tipoIVA = 'iva10'
+    if (this.tipoIva == 'IVA 5%') tipoIVA = 'iva5'
+    if (this.tipoIva == 'EXENTAS') tipoIVA = 'exenta'
+
     const movimiento: Movimiento = {
       cliente: this.cliente,
       fondo: this.fondo,
@@ -267,7 +274,7 @@ export class MovimientosComponent implements OnInit, OnDestroy {
       nro_comp_banco: this.nroFacturaProveedor,
       id_cuentacaja: this.cuentaGasto.cuenta,
       nombre: this.cuentaGasto.descripcion,
-      
+      tipo_iva: tipoIVA,  
       monto_haber: montoIngreso,
       monto_total: montoEgreso,
       tipo_movimiento: this.cuentaGasto._id,

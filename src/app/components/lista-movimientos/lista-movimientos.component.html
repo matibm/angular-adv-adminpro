@@ -1,5 +1,5 @@
-<div *ngIf="!isToExport">
-    <div class="row">
+<div *ngIf="!isToExport && !hiddeFilter" class="card">
+    <div class="row card-body">
         <div class="col-xs col-md-3 ">
             <div class="inline-flex">
 
@@ -176,11 +176,31 @@
                 </div>
             </div>
         </div>
+        <div class="col-xs col-md-3 ">
+            <div class="inline-flex">
+                <div style="min-width: 100%;">
+                    <div class="mx-auto">
+                        <h5>Cuenta Gasto</h5>
+
+                        <div *ngIf="cuentaGasto" style="display: block;">
+                            <span><b class="lead">Tipo: </b> {{cuentaGasto.nombre_padre}}</span>
+                            <br>
+                            <span><b class="lead">Descripcion: </b> {{cuentaGasto.descripcion}}</span>
+                        </div>
+
+                        <button *ngIf="!cuentaGasto" type="button" (click)="showModalCuentas = true"
+                            class="btn mt-2  btn-info">Seleccionar Cuenta</button>
+                        <button *ngIf="cuentaGasto" type="button" (click)="showModalCuentas = true"
+                            class="btn mt-2 btn-inverse">Cambiar Cuenta</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-<div class="card">
+</div> 
+<div class="ribbon-wrapper card">
     <div class="card-body">
-        <h4 *ngIf="showTitle"> <span class="lstick"></span> Egresos </h4>
+        <h4 *ngIf="showTitle" class="ribbon ribbon-danger"> Egresos </h4>
 
         <table *ngIf="movimientos" class="table table-hover">
             <thead>
@@ -201,7 +221,7 @@
                     *ngFor="let item of movimientos | paginate: { itemsPerPage: 10,totalItems:count, currentPage: page } ; let i = index; "
                     [ngClass]="'pointer'">
                     <td>{{page*10 + (i+1) - 10}}</td>
-                    <td *ngIf="item.fondo">{{item.fondo.RAZON}}</td>
+                    <td *ngIf="item.fondo">{{item.fondo.APELLIDOS}}</td>
                     <td *ngIf="!item.fondo">--</td>
                     <td>{{item.nro_comp_banco}}</td>
 
@@ -243,3 +263,17 @@
 
 <app-modal-contratos (contratoSelected)="contrato  = $event; buscar()" [showFilters]="true" [cliente]="cliente"
     (onClose)="showModal = false" *ngIf="showModal"></app-modal-contratos>
+
+
+    
+<app-modal-cuentas-gastos *ngIf="showModalCuentas"
+   
+(onSelected)="
+    cuentaSeleccionada = $event;
+    buscar();
+   showModalCuentas = false;
+   "
+(onClose)="
+showModalCuentas = false
+">
+</app-modal-cuentas-gastos>

@@ -62,7 +62,7 @@ export class ListaFacturasComponent implements OnInit {
   loadingCobradores = false
   inputVendedores = new Subject<string>();
   loadingVendedores = false
-  utilizado
+  utilizado = false
   de_baja = false
   is_admin_role = false
   estados = [

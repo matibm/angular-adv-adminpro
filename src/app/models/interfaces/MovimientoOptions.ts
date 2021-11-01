@@ -8,6 +8,7 @@ export interface MovimientoOptions {
     contrato?: string,
     tipo_movimiento?: string,
     fondo?: string,
+    id_cuentacaja?: string,
     page?:number,
     unlimit?:boolean
 }

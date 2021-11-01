@@ -107,9 +107,13 @@ export class InfoContratoComponent implements OnInit {
     this.facturas = respFacturas.facturas;
     this.facturasCount = respFacturas.count;
     this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', '');
-    this.movimientos = (await this._movimientoService.getAllMovimientos({ contrato: this.contrato._id })).movimientos;
+    let respMovimientos = await this._movimientoService.getAllMovimientos({ contrato: this.contrato._id })
+    this.movimientos = respMovimientos.movimientos;
+    this.totalMovimientos = respMovimientos.total?.monto_total;
+    this.countMovimientos = respMovimientos.count;
   }
-
+  totalMovimientos = 0 
+  countMovimientos = 0 
   calcularPagoPorMonto(monto) {
     let montoAuxiliar = 0;
     const facturasAux = [];

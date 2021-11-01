@@ -26,6 +26,7 @@ export class ListaMovimientosComponent implements OnInit {
   @Input() count;
   @Input() page = 1;
   @Input() isToExport = false;
+  @Input() hiddeFilter = false;
   proveedor
   cliente
   contrato
@@ -40,7 +41,7 @@ export class ListaMovimientosComponent implements OnInit {
   fondo
   fondos
   nro_factura
-  total = 0
+  @Input() total = 0
   rangeFecha = new FormGroup({
     start: new FormControl(),
     end: new FormControl()
@@ -136,10 +137,13 @@ export class ListaMovimientosComponent implements OnInit {
     );
   }
   async buscar() {
+    
+    this.cuentaGasto = this.cuentaSeleccionada
     this.nro_factura ? this.options.nro_factura = this.nro_factura : delete this.options.nro_factura
     this.cliente ? this.options.cliente = this.cliente._id : null
     this.proveedor ? this.options.proveedor = this.proveedor._id : null
     this.contrato ? this.options.contrato = this.contrato._id : null;
+    this.cuentaSeleccionada? this.options.id_cuentacaja = this.cuentaSeleccionada.cuenta : null
     const resp = await this._movimientoService.getAllMovimientos(this.options)
     this.movimientos = resp.movimientos
     this.count = resp.count
@@ -156,5 +160,7 @@ export class ListaMovimientosComponent implements OnInit {
     localStorage.setItem('options_extracto_gastos', JSON.stringify(this.options))
     const wopen = window.open('/extracto-gastos');
   }
-
+  cuentaSeleccionada 
+  cuentaGasto
+  showModalCuentas = false
 }

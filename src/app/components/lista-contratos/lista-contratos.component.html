@@ -182,7 +182,7 @@
                     <label for="nro_contrato">Nro contrato</label>
                     <input type="text" #nroContrato [(ngModel)]="nro_contrato" (ngModelChange)=" filtrar()"
                         id='nro_contrato_search' name="nro_contrato" class="form-control"
-                        placeholder="numerso de contrato" aria-describedby="nrocontratoid">
+                        placeholder="numero de contrato" aria-describedby="nrocontratoid">
                 </div>
             </div>
         </div>
@@ -193,14 +193,14 @@
                     name="check_utilizado" id="check_utilizado" class="filled-in chk-col-light-blue" checked />
                 <label class="mx-3" for="check_utilizado">Utilizado</label>
 
-                <input [(ngModel)]="options.de_baja"  (ngModelChange)="filtrar()" type="checkbox" name="check_de_baja" id="check_de_baja"
-                    class="filled-in chk-col-light-blue" checked />
+                <input [(ngModel)]="options.de_baja" (ngModelChange)="filtrar()" type="checkbox" name="check_de_baja"
+                    id="check_de_baja" class="filled-in chk-col-light-blue" checked />
                 <label class="mx-3" for="check_de_baja">de baja</label>
                 <h4>Cod Servicio</h4>
                 <div class="">
                     <ng-select [(ngModel)]="codSeleccionado" (ngModelChange)="filtrar()">
                         <ng-option *ngFor="let item of cod_servicios" [value]="item">
-                            <div >
+                            <div>
                                 {{item}}
                             </div>
                         </ng-option>
@@ -213,15 +213,17 @@
                     <div class="col-md col-xs">
                         <div class="form-group">
                             <label for="beneficiario_nombre">nombre</label>
-                            <input type="text" [(ngModel)]="beneficiarioNombre" (ngModelChange)="filtrar()" name="beneficiario_nombre"
-                                id="beneficiario_nombreinput" class="form-control" placeholder="nombre de beneficiario">
+                            <input type="text" [(ngModel)]="beneficiarioNombre" (ngModelChange)="filtrar()"
+                                name="beneficiario_nombre" id="beneficiario_nombreinput" class="form-control"
+                                placeholder="nombre de beneficiario">
                         </div>
                     </div>
                     <div class="col-md col-xs">
                         <div class="form-group">
                             <label for="beneficiario_ci">ci</label>
-                            <input type="text" [(ngModel)]="beneficiarioCi" (ngModelChange)="filtrar()" name="beneficiario_ci"
-                                id="beneficiario_ci" class="form-control" placeholder="ci de beneficiario">
+                            <input type="text" [(ngModel)]="beneficiarioCi" (ngModelChange)="filtrar()"
+                                name="beneficiario_ci" id="beneficiario_ci" class="form-control"
+                                placeholder="ci de beneficiario">
                         </div>
                     </div>
                 </div>
@@ -232,8 +234,9 @@
                     <div class="col-md col-xs">
                         <div class="form-group">
                             <label for="inhumado_nombre">nombre</label>
-                            <input type="text" [(ngModel)]="inhumadoNombre" (ngModelChange)="filtrar()" name="inhumado_nombre"
-                                id="inhumado_nombreinput" class="form-control" placeholder="nombre de inhumado">
+                            <input type="text" [(ngModel)]="inhumadoNombre" (ngModelChange)="filtrar()"
+                                name="inhumado_nombre" id="inhumado_nombreinput" class="form-control"
+                                placeholder="nombre de inhumado">
                         </div>
                     </div>
                     <div class="col-md col-xs">
@@ -336,16 +339,40 @@
     </div>
 </div>
 
+<div class="card" style="max-width: fit-content;">
+    <div class="card-body" >
+        <table class="table table-hover">
+            <thead>
+                <tr #tableHeaad class="thead">
+                    <th class="mx-3">Servicio</th>
+                    <th class="mx-3">Cantidad</th>
+                    <th class="mx-3">%</th>
+                </tr>
+
+            </thead>
+            <tbody>
+
+                <tr *ngFor="let item of cantidadServicios">
+                    <td>{{item.servicio}}</td>
+                    <td>{{item.count}}</td>
+                    <td>{{item.percentage}}</td>
+    
+                </tr>
+            </tbody>
+        </table>
+        
+    </div>
+</div>
+
 
 <div *ngIf="_usuarioService.usuario.role == 'ADMIN_ROLE'" class="card">
     <div class="card-body">
-        <div style="width: 100%;" >
+        <div style="width: 100%;">
             <div style="display: flex;">
                 <div class="my-5 mx-auto">
-
                     <button type="button" (click)="exportarPDF()" class="btn mt-2 btn-info">Exportar PDF</button>
                 </div>
             </div>
-        </div>  
+        </div>
     </div>
 </div>
