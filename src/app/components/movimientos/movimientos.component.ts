@@ -359,7 +359,7 @@ export class MovimientosComponent implements OnInit, OnDestroy {
     }
   }
   allowCreateMovimiento(): boolean {
-    if (this.fondo && this.monto > 0 && this.fechaVencimientoTimbrado) {
+    if (this.fondo && this.monto > 0 ) {
       return true;
     } else {
       return false;

@@ -346,7 +346,9 @@ export class ListaFacturasComponent implements OnInit {
 
 
   async aplicarInteres(monto) {
-    await this._facturaService.aplicarInteres(this.opciones, monto)
+    console.log(parseInt(monto));
+    
+    await this._facturaService.aplicarInteres(this.opciones, parseInt(monto))
   }
 
   async setUsuarioCobrador(id) {
