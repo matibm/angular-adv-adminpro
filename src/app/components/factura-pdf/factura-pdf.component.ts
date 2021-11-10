@@ -71,9 +71,9 @@ export class FacturaPdfComponent implements OnInit {
         window.print();
       }, 500);
 
-      window.onafterprint = (event) => {
-        window.close();
-      };
+      // window.onafterprint = (event) => {
+      //   window.close();
+      // };
     }
 
     console.log(this.factura);

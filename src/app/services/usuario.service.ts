@@ -16,7 +16,7 @@ export class UsuarioService {
     public http: HttpClient
   ) {
     console.log("constructor usuariooooooooooooooooooo");
-    
+
     this.token = localStorage.getItem('token');
     this.user_id = localStorage.getItem('user_id');
     this.itsLogued = this.token ? true : false;
@@ -24,15 +24,15 @@ export class UsuarioService {
     this.inicializarUsuario();
   }
 
-  async inicializarUsuario():Promise<Usuario> {
+  async inicializarUsuario(): Promise<Usuario> {
 
     if (this.user_id) {
       this.usuario = await this.getUsuarioPorId(this.user_id);
       return this.usuario
-    }else{
+    } else {
       return null
     }
-    
+
   }
   getUsuarios() {
     let url = URL_SERVICIOS + '/usuario/all';
@@ -70,6 +70,28 @@ export class UsuarioService {
     return this.http.get(url).toPromise().then((resp: any) => {
       return resp.usuarios;
     });
+  }
+
+  eliminarUsuario(id) {
+    let url = `${URL_SERVICIOS}/usuario/soft_delete_user/${id}`;
+    url += `?token=${this.token}`;
+    return this.http.delete(url).toPromise().then((resp: any) => {
+
+      swal.fire({
+        icon: 'success',
+        title: resp.message,
+        timer: 3000,
+      });
+    },
+      (err) => {
+        console.error(err);
+        swal.fire({
+          icon: 'error',
+          title: err.error.message          
+        });
+        
+      }
+    );
   }
   buscarUsuarios(tipo, busqueda) {
     console.log('buscando', busqueda);
@@ -150,13 +172,13 @@ export class UsuarioService {
   }
 
   createConfiguration(body) {
-   
+
     let url = `${URL_SERVICIOS}/configurations/create_configuration`;
     url += `?token=${this.token}`;
 
     return this.http.post(url, body).toPromise().then((resp: any) => {
       return resp.data;
-    }); 
+    });
   }
 
 }

@@ -39,9 +39,9 @@ export class ModalFacturaComponent implements OnInit {
   }
   printContrato() {
     const wopen = window.open('/factura-pdf/' + this.facturaPDF._id);
-    wopen.onafterprint = (event) => {
-      wopen.close();
-    };
+    // wopen.onafterprint = (event) => {
+    //   wopen.close();
+    // };
   }
 
   async cancelarPago(){

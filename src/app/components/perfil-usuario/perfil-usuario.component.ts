@@ -50,7 +50,7 @@ export class PerfilUsuarioComponent implements OnInit {
       id: 2,
       role: 'USER_ROLE'
     },
-    
+
   ]
   constructor(
     public _usuarioService: UsuarioService,
@@ -73,7 +73,7 @@ export class PerfilUsuarioComponent implements OnInit {
   async ngOnInit() {
     let user = await this._usuarioService.inicializarUsuario()
     if (user?.role == 'ADMIN_ROLE') {
-     this.is_admin_role = true 
+      this.is_admin_role = true
     }
     this.id = this.route.snapshot.paramMap.get('id');
     this.contratosActivosOptios.cliente = this.id
@@ -152,10 +152,12 @@ export class PerfilUsuarioComponent implements OnInit {
     // usuario.nro_factura_actual = this.nro_factura_actual
     // usuario.nro_talonario = this.nro_talonario
     console.log(usuario);
-    
+
     const resp = await this._usuarioService.modificarUsuarios(usuario);
   }
-
+  async eliminarUsuario(id) {
+    this._usuarioService.eliminarUsuario(id)
+  }
   comentar(texto) {
     const comentario = {
       usuario: this.usuario,

@@ -36,6 +36,7 @@ import { FacturaTicketComponent } from '../components/factura-ticket/factura-tic
 import { ExportarContratosPdfComponent } from '../components/exportar-contratos-pdf/exportar-contratos-pdf.component';
 import { ExportarGastosPdfComponent } from '../components/exportar-gastos-pdf/exportar-gastos-pdf.component';
 import { MapaComponent } from '../components/mapa/mapa.component';
+import { PdfFacturaMobileComponent } from '../components/pdf-factura-mobile/pdf-factura-mobile.component';
 const routes: Routes = [
   // {
   //   path: 'contrato',
@@ -91,11 +92,14 @@ const routes: Routes = [
 
   },
   { path: 'contratos-pdf/:id', component: ContratoPdfComponent },
+  
   { path: 'factura-pdf/:id', component: FacturaPdfComponent },
   { path: 'extracto-cuotas', component: ExtractoPdfComponent },
   { path: 'extracto-contratos', component: ExportarContratosPdfComponent },
   { path: 'extracto-gastos', component: ExportarGastosPdfComponent },
-  { path: 'factura-ticket/:id', component: FacturaTicketComponent }
+  { path: 'factura-ticket/:id', component: FacturaTicketComponent },
+  { path: 'factura_mobile/:id', component: PdfFacturaMobileComponent },
+
 
 
 ];

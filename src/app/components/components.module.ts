@@ -61,6 +61,7 @@ import { FacturaTicketComponent } from './factura-ticket/factura-ticket.componen
 import { ExportarContratosPdfComponent } from './exportar-contratos-pdf/exportar-contratos-pdf.component';
 import { ExportarGastosPdfComponent } from './exportar-gastos-pdf/exportar-gastos-pdf.component';
 import { MapaComponent } from './mapa/mapa.component';
+import { PdfFacturaMobileComponent } from './pdf-factura-mobile/pdf-factura-mobile.component';
 
 
 const maskConfig: Partial<IConfig> = {
@@ -104,7 +105,8 @@ const maskConfig: Partial<IConfig> = {
     FacturaTicketComponent,
     ExportarContratosPdfComponent,
     ExportarGastosPdfComponent,
-    MapaComponent
+    MapaComponent,
+    PdfFacturaMobileComponent
   ],
   imports: [
     AvatarModule,
