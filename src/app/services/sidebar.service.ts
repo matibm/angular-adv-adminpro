@@ -56,6 +56,13 @@ export class SidebarService {
         { titulo: 'crear producto', url: 'crear_producto' },
         { titulo: 'lista de productos', url: 'lista_productos' }
        ]
+    },
+    {
+      titulo: 'Mapa',
+      icono: 'mdi mdi-shopping',
+      submenu: [
+        { titulo: 'mapa', url: 'mapa' }
+       ]
     }
 
 
