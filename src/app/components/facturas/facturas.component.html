@@ -16,8 +16,9 @@
                         <th class="text-center" style="min-width: 150px;">
                             fondo
                         </th>
-                        <th class="text-center" style="min-width: 130px;">
+                        <th (click)="ordenar('nro_contrato')" class="text-center pointer" style="min-width: 130px;">
                             Nro. Contrato
+                            <i *ngIf="sort.key === 'nro_contrato'" class="ml-1 fa "   [ngClass]="{'fa-sort-asc': sort.value === 1 , 'fa-sort-desc': sort.value === -1 }"></i>
                         </th>
                         <th class="text-center" style="min-width: 130px;">
                             Nro. Factura
@@ -65,8 +66,8 @@
                         <td class="text-center" *ngIf="!factura.fondo">Sin fondo</td>
 
                         <td class="text-center">
-                            <div *ngIf="factura.contrato">{{factura.contrato.nro_contrato | currency:'':'':'2.0'}}</div>
-                            <div *ngIf="!factura.contrato">---</div>
+                            <div *ngIf="factura.nro_contrato">{{factura.nro_contrato | currency:'':'':'2.0'}}</div>
+                            <div *ngIf="!factura.nro_contrato">---</div>
                         </td>
                         <td class="text-center">
                             <div *ngIf="factura.pago?.numero">{{factura.pago?.numero}}-{{factura.pago?.nro_factura}}</div>

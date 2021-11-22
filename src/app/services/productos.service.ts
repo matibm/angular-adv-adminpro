@@ -28,6 +28,13 @@ export class ProductosService {
       return resp.producto;
     });
   }
+  getCodigos() {
+    let url = URL_SERVICIOS + '/producto/codigos';
+    url += `?token=${this._usuarioService.token}`;
+    return this.http.get(url).toPromise().then((resp: any) => {
+      return resp.codigo_productos;
+    });
+  }
 
 
   crearProducto(producto) {

@@ -678,6 +678,31 @@
                 <div class="tab-pane " id="listaGastos" [ngClass]="{'active': secction === 'listaGastos'}"
                     role="tabpanel">
                     <app-lista-movimientos [options]="movimientosOptions"></app-lista-movimientos>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h3>Reporte Resumido por meses</h3>
+                        <div class="d-flex">
+                           <div class="mx-auto">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Fecha</mat-label>
+                                <mat-date-range-input [formGroup]="rangeReporte" [rangePicker]="pickerReporte">
+                                    <input autocomplete="off" matStartDate formControlName="start" placeholder="fecha inicio">
+                                    <input matEndDate formControlName="end" placeholder="fecha fin">
+                                </mat-date-range-input>
+                                <mat-datepicker-toggle matSuffix [for]="pickerReporte"></mat-datepicker-toggle>
+                                <mat-date-range-picker #pickerReporte></mat-date-range-picker>
+                                <mat-error *ngIf="rangeReporte.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+                                <mat-error *ngIf="rangeReporte.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+                            </mat-form-field>
+                            <div style="display: block;">
+                            
+                                <button type="button" (click)="generarReporte()" class="btn btn-rounded btn-inverse mx-auto">Descargar Excel</button></div>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+
                     <!-- <table *ngIf="!showCrearMovimiento && movimientos.length>0"
                         class="table full-color-table full-{{'inverse'}}-table hover-table   table-hover">
                         <thead>

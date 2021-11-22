@@ -85,7 +85,7 @@ export class ListaFacturasComponent implements OnInit {
   ];
 
 
-  cod_servicios = ['P.S.V.', 'P.S.M.', 'C.M.P.', 'A.C.F.', 'U.D.P.']
+  cod_servicios = []
   estadoSeleccionado = 'TODOS';
   codSeleccionado = null
 
@@ -136,6 +136,7 @@ export class ListaFacturasComponent implements OnInit {
     this._usuarioService.usuario = await this._usuarioService.inicializarUsuario()
     console.log(this._usuarioService?.usuario?.role);
 
+    this.cod_servicios = await this._productoService.getCodigos()
     if (this._usuarioService?.usuario?.role != 'ADMIN_ROLE') {
       console.log(await this.setUsuarioCobrador(this._usuarioService?.usuario?._id));
 

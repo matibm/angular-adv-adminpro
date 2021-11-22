@@ -35,6 +35,7 @@ export class Factura {
         public id_tipo_pago?: string,
         public nom_tipo_pago?: string,
         public nro_comp_pago?: string,
+        public nro_contrato?: number,
         public id_banco?: string,
         public nombre_banco?: string,
         public cerrado?: string,

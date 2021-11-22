@@ -173,6 +173,7 @@ export class CrearContratoComponent implements OnInit, AfterViewInit {
 
   }
 
+  sinCuota = false
   beneficiarioPush() {
     this.beneficiarios.push({
       nombre: '',
@@ -317,6 +318,7 @@ export class CrearContratoComponent implements OnInit, AfterViewInit {
       crearCMP: this.esUdp,
       cantidadCoutas: this.cantidadCuotaPSM,
       pagoInicial: this.pagoInicial,
+      sin_cuota: this.sinCuota,
       facturaIngreso: this.crearFacturaEntregaInicial(this.entrega, this.cliente._id, this.producto._id, this.cobrador?._id)
     };
 

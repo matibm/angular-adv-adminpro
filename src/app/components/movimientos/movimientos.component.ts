@@ -16,6 +16,7 @@ import { NestedTreeControl } from '@angular/cdk/tree';
 import { Observable, Subject, Subscriber } from 'rxjs';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { MovimientoOptions } from 'src/app/models/interfaces/MovimientoOptions';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-movimientos',
@@ -74,6 +75,10 @@ export class MovimientosComponent implements OnInit, OnDestroy {
   movimientosOptions: MovimientoOptions = {}
   is_admin_role = false
   fechaVencimientoTimbrado
+  rangeReporte = new FormGroup({
+    start: new FormControl(),
+    end: new FormControl()
+  });
   constructor(
     public _movimientoService: MovimientoService,
     public _usuarioService: UsuarioService,
@@ -406,7 +411,15 @@ export class MovimientosComponent implements OnInit, OnDestroy {
     // }
   }
 
-
+  generarReporte(){
+    let options = {
+      fecha_creacion_unix: {
+        $gte: new Date(`${new Date(this.rangeReporte.value.start).toLocaleDateString('en-US')} 00:00`).getTime(),
+        $lte: new Date(`${new Date(this.rangeReporte.value.end).toLocaleDateString('en-US')} 23:59:59`).getTime()
+      }
+    }
+    this._movimientoService.getReporteEgresoResumido(options)
+  }
   async seleccionarCuentaGastoAEditar(cuentaGasto) {
     this.cuentaGastoToEdit = await this._movimientoService.getCuentaGastoById(cuentaGasto._id)
     this.cuentaAbaco = this.cuentaGastoToEdit.cuentaGasto
