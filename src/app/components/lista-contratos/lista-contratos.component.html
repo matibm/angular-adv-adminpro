@@ -187,7 +187,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xs col-md ">
+            <div class="col-xs col-md-2 ">
                 <h4>Estado</h4>
                 <input [(ngModel)]="options.utilizado" (ngModelChange)="filtrar()" type="checkbox"
                     name="check_utilizado" id="check_utilizado" class="filled-in chk-col-light-blue" checked />
@@ -197,7 +197,7 @@
                     id="check_de_baja" class="filled-in chk-col-light-blue" checked />
                 <label class="mx-3" for="check_de_baja">de baja</label>
                 <h4>Cod Servicio</h4>
-                <div class="">
+                <div  class="">
                     <ng-select [(ngModel)]="codSeleccionado" (ngModelChange)="filtrar()">
                         <ng-option *ngFor="let item of cod_servicios" [value]="item">
                             <div>
@@ -206,6 +206,19 @@
                         </ng-option>
                     </ng-select>
                 </div>
+            </div>
+            <div class="col-xs col-md ">
+                <mat-form-field appearance="fill">
+                    <mat-label>Fecha inhumado</mat-label>
+                    <mat-date-range-input [formGroup]="rangeInhumado" [rangePicker]="pickerInhumado">
+                        <input autocomplete="off" matStartDate formControlName="start" placeholder="fecha inicio">
+                        <input matEndDate formControlName="end" (dateChange)="filtrar()" placeholder="fecha fin">
+                    </mat-date-range-input>
+                    <mat-datepicker-toggle matSuffix [for]="pickerInhumado"></mat-datepicker-toggle>
+                    <mat-date-range-picker #pickerInhumado></mat-date-range-picker>
+                    <mat-error *ngIf="rangeInhumado.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+                    <mat-error *ngIf="rangeInhumado.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+                </mat-form-field>
             </div>
             <div class="col-xs col-md mt-3">
                 <h4>Beneficiarios</h4>

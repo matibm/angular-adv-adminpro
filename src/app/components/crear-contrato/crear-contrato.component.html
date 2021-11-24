@@ -555,7 +555,7 @@
                                         <td>
                                             <mat-form-field appearance="fill">
                                                 <mat-label>Fecha de fallecimiento</mat-label>
-                                                <input matInput name="afdsger423" [(ngModel)]="item.fecha_fallecimiento" [matDatepicker]="pickerFallecimiento">
+                                                <input matInput name="afdsger423_{{i}}" [(ngModel)]="item.fecha_fallecimiento" [matDatepicker]="pickerFallecimiento">
                                                 <mat-datepicker-toggle matSuffix [for]="pickerFallecimiento">
                                                 </mat-datepicker-toggle>
                                                 <mat-datepicker #pickerFallecimiento></mat-datepicker>
@@ -564,7 +564,7 @@
                                         <td>
                                             <mat-form-field appearance="fill">
                                                 <mat-label>Fecha de inhumacion</mat-label>
-                                                <input matInput name="asdrsvet321" [(ngModel)]="item.fecha_inhumacion" [matDatepicker]="pickerinhumacion">
+                                                <input matInput name="asdrsvet321_{{i}}" [(ngModel)]="item.fecha_inhumacion" [matDatepicker]="pickerinhumacion">
                                                 <mat-datepicker-toggle matSuffix [for]="pickerinhumacion">
                                                 </mat-datepicker-toggle>
                                                 <mat-datepicker #pickerinhumacion></mat-datepicker>

@@ -559,7 +559,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h3>Servicio utilizado en:</h3>
-                                <table class=" table " style="min-width: 400px  ; display: block;  overflow-x: auto;">
+                                <table class=" table " style="min-width: 400px  ; min-height: 400px; display: block;  overflow-x: auto;">
                                     <thead>
                                         <tr>
                                             <th style="min-width: 360px;" class="text-center">Nombres y Apellidos</th>
@@ -585,7 +585,7 @@
                                             <td>
                                                 <mat-form-field appearance="fill">
                                                     <mat-label>Fecha de fallecimiento</mat-label>
-                                                    <input matInput name="132rdss"
+                                                    <input matInput name="132rdss_{{i}}"
                                                         [(ngModel)]="item.fecha_fallecimiento"
                                                         [matDatepicker]="pickerFallecimiento">
                                                     <mat-datepicker-toggle matSuffix [for]="pickerFallecimiento">
@@ -596,7 +596,7 @@
                                             <td>
                                                 <mat-form-field appearance="fill">
                                                     <mat-label>Fecha de inhumacion</mat-label>
-                                                    <input matInput name="132rds" [(ngModel)]="item.fecha_inhumacion"
+                                                    <input matInput name="132rds_{{i}}" [(ngModel)]="item.fecha_inhumacion"
                                                         [matDatepicker]="pickerinhumacion">
                                                     <mat-datepicker-toggle matSuffix [for]="pickerinhumacion">
                                                     </mat-datepicker-toggle>
@@ -611,9 +611,9 @@
                                                 <ng-select name="sssssssasdasd{{i}}" [(ngModel)]="item.producto"
                                                      [items]="productos"
                                                     notFoundText="no se encontraron resultados"
-                                                    placeholder="buscar producto" bindLabel="NOMBRE">
+                                                    placeholder="buscar producto" bindLabel="COD_CORTO">
                                                     <ng-template ng-option-tmp let-item="item">
-                                                        <div> {{item.NOMBRE}} {{item.COD_CORTO}} <br>
+                                                        <div>{{item.COD_CORTO}} <br>
                                                         </div>
                                                     </ng-template>
                                                 </ng-select>

@@ -264,9 +264,16 @@
                     </ng-select>
                 </div>
             </div>
+            <!-- <div class="col-xs col-md mt-3">
+                <div class="form-group">
+                    <input type="number" class="form-control" #nro_factura name="" id="" aria-describedby="helpId" placeholder="buscar por nro de factura">
+                    <small>ingresar sin nro de talonario</small>
+    
+                </div>
+            </div> -->
 
             <!-- contrato -->
-            <div class="col-xs col-md">
+            <div *ngIf="cliente && !contrato" class="col-xs col-md">
                 <div *ngIf="cliente && !contrato" class="d-flex mt-3">
                     <button type="button" (click)="showModal = true" class="btn mx-auto btn-info">Seleccionar Contrato</button>
                 </div>

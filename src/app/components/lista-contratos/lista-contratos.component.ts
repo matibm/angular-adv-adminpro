@@ -73,6 +73,10 @@ export class ListaContratosComponent implements OnInit {
   inhumadoNombre
   inhumadoCi
   codSeleccionado
+  rangeInhumado = new FormGroup({
+    start: new FormControl(),
+    end: new FormControl()
+  });
   // wait .5s between keyups to emit current value
   cod_servicios = ['P.S.V.', 'P.S.M.', 'C.M.P.', 'A.C.F.', 'U.D.P.']
   optionsDP: DatepickerOptions = {
@@ -182,6 +186,8 @@ export class ListaContratosComponent implements OnInit {
 
   async filtrar() {
 
+    this.options.inhumados_date_start = this.rangeInhumado.value.start ? new Date(this.rangeInhumado.value.start).toISOString() : null
+    this.options.inhumados_date_end = this.rangeInhumado.value.end ? new Date(new Date(this.rangeInhumado.value.end).setHours(59, 59, 59, 59)).toISOString() : null
     this.options.inhumados_nombre = this.inhumadoNombre ? this.inhumadoNombre : null
     this.options.inhumados_ci = this.inhumadoCi ? this.inhumadoCi : null
     this.options.beneficiarios_ci = this.beneficiarioCi ? this.beneficiarioCi : null
