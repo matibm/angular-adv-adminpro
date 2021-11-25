@@ -186,8 +186,12 @@ export class ListaContratosComponent implements OnInit {
 
   async filtrar() {
 
-    this.options.inhumados_date_start = this.rangeInhumado.value.start ? new Date(this.rangeInhumado.value.start).toISOString() : null
-    this.options.inhumados_date_end = this.rangeInhumado.value.end ? new Date(new Date(this.rangeInhumado.value.end).setHours(59, 59, 59, 59)).toISOString() : null
+    this.options.inhumados_date_start = this.rangeInhumado.value.start ?  new Date(      
+      new Date(`${new Date(this.rangeInhumado.value.start).getFullYear()}-${new Date(this.rangeInhumado.value.start).getMonth()+1}-${new Date(this.rangeInhumado.value.start).getDate()} 00:00`)
+      ).toISOString() : null
+    this.options.inhumados_date_end = this.rangeInhumado.value.end ? new Date(      
+      new Date(`${new Date(this.rangeInhumado.value.end).getFullYear()}-${new Date(this.rangeInhumado.value.end).getMonth()+1}-${new Date(this.rangeInhumado.value.end).getDate()} 23:59:59`)
+      ).toISOString() : null
     this.options.inhumados_nombre = this.inhumadoNombre ? this.inhumadoNombre : null
     this.options.inhumados_ci = this.inhumadoCi ? this.inhumadoCi : null
     this.options.beneficiarios_ci = this.beneficiarioCi ? this.beneficiarioCi : null
