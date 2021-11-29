@@ -987,7 +987,7 @@
                     <tr *ngFor="let item of contrato.beneficiarios; let i = index;">
                         <td *ngIf="i<3" class="text-center">{{item.nombre }}</td>
                         <td *ngIf="i<3" class="text-center"> {{item.doc | ruc}} </td>
-                        <td *ngIf="i<3" class="text-center"> {{item.fecha_nacimiento | date: 'dd/MM/yyyy'}} </td>
+                        <td *ngIf="i<3" class="text-center"> {{item.fecha_nacimiento | date}} </td>
                         <td *ngIf="i<3" class="text-center"> {{item.fecha_nacimiento | edad}}</td>
                         <td *ngIf="i<3" class="text-center">{{item.plus_edad | currency: '':'':'2.0'}}</td>
                     </tr>
@@ -1015,7 +1015,7 @@
                     <tr *ngFor="let item of contrato.beneficiarios; let i = index;">
                         <td *ngIf="i>2" class="text-center">{{item.nombre }}</td>
                         <td *ngIf="i>2" class="text-center"> {{item.doc | ruc}} </td>
-                        <td *ngIf="i>2" class="text-center"> {{item.fecha_nacimiento | date: 'dd/MM/yyyy'}} </td>
+                        <td *ngIf="i>2" class="text-center"> {{item.fecha_nacimiento | date}} </td>
                         <td *ngIf="i>2" class="text-center"> {{item.fecha_nacimiento | edad}}</td>
                         <td *ngIf="i>2" class="text-center">{{item.plus_edad | currency: '':'':'2.0'}}</td>
                     </tr>

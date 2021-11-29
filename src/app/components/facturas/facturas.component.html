@@ -84,14 +84,14 @@
                         <td class="text-center" *ngIf="!fromOutside">
                             {{factura.titular.NOMBRES | primerNombre}} {{factura.titular.APELLIDOS | primerNombre }}
                         </td>
-                        <td class="text-center">{{factura.vencimiento | date: 'dd-MM-YYYY'}}</td>
+                        <td class="text-center">{{factura.vencimiento | date:' d, MMM y'}}</td>
                         <td class="text-center" *ngIf="!fromOutside && factura.servicio">
                             <div *ngIf="factura.servicio?.COD_CORTO == 'C.M.P.'"></div> {{factura.servicio.NOMBRE }}
                         </td>
                         <td class="text-center" *ngIf="fromOutside && factura.servicio">
                             {{factura.servicio.COD_CORTO }}
                         </td>
-                        <td class="text-center" *ngIf="factura.pagado"><b>{{factura.fecha_pagado_unix | date: 'dd/MM/YYYY'}}</b></td>
+                        <td class="text-center" *ngIf="factura.pagado"><b>{{factura.fecha_pagado_unix | date}}</b></td>
                         <td class="text-center text-danger" *ngIf="!factura.pagado">Pendiente</td>
                         <td class="text-center" *ngIf="!fromOutside">
                             <div *ngIf="factura.cobrador">

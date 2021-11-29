@@ -64,6 +64,7 @@ export class EditarContratoComponent implements OnInit {
   guardando = false;
   esPsm = false;
   esPsv = false;
+  esCMP = false;
   beneficiarioVacio = {
     nombre: '',
     doc: '',
@@ -174,6 +175,9 @@ export class EditarContratoComponent implements OnInit {
     }
     if (this.contrato.producto.COD_CORTO == 'P.S.V.') {
       this.esPsv = true;
+    }
+    if (this.contrato.producto.COD_CORTO == 'C.M.P.') {
+      this.esCMP = true;
     }
   }
 
@@ -315,6 +319,10 @@ export class EditarContratoComponent implements OnInit {
     }
     if (this.esPsv) {
       tipoContrato = 'psv'
+
+    }
+    if (this.esCMP) {
+      tipoContrato = 'cmp'
 
     }
     this.contrato.id_contrato = new Date().getTime().toString(),   // se puede quitar
