@@ -97,6 +97,10 @@ export class ListaFacturasComponent implements OnInit {
     start: new FormControl(),
     end: new FormControl()
   });
+  rangeReporteCMP = new FormGroup({
+    start: new FormControl(),
+    end: new FormControl()
+  });
   rangeVencimiento = new FormGroup({
     start: new FormControl(),
     end: new FormControl()
@@ -367,6 +371,18 @@ export class ListaFacturasComponent implements OnInit {
       con_error: false
     }
     this._facturaService.getReporteIngresos(body)
+  }
+  generarReporteAnualCMP() {
+    let body = {
+      pagado: true,
+      fecha_pagado_unix: {
+        $gte: new Date(`${new Date(this.rangeReporteCMP.value.start).toLocaleDateString('en-US')} 00:00`).getTime(),
+        $lte: new Date(`${new Date(this.rangeReporteCMP.value.end).toLocaleDateString('en-US')} 23:59:59`).getTime()
+      },
+      con_error: false,
+      codigo_producto: 'C.M.P.'
+    }
+    this._facturaService.getReporteIngresoAnualCMP(body)
   }
 
 }
