@@ -246,7 +246,7 @@
                 <div class="col-md col-sx">
                     <div style="min-width: 300px; ;max-width: min-content;">
                         <div style="justify-content: space-between;" class="inline-flex">
-                            <h4>Cobrador</h4>
+                            <h4>Modificar Cobrador (opcional)</h4>
                             <div *ngIf="cobrador" (click)="cobrador = null; " class="pointer close-icon ml-auto">
                                 <button type="button" class="btn btn-sm btn-light"><i class=" ti-close  "></i></button>
                             </div>
@@ -292,7 +292,7 @@
 
         <div *ngIf="!factura.link_de_pago" class="float-right mt-3">
             <button *ngIf="!isOnline && !factura.pagado && !crearParcial" [disabled]="!fondo || !montoparcialCorrecto"
-                (click)="pagar()" type="button" class="btn mr-2   btn-primary">Pagar</button>
+                (click)="pagar()" type="button" class="btn mr-2   btn-success">Pagar</button>
             <button *ngIf="!isOnline && !factura.pagado && !crearParcial" [disabled]="!fondo || !montoparcialCorrecto"
                 (click)="facturapdf = crearPDF([factura])" type="button" class="btn mr-2   btn-primary">Vista Previa
                 PDF</button>
@@ -343,6 +343,22 @@
                         
                         <button type="button" (click)="modificarMonto(id, montoModificado)" class="btn mt-2 btn-info">Modificar</button>
     
+                    </div>
+                </div>
+                <div class="my-5 mx-auto">
+
+                    <h3>Modificar Vencimiento</h3>
+                    <div  class="form-group">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Fecha</mat-label>
+                            <input matInput name="assadrdsvet321" [(ngModel)]="fechaVencimiento" [matDatepicker]="pickerVencimiento">
+                            <mat-datepicker-toggle matSuffix [for]="pickerVencimiento">
+                            </mat-datepicker-toggle>
+                            <mat-datepicker #pickerVencimiento></mat-datepicker>
+                        </mat-form-field>
+                        <br>
+                        <button type="button" (click)="modificarVencimiento(id)" class="btn mt-2 btn-info">Modificar</button>
+
                     </div>
                 </div>
             </div>

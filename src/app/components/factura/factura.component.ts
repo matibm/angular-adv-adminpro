@@ -43,6 +43,7 @@ export class FacturaComponent implements OnInit {
   cobradores;
   telFactura;
   fechaPago = new Date()
+  fechaVencimiento
   direccionFactura;
   inputCobrador = new Subject<string>();
 
@@ -311,6 +312,10 @@ export class FacturaComponent implements OnInit {
 
   async modificarMonto(id, amount){
     await this._facturaService.modificarMonto({ id, amount })
+    window.location.reload()
+  }
+  async modificarVencimiento(id){
+    await this._facturaService.modificar({ id, data: {vencimiento: new Date(this.fechaVencimiento).getTime()} })
     window.location.reload()
   }
 

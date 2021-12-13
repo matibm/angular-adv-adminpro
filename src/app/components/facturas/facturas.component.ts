@@ -138,6 +138,7 @@ export class FacturasComponent implements OnInit {
   async descargarExtracto() {
 
     localStorage.setItem('options_extracto', JSON.stringify(this.options))
+    localStorage.setItem('sort_extracto', JSON.stringify(this.sort))
     const wopen = window.open('/extracto-cuotas');
     // wopen.onafterprint = (event) => {
     //   wopen.close();

@@ -288,6 +288,20 @@ export class FacturaService {
       }
     );
   }
+  modificar(body) {
+    let url = `${URL_SERVICIOS}/factura/modificar`;
+    url += `?token=${this._usuarioService.token}`;    
+
+    return this.http.put(url, body).toPromise().then((resp: any) => {
+
+      return resp;
+    },
+      (err) => {
+        console.log(err);
+
+      }
+    );
+  }
   getDetallePago(id) {
     let url = `${URL_SERVICIOS}/factura/get_detalle_pago`;
     url += `?token=${this._usuarioService.token}`;

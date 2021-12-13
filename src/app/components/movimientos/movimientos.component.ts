@@ -6,7 +6,7 @@ import { UsuarioService } from './../../services/usuario.service';
 import { Usuario } from './../../models/usuario';
 import { Movimiento } from './../../models/movimiento';
 import { MovimientoService } from './../../services/movimiento.service';
-import { Component, DoCheck, OnDestroy, OnInit } from '@angular/core';
+import { Component, DoCheck, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NestableSettings } from 'ngx-nestable/lib/nestable.models';
 import {
   MatTreeFlatDataSource,
@@ -75,6 +75,8 @@ export class MovimientosComponent implements OnInit, OnDestroy {
   movimientosOptions: MovimientoOptions = {}
   is_admin_role = false
   fechaVencimientoTimbrado
+  @ViewChild('search', { static: false }) searchProveedor;
+
   rangeReporte = new FormGroup({
     start: new FormControl(),
     end: new FormControl()
@@ -298,6 +300,14 @@ export class MovimientosComponent implements OnInit, OnDestroy {
         val.term
       );
     }
+  }
+  ngAfterViewInit(){
+    this.searchProveedor.focus()
+  }
+  goHome(){
+    setTimeout(() => {
+      this.searchProveedor.focus()
+    }, 500);
   }
   async searchProveedores(val) {
     if (val.term.length > 0) {

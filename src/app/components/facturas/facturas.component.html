@@ -18,7 +18,8 @@
                         </th>
                         <th (click)="ordenar('nro_contrato')" class="text-center pointer" style="min-width: 130px;">
                             Nro. Contrato
-                            <i *ngIf="sort.key === 'nro_contrato'" class="ml-1 fa "   [ngClass]="{'fa-sort-asc': sort.value === 1 , 'fa-sort-desc': sort.value === -1 }"></i>
+                            <i *ngIf="sort.key === 'nro_contrato'" class="ml-1 fa "
+                                [ngClass]="{'fa-sort-asc': sort.value === 1 , 'fa-sort-desc': sort.value === -1 }"></i>
                         </th>
                         <th class="text-center" style="min-width: 130px;">
                             Nro. Factura
@@ -28,21 +29,25 @@
                         </th>
                         <th (click)="ordenar('haber')" class="pointer text-center" style="min-width: 150px;">
                             Monto
-                            <i *ngIf="sort.key === 'haber'" class="ml-1 fa "   [ngClass]="{'fa-sort-asc': sort.value === 1 , 'fa-sort-desc': sort.value === -1 }"></i>
+                            <i *ngIf="sort.key === 'haber'" class="ml-1 fa "
+                                [ngClass]="{'fa-sort-asc': sort.value === 1 , 'fa-sort-desc': sort.value === -1 }"></i>
                         </th>
                         <th class="text-center" style="min-width: 200px;" *ngIf="!fromOutside">
                             Cliente
                         </th>
                         <th (click)="ordenar('vencimiento')" class="pointer text-center" style="min-width: 150px;">
                             Vencimiento
-                            <i *ngIf="sort.key === 'vencimiento'" class="ml-1 fa "   [ngClass]="{'fa-sort-asc': sort.value === 1 , 'fa-sort-desc': sort.value === -1 }"></i>
+                            <i *ngIf="sort.key === 'vencimiento'" class="ml-1 fa "
+                                [ngClass]="{'fa-sort-asc': sort.value === 1 , 'fa-sort-desc': sort.value === -1 }"></i>
                         </th>
                         <th class="text-center" style="min-width: 400px;">
                             Servicio
                         </th>
-                        <th (click)="ordenar('fecha_pagado_unix')" class="pointer text-center" style="min-width: 150px;">
+                        <th (click)="ordenar('fecha_pagado_unix')" class="pointer text-center"
+                            style="min-width: 150px;">
                             Pagado
-                            <i *ngIf="sort.key === 'fecha_pagado_unix'" class="ml-1 fa "   [ngClass]="{'fa-sort-asc': sort.value === 1 , 'fa-sort-desc': sort.value === -1 }"></i>
+                            <i *ngIf="sort.key === 'fecha_pagado_unix'" class="ml-1 fa "
+                                [ngClass]="{'fa-sort-asc': sort.value === 1 , 'fa-sort-desc': sort.value === -1 }"></i>
 
                         </th>
                         <th class="text-center" *ngIf="!fromOutside" style="min-width: 200px;">
@@ -61,7 +66,7 @@
                         <!-- <td class="text-center" scope="row">{{page*10 + (i+1) - 10}}</td> -->
                         <td class="text-center" scope="row">{{factura.nro_factura}}</td>
                         <td class="text-center" *ngIf="factura.fondo">{{factura.fondo.NOMBRES}}
-                            {{factura.fondo.APELLIDOS}}  
+                            {{factura.fondo.APELLIDOS}}
                         </td>
                         <td class="text-center" *ngIf="!factura.fondo">Sin fondo</td>
 
@@ -70,7 +75,8 @@
                             <div *ngIf="!factura.nro_contrato">---</div>
                         </td>
                         <td class="text-center">
-                            <div *ngIf="factura.pago?.numero">{{factura.pago?.numero}}-{{factura.pago?.nro_factura}}</div>
+                            <div *ngIf="factura.pago?.numero">{{factura.pago?.numero}}-{{factura.pago?.nro_factura}}
+                            </div>
                             <div *ngIf="!factura.pago">---</div>
                         </td>
 
@@ -159,19 +165,21 @@
                 <div style="display: flex;">
                     <div class="ml-auto">
                         <button type="button" (click)="descargarExtracto()" class="btn btn-inverse">Descargar
-                            Extracto PDF</button> 
-                            <button style="width: 206.52px;" [disabled]="loadingDescargarExtracto || total?.cantidad > 30000 || total?.cantidad < 1 " (click)="descargarExtractoExcel()" class="btn mr-auto btn-info">
-                                <span *ngIf="!loadingDescargarExtracto">Descargar Extracto Excel </span>
-                                <div *ngIf="loadingDescargarExtracto" style="width: 100%;">                                    
-                                    <div style="display: flex;">
-                
-                                        <div class="mx-auto">
-                                            <mat-spinner [color]="'secondary'" [diameter]="20"></mat-spinner>
-                                        </div>
+                            Extracto PDF</button>
+                        <button style="width: 206.52px;"
+                            [disabled]="loadingDescargarExtracto || total?.cantidad > 30000 || total?.cantidad < 1 "
+                            (click)="descargarExtractoExcel()" class="btn mr-auto btn-info">
+                            <span *ngIf="!loadingDescargarExtracto">Descargar Extracto Excel </span>
+                            <div *ngIf="loadingDescargarExtracto" style="width: 100%;">
+                                <div style="display: flex;">
+
+                                    <div class="mx-auto">
+                                        <mat-spinner [color]="'secondary'" [diameter]="20"></mat-spinner>
                                     </div>
                                 </div>
-        
-                            </button>
+                            </div>
+
+                        </button>
 
                     </div>
                 </div>
