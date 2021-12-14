@@ -330,11 +330,11 @@
 </div>
 
 
-<div *ngIf="_usuarioService.usuario.role == 'ADMIN_ROLE' && !factura.pagado" class="card">
+<div *ngIf="_usuarioService.usuario.role == 'ADMIN_ROLE' " class="card">
     <div class="card-body">
         <div style="width: 100%;" >
             <div style="display: flex;">
-                <div class="my-5 mx-auto">
+                <div *ngIf="!factura.pagado" class="my-5 mx-auto">
 
                     <h3>Modificar Monto</h3>
                     <div  class="form-group">
