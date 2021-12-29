@@ -264,6 +264,7 @@
                     </ng-select>
                 </div>
             </div>
+            
             <!-- <div class="col-xs col-md mt-3">
                 <div class="form-group">
                     <input type="number" class="form-control" #nro_factura name="" id="" aria-describedby="helpId" placeholder="buscar por nro de factura">
@@ -314,7 +315,15 @@
         </div>
         <!-- <hr> -->
 
-
+        <div class="col-xs col-md-3 mt-3">
+             <div class="form-group">
+                 <label for="nro-factura">
+                Nro Factura                    
+                 </label>
+                 <input [(ngModel)]="nro_factura" class="form-control" type="text" name="" id="">
+                 <button class="btn btn-info mt-2" (click)="filtrar()">Buscar</button>
+             </div>
+        </div>
 
         <!-- <button type="button" (click)="filtrar()" class=" float-right btn btn-primary">filtrar</button> -->
     </div>

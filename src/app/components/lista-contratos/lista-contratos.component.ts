@@ -195,9 +195,9 @@ export class ListaContratosComponent implements OnInit {
     this.options.inhumados_nombre = this.inhumadoNombre ? this.inhumadoNombre : null
     this.options.inhumados_ci = this.inhumadoCi ? this.inhumadoCi : null
     this.options.beneficiarios_ci = this.beneficiarioCi ? this.beneficiarioCi : null
-    this.options.beneficiarios_nombre = this.beneficiarioNombre ? this.beneficiarioNombre : null
-    this.options.fecha_inicio = this.range.value.start ? new Date(this.range.value.start).getTime() : null
-    this.options.fecha_fin = this.range.value.end ? new Date(this.range.value.end).setHours(59, 59, 59, 59) : null
+    this.options.beneficiarios_nombre = this.beneficiarioNombre ? this.beneficiarioNombre : null    
+    this.options.fecha_inicio = this.range.value.start ? new Date(`${new Date(this.range.value.start).toLocaleDateString('en-US')} 00:00`).getTime() : null
+    this.options.fecha_fin = this.range.value.end ? new Date(`${new Date(this.range.value.end).toLocaleDateString('en-US')} 23:59:59`).getTime() : null
     this.options.cliente = this.cliente ? this.cliente._id : null
     this.options.fila = this.fila
     this.options.manzana = this.manzana
@@ -363,6 +363,9 @@ export class ListaContratosComponent implements OnInit {
     this.options.unlimit = true
     localStorage.setItem('options_extracto_contratos', JSON.stringify(this.options))
     const wopen = window.open('/extracto-contratos');
+  }
+  exportarEXCEL() {
+    this._contratoService.getContratosEXCEL(null, this.options, this.sort)  
   }
 
   

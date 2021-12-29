@@ -49,6 +49,48 @@ export class ContratoService {
       return resp;
     });
   }
+  getContratosEXCEL(page?, options?: { de_baja?: boolean, utilizado?: boolean, fecha_inicio?: number, fecha_fin?: number, nro_contrato?: string, producto?: string, cliente?: string, ruc?: string, manzana?: string, fila?, parcela?: string, tipo?: string }, sort?: { key: string, value: number }) {
+    console.log(options);
+
+
+    const p = page || 1;
+    let url = URL_SERVICIOS + '/contrato/all_excel?page=' + p;
+    url += `&token=${this._usuarioService.token}`;
+
+    if (options) {
+      Object.entries(options).forEach(([key, value]) => {
+        if (value) {
+          url += `&${key}=${value}`;
+
+        }
+      });
+    }
+    if (sort) {
+      url += `&sort_key=${sort.key}`;
+      url += `&sort_value=${sort.value}`;
+    }
+    if (options.utilizado === false) {
+      url += `&utilizado=false`;
+    }
+    if (options.de_baja === false) {
+      url += `&de_baja=false`;
+    }
+
+    return this.http.get(url, { responseType: 'blob' as 'json' }).subscribe(
+      (response: any) => {
+        let dataType = response.type;
+        let binaryData = [];
+        binaryData.push(response);
+        let downloadLink = document.createElement('a');
+        downloadLink.href = window.URL.createObjectURL(new Blob(binaryData, { type: dataType }));
+
+        downloadLink.setAttribute('download', 'contratos.xlsx');
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        downloadLink.remove()
+      }
+    )
+  }
   getContratosByTitular(id): Promise<Contrato[]> {
 
     let url = URL_SERVICIOS + '/contrato/by_titular/' + id;

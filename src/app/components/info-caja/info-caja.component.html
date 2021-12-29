@@ -92,6 +92,44 @@
                             </div>
 
                         </div>
+                        <div class="col-xs col-md pl-3 mr-3">
+                            <p>Fondo: </p>
+                            <div style="min-width: max-content;" class="inline-flex">
+                                <div style="min-width: 100%;" *ngIf="!fondo">
+                                    <ng-select [items]="fondos" [(ngModel)]="fondo"
+                                        (ngModelChange)="seleccionarFondo(fondo._id)" (search)="searchBancos($event)"
+                                        notFoundText="no se encontraron resultados" placeholder="Filtrar por fondo"
+                                        bindLabel="NOMBRES" [searchFn]="customSearchFn">
+                                        <ng-template ng-option-tmp let-item="item">
+                                            <div>
+                                                <div *ngIf="item.APELLIDOS">{{item.APELLIDOS}} {{item.NOMBRES}}</div>
+
+
+
+                                                <small>{{item.RUC | ruc}}</small>
+                                            </div>
+
+                                        </ng-template>
+                                    </ng-select>
+                                </div>
+
+                                <div class="ml-2" *ngIf="fondo">
+                                    <span>
+                                        <div *ngIf="fondo.APELLIDOS">{{fondo.APELLIDOS}} {{fondo.NOMBRES}} </div>
+
+                                        <small>{{fondo.RUC | ruc}}</small>
+                                    </span>
+                                </div>
+                                <div *ngIf="fondo" (click)="fondo = null; movimientosPrueba = null"
+                                    class="pointer close-icon ml-2">
+                                    <button type="button" (click)="seleccionarFondo(null)"
+                                        class="btn btn-sm btn-light"><i class=" ti-close  "></i></button>
+                                </div>
+
+
+                            </div>
+
+                        </div>
                         <!-- <div class="b-l col-md col-xs">
                             <div class="">
                                 <div class="inline-flex">

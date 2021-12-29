@@ -55,6 +55,7 @@ export class ListaFacturasComponent implements OnInit {
   count;
   contratos;
   contrato;
+  nro_factura
   facturasAPagar;
   inputClientes = new Subject<string>();
   loadingClientes = false
@@ -213,6 +214,7 @@ export class ListaFacturasComponent implements OnInit {
       vendedor: this.vendedor ? this.vendedor._id : null,
       cobrador: this.cobrador ? this.cobrador._id : null,
       servicio: this.servicio ? this.servicio._id : null,
+      nro_factura: this.nro_factura,
       fondo: this.fondo ? this.fondo._id : null,
       contrato: this.contrato ? this.contrato._id : null,
       pagado,
