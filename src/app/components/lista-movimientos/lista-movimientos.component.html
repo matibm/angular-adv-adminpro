@@ -208,7 +208,7 @@
                     <th>#</th>
                     <th>Fondo</th>
                     <th>Nro Factura</th>
-                    <th style="min-width: 120px;">Fecha</th>
+                    <th style="min-width: 150px;">Fecha</th>
                     <th>Nombre</th>
                     <th style="width: 25%;">Comentario</th>
                     <th style="min-width: 150px;">Proveedor</th>
@@ -226,7 +226,9 @@
                     <td>{{item.nro_comp_banco}}</td>
 
                     <td>
-                        {{item.fecha_creacion_unix | date:' d, MMM y'}}
+                        <p style="font-family:'Lucida Console', monospace">{{item.fecha_creacion_unix | date:' dd MMM y'}}</p>
+
+                        
                         <!-- <br> {{item.fecha_creacion_unix | date:' h:mm a'}} -->
 
 

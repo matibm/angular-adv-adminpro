@@ -585,6 +585,28 @@
                                                 class="btn mx-1 mt-2 btn-rounded btn-inverse">Cambiar</button>
                                         </div>
                                     </div>
+                                    <hr>
+                                    <div class="form-group">
+                                        <div *ngIf="!categoriaGasto">
+                                            <ng-select [items]="categoriaGastos" name="dsfdbssaasdrwseqcda"
+                                                [(ngModel)]="categoriaGasto"                                                
+                                                notFoundText="no se encontraron resultados"
+                                                placeholder="buscar Categoria Gasto" bindLabel="codigo">
+                                                <ng-template ng-option-tmp let-item="item">
+                                                     {{item.codigo}}                                                    
+                                                </ng-template>
+                                            </ng-select>
+                                        </div>
+                                        <div *ngIf="categoriaGasto">
+                                            <h4>Categoria: <b>{{categoriaGasto.codigo}}</b></h4>
+                                            <span>Descripcion: {{categoriaGasto.descripcion}}</span>
+                                            <div></div>
+                                            <button type="button" (click)="categoriaGasto = null"
+                                                class="btn mx-1 mt-2 btn-rounded btn-inverse">Cambiar</button>
+                                        </div>
+                                    </div>
+
+
                                 </div>
 
                                 <div style="width: 100%;" class="mt-auto">

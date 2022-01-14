@@ -58,6 +58,8 @@ export class MovimientosComponent implements OnInit, OnDestroy {
   cuentasAbaco
   categorias
   categoria
+  categoriaGasto
+  categoriaGastos
   cuentaAbaco
   tipoCuentaAbaco
   tipoIva
@@ -135,6 +137,9 @@ export class MovimientosComponent implements OnInit, OnDestroy {
     // );
     this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', '');
     this.loading = false; 
+    this.categoriaGastos = await this._movimientoService.getAllCategorias()
+    console.log(this.categoriaGastos);
+    
   }
 
   async revisarRuta() {
@@ -432,7 +437,9 @@ export class MovimientosComponent implements OnInit, OnDestroy {
   }
   async seleccionarCuentaGastoAEditar(cuentaGasto) {
     this.cuentaGastoToEdit = await this._movimientoService.getCuentaGastoById(cuentaGasto._id)
+    if(this.cuentaGastoToEdit.categoria) this.categoriaGasto = await this._movimientoService.getCategoriaById(this.cuentaGastoToEdit.categoria)
     this.cuentaAbaco = this.cuentaGastoToEdit.cuentaGasto
+    this.categoriaGastos = await this._movimientoService.getAllCategorias()
 
     this.cuentaPadreToEdit = await this._movimientoService.getCuentaGastoByCtaPadre(this.cuentaGastoToEdit.ctapadre)
     this.cuentasAbaco = await this._movimientoService.getCuentasAbaco()
@@ -592,10 +599,14 @@ export class MovimientosComponent implements OnInit, OnDestroy {
     this._movimientoService.eliminarCuentaGasto(id)
   }
 
+  async onEditCuentaGasto(cuentaGasto){
+    this.categoriaGasto = await this._movimientoService.getCategoriaById(cuentaGasto.categoria)
+  }
   async guardarCambios() {
     let body: any = {}
     this.categoria ? body.categoria = this.categoria : ''
-    this.cuentaGasto ? body.cuenta_gasto = this.cuentaGastoToEdit : ''
+    this.cuentaGastoToEdit.categoria = this.categoriaGasto?._id || null
+    this.cuentaGastoToEdit ? body.cuenta_gasto = this.cuentaGastoToEdit : ''
     this.cuentaAbaco ? body.cuenta_abaco = this.cuentaAbaco : ''
     console.log(body);
 

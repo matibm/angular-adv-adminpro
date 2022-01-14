@@ -62,6 +62,16 @@ export class MovimientoService {
         return resp.movimientos;
       });
   }
+  getAllCategorias() {
+    let url = `${URL_SERVICIOS}/movimientos/get_all_categorias`;
+    url += `?token=${this._usuarioService.token}`;    
+    return this.http
+      .get(url)
+      .toPromise()
+      .then((resp: any) => {
+        return resp.categorias;
+      });
+  }
   getMovimientoById(id?) {
     let url = `${URL_SERVICIOS}/movimientos/by_id`;
     url += `?token=${this._usuarioService.token}`;
