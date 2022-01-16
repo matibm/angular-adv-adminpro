@@ -406,6 +406,53 @@
             </div>
         </div>
     </div>
+    <div class="col-xs col-md">
+        <div *ngIf="is_admin_role" class="card">
+            <div class="card-body">
+                <h3>Reporte Movimientos</h3>
+                <div class="d-flex">
+                   <div class="mx-auto">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Fecha</mat-label>
+                        <mat-date-range-input [formGroup]="rangeReporteMovimientos" [rangePicker]="pickerReporteCMP">
+                            <input autocomplete="off" matStartDate formControlName="start" placeholder="fecha inicio">
+                            <input matEndDate formControlName="end" placeholder="fecha fin">
+                        </mat-date-range-input>
+                        <mat-datepicker-toggle matSuffix [for]="pickerReporteCMP"></mat-datepicker-toggle>
+                        <mat-date-range-picker #pickerReporteCMP></mat-date-range-picker>
+                        <mat-error *ngIf="rangeReporteMovimientos.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+                        <mat-error *ngIf="rangeReporteMovimientos.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+                    </mat-form-field>
+<div></div>
+                    <button style="width: 155.57px;" [disabled]="!rangeReporteMovimientos.value.start 
+                    || !rangeReporteMovimientos.value.end 
+                    || loadingGenerarReporteMov "
+                     (click)="generarReporteMovimientos()" class="btn btn-rounded mr-auto btn-inverse">
+                        <span *ngIf="!loadingGenerarReporteMov">Descargar Excel</span>
+                        <div *ngIf="loadingGenerarReporteMov" style="width: 100%;">
+                            <div style="display: flex;">
+        
+                                <div class="mx-auto">
+                                    <mat-spinner [color]="'accent'" [diameter]="20"></mat-spinner>
+                                </div>
+                            </div>
+                        </div>
+
+                    </button>
+
+
+
+
+
+
+                    <!-- <div style="display: block;">
+                    
+                        <button type="button" [disabled]="!rangeReporteMovimientos.value.start || !rangeReporteMovimientos.value.end" (click)="generarReporteMovimientos()" class="btn btn-rounded btn-inverse mx-auto">Descargar Excel</button></div>
+                   </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 

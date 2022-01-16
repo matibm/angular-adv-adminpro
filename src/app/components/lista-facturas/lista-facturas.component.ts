@@ -102,6 +102,10 @@ export class ListaFacturasComponent implements OnInit {
     start: new FormControl(),
     end: new FormControl()
   });
+  rangeReporteMovimientos = new FormGroup({
+    start: new FormControl(),
+    end: new FormControl()
+  });
   rangeVencimiento = new FormGroup({
     start: new FormControl(),
     end: new FormControl()
@@ -385,6 +389,31 @@ export class ListaFacturasComponent implements OnInit {
       codigo_producto: 'C.M.P.'
     }
     this._facturaService.getReporteIngresoAnualCMP(body)
+  }
+
+  loadingGenerarReporteMov = false
+  async generarReporteMovimientos() {
+    this.loadingGenerarReporteMov = true
+    let body = {      
+      options: {
+        fecha_pagado_unix: {
+          $gte: new Date(`${new Date(this.rangeReporteMovimientos.value.start).toLocaleDateString('en-US')} 00:00`).getTime(),
+          $lte: new Date(`${new Date(this.rangeReporteMovimientos.value.end).toLocaleDateString('en-US')} 23:59:59`).getTime()
+        },
+        vencimiento: {
+          $gte: new Date(`${new Date(this.rangeReporteMovimientos.value.start).toLocaleDateString('en-US')} 00:00`).getTime(),
+          $lte: new Date(`${new Date(this.rangeReporteMovimientos.value.end).toLocaleDateString('en-US')} 23:59:59`).getTime()
+        },
+        fecha_creacion_unix: {
+          $gte: new Date(`${new Date(this.rangeReporteMovimientos.value.start).toLocaleDateString('en-US')} 00:00`).getTime(),
+          $lte: new Date(`${new Date(this.rangeReporteMovimientos.value.end).toLocaleDateString('en-US')} 23:59:59`).getTime()
+        },
+      },
+      
+    }
+    await this._facturaService.getReporteMovimientos(body)
+    this.loadingGenerarReporteMov = false
+    
   }
 
 }

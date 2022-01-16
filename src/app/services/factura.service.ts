@@ -236,6 +236,33 @@ export class FacturaService {
       }
     )
   }
+  getReporteMovimientos(body) {
+    let url = `${URL_SERVICIOS}/movimientos/get_reporte_movimientos`;
+    url += `?token=${this._usuarioService.token}`;
+
+    return this.http.post(url, body, { responseType: 'blob' as 'json' }).toPromise().then(
+      (response: any) => {
+        let dataType = response.type;
+        let binaryData = [];
+        binaryData.push(response);
+        let downloadLink = document.createElement('a');
+        downloadLink.href = window.URL.createObjectURL(new Blob(binaryData, { type: dataType }));
+
+        downloadLink.setAttribute('download', 'Reporte_ingreso_anual.xlsx');
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        downloadLink.remove()
+      },
+      
+      (error) => {
+        console.log(error);
+        
+        swal.fire({ title: 'error', icon: 'error', text: error })
+      }
+    )
+  }
+
+// ===========================================================
   getReporteIngresoAnualCMP(body) {
     let url = `${URL_SERVICIOS}/factura/comparacion_pagado_vencimiento`;
     url += `?token=${this._usuarioService.token}`;
@@ -255,6 +282,10 @@ export class FacturaService {
       }
     )
   }
+  
+  
+
+  
 
   getPagos(cliente_id) {
     let url = `${URL_SERVICIOS}/factura/get_pagos/` + cliente_id;

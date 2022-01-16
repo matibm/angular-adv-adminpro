@@ -433,7 +433,7 @@ export class MovimientoService {
     let url = `${URL_SERVICIOS}/movimientos/gastos_excel`;
     url += `?token=${this._usuarioService.token}`;
     
-    this.http.post(url, body, { responseType: 'blob' as 'json' }).subscribe(
+    this.http.post(url, body, { responseType: 'blob' as 'json' }).toPromise().then(
       (response: any) => {
         let dataType = response.type;
         let binaryData = [];
@@ -445,6 +445,11 @@ export class MovimientoService {
         document.body.appendChild(downloadLink);
         downloadLink.click();
         downloadLink.remove()
+      },
+      (error) => {
+        console.log(error);
+        
+        swal.fire({ title: 'error', icon: 'error', text: error })
       }
     )
   }
