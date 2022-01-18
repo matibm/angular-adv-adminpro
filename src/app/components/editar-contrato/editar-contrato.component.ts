@@ -63,6 +63,7 @@ export class EditarContratoComponent implements OnInit {
   sector;
   guardando = false;
   esPsm = false;
+  editar_nro_contrato = false
   esPsv = false;
   esCMP = false;
   beneficiarioVacio = {
@@ -347,6 +348,7 @@ export class EditarContratoComponent implements OnInit {
 
     const send = {
       contrato: this.contrato,
+      editar_nro_contrato: this.editar_nro_contrato,
       fechaPago: this.fechaPago ? this.fechaPago : new Date()
     };
     this.guardando = true;
