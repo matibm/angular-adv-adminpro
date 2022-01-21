@@ -71,7 +71,7 @@ export class CrearFacturaComponent implements OnInit {
       cobrador: this.cobrador?._id || '',
       contrato: this.contrato?._id,
       nro_factura: 0,
-      nro_contrato: this.contrato.nro_contrato,
+      nro_contrato: this.contrato?.nro_contrato,
       vencimiento: new Date(this.vencimiento).getTime() || new Date().getTime()
     };
     const factura = await this._facturaService.crearFactura(body);
