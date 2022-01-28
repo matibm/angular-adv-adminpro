@@ -21,7 +21,7 @@
                             <i *ngIf="sort.key === 'nro_contrato'" class="ml-1 fa "
                                 [ngClass]="{'fa-sort-asc': sort.value === 1 , 'fa-sort-desc': sort.value === -1 }"></i>
                         </th>
-                        <th class="text-center" style="min-width: 130px;">
+                        <th class="text-center" style="min-width: 150px;">
                             Nro. Factura
                         </th>
                         <th *ngIf="false" class="text-center" style="min-width: 200px;">
@@ -65,6 +65,7 @@
                         *ngFor="let factura of facturas  | paginate: { itemsPerPage: 10,totalItems:count, currentPage: page } ; let i = index;">
                         <!-- <td class="text-center" scope="row">{{page*10 + (i+1) - 10}}</td> -->
                         <td class="text-center" scope="row">{{factura.nro_factura}}</td>
+                         
                         <td class="text-center" *ngIf="factura.fondo">{{factura.fondo.NOMBRES}}
                             {{factura.fondo.APELLIDOS}}
                         </td>
@@ -75,7 +76,7 @@
                             <div *ngIf="!factura.nro_contrato">---</div>
                         </td>
                         <td class="text-center">
-                            <div *ngIf="factura.pago?.numero">{{factura.pago?.numero}}-{{factura.pago?.nro_factura}}
+                            <div *ngIf="factura.pago?.numero">{{factura.pago?.numero}}-{{fill(factura.pago?.nro_factura,7)}}
                             </div>
                             <div *ngIf="!factura.pago">---</div>
                         </td>

@@ -315,13 +315,14 @@
         </div>
         <!-- <hr> -->
 
-        <div class="col-xs col-md-3 mt-3">
+        <div class="col-xs col-md-3 ">
              <div class="form-group">
                  <label for="nro-factura">
                 Nro Factura                    
                  </label>
                  <input [(ngModel)]="nro_factura" class="form-control" type="text" name="" id="">
-                 <button class="btn btn-info mt-2" (click)="filtrar()">Buscar</button>
+                 <small>OBS: sin numero de talonario</small>
+                 <div><button class="btn btn-info mt-2" (click)="filtrar()">Buscar</button></div>
              </div>
         </div>
 

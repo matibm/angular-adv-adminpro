@@ -25,6 +25,8 @@ export class InfoCajaComponent implements OnInit {
   movimientos;
   totalEgreso = 0;
   fondo;
+  cobrador;
+  cobradores;
   estado = 'TODOS'
   fondos;
   totalMovimientos;
@@ -104,6 +106,9 @@ export class InfoCajaComponent implements OnInit {
   async searchBancos(val) {
     this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', val.term);
   }
+  async searchCobradores(val) {
+    this.cobradores = await this._usuarioService.buscarUsuarios('COBRADORES', val.term);
+  }
   fill = (number, len) => "0".repeat(len - number.toString().length) + number.toString();
 
   async filtrarPorEstado(estado) {
@@ -121,7 +126,6 @@ export class InfoCajaComponent implements OnInit {
   }
 
   async seleccionarFondo(fondoId) {
-    console.log(fondoId);
 
     if (!fondoId) {
 
@@ -146,28 +150,19 @@ export class InfoCajaComponent implements OnInit {
     const resp = await this._movimientoService.getCajaBancos(1, this.options);
     this.cargarValores(resp)
 
-    const respMovimientos = await this._movimientoService.getAllMovimientos({
-      cerrado: false,
-      fondo: fondoId,
-    });
-    this.movimientoCount = respMovimientos.count;
-    this.movimientos = respMovimientos.movimientos;
+    // let getAllMovimientosOptions = {cerrado: false }
+    // if(this.fondo) getAllMovimientosOptions['fondo'] = this.fondo._id
+    // if(this.cobrador) getAllMovimientosOptions['cobrador'] = this.cobrador._id
+    
+    // const respMovimientos = await this._movimientoService.getAllMovimientos(getAllMovimientosOptions);
+    
+    // this.movimientoCount = respMovimientos.count;
+    // this.movimientos = respMovimientos.movimientos;
 
-    this.totalMovimientos = respMovimientos.total.monto_total;
+    // this.totalMovimientos = respMovimientos.total.monto_total;
     let respFondo: any = await this._movimientoService.getSaldoFondo(fondoId)
     console.log(respFondo);
-
-    // this.saldoFondo = respFondo.data[0].ingreso - respFondo.data[0].gasto
-    // const respfactura = await this._facturaService.getFacturas(
-    //   true,
-    //   fondo._id,
-    //   this.start,
-    //   this.end,
-    //   null,
-    //   null,
-    //   false
-    // );
-
+ 
     let options = {
       pagado: true,
       start: this.start,
@@ -175,28 +170,69 @@ export class InfoCajaComponent implements OnInit {
       fondo: this.fondo._id,
       cerrado: false,
       get_total: '1'
-    }
-    // const respfactura = await this._facturaService.getFacturasOptions(options);
-
-    // if (respfactura.ok) {
-    //   this.facturas = respfactura.facturas;
-    //   this.totalFacturas = respfactura.monto_total.total;
-    //   this.facturaCount = respfactura.monto_total.count;
-    // }
+    } 
     this.loading = false;
     this.listItems = [];
     this.calcularSeleccionados();
 
+  }
+  async seleccionarCobrador(cobradorId) {
+
+    if (!cobradorId) {
+
+      delete this.options.cobrador      
+
+      return;
+    } else {
+
+      this.options.cobrador = cobradorId
+      this.cobrador = await this._usuarioService.getUsuarioPorId(cobradorId)
+    }
+    this.loading = true;
+
+
+    this.options.cerrado = this.estado === 'CONCILIADOS' ? true : false
+    if (this.estado === 'TODOS') delete this.options.cerrado
+    if (!this.estado) delete this.options.cerrado
+    
+    
+    this.options.date_start = this.rangeFecha.value.start ? new Date(this.rangeFecha.value.start).getTime() : null
+    this.options.date_end = this.rangeFecha.value.end ? new Date(this.rangeFecha.value.end).setHours(23, 59, 59, 59) : null
+    this.cambiarQueryParams([{ cobrador: this.cobrador._id }])
+    const resp = await this._movimientoService.getCajaBancos(1, this.options);
+    this.cargarValores(resp)
+    // let getAllMovimientosOptions = {cerrado: false }
+    // if(this.fondo) getAllMovimientosOptions['fondo'] = this.fondo._id
+    // if(this.cobrador) getAllMovimientosOptions['cobrador'] = this.cobrador._id
+    // const respMovimientos = await this._movimientoService.getAllMovimientos(getAllMovimientosOptions);
+    // this.movimientoCount = respMovimientos.count;
+    // this.movimientos = respMovimientos.movimientos;
+
+    // this.totalMovimientos = respMovimientos.total.monto_total;
+    // let respFondo: any = await this._movimientoService.getSaldoFondo(cobradorId)
+    // console.log(respFondo);
+ 
+    // let options = {
+    //   pagado: true,
+    //   start: this.start,
+    //   end: this.end,
+    //   fondo: this.fondo._id,
+    //   cerrado: false,
+    //   get_total: '1'
+    // } 
+    this.loading = false;
+    this.listItems = [];
+    this.calcularSeleccionados();
 
   }
 
   customSearchFn(term: string, item: any) {
     term = term.toLowerCase();
     return (
-      item.NOMBRES.toLowerCase().indexOf(term) > -1 ||
-      item.APELLIDOS.toLowerCase().includes(term) ||
-      item.RAZON.toLowerCase().includes(term) ||
-      item.RUC.toLowerCase().includes(term)
+      item?.NOMBRES?.toLowerCase()?.indexOf(term) > -1 ||
+      item?.APELLIDOS?.toLowerCase()?.includes(term) ||
+      item?.RAZON?.toLowerCase()?.includes(term) ||
+      item?.RUC?.toLowerCase()?.includes(term)
     );
   }
 
@@ -390,7 +426,7 @@ export class InfoCajaComponent implements OnInit {
     
     this.movimientosPrueba = data.movimientos
     this.count = data.count
-    this.TotalArqueo = data.movimientos[0].total
+    this.TotalArqueo = data.movimientos[0]?.total
     this.totalEgreso = data.totalEgreso
     this.totalIngreso = data.totalIngreso
   }

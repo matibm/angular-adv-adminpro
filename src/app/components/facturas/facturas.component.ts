@@ -95,7 +95,12 @@ export class FacturasComponent implements OnInit {
         item.classList.add('table-info');
       }
     } else {
-      this.router.navigateByUrl(`/admin/ingreso/${id}`);
+      // this.router.navigateByUrl(`/admin/ingreso/${id}`);
+      const url = this.router.serializeUrl(
+        this.router.createUrlTree([`/admin/ingreso/${id}`])
+      );
+    
+      window.open(url, '_blank');
     }
 
     this.listItemsEvent.emit(this.listItems);
@@ -165,4 +170,6 @@ export class FacturasComponent implements OnInit {
 
     this.facturas = resp.facturas;
   }
+  fill = (number, len) => "0".repeat(len - number.toString().length) + number.toString();
+
 }

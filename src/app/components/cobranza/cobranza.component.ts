@@ -326,6 +326,7 @@ export class CobranzaComponent implements OnInit, AfterViewInit {
     this.montoTotal = 0;
     this.facturasAPagar = null;
     this.cliente = null;
+    this.comentario = null;
     this.ngOnInit();
   }
 
