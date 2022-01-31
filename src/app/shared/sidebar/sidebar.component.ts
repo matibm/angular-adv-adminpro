@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { SidebarService } from 'src/app/services/sidebar.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -10,44 +11,55 @@ import { SidebarService } from 'src/app/services/sidebar.service';
 export class SidebarComponent implements OnInit, AfterViewInit {
   class = '';
   menuItems: any[];
-  constructor(public sidebarService: SidebarService) {
+  constructor(
+    public _usuario: UsuarioService,
+    public sidebarService: SidebarService) {
     this.menuItems = sidebarService.menu;
     console.log(this.menuItems);
 
   }
   usuario
   async ngAfterViewInit() {
-    let doc = document.getElementById('info_caja')
-    let trans = document.getElementById('transferencia')
-
-    doc.style.display = 'none'
-    trans.style.display = 'none'
+    let doc: any = document.getElementById('info_caja')
+    let trans: any = document.getElementById('transferencia')
+    // if (doc) {
+      doc.style = { display : 'none'}
+      trans.style = {display : 'none'} 
+    // }
+    
     console.log(this.sidebarService.usuario?.role);
 
     this.usuario = await this.sidebarService._usuario.inicializarUsuario()
     if (this.usuario.role === 'ADMIN_ROLE') {
-      doc.style.display = 'block'
-      trans.style.display = 'block'
+      // if (doc) {
+        doc.style = { display : 'block'}
+      trans.style = {display : 'block'}
     }
   }
   async ngOnInit() {
-
+    if (!this.sidebarService.usuario) {
+     let id = localStorage.getItem('user_id')
+     this.usuario = await this._usuario.getUsuarioPorId(id); 
+    }
   }
 
 
   async onclickParent() {
-    let doc = document.getElementById('info_caja')
-    let trans = document.getElementById('transferencia')
+    let doc:any = document.getElementById('info_caja')
+    let trans:any = document.getElementById('transferencia')
 
-    trans.style.display = 'none'
+    // trans.style.display = 'none'
 
-    doc.style.display = 'none'
-    console.log(this.sidebarService.usuario?.role);
+    // doc.style.display = 'none'
+    doc.style = { display : 'none'}
+      trans.style = {display : 'none'}
 
-    this.usuario = await this.sidebarService._usuario.inicializarUsuario()
+
+    if(!this.usuario) this.usuario = await this.sidebarService._usuario.inicializarUsuario()
+    console.log(this.usuario?.role);
     if (this.usuario.role === 'ADMIN_ROLE') {
-      doc.style.display = 'block'
-      trans.style.display = 'block'
+      doc.style = { display : 'block'}
+      trans.style = {display : 'block'}
 
     }
 

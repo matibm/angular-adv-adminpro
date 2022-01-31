@@ -25,8 +25,8 @@ export class UsuarioService {
   }
 
   async inicializarUsuario(): Promise<Usuario> {
-
-    if (this.user_id) {
+    let id = localStorage.getItem('user_id')
+    if (id) {
       this.usuario = await this.getUsuarioPorId(this.user_id);
       return this.usuario
     } else {
