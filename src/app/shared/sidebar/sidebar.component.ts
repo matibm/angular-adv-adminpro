@@ -8,7 +8,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
   styles: [
   ]
 })
-export class SidebarComponent implements OnInit, AfterViewInit {
+export class SidebarComponent implements OnInit, AfterViewInit {  
   class = '';
   menuItems: any[];
   constructor(
