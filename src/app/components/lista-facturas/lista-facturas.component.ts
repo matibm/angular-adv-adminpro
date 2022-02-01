@@ -56,6 +56,7 @@ export class ListaFacturasComponent implements OnInit {
   contratos;
   contrato;
   nro_factura
+  nro_contrato:string
   facturasAPagar;
   inputClientes = new Subject<string>();
   loadingClientes = false
@@ -219,6 +220,7 @@ export class ListaFacturasComponent implements OnInit {
       cobrador: this.cobrador ? this.cobrador._id : null,
       servicio: this.servicio ? this.servicio._id : null,
       nro_factura: this.nro_factura,
+      nro_contrato: this.nro_contrato? this.nro_contrato.replace(/[.]/g, '') : null,
       fondo: this.fondo ? this.fondo._id : null,
       contrato: this.contrato ? this.contrato._id : null,
       pagado,
@@ -414,6 +416,9 @@ export class ListaFacturasComponent implements OnInit {
     await this._facturaService.getReporteMovimientos(body)
     this.loadingGenerarReporteMov = false
     
+  }
+  accionRecibo(accion){
+    this._facturaService.confirmarRecibo(this.opciones, accion, accion == 'confirmar'? Date.now() : null)
   }
 
 }

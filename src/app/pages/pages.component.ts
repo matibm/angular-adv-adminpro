@@ -13,10 +13,12 @@ declare function customInitFunctions();
 export class PagesComponent implements OnInit {
 
 
-  constructor(private settingsService: SettingsService) { } // inyeccion de un servicio
+  constructor(private settingsService: SettingsService) {
+    customInitFunctions();
+
+   } // inyeccion de un servicio
 
   ngOnInit(): void {
-    customInitFunctions();
 
   }
 

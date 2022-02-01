@@ -66,6 +66,41 @@ export class FacturaService {
       });
     });
   }
+  confirmarRecibo(options, accion, recibido? ) {
+
+    let url = URL_SERVICIOS + '/factura/accion_recibo';
+    url += `?token=${this._usuarioService.token}`;
+    if (options) {
+      Object.entries(options).forEach(([key, value]) => {
+        if (value) {
+          url += `&${key}=${value}`;
+        } else if (value == false) {
+          url += `&${key}=${value}`;
+        }
+      });
+    }
+    url += `&accion=${accion}`;
+    if(recibido) url += `&recibido=${recibido}`;
+
+    return this.http.get(url).toPromise().then((resp: any) => {
+      console.log(resp);
+      swal.fire({
+        icon: 'success',
+        title: 'accion de recibo aplicado',
+        // text: 'I will close in 2 seconds.',
+        timer: 3000,
+      });
+      return resp.factura;
+    }, (err) => {
+      console.error(err);
+      swal.fire({
+        icon: 'error',
+        title: 'Ocurrió un error',
+        text: err.error.message,
+
+      });
+    });
+  }
   elimnarFactura(id) {
 
     let url = URL_SERVICIOS + '/factura/eliminar_factura/' + id;

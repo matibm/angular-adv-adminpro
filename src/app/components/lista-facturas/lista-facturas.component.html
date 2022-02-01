@@ -23,13 +23,17 @@
             <div class="col-xs col-md">
                 <div style="justify-content: space-between;" class="inline-flex">
                     <label>Cliente</label>
-                    <div *ngIf="cliente" (click)="cliente = null; cambiarQueryParams([{cliente: null}])" class="pointer close-icon ml-auto">
+                    <div *ngIf="cliente" (click)="cliente = null; cambiarQueryParams([{cliente: null}])"
+                        class="pointer close-icon ml-auto">
                         <button type="button" class="btn btn-sm btn-light"><i class=" ti-close  "></i></button>
                     </div>
                 </div>
                 <div class="" *ngIf="!cliente">
-                    <ng-select [typeahead]="inputClientes" [loading]="loadingClientes" [items]="clientes" name="dsfdbrweqcda" [(ngModel)]="cliente" (ngModelChange)="cambiarQueryParams([{cliente: cliente._id}]);filtrar()" notFoundText="no se encontraron resultados" placeholder="buscar cliente"
-                    bindLabel="NOMBRES" [searchFn]="customSearchFn">
+                    <ng-select [typeahead]="inputClientes" [loading]="loadingClientes" [items]="clientes"
+                        name="dsfdbrweqcda" [(ngModel)]="cliente"
+                        (ngModelChange)="cambiarQueryParams([{cliente: cliente._id}]);filtrar()"
+                        notFoundText="no se encontraron resultados" placeholder="buscar cliente" bindLabel="NOMBRES"
+                        [searchFn]="customSearchFn">
                         <ng-template ng-option-tmp let-item="item">
                             <div>
                                 <div *ngIf="item.APELLIDOS">{{item.APELLIDOS}} {{item.NOMBRES}}</div>
@@ -53,7 +57,7 @@
                 </div>
             </div>
             <!-- Fondo -->
-           
+
             <!-- Servicio -->
             <div style="min-width: 550px;" class="col-xs col-md">
                 <div style="justify-content: space-between;" class="inline-flex">
@@ -62,7 +66,9 @@
                         <button type="button" class="btn btn-sm btn-light"><i class=" ti-close  "></i></button>
                     </div>
                 </div>
-                <ng-select *ngIf="!servicio" [(ngModel)]="servicio" (ngModelChange)="seleccionarProducto(servicio); filtrar()" [items]="servicios" notFoundText="no se encontraron resultados" placeholder="buscar servicio" bindLabel="NOMBRE">
+                <ng-select *ngIf="!servicio" [(ngModel)]="servicio"
+                    (ngModelChange)="seleccionarProducto(servicio); filtrar()" [items]="servicios"
+                    notFoundText="no se encontraron resultados" placeholder="buscar servicio" bindLabel="NOMBRE">
                     <ng-template ng-option-tmp let-item="item">
                         <div> {{item.NOMBRE}} {{item.COD_CORTO}} <br>
                         </div>
@@ -84,8 +90,10 @@
                     </div>
                 </div>
                 <div class="" *ngIf="!vendedor">
-                    <ng-select [typeahead]="inputVendedores" [loading]="loadingVendedores" [items]="vendedores" name="ddfsfdsfdgfdbrweqcda" [(ngModel)]="vendedor" (ngModelChange)="filtrar()" notFoundText="no se encontraron resultados" placeholder="buscar vendedor"
-                    bindLabel="NOMBRES" [searchFn]="customSearchFn">
+                    <ng-select [typeahead]="inputVendedores" [loading]="loadingVendedores" [items]="vendedores"
+                        name="ddfsfdsfdgfdbrweqcda" [(ngModel)]="vendedor" (ngModelChange)="filtrar()"
+                        notFoundText="no se encontraron resultados" placeholder="buscar vendedor" bindLabel="NOMBRES"
+                        [searchFn]="customSearchFn">
                         <ng-template ng-option-tmp let-item="item">
                             <div>
                                 <div *ngIf="item.APELLIDOS">{{item.APELLIDOS}} {{item.NOMBRES}}</div>
@@ -99,7 +107,7 @@
                 <div class="" *ngIf="vendedor">
                     <div>
                         <div *ngIf="vendedor.NOMBRES">{{vendedor .NOMBRES}} {{vendedor .APELLIDOS}}</div>
-                       
+
                         <small>{{vendedor.RUC | ruc}}</small>
                     </div>
                 </div>
@@ -129,13 +137,16 @@
             <div class="col-xs col-md">
                 <div style="justify-content: space-between;" class="inline-flex">
                     <label>Cobrador</label>
-                    <div *ngIf="cobrador && is_admin_role" (click)="cobrador = null; filtrar()" class="pointer close-icon ml-auto">
+                    <div *ngIf="cobrador && is_admin_role" (click)="cobrador = null; filtrar()"
+                        class="pointer close-icon ml-auto">
                         <button type="button" class="btn btn-sm btn-light"><i class=" ti-close  "></i></button>
                     </div>
                 </div>
                 <div class="" *ngIf="!cobrador">
-                    <ng-select [typeahead]="inputCobradores" [loading]="loadingCobradores" [items]="cobradores" name="dsfdsfdgfdbrweqcda" [(ngModel)]="cobrador" (ngModelChange)="filtrar()" notFoundText="no se encontraron resultados" placeholder="buscar cobrador"
-                    bindLabel="NOMBRES" [searchFn]="customSearchFn">
+                    <ng-select [typeahead]="inputCobradores" [loading]="loadingCobradores" [items]="cobradores"
+                        name="dsfdsfdgfdbrweqcda" [(ngModel)]="cobrador" (ngModelChange)="filtrar()"
+                        notFoundText="no se encontraron resultados" placeholder="buscar cobrador" bindLabel="NOMBRES"
+                        [searchFn]="customSearchFn">
                         <ng-template ng-option-tmp let-item="item">
                             <div>
                                 <div *ngIf="item.APELLIDOS">{{item.APELLIDOS}} {{item.NOMBRES}}</div>
@@ -168,11 +179,13 @@
                     </div>
                 </div>
                 <div class="" *ngIf="!fondo">
-                    <ng-select [items]="fondos" [(ngModel)]="fondo" (ngModelChange)="filtrar()" (search)="searchFondos($event)" notFoundText="no se encontraron resultados" placeholder="buscar fondo" bindLabel="NOMBRES" [searchFn]="customSearchFn">
+                    <ng-select [items]="fondos" [(ngModel)]="fondo" (ngModelChange)="filtrar()"
+                        (search)="searchFondos($event)" notFoundText="no se encontraron resultados"
+                        placeholder="buscar fondo" bindLabel="NOMBRES" [searchFn]="customSearchFn">
                         <ng-template ng-option-tmp let-item="item">
                             <div>
                                 <div *ngIf="item.APELLIDOS">{{item.APELLIDOS}} {{item.NOMBRES}}</div>
-                                 
+
 
 
                                 <small>{{item.RUC | ruc}}</small>
@@ -184,8 +197,8 @@
 
                 <div class="" *ngIf="fondo">
                     <div>
-                        <div  >{{fondo.NOMBRES}} {{fondo.APELLIDOS}}</div>
-                       
+                        <div>{{fondo.NOMBRES}} {{fondo.APELLIDOS}}</div>
+
 
                         <small>{{fondo.RUC | ruc}}</small>
                     </div>
@@ -201,8 +214,10 @@
                     </mat-date-range-input>
                     <mat-datepicker-toggle matSuffix [for]="pickerEmision"></mat-datepicker-toggle>
                     <mat-date-range-picker #pickerEmision></mat-date-range-picker>
-                    <mat-error *ngIf="rangeEmision.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
-                    <mat-error *ngIf="rangeEmision.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+                    <mat-error *ngIf="rangeEmision.controls.start.hasError('matStartDateInvalid')">Invalid start date
+                    </mat-error>
+                    <mat-error *ngIf="rangeEmision.controls.end.hasError('matEndDateInvalid')">Invalid end date
+                    </mat-error>
                 </mat-form-field>
 
                 <!-- <p>Selected range: {{range.value | json}}</p> -->
@@ -213,13 +228,16 @@
                     <mat-label>Fecha de vencimiento</mat-label>
                     <mat-date-range-input [formGroup]="rangeVencimiento" [rangePicker]="pickerVencimiento">
                         <input matStartDate formControlName="start" placeholder="fecha inicio">
-                        <input matEndDate formControlName="end" (dateInput)="filtrar('fecha_vencimiento')" placeholder="fecha fin">
+                        <input matEndDate formControlName="end" (dateInput)="filtrar('fecha_vencimiento')"
+                            placeholder="fecha fin">
                     </mat-date-range-input>
                     <mat-datepicker-toggle matSuffix [for]="pickerVencimiento"></mat-datepicker-toggle>
                     <mat-date-range-picker #pickerVencimiento></mat-date-range-picker>
 
-                    <mat-error *ngIf="rangeVencimiento.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
-                    <mat-error *ngIf="rangeVencimiento.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+                    <mat-error *ngIf="rangeVencimiento.controls.start.hasError('matStartDateInvalid')">Invalid start
+                        date</mat-error>
+                    <mat-error *ngIf="rangeVencimiento.controls.end.hasError('matEndDateInvalid')">Invalid end date
+                    </mat-error>
                 </mat-form-field>
 
                 <!-- <p>Selected range: {{range.value | json}}</p> -->
@@ -229,13 +247,16 @@
                     <mat-label>Fecha de Pago</mat-label>
                     <mat-date-range-input [formGroup]="rangePagado" [rangePicker]="pickerPagado">
                         <input matStartDate formControlName="start" placeholder="fecha inicio">
-                        <input matEndDate formControlName="end" (dateInput)="filtrar('fecha_pago')" placeholder="fecha fin">
+                        <input matEndDate formControlName="end" (dateInput)="filtrar('fecha_pago')"
+                            placeholder="fecha fin">
                     </mat-date-range-input>
                     <mat-datepicker-toggle matSuffix [for]="pickerPagado"></mat-datepicker-toggle>
                     <mat-date-range-picker #pickerPagado></mat-date-range-picker>
 
-                    <mat-error *ngIf="rangePagado.controls.start.hasError('matStartDateInvalid')">Fecha inicio inválida</mat-error>
-                    <mat-error *ngIf="rangePagado.controls.end.hasError('matEndDateInvalid')">Fecha fin inválida</mat-error>
+                    <mat-error *ngIf="rangePagado.controls.start.hasError('matStartDateInvalid')">Fecha inicio inválida
+                    </mat-error>
+                    <mat-error *ngIf="rangePagado.controls.end.hasError('matEndDateInvalid')">Fecha fin inválida
+                    </mat-error>
                 </mat-form-field>
 
                 <!-- <p>Selected range: {{range.value | json}}</p> -->
@@ -243,28 +264,16 @@
 
             <div class="col-xs col-md mt-3">
                 <h4>Estado</h4>
-                <input [(ngModel)]="utilizado" (ngModelChange)="filtrar()" type="checkbox"
-                    name="check_utilizado" id="check_utilizado" class="filled-in chk-col-light-blue" checked />
+                <input [(ngModel)]="utilizado" (ngModelChange)="filtrar()" type="checkbox" name="check_utilizado"
+                    id="check_utilizado" class="filled-in chk-col-light-blue" checked />
                 <label class="mx-3" for="check_utilizado">Utilizado</label>
 
-                <input [(ngModel)]="de_baja"  (ngModelChange)="filtrar()" type="checkbox" name="check_de_baja" id="check_de_baja"
-                    class="filled-in chk-col-light-blue" checked />
+                <input [(ngModel)]="de_baja" (ngModelChange)="filtrar()" type="checkbox" name="check_de_baja"
+                    id="check_de_baja" class="filled-in chk-col-light-blue" checked />
                 <label class="mx-3" for="check_de_baja">de baja</label>
             </div>
-            <div class="col-xs col-md mt-3">
-                <h4>Cod Servicio</h4>
-                <div class="">
-                    <ng-select [(ngModel)]="codSeleccionado" (ngModelChange)="filtrar()">
-                        <ng-option *ngFor="let item of cod_servicios" [value]="item">
-                            <div >
-                                {{item}}
-                            </div>
+           
 
-                        </ng-option>
-                    </ng-select>
-                </div>
-            </div>
-            
             <!-- <div class="col-xs col-md mt-3">
                 <div class="form-group">
                     <input type="number" class="form-control" #nro_factura name="" id="" aria-describedby="helpId" placeholder="buscar por nro de factura">
@@ -276,7 +285,8 @@
             <!-- contrato -->
             <div *ngIf="cliente && !contrato" class="col-xs col-md">
                 <div *ngIf="cliente && !contrato" class="d-flex mt-3">
-                    <button type="button" (click)="showModal = true" class="btn mx-auto btn-info">Seleccionar Contrato</button>
+                    <button type="button" (click)="showModal = true" class="btn mx-auto btn-info">Seleccionar
+                        Contrato</button>
                 </div>
 
                 <div style="width: fit-content;" class="mt-3" *ngIf="contrato">
@@ -314,16 +324,53 @@
             </div>
         </div>
         <!-- <hr> -->
+        <div class="row">
 
-        <div class="col-xs col-md-3 ">
-             <div class="form-group">
-                 <label for="nro-factura">
-                Nro Factura                    
-                 </label>
-                 <input [(ngModel)]="nro_factura" class="form-control" type="text" name="" id="">
-                 <small>OBS: sin numero de talonario</small>
-                 <div><button class="btn btn-info mt-2" (click)="filtrar()">Buscar</button></div>
-             </div>
+            <div class="col-xs col-md-3 ">
+                <div class="form-group">
+                    <label for="nro-factura">
+                        Nro Factura
+                    </label>
+
+                    <div class="input-group ">
+                        <input [(ngModel)]="nro_factura" class="form-control" type="text" name="" id="">
+                        <button class="btn btn-outline-secondary" (click)="filtrar()">Filtrar</button>
+                    </div>
+
+
+
+                    <small>OBS: sin numero de talonario</small>
+                    <!-- <div><button class="btn btn-info mt-2" (click)="filtrar()">Buscar</button></div> -->
+                </div>
+            </div>
+            <div class="col-xs col-md-3 ">
+                <div class="form-group">
+                    <label for="nro-contrato">
+                        Nro Contrato
+                    </label>
+
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" [(ngModel)]="nro_contrato" placeholder="Buscar por Nro. de contrato">
+                        <button class="btn btn-outline-secondary" (click)="filtrar()">Filtrar</button>
+                    </div>
+
+                    <!-- <input [(ngModel)]="nro_contrato" class="form-control" type="text" name="" id="">                
+                <div><button class="btn btn-info mt-2" (click)="filtrar()">Buscar</button></div> -->
+                </div>
+            </div>
+            <div class="col-xs col-md-3">
+                <h4>Cod Servicio</h4>
+                <div class="">
+                    <ng-select [(ngModel)]="codSeleccionado" (ngModelChange)="filtrar()">
+                        <ng-option *ngFor="let item of cod_servicios" [value]="item">
+                            <div>
+                                {{item}}
+                            </div>
+
+                        </ng-option>
+                    </ng-select>
+                </div>
+            </div>
         </div>
 
         <!-- <button type="button" (click)="filtrar()" class=" float-right btn btn-primary">filtrar</button> -->
@@ -337,21 +384,44 @@
         </div>
     </div>
 </div> -->
-<app-facturas *ngIf="!showModal" [count]="count" [total]="montoTotal" [options]="opciones" [sort]="sort" [total]="true" [facturas]="facturas"></app-facturas>
+<app-facturas *ngIf="!showModal" [count]="count" [total]="montoTotal" [options]="opciones" [sort]="sort" [total]="true"
+    [facturas]="facturas"></app-facturas>
 
 <div *ngIf="is_admin_role" class="card">
     <div class="card-body">
         <div class="d-flex">
-           <div class="mx-auto">
-            <span>Aplicar Interes por mora</span>
-            <div class="form-group">
-                <input type="number" class="form-control" #interes name="" id="" aria-describedby="helpId" placeholder="interes a agregar">
-                <small>EL interes aplicará a todo el filtro establecido</small>
+            <div class="mx-auto">
+                <span>Aplicar Interes por mora</span>
+                <div class="form-group">
+                    <input type="number" class="form-control" #interes name="" id="" aria-describedby="helpId"
+                        placeholder="interes a agregar">
+                    <small>EL interes aplicará a todo el filtro establecido</small>
+
+                </div>
+
+                <button type="button" (click)="aplicarInteres(interes.value)" class="btn btn-info mx-auto">Aplicar
+                    Interes</button>
+            </div>
+            <div class="mx-auto">
+                <span>Confirmar Recibo</span>
+                <div class="form-group">
+                    <div style="width: 100%;">
+                        <div style="display: flex;">
+                            <div class="mx-auto">
+                                <button (click)="accionRecibo('cancelar')" class="btn btn-danger btn-rounded">Cancelar Recibo</button>
+
+                            </div>
+                            <div class="mx-auto">
+                                <button (click)="accionRecibo('confirmar')" class="ml-2 btn btn-inverse btn-rounded">Confirmar Recibo</button>
+
+                            </div>
+                        </div>
+                    </div>
+                    <small>La acción aplicará a todo el filtro establecido</small>
+
+                </div>
 
             </div>
- 
-            <button type="button" (click)="aplicarInteres(interes.value)" class="btn btn-info mx-auto">Aplicar Interes</button>
-           </div>
         </div>
     </div>
 </div>
@@ -361,48 +431,58 @@
             <div class="card-body">
                 <h3>Reporte Cuadro ingreso</h3>
                 <div class="d-flex">
-                   <div class="mx-auto">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Fecha</mat-label>
-                        <mat-date-range-input [formGroup]="rangeReporte" [rangePicker]="pickerReporte">
-                            <input autocomplete="off" matStartDate formControlName="start" placeholder="fecha inicio">
-                            <input matEndDate formControlName="end" placeholder="fecha fin">
-                        </mat-date-range-input>
-                        <mat-datepicker-toggle matSuffix [for]="pickerReporte"></mat-datepicker-toggle>
-                        <mat-date-range-picker #pickerReporte></mat-date-range-picker>
-                        <mat-error *ngIf="rangeReporte.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
-                        <mat-error *ngIf="rangeReporte.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
-                    </mat-form-field>
-                    <div style="display: block;">
-                    
-                        <button type="button" (click)="generarReporte()" class="btn btn-rounded btn-inverse mx-auto">Descargar Excel</button></div>
-                   </div>
+                    <div class="mx-auto">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Fecha</mat-label>
+                            <mat-date-range-input [formGroup]="rangeReporte" [rangePicker]="pickerReporte">
+                                <input autocomplete="off" matStartDate formControlName="start"
+                                    placeholder="fecha inicio">
+                                <input matEndDate formControlName="end" placeholder="fecha fin">
+                            </mat-date-range-input>
+                            <mat-datepicker-toggle matSuffix [for]="pickerReporte"></mat-datepicker-toggle>
+                            <mat-date-range-picker #pickerReporte></mat-date-range-picker>
+                            <mat-error *ngIf="rangeReporte.controls.start.hasError('matStartDateInvalid')">Invalid start
+                                date</mat-error>
+                            <mat-error *ngIf="rangeReporte.controls.end.hasError('matEndDateInvalid')">Invalid end date
+                            </mat-error>
+                        </mat-form-field>
+                        <div style="display: block;">
+
+                            <button type="button" (click)="generarReporte()"
+                                class="btn btn-rounded btn-inverse mx-auto">Descargar Excel</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-       
+
     </div>
     <div class="col-xs col-md">
         <div *ngIf="is_admin_role" class="card">
             <div class="card-body">
                 <h3>Reporte Anual CMP</h3>
                 <div class="d-flex">
-                   <div class="mx-auto">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Fecha</mat-label>
-                        <mat-date-range-input [formGroup]="rangeReporteCMP" [rangePicker]="pickerReporteCMP">
-                            <input autocomplete="off" matStartDate formControlName="start" placeholder="fecha inicio">
-                            <input matEndDate formControlName="end" placeholder="fecha fin">
-                        </mat-date-range-input>
-                        <mat-datepicker-toggle matSuffix [for]="pickerReporteCMP"></mat-datepicker-toggle>
-                        <mat-date-range-picker #pickerReporteCMP></mat-date-range-picker>
-                        <mat-error *ngIf="rangeReporteCMP.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
-                        <mat-error *ngIf="rangeReporteCMP.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
-                    </mat-form-field>
-                    <div style="display: block;">
-                    
-                        <button type="button" (click)="generarReporteAnualCMP()" class="btn btn-rounded btn-inverse mx-auto">Descargar Excel</button></div>
-                   </div>
+                    <div class="mx-auto">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Fecha</mat-label>
+                            <mat-date-range-input [formGroup]="rangeReporteCMP" [rangePicker]="pickerReporteCMP">
+                                <input autocomplete="off" matStartDate formControlName="start"
+                                    placeholder="fecha inicio">
+                                <input matEndDate formControlName="end" placeholder="fecha fin">
+                            </mat-date-range-input>
+                            <mat-datepicker-toggle matSuffix [for]="pickerReporteCMP"></mat-datepicker-toggle>
+                            <mat-date-range-picker #pickerReporteCMP></mat-date-range-picker>
+                            <mat-error *ngIf="rangeReporteCMP.controls.start.hasError('matStartDateInvalid')">Invalid
+                                start date</mat-error>
+                            <mat-error *ngIf="rangeReporteCMP.controls.end.hasError('matEndDateInvalid')">Invalid end
+                                date</mat-error>
+                        </mat-form-field>
+                        <div style="display: block;">
+
+                            <button type="button" (click)="generarReporteAnualCMP()"
+                                class="btn btn-rounded btn-inverse mx-auto">Descargar Excel</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -412,145 +492,155 @@
             <div class="card-body">
                 <h3>Reporte Movimientos</h3>
                 <div class="d-flex">
-                   <div class="mx-auto">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Fecha</mat-label>
-                        <mat-date-range-input [formGroup]="rangeReporteMovimientos" [rangePicker]="pickerReporteCMP">
-                            <input autocomplete="off" matStartDate formControlName="start" placeholder="fecha inicio">
-                            <input matEndDate formControlName="end" placeholder="fecha fin">
-                        </mat-date-range-input>
-                        <mat-datepicker-toggle matSuffix [for]="pickerReporteCMP"></mat-datepicker-toggle>
-                        <mat-date-range-picker #pickerReporteCMP></mat-date-range-picker>
-                        <mat-error *ngIf="rangeReporteMovimientos.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
-                        <mat-error *ngIf="rangeReporteMovimientos.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
-                    </mat-form-field>
-<div></div>
-                    <button style="width: 155.57px;" [disabled]="!rangeReporteMovimientos.value.start 
+                    <div class="mx-auto">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Fecha</mat-label>
+                            <mat-date-range-input [formGroup]="rangeReporteMovimientos"
+                                [rangePicker]="pickerReporteCMP">
+                                <input autocomplete="off" matStartDate formControlName="start"
+                                    placeholder="fecha inicio">
+                                <input matEndDate formControlName="end" placeholder="fecha fin">
+                            </mat-date-range-input>
+                            <mat-datepicker-toggle matSuffix [for]="pickerReporteCMP"></mat-datepicker-toggle>
+                            <mat-date-range-picker #pickerReporteCMP></mat-date-range-picker>
+                            <mat-error *ngIf="rangeReporteMovimientos.controls.start.hasError('matStartDateInvalid')">
+                                Invalid start date</mat-error>
+                            <mat-error *ngIf="rangeReporteMovimientos.controls.end.hasError('matEndDateInvalid')">
+                                Invalid end date</mat-error>
+                        </mat-form-field>
+                        <div></div>
+                        <button style="width: 155.57px;" [disabled]="!rangeReporteMovimientos.value.start 
                     || !rangeReporteMovimientos.value.end 
-                    || loadingGenerarReporteMov "
-                     (click)="generarReporteMovimientos()" class="btn btn-rounded mr-auto btn-inverse">
-                        <span *ngIf="!loadingGenerarReporteMov">Descargar Excel</span>
-                        <div *ngIf="loadingGenerarReporteMov" style="width: 100%;">
-                            <div style="display: flex;">
-        
-                                <div class="mx-auto">
-                                    <mat-spinner [color]="'accent'" [diameter]="20"></mat-spinner>
+                    || loadingGenerarReporteMov " (click)="generarReporteMovimientos()"
+                            class="btn btn-rounded mr-auto btn-inverse">
+                            <span *ngIf="!loadingGenerarReporteMov">Descargar Excel</span>
+                            <div *ngIf="loadingGenerarReporteMov" style="width: 100%;">
+                                <div style="display: flex;">
+
+                                    <div class="mx-auto">
+                                        <mat-spinner [color]="'accent'" [diameter]="20"></mat-spinner>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                    </button>
-
+                        </button>
 
 
 
 
 
-                    <!-- <div style="display: block;">
+
+                        <!-- <div style="display: block;">
                     
                         <button type="button" [disabled]="!rangeReporteMovimientos.value.start || !rangeReporteMovimientos.value.end" (click)="generarReporteMovimientos()" class="btn btn-rounded btn-inverse mx-auto">Descargar Excel</button></div>
                    </div> -->
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 
 
-<div *ngIf="contrato" class="card">
-    <div class="card-body">
-        <h4> <span class="lstick"></span>Pagar Cuotas</h4>
+    <div *ngIf="contrato" class="card">
+        <div class="card-body">
+            <h4> <span class="lstick"></span>Pagar Cuotas</h4>
 
-        <div class="my-3 d-flex">
-            <div class="mx-auto">
-                <div class="form-group">
-                    <input type="text" class="form-control" #montoAPagar name="" id="" aria-describedby="helpId" placeholder="ingresar monto a pagar">
+            <div class="my-3 d-flex">
+                <div class="mx-auto">
+                    <div class="form-group">
+                        <input type="text" class="form-control" #montoAPagar name="" id="" aria-describedby="helpId"
+                            placeholder="ingresar monto a pagar">
+                    </div>
                 </div>
+
             </div>
+            <div class="d-flex">
+                <div class="mx-auto">
+                    <button (click)="getFacturasApagar(contrato._id, montoAPagar.value)"
+                        class="btn btn-info">calcular</button>
+                </div>
 
-        </div>
-        <div class="d-flex">
-            <div class="mx-auto">
-                <button (click)="getFacturasApagar(contrato._id, montoAPagar.value)" class="btn btn-info">calcular</button>
             </div>
+            <div class="" *ngIf="facturasAPagar">
 
-        </div>
-        <div class="" *ngIf="facturasAPagar">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Cuotas</h3>
 
-            <div class="card">
-                <div class="card-body">
-                    <h3 class="card-title">Cuotas</h3>
+                        <div style="overflow: auto; max-height: 400px;">
 
-                    <div style="overflow: auto; max-height: 400px;">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Vencimiento</th>
+                                        <th>Monto</th>
+                                    </tr>
+                                </thead>
 
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Vencimiento</th>
-                                    <th>Monto</th>
-                                </tr>
-                            </thead>
+                                <tbody>
 
-                            <tbody>
-
-                                <tr *ngFor="let cuota of facturasAPagar; let i = index">
-                                    <td scope="row">{{i+1}}</td>
-                                    <td>{{cuota.vencimiento | date}}</td>
-                                    <td>{{cuota.haber| currency:'':'':'2.0' }} Gs</td>
-                                </tr>
+                                    <tr *ngFor="let cuota of facturasAPagar; let i = index">
+                                        <td scope="row">{{i+1}}</td>
+                                        <td>{{cuota.vencimiento | date}}</td>
+                                        <td>{{cuota.haber| currency:'':'':'2.0' }} Gs</td>
+                                    </tr>
 
 
-                            </tbody>
+                                </tbody>
 
-                        </table>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="inline-flex">
+                    <h4 class="mr-3"><b>Fondo:</b></h4>
+                    <div class="" *ngIf="!fondo">
+                        <ng-select [ngStyle]="{minWidth: '300px'}" [items]="fondos" [(ngModel)]="fondo"
+                            (search)="searchBancos($event)" notFoundText="no se encontraron resultados"
+                            placeholder="buscar origen fondo" bindLabel="NOMBRES" [searchFn]="customSearchFn">
+                            <ng-template ng-option-tmp let-item="item">
+                                <div>
+                                    <div *ngIf="item.APELLIDOS">{{item.APELLIDOS}} {{item.NOMBRES}}</div>
+                                    <div *ngIf="item.NOMBRES && item.RAZON"> - </div>
+                                    <div *ngIf="item.RAZON">{{item.RAZON}} </div>
+
+
+                                    <small>{{item.RUC | ruc}}</small>
+                                </div>
+
+                            </ng-template>
+                        </ng-select>
+                    </div>
+
+                    <div class="" *ngIf="fondo">
+                        <h4>
+                            <div *ngIf="fondo.NOMBRES">{{fondo.NOMBRES}} {{fondo.APELLIDOS}}</div>
+                            <div *ngIf="fondo.NOMBRES && fondo.RAZON"> - </div>
+                            <div *ngIf="fondo.RAZON">{{fondo.RAZON}} </div>
+
+                            <small>{{fondo.RUC | ruc}}</small>
+                        </h4>
+                    </div>
+
+                </div>
+
+                <div class="d-flex">
+                    <div class="mx-auto">
+                        <button (click)="confirmarPago(contrato._id, montoAPagar.value, fondo)" [disabled]="!fondo"
+                            class="btn btn-success">Confirmar Pago</button>
                     </div>
 
                 </div>
             </div>
-
-            <div class="inline-flex">
-                <h4 class="mr-3"><b>Fondo:</b></h4>
-                <div class="" *ngIf="!fondo">
-                    <ng-select [ngStyle]="{minWidth: '300px'}" [items]="fondos" [(ngModel)]="fondo" (search)="searchBancos($event)" notFoundText="no se encontraron resultados" placeholder="buscar origen fondo" bindLabel="NOMBRES" [searchFn]="customSearchFn">
-                        <ng-template ng-option-tmp let-item="item">
-                            <div>
-                                <div *ngIf="item.APELLIDOS">{{item.APELLIDOS}} {{item.NOMBRES}}</div>
-                                <div *ngIf="item.NOMBRES && item.RAZON"> - </div>
-                                <div *ngIf="item.RAZON">{{item.RAZON}} </div>
-
-
-                                <small>{{item.RUC | ruc}}</small>
-                            </div>
-
-                        </ng-template>
-                    </ng-select>
-                </div>
-
-                <div class="" *ngIf="fondo">
-                    <h4>
-                        <div *ngIf="fondo.NOMBRES">{{fondo.NOMBRES}} {{fondo.APELLIDOS}}</div>
-                        <div *ngIf="fondo.NOMBRES && fondo.RAZON"> - </div>
-                        <div *ngIf="fondo.RAZON">{{fondo.RAZON}} </div>
-
-                        <small>{{fondo.RUC | ruc}}</small>
-                    </h4>
-                </div>
-
-            </div>
-
-            <div class="d-flex">
-                <div class="mx-auto">
-                    <button (click)="confirmarPago(contrato._id, montoAPagar.value, fondo)" [disabled]="!fondo" class="btn btn-success">Confirmar Pago</button>
-                </div>
-
-            </div>
         </div>
     </div>
-</div>
 
 
 
-<app-modal-contratos (contratoSelected)="onContratoSelected($event)" [cliente]="cliente" (onClose)="showModal = false" *ngIf="showModal"></app-modal-contratos>
-<notifier-container></notifier-container>
+    <app-modal-contratos (contratoSelected)="onContratoSelected($event)" [cliente]="cliente"
+        (onClose)="showModal = false" *ngIf="showModal"></app-modal-contratos>
+    <notifier-container></notifier-container>
