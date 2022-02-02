@@ -404,6 +404,13 @@
             </div>
             <div class="mx-auto">
                 <span>Confirmar Recibo</span>
+                <div><mat-form-field appearance="fill">
+                    <mat-label>Fecha de Recibo</mat-label>
+                    <input matInput name="asdrdsvet321" [(ngModel)]="fecha_recibo" [matDatepicker]="pickerRecibo">
+                    <mat-datepicker-toggle matSuffix [for]="pickerRecibo">
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #pickerRecibo></mat-datepicker>
+                </mat-form-field></div>
                 <div class="form-group">
                     <div style="width: 100%;">
                         <div style="display: flex;">

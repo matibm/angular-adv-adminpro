@@ -87,6 +87,7 @@ export class ListaFacturasComponent implements OnInit {
   ];
 
 
+  fecha_recibo = new Date()
   cod_servicios = []
   estadoSeleccionado = 'TODOS';
   codSeleccionado = null
@@ -418,7 +419,7 @@ export class ListaFacturasComponent implements OnInit {
     
   }
   accionRecibo(accion){
-    this._facturaService.confirmarRecibo(this.opciones, accion, accion == 'confirmar'? Date.now() : null)
+    this._facturaService.confirmarRecibo(this.opciones, accion, accion == 'confirmar'? this.fecha_recibo.getTime() : null)
   }
 
 }
