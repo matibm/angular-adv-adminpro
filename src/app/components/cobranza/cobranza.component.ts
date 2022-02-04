@@ -252,8 +252,12 @@ export class CobranzaComponent implements OnInit, AfterViewInit {
 
   }
   async confirmarPago() {
-    let timbrado = (await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body
+    console.log(this.loadingConfirmarPago);
+    if(this.loadingConfirmarPago) return
     this.loadingConfirmarPago = true
+    
+    let timbrado = (await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body
+    
     let pagoresp = await this._facturaService.pagarPorMonto({
       fecha_pago: this.fechaPago,
       lista: this.lista,
