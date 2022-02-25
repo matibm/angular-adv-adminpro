@@ -157,6 +157,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>Nro Contrato</th>
                                     <th>Vencimiento</th>
                                     <th>Monto</th>
                                     <th>Servicio</th>
@@ -166,7 +167,8 @@
                             <tbody>
 
                                 <tr *ngFor="let cuota of facturasAPagar; let i = index">
-                                    <td scope="row">{{cuota.nro_factura}}</td>
+                                    <td scope="row">{{cuota.nro_factura }}</td>
+                                    <td scope="row">{{cuota.nro_contrato | ruc}}</td>
                                     <td>{{cuota.vencimiento | date}}</td>
                                     <td>{{cuota.haber| currency:'':'':'2.0' }} Gs</td>
                                     <td>{{cuota.servicio.NOMBRE}}</td>
@@ -207,6 +209,7 @@
                 <thead>
                     <tr>
                         <th>#</th>
+                        <th>Nro Contrato</th>
                         <th>Vencimiento</th>
                         <th>Monto</th>
                         <th>Servicio</th>
@@ -218,6 +221,7 @@
 
                     <tr *ngFor="let cuota of facturasAPagarAux; let i = index">
                         <td scope="row">{{cuota.nro_factura}}</td>
+                        <td scope="row">{{cuota.nro_contrato | ruc}}</td>
                         <td>{{cuota.vencimiento | date}}</td>
                         <td>{{cuota.haber| currency:'':'':'2.0' }} Gs</td>
                         <td>{{cuota.servicio.NOMBRE}}</td>
