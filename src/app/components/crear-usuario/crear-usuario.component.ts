@@ -79,8 +79,13 @@ export class CrearUsuarioComponent implements OnInit {
         icon: 'success',
         title: 'Usuario Existente',
         text: `${consulta[0].NOMBRES} ${consulta[0].APELLIDOS} RUC/CI: ${consulta[0].RUC}`,
-        timer: 3000,
-      });
+        confirmButtonText: `Ir a usuario`
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+         this.router.navigateByUrl(`/admin/usuario/${consulta[0]._id}`)
+        }  
+      })
     } else {
       swal.fire({
         icon: 'info',
