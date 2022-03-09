@@ -47,6 +47,7 @@ export class InfoContratoComponent implements OnInit {
   radioValue;
   montoTotal:any = {};
   saldo = 0
+  egresoOptions = {}
   tipos_pago = [
     {
       name: 'Oficina',
@@ -107,7 +108,8 @@ export class InfoContratoComponent implements OnInit {
     this.facturas = respFacturas.facturas;
     this.facturasCount = respFacturas.count;
     this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', '');
-    let respMovimientos = await this._movimientoService.getAllMovimientos({ contrato: this.contrato._id })
+    this.egresoOptions = { contrato: this.contrato._id }
+    let respMovimientos = await this._movimientoService.getAllMovimientos(this.egresoOptions)
     this.movimientos = respMovimientos.movimientos;
     this.totalMovimientos = respMovimientos.total?.monto_total;
     this.countMovimientos = respMovimientos.count;
