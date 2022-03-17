@@ -21,8 +21,10 @@
                             <i *ngIf="sort.key === 'nro_contrato'" class="ml-1 fa "
                                 [ngClass]="{'fa-sort-asc': sort.value === 1 , 'fa-sort-desc': sort.value === -1 }"></i>
                         </th>
-                        <th class="text-center" style="min-width: 150px;">
+                        <th (click)="ordenar('numero_factura')" class="text-center pointer" style="min-width: 150px;">
                             Nro. Factura
+                            <i *ngIf="sort.key === 'numero_factura'" class="ml-1 fa "
+                            [ngClass]="{'fa-sort-asc': sort.value === 1 , 'fa-sort-desc': sort.value === -1 }"></i>
                         </th>
                         <th *ngIf="false" class="text-center" style="min-width: 200px;">
                             Emisión

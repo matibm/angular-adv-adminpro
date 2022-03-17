@@ -63,8 +63,10 @@ export class InfoCajaComponent implements OnInit {
   showModalBilletes = false
   TotalArqueo = 0
   options: any = {}
+  listaFondosActuales = []
   async ngOnInit() {
     this.fondo = null;
+    this.listaFondosActuales = await this._movimientoService.getFondosActuales()
     // const resp = await this._movimientoService.getCajaBancos(1, this.options);
     //  this.cargarValores(resp)
     if (!this.route.snapshot.queryParams.start && !this.route.snapshot.queryParams.end) {

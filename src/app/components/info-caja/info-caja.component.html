@@ -544,29 +544,59 @@
 
 </div>
 <div style="margin-top: 25px;"></div>
-<div class="card">
-    <div class="card-body">
-        <h3>Reporte ingreso contra egreso</h3>
-        <div class="d-flex">
-            <div class="mx-auto">
-                <mat-form-field appearance="fill">
-                    <mat-label>Fecha</mat-label>
-                    <mat-date-range-input [formGroup]="rangeReporte" [rangePicker]="pickerReporte">
-                        <input autocomplete="off" matStartDate formControlName="start" placeholder="fecha inicio">
-                        <input matEndDate formControlName="end" placeholder="fecha fin">
-                    </mat-date-range-input>
-                    <mat-datepicker-toggle matSuffix [for]="pickerReporte"></mat-datepicker-toggle>
-                    <mat-date-range-picker #pickerReporte></mat-date-range-picker>
-                    <mat-error *ngIf="rangeReporte.controls.start.hasError('matStartDateInvalid')">Invalid start date
-                    </mat-error>
-                    <mat-error *ngIf="rangeReporte.controls.end.hasError('matEndDateInvalid')">Invalid end date
-                    </mat-error>
-                </mat-form-field>
-                <div style="display: block;">
+<div class="row">
+    <div class="col-md col-xs">
+        <div class="card">
+            <div class="card-body">
+                <h3>Reporte ingreso contra egreso</h3>
+                <div class="d-flex">
+                    <div class="mx-auto">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Fecha</mat-label>
+                            <mat-date-range-input [formGroup]="rangeReporte" [rangePicker]="pickerReporte">
+                                <input autocomplete="off" matStartDate formControlName="start"
+                                    placeholder="fecha inicio">
+                                <input matEndDate formControlName="end" placeholder="fecha fin">
+                            </mat-date-range-input>
+                            <mat-datepicker-toggle matSuffix [for]="pickerReporte"></mat-datepicker-toggle>
+                            <mat-date-range-picker #pickerReporte></mat-date-range-picker>
+                            <mat-error *ngIf="rangeReporte.controls.start.hasError('matStartDateInvalid')">Invalid start
+                                date
+                            </mat-error>
+                            <mat-error *ngIf="rangeReporte.controls.end.hasError('matEndDateInvalid')">Invalid end date
+                            </mat-error>
+                        </mat-form-field>
+                        <div style="display: block;">
 
-                    <button type="button" (click)="generarReporte()"
-                        class="btn btn-rounded btn-inverse mx-auto">Descargar Excel</button>
+                            <button type="button" (click)="generarReporte()"
+                                class="btn btn-rounded btn-inverse mx-auto">Descargar Excel</button>
+                        </div>
+                    </div>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md col-xs">
+        <div class="card">
+            <div class="card-body">
+                <h3>Monto Actual de Fondos</h3>
+                <table class="table table-hover">
+                    <thead>
+                        <tr #tableHeaad class="thead">
+                            <th class="mx-3">Fondo</th>
+                            <th class="mx-3">Monto</th>                            
+                        </tr>
+        
+                    </thead>
+                    <tbody>
+                        
+                        <tr *ngFor="let item of listaFondosActuales">
+                            <td>{{item.fondo}}</td>
+                            <td>{{item.monto | currency:'':'':'2.0' }}</td>                            
+            
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

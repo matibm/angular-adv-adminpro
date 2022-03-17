@@ -64,7 +64,7 @@ export class MovimientoService {
   }
   getAllCategorias() {
     let url = `${URL_SERVICIOS}/movimientos/get_all_categorias`;
-    url += `?token=${this._usuarioService.token}`;    
+    url += `?token=${this._usuarioService.token}`;
     return this.http
       .get(url)
       .toPromise()
@@ -144,7 +144,10 @@ export class MovimientoService {
         return resp.categoria;
       });
   }
-
+  async getFondosActuales() {
+    let resp: any = await this.http.get(`${URL_SERVICIOS}/movimientos/get_actual_fondos`).toPromise()
+    return resp.list
+  }
   crearCuentaGasto(cuenta) {
     let url = `${URL_SERVICIOS}/movimientos/crer_cuenta_gasto`;
     url += `?token=${this._usuarioService.token}`;
@@ -394,7 +397,7 @@ export class MovimientoService {
   getReporteIngresoEgreso(body) {
     let url = `${URL_SERVICIOS}/movimientos/get_caja_bancos/excel`;
     url += `?token=${this._usuarioService.token}`;
-    
+
     this.http.post(url, body, { responseType: 'blob' as 'json' }).subscribe(
       (response: any) => {
         let dataType = response.type;
@@ -413,7 +416,7 @@ export class MovimientoService {
   getReporteEgresoResumido(body) {
     let url = `${URL_SERVICIOS}/movimientos/reporte_resumen_excel`;
     url += `?token=${this._usuarioService.token}`;
-    
+
     this.http.post(url, body, { responseType: 'blob' as 'json' }).subscribe(
       (response: any) => {
         let dataType = response.type;
@@ -432,7 +435,7 @@ export class MovimientoService {
   getGastoExcel(body) {
     let url = `${URL_SERVICIOS}/movimientos/gastos_excel`;
     url += `?token=${this._usuarioService.token}`;
-    
+
     this.http.post(url, body, { responseType: 'blob' as 'json' }).toPromise().then(
       (response: any) => {
         let dataType = response.type;
@@ -448,7 +451,7 @@ export class MovimientoService {
       },
       (error) => {
         console.log(error);
-        
+
         swal.fire({ title: 'error', icon: 'error', text: error })
       }
     )
