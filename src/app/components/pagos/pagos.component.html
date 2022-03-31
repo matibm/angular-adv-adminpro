@@ -73,12 +73,19 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Fecha</th>
+                    <th class="pointer" (click)="ordenar('fecha_creacion')" >Fecha
+                        <i *ngIf="sort.key === 'fecha_creacion'" class="ml-1 fa "
+                                [ngClass]="{'fa-sort-asc': sort.value === 1 , 'fa-sort-desc': sort.value === -1 }"></i>
+                    </th>
                     <th>Fondo</th>                    
-                    <th>Documento</th>
+                    <th style="min-width: 160px;" class="pointer" (click)="ordenar('nro_factura')">
+                        Documento
+                        <i *ngIf="sort.key === 'nro_factura'" class="ml-1 fa "
+                        [ngClass]="{'fa-sort-asc': sort.value === 1 , 'fa-sort-desc': sort.value === -1 }"></i>
+                    </th>
                     <th style="min-width: 120px;">Razon Social</th>
                     <th>RUC</th>
-                    <th style="width: 25%;">Monto</th>                    
+                    <th>Monto</th>                    
 
                 </tr>
             </thead>

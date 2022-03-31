@@ -36,11 +36,13 @@
                 <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Perfil</a>
                 </li>
                 <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Contratos
-                        </a>
-                <!-- <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#contratos_inactivos"
+                    </a>
+                    <!-- <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#contratos_inactivos"
                         role="tab">Contratos Inactivos</a>
                 </li> -->
-                <li class="nav-item"> <a class="nav-link" data-toggle="tab" [routerLink]="['/admin/ingresos']" [queryParams]="{cliente: id, estado: 'TODOS'}" routerLinkActive="router-link-active"  role="tab">Facturas</a>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" [routerLink]="['/admin/ingresos']"
+                        [queryParams]="{cliente: id, estado: 'TODOS'}" routerLinkActive="router-link-active"
+                        role="tab">Facturas</a>
                 </li>
                 <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#movimientos"
                         role="tab">Movimientos</a>
@@ -206,13 +208,15 @@
                         <h3 class="font-medium ">Características de Usuario</h3>
                         <div class="row">
                             <div class="col-xs col-md-2 mt-1">
-                                <input  [(ngModel)]="isVendedor" type="checkbox" name="check_vendedor" id="check_vendedor"
-                                    class="filled-in chk-col-light-blue" (click)="$event.preventDefault()" checked />
+                                <input [(ngModel)]="isVendedor" type="checkbox" name="check_vendedor"
+                                    id="check_vendedor" class="filled-in chk-col-light-blue"
+                                    (click)="$event.preventDefault()" checked />
                                 <label for="check_vendedor">Vendedor</label>
                             </div>
                             <div class="col-xs col-md-2 mt-1">
-                                <input [(ngModel)]="isCobrador" type="checkbox" name="check_cobrador" id="check_cobrador"
-                                    class="filled-in chk-col-light-blue" (click)="$event.preventDefault()" checked />
+                                <input [(ngModel)]="isCobrador" type="checkbox" name="check_cobrador"
+                                    id="check_cobrador" class="filled-in chk-col-light-blue"
+                                    (click)="$event.preventDefault()" checked />
                                 <label for="check_cobrador">Cobrador</label>
                             </div>
                             <div class="col-xs col-md-2 mt-1">
@@ -221,8 +225,9 @@
                                 <label for="check_cliente">Cliente</label>
                             </div>
                             <div class="col-xs col-md-2 mt-1">
-                                <input [(ngModel)]="isEmpleado" type="checkbox" name="check_empleado" id="check_empleado"
-                                    class="filled-in chk-col-light-blue" (click)="$event.preventDefault()" checked />
+                                <input [(ngModel)]="isEmpleado" type="checkbox" name="check_empleado"
+                                    id="check_empleado" class="filled-in chk-col-light-blue"
+                                    (click)="$event.preventDefault()" checked />
                                 <label for="check_empleado">Empleado</label>
                             </div>
                             <div class="col-xs col-md-2 mt-1">
@@ -247,8 +252,9 @@
                                 <label for="check_banco">Banco</label>
                             </div>
                             <div class="col-xs col-md-2 mt-1">
-                                <input [(ngModel)]="manejaCaja" type="checkbox" name="check_maneja_caja" id="check_maneja_caja"
-                                    class="filled-in chk-col-light-blue" (click)="$event.preventDefault()" checked />
+                                <input [(ngModel)]="manejaCaja" type="checkbox" name="check_maneja_caja"
+                                    id="check_maneja_caja" class="filled-in chk-col-light-blue"
+                                    (click)="$event.preventDefault()" checked />
                                 <label for="check_maneja_caja">Maneja Caja</label>
                             </div>
                         </div>
@@ -258,7 +264,8 @@
                 <div class="tab-pane" id="profile" role="tabpanel">
                     <div class="card-body">
 
-                        <app-lista-contratos [showFilter]="false" [options]="contratosActivosOptios" ></app-lista-contratos>
+                        <app-lista-contratos [showFilter]="false" [options]="contratosActivosOptios">
+                        </app-lista-contratos>
                         <!-- <div *ngIf="contratos" class="card">
 
                             <div class="card-body">
@@ -418,7 +425,7 @@
                     </div>
                 </div>
                 <div class="tab-pane" id="movimientos" role="tabpanel">
-                    <div *ngIf="facturas" class="card-body">    
+                    <div *ngIf="facturas" class="card-body">
 
                         <app-lista-movimientos [movimientos]="movimientos"></app-lista-movimientos>
                     </div>
@@ -441,10 +448,10 @@
                                     <td>{{ item.nro_factura }}</td>
                                     <td> {{item.fecha_creacion | date}} </td>
                                     <td> {{item.monto | currency: '':'':'2.0'}} Gs</td>
-                                    <td> 
-                                    <div *ngIf="item.activo ">Activo</div>    
-                                    <div style="color: red;" *ngIf="!item.activo ">Cancelado</div>    
-                                       
+                                    <td>
+                                        <div *ngIf="item.activo ">Activo</div>
+                                        <div style="color: red;" *ngIf="!item.activo ">Cancelado</div>
+
                                     </td>
                                 </tr>
 
@@ -454,7 +461,7 @@
                 </div>
                 <div class="tab-pane" id="settings" role="tabpanel">
                     <div class="card-body">
-                        <div  class="form-horizsontal forms-material">
+                        <div class="form-horizsontal forms-material">
                             <div class="row">
                                 <div class="col-xs col-md b-r">
 
@@ -522,26 +529,25 @@
                                     </div>
 
                                     <div *ngIf="is_admin_role">
-                                        
+
                                         <div style="justify-content: space-between;" class="inline-flex">
                                             <label>Rol de Usuario</label>
-                        
+
                                         </div>
                                         <div *ngIf="usuario" class="">
-                                            <ng-select [(ngModel)]="role"
-                                           
-                                            >
-                                                <ng-option name="asdasdasdasgrefwvefrv" *ngFor="let item of roles" [value]="item.role">
-                                                    <div >
+                                            <ng-select [(ngModel)]="role">
+                                                <ng-option name="asdasdasdasgrefwvefrv" *ngFor="let item of roles"
+                                                    [value]="item.role">
+                                                    <div>
                                                         {{item.role}}
                                                     </div>
-                        
+
                                                 </ng-option>
                                             </ng-select>
                                         </div>
                                     </div>
-                                    
-                                    
+
+
 
 
                                 </div>
@@ -676,147 +682,196 @@
                                                 [(ngModel)]="usuario.nro_factura_actual" class="form-control"
                                                 placeholder="" aria-describedby="helpId" autocomplete="off">
                                         </div>
+
+                                        <h4>Ajuste de Timbrado</h4>
+                                        <div class="form-group">
+                                            <label for="">Nro Timbrado</label>
+                                            <input [(ngModel)]="usuario.timbrado.timbrado"
+                                                placeholder="Numero de Timbrado" type="text" class="form-control"
+                                                name="timbrado" autocomplete="nope">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Nro de solicitud</label>
+                                            <input [(ngModel)]="usuario.timbrado.nro_solicitud"
+                                                placeholder="Numero de solicitud" type="text" class="form-control"
+                                                name="nro_solicitud" autocomplete="nope">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">RUC</label>
+                                            <input [(ngModel)]="usuario.timbrado.ruc" placeholder="RUC de la empresa"
+                                                type="text" class="form-control" name="ruc" autocomplete="nope">
+                                        </div>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Fecha de solicitud</mat-label>
+                                            <input matInput name="asdrdssvet321" [(ngModel)]="usuario.timbrado.fecha_solicitud"
+                                                [matDatepicker]="pickerSolicitud">
+                                            <mat-datepicker-toggle matSuffix [for]="pickerSolicitud">
+                                            </mat-datepicker-toggle>
+                                            <mat-datepicker #pickerSolicitud></mat-datepicker>
+                                        </mat-form-field>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Fecha Inicio Vigencia</mat-label>
+                                            <input matInput name="asdrdssvet321" [(ngModel)]="usuario.timbrado.fecha_vigente_inicio"
+                                                [matDatepicker]="pickerInicioVigencia">
+                                            <mat-datepicker-toggle matSuffix [for]="pickerInicioVigencia">
+                                            </mat-datepicker-toggle>
+                                            <mat-datepicker #pickerInicioVigencia></mat-datepicker>
+                                        </mat-form-field>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Fecha Fin Vigencia</mat-label>
+                                            <input matInput name="asdrdssvet321" [(ngModel)]="usuario.timbrado.fecha_vigente_fin"
+                                                [matDatepicker]="pickerFinVigencia">
+                                            <mat-datepicker-toggle matSuffix [for]="pickerFinVigencia">
+                                            </mat-datepicker-toggle>
+                                            <mat-datepicker #pickerFinVigencia></mat-datepicker>
+                                        </mat-form-field>
+                                        <div style="display: block;">
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-xs col-md-2 mt-1">
+                                        <input [(ngModel)]="isCliente" type="checkbox" name="check_cliente_edit"
+                                            id="check_cliente_edit" class="filled-in chk-col-light-blue"
+                                            (click)="isCliente? null: isCliente = 'check_cliente_edit'" checked />
+                                        <label for="check_cliente_edit">Cliente</label>
+                                    </div>
+                                    <div class="col-xs col-md-2 mt-1">
+                                        <input [(ngModel)]="isVendedor" type="checkbox" name="check_vendedor_edit"
+                                            id="check_vendedor_edit" class="filled-in chk-col-light-blue"
+                                            (click)="prueba();isVendedor? null: isVendedor = 'check_vendedor_edit'"
+                                            checked />
+                                        <label for="check_vendedor_edit">Vendedor</label>
+                                    </div>
+                                    <div class="col-xs col-md-2 mt-1">
+                                        <input [(ngModel)]="isCobrador" type="checkbox" name="check_cobrador_edit"
+                                            id="check_cobrador_edit" class="filled-in chk-col-light-blue"
+                                            (click)="isCobrador? null: isCobrador = 'check_cobrador_edit'" checked />
+                                        <label for="check_cobrador_edit">Cobrador</label>
                                     </div>
 
+                                    <div class="col-xs col-md-2 mt-1">
+                                        <input [(ngModel)]="isEmpleado" type="checkbox" name="check_empleado_edit"
+                                            id="check_empleado_edit" class="filled-in chk-col-light-blue"
+                                            (click)="isEmpleado? null: isEmpleado = 'check_empleado_edit'" checked />
+                                        <label for="check_empleado_edit">Empleado</label>
+                                    </div>
+                                    <div class="col-xs col-md-2 mt-1">
+                                        <input [(ngModel)]="isPersona" type="checkbox" name="check_persona_edit"
+                                            id="check_persona_edit" class="filled-in chk-col-light-blue"
+                                            (click)="isPersona? null: isPersona = 'check_persona_edit'" checked />
+                                        <label for="check_persona_edit">Persona</label>
+                                    </div>
+                                    <div class="col-xs col-md-2 mt-1">
+                                        <input [(ngModel)]="isContratado" type="checkbox" name="check_contratado_edit"
+                                            id="check_contratado_edit" class="filled-in chk-col-light-blue"
+                                            (click)="isContratado? null: isContratado = 'check_contratado_edit'"
+                                            checked />
+                                        <label for="check_contratado_edit">Contratado</label>
+                                    </div>
+                                    <div class="col-xs col-md-2 mt-1">
+                                        <input [(ngModel)]="isEmpresa" type="checkbox" name="check_empresa_edit"
+                                            id="check_empresa_edit" class="filled-in chk-col-light-blue"
+                                            (click)="isEmpresa? null: isEmpresa = 'check_empresa_edit'" checked />
+                                        <label for="check_empresa_edit">Empresa</label>
+                                    </div>
+                                    <div class="col-xs col-md-2 mt-1">
+                                        <input [(ngModel)]="isBanco" type="checkbox" name="check_banco_edit"
+                                            id="check_banco_edit" class="filled-in chk-col-light-blue"
+                                            (click)="isBanco? null: isBanco = 'check_banco_edit'" checked />
+                                        <label for="check_banco_edit">Banco</label>
+                                    </div>
+                                    <div class="col-xs col-md-2 mt-1">
+                                        <input [(ngModel)]="manejaCaja" type="checkbox" name="check_maneja_caja_edit"
+                                            id="check_maneja_caja_edit" class="filled-in chk-col-light-blue"
+                                            (click)="manejaCaja? null: manejaCaja = 'check_maneja_caja_edit'" checked />
+                                        <label for="check_maneja_caja_edit">Maneja Caja</label>
+                                    </div>
+                                    <div class="col-xs col-md-2 mt-1">
+                                        <input [(ngModel)]="cobroOnline" type="checkbox" name="check_cobro_online"
+                                            id="check_cobro_online" class="filled-in chk-col-light-blue"
+                                            (click)="cobroOnline? null: cobroOnline = 'check_cobro_online'" checked />
+                                        <label for="check_cobro_online">Cobro Online</label>
+                                    </div>
+                                    <div class="col-xs col-md-2 mt-1">
+                                        <input [(ngModel)]="isProveedor" type="checkbox" name="check_proveedor"
+                                            id="check_proveedor" class="filled-in chk-col-light-blue"
+                                            (click)="isProveedor? null: isProveedor = 'check_proveedor'" checked />
+                                        <label for="check_proveedor">Proveedor</label>
+                                    </div>
+                                </div>
+
+                                <div class=" mt-3 form-group">
+
+                                    <button type="button" (click)="eliminarUsuario(usuario._id)"
+                                        class="btn mx-auto btn-danger">ELIMINAR USUARIO</button>
+
+                                </div>
+                                <div class="d-flex mt-3 form-group">
+
+                                    <button type="button" (click)="actualizarUsuario(usuario)"
+                                        class="btn mx-auto btn-success">Guardar Cambios</button>
 
                                 </div>
                             </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-xs col-md-2 mt-1">
-                                    <input [(ngModel)]="isCliente" type="checkbox" name="check_cliente_edit"
-                                        id="check_cliente_edit" class="filled-in chk-col-light-blue"
-                                        (click)="isCliente? null: isCliente = 'check_cliente_edit'" checked />
-                                    <label for="check_cliente_edit">Cliente</label>
-                                </div>
-                                <div class="col-xs col-md-2 mt-1">
-                                    <input [(ngModel)]="isVendedor" type="checkbox" name="check_vendedor_edit"
-                                        id="check_vendedor_edit" class="filled-in chk-col-light-blue"
-                                        (click)="prueba();isVendedor? null: isVendedor = 'check_vendedor_edit'"
-                                        checked />
-                                    <label for="check_vendedor_edit">Vendedor</label>
-                                </div>
-                                <div class="col-xs col-md-2 mt-1">
-                                    <input [(ngModel)]="isCobrador" type="checkbox" name="check_cobrador_edit"
-                                        id="check_cobrador_edit" class="filled-in chk-col-light-blue"
-                                        (click)="isCobrador? null: isCobrador = 'check_cobrador_edit'" checked />
-                                    <label for="check_cobrador_edit">Cobrador</label>
-                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="false" class="card">
+                <div class="card-body">
+                    <h4 class="card-title"><span class="lstick"></span>Recent Comments</h4>
+                </div>
+                <!-- ============================================================== -->
+                <!-- Comment widgets -->
+                <!-- ============================================================== -->
+                <div class="chat-right-aside comment-widgets">
+                    <!-- Comment Row -->
 
-                                <div class="col-xs col-md-2 mt-1">
-                                    <input [(ngModel)]="isEmpleado" type="checkbox" name="check_empleado_edit"
-                                        id="check_empleado_edit" class="filled-in chk-col-light-blue"
-                                        (click)="isEmpleado? null: isEmpleado = 'check_empleado_edit'" checked />
-                                    <label for="check_empleado_edit">Empleado</label>
-                                </div>
-                                <div class="col-xs col-md-2 mt-1">
-                                    <input [(ngModel)]="isPersona" type="checkbox" name="check_persona_edit"
-                                        id="check_persona_edit" class="filled-in chk-col-light-blue"
-                                        (click)="isPersona? null: isPersona = 'check_persona_edit'" checked />
-                                    <label for="check_persona_edit">Persona</label>
-                                </div>
-                                <div class="col-xs col-md-2 mt-1">
-                                    <input [(ngModel)]="isContratado" type="checkbox" name="check_contratado_edit"
-                                        id="check_contratado_edit" class="filled-in chk-col-light-blue"
-                                        (click)="isContratado? null: isContratado = 'check_contratado_edit'" checked />
-                                    <label for="check_contratado_edit">Contratado</label>
-                                </div>
-                                <div class="col-xs col-md-2 mt-1">
-                                    <input [(ngModel)]="isEmpresa" type="checkbox" name="check_empresa_edit"
-                                        id="check_empresa_edit" class="filled-in chk-col-light-blue"
-                                        (click)="isEmpresa? null: isEmpresa = 'check_empresa_edit'" checked />
-                                    <label for="check_empresa_edit">Empresa</label>
-                                </div>
-                                <div class="col-xs col-md-2 mt-1">
-                                    <input [(ngModel)]="isBanco" type="checkbox" name="check_banco_edit"
-                                        id="check_banco_edit" class="filled-in chk-col-light-blue"
-                                        (click)="isBanco? null: isBanco = 'check_banco_edit'" checked />
-                                    <label for="check_banco_edit">Banco</label>
-                                </div>
-                                <div class="col-xs col-md-2 mt-1">
-                                    <input [(ngModel)]="manejaCaja" type="checkbox" name="check_maneja_caja_edit"
-                                        id="check_maneja_caja_edit" class="filled-in chk-col-light-blue"
-                                        (click)="manejaCaja? null: manejaCaja = 'check_maneja_caja_edit'" checked />
-                                    <label for="check_maneja_caja_edit">Maneja Caja</label>
-                                </div>
-                                <div class="col-xs col-md-2 mt-1">
-                                    <input [(ngModel)]="cobroOnline" type="checkbox" name="check_cobro_online"
-                                        id="check_cobro_online" class="filled-in chk-col-light-blue"
-                                        (click)="cobroOnline? null: cobroOnline = 'check_cobro_online'" checked />
-                                    <label for="check_cobro_online">Cobro Online</label>
-                                </div>
-                                <div class="col-xs col-md-2 mt-1">
-                                    <input [(ngModel)]="isProveedor" type="checkbox" name="check_proveedor"
-                                        id="check_proveedor" class="filled-in chk-col-light-blue"
-                                        (click)="isProveedor? null: isProveedor = 'check_proveedor'" checked />
-                                    <label for="check_proveedor">Proveedor</label>
-                                </div>
+                    <div style="max-height: 600px ;overflow: auto;" class="chat-rbox">
+                        <div *ngFor="let item of comentarios" class="d-flex flex-row comment-row">
+                            <div class="p-2"><span class="round">
+                                    <ngx-avatar
+                                        name="{{[item.titular.NOMBRES, item.titular.APELLIDOS ] | nombreCorto }}">
+                                    </ngx-avatar>
+
+                                </span></div>
+                            <div class="comment-text w-100">
+                                <h5>{{item.titular.NOMBRES}}</h5>
+                                <p class="m-b-5">{{item.texto}}</p>
+                                <div class="comment-footer"> <span class="text-muted pull-right">{{item.fecha_unix |
+                                        date}}</span> <span class="action-icons">
+                                        <a href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
+                                        <a href="javascript:void(0)"><i class="ti-check"></i></a>
+                                        <a href="javascript:void(0)"><i class="ti-heart"></i></a>
+                                    </span> </div>
                             </div>
+                        </div>
 
-                            <div class=" mt-3 form-group">
+                    </div>
 
-                                <button type="button" (click)="eliminarUsuario(usuario._id)" class="btn mx-auto btn-danger">ELIMINAR USUARIO</button>
-
+                    <div class="card-body b-t">
+                        <div class="row">
+                            <div class="col-8">
+                                <textarea placeholder="Type your message here" #texto
+                                    class="form-control b-0"></textarea>
                             </div>
-                            <div class="d-flex mt-3 form-group">
-
-                                <button type="button" (click)="actualizarUsuario(usuario)" class="btn mx-auto btn-success">Guardar Cambios</button>
-
+                            <div class="col-4 text-right">
+                                <button type="button" (click)="comentar(texto.value)" class="btn btn-info ">Comentar
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div *ngIf="false" class="card">
-            <div class="card-body">
-                <h4 class="card-title"><span class="lstick"></span>Recent Comments</h4>
-            </div>
-            <!-- ============================================================== -->
-            <!-- Comment widgets -->
-            <!-- ============================================================== -->
-            <div class="chat-right-aside comment-widgets">
-                <!-- Comment Row -->
-
-                <div style="max-height: 600px ;overflow: auto;" class="chat-rbox">
-                    <div *ngFor="let item of comentarios" class="d-flex flex-row comment-row">
-                        <div class="p-2"><span class="round">
-                                <ngx-avatar name="{{[item.titular.NOMBRES, item.titular.APELLIDOS ] | nombreCorto }}">
-                                </ngx-avatar>
-
-                            </span></div>
-                        <div class="comment-text w-100">
-                            <h5>{{item.titular.NOMBRES}}</h5>
-                            <p class="m-b-5">{{item.texto}}</p>
-                            <div class="comment-footer"> <span class="text-muted pull-right">{{item.fecha_unix |
-                                    date}}</span> <span class="action-icons">
-                                    <a href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
-                                    <a href="javascript:void(0)"><i class="ti-check"></i></a>
-                                    <a href="javascript:void(0)"><i class="ti-heart"></i></a>
-                                </span> </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="card-body b-t">
-                    <div class="row">
-                        <div class="col-8">
-                            <textarea placeholder="Type your message here" #texto class="form-control b-0"></textarea>
-                        </div>
-                        <div class="col-4 text-right">
-                            <button type="button" (click)="comentar(texto.value)" class="btn btn-info ">Comentar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!-- Column -->
     </div>
-    <!-- Column -->
-</div>
 
 
-<div class="" *ngIf="facturapdf">
-    <app-modal-factura (onClose)="facturapdf = null" [facturaPDF]="facturapdf"></app-modal-factura>
-</div>
+    <div class="" *ngIf="facturapdf">
+        <app-modal-factura (onClose)="facturapdf = null" [facturaPDF]="facturapdf"></app-modal-factura>
+    </div>

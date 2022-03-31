@@ -20,7 +20,7 @@ export class UsuarioService {
     this.token = localStorage.getItem('token');
     this.user_id = localStorage.getItem('user_id');
     this.itsLogued = this.token ? true : false;
-
+    this.usuario = JSON.parse(localStorage.getItem('usuario'))
     this.inicializarUsuario();
   }
 
@@ -28,6 +28,8 @@ export class UsuarioService {
     let id = localStorage.getItem('user_id')
     if (id) {
       this.usuario = await this.getUsuarioPorId(this.user_id);
+      console.log(this.usuario);
+      localStorage.setItem('usuario', JSON.stringify(this.usuario))
       return this.usuario
     } else {
       return null
@@ -108,7 +110,7 @@ export class UsuarioService {
     url += `?token=${this.token}`;
     return this.http.put(url, usuario).toPromise().then((resp: any) => {
       console.log(resp);
-
+      this.inicializarUsuario()
       swal.fire({
         icon: 'success',
         title: 'Usuario modificado',

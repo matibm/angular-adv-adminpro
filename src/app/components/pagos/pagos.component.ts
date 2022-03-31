@@ -20,6 +20,9 @@ export class PagosComponent implements OnInit {
   pagos
   page = 1
   count = 0
+  sort = {
+    key: 'fecha', value: 1
+  }
   constructor(
     private _facturaService: FacturaService,
     public _usuarioService: UsuarioService,
@@ -171,5 +174,28 @@ export class PagosComponent implements OnInit {
     };
     console.log(this.facturapdf);
 
+  }
+
+
+  async ordenar(key){
+    this.loading = true
+
+    this.pagos = null
+    this.sort.key = key
+    if (this.sort.value === 1) {
+      this.sort.value = -1
+    } else{
+      this.sort.value = 1
+    }
+    this.body.sort = { }
+    this.body.sort[`${this.sort.key}`] = this.sort.value
+
+    const resp = await this._facturaService.getPagosAll(this.body)
+    console.log(resp);
+    
+    this.pagos = resp.pagos
+    this.count = resp.count
+    this.loading = false
+    
   }
 }

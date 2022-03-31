@@ -31,7 +31,7 @@ export class FacturaPdfComponent implements OnInit {
   id;
   nro_factura
   nro_talonario
-  items: any[] = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+  items: any[] = [];
   timbrado
   async ngOnInit() {
     this.timbrado = (await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body 

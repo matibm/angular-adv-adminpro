@@ -9,6 +9,8 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { NotifierService } from 'angular-notifier';
 import { Subject } from 'rxjs';
 import { Usuario } from 'src/app/models/usuario';
+import swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cobranza',
@@ -22,7 +24,8 @@ export class CobranzaComponent implements OnInit, AfterViewInit {
     public _contratoSerivce: ContratoService,
     public _productoService: ProductosService,
     notifier: NotifierService,
-    private _userService: UsuarioService
+    public _userService: UsuarioService,
+    private router: Router
 
 
   ) {
@@ -34,7 +37,43 @@ export class CobranzaComponent implements OnInit, AfterViewInit {
   @ViewChild('search', { static: false }) searchCliente;
   @ViewChild('btnContinuar', { static: false }) btnContinuar;
   ngAfterViewInit(){
+  //console.log(!this._userService.usuario.timbrado.timbrado , this._userService.usuario.role == 'USER_ROLE');
+    
+    if (!this._userService.usuario.timbrado.timbrado && this._userService.usuario.role == 'USER_ROLE') {
+      swal.fire({
+        icon: 'warning',
+        title: 'No existe timbrado',
+        text: `Tu usuario no tiene Nro de Timbrado`,
+        confirmButtonText: `Establecer Timbrado`,
+        willClose: (e) =>{
+         this.modalOutput()
+          
+        },
+        
+  
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          this.goBack = false
+        }  
+      }, (op) =>{
+      //console.log(op);
+        
+      })
+    }
+    
     this.searchCliente.focus()
+  }
+  goBack = true 
+  modalOutput(){
+   setTimeout(() => {
+    if (!this.goBack) {
+      this.router.navigateByUrl(`/admin/usuario/${this._usuarioService.user_id}`)
+        
+      }else {
+        window.history.back()
+      }
+   }, 1);
   }
   showModal = false;
   opciones;
@@ -113,11 +152,16 @@ export class CobranzaComponent implements OnInit, AfterViewInit {
   direccionFactura;
   fechaPago = new Date()
   pruebaValue(variable) {
-    console.log(getComputedStyle(variable).width);
+  //console.log(getComputedStyle(variable).width);
 
 
   }
   async ngOnInit() {
+  //console.log(!this._userService.usuario?.timbrado?.timbrado , this._userService?.usuario?.role == 'USER_ROLE');
+  //console.log(this._userService?.usuario?.role);
+    if (this._userService?.usuario?.role == 'USER_ROLE') {
+      this.cobrador = this._userService?.usuario
+    }
   //   this.inputClientes = new Subject<string>();
   // this.inputCobrador = new Subject<string>();
     this.observableBuscadores();
@@ -153,7 +197,7 @@ export class CobranzaComponent implements OnInit, AfterViewInit {
     };
 
 
-    console.log(this.opciones);
+  //console.log(this.opciones);
     this.sort = {
       key: this.sort_key,
       value: this.sort_value
@@ -208,14 +252,14 @@ export class CobranzaComponent implements OnInit, AfterViewInit {
     this.direccionFactura = cliente.DIRECCION;
     this.contratos = await this._contratoSerivce.getContratosByTitular(cliente._id);
 
-    console.log(this.contratos);
+  //console.log(this.contratos);
     this.filtrar();
 
   }
 
   onContratoSelected(contrato) {
     this.contrato = contrato;
-    console.log(contrato);
+  //console.log(contrato);
     this.filtrar();
   }
 
@@ -225,7 +269,7 @@ export class CobranzaComponent implements OnInit, AfterViewInit {
       return;
     }
     this.facturasAPagar = (await this._facturaService.pagarPorMonto({ fecha_pago: this.fechaPago, lista: [{ contrato: id, monto: parseInt(monto) }] })).facturas;
-    console.log(this.facturasAPagar);
+  //console.log(this.facturasAPagar);
     let btnContinuar = document.getElementById('btnContinuar')
     btnContinuar.focus()
     }
@@ -245,18 +289,22 @@ export class CobranzaComponent implements OnInit, AfterViewInit {
     this.lista.push(obj);
     // this.filtros.push()
     this.facturasAPagarAux = (await this._facturaService.pagarPorMonto({ fecha_pago: this.fechaPago, lista: this.lista })).facturas;
-    console.log(this.facturasAPagarAux);
+  //console.log(this.facturasAPagarAux);
     this.contrato = null;
     // this.filtrar();
     this.facturaPdf = this.crearPDF(this.facturasAPagarAux);
 
   }
   async confirmarPago() {
-    console.log(this.loadingConfirmarPago);
+  //console.log(this.loadingConfirmarPago);
     if(this.loadingConfirmarPago) return
     this.loadingConfirmarPago = true
     
-    let timbrado = (await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body
+    // let timbrado = (await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body
+    console.log((await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body);
+    console.log(this.cobrador.timbrado);
+    
+    let timbrado = this.cobrador.timbrado
     
     let pagoresp = await this._facturaService.pagarPorMonto({
       fecha_pago: this.fechaPago,
@@ -271,14 +319,14 @@ export class CobranzaComponent implements OnInit, AfterViewInit {
       cobrador: this.cobrador?._id,
       confirmado: true, 
       fondo: this.fondo._id,
-      nro_timbrado: '144542331',
+      nro_timbrado: this.cobrador.timbrado.timbrado,
       nro_factura: this.cobrador.nro_factura_actual + 1,
       numero: this.cobrador.nro_talonario,
       timbrado
     });
     this.loadingConfirmarPago = false
 
-    console.log(pagoresp);
+  //console.log(pagoresp);
     this.mostrarModal(pagoresp?.pago?._id)
     this.ngOnInit();
 
@@ -288,7 +336,7 @@ export class CobranzaComponent implements OnInit, AfterViewInit {
 
 
   prueba() {
-    console.log(this.notifier.getConfig());
+  //console.log(this.notifier.getConfig());
 
     this.notifier.notify('success', 'pasa la edad');
   }
@@ -381,8 +429,8 @@ export class CobranzaComponent implements OnInit, AfterViewInit {
       nro_factura: this.cobrador.nro_factura_actual + 1,
       timbrado
     };
-    console.log('-----------------------------------------------');
-    console.log(facturaPDF);
+  //console.log('-----------------------------------------------');
+  //console.log(facturaPDF);
 
     return facturaPDF;
   }
@@ -416,7 +464,7 @@ export class CobranzaComponent implements OnInit, AfterViewInit {
       servicios,
       timbrado
     };
-    console.log(this.facturapdf);
+  //console.log(this.facturapdf);
 
   }
 }

@@ -41,6 +41,9 @@ export class PerfilUsuarioComponent implements OnInit {
   facturapdf;
   contratosActivosOptios: any = {}
   contratosInactivosOptios: any = {}
+  fechaSolicitud
+  fechaVigenciaInicio
+  fechaVigenciaFin
   roles = [
     {
       id: 1,
@@ -136,7 +139,9 @@ export class PerfilUsuarioComponent implements OnInit {
 
   async actualizarUsuario(usuario: Usuario) {
     console.log(this.nro_factura_actual);
-
+    // usuario.timbrado.fechaSolicitud = this.fechaSolicitud
+    // usuario.timbrado.fechaVigenciaInicio = this.fechaVigenciaInicio
+    // usuario.timbrado.fechaVigenciaFin = this.fechaVigenciaFin
     usuario.VENDEDORES = this.isVendedor ? '1' : '0';
     usuario.COBRADORES = this.isCobrador ? '1' : '0';
     usuario.CLIENTES = this.isCliente ? '1' : '0';
