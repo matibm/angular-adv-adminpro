@@ -22,9 +22,9 @@
                     <app-factura-pdf [printAltoke]="false" [existe]="existe" [facturaPDF]="facturaPDF"></app-factura-pdf>
                     <!-- <app-pdf-factura-mobile [printAltoke]="false" [existe]="existe" [facturapdf]="facturaPDF"></app-pdf-factura-mobile> -->
                 </div>
-                <div class="p-2">
+                <!-- <div class="p-2">
                     <span>Nota: {{facturaPDF.comentario}}</span>
-                </div>
+                </div> -->
                 <div class="modal-footer">
                     <button style="width: 143.84px;" [disabled]="loadingCancelarPago || facturaPDF?.activo === false" (click)="cancelarPago()" class="btn btn-rounded mr-auto btn-inverse">
                         <span *ngIf="!loadingCancelarPago">Cancelar Pago</span>

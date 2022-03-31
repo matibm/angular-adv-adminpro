@@ -92,7 +92,7 @@ overflow: hidden;
                 </div>
                 <div style="display: flex;" class="py-1">
                     <div class="mr-auto">
-                        <span>Señor(es): <u><b>{{factura.nombres}}</b></u></span>
+                        <span>Señor(es): <u><b>{{factura.comentario}}</b></u></span>
                     </div>
                     <div style="width: 40%; display: flex;" class="">
                         <div class="mr-1">C.I. o RUC: <u>{{factura.ruc | ruc}}</u></div>
@@ -244,6 +244,7 @@ overflow: hidden;
     Solicitud Nº {{timbrado.nro_solicitud}}
     <br>
     Fecha: {{timbrado.fecha_solicitud | date}}
+     <div *ngIf="pago.comentario ">Nota: {{pago.comentario }}</div>
 </div>
     </div>
  

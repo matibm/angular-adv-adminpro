@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Contrato } from './../../models/contrato';
 import { Component, OnInit, Input } from '@angular/core';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-factura-pdf',
@@ -24,7 +25,7 @@ export class FacturaPdfComponent implements OnInit {
   @Input() facturaPDF;
   @Input() printAltoke = true;
   @Input() existe = true;
-
+    pago 
   totalTexto = '';
   @Input() contrato: Contrato;
   tipo_contrato = '';
@@ -45,7 +46,7 @@ export class FacturaPdfComponent implements OnInit {
     // }
     this.id = this.route.snapshot.paramMap.get('id');
 
-    console.log(await this.facturaPDF);
+  //console.log({...(await this.facturaPDF)});
 
 
     if (this.facturaPDF) {
@@ -53,9 +54,11 @@ export class FacturaPdfComponent implements OnInit {
       this.nro_talonario = (await this.facturaPDF).numero
       if (this.facturaPDF._id) {
         this.factura = await this.getDetallePago(this.facturaPDF._id);
-
+      console.log(this.factura);
+        
       } else {
         this.factura = (await this.facturaPDF);
+        console.log(this.factura);
 
       }
 
@@ -76,7 +79,7 @@ export class FacturaPdfComponent implements OnInit {
       // };
     }
 
-    console.log(this.factura);
+  //console.log(this.factura);
     // this.crearPDF(this.factura.servicios)
     for (let i = 0; i < this.factura.servicios.length; i++) {
       const element = this.factura.servicios[i];
@@ -129,7 +132,7 @@ export class FacturaPdfComponent implements OnInit {
   //     servicios = fsinrepetir;
   //   }
 
-  //   console.log(servicios);
+  // //console.log(servicios);
 
 
   //   const facturaPDF = {
@@ -141,8 +144,8 @@ export class FacturaPdfComponent implements OnInit {
   //     notaDeRemision: '123123',
   //     servicios
   //   };
-  //   console.log('-----------------------------------------------');
-  //   console.log(facturaPDF);
+  // //console.log('-----------------------------------------------');
+  // //console.log(facturaPDF);
 
   //   return facturaPDF;
   // }
@@ -318,13 +321,15 @@ export class FacturaPdfComponent implements OnInit {
     const resp = await this._facturaService.getDetallePago(id);
 
     const pago = resp.pago;
-    console.log(pago);
+    this.pago = pago
+  //console.log(pago);
+    // if (!pago.timbrado) Swal.fire('error timbrado', JSON.stringify(pago), 'error')
     this.timbrado = resp.pago.timbrado || {
-      timbrado: '15074643',
+      timbrado: 'ERROR',
       fecha_vigente_inicio: new Date('2021/09/01'),
       fecha_vigente_fin: new Date('2022/09/30'),
-      ruc: '80022091-9',
-      nro_solicitud: '350010010198',
+      ruc: 'ERROR',
+      nro_solicitud: 'ERROR',
       fecha_solicitud: new Date('2021/08/31')
     }
     this.nro_factura = pago.nro_factura
@@ -334,7 +339,7 @@ export class FacturaPdfComponent implements OnInit {
     const contratosSinRepetir = [];
     const fsinrepetir = [];
 
-    console.log(facturas);
+  //console.log(facturas);
 
 
     for (let i = 0; i < facturas.length; i++) {
@@ -349,7 +354,7 @@ export class FacturaPdfComponent implements OnInit {
         // console.log("factura.haber", factura.haber);
 
         if (element.contrato._id == factura.contrato._id && element.haber === factura.haber) {
-          console.log("sumando");
+        //console.log("sumando");
 
           element.cantidad++;
           element.precio += factura.haber;

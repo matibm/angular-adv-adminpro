@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChildren } from '@angular/core';
 
 @Component({
   selector: 'app-modal-billetes',
@@ -11,20 +11,27 @@ export class ModalBilletesComponent implements OnInit {
   @Output() onClose = new EventEmitter();
   @Input() montoTotal = 0
   @Output() cerrarCaja = new EventEmitter();
+
+  @ViewChildren('cienmilInput') cienmilInput: any;
+
   ngOnInit(): void {
+    setTimeout(() => {
+      this.cienmilInput.first.nativeElement.focus();
+
+    }, 100);
   }
-  cienmil = 0
-  cincuentamil = 0
-  veintemil = 0
-  diezmil = 0
-  cincomil = 0
-  dosmil = 0
-  mil = 0
-  quinientos = 0
-  cien = 0
-  cincuenta = 0
-  total = 0
-  cheque = 0
+  cienmil
+  cincuentamil
+  veintemil
+  diezmil
+  cincomil
+  dosmil
+  mil
+  quinientos
+  cien
+  cincuenta
+  total
+  cheque
   print(event) {
     console.log(event.target);
     if (event.target.id == 'afuera') {
@@ -37,17 +44,17 @@ export class ModalBilletesComponent implements OnInit {
 
   sumaTotal() {
     this.total = 0
-    this.total += this.cienmil * 100000
-    this.total += this.cincuentamil * 50000
-    this.total += this.veintemil * 20000
-    this.total += this.diezmil * 10000
-    this.total += this.cincomil * 5000
-    this.total += this.dosmil * 2000
-    this.total += this.mil * 1000
-    this.total += this.quinientos * 500
-    this.total += this.cien * 100
-    this.total += this.cincuenta * 50
-    this.total += this.cheque
+    if(this.cienmil) this.total += this.cienmil * 100000
+    if(this.cincuentamil) this.total += this.cincuentamil * 50000
+    if(this.veintemil) this.total += this.veintemil * 20000
+    if(this.diezmil) this.total += this.diezmil * 10000
+    if(this.cincomil) this.total += this.cincomil * 5000
+    if(this.dosmil) this.total += this.dosmil * 2000
+    if(this.mil) this.total += this.mil * 1000
+    if(this.quinientos) this.total += this.quinientos * 500
+    if(this.cien) this.total += this.cien * 100
+    if(this.cincuenta) this.total += this.cincuenta * 50
+    if(this.cheque) this.total += this.cheque
 
     return this.total
   }

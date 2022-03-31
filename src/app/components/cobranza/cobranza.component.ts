@@ -415,7 +415,7 @@ export class CobranzaComponent implements OnInit, AfterViewInit {
 
       servicios = fsinrepetir;
     }
-    let timbrado = (await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body
+    // let timbrado = (await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body
     
     const facturaPDF = {
       nombres: this.nombreFactura,
@@ -427,7 +427,8 @@ export class CobranzaComponent implements OnInit, AfterViewInit {
       servicios,
       numero: this.cobrador.nro_talonario,
       nro_factura: this.cobrador.nro_factura_actual + 1,
-      timbrado
+      timbrado: this.cobrador.timbrado,
+      comentario: this.comentario
     };
   //console.log('-----------------------------------------------');
   //console.log(facturaPDF);
@@ -451,7 +452,7 @@ export class CobranzaComponent implements OnInit, AfterViewInit {
         diezPorciento: factura.haber / 11
       });
     }
-    let timbrado = (await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body
+    // let timbrado = (await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body
 
     this.facturapdf = {
       _id: pago._id,
@@ -462,7 +463,7 @@ export class CobranzaComponent implements OnInit, AfterViewInit {
       tel: pago.cliente.TELEFONO1,
       notaDeRemision: '123123',
       servicios,
-      timbrado
+      timbrado: pago.timbrado
     };
   //console.log(this.facturapdf);
 

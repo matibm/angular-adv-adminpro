@@ -20,7 +20,7 @@ export class ModalFacturaComponent implements OnInit {
     this.style.maxHeight = (height - 340) + 'px';
     this.style.overflow = 'auto';
     console.log(this.facturaPDF);
-    this.facturaPDF = await this.facturaPDF
+    this.facturaPDF = {... await this.facturaPDF}
     console.log(this.style);
   }
 

@@ -20,7 +20,11 @@
 
                                     </div>
                                     <div class="col">
-                                        <input class="form-control" [(ngModel)]="cienmil" type="number">
+                                        <input class="form-control" #cienmilInput [(ngModel)]="cienmil" type="number">
+
+                                    </div>
+                                    <div class="col-2">
+                                        <span *ngIf="cienmil" >{{(cienmil *100000) | currency: '':'':'2.0'}}</span>
 
                                     </div>
                                 </div>
@@ -37,6 +41,10 @@
                                         <input class="form-control" [(ngModel)]="cincuentamil" type="number">
 
                                     </div>
+                                    <div class="col-2">
+                                        <span *ngIf="cincuentamil" >{{(cincuentamil *50000) | currency: '':'':'2.0'}}</span>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -49,6 +57,10 @@
                                     </div>
                                     <div class="col">
                                         <input class="form-control" [(ngModel)]="veintemil" type="number">
+
+                                    </div>
+                                    <div class="col-2">
+                                        <span *ngIf="veintemil" >{{(veintemil *20000) | currency: '':'':'2.0'}}</span>
 
                                     </div>
                                 </div>
@@ -65,6 +77,10 @@
                                         <input class="form-control" [(ngModel)]="diezmil" type="number">
 
                                     </div>
+                                    <div class="col-2">
+                                        <span *ngIf="diezmil" >{{(diezmil *10000) | currency: '':'':'2.0'}}</span>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -77,6 +93,10 @@
                                     </div>
                                     <div class="col">
                                         <input class="form-control" [(ngModel)]="cincomil" type="number">
+
+                                    </div>
+                                    <div class="col-2">
+                                        <span *ngIf="cincomil" >{{(cincomil *5000) | currency: '':'':'2.0'}}</span>
 
                                     </div>
                                 </div>
@@ -93,6 +113,10 @@
                                         <input class="form-control" [(ngModel)]="dosmil" type="number">
 
                                     </div>
+                                    <div class="col-2">
+                                        <span *ngIf="dosmil" >{{(dosmil *2000) | currency: '':'':'2.0'}}</span>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -105,6 +129,10 @@
                                     </div>
                                     <div class="col">
                                         <input class="form-control" [(ngModel)]="mil" type="number">
+
+                                    </div>
+                                    <div class="col-2">
+                                        <span *ngIf="mil" >{{(mil *1000) | currency: '':'':'2.0'}}</span>
 
                                     </div>
                                 </div>
@@ -121,6 +149,10 @@
                                         <input class="form-control" [(ngModel)]="quinientos" type="number">
 
                                     </div>
+                                    <div class="col-2">
+                                        <span *ngIf="quinientos" >{{(quinientos *500) | currency: '':'':'2.0'}}</span>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -135,6 +167,10 @@
                                         <input class="form-control" [(ngModel)]="cien" type="number">
 
                                     </div>
+                                    <div class="col-2">
+                                        <span *ngIf="cien" >{{(cien *100) | currency: '':'':'2.0'}}</span>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -147,6 +183,10 @@
                                     </div>
                                     <div class="col">
                                         <input class="form-control" [(ngModel)]="cincuenta" type="number">
+
+                                    </div>
+                                    <div class="col-2">
+                                        <span *ngIf="cincuenta" >{{(cincuenta *50) | currency: '':'':'2.0'}}</span>
 
                                     </div>
                                 </div>
