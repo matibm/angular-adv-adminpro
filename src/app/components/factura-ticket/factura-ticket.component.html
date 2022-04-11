@@ -95,11 +95,17 @@ overflow: hidden;
                         
                     </span>
                     
+                    <span style="font-size: 11px;  display:block;
+                    width:170px;
+                    word-wrap:break-word;">
+                        <div *ngIf="pago?.comentario ">Nota: {{pago.comentario }}</div>
+
+                    </span>
+                    
                 </div>
             </div>
         </div>
         </div>
-
 <!-- <div style="margin-left: 50px; text-align:left ;">
     Autorizado como Autoimpresor por la SET
     <br>

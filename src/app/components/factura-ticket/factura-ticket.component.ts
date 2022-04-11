@@ -84,10 +84,12 @@ export class FacturaTicketComponent implements OnInit {
 
   
   }
+  pago
   async getDetallePago(id) {
     const resp = await this._facturaService.getDetallePago(id);
-
+    
     const pago = resp.pago;
+    this.pago = pago
     console.log(pago);
     this.timbrado = resp.pago.timbrado || {
       timbrado: '15074643',
