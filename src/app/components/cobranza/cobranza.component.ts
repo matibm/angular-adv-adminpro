@@ -160,7 +160,7 @@ export class CobranzaComponent implements OnInit, AfterViewInit {
   //console.log(!this._userService.usuario?.timbrado?.timbrado , this._userService?.usuario?.role == 'USER_ROLE');
   //console.log(this._userService?.usuario?.role);
     if (this._userService?.usuario?.role == 'USER_ROLE') {
-      this.cobrador = this._userService?.usuario
+       this.cobrador = await this._userService.inicializarUsuario();
     }
   //   this.inputClientes = new Subject<string>();
   // this.inputCobrador = new Subject<string>();
