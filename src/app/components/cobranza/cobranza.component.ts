@@ -183,7 +183,7 @@ export class CobranzaComponent implements OnInit, AfterViewInit {
     this.opciones = {
       titular: this.cliente ? this.cliente._id : null,
       vendedor: this.vendedor ? this.vendedor._id : null,
-      cobrador: this.cobrador ? this.cobrador._id : null,
+      // cobrador: this.cobrador ? this.cobrador._id : null,
       servicio: this.servicio ? this.servicio._id : null,
       fondo: this.fondo ? this.fondo._id : null,
       contrato: this.contrato ? this.contrato._id : null,
