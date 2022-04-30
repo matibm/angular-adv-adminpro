@@ -23,6 +23,7 @@ export class Contrato {
         public plazo?: number,
         // public v2_plazo?: string,
         public cuota?: number,
+        public fecha_de_baja?: number,
         // public v2_cuota?: string,
         public vendedor?: Usuario,
         public cobrador?: Usuario,
