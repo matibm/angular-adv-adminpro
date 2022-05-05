@@ -358,17 +358,23 @@
             <thead>
                 <tr #tableHeaad class="thead">
                     <th class="mx-3">Servicio</th>
-                    <th class="mx-3">Cantidad</th>
+                    <th class="mx-3">Activos</th>
                     <th class="mx-3">%</th>
+                    <th class="mx-3">Baja</th>
+                    <th class="mx-3">%</th>
+                    <th class="mx-3">Total</th>
                 </tr>
 
             </thead>
-            <tbody>
-
+            <tbody> 
                 <tr *ngFor="let item of cantidadServicios">
                     <td>{{item.servicio}}</td>
+                    <td>{{item.activo}}</td>
+                    <td>{{item.activo_percent | number: '1.0-0'}}</td>
+                    <td>{{item.baja}}</td>
+                    <td>{{item.baja_percent | number: '1.0-0'}}</td> 
                     <td>{{item.count}}</td>
-                    <td>{{item.percentage}}</td>
+                    <!-- <td>{{item.percentage}}</td> -->
     
                 </tr>
             </tbody>
