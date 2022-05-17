@@ -150,7 +150,7 @@ export class CobranzaComponent implements OnInit, AfterViewInit {
   rucFactura;
   telFactura;
   direccionFactura;
-  fechaPago = new Date()
+  fechaPago = new Date(`${new Date().getFullYear()}-${new Date().getMonth()+1}-${new Date().getDate()} 00:00`)
   pruebaValue(variable) {
   //console.log(getComputedStyle(variable).width);
 
@@ -268,7 +268,7 @@ export class CobranzaComponent implements OnInit, AfterViewInit {
     if (monto < 1) {
       return;
     }
-    this.facturasAPagar = (await this._facturaService.pagarPorMonto({ fecha_pago: this.fechaPago, lista: [{ contrato: id, monto: parseInt(monto) }] })).facturas;
+    this.facturasAPagar = (await this._facturaService.pagarPorMonto({ fecha_pago: this.fechaPago.getTime(), lista: [{ contrato: id, monto: parseInt(monto) }] })).facturas;
   //console.log(this.facturasAPagar);
     let btnContinuar = document.getElementById('btnContinuar')
     btnContinuar.focus()
@@ -288,7 +288,7 @@ export class CobranzaComponent implements OnInit, AfterViewInit {
     };
     this.lista.push(obj);
     // this.filtros.push()
-    this.facturasAPagarAux = (await this._facturaService.pagarPorMonto({ fecha_pago: this.fechaPago, lista: this.lista })).facturas;
+    this.facturasAPagarAux = (await this._facturaService.pagarPorMonto({ fecha_pago: this.fechaPago.getTime(), lista: this.lista })).facturas;
   //console.log(this.facturasAPagarAux);
     this.contrato = null;
     // this.filtrar();
