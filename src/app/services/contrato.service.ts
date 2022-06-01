@@ -192,4 +192,29 @@ export class ContratoService {
     });
   }
 
+  getReporteBajas(body) {
+    let url = `${URL_SERVICIOS}/contrato/all_excel_de_baja`;
+    url += `?token=${this._usuarioService.token}`;
+
+    return this.http.post(url, body, { responseType: 'blob' as 'json' }).toPromise().then(
+      (response: any) => {
+        let dataType = response.type;
+        let binaryData = [];
+        binaryData.push(response);
+        let downloadLink = document.createElement('a');
+        downloadLink.href = window.URL.createObjectURL(new Blob(binaryData, { type: dataType }));
+
+        downloadLink.setAttribute('download', 'Reporte_Bajas.xlsx');
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        downloadLink.remove()
+      },
+      
+      (error) => {
+        console.log(error);
+        
+        swal.fire({ title: 'error', icon: 'error', text: error })
+      }
+    )
+  }
 }

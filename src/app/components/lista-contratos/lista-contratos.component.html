@@ -398,3 +398,54 @@
         </div>
     </div>
 </div>
+<div *ngIf="_usuarioService.usuario.role == 'ADMIN_ROLE'"  >
+   <div class="row">
+    <div class="col-xs col-md-4">
+        <div  class="card">
+            <div class="card-body">
+                <h3>Reporte de Bajas</h3>
+                <div class="d-flex">
+                    <div class="mx-auto">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Fecha</mat-label>
+                            <mat-date-range-input [formGroup]="rangeReporteBajas"
+                                [rangePicker]="pickerReporteBajas">
+                                <input autocomplete="off" matStartDate formControlName="start"
+                                    placeholder="fecha inicio">
+                                <input matEndDate formControlName="end" placeholder="fecha fin">
+                            </mat-date-range-input>
+                            <mat-datepicker-toggle matSuffix [for]="pickerReporteBajas"></mat-datepicker-toggle>
+                            <mat-date-range-picker #pickerReporteBajas></mat-date-range-picker>
+                            <mat-error *ngIf="rangeReporteBajas.controls.start.hasError('matStartDateInvalid')">
+                                Invalid start date</mat-error>
+                            <mat-error *ngIf="rangeReporteBajas.controls.end.hasError('matEndDateInvalid')">
+                                Invalid end date</mat-error>
+                        </mat-form-field>
+                        <div></div>
+                        <button style="width: 155.57px;" [disabled]="!rangeReporteBajas.value.start 
+                    || !rangeReporteBajas.value.end 
+                    || loadingGenerarReporteBajas " (click)="generarReporteBajas()"
+                            class="btn btn-rounded mr-auto btn-inverse">
+                            <span *ngIf="!loadingGenerarReporteBajas">Descargar Excel</span>
+                            <div *ngIf="loadingGenerarReporteBajas" style="width: 100%;">
+                                <div style="display: flex;">
+
+                                    <div class="mx-auto">
+                                        <mat-spinner [color]="'accent'" [diameter]="20"></mat-spinner>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </button>
+ 
+                        <!-- <div style="display: block;">
+                    
+                        <button type="button" [disabled]="!rangeReporteBajas.value.start || !rangeReporteBajas.value.end" (click)="generarReporteMovimientos()" class="btn btn-rounded btn-inverse mx-auto">Descargar Excel</button></div>
+                   </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   </div>
+</div>

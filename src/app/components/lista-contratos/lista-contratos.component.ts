@@ -32,6 +32,12 @@ export class ListaContratosComponent implements OnInit {
   @Input() selectable = false;
   @Output() selected = new EventEmitter();
   @Input() cliente: Usuario;
+  rangeReporteBajas = new FormGroup({
+    start: new FormControl(),
+    end: new FormControl()
+  });
+  loadingGenerarReporteBajas = false
+
   inputClientes = new Subject<string>();
   loadingClientes = false
   inputCobradores = new Subject<string>();
@@ -96,7 +102,7 @@ export class ListaContratosComponent implements OnInit {
   };
 
   configDP: IDatePickerConfig = {
-  
+
   };
   cantidadServicios
   algo = false
@@ -186,16 +192,16 @@ export class ListaContratosComponent implements OnInit {
 
   async filtrar() {
 
-    this.options.inhumados_date_start = this.rangeInhumado.value.start ?  new Date(      
-      new Date(`${new Date(this.rangeInhumado.value.start).getFullYear()}-${new Date(this.rangeInhumado.value.start).getMonth()+1}-${new Date(this.rangeInhumado.value.start).getDate()} 00:00`)
-      ).toISOString() : null
-    this.options.inhumados_date_end = this.rangeInhumado.value.end ? new Date(      
-      new Date(`${new Date(this.rangeInhumado.value.end).getFullYear()}-${new Date(this.rangeInhumado.value.end).getMonth()+1}-${new Date(this.rangeInhumado.value.end).getDate()} 23:59:59`)
-      ).toISOString() : null
+    this.options.inhumados_date_start = this.rangeInhumado.value.start ? new Date(
+      new Date(`${new Date(this.rangeInhumado.value.start).getFullYear()}-${new Date(this.rangeInhumado.value.start).getMonth() + 1}-${new Date(this.rangeInhumado.value.start).getDate()} 00:00`)
+    ).toISOString() : null
+    this.options.inhumados_date_end = this.rangeInhumado.value.end ? new Date(
+      new Date(`${new Date(this.rangeInhumado.value.end).getFullYear()}-${new Date(this.rangeInhumado.value.end).getMonth() + 1}-${new Date(this.rangeInhumado.value.end).getDate()} 23:59:59`)
+    ).toISOString() : null
     this.options.inhumados_nombre = this.inhumadoNombre ? this.inhumadoNombre : null
     this.options.inhumados_ci = this.inhumadoCi ? this.inhumadoCi : null
     this.options.beneficiarios_ci = this.beneficiarioCi ? this.beneficiarioCi : null
-    this.options.beneficiarios_nombre = this.beneficiarioNombre ? this.beneficiarioNombre : null    
+    this.options.beneficiarios_nombre = this.beneficiarioNombre ? this.beneficiarioNombre : null
     this.options.fecha_inicio = this.range.value.start ? new Date(`${new Date(this.range.value.start).toLocaleDateString('en-US')} 00:00`).getTime() : null
     this.options.fecha_fin = this.range.value.end ? new Date(`${new Date(this.range.value.end).toLocaleDateString('en-US')} 23:59:59`).getTime() : null
     this.options.cliente = this.cliente ? this.cliente._id : null
@@ -365,8 +371,18 @@ export class ListaContratosComponent implements OnInit {
     const wopen = window.open('/extracto-contratos');
   }
   exportarEXCEL() {
-    this._contratoService.getContratosEXCEL(null, this.options, this.sort)  
+    this._contratoService.getContratosEXCEL(null, this.options, this.sort)
   }
 
-  
+  generarReporteBajas() {
+    console.log(this.rangeReporteBajas);
+    let date_start = new Date(`${new Date(this.rangeReporteBajas.value.start).toLocaleDateString('en-US')} 00:00`).getTime()
+    let date_end = new Date(`${new Date(this.rangeReporteBajas.value.end).toLocaleDateString('en-US')} 23:59:59`).getTime()
+    let body = {
+      date_end,
+      date_start
+    }
+    this._contratoService.getReporteBajas(body)
+  }
+
 }
