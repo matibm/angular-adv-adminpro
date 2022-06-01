@@ -295,8 +295,34 @@ export class CobranzaComponent implements OnInit, AfterViewInit {
     this.facturaPdf = this.crearPDF(this.facturasAPagarAux);
 
   }
-  async confirmarPago() {
-  //console.log(this.loadingConfirmarPago);
+  confirmarPago(){
+    swal.fire({
+      icon: 'warning',
+      title: 'Confirmar Cobro con Fecha de ' + new Date(this.fechaPago).toLocaleDateString('es-AR', {year: 'numeric', month: 'long', day: '2-digit'} ) + ' ?',
+      // text: `Tu usuario no tiene Nro de Timbrado`,
+      confirmButtonText: `Confirmar`,
+      cancelButtonText: `Cancelar`,
+      showCancelButton: true,
+      willClose: (e) =>{
+      //  this.modalOutput()
+        
+      },
+      
+
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        this.confirmarPagoConfirmado()
+      }  
+    }, (op) =>{
+       console.log(op);
+       
+    })
+  }
+
+  async confirmarPagoConfirmado() {
+  
+   
     if(this.loadingConfirmarPago) return
     this.loadingConfirmarPago = true
     

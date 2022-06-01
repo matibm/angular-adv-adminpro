@@ -20,18 +20,18 @@ export class ModalBilletesComponent implements OnInit {
 
     }, 100);
   }
-  cienmil = null
-  cincuentamil = null
-  veintemil = null
-  diezmil = null
-  cincomil = null
-  dosmil = null
-  mil = null
-  quinientos = null
-  cien = null
-  cincuenta = null
-  total = null
-  cheque = null
+  cienmil
+  cincuentamil
+  veintemil
+  diezmil
+  cincomil
+  dosmil
+  mil
+  quinientos
+  cien
+  cincuenta
+  total
+  cheque
   print(event) {
     console.log(event.target);
     if (event.target.id == 'afuera') {
