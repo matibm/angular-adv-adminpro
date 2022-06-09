@@ -89,8 +89,14 @@ export class ListaFacturasComponent implements OnInit {
 
   fecha_recibo = new Date()
   cod_servicios = []
+  recibidos = [
+    'TODOS',
+    'RECIBIDOS',
+    'NO RECIBIDOS',
+  ]
   estadoSeleccionado = 'TODOS';
   codSeleccionado = null
+  recibidoSeleccionado = null
 
   rangeEmision = new FormGroup({
     start: new FormControl(),
@@ -226,6 +232,7 @@ export class ListaFacturasComponent implements OnInit {
       contrato: this.contrato ? this.contrato._id : null,
       pagado,
       codigo_producto: this.codSeleccionado ? this.codSeleccionado : null,
+      es_recibido: this.recibidoCondition(this.recibidoSeleccionado),
       vencimiento_start: this.rangeVencimiento.value.start ? new Date(this.rangeVencimiento.value.start).getTime() : null,
       vencimiento_end: this.rangeVencimiento.value.end ? new Date(this.rangeVencimiento.value.end).setHours(23, 59, 59, 59) : null,
       pagado_start: this.rangePagado.value.start ? new Date(this.rangePagado.value.start).getTime() : null,
@@ -241,6 +248,15 @@ export class ListaFacturasComponent implements OnInit {
 
   }
 
+  recibidoCondition(value){
+    console.log(value);
+    
+    let resp = null
+    if(value == 'TODOS') resp = null
+    if(value == 'RECIBIDOS') resp = true
+    if(value == 'NO RECIBIDOS') resp = false
+    return resp 
+  }
   seleccionarProducto(producto: Producto) {
 
     this.servicio = producto;
@@ -418,8 +434,9 @@ export class ListaFacturasComponent implements OnInit {
     this.loadingGenerarReporteMov = false
     
   }
-  accionRecibo(accion){
-    this._facturaService.confirmarRecibo(this.opciones, accion, accion == 'confirmar'? this.fecha_recibo.getTime() : null)
+  async accionRecibo(accion){
+    await this._facturaService.confirmarRecibo(this.opciones, accion, accion == 'confirmar'? this.fecha_recibo.getTime() : null)
+    this.filtrar()
   }
 
 }

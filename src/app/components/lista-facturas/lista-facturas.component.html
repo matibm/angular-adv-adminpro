@@ -371,6 +371,19 @@
                     </ng-select>
                 </div>
             </div>
+            <div class="col-xs col-md-3">
+                <h4>Recibido</h4>
+                <div class="">
+                    <ng-select [(ngModel)]="recibidoSeleccionado" (ngModelChange)="filtrar()">
+                        <ng-option *ngFor="let item of recibidos" [value]="item">
+                            <div>
+                                {{item}}
+                            </div>
+
+                        </ng-option>
+                    </ng-select>
+                </div>
+            </div>
         </div>
 
         <!-- <button type="button" (click)="filtrar()" class=" float-right btn btn-primary">filtrar</button> -->
