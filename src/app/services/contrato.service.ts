@@ -109,6 +109,15 @@ export class ContratoService {
       return resp.contrato;
     });
   }
+  getInhumado(body): Promise<any> {
+
+    let url = URL_SERVICIOS + '/contrato/get_contrato_por_inhumado'
+    url += `?token=${this._usuarioService.token}`;
+
+    return this.http.post(url, body).toPromise().then((resp: any) => {
+      return resp;
+    });
+  }
   getMapa(): Promise<any> {
 
     let url = URL_SERVICIOS + '/contrato/mapa';
@@ -209,10 +218,10 @@ export class ContratoService {
         downloadLink.click();
         downloadLink.remove()
       },
-      
+
       (error) => {
         console.log(error);
-        
+
         swal.fire({ title: 'error', icon: 'error', text: error })
       }
     )

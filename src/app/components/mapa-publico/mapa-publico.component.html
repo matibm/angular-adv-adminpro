@@ -1,4 +1,18 @@
-
 <div class="w-100 d-flex">
-  <div class="mx-auto"></div>
+  <div class="mx-auto mt-5 " style="min-width: 300px">
+    
+    <ng-select #productsearch id="searchclient" [typeahead]="inputClientes" [loading]="loadingClientes"
+      [items]="clientes" name="dsfdbrweqcda" [(ngModel)]="cliente" (click)="selectContrato()" (ngModelChange)="null"
+      notFoundText="no se encontraron resultados" placeholder="buscar por ci" bindLabel="NOMBRES"
+      [searchFn]="customSearchFn">
+      <ng-template ng-option-tmp let-item="item">
+        <div> {{item.inhumados.nombre}}
+
+        </div>
+
+      </ng-template>
+    </ng-select>
+  </div>
 </div>
+
+<app-mapa [ubicacion_contrato]="ubicaion_contrato"></app-mapa>

@@ -1,3 +1,6 @@
+<!-- <button class="btn btn-primary" (click)="getPositionByContrato(ubicaciones[10].parcelas[4].filas[5].contrato)">contrato</button>
+<button class="btn btn-primary" (click)="findAndScroll('160439')">BBBBB</button> -->
+
 <div style="font-size: small; overflow-x: scroll;">
     <div class="row" style="width: 3300px;  ">
         <div class="col-xs col-md-3" style="max-width: fit-content" *ngFor="let ubicacion of ubicaciones">
@@ -14,7 +17,7 @@
                             <div *ngIf="item.index != -1" (click)="goToContrato(item.contrato?._id)"
                                 [ngClass]="{'rojo': item.contrato, 'pointer': item.contrato  }"
                                 style="width: 100%; display: flex; border-bottom: 1px black solid;">
-                                <div class="m-auto">{{item.index}}</div>
+                                <div class="m-auto" id="{{ubicacion.manzana +''+itemuno.col+ ''+item.index }}">{{item.index}}</div>
 
                             </div>
                             <div *ngIf="item.index == -1" (click)="goToContrato(item.contrato?._id)"
