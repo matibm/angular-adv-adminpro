@@ -1,0 +1,285 @@
+<div class="card">
+  <div class="card-body">
+    
+  <div class="">
+
+    <!-- <h3>Nuevo Movimiento</h3> -->
+    <div class="row">
+        <div class="col-xs col-md-3 mt-2">
+            <div class="inline-flex">
+
+                <label class="">Proveedor</label>
+                <div *ngIf="proveedor" class="pointer close-icon ml-auto">
+                    <button (click)="proveedor = null;  " type="button"
+                        class="btn btn-sm btn-light"><i class=" ti-close  "></i></button>
+                </div>
+            </div>
+            <div class="" *ngIf="!proveedor">
+                <ng-select #search [typeahead]="inputProveedores" [loading]="loadingProveedores"
+                    [items]="proveedores" name="dsfdbrdafwseqcda" [(ngModel)]="proveedor"
+                    notFoundText="no se encontraron resultados" placeholder="Buscar Proveedor"
+                    bindLabel="NOMBRES" [searchFn]="customSearchFn">
+                    <ng-template ng-option-tmp let-item="item">
+                        <div>
+                            <div *ngIf="item.APELLIDOS">{{item.APELLIDOS}} {{item.NOMBRES}}</div>
+
+
+
+                            <small>{{item.RUC | ruc}}</small>
+                        </div>
+
+                    </ng-template>
+                </ng-select>
+            </div>
+
+
+            <div class="" *ngIf="proveedor">
+                <div>
+                    <div *ngIf="proveedor.APELLIDOS">{{proveedor .NOMBRES}} {{proveedor .APELLIDOS}}
+                    </div>
+
+                    <small>{{proveedor.RUC | ruc}}</small>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-xs col-md-3 mt-2">
+            <div class="inline-flex">
+                <label class="">Origen Fondo</label>
+                <div *ngIf="fondo" class="pointer close-icon ml-auto">
+                    <button (click)="fondo = null" type="button" class="btn btn-sm btn-light"><i
+                            class=" ti-close  "></i></button>
+                </div>
+            </div>
+            <div class="" *ngIf="!fondo">
+                <ng-select [items]="fondos" [(ngModel)]="fondo" (search)="searchBancos($event)"
+                    notFoundText="no se encontraron resultados" placeholder="buscar origen fondo"
+                    bindLabel="NOMBRES" [searchFn]="customSearchFn">
+                    <ng-template ng-option-tmp let-item="item">
+                        <div>
+                            <div *ngIf="item.APELLIDOS">{{item.APELLIDOS}} {{item.NOMBRES}}</div>
+
+                            <small>{{item.RUC | ruc}}</small>
+                        </div>
+
+                    </ng-template>
+                </ng-select>
+            </div>
+
+            <div class="" *ngIf="fondo">
+                <div>
+                    <div *ngIf="fondo.APELLIDOS">{{fondo.NOMBRES}} {{fondo.APELLIDOS}}</div>
+
+                    <small>{{fondo.RUC | ruc}}</small>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-xs col-md-3 mt-2">
+            <div class="inline-flex">
+                <label class="">Usuario</label>
+                <div *ngIf="cliente" class="pointer close-icon ml-auto">
+                    <button (click)="cliente = null" type="button" class="btn btn-sm btn-light"><i
+                            class=" ti-close  "></i></button>
+                </div>
+            </div>
+            <div class="" *ngIf="!cliente">
+                <ng-select [items]="clientes" [(ngModel)]="cliente"
+                    (search)="searchClientes($event)" notFoundText="no se encontraron resultados"
+                    placeholder="buscar usuario" bindLabel="NOMBRES" [searchFn]="customSearchFn">
+                    <ng-template ng-option-tmp let-item="item">
+                        <div>
+                            <div *ngIf="item.APELLIDOS">{{item.APELLIDOS}} {{item.NOMBRES}}</div>
+
+
+
+                            <small>{{item.RUC | ruc}}</small>
+                        </div>
+
+                    </ng-template>
+                </ng-select>
+            </div>
+            <div class="" *ngIf="cliente">
+                <div>
+                    <div *ngIf="cliente.NOMBRES">{{cliente.NOMBRES}} {{cliente.APELLIDOS}}</div>
+                    <div *ngIf="cliente.NOMBRES && cliente.RAZON"> - </div>
+                    <div *ngIf="cliente.RAZON">{{cliente.RAZON}} </div>
+
+                    <small>{{cliente.RUC | ruc}}</small>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-xs col-md-3 mt-2">
+            <div class=" form-group">
+                <label for="">Nro Timbrado</label>
+                <input type="text" [(ngModel)]="nro" class="form-control" name="" id="nro"
+                    aria-describedby="helpId" placeholder="">
+            </div>
+
+        </div>
+        <div class="col-xs col-md-3 mt-2">
+
+            <div class=" form-group">
+                <label for="">Nro. Factura Proveedor</label>
+                <input type="text" [(ngModel)]="nroFacturaProveedor" class="form-control" name=""
+                    id="nrofacturaproveedor" aria-describedby="helpId" placeholder="">
+            </div>
+
+        </div>
+        <div class="col-xs col-md-3 mt-2">
+            <div class=" form-group">
+                <label for="">Comentario</label>
+                <input type="text" [(ngModel)]="comentario" class="form-control" name="" id="monto"
+                    aria-describedby="helpId" placeholder="">
+            </div>
+        </div>
+        <div class="col-xs col-md-3 mt-2">
+            <div class=" form-group">
+                <label for="">Monto</label>
+                <input type="number" [(ngModel)]="monto" class="form-control" name="" id="monto"
+                    aria-describedby="helpId" placeholder="">
+            </div>
+        </div>
+        <div class="col-xs col-md-3 mt-2">
+            <div class=" form-group">
+                <mat-form-field appearance="fill">
+                    <mat-label>Vencimiento Timbrado</mat-label>
+                    <input matInput name="asdsadrdsvet321" [(ngModel)]="fechaVencimientoTimbrado"
+                        [matDatepicker]="pickerVencimiento">
+                    <mat-datepicker-toggle matSuffix [for]="pickerVencimiento">
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #pickerVencimiento></mat-datepicker>
+                </mat-form-field>
+            </div>
+        </div>
+        
+    </div>
+
+
+
+
+
+    <div style="width: 100%; display: flex;" class="">
+        <div style="display: flex;" class="">
+            <span>Contrato</span>
+            <div *ngIf="contrato" style="height: fit-content;" class="pointer close-icon ml-auto">
+                <button (click)="contrato = null" type="button" class="btn btn-sm btn-light"><i
+                        class=" ti-close  "></i></button>
+            </div>
+        </div>
+
+
+
+
+        <div *ngIf="!contrato" class="">
+
+            <div style="display: flex;" class="">
+                <div class="card">
+                    <div class="card-body">
+                        <button type="button" (click)="showModal = true"
+                            class="btn btn-inverse">Buscar
+                            Contrato</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="contrato" class="">
+            <div style="display: flex;" class="">
+
+                <div class="card bg-light">
+                    <div class="card-body">
+
+                        <span><b>Titular:</b> {{contrato.titular.NOMBRES}}
+                            {{contrato.titular.APELLIDOS}}</span>
+                        <br>
+                        <span><b>Servicio:</b> {{contrato.producto.NOMBRE}}</span>
+                        <br>
+                        <span><b>Número de contrato:</b> {{contrato.nro_contrato}}</span>
+                        <br>
+                        <span><b>Fecha de creación:</b> {{contrato.fecha_creacion_unix | date
+                            }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mx-auto">
+            <h5>Cuenta Gasto</h5>
+
+            <div *ngIf="cuentaGasto" style="display: block;">
+                <span><b class="lead">Tipo: </b> {{cuentaGasto.nombre_padre}}</span>
+                <br>
+                <span><b class="lead">Descripcion: </b> {{cuentaGasto.descripcion}}</span>
+            </div>
+
+            <button *ngIf="!cuentaGasto" type="button" (click)="showModalCuentas = true"
+                class="btn mt-2  btn-info">Seleccionar Cuenta</button>
+            <button *ngIf="cuentaGasto" type="button" (click)="showModalCuentas = true"
+                class="btn mt-2 btn-inverse">Cambiar Cuenta</button>
+        </div>
+        
+
+    </div>
+
+    <div  style="width: 100%; display: flex;">
+
+      <div class="mx-auto" style="min-width: 180px;">
+        <div class=" form-group">
+            Tipo de IVA
+            <ng-select [(ngModel)]="tipoIva">
+                <ng-option *ngFor="let item of ['IVA 10%','IVA 5%', 'EXENTAS']" [value]="item">
+                    <div>
+                        {{item}}
+                    </div>
+                </ng-option>
+            </ng-select>
+        </div>
+    </div>
+    <div class="mx-auto">
+        <h5>Cuenta Abaco</h5>
+
+        <div *ngIf="cuentaAbaco" class="form-input">
+            <span for=""><b class="lead">Codigo:</b> {{cuentaAbaco.codigo}}</span><br>
+            <span for=""><b class="lead">Descripcion:</b> {{cuentaAbaco.descripcion}}</span><br>
+            <span for=""><b class="lead">Tipo:</b> {{cuentaAbaco.tipo}}</span>
+        </div>
+        <div *ngIf="!cuentaAbaco" class="form-input">
+            <small>Seleccione una cuenta gasto</small>
+        </div>
+        <!-- <div *ngIf="cuentasAbaco && !cuentaAbaco">
+            <div style="min-width: 300px;" class="form-group">
+                <label for="">Selecciona una cuenta</label>
+
+                <ng-select [(ngModel)]="tipoCuentaAbaco">
+                    <ng-option *ngFor="let item of cuentasAbaco" [value]="item">
+                        <div>
+                            {{item.codigo}} - {{item.descripcion}}
+                        </div>
+                    </ng-option>
+                </ng-select>
+            </div>
+        </div> -->
+    </div>
+    <div class="mx-auto">
+        <mat-form-field appearance="fill">
+            <mat-label>Fecha de Creacion</mat-label>
+            <input matInput name="asdsdrdsvet321" [(ngModel)]="fechaCreacion"
+                [matDatepicker]="pickerPago">
+            <mat-datepicker-toggle matSuffix [for]="pickerPago">
+            </mat-datepicker-toggle>
+            <mat-datepicker #pickerPago></mat-datepicker>
+        </mat-form-field>
+    </div>
+
+    </div>
+    <div class="float-right">
+        
+        <button type="submit" (click)="guardar()" 
+            class="btn btn-rounded btn-info ml-2">guardar</button>
+    </div>
+
+</div> 
+  </div>
+</div>

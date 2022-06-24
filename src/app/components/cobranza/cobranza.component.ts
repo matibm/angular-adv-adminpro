@@ -5,7 +5,7 @@ import { Producto } from './../../models/producto';
 import { UsuarioService } from './../../services/usuario.service';
 import { ProductosService } from './../../services/productos.service';
 import { FacturaService } from './../../services/factura.service';
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NotifierService } from 'angular-notifier';
 import { Subject } from 'rxjs';
 import { Usuario } from 'src/app/models/usuario';
@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
   templateUrl: './cobranza.component.html',
   styleUrls: ['./cobranza.component.css']
 })
-export class CobranzaComponent implements OnInit, AfterViewInit {
+export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(public _facturaService: FacturaService,
     public _usuarioService: UsuarioService,
@@ -32,7 +32,10 @@ export class CobranzaComponent implements OnInit, AfterViewInit {
 
     this.notifier = notifier;
   }
-
+ngOnDestroy(): void {
+  this.inputClientes.unsubscribe()
+  this.inputCobrador.unsubscribe()
+}
   private notifier: NotifierService;
   @ViewChild('search', { static: false }) searchCliente;
   @ViewChild('btnContinuar', { static: false }) btnContinuar;
@@ -367,6 +370,7 @@ export class CobranzaComponent implements OnInit, AfterViewInit {
     this.notifier.notify('success', 'pasa la edad');
   }
   observableBuscadores() {
+    
     this.inputClientes.pipe(debounceTime(500), distinctUntilChanged()).subscribe(async (txt) => {
       if (!txt) {
         return;

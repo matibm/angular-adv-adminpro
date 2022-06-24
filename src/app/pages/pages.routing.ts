@@ -38,6 +38,7 @@ import { ExportarGastosPdfComponent } from '../components/exportar-gastos-pdf/ex
 import { MapaComponent } from '../components/mapa/mapa.component';
 import { PdfFacturaMobileComponent } from '../components/pdf-factura-mobile/pdf-factura-mobile.component';
 import { MapaPublicoComponent } from '../components/mapa-publico/mapa-publico.component';
+import { EditGastoComponent } from '../components/edit-gasto/edit-gasto.component';
 const routes: Routes = [
   // {
   //   path: 'contrato',
@@ -76,6 +77,7 @@ const routes: Routes = [
       { path: 'contrato_pdf/:id', component: ContratoPdfComponent },
       { path: 'editar_contrato/:id', component: EditarContratoComponent },
       { path: 'gasto/:id', component: GastoComponent },
+      { path: 'edit_gasto/:id', component: EditGastoComponent },
       { path: 'info_caja', component: InfoCajaComponent, canActivate: [AdminGuard] },
       { path: 'resumen', component: ResumenComponent },
       { path: 'transferencia', component: TransferenciaComponent , canActivate: [AdminGuard]},

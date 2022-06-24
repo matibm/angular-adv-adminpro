@@ -244,6 +244,19 @@ export class MovimientoService {
         return resp;
       });
   }
+  updateEgreso(body) {
+    let url = `${URL_SERVICIOS}/movimientos/${body._id}`;
+    url += `?token=${this._usuarioService.token}`;
+
+    return this.http
+      .put(url, body)
+      .toPromise()
+      .then((resp: any) => {
+        console.log(resp);
+        swal.fire('Cambios Guardados', '', 'success')
+        return resp;
+      });
+  }
   // getMovimientosByDate(date_start?, date_end?, fondo?, cerrado?: boolean) {
 
   //   let url = `${URL_SERVICIOS}/movimientos/by_date`;
