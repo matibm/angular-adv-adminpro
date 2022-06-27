@@ -32,51 +32,51 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.notifier = notifier;
   }
-ngOnDestroy(): void {
-  this.inputClientes.unsubscribe()
-  this.inputCobrador.unsubscribe()
-}
+  ngOnDestroy(): void {
+    this.inputClientes.unsubscribe()
+    this.inputCobrador.unsubscribe()
+  }
   private notifier: NotifierService;
   @ViewChild('search', { static: false }) searchCliente;
   @ViewChild('btnContinuar', { static: false }) btnContinuar;
-  ngAfterViewInit(){
-  //console.log(!this._userService.usuario.timbrado.timbrado , this._userService.usuario.role == 'USER_ROLE');
-    
+  ngAfterViewInit() {
+    //console.log(!this._userService.usuario.timbrado.timbrado , this._userService.usuario.role == 'USER_ROLE');
+
     if (!this._userService.usuario.timbrado.timbrado && this._userService.usuario.role == 'USER_ROLE') {
       swal.fire({
         icon: 'warning',
         title: 'No existe timbrado',
         text: `Tu usuario no tiene Nro de Timbrado`,
         confirmButtonText: `Establecer Timbrado`,
-        willClose: (e) =>{
-         this.modalOutput()
-          
+        willClose: (e) => {
+          this.modalOutput()
+
         },
-        
-  
+
+
       }).then((result) => {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
           this.goBack = false
-        }  
-      }, (op) =>{
-      //console.log(op);
-        
+        }
+      }, (op) => {
+        //console.log(op);
+
       })
     }
-    
+
     this.searchCliente.focus()
   }
-  goBack = true 
-  modalOutput(){
-   setTimeout(() => {
-    if (!this.goBack) {
-      this.router.navigateByUrl(`/admin/usuario/${this._usuarioService.user_id}`)
-        
-      }else {
+  goBack = true
+  modalOutput() {
+    setTimeout(() => {
+      if (!this.goBack) {
+        this.router.navigateByUrl(`/admin/usuario/${this._usuarioService.user_id}`)
+
+      } else {
         window.history.back()
       }
-   }, 1);
+    }, 1);
   }
   showModal = false;
   opciones;
@@ -153,22 +153,22 @@ ngOnDestroy(): void {
   rucFactura;
   telFactura;
   direccionFactura;
-  fechaPago = new Date(`${new Date().getFullYear()}-${new Date().getMonth()+1}-${new Date().getDate()} 00:00`)
+  fechaPago = new Date(`${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()} 00:00`)
   pruebaValue(variable) {
-  //console.log(getComputedStyle(variable).width);
+    //console.log(getComputedStyle(variable).width);
 
 
   }
   async ngOnInit() {
-  //console.log(!this._userService.usuario?.timbrado?.timbrado , this._userService?.usuario?.role == 'USER_ROLE');
-  //console.log(this._userService?.usuario?.role);
+    //console.log(!this._userService.usuario?.timbrado?.timbrado , this._userService?.usuario?.role == 'USER_ROLE');
+    //console.log(this._userService?.usuario?.role);
     if (this._userService?.usuario?.role == 'USER_ROLE') {
-       this.cobrador = await this._userService.inicializarUsuario();
+      this.cobrador = await this._userService.inicializarUsuario();
     }
-  //   this.inputClientes = new Subject<string>();
-  // this.inputCobrador = new Subject<string>();
+    //   this.inputClientes = new Subject<string>();
+    // this.inputCobrador = new Subject<string>();
     this.observableBuscadores();
-  
+
     // this.servicios = await this._productoService.getProductos();
     this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', '');
   }
@@ -200,7 +200,7 @@ ngOnDestroy(): void {
     };
 
 
-  //console.log(this.opciones);
+    //console.log(this.opciones);
     this.sort = {
       key: this.sort_key,
       value: this.sort_value
@@ -255,27 +255,30 @@ ngOnDestroy(): void {
     this.direccionFactura = cliente.DIRECCION;
     this.contratos = await this._contratoSerivce.getContratosByTitular(cliente._id);
 
-  //console.log(this.contratos);
+    //console.log(this.contratos);
     this.filtrar();
 
   }
 
   onContratoSelected(contrato) {
     this.contrato = contrato;
-  //console.log(contrato);
+    //console.log(contrato);
     this.filtrar();
   }
 
-
+   
   async getFacturasApagar(id, monto) {
     if (monto < 1) {
       return;
     }
-    this.facturasAPagar = (await this._facturaService.pagarPorMonto({ fecha_pago: this.fechaPago.getTime(), lista: [{ contrato: id, monto: parseInt(monto) }] })).facturas;
-  //console.log(this.facturasAPagar);
+    let resp = (await this._facturaService.pagarPorMonto({ fecha_pago: this.fechaPago.getTime(), lista: [{ contrato: id, monto: parseInt(monto) }] }))
+    this.facturasAPagar = resp.facturas
+    console.log(this.facturasAPagar);
+    this.montoTotal = resp.monto_total
+
     let btnContinuar = document.getElementById('btnContinuar')
     btnContinuar.focus()
-    }
+  }
 
   async searchBancos(val) {
     this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', val.term);
@@ -284,57 +287,57 @@ ngOnDestroy(): void {
     // this.facturas = null
 
     this.facturasAPagar = null;
-    this.montoTotal += parseInt(monto);
+    // this.montoTotal += parseInt(monto);
     const obj = {
       contrato: id,
-      monto
+      monto: this.montoTotal
     };
     this.lista.push(obj);
     // this.filtros.push()
     this.facturasAPagarAux = (await this._facturaService.pagarPorMonto({ fecha_pago: this.fechaPago.getTime(), lista: this.lista })).facturas;
-  //console.log(this.facturasAPagarAux);
+    //console.log(this.facturasAPagarAux);
     this.contrato = null;
     // this.filtrar();
     this.facturaPdf = this.crearPDF(this.facturasAPagarAux);
 
   }
-  confirmarPago(){
+  confirmarPago() {
     swal.fire({
       icon: 'warning',
-      title: 'Confirmar Cobro con Fecha de ' + new Date(this.fechaPago).toLocaleDateString('es-AR', {year: 'numeric', month: 'long', day: '2-digit'} ) + ' ?',
+      title: 'Confirmar Cobro con Fecha de ' + new Date(this.fechaPago).toLocaleDateString('es-AR', { year: 'numeric', month: 'long', day: '2-digit' }) + ' ?',
       // text: `Tu usuario no tiene Nro de Timbrado`,
       confirmButtonText: `Confirmar`,
       cancelButtonText: `Cancelar`,
       showCancelButton: true,
-      willClose: (e) =>{
-      //  this.modalOutput()
-        
+      willClose: (e) => {
+        //  this.modalOutput()
+
       },
-      
+
 
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         this.confirmarPagoConfirmado()
-      }  
-    }, (op) =>{
-       console.log(op);
-       
+      }
+    }, (op) => {
+      console.log(op);
+
     })
   }
 
   async confirmarPagoConfirmado() {
-  
-   
-    if(this.loadingConfirmarPago) return
+
+
+    if (this.loadingConfirmarPago) return
     this.loadingConfirmarPago = true
-    
+
     // let timbrado = (await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body
     console.log((await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body);
     console.log(this.cobrador.timbrado);
-    
+
     let timbrado = this.cobrador.timbrado
-    
+
     let pagoresp = await this._facturaService.pagarPorMonto({
       fecha_pago: this.fechaPago,
       lista: this.lista,
@@ -346,7 +349,7 @@ ngOnDestroy(): void {
       tel: this.telFactura,
       direccion: this.direccionFactura,
       cobrador: this.cobrador?._id,
-      confirmado: true, 
+      confirmado: true,
       fondo: this.fondo._id,
       nro_timbrado: this.cobrador.timbrado.timbrado,
       nro_factura: this.cobrador.nro_factura_actual + 1,
@@ -355,7 +358,7 @@ ngOnDestroy(): void {
     });
     this.loadingConfirmarPago = false
 
-  //console.log(pagoresp);
+    //console.log(pagoresp);
     this.mostrarModal(pagoresp?.pago?._id)
     this.ngOnInit();
 
@@ -365,12 +368,12 @@ ngOnDestroy(): void {
 
 
   prueba() {
-  //console.log(this.notifier.getConfig());
+    //console.log(this.notifier.getConfig());
 
     this.notifier.notify('success', 'pasa la edad');
   }
   observableBuscadores() {
-    
+
     this.inputClientes.pipe(debounceTime(500), distinctUntilChanged()).subscribe(async (txt) => {
       if (!txt) {
         return;
@@ -446,7 +449,7 @@ ngOnDestroy(): void {
       servicios = fsinrepetir;
     }
     // let timbrado = (await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body
-    
+
     const facturaPDF = {
       nombres: this.nombreFactura,
       fecha: this.fechaPago.getTime(),
@@ -460,8 +463,8 @@ ngOnDestroy(): void {
       timbrado: this.cobrador.timbrado,
       comentario: this.comentario
     };
-  //console.log('-----------------------------------------------');
-  //console.log(facturaPDF);
+    //console.log('-----------------------------------------------');
+    //console.log(facturaPDF);
 
     return facturaPDF;
   }
@@ -495,7 +498,7 @@ ngOnDestroy(): void {
       servicios,
       timbrado: pago.timbrado
     };
-  //console.log(this.facturapdf);
+    //console.log(this.facturapdf);
 
   }
 }
