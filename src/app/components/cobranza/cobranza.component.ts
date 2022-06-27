@@ -11,6 +11,7 @@ import { Subject } from 'rxjs';
 import { Usuario } from 'src/app/models/usuario';
 import swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-cobranza',
@@ -25,8 +26,8 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
     public _productoService: ProductosService,
     notifier: NotifierService,
     public _userService: UsuarioService,
-    private router: Router
-
+    private router: Router,
+    private currency: CurrencyPipe
 
   ) {
 
@@ -274,6 +275,15 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
     let resp = (await this._facturaService.pagarPorMonto({ fecha_pago: this.fechaPago.getTime(), lista: [{ contrato: id, monto: parseInt(monto) }] }))
     this.facturasAPagar = resp.facturas
     console.log(this.facturasAPagar);
+    if (monto > resp.monto_total) {
+      swal.fire({
+        title: "Monto ingresado es superior a la deuda",
+        text: `Monto ingresado: ${this.currency.transform(monto, '', '', '2.0') }
+         Monto de la deuda pendiente: ${ this.currency.transform(resp.monto_total, '', '', '2.0') }`,
+        icon: 'info',
+        showConfirmButton: true
+      })
+    }
     this.montoTotal = resp.monto_total
 
     let btnContinuar = document.getElementById('btnContinuar')
@@ -285,7 +295,7 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
   }
   async agregarIngreso(id, monto) {
     // this.facturas = null
-
+    
     this.facturasAPagar = null;
     // this.montoTotal += parseInt(monto);
     const obj = {
