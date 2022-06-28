@@ -41,7 +41,7 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('search', { static: false }) searchCliente;
   @ViewChild('btnContinuar', { static: false }) btnContinuar;
   ngAfterViewInit() {
-    //console.log(!this._userService.usuario.timbrado.timbrado , this._userService.usuario.role == 'USER_ROLE');
+    ////console.log(!this._userService.usuario.timbrado.timbrado , this._userService.usuario.role == 'USER_ROLE');
 
     if (!this._userService.usuario.timbrado.timbrado && this._userService.usuario.role == 'USER_ROLE') {
       swal.fire({
@@ -61,7 +61,7 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
           this.goBack = false
         }
       }, (op) => {
-        //console.log(op);
+        ////console.log(op);
 
       })
     }
@@ -156,13 +156,13 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
   direccionFactura;
   fechaPago = new Date(`${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()} 00:00`)
   pruebaValue(variable) {
-    //console.log(getComputedStyle(variable).width);
+    ////console.log(getComputedStyle(variable).width);
 
 
   }
   async ngOnInit() {
-    //console.log(!this._userService.usuario?.timbrado?.timbrado , this._userService?.usuario?.role == 'USER_ROLE');
-    //console.log(this._userService?.usuario?.role);
+    ////console.log(!this._userService.usuario?.timbrado?.timbrado , this._userService?.usuario?.role == 'USER_ROLE');
+    ////console.log(this._userService?.usuario?.role);
     if (this._userService?.usuario?.role == 'USER_ROLE') {
       this.cobrador = await this._userService.inicializarUsuario();
     }
@@ -201,7 +201,7 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
     };
 
 
-    //console.log(this.opciones);
+    ////console.log(this.opciones);
     this.sort = {
       key: this.sort_key,
       value: this.sort_value
@@ -256,14 +256,14 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
     this.direccionFactura = cliente.DIRECCION;
     this.contratos = await this._contratoSerivce.getContratosByTitular(cliente._id);
 
-    //console.log(this.contratos);
+    ////console.log(this.contratos);
     this.filtrar();
 
   }
 
   onContratoSelected(contrato) {
     this.contrato = contrato;
-    //console.log(contrato);
+    ////console.log(contrato);
     this.filtrar();
   }
 
@@ -272,9 +272,11 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
     if (monto < 1) {
       return;
     }
-    let resp = (await this._facturaService.pagarPorMonto({ fecha_pago: this.fechaPago.getTime(), lista: [{ contrato: id, monto: parseInt(monto) }] }))
+    //console.log(this.lista);
+    
+    let resp = (await this._facturaService.pagarPorMonto({ fecha_pago: this.fechaPago.getTime(), lista: [{ contrato: id, monto: parseInt(monto) }  ] }))
     this.facturasAPagar = resp.facturas
-    console.log(this.facturasAPagar);
+    //console.log(this.facturasAPagar);
     if (monto > resp.monto_total) {
       swal.fire({
         title: "Monto ingresado es superior a la deuda",
@@ -293,9 +295,10 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
   async searchBancos(val) {
     this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', val.term);
   }
+  sumaTotal = 0
   async agregarIngreso(id, monto) {
     // this.facturas = null
-    
+    this.sumaTotal += this.montoTotal
     this.facturasAPagar = null;
     // this.montoTotal += parseInt(monto);
     const obj = {
@@ -305,7 +308,7 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
     this.lista.push(obj);
     // this.filtros.push()
     this.facturasAPagarAux = (await this._facturaService.pagarPorMonto({ fecha_pago: this.fechaPago.getTime(), lista: this.lista })).facturas;
-    //console.log(this.facturasAPagarAux);
+    ////console.log(this.facturasAPagarAux);
     this.contrato = null;
     // this.filtrar();
     this.facturaPdf = this.crearPDF(this.facturasAPagarAux);
@@ -331,7 +334,7 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
         this.confirmarPagoConfirmado()
       }
     }, (op) => {
-      console.log(op);
+      //console.log(op);
 
     })
   }
@@ -343,8 +346,8 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
     this.loadingConfirmarPago = true
 
     // let timbrado = (await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body
-    console.log((await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body);
-    console.log(this.cobrador.timbrado);
+    //console.log((await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body);
+    //console.log(this.cobrador.timbrado);
 
     let timbrado = this.cobrador.timbrado
 
@@ -368,7 +371,7 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
     });
     this.loadingConfirmarPago = false
 
-    //console.log(pagoresp);
+    ////console.log(pagoresp);
     this.mostrarModal(pagoresp?.pago?._id)
     this.ngOnInit();
 
@@ -378,7 +381,7 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
 
 
   prueba() {
-    //console.log(this.notifier.getConfig());
+    ////console.log(this.notifier.getConfig());
 
     this.notifier.notify('success', 'pasa la edad');
   }
@@ -473,8 +476,8 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
       timbrado: this.cobrador.timbrado,
       comentario: this.comentario
     };
-    //console.log('-----------------------------------------------');
-    //console.log(facturaPDF);
+    ////console.log('-----------------------------------------------');
+    ////console.log(facturaPDF);
 
     return facturaPDF;
   }
@@ -508,7 +511,7 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
       servicios,
       timbrado: pago.timbrado
     };
-    //console.log(this.facturapdf);
+    ////console.log(this.facturapdf);
 
   }
 }

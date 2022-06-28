@@ -237,7 +237,7 @@
         <div style="width: 100%;">
             <div style="display: flex;">
                 <div class="mx-auto">
-                    <h3>Total: {{montoTotal | currency: '':'':'2.0'}} Gs</h3>
+                    <h3>Total: {{ sumaTotal | currency: '':'':'2.0'}} Gs</h3>
                 </div>
             </div>
         </div>
@@ -285,7 +285,8 @@
                 <div style="justify-content: space-between;" class="inline-flex">
                     <h4>Cobrador</h4>
                     <div *ngIf="cobrador" class="pointer close-icon ml-auto">
-                        <button *ngIf="_userService.usuario.role != 'USER_ROLE'" (click)="cobrador = null; filtrar()"   type="button" class="btn btn-sm btn-light"><i class=" ti-close  "></i></button>
+                        <button *ngIf="_userService.usuario.role != 'USER_ROLE'" (click)="cobrador = null; filtrar()"
+                            type="button" class="btn btn-sm btn-light"><i class=" ti-close  "></i></button>
                     </div>
                 </div>
 
@@ -361,8 +362,7 @@
         </div>
         <div class="form-group">
             <label for="direccion">Notas</label>
-            <textarea class="form-control" [(ngModel)]="comentario" name="notas"
-            id="notas" rows="5"></textarea>
+            <textarea class="form-control" [(ngModel)]="comentario" name="notas" id="notas" rows="5"></textarea>
         </div>
 
     </div>
