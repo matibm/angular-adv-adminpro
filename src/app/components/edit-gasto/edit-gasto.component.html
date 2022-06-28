@@ -283,3 +283,6 @@
 </div> 
   </div>
 </div>
+
+<app-modal-contratos (contratoSelected)="contrato  = $event" [showFilters]="true" [cliente]="cliente"
+    (onClose)="showModal = false" *ngIf="showModal"></app-modal-contratos>
