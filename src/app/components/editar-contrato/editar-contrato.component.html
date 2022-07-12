@@ -262,8 +262,8 @@
                                         <h5>saldo <b>{{saldo | currency:'':'':'2.0'}} Gs</b></h5>
                                         <div class="form-group">
                                             <label for="">Modificar Deuda</label>
-                                            <input [disabled]='!editarproducto' name="deuda" type="number"
-                                                class="form-control" #deuda [(ngModel)]="montoTotal.deuda">
+                                            <input [disabled]='!editarproducto'  name="deuda" type="number"
+                                                class="form-control" #deuda [(ngModel)]="montoTotal.deuda" (ngModelChange)="calcularCuotas()">
                                         </div>
                                         <h5>Deuda <b>{{montoTotal.deuda | currency:'':'':'2.0'}} Gs</b></h5>
                                     </div>

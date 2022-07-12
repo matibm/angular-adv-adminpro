@@ -226,4 +226,32 @@ export class ContratoService {
       }
     )
   }
+
+  reporteVendededoresUlt(body): Promise<any> {
+
+    let url = URL_SERVICIOS + '/contrato/vendedor_ult_cobro';
+    url += `?token=${this._usuarioService.token}`;
+    
+    
+    return this.http.post(url, body, { responseType: 'blob' as 'json' }).toPromise().then(
+      (response: any) => {
+        let dataType = response.type;
+        let binaryData = [];
+        binaryData.push(response);
+        let downloadLink = document.createElement('a');
+        downloadLink.href = window.URL.createObjectURL(new Blob(binaryData, { type: dataType }));
+
+        downloadLink.setAttribute('download', 'vendedor_ult_cobro.xlsx');
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        downloadLink.remove()
+      },
+
+      (error) => {
+        console.log(error);
+
+        swal.fire({ title: 'error', icon: 'error', text: error })
+      }
+    )
+  }
 }

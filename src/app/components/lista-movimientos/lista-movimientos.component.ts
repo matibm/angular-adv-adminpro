@@ -62,7 +62,7 @@ export class ListaMovimientosComponent implements OnInit {
     if (this.isToExport) {
       setTimeout(() => {
         window.print()
-      }, 500);
+      }, 1000);
     }
   }
 

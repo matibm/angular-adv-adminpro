@@ -22,6 +22,7 @@ export class EditarProductoComponent implements OnInit {
   }
 
   async guardarProducto(){
+    this.producto.cantidad = this.producto.cantidad || 0
     await this._productoService.actualizarProducto(this.producto);
     window.history.back();
   }

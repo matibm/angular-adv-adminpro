@@ -271,9 +271,15 @@ export class InfoCajaComponent implements OnInit {
     const options: any = {};
     this.fondo ? (options.fondo = this.fondo._id) : null;
     let listas = this.listItems;
-    console.log(listas);
 
+    options.start = this.rangeFecha.value.start ? new Date(this.rangeFecha.value.start).getTime() : null
+    options.end = this.rangeFecha.value.end ? new Date(this.rangeFecha.value.end).setHours(23, 59, 59, 59) : null
+
+
+    console.log(options);
+    
     const body = {
+
       isAll: true,
 
       listItems: this.listItems || [],

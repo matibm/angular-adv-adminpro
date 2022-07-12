@@ -385,4 +385,15 @@ export class ListaContratosComponent implements OnInit {
     this._contratoService.getReporteBajas(body)
   }
 
+  async reporteVendededoresUlt(){
+    let body = {
+      vendedor: this.vendedor._id,
+      rango_fecha: {
+        start: new Date(`${new Date(this.range.value.start).toLocaleDateString('en-US')} 00:00`).getTime(),
+        end: new Date(`${new Date(this.range.value.end).toLocaleDateString('en-US')} 23:59:59`).getTime(),
+      }
+      
+    }
+    await this._contratoService.reporteVendededoresUlt(body) 
+  }
 }

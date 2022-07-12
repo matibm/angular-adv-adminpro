@@ -41,7 +41,8 @@ export class CajaService {
     });
   }
   cerrarCajaOptions(body, options?) {
-
+    console.log(options);
+    
     let url = URL_SERVICIOS + '/caja/cerrar_caja';
     url += `?token=${this._usuarioService.token}`;
 
@@ -54,7 +55,8 @@ export class CajaService {
       });
     }
     url += `&caja=caja_id_que_no_se_usa`;
-
+    console.log(url);
+    
     return this.http.put(url, body).toPromise().then((resp: any) => {
       console.log(resp);
 
