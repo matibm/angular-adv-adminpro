@@ -11,7 +11,7 @@
                 </div>
                 <div class="" *ngIf="!cliente">
                     <ng-select [typeahead]="inputClientes" [loading]="loadingClientes" [items]="clientes"
-                        name="dsfdbrweqcda" [(ngModel)]="cliente" (ngModelChange)="filtrar()"
+                        name="dsfdbrweqcda" [(ngModel)]="cliente" (ngModelChange)="saveClienteToRoute(); filtrar()"
                         notFoundText="no se encontraron resultados" placeholder="buscar cliente" bindLabel="NOMBRES"
                         [searchFn]="customSearchFn">
                         <ng-template ng-option-tmp let-item="item">
@@ -66,7 +66,7 @@
                 </div>
                 <div class="" *ngIf="!cobrador">
                     <ng-select [typeahead]="inputCobradores" [loading]="loadingCobradores" [items]="cobradores"
-                        name="dsfdsfdgfdbrweqcda" [(ngModel)]="cobrador" (ngModelChange)="filtrar()"
+                        name="dsfdsfdgfdbrweqcda" [(ngModel)]="cobrador" (ngModelChange)="cambiarQueryParams([{cobrador: cobrador._id}]); filtrar()"
                         notFoundText="no se encontraron resultados" placeholder="buscar cobrador" bindLabel="NOMBRES"
                         [searchFn]="customSearchFn">
                         <ng-template ng-option-tmp let-item="item">

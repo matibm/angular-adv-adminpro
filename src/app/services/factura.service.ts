@@ -198,6 +198,8 @@ export class FacturaService {
 
     this.http.post(url, body, { responseType: 'blob' as 'json' }).subscribe(
       (response: any) => {
+        console.log(response);
+        
         let dataType = response.type;
         let binaryData = [];
         binaryData.push(response);

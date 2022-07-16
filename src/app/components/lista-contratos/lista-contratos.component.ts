@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Producto } from './../../models/producto';
 import { ProductosService } from './../../services/productos.service';
 import { UsuarioService } from './../../services/usuario.service';
@@ -23,7 +23,8 @@ export class ListaContratosComponent implements OnInit {
   constructor(public _contratoService: ContratoService,
     public _usuarioService: UsuarioService,
     public _productoService: ProductosService,
-    public router: Router
+    public router: Router,
+    public route: ActivatedRoute
 
 
   ) { }
@@ -109,6 +110,27 @@ export class ListaContratosComponent implements OnInit {
   @Input() contratos: Contrato[];
   async ngOnInit() {
     this.observableBuscadores()
+
+    if (this.route.snapshot.queryParams.cliente) {
+      this.options.cliente = this.route.snapshot.queryParams.cliente
+    }
+    if (this.route.snapshot.queryParams.cobrador) {
+      this.options.cobrador = this.route.snapshot.queryParams.cobrador
+      this.cobrador = await this._usuarioService.getUsuarioPorId(this.options.cobrador)
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
     this.servicios = await this._productoService.getProductos();
     console.log(this.options);
     if (!this.options.de_baja) this.options.de_baja = false
@@ -385,15 +407,40 @@ export class ListaContratosComponent implements OnInit {
     this._contratoService.getReporteBajas(body)
   }
 
-  async reporteVendededoresUlt(){
+  async reporteVendededoresUlt() {
     let body = {
       vendedor: this.vendedor._id,
       rango_fecha: {
         start: new Date(`${new Date(this.range.value.start).toLocaleDateString('en-US')} 00:00`).getTime(),
         end: new Date(`${new Date(this.range.value.end).toLocaleDateString('en-US')} 23:59:59`).getTime(),
       }
-      
+
     }
-    await this._contratoService.reporteVendededoresUlt(body) 
+    await this._contratoService.reporteVendededoresUlt(body)
+  }
+  saveClienteToRoute(){
+    this.cambiarQueryParams([{cliente: this.cliente._id}])
+  }
+
+  cambiarQueryParams(paths) {
+    let queryParams: Params = { ... this.route.snapshot.queryParams }
+    for (let i = 0; i < paths.length; i++) {
+      const element = paths[i];
+      Object.keys(element).forEach((key, index) => {
+        queryParams[key] = element[key]
+
+      })
+
+    }
+    console.log(queryParams);
+
+    this.router.navigate(
+      [],
+      {
+        relativeTo: this.route,
+        queryParams: queryParams,
+        // skipLocationChange: true
+        // queryParamsHandling: 'merge', // remove to replace all query params by provided
+      });
   }
 }
