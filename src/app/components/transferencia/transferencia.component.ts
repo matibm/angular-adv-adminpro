@@ -72,6 +72,7 @@ export class TransferenciaComponent implements OnInit, AfterViewInit {
       nro_factura: this.nro_factura,
       nro_comp_banco: this.nro_factura,
       nombre: 'TRANSFERENCIA',
+      es_transferencia: true,
       anulado: '0',
       monto_total: this.montoATransferir
     }
@@ -85,6 +86,7 @@ export class TransferenciaComponent implements OnInit, AfterViewInit {
       nro_factura: this.nro_factura,
       nro_comp_banco: this.nro_factura,
       nombre: 'TRANSFERENCIA',
+      es_transferencia: true,
       anulado: '0',
       monto_total: this.montoATransferir * -1
     }

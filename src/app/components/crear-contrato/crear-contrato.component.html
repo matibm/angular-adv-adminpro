@@ -1,3 +1,76 @@
+<div *ngIf="false" class="row">
+    <div class="col">
+        <div class="card" style="display: initial;" >
+            <div class="card-body">
+                <div style="overflow-x: auto;">
+                    <table class="table table-sm table-hover">
+                        <thead>
+                            <tr>
+                                
+                                <th class="text-center" style="min-width: 450px;">
+                                    fondo
+                                </th>
+                                
+                                <th class="text-center" style="min-width: 450px;">
+                                    fondo
+                                </th>
+                                
+                                <th class="text-center" style="min-width: 450px;">
+                                    fondo
+                                </th>
+                                
+                                <th class="text-center" style="min-width: 450px;">
+                                    fondo
+                                </th>
+                                
+                                <th class="text-center" style="min-width: 450px;">
+                                    fondo
+                                </th>
+                                
+                                <th class="text-center" style="min-width: 450px;">
+                                    fondo
+                                </th>
+                                
+                                <th class="text-center" style="min-width: 450px;">
+                                    fondo
+                                </th>
+                                
+                                <th class="text-center" style="min-width: 450px;">
+                                    fondo
+                                </th>
+                                 
+                            </tr>
+                        </thead>
+        
+        
+                        <tbody *ngIf="facturas">
+        
+                            <!--  | paginate: { itemsPerPage: 10,totalItems:count, currentPage: page } -->
+                            <tr  class="item-table pointer"
+                               >
+                                <!-- <td class="text-center" scope="row">{{page*10 + (i+1) - 10}}</td> -->
+                                <td class="text-center" scope="row"> text-center" scope="row </td>
+                                <td class="text-center" scope="row"> text-center" scope="row </td>
+                                <td class="text-center" scope="row"> text-center" scope="row </td>
+                                <td class="text-center" scope="row"> text-center" scope="row </td>
+                                <td class="text-center" scope="row"> text-center" scope="row </td>
+                                <td class="text-center" scope="row"> text-center" scope="row </td>
+                                <td class="text-center" scope="row"> text-center" scope="row </td>
+                                <td class="text-center" scope="row"> text-center" scope="row </td>
+                                <td class="text-center" scope="row"> text-center" scope="row </td>
+                                <td class="text-center" scope="row"> text-center" scope="row </td>
+                                <td class="text-center" scope="row"> text-center" scope="row </td>
+                                <td class="text-center" scope="row"> text-center" scope="row </td>
+                                <td class="text-center" scope="row"> text-center" scope="row </td>
+                                  
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <form (ngSubmit)="crearContrato()" #form="ngForm">
 
     <div class="row">
@@ -529,59 +602,62 @@
                 <!-- P.S.V. -->
                 <div *ngIf="esPsv">
                     <!-- Servicio Utilizado en -->
-                    <div class="card">
-                        <div class="card-body">
-                            <h3>Servicio utilizado en:</h3>
-                            <table class=" table  ">
-                                <thead>
-                                    <tr>
-                                        <th class="text-center">Nombres y Apellidos</th>
-                                        <th class="text-center">C.I.</th>
-                                        <th class="text-center">Fecha fallecimiento</th>
-                                        <th class="text-center">Fecha Inhumacion</th>
-                                        <th *ngIf="false" class="text-center">Nro Inhumacion</th>
-                                        <th class="text-center">quitar</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let item of inhumados; let i = index">
-
-                                        <td>
-                                            <input type="text" name="sadfge1" class="form-control" name="name-{{i}}" [(ngModel)]="item.nombre">
-                                        </td>
-                                        <td>
-                                            <input type="text" name="fdtgrefvvsdf" class="form-control" [(ngModel)]="item.ci" name="name-{{i}}">
-                                        </td>
-                                        <td>
-                                            <mat-form-field appearance="fill">
-                                                <mat-label>Fecha de fallecimiento</mat-label>
-                                                <input matInput name="afdsger423_{{i}}" [(ngModel)]="item.fecha_fallecimiento" [matDatepicker]="pickerFallecimiento">
-                                                <mat-datepicker-toggle matSuffix [for]="pickerFallecimiento">
-                                                </mat-datepicker-toggle>
-                                                <mat-datepicker #pickerFallecimiento></mat-datepicker>
-                                            </mat-form-field>
-                                        </td>
-                                        <td>
-                                            <mat-form-field appearance="fill">
-                                                <mat-label>Fecha de inhumacion</mat-label>
-                                                <input matInput name="asdrsvet321_{{i}}" [(ngModel)]="item.fecha_inhumacion" [matDatepicker]="pickerinhumacion">
-                                                <mat-datepicker-toggle matSuffix [for]="pickerinhumacion">
-                                                </mat-datepicker-toggle>
-                                                <mat-datepicker #pickerinhumacion></mat-datepicker>
-                                            </mat-form-field>
-                                        </td>
-                                        <td *ngIf="false">
-                                            <input type="text" class="form-control" name="dsfdname-{{i}}" [(ngModel)]="item.nro">
-                                        </td>
-                                        <td class="text-center">
-                                            <i [ngStyle]="{fontSize: '20px'}" (click)="inhumados.splice(i, 1)" class="fa fa-trash pointer text-danger" aria-hidden="true"></i>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div *ngIf="inhumados.length < 6" class="inline-flex">
-                                <button type="button" (click)="inhumadoPush()" class="btn m-auto btn-circle btn-info">+</button>
-                            </div>
+                    
+                    <div class="card"  >
+                        <div  class="card-body">
+                            <div style="overflow-x: auto" >
+                                <h3>Servicio utilizado en:</h3>
+                                <table class=" table " >
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 500px;" class="text-center">Nombres y Apellidos</th>
+                                            <th style="width: 500px;" class="text-center">C.I.</th>
+                                            <th style="width: 500px;" class="text-center">Fecha fallecimiento</th>
+                                            <th style="width: 500px;" class="text-center">Fecha Inhumacion</th>
+                                            <th style="width: 500px;" *ngIf="false" class="text-center">Nro Inhumacion</th>
+                                            <th style="width: 500px;" class="text-center">quitar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let item of inhumados; let i = index">
+    
+                                            <td>
+                                                <input type="text" name="sadfge1" class="form-control" name="name-{{i}}" [(ngModel)]="item.nombre">
+                                            </td>
+                                            <td>
+                                                <input type="text" name="fdtgrefvvsdf" class="form-control" [(ngModel)]="item.ci" name="name-{{i}}">
+                                            </td>
+                                            <td>
+                                                <mat-form-field appearance="fill">
+                                                    <mat-label>Fecha de fallecimiento</mat-label>
+                                                    <input matInput name="afdsger423_{{i}}" [(ngModel)]="item.fecha_fallecimiento" [matDatepicker]="pickerFallecimiento">
+                                                    <mat-datepicker-toggle matSuffix [for]="pickerFallecimiento">
+                                                    </mat-datepicker-toggle>
+                                                    <mat-datepicker #pickerFallecimiento></mat-datepicker>
+                                                </mat-form-field>
+                                            </td>
+                                            <td>
+                                                <mat-form-field appearance="fill">
+                                                    <mat-label>Fecha de inhumacion</mat-label>
+                                                    <input matInput name="asdrsvet321_{{i}}" [(ngModel)]="item.fecha_inhumacion" [matDatepicker]="pickerinhumacion">
+                                                    <mat-datepicker-toggle matSuffix [for]="pickerinhumacion">
+                                                    </mat-datepicker-toggle>
+                                                    <mat-datepicker #pickerinhumacion></mat-datepicker>
+                                                </mat-form-field>
+                                            </td>
+                                            <td *ngIf="false">
+                                                <input type="text" class="form-control" name="dsfdname-{{i}}" [(ngModel)]="item.nro">
+                                            </td>
+                                            <td class="text-center">
+                                                <i [ngStyle]="{fontSize: '20px'}" (click)="inhumados.splice(i, 1)" class="fa fa-trash pointer text-danger" aria-hidden="true"></i>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div *ngIf="inhumados.length < 6" class="inline-flex">
+                                    <button type="button" (click)="inhumadoPush()" class="btn m-auto btn-circle btn-info">+</button>
+                                </div></div>
+                           
                         </div>
                     </div>
                 </div>
