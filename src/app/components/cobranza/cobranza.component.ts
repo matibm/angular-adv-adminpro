@@ -352,7 +352,7 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
     let timbrado = this.cobrador.timbrado
 
     let pagoresp = await this._facturaService.pagarPorMonto({
-      fecha_pago: this.fechaPago,
+      fecha_pago: this.fechaPago.getTime(),
       lista: this.lista,
       montoTotal: this.sumaTotal,
       cliente: this.cliente._id,
