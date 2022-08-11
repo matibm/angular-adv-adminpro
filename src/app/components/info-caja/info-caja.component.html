@@ -579,6 +579,12 @@
     <div class="col-md col-xs">
         <div class="card">
             <div class="card-body">
+                <mat-form-field appearance="fill">
+                    <mat-label>Fecha</mat-label>
+                    <input matInput name="asdas" [(ngModel)]="fecha_monto_actual_fondos" [matDatepicker]="picker_fecha_monto_actual_fondos" (dateChange)="on_fecha_monto_actual_fondos() ">
+                    <mat-datepicker-toggle matSuffix [for]="picker_fecha_monto_actual_fondos"></mat-datepicker-toggle>
+                    <mat-datepicker #picker_fecha_monto_actual_fondos></mat-datepicker>
+                </mat-form-field>
                 <h3>Monto Actual de Fondos</h3>
                 <table class="table table-hover">
                     <thead>

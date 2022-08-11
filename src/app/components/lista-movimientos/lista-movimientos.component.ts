@@ -41,6 +41,7 @@ export class ListaMovimientosComponent implements OnInit {
   fondo
   fondos
   nro_factura
+  tipoMovimiento = 'TODOS'
   @Input() total = 0
   rangeFecha = new FormGroup({
     start: new FormControl(),
@@ -52,7 +53,7 @@ export class ListaMovimientosComponent implements OnInit {
     this.observableBuscadores()
     if (this.options) {
       if (this.isToExport) {
-       this.options.unlimit = true
+        this.options.unlimit = true
       }
       let resp = await this._movimientoService.getAllMovimientos(this.options)
       this.movimientos = resp.movimientos
@@ -137,13 +138,16 @@ export class ListaMovimientosComponent implements OnInit {
     );
   }
   async buscar() {
+    console.log("holaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     
     this.cuentaGasto = this.cuentaSeleccionada
     this.nro_factura ? this.options.nro_factura = this.nro_factura : delete this.options.nro_factura
     this.cliente ? this.options.cliente = this.cliente._id : null
     this.proveedor ? this.options.proveedor = this.proveedor._id : null
     this.contrato ? this.options.contrato = this.contrato._id : null;
-    this.cuentaSeleccionada? this.options.id_cuentacaja = this.cuentaSeleccionada.cuenta : null
+    this.cuentaSeleccionada ? this.options.id_cuentacaja = this.cuentaSeleccionada.cuenta : null
+    this.tipoMovimiento == 'GASTO' || this.tipoMovimiento == 'TRANSFERENCIA' ? this.options.filtro_transferencia = this.tipoMovimiento : ''
+
     const resp = await this._movimientoService.getAllMovimientos(this.options)
     this.movimientos = resp.movimientos
     this.count = resp.count
@@ -152,15 +156,15 @@ export class ListaMovimientosComponent implements OnInit {
 
   }
 
-  excelAbaco(){
+  excelAbaco() {
     this._movimientoService.getGastoExcel(this.options)
   }
-  exportarPDF(){
-    
+  exportarPDF() {
+
     localStorage.setItem('options_extracto_gastos', JSON.stringify(this.options))
     const wopen = window.open('/extracto-gastos');
   }
-  cuentaSeleccionada 
+  cuentaSeleccionada
   cuentaGasto
   showModalCuentas = false
 }

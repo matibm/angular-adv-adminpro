@@ -64,6 +64,7 @@ export class InfoCajaComponent implements OnInit {
   TotalArqueo = 0
   options: any = {}
   listaFondosActuales = []
+  fecha_monto_actual_fondos
   async ngOnInit() {
     this.fondo = null;
     this.listaFondosActuales = await this._movimientoService.getFondosActuales()
@@ -116,7 +117,7 @@ export class InfoCajaComponent implements OnInit {
   async filtrarPorEstado(estado) {
     this.loading = true
     this.movimientosPrueba = null
-    this.cambiarQueryParams([{estado: estado}])
+    this.cambiarQueryParams([{ estado: estado }])
     this.options.cerrado = estado === 'CONCILIADOS' ? true : false
     if (estado === 'TODOS') delete this.options.cerrado
     if (!estado) delete this.options.cerrado
@@ -155,16 +156,16 @@ export class InfoCajaComponent implements OnInit {
     // let getAllMovimientosOptions = {cerrado: false }
     // if(this.fondo) getAllMovimientosOptions['fondo'] = this.fondo._id
     // if(this.cobrador) getAllMovimientosOptions['cobrador'] = this.cobrador._id
-    
+
     // const respMovimientos = await this._movimientoService.getAllMovimientos(getAllMovimientosOptions);
-    
+
     // this.movimientoCount = respMovimientos.count;
     // this.movimientos = respMovimientos.movimientos;
 
     // this.totalMovimientos = respMovimientos.total.monto_total;
     let respFondo: any = await this._movimientoService.getSaldoFondo(fondoId)
     console.log(respFondo);
- 
+
     let options = {
       pagado: true,
       start: this.start,
@@ -172,7 +173,7 @@ export class InfoCajaComponent implements OnInit {
       fondo: this.fondo._id,
       cerrado: false,
       get_total: '1'
-    } 
+    }
     this.loading = false;
     this.listItems = [];
     this.calcularSeleccionados();
@@ -182,7 +183,7 @@ export class InfoCajaComponent implements OnInit {
 
     if (!cobradorId) {
 
-      delete this.options.cobrador      
+      delete this.options.cobrador
 
       return;
     } else {
@@ -196,8 +197,8 @@ export class InfoCajaComponent implements OnInit {
     this.options.cerrado = this.estado === 'CONCILIADOS' ? true : false
     if (this.estado === 'TODOS') delete this.options.cerrado
     if (!this.estado) delete this.options.cerrado
-    
-    
+
+
     this.options.date_start = this.rangeFecha.value.start ? new Date(this.rangeFecha.value.start).getTime() : null
     this.options.date_end = this.rangeFecha.value.end ? new Date(this.rangeFecha.value.end).setHours(23, 59, 59, 59) : null
     this.cambiarQueryParams([{ cobrador: this.cobrador._id }])
@@ -213,7 +214,7 @@ export class InfoCajaComponent implements OnInit {
     // this.totalMovimientos = respMovimientos.total.monto_total;
     // let respFondo: any = await this._movimientoService.getSaldoFondo(cobradorId)
     // console.log(respFondo);
- 
+
     // let options = {
     //   pagado: true,
     //   start: this.start,
@@ -277,7 +278,7 @@ export class InfoCajaComponent implements OnInit {
 
 
     console.log(options);
-    
+
     const body = {
 
       isAll: true,
@@ -431,22 +432,42 @@ export class InfoCajaComponent implements OnInit {
   });
   cargarValores(data) {
     console.log(data.movimientos);
-    
+
     this.movimientosPrueba = data.movimientos
     this.count = data.count
     this.TotalArqueo = data.movimientos[0]?.total
     this.totalEgreso = data.totalEgreso
     this.totalIngreso = data.totalIngreso
   }
-  generarReporte(){
-    let body = { 
-      
+  generarReporte() {
+    let body = {
+
       fecha: {
-         $gte: new Date(`${new Date(this.rangeReporte.value.start).toLocaleDateString('en-US')} 00:00`).getTime(),
-       $lte: new Date(`${new Date(this.rangeReporte.value.end).toLocaleDateString('en-US')} 23:59:59`).getTime() }
+        $gte: new Date(`${new Date(this.rangeReporte.value.start).toLocaleDateString('en-US')} 00:00`).getTime(),
+        $lte: new Date(`${new Date(this.rangeReporte.value.end).toLocaleDateString('en-US')} 23:59:59`).getTime()
+      }
     }
     this._movimientoService.getReporteIngresoEgreso(body)
   }
 
+ async on_fecha_monto_actual_fondos() {
+    this.fecha_monto_actual_fondos
+    for (let i = 0; i < this.fondos.length; i++) {
+      const fondo = this.fondos[i];
+
+      let options: any = {}
+      options.date_start = new Date(this.fecha_monto_actual_fondos).getTime()
+      options.date_end = new Date(this.fecha_monto_actual_fondos).setHours(23, 59, 59, 59)
+      options.fondo = fondo._id
+      const resp = await this._movimientoService.getCajaBancos(1, options);
+       if (this.listaFondosActuales[this.listaFondosActuales.findIndex(item => item._id == fondo._id)]) {
+        this.listaFondosActuales[this.listaFondosActuales.findIndex(item => item._id == fondo._id)].monto = resp.suma  
+      }
+      
+      // this.cargarValores(resp)
+      // this.loading = false
+
+    }
+  }
 
 }

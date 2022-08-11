@@ -60,7 +60,7 @@ export class CrearUsuarioComponent implements OnInit {
   }
 
   allowCreate(): boolean {
-    if (this.usuario.NOMBRES && this.usuario.APELLIDOS && this.usuario.TELEFONO1) {
+    if ( this.usuario.APELLIDOS ) {
       return true;
     } else {
       return false;

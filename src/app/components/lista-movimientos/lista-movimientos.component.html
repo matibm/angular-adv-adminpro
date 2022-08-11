@@ -144,6 +144,18 @@
 
 
             </div>
+
+            <div class=" mt-3 form-group">
+                tipo de Movimiento
+                <ng-select [(ngModel)]="tipoMovimiento" (ngModelChange)="buscar()">
+                    <ng-option *ngFor="let item of ['GASTO','TRANSFERENCIA', 'TODOS']"  [value]="item">
+                        <div>
+                            {{item}}
+                        </div>
+                    </ng-option>
+                </ng-select>
+            </div>
+
         </div>
     </div>
     <hr>

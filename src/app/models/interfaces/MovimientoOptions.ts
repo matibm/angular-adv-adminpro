@@ -11,4 +11,5 @@ export interface MovimientoOptions {
     id_cuentacaja?: string,
     page?:number,
     unlimit?:boolean
+    filtro_transferencia?: 'GASTO' | 'TRANSFERENCIA'
 }
