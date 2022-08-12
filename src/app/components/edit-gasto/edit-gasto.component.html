@@ -286,3 +286,10 @@
 
 <app-modal-contratos (contratoSelected)="contrato  = $event" [showFilters]="true" [cliente]="cliente"
     (onClose)="showModal = false" *ngIf="showModal"></app-modal-contratos>
+
+    
+    <app-modal-cuentas-gastos *ngIf="showModalCuentas" (onSelectedCategory)="null" (onSelected)="cuentaGasto = $event;showModalCuentas = false " (onClose)="
+showModalCuentas = false
+
+">
+</app-modal-cuentas-gastos>
