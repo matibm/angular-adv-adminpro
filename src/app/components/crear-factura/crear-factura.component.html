@@ -132,10 +132,15 @@
             <label for="fecha_inicio">Vencimiento :
                 <span><b>{{vencimiento | date}}</b></span>
             </label>
-            <input type="text" name="fecha_inicio" [(ngModel)]="vencimientoString"
+            <!-- <input type="text" name="fecha_inicio" [(ngModel)]="vencimientoString"
                 (ngModelChange)="vencimiento = calcularFecha(vencimientoString)" id="fecha_inicio" class="form-control"
-                placeholder="AAAA MM DD" aria-describedby="fechainicioid">
-
+                placeholder="AAAA MM DD" aria-describedby="fechainicioid"> -->
+                <mat-form-field appearance="fill">
+                    <mat-label>Fecha</mat-label>
+                    <input matInput name="asdas" [(ngModel)]="fecha_vencimiento" [matDatepicker]="picker_fecha_vencimiento"  >
+                    <mat-datepicker-toggle matSuffix [for]="picker_fecha_vencimiento"></mat-datepicker-toggle>
+                    <mat-datepicker #picker_fecha_vencimiento></mat-datepicker>
+                </mat-form-field>
 
         </div>
 

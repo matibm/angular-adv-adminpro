@@ -30,6 +30,7 @@ export class CrearFacturaComponent implements OnInit {
   vencimientoString;
   contrato: Contrato;
   showModal = false
+  fecha_vencimiento = new Date()
   async ngOnInit() {
 
     this.servicios = await this._productoService.getProductos();
@@ -72,7 +73,7 @@ export class CrearFacturaComponent implements OnInit {
       contrato: this.contrato?._id,
       nro_factura: 0,
       nro_contrato: this.contrato?.nro_contrato,
-      vencimiento: new Date(this.vencimiento).getTime() || new Date().getTime()
+      vencimiento: new Date(`${this.fecha_vencimiento.getFullYear()}-${this.fecha_vencimiento.getMonth()+1}-${this.fecha_vencimiento.getDate()} 00:00:00`).getTime()
     };
     const factura = await this._facturaService.crearFactura(body);
     this.route.navigateByUrl(`/admin/ingreso/${factura._id}`);
