@@ -144,9 +144,9 @@
 
         </div>
 
-        <button *ngIf="!contrato" type="button" class="btn btn-inverse btn-rounded" (click)="showModal = true;">
+        <!-- <button *ngIf="!contrato" type="button" class="btn btn-inverse btn-rounded" (click)="showModal = true;">
             Relacionar Contrato
-        </button>
+        </button> -->
         <div style="width: fit-content;">
             <div *ngIf="contrato"style="display: flex;" class="">
                 <span>Contrato</span>
@@ -175,8 +175,14 @@
                     </div>
                 </div>
             </div></div>
+            
         <div class="d-flex">
-            <button type="button" (click)="crearFactura()" class="btn mx-auto btn-info">Crear Ingreso</button>
+            <button *ngIf="!contrato" type="button" class="btn btn-inverse mx-auto btn-rounded" (click)="showModal = true;">
+                Relacionar Contrato
+            </button>
+        </div>
+        <div class="d-flex">
+            <button type="button" (click)="crearFactura()" class="btn mt-1 mx-auto btn-info">Crear Ingreso</button>
         </div>
     </div>
 </div>
