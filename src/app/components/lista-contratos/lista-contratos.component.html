@@ -66,7 +66,8 @@
                 </div>
                 <div class="" *ngIf="!cobrador">
                     <ng-select [typeahead]="inputCobradores" [loading]="loadingCobradores" [items]="cobradores"
-                        name="dsfdsfdgfdbrweqcda" [(ngModel)]="cobrador" (ngModelChange)="cambiarQueryParams([{cobrador: cobrador._id}]); filtrar()"
+                        name="dsfdsfdgfdbrweqcda" [(ngModel)]="cobrador"
+                        (ngModelChange)="cambiarQueryParams([{cobrador: cobrador._id}]); filtrar()"
                         notFoundText="no se encontraron resultados" placeholder="buscar cobrador" bindLabel="NOMBRES"
                         [searchFn]="customSearchFn">
                         <ng-template ng-option-tmp let-item="item">
@@ -296,6 +297,7 @@
                 <thead>
                     <tr #tableHeaad class="thead">
                         <th>#</th>
+                        <th>Revisado</th>
                         <th style="min-width: 120px;" id="fecha_creacion_unix" (click)="ordenar('fecha_creacion_unix')">
                             fecha <i *ngIf="false" class="ml-1 fa fa-sort-desc"></i></th>
                         <th style="min-width: 120px;" id="nro_contrato" (click)="ordenar('nro_contrato')">Nro. Contrato
@@ -321,6 +323,24 @@
                     <tr (click)="onSelectContrato(contrato)" class="pointer"
                         *ngFor="let contrato of contratos | paginate: { itemsPerPage: 10,totalItems:count, currentPage: page } ; let i = index;">
                         <td scope="row">{{page*10 + (i+1) - 10}}</td>
+                        <td>
+                            <div class="checkbox checkbox-primary p-t-0" (click)="$event.stopPropagation(); " style="
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            align-content: center;
+                            flex-wrap: nowrap;
+                        ">
+                                <input id="checkbox-signup{{i}}" [(ngModel)]="contrato.revisado" (ngModelChange)="switchContratoRevisado(contrato)" name="revisado{{i}}"
+                                    type="checkbox">
+                                <label for="checkbox-signup{{i}}"> </label>
+                            </div>
+                            <!-- <input type="checkbox"   name="revisado{{i}}"
+                                    class="form-check-input" value="true" id="flexCheckDefault{{i}}"> -->
+
+                            <!-- <input type="checkbox" [(ngModel)]="contrato.revisado" name="revisado{{i}}"> -->
+                            <!-- {{contrato.revisado}} -->
+                        </td>
                         <td>{{contrato.fecha_creacion_unix | date}}</td>
                         <td>{{contrato.nro_contrato | ruc}}</td>
                         <td>{{contrato.producto.COD_CORTO}}</td>
@@ -455,7 +475,8 @@
                     <h3>Reporte de vendedores ultimos pagos</h3>
                     <div class="d-flex">
                         <div class="mx-auto">
-                            <button (click)="reporteVendededoresUlt()" [disabled]="!vendedor || !range.value.end" class="btn btn-inverse">
+                            <button (click)="reporteVendededoresUlt()" [disabled]="!vendedor || !range.value.end"
+                                class="btn btn-inverse">
                                 Generar Reporte
                             </button>
 

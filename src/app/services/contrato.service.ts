@@ -254,4 +254,15 @@ export class ContratoService {
       }
     )
   }
+
+  
+  revisarContrato(body): Promise<any> {
+
+    let url = URL_SERVICIOS + '/contrato/revisar'
+    url += `?token=${this._usuarioService.token}`;
+
+    return this.http.post(url, body).toPromise().then((resp: any) => {
+      return resp;
+    });
+  }
 }

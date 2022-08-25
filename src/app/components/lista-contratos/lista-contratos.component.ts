@@ -418,8 +418,8 @@ export class ListaContratosComponent implements OnInit {
     }
     await this._contratoService.reporteVendededoresUlt(body)
   }
-  saveClienteToRoute(){
-    this.cambiarQueryParams([{cliente: this.cliente._id}])
+  saveClienteToRoute() {
+    this.cambiarQueryParams([{ cliente: this.cliente._id }])
   }
 
   cambiarQueryParams(paths) {
@@ -442,5 +442,10 @@ export class ListaContratosComponent implements OnInit {
         // skipLocationChange: true
         // queryParamsHandling: 'merge', // remove to replace all query params by provided
       });
+  }
+  switchContratoRevisado(contrato) {
+    console.log(contrato.revisado);
+    this._contratoService.revisarContrato({ contrato_id: contrato._id, revisado: contrato.revisado })
+
   }
 }
