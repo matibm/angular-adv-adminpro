@@ -61,22 +61,27 @@ export class CrearFacturaComponent implements OnInit {
         item.RUC?.toLowerCase().includes(term);
     }
   }
-
+  yasecreo= false
   async crearFactura() {
-    const body = {
-      monto: this.servicio?.PRECIO_MAYORISTA,
-      nota: this.nota,
-      titular: this.cliente?._id || '',
-      servicio: this.servicio?._id || '',
-      producto : this.servicio,
-      cobrador: this.cobrador?._id || '',
-      contrato: this.contrato?._id,
-      nro_factura: 0,
-      nro_contrato: this.contrato?.nro_contrato,
-      vencimiento: new Date(`${this.fecha_vencimiento.getFullYear()}-${this.fecha_vencimiento.getMonth()+1}-${this.fecha_vencimiento.getDate()} 00:00:00`).getTime()
-    };
-    const factura = await this._facturaService.crearFactura(body);
-    this.route.navigateByUrl(`/admin/ingreso/${factura._id}`);
+    if (!this.yasecreo) {
+      this.yasecreo = true
+      const body = {
+        monto: this.servicio?.PRECIO_MAYORISTA,
+        nota: this.nota,
+        titular: this.cliente?._id || '',
+        servicio: this.servicio?._id || '',
+        producto : this.servicio,
+        cobrador: this.cobrador?._id || '',
+        contrato: this.contrato?._id,
+        nro_factura: 0,
+        nro_contrato: this.contrato?.nro_contrato,
+        vencimiento: new Date(`${this.fecha_vencimiento.getFullYear()}-${this.fecha_vencimiento.getMonth()+1}-${this.fecha_vencimiento.getDate()} 00:00:00`).getTime()
+      };
+      const factura = await this._facturaService.crearFactura(body);
+      this.yasecreo = false
+      this.route.navigateByUrl(`/admin/ingreso/${factura._id}`);  
+    }
+    
   }
 
   calcularFecha(stringDate) {
