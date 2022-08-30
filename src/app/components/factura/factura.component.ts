@@ -31,7 +31,7 @@ export class FacturaComponent implements OnInit {
   crearParcial = false;
   primeraEjecucion = true;
   montoparcial = 0;
-  montoModificado 
+  montoModificado
   montoparcialCorrecto = true;
   parciales: Factura[];
   facturaPdf;
@@ -61,7 +61,7 @@ export class FacturaComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id');
 
     await this.initialize();
-    
+
     console.log(this.factura);
 
   }
@@ -105,7 +105,7 @@ export class FacturaComponent implements OnInit {
       this.telFactura = this.factura.titular.TELEFONO1;
       this.direccionFactura = this.factura.titular.DIRECCION;
       this.parciales = (await this._facturaService.getFacturasParcial(this.id)).facturas;
-      
+
       console.log(this.factura);
 
       this.montoModificado = this.factura.haber
@@ -118,8 +118,10 @@ export class FacturaComponent implements OnInit {
       item.RAZON.toLowerCase().includes(term) ||
       item.RUC.toLowerCase().includes(term);
   }
+  yasepago = false
 
   async pagar() {
+    this.yasepago = true
     const any: any = this.factura;
     const factura: Factura = any;
     factura.fondo = this.fondo;
@@ -169,11 +171,13 @@ export class FacturaComponent implements OnInit {
       this.mostrarModal(id)
     }
 
+    this.yasepago = false
 
     this.ngOnInit()
+
   }
 
-  comentario  
+  comentario
 
 
   async searchBancos(val) {
@@ -310,12 +314,12 @@ export class FacturaComponent implements OnInit {
   }
   fill = (number, len) => "0".repeat(len - number.toString().length) + number.toString();
 
-  async modificarMonto(id, amount){
+  async modificarMonto(id, amount) {
     await this._facturaService.modificarMonto({ id, amount })
     window.location.reload()
   }
-  async modificarVencimiento(id){
-    await this._facturaService.modificar({ id, data: {vencimiento: new Date(this.fechaVencimiento).getTime()} })
+  async modificarVencimiento(id) {
+    await this._facturaService.modificar({ id, data: { vencimiento: new Date(this.fechaVencimiento).getTime() } })
     window.location.reload()
   }
 
