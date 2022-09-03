@@ -331,7 +331,8 @@
                             align-content: center;
                             flex-wrap: nowrap;
                         ">
-                                <input id="checkbox-signup{{i}}" [(ngModel)]="contrato.revisado" (ngModelChange)="switchContratoRevisado(contrato)" name="revisado{{i}}"
+                                <input id="checkbox-signup{{i}}" [(ngModel)]="contrato.revisado"
+                                    (ngModelChange)="switchContratoRevisado(contrato)" name="revisado{{i}}"
                                     type="checkbox">
                                 <label for="checkbox-signup{{i}}"> </label>
                             </div>
@@ -484,6 +485,20 @@
                             <small *ngIf="!vendedor || !range.value.end" style="color: red;">
                                 Seleccione Arriba vendedor y rango de fecha de creacion de contrato
                             </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h3>Reporte de Inhumados</h3>
+                    <div class="d-flex">
+                        <div class="mx-auto">
+                            <button (click)="reporte_inhumados()" class="btn btn-inverse">
+                                Generar Reporte
+                            </button>
                         </div>
                     </div>
                 </div>

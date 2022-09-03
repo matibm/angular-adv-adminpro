@@ -187,15 +187,16 @@
                         </div>
                         <div class="form-group">
                             <div>
-                                
-                            <input [(ngModel)]="editar_nro_contrato" type="checkbox" name="check_editar_nro_contrato"
-                            id="check_editar_nro_contrato" class="filled-in chk-col-light-blue" checked />
-                        <label class="mx-3" for="check_editar_nro_contrato">Editar numero de contrato</label>
+
+                                <input [(ngModel)]="editar_nro_contrato" type="checkbox"
+                                    name="check_editar_nro_contrato" id="check_editar_nro_contrato"
+                                    class="filled-in chk-col-light-blue" checked />
+                                <label class="mx-3" for="check_editar_nro_contrato">Editar numero de contrato</label>
                             </div>
                             <label for="">Numero de Contrato: </label>
-                            <input [disabled]="!editar_nro_contrato" type="number" class="form-control" name="nrocontrato" autocomplete="off !important"
-                                [(ngModel)]="contrato.nro_contrato" id="facturanumero" aria-describedby="helpId"
-                                placeholder="">
+                            <input [disabled]="!editar_nro_contrato" type="number" class="form-control"
+                                name="nrocontrato" autocomplete="off !important" [(ngModel)]="contrato.nro_contrato"
+                                id="facturanumero" aria-describedby="helpId" placeholder="">
                         </div>
                         <mat-form-field appearance="fill">
                             <mat-label>Fecha de creacion</mat-label>
@@ -262,8 +263,9 @@
                                         <h5>saldo <b>{{saldo | currency:'':'':'2.0'}} Gs</b></h5>
                                         <div class="form-group">
                                             <label for="">Modificar Deuda</label>
-                                            <input [disabled]='!editarproducto'  name="deuda" type="number"
-                                                class="form-control" #deuda [(ngModel)]="montoTotal.deuda" (ngModelChange)="calcularCuotas()">
+                                            <input [disabled]='!editarproducto' name="deuda" type="number"
+                                                class="form-control" #deuda [(ngModel)]="montoTotal.deuda"
+                                                (ngModelChange)="calcularCuotas()">
                                         </div>
                                         <h5>Deuda <b>{{montoTotal.deuda | currency:'':'':'2.0'}} Gs</b></h5>
                                     </div>
@@ -494,65 +496,122 @@
                                 </mat-form-field>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card" style="min-width: auto !important;">
                             <div class="card-body">
                                 <h3>Inhumaciones</h3>
-                                <table class=" table  ">
-                                    <thead>
-                                        <tr>
-                                            <th class="text-center">Nombres y Apellidos</th>
-                                            <th class="text-center">C.I.</th>
-                                            <th class="text-center">Fecha fallecimiento</th>
-                                            <th class="text-center">Fecha Inhumacion</th>
-                                            <th class="text-center">Nro Inhumacion</th>
-                                            <th class="text-center">quitar</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr *ngFor="let item of contrato.inhumados; let i = index">
+                                <div class="card" style="display: initial;">
+                                    <div style="overflow-x: auto;">
+                                        <table class=" table  ">
+                                            <thead>
+                                                <tr>
+                                                    <th style="min-width: 300px;" class="text-center">Nombres y
+                                                        Apellidos</th>
+                                                    <th style="min-width: 200px;" class="text-center">C.I.</th>
+                                                    <th style="min-width: 300px;" class="text-center">Fecha
+                                                        fallecimiento</th>
+                                                    <th style="min-width: 300px;" class="text-center">Fecha Inhumacion
+                                                    </th>
+                                                    <th style="min-width: 200px;" class="text-center">Nro Inhumacion
+                                                    </th>
+                                                    <th style="min-width: 200px;" class="text-center">Nacionalidad
+                                                    </th>
+                                                    <th style="min-width: 300px;" class="text-center">Fecha Nacimiento
+                                                    </th>
+                                                    <th style="min-width: 200px;" class="text-center">Certif N</th>
+                                                    <th style="min-width: 200px;" class="text-center">Tomo Libro</th>
+                                                    <th style="min-width: 200px;" class="text-center">Oficina</th>
+                                                    <th style="min-width: 200px;" class="text-center">Folio N</th>
+                                                    <th style="min-width: 200px;" class="text-center">Acta N</th>
+                                                    <th style="min-width: 100px;" class="text-center">quitar</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let item of contrato.inhumados; let i = index">
 
-                                            <td>
-                                                <input required type="text" class="form-control" name="name-infhu-{{i}}"
-                                                    [(ngModel)]="item.nombre">
-                                            </td>
-                                            <td>
-                                                <input required type="text" class="form-control" [(ngModel)]="item.ci"
-                                                    name="name-ianhu-{{i}}">
-                                            </td>
-                                            <td>
-                                                <mat-form-field appearance="fill">
-                                                    <mat-label>Fecha de fallecimiento</mat-label>
-                                                    <input matInput name="fallecimiento-picker{{i}}"
-                                                        [(ngModel)]="item.fecha_fallecimiento"
-                                                        [matDatepicker]="pickerFallecimiento">
-                                                    <mat-datepicker-toggle matSuffix [for]="pickerFallecimiento">
-                                                    </mat-datepicker-toggle>
-                                                    <mat-datepicker #pickerFallecimiento></mat-datepicker>
-                                                </mat-form-field>
-                                            </td>
-                                            <td>
-                                                <mat-form-field appearance="fill">
-                                                    <mat-label>Fecha de inhumacion</mat-label>
-                                                    <input matInput name="inhumacion-picker{{i}}"
-                                                        [(ngModel)]="item.fecha_inhumacion"
-                                                        [matDatepicker]="pickerinhumacion">
-                                                    <mat-datepicker-toggle matSuffix [for]="pickerinhumacion">
-                                                    </mat-datepicker-toggle>
-                                                    <mat-datepicker #pickerinhumacion></mat-datepicker>
-                                                </mat-form-field>
-                                            </td>
-                                            <td>
-                                                <input type="text" class="form-control" name="name-inshu-{{i}}"
-                                                    [(ngModel)]="item.nro">
-                                            </td>
-                                            <td class="text-center">
-                                                <i [ngStyle]="{fontSize: '20px'}"
-                                                    (click)="contrato.inhumados.splice(i, 1)"
-                                                    class="fa fa-trash pointer text-danger" aria-hidden="true"></i>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                                    <td>
+                                                        <input required type="text" class="form-control"
+                                                            name="name-infhu-{{i}}" [(ngModel)]="item.nombre">
+                                                    </td>
+                                                    <td>
+                                                        <input required type="text" class="form-control"
+                                                            [(ngModel)]="item.ci" name="name-ianhu-{{i}}">
+                                                    </td>
+                                                    <td>
+                                                        <mat-form-field appearance="fill">
+                                                            <mat-label>Fecha de fallecimiento</mat-label>
+                                                            <input matInput name="fallecimiento-picker{{i}}"
+                                                                [(ngModel)]="item.fecha_fallecimiento"
+                                                                [matDatepicker]="pickerFallecimiento">
+                                                            <mat-datepicker-toggle matSuffix
+                                                                [for]="pickerFallecimiento">
+                                                            </mat-datepicker-toggle>
+                                                            <mat-datepicker #pickerFallecimiento></mat-datepicker>
+                                                        </mat-form-field>
+                                                    </td>
+                                                    <td>
+                                                        <mat-form-field appearance="fill">
+                                                            <mat-label>Fecha de inhumacion</mat-label>
+                                                            <input matInput name="inhumacion-picker{{i}}"
+                                                                [(ngModel)]="item.fecha_inhumacion"
+                                                                [matDatepicker]="pickerinhumacion">
+                                                            <mat-datepicker-toggle matSuffix [for]="pickerinhumacion">
+                                                            </mat-datepicker-toggle>
+                                                            <mat-datepicker #pickerinhumacion></mat-datepicker>
+                                                        </mat-form-field>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control" name="name-inshu-{{i}}"
+                                                            [(ngModel)]="item.nro">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control" name="name-certif-{{i}}"
+                                                            [(ngModel)]="item.nacionalidad">
+                                                    </td>
+                                                    <td>
+                                                        <mat-form-field appearance="fill">
+                                                            <mat-label>Fecha de Nacimiento</mat-label>
+                                                            <input matInput name="nacimiento-picker{{i}}"
+                                                                [(ngModel)]="item.fecha_nacimiento"
+                                                                [matDatepicker]="pickernafecha_nacimiento">
+                                                            <mat-datepicker-toggle matSuffix
+                                                                [for]="pickernafecha_nacimiento">
+                                                            </mat-datepicker-toggle>
+                                                            <mat-datepicker #pickernafecha_nacimiento></mat-datepicker>
+                                                        </mat-form-field>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control" name="name-certif-{{i}}"
+                                                            [(ngModel)]="item.certif">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control"
+                                                            name="name-tomoLibro-{{i}}" [(ngModel)]="item.tomoLibro">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control"
+                                                            name="name-oficina-{{i}}" [(ngModel)]="item.oficina">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control" name="name-folio-{{i}}"
+                                                            [(ngModel)]="item.folio">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control" name="name-acta-{{i}}"
+                                                            [(ngModel)]="item.acta">
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <i [ngStyle]="{fontSize: '20px'}"
+                                                            (click)="contrato.inhumados.splice(i, 1)"
+                                                            class="fa fa-trash pointer text-danger"
+                                                            aria-hidden="true"></i>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+
                                 <div *ngIf="inhumados.length < 6" class="inline-flex">
                                     <button type="button" (click)="inhumadoPush()"
                                         class="btn m-auto btn-circle btn-info">+</button>
@@ -565,7 +624,8 @@
                         <div class="card">
                             <div class="card-body">
                                 <h3>Servicio utilizado en:</h3>
-                                <table class=" table " style="min-width: 400px  ; min-height: 400px; display: block;  overflow-x: auto;">
+                                <table class=" table "
+                                    style="min-width: 400px  ; min-height: 400px; display: block;  overflow-x: auto;">
                                     <thead>
                                         <tr>
                                             <th style="min-width: 360px;" class="text-center">Nombres y Apellidos</th>
@@ -602,7 +662,8 @@
                                             <td>
                                                 <mat-form-field appearance="fill">
                                                     <mat-label>Fecha de inhumacion</mat-label>
-                                                    <input matInput name="132rds_{{i}}" [(ngModel)]="item.fecha_inhumacion"
+                                                    <input matInput name="132rds_{{i}}"
+                                                        [(ngModel)]="item.fecha_inhumacion"
                                                         [matDatepicker]="pickerinhumacion">
                                                     <mat-datepicker-toggle matSuffix [for]="pickerinhumacion">
                                                     </mat-datepicker-toggle>
@@ -615,8 +676,7 @@
                                             </td>
                                             <td class="text-center">
                                                 <ng-select name="sssssssasdasd{{i}}" [(ngModel)]="item.producto"
-                                                     [items]="productos"
-                                                    notFoundText="no se encontraron resultados"
+                                                    [items]="productos" notFoundText="no se encontraron resultados"
                                                     placeholder="buscar producto" bindLabel="COD_CORTO">
                                                     <ng-template ng-option-tmp let-item="item">
                                                         <div>{{item.COD_CORTO}} <br>

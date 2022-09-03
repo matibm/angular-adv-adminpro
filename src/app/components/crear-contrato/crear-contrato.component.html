@@ -1,73 +1,76 @@
-<div *ngIf="false" class="row">
-    <div class="col">
-        <div class="card" style="display: initial;" >
+<div *ngIf="false" class="rsow">
+    <div class="cosl">
+        <div class="card" style="min-width: auto !important;">
+
             <div class="card-body">
-                <div style="overflow-x: auto;">
-                    <table class="table table-sm table-hover">
-                        <thead>
-                            <tr>
-                                
-                                <th class="text-center" style="min-width: 450px;">
-                                    fondo
-                                </th>
-                                
-                                <th class="text-center" style="min-width: 450px;">
-                                    fondo
-                                </th>
-                                
-                                <th class="text-center" style="min-width: 450px;">
-                                    fondo
-                                </th>
-                                
-                                <th class="text-center" style="min-width: 450px;">
-                                    fondo
-                                </th>
-                                
-                                <th class="text-center" style="min-width: 450px;">
-                                    fondo
-                                </th>
-                                
-                                <th class="text-center" style="min-width: 450px;">
-                                    fondo
-                                </th>
-                                
-                                <th class="text-center" style="min-width: 450px;">
-                                    fondo
-                                </th>
-                                
-                                <th class="text-center" style="min-width: 450px;">
-                                    fondo
-                                </th>
-                                 
-                            </tr>
-                        </thead>
-        
-        
-                        <tbody *ngIf="facturas">
-        
-                            <!--  | paginate: { itemsPerPage: 10,totalItems:count, currentPage: page } -->
-                            <tr  class="item-table pointer"
-                               >
-                                <!-- <td class="text-center" scope="row">{{page*10 + (i+1) - 10}}</td> -->
-                                <td class="text-center" scope="row"> text-center" scope="row </td>
-                                <td class="text-center" scope="row"> text-center" scope="row </td>
-                                <td class="text-center" scope="row"> text-center" scope="row </td>
-                                <td class="text-center" scope="row"> text-center" scope="row </td>
-                                <td class="text-center" scope="row"> text-center" scope="row </td>
-                                <td class="text-center" scope="row"> text-center" scope="row </td>
-                                <td class="text-center" scope="row"> text-center" scope="row </td>
-                                <td class="text-center" scope="row"> text-center" scope="row </td>
-                                <td class="text-center" scope="row"> text-center" scope="row </td>
-                                <td class="text-center" scope="row"> text-center" scope="row </td>
-                                <td class="text-center" scope="row"> text-center" scope="row </td>
-                                <td class="text-center" scope="row"> text-center" scope="row </td>
-                                <td class="text-center" scope="row"> text-center" scope="row </td>
-                                  
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="card" style="display: initial;">
+                    <div style="overflow-x: auto;">
+                        <table class="table table-sm table-hover">
+                            <thead>
+                                <tr>
+
+                                    <th class="text-center" style="min-width: 450px;">
+                                        fondo
+                                    </th>
+
+                                    <th class="text-center" style="min-width: 450px;">
+                                        fondo
+                                    </th>
+
+                                    <th class="text-center" style="min-width: 450px;">
+                                        fondo
+                                    </th>
+
+                                    <th class="text-center" style="min-width: 450px;">
+                                        fondo
+                                    </th>
+
+                                    <th class="text-center" style="min-width: 450px;">
+                                        fondo
+                                    </th>
+
+                                    <th class="text-center" style="min-width: 450px;">
+                                        fondo
+                                    </th>
+
+                                    <th class="text-center" style="min-width: 450px;">
+                                        fondo
+                                    </th>
+
+                                    <th class="text-center" style="min-width: 450px;">
+                                        fondo
+                                    </th>
+
+                                </tr>
+                            </thead>
+
+
+                            <tbody>
+
+                                <!--  | paginate: { itemsPerPage: 10,totalItems:count, currentPage: page } -->
+                                <tr class="item-table pointer">
+                                    <!-- <td class="text-center" scope="row">{{page*10 + (i+1) - 10}}</td> -->
+                                    <td class="text-center" scope="row"> <input type="text" class="form-control"></td>
+                                    <td class="text-center" scope="row"> text-center" scope="row </td>
+                                    <td class="text-center" scope="row"> text-center" scope="row </td>
+                                    <td class="text-center" scope="row"> text-center" scope="row </td>
+                                    <td class="text-center" scope="row"> text-center" scope="row </td>
+                                    <td class="text-center" scope="row"> text-center" scope="row </td>
+                                    <td class="text-center" scope="row"> text-center" scope="row </td>
+                                    <td class="text-center" scope="row"> text-center" scope="row </td>
+                                    <td class="text-center" scope="row"> text-center" scope="row </td>
+                                    <td class="text-center" scope="row"> text-center" scope="row </td>
+                                    <td class="text-center" scope="row"> text-center" scope="row </td>
+                                    <td class="text-center" scope="row"> text-center" scope="row </td>
+                                    <td class="text-center" scope="row"> text-center" scope="row </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
@@ -86,8 +89,10 @@
 
                     <div *ngIf="!cliente">
 
-                        <ng-select #productsearch   id="searchclient" [typeahead]="inputClientes" [loading]="loadingClientes" [items]="clientes" name="dsfdbrweqcda" [(ngModel)]="cliente" (ngModelChange)="null" notFoundText="no se encontraron resultados" placeholder="buscar cliente"
-                            bindLabel="NOMBRES" [searchFn]="customSearchFn">
+                        <ng-select #productsearch id="searchclient" [typeahead]="inputClientes"
+                            [loading]="loadingClientes" [items]="clientes" name="dsfdbrweqcda" [(ngModel)]="cliente"
+                            (ngModelChange)="null" notFoundText="no se encontraron resultados"
+                            placeholder="buscar cliente" bindLabel="NOMBRES" [searchFn]="customSearchFn">
                             <ng-template ng-option-tmp let-item="item">
                                 <div> {{item.APELLIDOS}} {{item.NOMBRES}} <br>
                                     <small>{{item.RUC | ruc}}</small>
@@ -123,15 +128,18 @@
                 <div class="card-body">
                     <div style="justify-content: space-between;" class="inline-flex">
                         <h4 class="card-title">Titular Alternativo</h4>
-                        <div *ngIf="titularAlternativo" (click)="titularAlternativo = null" class="pointer close-icon ml-auto">
+                        <div *ngIf="titularAlternativo" (click)="titularAlternativo = null"
+                            class="pointer close-icon ml-auto">
                             <button type="button" class="btn btn-sm btn-light"><i class=" ti-close  "></i></button>
                         </div>
                     </div>
 
                     <div *ngIf="!titularAlternativo">
 
-                        <ng-select [items]="clientesAlternativo" name="tyhhytgrfedca" [(ngModel)]="titularAlternativo" [typeahead]="inputAlternativo" [loading]="loadingAlternativo" notFoundText="no se encontraron resultados" placeholder="buscar titular alternativo" bindLabel="NOMBRES"
-                            [searchFn]="customSearchFn">
+                        <ng-select [items]="clientesAlternativo" name="tyhhytgrfedca" [(ngModel)]="titularAlternativo"
+                            [typeahead]="inputAlternativo" [loading]="loadingAlternativo"
+                            notFoundText="no se encontraron resultados" placeholder="buscar titular alternativo"
+                            bindLabel="NOMBRES" [searchFn]="customSearchFn">
                             <ng-template ng-option-tmp let-item="item">
                                 <div> {{item.APELLIDOS}} {{item.NOMBRES}} <br>
                                     <small>{{item.RUC | ruc}}</small>
@@ -173,9 +181,10 @@
                     <!-- <ng-select [items]="cars" bindLabel="name" bindValue="id" [(ngModel)]="selectedCar">
                     </ng-select> -->
                     <div *ngIf="!vendedor">
-                        
-                        <ng-select [typeahead]="inputVendedor" [loading]="loadingVendedor" [items]="vendedores" name="dsfdbrwenkkqcda" [(ngModel)]="vendedor"   notFoundText="no se encontraron resultados" placeholder="buscar vendedor"
-                        bindLabel="NOMBRES" [searchFn]="customSearchFn">
+
+                        <ng-select [typeahead]="inputVendedor" [loading]="loadingVendedor" [items]="vendedores"
+                            name="dsfdbrwenkkqcda" [(ngModel)]="vendedor" notFoundText="no se encontraron resultados"
+                            placeholder="buscar vendedor" bindLabel="NOMBRES" [searchFn]="customSearchFn">
                             <ng-template ng-option-tmp let-item="item">
                                 <div> {{item.APELLIDOS}} {{item.NOMBRES}} <br>
                                     <small>{{item.RUC | ruc}}</small>
@@ -207,8 +216,10 @@
                     </div>
                     <div class="ng-autocomplete">
                         <div *ngIf="!cobrador">
-                            <ng-select [typeahead]="inputCobrador" [loading]="loadingCobrador" [items]="cobradores" name="dsfdbrwesnkkqcda" [(ngModel)]="cobrador"   notFoundText="no se encontraron resultados" placeholder="buscar cobrador"
-                            bindLabel="NOMBRES" [searchFn]="customSearchFn">
+                            <ng-select [typeahead]="inputCobrador" [loading]="loadingCobrador" [items]="cobradores"
+                                name="dsfdbrwesnkkqcda" [(ngModel)]="cobrador"
+                                notFoundText="no se encontraron resultados" placeholder="buscar cobrador"
+                                bindLabel="NOMBRES" [searchFn]="customSearchFn">
                                 <ng-template ng-option-tmp let-item="item">
                                     <div>
                                         <div class="" *ngIf="item.APELLIDOS">
@@ -248,11 +259,13 @@
                     </div>
                     <div class="form-group">
                         <label for="">Numero de Contrato: </label>
-                        <input type="number" required class="form-control" name="nroFactura" autocomplete="off" [(ngModel)]="nro_contrato">
+                        <input type="number" required class="form-control" name="nroFactura" autocomplete="off"
+                            [(ngModel)]="nro_contrato">
                     </div>
                     <mat-form-field appearance="fill">
                         <mat-label>Fecha de creacion</mat-label>
-                        <input matInput name="asdas" [(ngModel)]="fecha_creacion" [matDatepicker]="picker" (dateChange)="fechaPago = fecha_creacion ">
+                        <input matInput name="asdas" [(ngModel)]="fecha_creacion" [matDatepicker]="picker"
+                            (dateChange)="fechaPago = fecha_creacion ">
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
@@ -267,14 +280,16 @@
                             <button type="button" class="btn btn-sm btn-light"><i class=" ti-close  "></i></button>
                         </div>
                     </div>
-                    <ng-select name="selecpfodsmpdsv" *ngIf="!producto" [(ngModel)]="producto" (ngModelChange)="seleccionarProducto(producto)" [items]="productos" notFoundText="no se encontraron resultados" placeholder="buscar producto" bindLabel="NOMBRE">
+                    <ng-select name="selecpfodsmpdsv" *ngIf="!producto" [(ngModel)]="producto"
+                        (ngModelChange)="seleccionarProducto(producto)" [items]="productos"
+                        notFoundText="no se encontraron resultados" placeholder="buscar producto" bindLabel="NOMBRE">
                         <ng-template ng-option-tmp let-item="item">
                             <div> {{item.NOMBRE}} {{item.COD_CORTO}} <br>
                             </div>
                         </ng-template>
                     </ng-select>
 
-                    <div class=""  *ngIf="producto">
+                    <div class="" *ngIf="producto">
                         <h5>Nombre: <b>{{producto.NOMBRE}} - {{producto.COD_CORTO}}</b></h5>
                         <h5>Precio actual: <b>{{producto.PRECIO_MAYORISTA | currency:'':'':'2.0'}} Gs</b></h5>
                         <!-- <h5>Entrega: </h5>  -->
@@ -287,11 +302,15 @@
                             <h4 class=" mr-3">Forma de Pago: </h4>
                             <div style="width: 90%;" class="row">
                                 <div class="col-md-4 col-xs">
-                                    <input [disabled]="sinCuota" [(ngModel)]="pagoradioValue" (click)="resetPlazo()" class="with-gap radio-col-blue-grey" name="idTipoPlan2" type="radio" id="radio_4" value="contado" required>
+                                    <input [disabled]="sinCuota" [(ngModel)]="pagoradioValue" (click)="resetPlazo()"
+                                        class="with-gap radio-col-blue-grey" name="idTipoPlan2" type="radio"
+                                        id="radio_4" value="contado" required>
                                     <label for="radio_4">Contado</label>
                                 </div>
                                 <div class="col-md-4 col-xs">
-                                    <input [disabled]="sinCuota" [(ngModel)]="pagoradioValue" name="sdsdsda" class="with-gap radio-col-blue-grey" type="radio" id="radio_5" value="cuota" required>
+                                    <input [disabled]="sinCuota" [(ngModel)]="pagoradioValue" name="sdsdsda"
+                                        class="with-gap radio-col-blue-grey" type="radio" id="radio_5" value="cuota"
+                                        required>
                                     <label for="radio_5">Cuotas</label>
                                 </div>
 
@@ -302,32 +321,40 @@
                             <div class="col-md col-xs">
                                 <div class="form-group">
                                     <label for="">Entrega</label>
-                                    <input [disabled]="sinCuota" name="asdsfgsda" type="number" class="form-control" (ngModelChange)="calcularSaldo(en.value)" #en [(ngModel)]="entrega">
+                                    <input [disabled]="sinCuota" name="asdsfgsda" type="number" class="form-control"
+                                        (ngModelChange)="calcularSaldo(en.value)" #en [(ngModel)]="entrega">
                                 </div>
                                 <!-- <h5>saldo <b>{{saldo | currency:'':'':'2.0'}} Gs</b></h5> -->
 
                                 <div class="form-group">
                                     <label for="">Precio Total</label>
-                                    <input [disabled]="sinCuota" type="number" class="form-control" (ngModelChange)="calcularCuotas()" name="afdsgdfrwetgervfr" [(ngModel)]="precioTotal" name="sadasfswertbh" id="" aria-describedby="helpId" placeholder="">
+                                    <input [disabled]="sinCuota" type="number" class="form-control"
+                                        (ngModelChange)="calcularCuotas()" name="afdsgdfrwetgervfr"
+                                        [(ngModel)]="precioTotal" name="sadasfswertbh" id="" aria-describedby="helpId"
+                                        placeholder="">
                                     <small>saldo <b>{{precioTotal | currency:'':'':'2.0'}} Gs</b></small>
                                 </div>
                             </div>
                             <div class="col-md col-xs">
                                 <div class="form-group">
                                     <label for="">plazo</label>
-                                    <input [disabled]="sinCuota" name="assasavvv" type="number" class="form-control" [(ngModel)]="plazo" (ngModelChange)="calcularCuotas()">
+                                    <input [disabled]="sinCuota" name="assasavvv" type="number" class="form-control"
+                                        [(ngModel)]="plazo" (ngModelChange)="calcularCuotas()">
                                 </div>
                                 <h5>Monto Cuotas: <b>{{montoCuotas | currency:'':'':'2.0' }} Gs</b></h5>
                             </div>
                             <div class="col-md col-xs">
-                                <button type="button" (click)="sinCuota? sinCuota = false : sinCuota = true" [ngClass]="{'btn-inverse': sinCuota, 'btn-info': !sinCuota }" class="btn m-auto ">No crear cuotas</button>
+                                <button type="button" (click)="sinCuota? sinCuota = false : sinCuota = true"
+                                    [ngClass]="{'btn-inverse': sinCuota, 'btn-info': !sinCuota }" class="btn m-auto ">No
+                                    crear cuotas</button>
                             </div>
                             <div class="col-md col-xs">
                                 <div class="d-block ">
                                     <!-- <label for="">Fecha de primer pago </label> -->
                                     <mat-form-field appearance="fill">
                                         <mat-label>Fecha de primer pago</mat-label>
-                                        <input matInput name="asfdvbntr" [(ngModel)]="fechaPago" [matDatepicker]="pickerPrimerPago" (dateChange)="calcularFechaPago()">
+                                        <input matInput name="asfdvbntr" [(ngModel)]="fechaPago"
+                                            [matDatepicker]="pickerPrimerPago" (dateChange)="calcularFechaPago()">
                                         <mat-datepicker-toggle matSuffix [for]="pickerPrimerPago">
                                         </mat-datepicker-toggle>
                                         <mat-datepicker #pickerPrimerPago></mat-datepicker>
@@ -341,7 +368,8 @@
                                 <div class="form-group">
                                     <label for="">Cantidad de cuotas a crear</label>
 
-                                    <input type="number" name="cantidadCuotaPSM" [(ngModel)]="cantidadCuotaPSM" class="form-control">
+                                    <input type="number" name="cantidadCuotaPSM" [(ngModel)]="cantidadCuotaPSM"
+                                        class="form-control">
 
                                 </div>
                             </div>
@@ -350,7 +378,8 @@
                                     <!-- <label for="">Fecha de primer pago </label> -->
                                     <mat-form-field appearance="fill">
                                         <mat-label>Fecha de primer pago</mat-label>
-                                        <input matInput name="asfdvbntr" [(ngModel)]="fechaPago" [matDatepicker]="pickerPrimerPago" (dateChange)="calcularFechaPago()">
+                                        <input matInput name="asfdvbntr" [(ngModel)]="fechaPago"
+                                            [matDatepicker]="pickerPrimerPago" (dateChange)="calcularFechaPago()">
                                         <mat-datepicker-toggle matSuffix [for]="pickerPrimerPago">
                                         </mat-datepicker-toggle>
                                         <mat-datepicker #pickerPrimerPago></mat-datepicker>
@@ -363,7 +392,9 @@
                         <div class="mt-2 inline-flex">
                             <div style="width: 100%;" class="row">
                                 <div *ngFor="let item of tipos_pago; let i = index;" class="col-md-3 col-xs">
-                                    <input [(ngModel)]="radioValue" name="ifghgfedTipoPlan" type="radio" class="with-gap radio-col-blue-grey" id="radio_-{{i}}" [value]="item.value" required>
+                                    <input [(ngModel)]="radioValue" name="ifghgfedTipoPlan" type="radio"
+                                        class="with-gap radio-col-blue-grey" id="radio_-{{i}}" [value]="item.value"
+                                        required>
 
                                     <label for="radio_-{{i}}">{{item.name}}</label>
                                 </div>
@@ -375,11 +406,15 @@
                                 <label>Lugar de cobranza</label>
                                 <div class="row">
                                     <div class="col-md col-xs">
-                                        <input [(ngModel)]="radioLugarCobranza" name="idTiportgPlan3" type="radio" class="with-gap radio-col-blue-grey" id="radio_particular" value="particular" required>
+                                        <input [(ngModel)]="radioLugarCobranza" name="idTiportgPlan3" type="radio"
+                                            class="with-gap radio-col-blue-grey" id="radio_particular"
+                                            value="particular" required>
                                         <label for="radio_particular">Direccion Particular</label>
                                     </div>
                                     <div class="col-md col-xs">
-                                        <input [(ngModel)]="radioLugarCobranza" name="idTerfdipoPlan3" type="radio" class="with-gap radio-col-blue-grey" id="radio_laboral" value="laboral" required>
+                                        <input [(ngModel)]="radioLugarCobranza" name="idTerfdipoPlan3" type="radio"
+                                            class="with-gap radio-col-blue-grey" id="radio_laboral" value="laboral"
+                                            required>
                                         <label for="radio_laboral">Direccion Laboral</label>
                                     </div>
                                 </div>
@@ -446,51 +481,66 @@
                                 <tbody>
                                     <tr *ngFor="let item of beneficiarios; let i = index">
                                         <td>
-                                            <input type="text" class="form-control" [(ngModel)]="item.nombre" name="nadsme-{{i}}" placeholder="nombre completo">
+                                            <input type="text" class="form-control" [(ngModel)]="item.nombre"
+                                                name="nadsme-{{i}}" placeholder="nombre completo">
                                         </td>
                                         <td>
-                                            <input type="text" class="form-control" [(ngModel)]="item.ci" name="nvfame-{{i}}" placeholder="cedula de identidad">
+                                            <input type="text" class="form-control" [(ngModel)]="item.ci"
+                                                name="nvfame-{{i}}" placeholder="cedula de identidad">
                                         </td>
 
                                         <td>
                                             <!-- <input type="text" class="form-control" (ngModelChange)="item.edad = calcularEdad(fchn.value)" #fchn [(ngModel)]="item.fecha_nacimiento" name="name-{{i}}" placeholder="aaaa/mm/dd"> -->
                                             <mat-form-field appearance="fill">
                                                 <mat-label>Fecha de nacimiento</mat-label>
-                                                <input name="sdafgr423{{i}}" matInput [autocomplete]="'off'" [(ngModel)]="item.fecha_nacimiento" [matDatepicker]="pickerfechanacimiento" (dateChange)="item.edad = calcularEdad(item.fecha_nacimiento)">
+                                                <input name="sdafgr423{{i}}" matInput [autocomplete]="'off'"
+                                                    [(ngModel)]="item.fecha_nacimiento"
+                                                    [matDatepicker]="pickerfechanacimiento"
+                                                    (dateChange)="item.edad = calcularEdad(item.fecha_nacimiento)">
                                                 <mat-datepicker-toggle matSuffix [for]="pickerfechanacimiento">
                                                 </mat-datepicker-toggle>
                                                 <mat-datepicker #pickerfechanacimiento></mat-datepicker>
                                             </mat-form-field>
                                         </td>
                                         <td>
-                                            <label *ngIf="item.edad" class="border p-1 rounded" for="">{{item.edad}}</label>
+                                            <label *ngIf="item.edad" class="border p-1 rounded"
+                                                for="">{{item.edad}}</label>
                                         </td>
                                         <td>
                                             <!-- <input type="number" class="form-control" [(ngModel)]="item.plus_edad" name="plus-name-{{i}}" placeholder="plus por edad">
                                             <div><small class="text-danger" *ngIf="item.edad > 64 && !item.plus_edad">plus por edad es obligatorio</small></div>
                                             <div><small class="text-danger" *ngIf="i > 2 && !item.plus_edad">plus por cantidad es obligatorio</small></div> -->
 
-                                            <div [ngClass]="{'has-danger': item.edad > 64  && !item.plus_edad}" class="form-group ">
-                                                <input [required]="item.edad > 64  && !item.plus_edad" type="number" class="form-control fcorm-control-danger " [(ngModel)]="item.plus_edad" name="ndfsbame-{{i}}" placeholder="plus por edad" (ngModelChange)="sumarPlusPorEdad(beneficiarios)">
+                                            <div [ngClass]="{'has-danger': item.edad > 64  && !item.plus_edad}"
+                                                class="form-group ">
+                                                <input [required]="item.edad > 64  && !item.plus_edad" type="number"
+                                                    class="form-control fcorm-control-danger "
+                                                    [(ngModel)]="item.plus_edad" name="ndfsbame-{{i}}"
+                                                    placeholder="plus por edad"
+                                                    (ngModelChange)="sumarPlusPorEdad(beneficiarios)">
                                                 <div>
-                                                    <small class="form-control-feedback " *ngIf=" item.edad  > 64  && !item.plus_edad">plus
-                                                            por edad es
-                                                            obligatorio</small>
+                                                    <small class="form-control-feedback "
+                                                        *ngIf=" item.edad  > 64  && !item.plus_edad">plus
+                                                        por edad es
+                                                        obligatorio</small>
                                                 </div>
                                                 <div>
-                                                    <small class="form-control-feedback" *ngIf="i > 2 && !item.plus_edad">plus
-                                                            por cantidad es obligatorio</small>
+                                                    <small class="form-control-feedback"
+                                                        *ngIf="i > 2 && !item.plus_edad">plus
+                                                        por cantidad es obligatorio</small>
                                                 </div>
                                             </div>
                                         </td>
                                         <td class="text-center">
-                                            <i [ngStyle]="{fontSize: '20px'}" (click)="beneficiarios.splice(i, 1)" class="fa fa-trash pointer text-danger" aria-hidden="true"></i>
+                                            <i [ngStyle]="{fontSize: '20px'}" (click)="beneficiarios.splice(i, 1)"
+                                                class="fa fa-trash pointer text-danger" aria-hidden="true"></i>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                             <div *ngIf="beneficiarios.length < 6" class="inline-flex">
-                                <button type="button" (click)="beneficiarioPush()" class="btn m-auto btn-circle btn-info">+</button>
+                                <button type="button" (click)="beneficiarioPush()"
+                                    class="btn m-auto btn-circle btn-info">+</button>
                             </div>
                         </div>
                     </div>
@@ -513,16 +563,20 @@
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <input type="text" [(ngModel)]="manzana" class="form-control" name="manzana" aria-describedby="helpId" placeholder="">
+                                            <input type="text" [(ngModel)]="manzana" class="form-control" name="manzana"
+                                                aria-describedby="helpId" placeholder="">
                                         </td>
                                         <td>
-                                            <input type="text" [(ngModel)]="fila" class="form-control" name="fila" aria-describedby="helpId" placeholder="">
+                                            <input type="text" [(ngModel)]="fila" class="form-control" name="fila"
+                                                aria-describedby="helpId" placeholder="">
                                         </td>
                                         <td>
-                                            <input type="text" [(ngModel)]="parcela" class="form-control" name="parcela" aria-describedby="helpId" placeholder="">
+                                            <input type="text" [(ngModel)]="parcela" class="form-control" name="parcela"
+                                                aria-describedby="helpId" placeholder="">
                                         </td>
                                         <td>
-                                            <input type="text" [(ngModel)]="sector" class="form-control" name="sector" aria-describedby="helpId" placeholder="">
+                                            <input type="text" [(ngModel)]="sector" class="form-control" name="sector"
+                                                aria-describedby="helpId" placeholder="">
                                         </td>
                                     </tr>
                                 </tbody>
@@ -535,7 +589,9 @@
                             <h3>Cuota de Mantenimiento: 150.000 Gs</h3>
                             <div style="max-width: 300px;" class="form-group">
                                 <label for="">Fecha de pago </label>
-                                <input type="text" name="asdsfsvbyt" placeholder="AAAA-MM-DD" class="form-control" [(ngModel)]="stringFechaMantenimiento" (ngModelChange)="calcularFechaMantenimiento()">
+                                <input type="text" name="asdsfsvbyt" placeholder="AAAA-MM-DD" class="form-control"
+                                    [(ngModel)]="stringFechaMantenimiento"
+                                    (ngModelChange)="calcularFechaMantenimiento()">
                             </div>
 
                             <span>Fecha por defecto <b>{{fechaMantenimiento |date}}</b> </span>
@@ -543,58 +599,125 @@
                         </div>
                     </div>
                     <!-- Inhumaciones -->
-                    <div class="card">
+                    <div class="card" style="min-width: auto !important;">
                         <div class="card-body">
                             <h3>Inhumaciones</h3>
-                            <table class=" table  ">
-                                <thead>
-                                    <tr>
-                                        <th class="text-center">Nombres y Apellidos</th>
-                                        <th class="text-center">C.I.</th>
-                                        <th class="text-center">Fecha fallecimiento</th>
-                                        <th class="text-center">Fecha Inhumacion</th>
-                                        <th class="text-center">Nro Inhumacion</th>
-                                        <th class="text-center">quitar</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let item of inhumados; let i = index">
+                            <div class="card" style="display: initial;">
+                                <div style="overflow-x: auto;">
+                                    <table class=" table  ">
+                                        <thead>
+                                            <tr>
+                                                <th style="min-width: 300px;" class="text-center">Nombres y
+                                                    Apellidos</th>
+                                                <th style="min-width: 200px;" class="text-center">C.I.</th>
+                                                <th style="min-width: 300px;" class="text-center">Fecha
+                                                    fallecimiento</th>
+                                                <th style="min-width: 300px;" class="text-center">Fecha Inhumacion
+                                                </th>
+                                                <th style="min-width: 200px;" class="text-center">Nro Inhumacion
+                                                </th>
+                                                <th style="min-width: 200px;" class="text-center">Nacionalidad
+                                                </th>
+                                                <th style="min-width: 300px;" class="text-center">Fecha Nacimiento
+                                                </th>
+                                                <th style="min-width: 200px;" class="text-center">Certif N</th>
+                                                <th style="min-width: 200px;" class="text-center">Tomo Libro</th>
+                                                <th style="min-width: 200px;" class="text-center">Oficina</th>
+                                                <th style="min-width: 200px;" class="text-center">Folio N</th>
+                                                <th style="min-width: 200px;" class="text-center">Acta N</th>
+                                                <th style="min-width: 100px;" class="text-center">quitar</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let item of inhumados; let i = index">
 
-                                        <td>
-                                            <input type="text" class="form-control" name="namefg-{{i}}" [(ngModel)]="item.nombre">
-                                        </td>
-                                        <td>
-                                            <input type="text" class="form-control" [(ngModel)]="item.ci" name="nam5tge-{{i}}">
-                                        </td>
-                                        <td>
-                                            <mat-form-field appearance="fill">
-                                                <mat-label>Fecha de fallecimiento</mat-label>
-                                                <input matInput name="rtbh564" [(ngModel)]="item.fecha_fallecimiento" [matDatepicker]="pickerFallecimiento">
-                                                <mat-datepicker-toggle matSuffix [for]="pickerFallecimiento">
-                                                </mat-datepicker-toggle>
-                                                <mat-datepicker #pickerFallecimiento></mat-datepicker>
-                                            </mat-form-field>
-                                        </td>
-                                        <td>
-                                            <mat-form-field appearance="fill">
-                                                <mat-label>Fecha de inhumacion</mat-label>
-                                                <input matInput name="deg45h4tbe" [(ngModel)]="item.fecha_inhumacion" [matDatepicker]="pickerinhumacion">
-                                                <mat-datepicker-toggle matSuffix [for]="pickerinhumacion">
-                                                </mat-datepicker-toggle>
-                                                <mat-datepicker #pickerinhumacion></mat-datepicker>
-                                            </mat-form-field>
-                                        </td>
-                                        <td>
-                                            <input type="text" class="form-control" name="na434ggme-{{i}}" [(ngModel)]="item.nro">
-                                        </td>
-                                        <td class="text-center">
-                                            <i [ngStyle]="{fontSize: '20px'}" (click)="inhumados.splice(i, 1)" class="fa fa-trash pointer text-danger" aria-hidden="true"></i>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                                                <td>
+                                                    <input required type="text" class="form-control"
+                                                        name="name-infhu-{{i}}" [(ngModel)]="item.nombre">
+                                                </td>
+                                                <td>
+                                                    <input required type="text" class="form-control"
+                                                        [(ngModel)]="item.ci" name="name-ianhu-{{i}}">
+                                                </td>
+                                                <td>
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>Fecha de fallecimiento</mat-label>
+                                                        <input matInput name="fallecimiento-picker{{i}}"
+                                                            [(ngModel)]="item.fecha_fallecimiento"
+                                                            [matDatepicker]="pickerFallecimiento">
+                                                        <mat-datepicker-toggle matSuffix
+                                                            [for]="pickerFallecimiento">
+                                                        </mat-datepicker-toggle>
+                                                        <mat-datepicker #pickerFallecimiento></mat-datepicker>
+                                                    </mat-form-field>
+                                                </td>
+                                                <td>
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>Fecha de inhumacion</mat-label>
+                                                        <input matInput name="inhumacion-picker{{i}}"
+                                                            [(ngModel)]="item.fecha_inhumacion"
+                                                            [matDatepicker]="pickerinhumacion">
+                                                        <mat-datepicker-toggle matSuffix [for]="pickerinhumacion">
+                                                        </mat-datepicker-toggle>
+                                                        <mat-datepicker #pickerinhumacion></mat-datepicker>
+                                                    </mat-form-field>
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-control" name="name-inshu-{{i}}"
+                                                        [(ngModel)]="item.nro">
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-control" name="name-certif-{{i}}"
+                                                        [(ngModel)]="item.nacionalidad">
+                                                </td>
+                                                <td>
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>Fecha de Nacimiento</mat-label>
+                                                        <input matInput name="nacimiento-picker{{i}}"
+                                                            [(ngModel)]="item.fecha_nacimiento"
+                                                            [matDatepicker]="pickernafecha_nacimiento">
+                                                        <mat-datepicker-toggle matSuffix
+                                                            [for]="pickernafecha_nacimiento">
+                                                        </mat-datepicker-toggle>
+                                                        <mat-datepicker #pickernafecha_nacimiento></mat-datepicker>
+                                                    </mat-form-field>
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-control" name="name-certif-{{i}}"
+                                                        [(ngModel)]="item.certif">
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-control"
+                                                        name="name-tomoLibro-{{i}}" [(ngModel)]="item.tomoLibro">
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-control"
+                                                        name="name-oficina-{{i}}" [(ngModel)]="item.oficina">
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-control" name="name-folio-{{i}}"
+                                                        [(ngModel)]="item.folio">
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-control" name="name-acta-{{i}}"
+                                                        [(ngModel)]="item.acta">
+                                                </td>
+                                                <td class="text-center">
+                                                    <i [ngStyle]="{fontSize: '20px'}"
+                                                        (click)="contrato.inhumados.splice(i, 1)"
+                                                        class="fa fa-trash pointer text-danger"
+                                                        aria-hidden="true"></i>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+
                             <div *ngIf="inhumados.length < 6" class="inline-flex">
-                                <button type="button" (click)="inhumadoPush()" class="btn m-auto btn-circle btn-info">+</button>
+                                <button type="button" (click)="inhumadoPush()"
+                                    class="btn m-auto btn-circle btn-info">+</button>
                             </div>
                         </div>
                     </div>
@@ -602,35 +725,40 @@
                 <!-- P.S.V. -->
                 <div *ngIf="esPsv">
                     <!-- Servicio Utilizado en -->
-                    
-                    <div class="card"  >
-                        <div  class="card-body">
-                            <div style="overflow-x: auto" >
+
+                    <div class="card">
+                        <div class="card-body">
+                            <div style="overflow-x: auto">
                                 <h3>Servicio utilizado en:</h3>
-                                <table class=" table " >
+                                <table class=" table ">
                                     <thead>
                                         <tr>
                                             <th style="width: 500px;" class="text-center">Nombres y Apellidos</th>
                                             <th style="width: 500px;" class="text-center">C.I.</th>
                                             <th style="width: 500px;" class="text-center">Fecha fallecimiento</th>
                                             <th style="width: 500px;" class="text-center">Fecha Inhumacion</th>
-                                            <th style="width: 500px;" *ngIf="false" class="text-center">Nro Inhumacion</th>
+                                            <th style="width: 500px;" *ngIf="false" class="text-center">Nro Inhumacion
+                                            </th>
                                             <th style="width: 500px;" class="text-center">quitar</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr *ngFor="let item of inhumados; let i = index">
-    
+
                                             <td>
-                                                <input type="text" name="sadfge1" class="form-control" name="name-{{i}}" [(ngModel)]="item.nombre">
+                                                <input type="text" name="sadfge1" class="form-control" name="name-{{i}}"
+                                                    [(ngModel)]="item.nombre">
                                             </td>
                                             <td>
-                                                <input type="text" name="fdtgrefvvsdf" class="form-control" [(ngModel)]="item.ci" name="name-{{i}}">
+                                                <input type="text" name="fdtgrefvvsdf" class="form-control"
+                                                    [(ngModel)]="item.ci" name="name-{{i}}">
                                             </td>
                                             <td>
                                                 <mat-form-field appearance="fill">
                                                     <mat-label>Fecha de fallecimiento</mat-label>
-                                                    <input matInput name="afdsger423_{{i}}" [(ngModel)]="item.fecha_fallecimiento" [matDatepicker]="pickerFallecimiento">
+                                                    <input matInput name="afdsger423_{{i}}"
+                                                        [(ngModel)]="item.fecha_fallecimiento"
+                                                        [matDatepicker]="pickerFallecimiento">
                                                     <mat-datepicker-toggle matSuffix [for]="pickerFallecimiento">
                                                     </mat-datepicker-toggle>
                                                     <mat-datepicker #pickerFallecimiento></mat-datepicker>
@@ -639,25 +767,31 @@
                                             <td>
                                                 <mat-form-field appearance="fill">
                                                     <mat-label>Fecha de inhumacion</mat-label>
-                                                    <input matInput name="asdrsvet321_{{i}}" [(ngModel)]="item.fecha_inhumacion" [matDatepicker]="pickerinhumacion">
+                                                    <input matInput name="asdrsvet321_{{i}}"
+                                                        [(ngModel)]="item.fecha_inhumacion"
+                                                        [matDatepicker]="pickerinhumacion">
                                                     <mat-datepicker-toggle matSuffix [for]="pickerinhumacion">
                                                     </mat-datepicker-toggle>
                                                     <mat-datepicker #pickerinhumacion></mat-datepicker>
                                                 </mat-form-field>
                                             </td>
                                             <td *ngIf="false">
-                                                <input type="text" class="form-control" name="dsfdname-{{i}}" [(ngModel)]="item.nro">
+                                                <input type="text" class="form-control" name="dsfdname-{{i}}"
+                                                    [(ngModel)]="item.nro">
                                             </td>
                                             <td class="text-center">
-                                                <i [ngStyle]="{fontSize: '20px'}" (click)="inhumados.splice(i, 1)" class="fa fa-trash pointer text-danger" aria-hidden="true"></i>
+                                                <i [ngStyle]="{fontSize: '20px'}" (click)="inhumados.splice(i, 1)"
+                                                    class="fa fa-trash pointer text-danger" aria-hidden="true"></i>
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
                                 <div *ngIf="inhumados.length < 6" class="inline-flex">
-                                    <button type="button" (click)="inhumadoPush()" class="btn m-auto btn-circle btn-info">+</button>
-                                </div></div>
-                           
+                                    <button type="button" (click)="inhumadoPush()"
+                                        class="btn m-auto btn-circle btn-info">+</button>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -671,27 +805,31 @@
                             <div class="col-xs col-md">
                                 <div class="form-group">
                                     <label for="nombre">Nombre</label>
-                                    <input type="text" class="form-control" [(ngModel)]="pagoInicial.nombre" name="nombre" id="nombre" aria-describedby="nombreid" placeholder="">
+                                    <input type="text" class="form-control" [(ngModel)]="pagoInicial.nombre"
+                                        name="nombre" id="nombre" aria-describedby="nombreid" placeholder="">
                                 </div>
                             </div>
                             <div class="col-xs col-md">
                                 <div class="form-group">
                                     <label for="ruc">RUC/CI</label>
-                                    <input type="text" class="form-control" name="ruc" [(ngModel)]="pagoInicial.ruc" id="ruc" aria-describedby="rucid" placeholder="">
+                                    <input type="text" class="form-control" name="ruc" [(ngModel)]="pagoInicial.ruc"
+                                        id="ruc" aria-describedby="rucid" placeholder="">
                                 </div>
                             </div>
 
                             <div class="col-xs col-md">
                                 <div class="form-group">
                                     <label for="tel">Tel</label>
-                                    <input type="text" class="form-control" name="tel" [(ngModel)]="pagoInicial.tel" id="tel" aria-describedby="telid" placeholder="">
+                                    <input type="text" class="form-control" name="tel" [(ngModel)]="pagoInicial.tel"
+                                        id="tel" aria-describedby="telid" placeholder="">
                                 </div>
                             </div>
 
                         </div>
                         <div class="form-group">
                             <label for="direccion">direccion</label>
-                            <input type="text" class="form-control" name="direccion" [(ngModel)]="pagoInicial.direccion" id="direccion" aria-describedby="direccionid" placeholder="">
+                            <input type="text" class="form-control" name="direccion" [(ngModel)]="pagoInicial.direccion"
+                                id="direccion" aria-describedby="direccionid" placeholder="">
                         </div>
 
                     </div>
@@ -701,26 +839,27 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4>Notas</h4>
-                                <textarea class="form-control" [(ngModel)]="notas" name="notas"
-                                id="notas" rows="5"></textarea>
-                            </div>  
+                                <textarea class="form-control" [(ngModel)]="notas" name="notas" id="notas"
+                                    rows="5"></textarea>
+                            </div>
                         </div>
                     </div>
                     <div class="col-xs  col-md">
                         <div class="card">
                             <div class="card-body">
                                 <h4>Relacionar Contrato</h4>
-                                <input class="form-control" type="number" placeholder="nro de contrato sin puntos" [(ngModel)]="nro_contrato_relacionado" name="contrato_relacionado"
-                                id="contrato_relacionado" >
+                                <input class="form-control" type="number" placeholder="nro de contrato sin puntos"
+                                    [(ngModel)]="nro_contrato_relacionado" name="contrato_relacionado"
+                                    id="contrato_relacionado">
                                 <h4 class="mt-3 ">Lugar de Inhumación</h4>
                                 <input class="form-control" [(ngModel)]="lugar_inhumacion" name="lugar_inhumacion"
-                                id="lugar_inhumacion" >
+                                    id="lugar_inhumacion">
                             </div>
                         </div>
                     </div>
                 </div>
                 <button type="submit" [disabled]="disableCrearContrato()" class="btn float-right btn-primary">Crear
-                        Contrato</button>
+                    Contrato</button>
 
             </div>
         </div>

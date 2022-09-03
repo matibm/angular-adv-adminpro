@@ -448,4 +448,9 @@ export class ListaContratosComponent implements OnInit {
     this._contratoService.revisarContrato({ contrato_id: contrato._id, revisado: contrato.revisado })
 
   }
+
+  reporte_inhumados(){
+    this._contratoService.reporte_inhumados({ })
+
+  }
 }
