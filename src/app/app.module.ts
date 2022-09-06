@@ -39,6 +39,7 @@ import { NgxLoadingModule } from 'ngx-loading';
 import { NombreCortoPipe } from './pipes/nombre-corto.pipe';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+// import { NgxBackForwardCacheModule } from 'ngx-back-forward-cache';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,6 @@ import { environment } from '../environments/environment';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgxPaginationModule,
     PagesModule,
     HttpClientModule,
     AutocompleteLibModule,
@@ -74,10 +74,11 @@ import { environment } from '../environments/environment';
     BrowserAnimationsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
-      // Register the ServiceWorker as soon as the app is stable
-      // or after 30 seconds (whichever comes first).
+     
       registrationStrategy: 'registerWhenStable:30000'
-    })
+    }),
+    // NgxBackForwardCacheModule.forRoot(), 
+
     // NestableModule
     // NgbModule
   ],

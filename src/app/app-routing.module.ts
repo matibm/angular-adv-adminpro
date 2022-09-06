@@ -20,8 +20,8 @@ const routes: Routes = [
 
 
 
-  {path: '', redirectTo: '/admin', pathMatch: 'full'},
-  {path: '**', component: NopagefoundComponent},
+  { path: '', redirectTo: '/admin', pathMatch: 'full' },
+  { path: '**', component: NopagefoundComponent },
 
 
 ];
@@ -29,11 +29,19 @@ const routes: Routes = [
 @NgModule({
   declarations: [],
   imports: [
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, {
+      useHash: true,
+
+      // These aren't necessary for this demo - they are just here to provide
+      // a more natural experience and test harness.
+      scrollPositionRestoration: "enabled",
+      anchorScrolling: "enabled",
+      enableTracing: false
+    }),
     PagesRoutingModule,
     AuthRoutingModule
   ],
-  exports: [ RouterModule ]
+  exports: [RouterModule]
 
 })
 export class AppRoutingModule { }

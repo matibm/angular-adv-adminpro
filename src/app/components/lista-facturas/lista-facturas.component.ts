@@ -437,6 +437,7 @@ export class ListaFacturasComponent implements OnInit {
   async accionRecibo(accion){
     await this._facturaService.confirmarRecibo(this.opciones, accion, accion == 'confirmar'? this.fecha_recibo.getTime() : null)
     this.filtrar()
+    window.location.reload()
   }
 
 }

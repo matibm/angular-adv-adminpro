@@ -59,7 +59,7 @@ export class SidebarService {
     },
     {
       titulo: 'Mapa',
-      icono: 'mdi mdi-shopping',
+      icono: 'mdi mdi-map',
       submenu: [
         { titulo: 'mapa', url: 'mapa' }
        ]
