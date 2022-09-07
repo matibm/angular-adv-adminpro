@@ -30,7 +30,7 @@ const routes: Routes = [
   declarations: [],
   imports: [
     RouterModule.forRoot(routes, {
-      useHash: true,
+      // useHash: true,
 
       // These aren't necessary for this demo - they are just here to provide
       // a more natural experience and test harness.
