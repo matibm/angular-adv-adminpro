@@ -297,7 +297,7 @@
                 <thead>
                     <tr #tableHeaad class="thead">
                         <th>#</th>
-                        <th>Revisado</th>
+                        <th *ngIf="_usuarioService.usuario.role=='ADMIN_ROLE'">Revisado</th>
                         <th style="min-width: 120px;" id="fecha_creacion_unix" (click)="ordenar('fecha_creacion_unix')">
                             fecha <i *ngIf="false" class="ml-1 fa fa-sort-desc"></i></th>
                         <th style="min-width: 120px;" id="nro_contrato" (click)="ordenar('nro_contrato')">Nro. Contrato
@@ -307,6 +307,7 @@
                                 *ngIf="false" class="ml-1 fa fa-sort"></i></th>
                         <th style="min-width: 200px;">Cliente </th>
                         <th style="min-width: 120px;">RUC/CI</th>
+                        <th id="cantidad_inhumados" >Cant. Inhm </th>
                         <th id="manzana" (click)="ordenar('manzana')">Manzana <i *ngIf="false"
                                 class="ml-1 fa fa-sort"></i> </th>
                         <th id="fila" (click)="ordenar('fila')">Fila <i *ngIf="false" class="ml-1 fa fa-sort"></i> </th>
@@ -323,7 +324,7 @@
                     <tr (click)="onSelectContrato(contrato)" class="pointer"
                         *ngFor="let contrato of contratos | paginate: { itemsPerPage: 10,totalItems:count, currentPage: page } ; let i = index;">
                         <td scope="row">{{page*10 + (i+1) - 10}}</td>
-                        <td>
+                        <td *ngIf="_usuarioService.usuario.role=='ADMIN_ROLE'">
                             <div class="checkbox checkbox-primary p-t-0" (click)="$event.stopPropagation(); " style="
                             display: flex;
                             justify-content: center;
@@ -349,9 +350,11 @@
                             {{contrato.titular.APELLIDOS | primerNombre}}</td>
                         <td *ngIf="!contrato.titular">---</td>
                         <td *ngIf="contrato.titular">{{contrato.titular.RUC | ruc}}</td>
+                        <td *ngIf="!contrato.inhumados">---</td>
                         <td *ngIf="!contrato.manzana">---</td>
                         <td *ngIf="!contrato.fila">---</td>
                         <td *ngIf="!contrato.parcela">---</td>
+                        <td *ngIf="contrato.inhumados">{{contrato.inhumados.length}}</td>
                         <td *ngIf="contrato.manzana">{{contrato.manzana}}</td>
                         <td *ngIf="contrato.fila">{{contrato.fila}}</td>
                         <td *ngIf="contrato.parcela">{{contrato.parcela}}</td>
@@ -493,7 +496,7 @@
         <div class="col-xs col-md-4">
             <div class="card">
                 <div class="card-body">
-                    <h3>Reporte de Inhumados</h3>
+                    <h3>Inhumados en Camposanto Imperial</h3>
                     <div class="d-flex">
                         <div class="mx-auto">
                             <button (click)="reporte_inhumados()" class="btn btn-inverse">

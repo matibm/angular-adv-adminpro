@@ -625,6 +625,7 @@
                                                 <th style="min-width: 200px;" class="text-center">Oficina</th>
                                                 <th style="min-width: 200px;" class="text-center">Folio N</th>
                                                 <th style="min-width: 200px;" class="text-center">Acta N</th>
+                                                <th style="min-width: 200px;" class="text-center">Lugar parcela</th>
                                                 <th style="min-width: 100px;" class="text-center">quitar</th>
                                             </tr>
                                         </thead>
@@ -701,6 +702,10 @@
                                                 <td>
                                                     <input type="text" class="form-control" name="name-acta-{{i}}"
                                                         [(ngModel)]="item.acta">
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-control" name="name-lugar_parcela-{{i}}"
+                                                        [(ngModel)]="item.lugar_parcela">
                                                 </td>
                                                 <td class="text-center">
                                                     <i [ngStyle]="{fontSize: '20px'}"

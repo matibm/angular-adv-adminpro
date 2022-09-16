@@ -360,7 +360,7 @@
                     </table>
                 </div>
             </div>
-            <div class="card">
+            <!-- <div class="card">
                 <div *ngIf="contrato.inhumados" class="card-body">
                     <h3>Inhumaciones</h3>
                     <table class=" table  ">
@@ -397,7 +397,87 @@
                     </table>
 
                 </div>
+            </div> -->
+            <div class="card" style="min-width: auto !important;">
+                <div class="card-body">
+                    <h3>Inhumaciones</h3>
+                    <div class="card" style="display: initial;">
+                        <div style="overflow-x: auto;">
+                            <table class=" table  ">
+                                <thead>
+                                    <tr>
+                                        <th style="min-width: 300px;" class="text-center">Nombres y
+                                            Apellidos</th>
+                                        <th style="min-width: 200px;" class="text-center">C.I.</th>
+                                        <th style="min-width: 300px;" class="text-center">Fecha
+                                            fallecimiento</th>
+                                        <th style="min-width: 300px;" class="text-center">Fecha Inhumacion
+                                        </th>
+                                        <th style="min-width: 200px;" class="text-center">Nro Inhumacion
+                                        </th>
+                                        <th style="min-width: 200px;" class="text-center">Nacionalidad
+                                        </th>
+                                        <th style="min-width: 300px;" class="text-center">Fecha Nacimiento
+                                        </th>
+                                        <th style="min-width: 200px;" class="text-center">Certif N</th>
+                                        <th style="min-width: 200px;" class="text-center">Tomo Libro</th>
+                                        <th style="min-width: 200px;" class="text-center">Oficina</th>
+                                        <th style="min-width: 200px;" class="text-center">Folio N</th>
+                                        <th style="min-width: 200px;" class="text-center">Acta N</th> 
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of contrato.inhumados; let i = index">
+
+                                        <td class="text-center">
+                                            {{item?.nombre}}
+                                        </td>
+                                        <td class="text-center">
+                                            {{item?.ci | ruc}}
+                                        </td>
+                                        <td class="text-center">
+                                            {{item?.nro}}
+                                        </td>
+                                        <td class="text-center">
+                                            {{item?.fecha_fallecimiento| date}}
+                                        </td>
+                                        <td class="text-center">
+                                            {{item?.fecha_inhumacion | date}}
+                                        </td>
+                                        <td class="text-center">
+                                            {{item?.nacionalidad }}
+                                        </td>
+                                        <td class="text-center">
+                                            {{item?.fecha_nacimiento | date}}
+                                        </td>
+                                        <td class="text-center">
+                                            {{item?.certif }}
+                                        </td>
+                                        <td class="text-center">
+                                            {{item?.tomoLibro }}
+                                        </td>
+                                        <td class="text-center">
+                                            {{item?.oficina }}
+                                        </td>
+                                           
+                                        <td class="text-center">
+                                            {{item?.folio }}
+                                        </td>
+                                        <td class="text-center">
+                                            {{item?.acta }}
+                                        </td>
+                                              
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+                   
+                </div>
             </div>
+
         </div>
 
         <div *ngIf="esPsv && contrato.inhumados">
