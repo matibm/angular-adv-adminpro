@@ -42,6 +42,8 @@ export class ListaMovimientosComponent implements OnInit {
   fondos
   nro_factura
   tipoMovimiento = 'TODOS'
+  rangoMontoInicio
+  rangoMontoFin
   @Input() total = 0
   rangeFecha = new FormGroup({
     start: new FormControl(),
@@ -139,7 +141,7 @@ export class ListaMovimientosComponent implements OnInit {
   }
   async buscar() {
     console.log("holaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-    
+
     this.cuentaGasto = this.cuentaSeleccionada
     this.nro_factura ? this.options.nro_factura = this.nro_factura : delete this.options.nro_factura
     this.cliente ? this.options.cliente = this.cliente._id : null
@@ -147,7 +149,8 @@ export class ListaMovimientosComponent implements OnInit {
     this.contrato ? this.options.contrato = this.contrato._id : null;
     this.cuentaSeleccionada ? this.options.id_cuentacaja = this.cuentaSeleccionada.cuenta : null
     this.tipoMovimiento == 'GASTO' || this.tipoMovimiento == 'TRANSFERENCIA' ? this.options.filtro_transferencia = this.tipoMovimiento : ''
-
+    if (this.rangoMontoInicio > -1) this.options.monto_inicio = this.rangoMontoInicio
+    if (this.rangoMontoFin > -1) this.options.monto_fin = this.rangoMontoFin
     const resp = await this._movimientoService.getAllMovimientos(this.options)
     this.movimientos = resp.movimientos
     this.count = resp.count

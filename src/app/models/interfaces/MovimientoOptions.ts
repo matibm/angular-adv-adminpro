@@ -9,7 +9,9 @@ export interface MovimientoOptions {
     tipo_movimiento?: string,
     fondo?: string,
     id_cuentacaja?: string,
-    page?:number,
-    unlimit?:boolean
+    page?: number,
+    unlimit?: boolean
     filtro_transferencia?: 'GASTO' | 'TRANSFERENCIA'
+    monto_inicio?: number,
+    monto_fin?: number,
 }
