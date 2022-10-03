@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 //  import  { io }  from 'socket.io-client';
 //  import * as io  from 'socket.io-client';
-import {io} from 'socket.io-client/build/index';
+import { io } from 'socket.io-client/build/index';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class WhatsappService {
   socket;
   readonly uri = 'http://localhost:4000';
   constructor(public http: HttpClient,
-              public _usuarioService: UsuarioService,
+    public _usuarioService: UsuarioService,
   ) {
     this.socket = io(URL_SERVICIOS);
   }
@@ -40,8 +40,12 @@ export class WhatsappService {
     this.socket.emit(tipo, data);
 
   }
-  pruebaSocket( ) {
+  pruebaSocket() {
 
+  }
+
+  updateDB() {
+    this.socket.emit('updateDB')
   }
 
 }

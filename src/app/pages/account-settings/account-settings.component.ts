@@ -79,6 +79,8 @@ export class AccountSettingsComponent implements OnInit {
     window.location.reload()
   }
 
-
+  updateDB(){
+    this._whatsappService.updateDB()
+  }
 
 }

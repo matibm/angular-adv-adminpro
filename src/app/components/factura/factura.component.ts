@@ -127,7 +127,10 @@ export class FacturaComponent implements OnInit {
     factura.fondo = this.fondo;
     let id
     let timbrado = (await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body
-
+    if (this.cobrador) {
+      this.factura.cobrador.nro_factura_actual = this.cobrador.nro_factura_actual
+      this.factura.cobrador.nro_talonario = this.cobrador.nro_talonario
+    }
     if (this.crearParcial && this.montoparcial > 0) {
       let body = {
         factura,
@@ -323,4 +326,9 @@ export class FacturaComponent implements OnInit {
     window.location.reload()
   }
 
+  viewCobrador(){
+    console.log(this.cobrador);
+    
+
+  }
 }

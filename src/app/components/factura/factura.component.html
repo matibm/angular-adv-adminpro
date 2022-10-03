@@ -255,7 +255,7 @@
                         <div *ngIf="!cobrador">
 
                             <ng-select [typeahead]="inputCobrador" [loading]="loadingCobrador" [items]="cobradores"
-                                name="dsfdbrdweqcda" [(ngModel)]="cobrador" (ngModelChange)="null"
+                                name="dsfdbrdweqcda" [(ngModel)]="cobrador" (ngModelChange)="viewCobrador()"
                                 notFoundText="no se encontraron resultados" placeholder="buscar cobrador"
                                 bindLabel="NOMBRES" [searchFn]="customSearchFn">
                                 <ng-template ng-option-tmp let-item="item">
