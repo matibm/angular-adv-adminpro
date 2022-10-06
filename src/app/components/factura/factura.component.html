@@ -291,7 +291,7 @@
 
 
         <div *ngIf="!factura.link_de_pago" class="float-right mt-3">
-            <button *ngIf="!isOnline && !factura.pagado && !crearParcial" [disabled]="!fondo || !montoparcialCorrecto"
+            <button *ngIf="!isOnline && !factura.pagado && !crearParcial" [disabled]="!fondo || !montoparcialCorrecto || yasepago" 
                 (click)="pagar()" type="button" class="btn mr-2   btn-success">Pagar</button>
             <button *ngIf="!isOnline && !factura.pagado && !crearParcial" [disabled]="!fondo || !montoparcialCorrecto"
                 (click)="facturapdf = crearPDF([factura])" type="button" class="btn mr-2   btn-primary">Vista Previa
