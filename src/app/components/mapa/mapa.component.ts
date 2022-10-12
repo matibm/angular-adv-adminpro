@@ -13,17 +13,32 @@ export class MapaComponent implements OnInit, OnChanges {
     private _contratoService: ContratoService,
     private router: Router
   ) { }
-  @Input() ubicacion_contrato : any
+  @Input() ubicacion_contrato: any
+  @Input() publico: boolean = false
+  contratoSeleccionado
   ubicaciones
   async ngOnInit() {
-    this.ubicaciones = await this._contratoService.getMapa()
-    console.log(this.ubicaciones);
+    if (this.publico && localStorage.getItem('ubicaciones')) {
+      this.ubicaciones = JSON.parse(localStorage.getItem('ubicaciones'))
+    } else if (this.publico && !localStorage.getItem('ubicaciones')) {
+      this.ubicaciones = await this._contratoService.getMapa()
+      localStorage.setItem('ubicaciones', JSON.stringify(this.ubicaciones))
+    } else {
+      this.ubicaciones = await this._contratoService.getMapa()
 
+    }
+    console.log(this.ubicaciones);
+    this._contratoService.onScale.subscribe(value => {
+      let map = document.getElementById('main_map')
+      map.style.transform = `scale(${value})`
+      map.style.width = `${window.innerWidth / value}px`
+    })
   }
   ngOnChanges(changes: SimpleChanges): void {
     console.log(changes);
     if (changes?.ubicacion_contrato?.currentValue) {
       this.getPositionByContrato(changes.ubicacion_contrato.currentValue)
+      this.removeBlob()
     }
   }
 
@@ -34,7 +49,7 @@ export class MapaComponent implements OnInit, OnChanges {
   getPositionByContrato(contrato) {
     console.log(contrato);
     console.log(contrato.manzana, contrato.fila, contrato.parcela);
-    this.findAndScroll(contrato.manzana+contrato.fila+ parseInt(contrato.parcela))
+    this.findAndScroll(contrato.manzana + contrato.fila + parseInt(contrato.parcela))
   }
   findAndScroll(id) {
     // console.log(document.getElementById(id).scrollIntoView({block: "center", inline:'center', behavior: 'smooth'}));
@@ -49,6 +64,20 @@ export class MapaComponent implements OnInit, OnChanges {
 
     console.log(document.getElementById(id));
 
+  }
+
+  removeBlob() {
+    setTimeout(() => {
+      let list = document.querySelectorAll('.blob.red')
+      console.log(list);
+      
+      for (let i = 0; i < list.length; i++) {
+        const element = list.item(i)
+        element.classList.remove('blob')
+        element.classList.remove('red')
+  
+      }
+    }, 10000);
   }
 
 }

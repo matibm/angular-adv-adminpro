@@ -1,7 +1,7 @@
 import { UsuarioService } from './usuario.service';
 import { Contrato } from './../models/contrato';
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { promise } from 'protractor';
 import { URL_SERVICIOS } from '../config/global';
 import swal from 'sweetalert2';
@@ -290,4 +290,8 @@ export class ContratoService {
       }
     )
   }
+  public onScale = new EventEmitter()
+  // scale(value){
+  //   this.onScale.emit(value)
+  // }
 }

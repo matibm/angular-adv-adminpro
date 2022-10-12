@@ -1,18 +1,28 @@
-<div class="w-100 d-flex">
-  <div class="mx-auto mt-5 " style="min-width: 300px">
-    
-    <ng-select #productsearch id="searchclient" [typeahead]="inputClientes" [loading]="loadingClientes"
-      [items]="clientes" name="dsfdbrweqcda" [(ngModel)]="cliente" (click)="selectContrato()" (ngModelChange)="null"
-      notFoundText="no se encontraron resultados" placeholder="buscar por ci" bindLabel="NOMBRES"
-      [searchFn]="customSearchFn">
-      <ng-template ng-option-tmp let-item="item">
-        <div> {{item.inhumados.nombre}}
+<div style="width: 100%; height: 60px"></div>
+<div class="w-100 bg-white  sticky-top d-flex" style="position: fixed;">
+  <div class="mx-auto mt-1 " style="font-size: larger; width: 100%">
+    <div style=" 
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: center;
+   ">
+      <Button class="btn btn-info" (click)="onScale(-.1)">-</Button>
+      <ng-select #productsearch id="searchclient" style="width: 500px;" [typeahead]="inputClientes"
+        [loading]="loadingClientes" [items]="clientes" name="dsfdbrweqcda" [(ngModel)]="cliente"
+        (click)="selectContrato()" (ngModelChange)="null" notFoundText="no se encontraron resultados"
+        placeholder="buscar" bindLabel="NOMBRES" [searchFn]="customSearchFn">
+        <ng-template ng-option-tmp let-item="item">
+          <div> {{item.inhumados.nombre}}
 
-        </div>
+          </div>
 
-      </ng-template>
-    </ng-select>
+        </ng-template>
+      </ng-select>
+      <Button class="btn btn-info" (click)="onScale(.1)">+</Button>
+
+    </div>
+
   </div>
 </div>
 
-<app-mapa [ubicacion_contrato]="ubicaion_contrato"></app-mapa>
+<app-mapa [publico]="true" [ubicacion_contrato]="ubicaion_contrato"></app-mapa>

@@ -1,8 +1,8 @@
 <!-- <button class="btn btn-primary" (click)="getPositionByContrato(ubicaciones[10].parcelas[4].filas[5].contrato)">contrato</button>
 <button class="btn btn-primary" (click)="findAndScroll('160439')">BBBBB</button> -->
 
-<div style="font-size: small; overflow-x: scroll;">
-    <div class="row" style="width: 3300px;  ">
+<div style="font-size: small; overflow-x: scroll;" class="mx-5 scale" id="main_map">
+    <div class="row" style="width: 3000px;  ">
         <div class="col-xs col-md-3" style="max-width: fit-content" *ngFor="let ubicacion of ubicaciones">
             <h3>Manzana: {{ubicacion.manzana}}</h3>
             <div style="display: flex;">
@@ -14,17 +14,20 @@
                             <div class="m-auto">F {{itemuno.col}}</div>
                         </div>
                         <div *ngFor="let item of itemuno.filas" [title]="item.contrato?.inhumados?.length">
-                            <div *ngIf="item.index != -1" (click)="goToContrato(item.contrato?._id)"
+                            <div *ngIf="item.index != -1"
+                                (click)=" removeBlob(); publico? contratoSeleccionado= item.contrato : goToContrato(item.contrato?._id)"
                                 [ngClass]="{'gris': item.contrato?.inhumados?.length == 0, 
                                 'amarillo': item.contrato?.inhumados?.length == 1,
                                 'naranja': item.contrato?.inhumados?.length == 2,
                                 'rojo': item.contrato?.inhumados?.length == 3,
                                 'pointer': item.contrato  }"
                                 style="width: 100%; display: flex; border-bottom: 1px black solid;">
-                                <div  class="m-auto" id="{{ubicacion.manzana +''+itemuno.col+ ''+item.index }}">{{item.index}}</div>
+                                <div class="m-auto" id="{{ubicacion.manzana +''+itemuno.col+ ''+item.index }}">
+                                    {{item.index}}</div>
 
                             </div>
-                            <div *ngIf="item.index == -1" (click)="goToContrato(item.contrato?._id)"
+                            <div *ngIf="item.index == -1"
+                                (click)="removeBlob(); publico? contratoSeleccionado= item.contrato : goToContrato(item.contrato?._id)"
                                 [ngClass]="{'gris': item.contrato, 'pointer': item.contrato  }"
                                 style="width: 100%; display: flex; ">
                                 <div class="m-auto">&nbsp;</div>
@@ -42,7 +45,107 @@
 
 
 
+<div *ngIf="contratoSeleccionado && publico" class="fondo-negro animated fadeIn">
 
+    <div id="afuera" class="modal" style="z-index: 200; display: block;" role="dialog">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Inhumados</h5>
+                    <button type="button" (click)="contratoSeleccionado = null" class="close" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body " align="center">
+                    <div class="card" style="display: initial;">
+                        <div style="overflow-x: auto;">
+                            <table class=" table  ">
+                                <thead>
+                                    <tr>
+                                        <th style="min-width: 300px;" class="text-center">Nombres y
+                                            Apellidos</th>
+                                        <th style="min-width: 200px;" class="text-center">C.I.</th>
+                                        <th style="min-width: 300px;" class="text-center">Fecha
+                                            fallecimiento</th>
+                                        <th style="min-width: 300px;" class="text-center">Fecha Inhumacion
+                                        </th>
+                                        <!-- <th style="min-width: 200px;" class="text-center">Nro Inhumacion
+                                        </th>
+                                        <th style="min-width: 200px;" class="text-center">Nacionalidad
+                                        </th>
+                                        <th style="min-width: 300px;" class="text-center">Fecha Nacimiento
+                                        </th>
+                                        <th style="min-width: 200px;" class="text-center">Certif N</th>                                        
+                                        <th style="min-width: 200px;" class="text-center">Oficina</th>
+                                        <th style="min-width: 200px;" class="text-center">Tomo Libro</th>
+                                        <th style="min-width: 200px;" class="text-center">Folio N</th>
+                                        <th style="min-width: 200px;" class="text-center">Acta N</th> 
+                                        <th style="min-width: 200px;" class="text-center">Lugar parcela</th>  -->
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of contratoSeleccionado.inhumados; let i = index">
+
+                                        <td class="text-center">
+                                            {{item?.nombre}}
+                                        </td>
+                                        <td class="text-center">
+                                            {{item?.ci | ruc}}
+                                        </td>
+                                        
+                                        <td class="text-center">
+                                            {{item?.fecha_fallecimiento| date}}
+                                        </td>
+                                        <td class="text-center">
+                                            {{item?.fecha_inhumacion | date}}
+                                        </td>
+                                        <!-- <td class="text-center">
+                                            {{item?.nro}}
+                                        </td>
+                                        <td class="text-center">
+                                            {{item?.nacionalidad }}
+                                        </td>
+                                        <td class="text-center">
+                                            {{item?.fecha_nacimiento | date}}
+                                        </td>
+                                        <td class="text-center">
+                                            {{item?.certif }}
+                                        </td>
+                                        
+                                        <td class="text-center">
+                                            {{item?.oficina }}
+                                        </td>
+                                        <td class="text-center">
+                                            {{item?.tomoLibro }}
+                                        </td>   
+                                        <td class="text-center">
+                                            {{item?.folio }}
+                                        </td>
+                                        <td class="text-center">
+                                            {{item?.acta }}
+                                        </td>
+                                        <td class="text-center">
+                                            {{item?.lugar_parcela }}
+                                        </td> -->
+                                              
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button (click)="contratoSeleccionado = null"  class="btn btn-secondary"> Cerrar</button>
+                    <!-- <button class='btn btn-primary'>Seleccionar</button> -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- <div *ngFor="let ubicacion of ubicaciones; let x = index;">
 
