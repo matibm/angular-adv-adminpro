@@ -30,7 +30,7 @@ export class MapaPublicoComponent implements OnInit {
   observableBuscadores() {
     this.inputClientes.pipe(
 
-      debounceTime(200),
+      debounceTime(800),
       distinctUntilChanged()
     )
       .subscribe(async (txt) => {
