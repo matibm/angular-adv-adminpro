@@ -39,6 +39,7 @@ export class MapaComponent implements OnInit, OnChanges {
     if (changes?.ubicacion_contrato?.currentValue) {
       this.getPositionByContrato(changes.ubicacion_contrato.currentValue)
       this.removeBlob()
+
     }
   }
 
@@ -77,7 +78,7 @@ export class MapaComponent implements OnInit, OnChanges {
         element.classList.remove('red')
   
       }
-    }, 10000);
+    }, 20000);
   }
 
 }

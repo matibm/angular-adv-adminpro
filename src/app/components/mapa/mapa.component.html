@@ -57,6 +57,12 @@
                     </button>
                 </div>
                 <div class="modal-body " align="center">
+                    <div class="d-flex w-100">
+
+                        <div class="mx-2">Manzana: {{contratoSeleccionado.manzana}}</div>
+                        <div class="mx-2">Fila: {{contratoSeleccionado.fila}}</div>
+                        <div class="mx-2">Parcela: {{contratoSeleccionado.parcela}}</div>
+                    </div>
                     <div class="card" style="display: initial;">
                         <div style="overflow-x: auto;">
                             <table class=" table  ">
@@ -92,7 +98,7 @@
                                         <td class="text-center">
                                             {{item?.ci | ruc}}
                                         </td>
-                                        
+
                                         <td class="text-center">
                                             {{item?.fecha_fallecimiento| date}}
                                         </td>
@@ -127,7 +133,7 @@
                                         <td class="text-center">
                                             {{item?.lugar_parcela }}
                                         </td> -->
-                                              
+
                                     </tr>
                                 </tbody>
                             </table>
@@ -138,7 +144,7 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button (click)="contratoSeleccionado = null"  class="btn btn-secondary"> Cerrar</button>
+                    <button (click)="contratoSeleccionado = null" class="btn btn-secondary"> Cerrar</button>
                     <!-- <button class='btn btn-primary'>Seleccionar</button> -->
 
                 </div>

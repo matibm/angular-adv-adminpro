@@ -50,6 +50,7 @@ export class MapaPublicoComponent implements OnInit {
     console.log(this.cliente);
     if (this.cliente?.contrato_udp) {
       this.ubicaion_contrato = this.cliente.contrato_udp[0]
+      this.clientes = []
       
     }
   }
