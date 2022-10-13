@@ -80,6 +80,7 @@ export class ListaContratosComponent implements OnInit {
   inhumadoNombre
   inhumadoCi
   codSeleccionado
+  estadoSeleccionado = 'TODOS'
   rangeInhumado = new FormGroup({
     start: new FormControl(),
     end: new FormControl()
@@ -133,8 +134,8 @@ export class ListaContratosComponent implements OnInit {
 
     this.servicios = await this._productoService.getProductos();
     console.log(this.options);
-    if (!this.options.de_baja) this.options.de_baja = false
-    if (!this.options.utilizado) this.options.utilizado = false
+    // if (!this.options.de_baja) this.options.de_baja = false
+    // if (!this.options.utilizado) this.options.utilizado = false
 
     if (!this.options.cliente) {
       this.options = {
@@ -146,8 +147,8 @@ export class ListaContratosComponent implements OnInit {
         parcela: this.parcela,
         producto: this.servicio ? this.servicio._id : null,
         nro_contrato: '',
-        utilizado: false,
-        de_baja: false,
+        // utilizado: false,
+        // de_baja: false,
         cobrador: this.cobrador ? this.cobrador._id : null,
         vendedor: this.vendedor ? this.vendedor._id : null
       };
@@ -241,6 +242,24 @@ export class ListaContratosComponent implements OnInit {
       value: this.sort_value
     };
     console.log(this.options);
+
+    if (this.estadoSeleccionado == 'TODOS') {
+      delete this.options.utilizado 
+      delete this.options.de_baja 
+    }
+
+    if (this.estadoSeleccionado == 'UTILIZADO') {
+      this.options.utilizado = true
+      this.options.de_baja = false
+
+    }
+    if (this.estadoSeleccionado == 'DE BAJA') {
+      this.options.de_baja = true
+      this.options.utilizado = false
+    }
+
+
+
 
     const resp = await this._contratoService.getContratos(null, this.options, this.sort);
     this.servicios = await this._productoService.getProductos();
@@ -449,8 +468,8 @@ export class ListaContratosComponent implements OnInit {
 
   }
 
-  reporte_inhumados(){
-    this._contratoService.reporte_inhumados({ })
+  reporte_inhumados() {
+    this._contratoService.reporte_inhumados({})
 
   }
 }

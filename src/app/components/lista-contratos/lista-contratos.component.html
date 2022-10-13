@@ -190,13 +190,21 @@
         <div class="row">
             <div class="col-xs col-md-2 ">
                 <h4>Estado</h4>
-                <input [(ngModel)]="options.utilizado" (ngModelChange)="filtrar()" type="checkbox"
+
+                <ng-select [(ngModel)]="estadoSeleccionado" (ngModelChange)="filtrar()">
+                    <ng-option *ngFor="let item of ['TODOS','UTILIZADO', 'DE BAJA']" [value]="item">
+                        <div>
+                            {{item}}
+                        </div>
+                    </ng-option>
+                </ng-select>
+                <!-- <input [(ngModel)]="options.utilizado" (ngModelChange)="filtrar()" type="checkbox"
                     name="check_utilizado" id="check_utilizado" class="filled-in chk-col-light-blue" checked />
                 <label class="mx-3" for="check_utilizado">Utilizado</label>
 
                 <input [(ngModel)]="options.de_baja" (ngModelChange)="filtrar()" type="checkbox" name="check_de_baja"
                     id="check_de_baja" class="filled-in chk-col-light-blue" checked />
-                <label class="mx-3" for="check_de_baja">de baja</label>
+                <label class="mx-3" for="check_de_baja">de baja</label> -->
                 <h4>Cod Servicio</h4>
                 <div class="">
                     <ng-select [(ngModel)]="codSeleccionado" (ngModelChange)="filtrar()">
@@ -210,7 +218,7 @@
             </div>
             <div class="col-xs col-md ">
                 <mat-form-field appearance="fill">
-                    <mat-label>Fecha inhumado</mat-label>
+                    <mat-label>Fecha de servicio</mat-label>
                     <mat-date-range-input [formGroup]="rangeInhumado" [rangePicker]="pickerInhumado">
                         <input autocomplete="off" matStartDate formControlName="start" placeholder="fecha inicio">
                         <input matEndDate formControlName="end" (dateChange)="filtrar()" placeholder="fecha fin">
@@ -307,7 +315,7 @@
                                 *ngIf="false" class="ml-1 fa fa-sort"></i></th>
                         <th style="min-width: 200px;">Cliente </th>
                         <th style="min-width: 120px;">RUC/CI</th>
-                        <th id="cantidad_inhumados" >Cant. Inhm </th>
+                        <th id="cantidad_inhumados">Cant. Inhm </th>
                         <th id="manzana" (click)="ordenar('manzana')">Manzana <i *ngIf="false"
                                 class="ml-1 fa fa-sort"></i> </th>
                         <th id="fila" (click)="ordenar('fila')">Fila <i *ngIf="false" class="ml-1 fa fa-sort"></i> </th>
