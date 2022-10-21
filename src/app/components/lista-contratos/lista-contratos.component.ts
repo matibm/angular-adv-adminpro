@@ -147,8 +147,8 @@ export class ListaContratosComponent implements OnInit {
         parcela: this.parcela,
         producto: this.servicio ? this.servicio._id : null,
         nro_contrato: '',
-        // utilizado: false,
-        // de_baja: false,
+        utilizado: false,
+        de_baja: false,
         cobrador: this.cobrador ? this.cobrador._id : null,
         vendedor: this.vendedor ? this.vendedor._id : null
       };
