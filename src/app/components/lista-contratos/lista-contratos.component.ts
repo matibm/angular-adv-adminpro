@@ -80,7 +80,7 @@ export class ListaContratosComponent implements OnInit {
   inhumadoNombre
   inhumadoCi
   codSeleccionado
-  estadoSeleccionado = 'TODOS'
+  estadoSeleccionado = 'ACTIVOS'
   rangeInhumado = new FormGroup({
     start: new FormControl(),
     end: new FormControl()
@@ -255,6 +255,10 @@ export class ListaContratosComponent implements OnInit {
     }
     if (this.estadoSeleccionado == 'DE BAJA') {
       this.options.de_baja = true
+      this.options.utilizado = false
+    }
+    if (this.estadoSeleccionado == 'ACTIVOS') {
+      this.options.de_baja = false
       this.options.utilizado = false
     }
 

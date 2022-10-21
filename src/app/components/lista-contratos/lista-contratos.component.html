@@ -192,7 +192,7 @@
                 <h4>Estado</h4>
 
                 <ng-select [(ngModel)]="estadoSeleccionado" (ngModelChange)="filtrar()">
-                    <ng-option *ngFor="let item of ['TODOS','UTILIZADO', 'DE BAJA']" [value]="item">
+                    <ng-option *ngFor="let item of ['ACTIVOS','TODOS','UTILIZADO', 'DE BAJA']" [value]="item">
                         <div>
                             {{item}}
                         </div>
