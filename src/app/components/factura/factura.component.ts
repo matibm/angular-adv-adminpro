@@ -125,8 +125,11 @@ export class FacturaComponent implements OnInit {
     const any: any = this.factura;
     const factura: Factura = any;
     factura.fondo = this.fondo;
-    let id
-    let timbrado = (await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body
+    let id 
+    // let timbrado = (await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body
+    let timbrado = (await this._userService.getUsuarioPorId(this.cobrador?._id || this.factura.cobrador?._id)).timbrado
+    console.log(timbrado);
+    // return 
     if (this.cobrador) {
       this.factura.cobrador.nro_factura_actual = this.cobrador.nro_factura_actual
       this.factura.cobrador.nro_talonario = this.cobrador.nro_talonario
