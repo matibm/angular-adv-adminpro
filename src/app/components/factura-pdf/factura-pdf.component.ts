@@ -34,6 +34,7 @@ export class FacturaPdfComponent implements OnInit {
   nro_talonario
   items: any[] = [];
   timbrado
+  es_factura = true
   async ngOnInit() {
     this.timbrado = (await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body 
     // {
@@ -55,7 +56,8 @@ export class FacturaPdfComponent implements OnInit {
       if (this.facturaPDF._id) {
         this.factura = await this.getDetallePago(this.facturaPDF._id);
       console.log(this.factura);
-        
+      console.log(this.facturaPDF);
+      this.es_factura = this.facturaPDF.es_factura 
       } else {
         this.factura = (await this.facturaPDF);
         console.log(this.factura);
@@ -74,6 +76,7 @@ export class FacturaPdfComponent implements OnInit {
         window.print();
       }, 500);
 
+     
       // window.onafterprint = (event) => {
       //   window.close();
       // };

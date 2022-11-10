@@ -46,7 +46,7 @@ export class FacturaComponent implements OnInit {
   fechaVencimiento
   direccionFactura;
   inputCobrador = new Subject<string>();
-
+  crearFactura = true
   async ngOnInit() {
     this.observableBuscadores()
     if (this.primeraEjecucion) {
@@ -135,7 +135,7 @@ export class FacturaComponent implements OnInit {
       this.factura.cobrador.nro_talonario = this.cobrador.nro_talonario
     }
     if (this.crearParcial && this.montoparcial > 0) {
-      let body = {
+      let body:any = {
         factura,
         cobrador: this.cobrador?._id || this.factura.cobrador?._id,
         timbrado,
@@ -149,13 +149,15 @@ export class FacturaComponent implements OnInit {
         nro_factura: this.factura.cobrador.nro_factura_actual + 1,
         nro_talonario: this.factura.cobrador.nro_talonario,
       }
+      if (!this.crearFactura) body.no_crear_factura = true
+
       let data = await this._facturaService.pagarFactura(body, true, this.montoparcial);
       console.log(data);
 
       id = data.pago
 
     } else {
-      let body = {
+      let body:any = {
         factura,
         cobrador: this.cobrador?._id || this.factura.cobrador?._id,
         fecha_pago: this.fechaPago,
@@ -169,6 +171,7 @@ export class FacturaComponent implements OnInit {
         nro_talonario: this.factura.cobrador.nro_talonario,
         timbrado
       }
+      if (!this.crearFactura) body.no_crear_factura = true
       let data = await this._facturaService.pagarFactura(body)
       id = data.pago
     }
