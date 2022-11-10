@@ -47,7 +47,9 @@ export class FacturaComponent implements OnInit {
   direccionFactura;
   inputCobrador = new Subject<string>();
   crearFactura = true
+  permitirNoCrearFactura = false
   async ngOnInit() {
+    this._userService.usuario.role == 'ADMIN_ROLE' ? this.permitirNoCrearFactura = true : ''
     this.observableBuscadores()
     if (this.primeraEjecucion) {
       this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((e: NavigationEnd) => {

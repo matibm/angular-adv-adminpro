@@ -6,7 +6,7 @@ export const environment = {
   production: false
 };
 export const URL_ENVIRONMENT = 'http://localhost:4000';
-// export const URL_ENVIRONMENT = 'imperial.mburgos.xyz:4000'
+// export const URL_ENVIRONMENT = 'imperial.mburgos.xyz'
 
 
 
