@@ -4,7 +4,8 @@
     </ng-template>
     <div class="card">
         <div class="card-body">
-            <form class="form-material  ">
+            <button class="btn btn-info" (click)="onClickExcel()" >Excel de usuarios</button>
+            <form class="form-material mt-2 ">
                 <div class="form-group">
 
                     <input #searchInput id="search" type="text" [(ngModel)]="searching" name="search" autocomplete="off" #val class="form-control form-control-line" placeholder="Busca usuario">

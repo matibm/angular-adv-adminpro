@@ -190,7 +190,8 @@ ngOnDestroy(): void {
     
     let resp = await this.egresoService.updateEgreso(this.gasto)
     console.log(resp);
-    this.ngOnInit()
+    // this.ngOnInit()
+    window.history.back()
   }
 
 }

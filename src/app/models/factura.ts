@@ -14,6 +14,7 @@ export class Factura {
         public id_cliente?: string,
         public nom_cliente?: string,
         public debe?: number,
+        public fecha_de_pago?: number,
         public _id?: string,
         public cuota_correspondiente?: Cuota,
         public cuota_correspondiente_id?: string,

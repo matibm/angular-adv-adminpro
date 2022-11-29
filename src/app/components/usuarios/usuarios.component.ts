@@ -132,4 +132,8 @@ export class UsuariosComponent implements OnInit, DoCheck {
 
     }
   }
+
+  onClickExcel(){
+    this._usuarioService.excelUsuarios()
+  }
 }

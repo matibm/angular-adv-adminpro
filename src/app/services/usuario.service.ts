@@ -121,6 +121,32 @@ export class UsuarioService {
     });
   }
 
+  excelUsuarios(){
+    let url = `${URL_SERVICIOS}/usuario/all_excel`;
+    url += `?token=${this.token}`;
+      
+
+    return this.http.get(url, { responseType: 'blob' as 'json' }).toPromise().then(
+      (response: any) => {
+        let dataType = response.type;
+        let binaryData = [];
+        binaryData.push(response);  
+        let downloadLink = document.createElement('a');
+        downloadLink.href = window.URL.createObjectURL(new Blob(binaryData, { type: dataType }));
+
+        downloadLink.setAttribute('download', 'usuarios.xlsx');
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        downloadLink.remove()
+      },
+      (error) => {
+        console.log(error);
+        
+        swal.fire({ title: 'error', icon: 'error', text: error })
+      }
+    )
+  }
+
   crearUsuario(usuario) {
     let url = `${URL_SERVICIOS}/usuario/crear_usuario`;
     url += `?token=${this.token}`;

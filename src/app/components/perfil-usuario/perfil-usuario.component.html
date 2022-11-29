@@ -445,7 +445,7 @@
                             </thead>
                             <tbody>
                                 <tr (click)="mostrarModal(item._id)" class="pointer" *ngFor="let item of pagos">
-                                    <td>{{ item.nro_factura }}</td>
+                                    <td>{{item.numero }}-{{ fill(item.nro_factura||0, 7) }}</td>
                                     <td> {{item.fecha_creacion | date}} </td>
                                     <td> {{item.monto | currency: '':'':'2.0'}} Gs</td>
                                     <td>
@@ -698,9 +698,9 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="">Tipo de Factura</label>
-                                            <input [(ngModel)]="usuario.timbrado.tipo"
-                                                placeholder="Numero de solicitud" type="text" class="form-control"
-                                                name="nro_solicitud" autocomplete="nope">
+                                            <input [(ngModel)]="usuario.timbrado.tipo" placeholder="Numero de solicitud"
+                                                type="text" class="form-control" name="nro_solicitud"
+                                                autocomplete="nope">
                                         </div>
                                         <div class="form-group">
                                             <label for="">RUC</label>
@@ -709,7 +709,8 @@
                                         </div>
                                         <mat-form-field appearance="fill">
                                             <mat-label>Fecha de solicitud</mat-label>
-                                            <input matInput name="asdrdssvet321" [(ngModel)]="usuario.timbrado.fecha_solicitud"
+                                            <input matInput name="asdrdssvet321"
+                                                [(ngModel)]="usuario.timbrado.fecha_solicitud"
                                                 [matDatepicker]="pickerSolicitud">
                                             <mat-datepicker-toggle matSuffix [for]="pickerSolicitud">
                                             </mat-datepicker-toggle>
@@ -717,7 +718,8 @@
                                         </mat-form-field>
                                         <mat-form-field appearance="fill">
                                             <mat-label>Fecha Inicio Vigencia</mat-label>
-                                            <input matInput name="asdrdssvet321" [(ngModel)]="usuario.timbrado.fecha_vigente_inicio"
+                                            <input matInput name="asdrdssvet321"
+                                                [(ngModel)]="usuario.timbrado.fecha_vigente_inicio"
                                                 [matDatepicker]="pickerInicioVigencia">
                                             <mat-datepicker-toggle matSuffix [for]="pickerInicioVigencia">
                                             </mat-datepicker-toggle>
@@ -725,7 +727,8 @@
                                         </mat-form-field>
                                         <mat-form-field appearance="fill">
                                             <mat-label>Fecha Fin Vigencia</mat-label>
-                                            <input matInput name="asdrdssvet321" [(ngModel)]="usuario.timbrado.fecha_vigente_fin"
+                                            <input matInput name="asdrdssvet321"
+                                                [(ngModel)]="usuario.timbrado.fecha_vigente_fin"
                                                 [matDatepicker]="pickerFinVigencia">
                                             <mat-datepicker-toggle matSuffix [for]="pickerFinVigencia">
                                             </mat-datepicker-toggle>

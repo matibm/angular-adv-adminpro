@@ -178,6 +178,9 @@ export class PerfilUsuarioComponent implements OnInit {
     });
   }
 
+  fill = (number, len) => "0".repeat(len - number.toString().length) + number.toString();
+
+
   async mostrarModal(id) {
     const resp = await this._facturaService.getDetallePago(id);
     console.log(resp);
