@@ -226,7 +226,7 @@ export class FacturaComponent implements OnInit {
   async mostrarModal(id) {
     const resp = await this._facturaService.getDetallePago(id);
     console.log(resp);
-    let timbrado = (await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body
+    // let timbrado = (await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body
 
     const pago = resp.pago;
     const facturas = resp.facturas;
@@ -252,7 +252,7 @@ export class FacturaComponent implements OnInit {
       tel: pago.cliente.TELEFONO1,
       notaDeRemision: '123123',
       servicios,
-      timbrado
+      timbrado: resp.pago.timbrado
     };
     console.log(this.facturapdf);
 
@@ -262,7 +262,7 @@ export class FacturaComponent implements OnInit {
     let servicios = [];
     const contratosSinRepetir = [];
     const fsinrepetir = [];
-    let timbrado = (await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body
+    // let timbrado = (await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body
 
     for (let i = 0; i < facturas.length; i++) {
       const factura = facturas[i];
@@ -303,7 +303,7 @@ export class FacturaComponent implements OnInit {
       servicios,
       numero: this.factura.cobrador.nro_talonario,
       nro_factura: this.factura.cobrador.nro_factura_actual + 1,
-      timbrado
+      timbrado: this.cobrador.timbrado
     };
     console.log('-----------------------------------------------');
     console.log(facturaPDF);

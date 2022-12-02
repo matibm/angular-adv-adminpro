@@ -188,16 +188,16 @@ export class UsuarioService {
     localStorage.removeItem('token');
     this.itsLogued = false;
   }
-  getConfigurations(body) {
+  // getConfigurations(body) {
 
 
-    let url = `${URL_SERVICIOS}/configurations/get_configurations`;
-    url += `?token=${this.token}`;
+  //   let url = `${URL_SERVICIOS}/configurations/get_configurations`;
+  //   url += `?token=${this.token}`;
 
-    return this.http.post(url, body).toPromise().then((resp: any) => {
-      return resp.data;
-    });
-  }
+  //   return this.http.post(url, body).toPromise().then((resp: any) => {
+  //     return resp.data;
+  //   });
+  // }
 
   createConfiguration(body) {
 

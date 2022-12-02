@@ -1,18 +1,17 @@
-
 <div *ngIf="es_factura == false" style="width: 1000px; height: fit-content; margin: 0 !important; 
 padding: 0 !important;
 overflow: hidden;
 ">
     comprobante de ingreso por monto {{total}}
-</div>    
- 
+</div>
+
 <div *ngIf="factura  " class="" style="width: 1000px; height: fit-content; margin: 0 !important; 
 padding: 0 !important;
 overflow: hidden;
 ">
     <div style="width: 1000px; " class="mx-auto bg-white  ">
         <div style="width: 100%;">
-            <div style="display: flex;" >
+            <div style="display: flex;">
                 <div class="mx-auto">
                     Factura Autoimpresor
                 </div>
@@ -65,11 +64,11 @@ overflow: hidden;
                         </b>
                         <div style="display: block;">
                             <div>
-                                FACTURA Nº: 
+                                FACTURA Nº:
                             </div>
-                             
+
                             <div style="font-size: 24px; margin-left: 16px;" class="text-danger">
-                                {{nro_talonario}}-{{fill(nro_factura || '0', 7)}}                               
+                                {{nro_talonario}}-{{fill(nro_factura || '0', 7)}}
                             </div>
                         </div>
 
@@ -243,16 +242,16 @@ overflow: hidden;
 
 
             </div>
- 
+
         </div>
 
-<div style="margin-left: 50px; text-align:left ;">
-    Autorizado como Autoimpresor por la SET
-    <br>
-    Solicitud Nº {{timbrado.nro_solicitud}}
-    <br>
-    Fecha: {{timbrado.fecha_solicitud | date}}
-     <div *ngIf="pago.comentario ">Nota: {{pago.comentario }}</div>
-</div>
+        <div style="margin-left: 50px; text-align:left ;">
+            Autorizado como Autoimpresor por la SET
+            <br>
+            Solicitud Nº {{timbrado.nro_solicitud}}
+            <br>
+            Fecha: {{timbrado.fecha_solicitud | date}}
+            <div *ngIf="pago.comentario ">Nota: {{pago.comentario }}</div>
+        </div>
     </div>
 </div>

@@ -44,7 +44,7 @@ export class AccountSettingsComponent implements OnInit {
     this.settingsService.checkCurrentTheme();
   }
   async getConfigurations() {
-    this.timbrados = await this._userService.getConfigurations({ type: 'TIMBRADO' })
+    // this.timbrados = await this._userService.getConfigurations({ type: 'TIMBRADO' })
     console.log(this.timbrados);
     
   }

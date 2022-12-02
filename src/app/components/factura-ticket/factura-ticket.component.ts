@@ -37,7 +37,7 @@ export class FacturaTicketComponent implements OnInit {
 
   async ngOnInit() {
      
-    this.timbrado = (await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body 
+    // this.timbrado = (await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body 
     // {
     //   timbrado: '15074643',
     //   fecha_vigencia_inicio: '01/09/2021',

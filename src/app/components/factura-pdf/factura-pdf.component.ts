@@ -36,7 +36,7 @@ export class FacturaPdfComponent implements OnInit {
   timbrado
   es_factura = true
   async ngOnInit() {
-    this.timbrado = (await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body 
+    // this.timbrado = (await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body 
     // {
     //   timbrado: '15074643',
     //   fecha_vigencia_inicio: '01/09/2021',
