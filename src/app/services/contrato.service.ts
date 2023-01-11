@@ -290,6 +290,31 @@ export class ContratoService {
       }
     )
   }
+  reporte_tarjetas(body): Promise<any> {
+
+    let url = URL_SERVICIOS + '/contrato/usuarios_atrasados'
+    url += `?token=${this._usuarioService.token}`;
+    return this.http.post(url, body, { responseType: 'blob' as 'json' }).toPromise().then(
+      (response: any) => {
+        let dataType = response.type;
+        let binaryData = [];
+        binaryData.push(response);
+        let downloadLink = document.createElement('a');
+        downloadLink.href = window.URL.createObjectURL(new Blob(binaryData, { type: dataType }));
+
+        downloadLink.setAttribute('download', 'usuarios_tarjetas.xlsx');
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        downloadLink.remove()
+      },
+
+      (error) => {
+        console.log(error);
+
+        swal.fire({ title: 'error', icon: 'error', text: error })
+      }
+    )
+  }
   public onScale = new EventEmitter()
   // scale(value){
   //   this.onScale.emit(value)

@@ -148,6 +148,7 @@ export class ListaMovimientosComponent implements OnInit {
     this.proveedor ? this.options.proveedor = this.proveedor._id : null
     this.contrato ? this.options.contrato = this.contrato._id : null;
     this.cuentaSeleccionada ? this.options.id_cuentacaja = this.cuentaSeleccionada.cuenta : null
+    this.cuentaPadreSeleccionada ? this.options.cuenta_padre = this.cuentaPadreSeleccionada._id : null
     this.tipoMovimiento == 'GASTO' || this.tipoMovimiento == 'TRANSFERENCIA' ? this.options.filtro_transferencia = this.tipoMovimiento : ''
     if (this.rangoMontoInicio > -1) this.options.monto_inicio = this.rangoMontoInicio
     if (this.rangoMontoFin > -1) this.options.monto_fin = this.rangoMontoFin
@@ -168,6 +169,7 @@ export class ListaMovimientosComponent implements OnInit {
     const wopen = window.open('/extracto-gastos');
   }
   cuentaSeleccionada
+  cuentaPadreSeleccionada
   cuentaGasto
   showModalCuentas = false
 }

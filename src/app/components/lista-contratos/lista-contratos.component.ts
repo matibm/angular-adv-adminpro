@@ -476,4 +476,8 @@ export class ListaContratosComponent implements OnInit {
     this._contratoService.reporte_inhumados({})
 
   }
+  reporte_atrasados() {
+    this._contratoService.reporte_tarjetas({})
+
+  }
 }

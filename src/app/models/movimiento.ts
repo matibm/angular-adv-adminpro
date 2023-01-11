@@ -20,6 +20,7 @@ export class Movimiento {
         public contrato?: Contrato  ,
         public vencimiento_timbrado?: number  ,
         public es_transferencia?: boolean  ,
+        public cuenta_padre?: boolean  ,
 
         public nro_factura?: string,
         public id_moneda?: string,

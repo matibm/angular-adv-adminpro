@@ -23,6 +23,7 @@ export class GastoComponent implements OnInit {
 
 eliminar(){
   this._movimientoService.eliminarGasto(this.id)
+  window.history.back()
 }
 
 }

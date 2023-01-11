@@ -14,4 +14,5 @@ export interface MovimientoOptions {
     filtro_transferencia?: 'GASTO' | 'TRANSFERENCIA'
     monto_inicio?: number,
     monto_fin?: number,
+    cuenta_padre?: string,
 }

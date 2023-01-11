@@ -274,7 +274,8 @@ export class MovimientosComponent implements OnInit, OnDestroy {
     if (this.tipoIva == 'IVA 10%') tipoIVA = 'iva10'
     if (this.tipoIva == 'IVA 5%') tipoIVA = 'iva5'
     if (this.tipoIva == 'EXENTAS') tipoIVA = 'exenta'
-
+    console.log(this.cuentaGasto);
+    
     const movimiento: Movimiento = {
       cliente: this.cliente,
       fondo: this.fondo,
@@ -290,13 +291,14 @@ export class MovimientosComponent implements OnInit, OnDestroy {
       monto_haber: montoIngreso,
       monto_total: montoEgreso,
       tipo_movimiento: this.cuentaGasto._id,
+      cuenta_padre: this.cuentaGasto.cuentaGasto,
       categoria: this.categoria,
       vencimiento_timbrado: new Date(this.fechaVencimientoTimbrado).getTime()
     };
 
     const resp = await this._movimientoService.crearMovimiento(movimiento);
 
-    this.resetAll();
+    // this.resetAll();
   }
   async searchClientes(val) {
     if (val.term.length > 0) {

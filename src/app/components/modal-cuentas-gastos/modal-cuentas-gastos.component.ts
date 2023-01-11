@@ -57,6 +57,8 @@ export class ModalCuentasGastosComponent implements OnInit {
   }
 
   onclickCategory(event) {
+    console.log(event);
+    
     this.onSelectedCategory.emit(event);
   }
 

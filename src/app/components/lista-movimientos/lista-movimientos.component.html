@@ -303,7 +303,7 @@
 
 
 
-<app-modal-cuentas-gastos *ngIf="showModalCuentas" (onSelected)="
+<app-modal-cuentas-gastos *ngIf="showModalCuentas" (onSelectedCategory)="cuentaPadreSeleccionada = $event; buscar(); showModalCuentas = false;" (onSelected)="
     cuentaSeleccionada = $event;
     buscar();
    showModalCuentas = false;

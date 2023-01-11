@@ -21,6 +21,7 @@ export class Usuario {
         public NOMDEPAR?: string,
         public CARGOCONTA?: string,
         public TELEFONO?: string,
+        public nro_tarjeta?: string,
         public TELEFONO_FAX?: string,
         public NOTAS?: string,
         public DIAS_VENCI?: string,
