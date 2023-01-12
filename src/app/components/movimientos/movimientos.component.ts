@@ -297,7 +297,7 @@ export class MovimientosComponent implements OnInit, OnDestroy {
     };
 
     const resp = await this._movimientoService.crearMovimiento(movimiento);
-
+    window.location.reload()
     // this.resetAll();
   }
   async searchClientes(val) {
