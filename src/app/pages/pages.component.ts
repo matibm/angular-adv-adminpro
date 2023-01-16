@@ -23,7 +23,7 @@ export class PagesComponent implements OnInit {
   }
 
   onClick(event) {
-    // console.log(event.target);
+    console.log(event.target);
 
     if (!event.target) {
       return;
@@ -31,21 +31,21 @@ export class PagesComponent implements OnInit {
     if (!event.target.classList) {
       return;
     }
-    for (let i = 0; i < event.path.length; i++) {
-      const element = event.path[i];
-      if (element.classList) {
-        if (!element.classList.contains('scroll-sidebar') && !event.target.classList.contains('abridor')) {
-          if (document.body.classList.contains('show-sidebar')) {
-            document.body.classList.remove('show-sidebar');
-            const ticlose = document.getElementById('menu-open-close');
-            ticlose.classList.remove('ti-close');
-            ticlose.classList.add('ti-menu');
-          }
+    // for (let i = 0; i < event.path.length; i++) {
+    //   const element = event.path[i];
+    //   if (element.classList) {
+    //     if (!element.classList.contains('scroll-sidebar') && !event.target.classList.contains('abridor')) {
+    //       if (document.body.classList.contains('show-sidebar')) {
+    //         document.body.classList.remove('show-sidebar');
+    //         const ticlose = document.getElementById('menu-open-close');
+    //         ticlose.classList.remove('ti-close');
+    //         ticlose.classList.add('ti-menu');
+    //       }
 
-        }
-      }
+    //     }
+    //   }
 
-    }
+    // }
 
   }
 }
