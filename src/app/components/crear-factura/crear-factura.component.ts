@@ -26,6 +26,8 @@ export class CrearFacturaComponent implements OnInit {
   clientes;
   cobrador;
   cobradores;
+  vendedor;
+  vendedores;
   vencimiento;
   vencimientoString;
   contrato: Contrato;
@@ -47,6 +49,12 @@ export class CrearFacturaComponent implements OnInit {
     if (val.term.length > 0) {
       this.cobradores = await this._usuarioService.buscarUsuarios('COBRADORES', val.term);
       console.log(this.cobradores);
+
+    }
+  }
+  async searchVendedores(val) {
+    if (val.term.length > 0) {
+      this.vendedores = await this._usuarioService.buscarUsuarios('VENDEDORES', val.term);
 
     }
   }
@@ -73,6 +81,7 @@ export class CrearFacturaComponent implements OnInit {
         producto : this.servicio,
         cobrador: this.cobrador?._id || '',
         contrato: this.contrato?._id,
+        vendedor: this.vendedor?._id || '',
         nro_factura: 0,
         nro_contrato: this.contrato?.nro_contrato,
         vencimiento: new Date(`${this.fecha_vencimiento.getFullYear()}-${this.fecha_vencimiento.getMonth()+1}-${this.fecha_vencimiento.getDate()} 00:00:00`).getTime()

@@ -81,6 +81,45 @@
                     </div>
                 </div>
             </div>
+            <div class="col-xs col-md">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <div class="inline-flex">
+                            <label class="">Vendedor</label>
+                            <div *ngIf="vendedor" class="pointer close-icon ml-auto">
+                                <button (click)="vendedor = null" type="button" class="btn btn-sm btn-light"><i
+                                        class=" ti-close  "></i></button>
+                            </div>
+                        </div>
+                        <div class="" *ngIf="!vendedor">
+                            <ng-select [items]="vendedores" [(ngModel)]="vendedor" (search)="searchVendedores($event)"
+                                notFoundText="no se encontraron resultados" placeholder="buscar vendedor"
+                                bindLabel="NOMBRES" [searchFn]="customSearchFn">
+                                <ng-template ng-option-tmp let-item="item">
+                                    <div>
+                                        <div *ngIf="item.APELLIDOS">{{item.APELLIDOS}} {{item.NOMBRES}}</div>
+                                        <div *ngIf="item.NOMBRES && item.RAZON"> - </div>
+                                        <div *ngIf="item.RAZON">{{item.RAZON}} </div>
+
+
+                                        <small>{{item.RUC | ruc}}</small>
+                                    </div>
+
+                                </ng-template>
+                            </ng-select>
+                        </div>
+                        <div class="" *ngIf="vendedor">
+                            <div>
+                                <div *ngIf="vendedor.NOMBRES">{{vendedor.NOMBRES}} {{vendedor.APELLIDOS}}</div>
+                                <div *ngIf="vendedor.NOMBRES && vendedor.RAZON"> - </div>
+                                <div *ngIf="vendedor.RAZON">{{vendedor.RAZON}} </div>
+
+                                <small>{{vendedor.RUC | ruc}}</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div style="max-width: 500px;" class="col-xs col-md">
                 <div class="card">

@@ -108,7 +108,7 @@ export class FacturaComponent implements OnInit {
       this.direccionFactura = this.factura.titular.DIRECCION;
       this.parciales = (await this._facturaService.getFacturasParcial(this.id)).facturas;
 
-      console.log(this.factura);
+      console.log({...this.factura});
 
       this.montoModificado = this.factura.haber
     }
