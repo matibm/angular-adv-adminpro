@@ -1,5 +1,6 @@
 import { WhatsappService } from './../../services/whatsapp.service';
 import { Component, HostListener, OnInit } from '@angular/core';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,8 +10,8 @@ import { Component, HostListener, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
   constructor(
-    private _whatsappService: WhatsappService
-
+    private _whatsappService: WhatsappService,
+    public usuarioService: UsuarioService
   ) { }
 
   viendo = document.visibilityState;

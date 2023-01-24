@@ -1,4 +1,4 @@
-<div class="row">
+<div *ngIf="false" class="row">
 
     <div class="col-lg-6 col-md-12">
         <div class="card">
@@ -66,5 +66,10 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
+<div style="display: flex;align-content: center;height: 800px;align-items: center;justify-content: center;">
+    <div class="mx-auto">
+        <div class="display-2 " style="color: rgba(177, 177, 177, 0.667); text-shadow: 3px 3px 5px rgba(218, 218, 218, 0.667);" >¡Hola {{usuarioService.usuario.NOMBRES}}!</div>
     </div>
 </div>
