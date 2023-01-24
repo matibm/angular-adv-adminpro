@@ -40,7 +40,7 @@ export class ModalBilletesComponent implements OnInit {
   }
 
 
-
+  omitirCheque = false
 
   sumaTotal() {
     this.total = 0
@@ -54,7 +54,9 @@ export class ModalBilletesComponent implements OnInit {
     if(this.quinientos) this.total += this.quinientos * 500
     if(this.cien) this.total += this.cien * 100
     if(this.cincuenta) this.total += this.cincuenta * 50
-    if(this.cheque) this.total += this.cheque
+    if (this.omitirCheque) {
+      if(this.cheque ) this.total += this.cheque
+    }
 
     return this.total
   }

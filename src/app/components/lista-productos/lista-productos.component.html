@@ -17,7 +17,8 @@
                     <td>{{item.NOMBRE}}</td>
                     <td>{{item.COD_CORTO}}</td>
                     <td>{{item.PRECIO_MAYORISTA | currency: '':'':'2.0'}} Gs</td>
-                    <td>{{item.cantidad}}</td>
+                    <td *ngIf="item.COD_CORTO !== 'U.D.P.'">{{item.cantidad}}</td>
+                    <td *ngIf="item.COD_CORTO == 'U.D.P.'">{{item.contratos?.count}} / {{item.cantidad}}</td>
                 </tr>
 
             </tbody>

@@ -22,8 +22,7 @@ export class PagesComponent implements OnInit {
 
   }
 
-  onClick(event) {
-    console.log(event.target);
+  onClick(event) { 
 
     if (!event.target) {
       return;

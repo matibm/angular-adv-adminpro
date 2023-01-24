@@ -418,6 +418,9 @@ export class ListaContratosComponent implements OnInit {
   exportarEXCEL() {
     this._contratoService.getContratosEXCEL(null, this.options, this.sort)
   }
+  reporteVentas() {
+    this._contratoService.getReporteVentas(null, this.options, this.sort)
+  }
 
   generarReporteBajas() {
     console.log(this.rangeReporteBajas);
