@@ -357,6 +357,33 @@ export class ContratoService {
       }
     )
   }
+
+  reporte_clientes_nro_tarjeta(body): Promise<any> {
+
+    let url = URL_SERVICIOS + '/contrato/nro_tarjeta_clientes'
+    url += `?token=${this._usuarioService.token}`;
+    return this.http.post(url, body, { responseType: 'blob' as 'json' }).toPromise().then(
+      (response: any) => {
+        let dataType = response.type;
+        let binaryData = [];
+        binaryData.push(response);
+        let downloadLink = document.createElement('a');
+        downloadLink.href = window.URL.createObjectURL(new Blob(binaryData, { type: dataType }));
+
+        downloadLink.setAttribute('download', 'nro_tarjeta_clientes.xlsx');
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        downloadLink.remove()
+      },
+
+      (error) => {
+        console.log(error);
+
+        swal.fire({ title: 'error', icon: 'error', text: error })
+      }
+    )
+  }
+
   public onScale = new EventEmitter()
   // scale(value){
   //   this.onScale.emit(value)

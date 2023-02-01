@@ -483,4 +483,8 @@ export class ListaContratosComponent implements OnInit {
     this._contratoService.reporte_tarjetas({})
 
   }
+  reporte_clientes_nro_tarjeta() {
+    this._contratoService.reporte_clientes_nro_tarjeta({})
+
+  }
 }
