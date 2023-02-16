@@ -358,13 +358,23 @@
                             {{contrato.titular.APELLIDOS | primerNombre}}</td>
                         <td *ngIf="!contrato.titular">---</td>
                         <td *ngIf="contrato.titular">{{contrato.titular.RUC | ruc}}</td>
-                        <td *ngIf="!contrato.inhumados">---</td>
+                        <div *ngIf="contrato.producto.COD_CORTO == 'P.S.V.'">
+                            <td *ngIf="contrato.inhumados">{{contrato.inhumados.length}}</td>                           
+                            <td *ngIf="!contrato.inhumados.length">0</td>                           
+
+                        </div>
+                        <div *ngIf="contrato.producto.COD_CORTO !== 'P.S.V.'">
+                        <td *ngIf="contrato.inhumados">{{contrato.inhumados.length}}</td>                           
+                        </div>
+                        
                         <td *ngIf="!contrato.manzana">---</td>
-                        <td *ngIf="!contrato.fila">---</td>
-                        <td *ngIf="!contrato.parcela">---</td>
-                        <td *ngIf="contrato.inhumados">{{contrato.inhumados.length}}</td>
                         <td *ngIf="contrato.manzana">{{contrato.manzana}}</td>
+
+                        <td *ngIf="!contrato.fila">---</td>
                         <td *ngIf="contrato.fila">{{contrato.fila}}</td>
+                        <td *ngIf="!contrato.parcela">---</td>
+                        
+
                         <td *ngIf="contrato.parcela">{{contrato.parcela}}</td>
                         <td>
                             <div *ngIf="contrato.utilizado">SI</div>

@@ -102,7 +102,14 @@ export class PerfilUsuarioComponent implements OnInit {
     console.log(this.usuario.role);
     this.role = this.usuario.role
     this.usuario.password = null;
-
+    if (this.usuario && !this.usuario.fantasia) {
+      this.usuario.fantasia = [{ value: '' }]
+    }
+    if (this.usuario && this.usuario.fantasia.length > 0) {
+      this.usuario.fantasia = this.usuario.fantasia.map(n => {
+        return { value: n }
+      })
+    }
     this.facturas = (await this._facturaService.getFacturas(null, null, null, null, null, this.id)).facturas;
 
 
@@ -157,7 +164,9 @@ export class PerfilUsuarioComponent implements OnInit {
     // usuario.nro_factura_actual = this.nro_factura_actual
     // usuario.nro_talonario = this.nro_talonario
     console.log(usuario);
-
+    usuario.fantasia = usuario.fantasia.map((value)=>{
+      return value.value
+    })
     const resp = await this._usuarioService.modificarUsuarios(usuario);
   }
   async eliminarUsuario(id) {

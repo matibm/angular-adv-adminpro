@@ -6,6 +6,7 @@ export class Usuario {
 
         public id_cliente?: string,
         public APELLIDOS?: string,
+        public fantasia?: any[],
         public role?: string,
         public _id?: string,
         public NOMBRES?: string,
