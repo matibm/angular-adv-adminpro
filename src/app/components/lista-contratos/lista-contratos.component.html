@@ -445,9 +445,10 @@
         </div>
     </div>
 </div>
-<div *ngIf="_usuarioService.usuario.role == 'ADMIN_ROLE'">
+<!-- <div  *ngIf="_usuarioService.usuario.role == 'ADMIN_ROLE'" > -->
+<div   >
     <div class="row">
-        <div class="col-xs col-md-4">
+        <div *ngIf="_usuarioService.usuario.role == 'ADMIN_ROLE'" class="col-xs col-md-4">
             <div class="card">
                 <div class="card-body">
                     <h3>Reporte de Bajas</h3>
@@ -528,7 +529,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xs col-md-4">
+        <div *ngIf="_usuarioService.usuario.role == 'ADMIN_ROLE'" class="col-xs col-md-4">
             <div class="card">
                 <div class="card-body">
                     <h3>Reporte usuarios Nro tarjeta</h3>
