@@ -484,7 +484,11 @@ export class ListaContratosComponent implements OnInit {
 
   }
   reporte_clientes_nro_tarjeta() {
-    this._contratoService.reporte_clientes_nro_tarjeta({})
+    let query:any = {}
+    if (this.vendedor) {
+      query.vendedor = this.vendedor._id
+    }
+    this._contratoService.reporte_clientes_nro_tarjeta(query)
 
   }
 }
