@@ -547,7 +547,7 @@
             <div class="card">
                 <div class="card-body">
                     <h3>Reporte CLIENTES Nro tarjeta</h3>
-                    <small *ngIf="vendedor">Vendedor: {{vendedor.NOMBRES}} {{vendedor.APELLIDOS}}</small>
+                    <small style="color: red;" *ngIf="vendedor">Vendedor: {{vendedor.NOMBRES}} {{vendedor.APELLIDOS}}</small>
                     <div class="mt-1  d-flex">
                         <div class="mx-auto">
                             <button (click)="reporte_clientes_nro_tarjeta()" class="btn btn-inverse">

@@ -168,6 +168,10 @@ export class PerfilUsuarioComponent implements OnInit {
       return value.value
     })
     const resp = await this._usuarioService.modificarUsuarios(usuario);
+
+    usuario.fantasia = usuario.fantasia.map((value)=>{
+      return { value: value}
+    })
   }
   async eliminarUsuario(id) {
     this._usuarioService.eliminarUsuario(id)
