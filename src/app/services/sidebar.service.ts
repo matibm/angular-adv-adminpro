@@ -71,7 +71,6 @@ export class SidebarService {
 
   refreshRoute() {
     this.urlActual = this.router.url;
-    console.log('cambiando url', this.urlActual);
-
+ 
   }
 }

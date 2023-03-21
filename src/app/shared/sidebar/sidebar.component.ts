@@ -22,8 +22,10 @@ export class SidebarComponent implements OnInit, AfterViewInit {
   async ngAfterViewInit() {
     let doc: any = document.getElementById('info_caja')
     let trans: any = document.getElementById('transferencia')
+    let gastos: any = document.getElementById('gastos')
     // if (doc) {
       doc.style = { display : 'none'}
+      gastos.style = { display : 'none'}
       trans.style = {display : 'none'} 
     // }
     
@@ -32,6 +34,9 @@ export class SidebarComponent implements OnInit, AfterViewInit {
     this.usuario = await this.sidebarService._usuario.inicializarUsuario()
     if (this.usuario.role === 'ADMIN_ROLE') {
       // if (doc) {
+    
+
+        gastos.style = { display : 'block'}
         doc.style = { display : 'block'}
       trans.style = {display : 'block'}
     }
@@ -47,8 +52,9 @@ export class SidebarComponent implements OnInit, AfterViewInit {
   async onclickParent() {
     let doc:any = document.getElementById('info_caja')
     let trans:any = document.getElementById('transferencia')
-
+    let gastos: any = document.getElementById('gastos')
     // trans.style.display = 'none'
+    gastos.style = { display : 'none'}
 
     // doc.style.display = 'none'
     doc.style = { display : 'none'}
