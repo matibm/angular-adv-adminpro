@@ -34,6 +34,8 @@ export class CrearUsuarioComponent implements OnInit {
   notas = ''
   fechaCreacion = new Date()
   ngOnInit(): void {
+    // this.usuario.fantasia
+    this.usuario.fantasia = [{ value: '' }]
     setTimeout(() => {
       this.searchInput.first.nativeElement.focus();
 
@@ -55,7 +57,13 @@ export class CrearUsuarioComponent implements OnInit {
     this.usuario.nro_talonario = this.nro_talonario
     this.usuario.nro_factura_actual = this.nro_factura_actual
     this.usuario.fecha_creacion = this.fechaCreacion.getTime()
+
+    this.usuario.fantasia = this.usuario.fantasia.map((value)=>{
+      return value.value
+    })
+
     const us = await this._usuarioService.crearUsuario(this.usuario);
+
     this.router.navigateByUrl('/admin/usuario/' + us._id);
   }
 

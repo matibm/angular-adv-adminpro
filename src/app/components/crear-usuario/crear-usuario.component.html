@@ -21,6 +21,27 @@
                         <button type="button" [disabled]="!usuario.RUC" (click)="consultar(usuario.RUC)"
                             class="btn mt-2 btn-secondary">Consultar usuario</button>
                     </div>
+
+                    <div class="form-group" *ngIf="usuario.fantasia">
+                        <div style="display: flex;">
+                            <label>Nombre Fantasia</label>
+                            <div style="margin-left: 5px; display: flex;align-content: center;flex-wrap: nowrap;flex-direction: row;justify-content: center;align-items: center;">
+                                <button (click)="usuario.fantasia.push({value:''})" type="button" class="btn btn-success btn-sm">+</button>
+                            </div>
+                        </div>
+                        <div *ngFor="let nombre of usuario.fantasia; let i = index;">
+                            <div style="display: flex;">
+                                <input autocomplete="nope" [(ngModel)]="nombre.value" name="fantasia-{{i}}"
+                                    type="text" placeholder="NOMBRE FANTASIA"
+                                    class="form-control form-control-line">
+                               <div style="margin-left: 5px; display: flex;align-content: center;flex-wrap: nowrap;flex-direction: row;justify-content: center;align-items: center;">
+                                    <button (click)="usuario.fantasia.splice(i, 1)" type="button" class="btn btn-danger btn-sm">-</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+
                     <div class=" form-group">
                         <label for="">email</label>
                         <input [(ngModel)]="usuario.EMAIL" type="text" autocomplete="nppe" class="form-control"
