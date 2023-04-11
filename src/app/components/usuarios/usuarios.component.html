@@ -30,8 +30,11 @@
 
                         <tr [routerLink]="['/admin/usuario', usuario._id]" class="pointer" *ngFor="let usuario of usuarios; let i = index">
                             <td scope="row">{{i+1}}</td>
-                            <td>{{usuario.APELLIDOS}}</td>
-                            <td>{{usuario.NOMBRES}}</td>
+                            <td>{{usuario.APELLIDOS}} 
+
+                                <span *ngFor="let item of usuario.fantasia">{{item}}, </span>
+                            </td>
+                            <td>{{usuario.NOMBRES}} </td>
 
                             <td>{{usuario.RUC| ruc}}</td>
                             <td>
