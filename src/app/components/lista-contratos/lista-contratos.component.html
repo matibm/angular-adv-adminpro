@@ -548,6 +548,19 @@
                 <div class="card-body">
                     <h3>Reporte CLIENTES Nro tarjeta</h3>
                     <small style="color: red;" *ngIf="vendedor">Vendedor: {{vendedor.NOMBRES}} {{vendedor.APELLIDOS}}</small>
+                    <mat-form-field appearance="fill">
+                        <mat-label>fecha de venta</mat-label>
+                        <mat-date-range-input [formGroup]="ventaDeTarjetaRange" [rangePicker]="pickerVentaTarjeta">
+                            <input matStartDate formControlName="start" placeholder="fecha inicio">
+                            <input matEndDate formControlName="end" placeholder="fecha fin">
+                        </mat-date-range-input>
+                        <mat-datepicker-toggle matSuffix [for]="pickerVentaTarjeta"></mat-datepicker-toggle>
+                        <mat-date-range-picker #pickerVentaTarjeta></mat-date-range-picker>
+    
+                        <mat-error *ngIf="ventaDeTarjetaRange.controls.start.hasError('matStartDateInvalid')">Fecha inicio incorrecta
+                        </mat-error>
+                        <mat-error *ngIf="ventaDeTarjetaRange.controls.end.hasError('matEndDateInvalid')">Fecha fin incorrecta</mat-error>
+                    </mat-form-field>
                     <div class="mt-1  d-flex">
                         <div class="mx-auto">
                             <button (click)="reporte_clientes_nro_tarjeta()" class="btn btn-inverse">

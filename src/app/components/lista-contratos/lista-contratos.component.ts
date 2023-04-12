@@ -75,6 +75,10 @@ export class ListaContratosComponent implements OnInit {
     start: new FormControl(),
     end: new FormControl()
   });
+  ventaDeTarjetaRange = new FormGroup({
+    start: new FormControl(),
+    end: new FormControl()
+  });
   beneficiarioNombre
   beneficiarioCi
   inhumadoNombre
@@ -244,8 +248,8 @@ export class ListaContratosComponent implements OnInit {
     console.log(this.options);
 
     if (this.estadoSeleccionado == 'TODOS') {
-      delete this.options.utilizado 
-      delete this.options.de_baja 
+      delete this.options.utilizado
+      delete this.options.de_baja
     }
 
     if (this.estadoSeleccionado == 'UTILIZADO') {
@@ -484,9 +488,16 @@ export class ListaContratosComponent implements OnInit {
 
   }
   reporte_clientes_nro_tarjeta() {
-    let query:any = {}
+    let query: any = {}
     if (this.vendedor) {
       query.vendedor = this.vendedor._id
+    }
+   
+    if (this.ventaDeTarjetaRange.value.start) {
+      query['fecha'] = {
+        start : this.ventaDeTarjetaRange.value.start ? new Date(`${new Date(this.ventaDeTarjetaRange.value.start).toLocaleDateString('en-US')} 00:00`).getTime() : null,
+        end: this.ventaDeTarjetaRange.value.end ? new Date(`${new Date(this.ventaDeTarjetaRange.value.end).toLocaleDateString('en-US')} 23:59:59`).getTime() : null
+      }
     }
     this._contratoService.reporte_clientes_nro_tarjeta(query)
 
