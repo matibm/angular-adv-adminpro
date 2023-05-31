@@ -1,9 +1,11 @@
 .gris{ background-color:#d1d1d1; color: black;  }
 
 .rojo { background-color:#f75b5b; color: black;  }
+.violeta { background-color:#f75bef; color: black;  }
 .amarillo { background-color:#dad878; color: black;  }
 .naranja { background-color:#f3b04c; color: black;  }
 .rojo:hover { background-color:#d14e4e; color: black;  }
+.violeta:hover { background-color:#f75bef; color: black;  }
 .amarillo:hover { background-color:#b6b454; color: black;  }
 .naranja:hover { background-color:#db9a38; color: black;  }
 .gris:hover{ background-color:#bebebe; color: black;  }
