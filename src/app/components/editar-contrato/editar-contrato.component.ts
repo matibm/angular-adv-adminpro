@@ -232,6 +232,7 @@ export class EditarContratoComponent implements OnInit {
   }
 
   calcularCuotas() {
+
     if (this.plazo > 0) {
       if (this.esPsm) {
         this.pagoradioValue = 'cuota';
@@ -300,9 +301,9 @@ export class EditarContratoComponent implements OnInit {
       }
     }
     if (this.esPsm && this.saldoOriginal == this.saldo) {
- 
+
       this.contrato.saldo_pendiente = this.saldo
- 
+
     }
     if (this.editarproducto && !this.esPsm) {
       this.contrato.saldo_pendiente = this.montoTotal.deuda
@@ -341,15 +342,16 @@ export class EditarContratoComponent implements OnInit {
       // this.contrato.vendedor = this.vendedor,
       this.contrato.fecha_creacion_unix = this.fecha_creacion.getTime();  // falta poner campode fecha para poder modificar
       this.contrato.nro_contrato_relacionado = parseInt(this.contrato?.nro_contrato_relacionado?.toString() ||'0') || 0
-    
+
       console.log(this.saldo);
       console.log(this.contrato);
-      
+
 
     const send = {
       contrato: this.contrato,
       editar_nro_contrato: this.editar_nro_contrato,
-      fechaPago: this.fechaPago ? this.fechaPago : new Date()
+      fechaPago: this.fechaPago ? this.fechaPago : new Date(),
+      facturaIngreso: this.crearFacturaEntregaInicial(this.entrega, this.cliente._id, this.producto._id, this.cobrador?._id)
     };
     this.guardando = true;
     await this._contratoService.updateContrato(send, this.editarproducto, tipoContrato).then(() => {
@@ -619,6 +621,19 @@ export class EditarContratoComponent implements OnInit {
         this.loadingCobrador = false;
       });
   }
-
+  crearFacturaEntregaInicial(monto, cliente, producto, cobrador?) {
+    const f: any = {
+      nro_factura: 0,
+      vencimiento: this.fecha_creacion.getTime(),
+      monto,
+      haber: monto,
+      precio_unitario: monto,
+      titular: cliente,
+      servicio: producto,
+      fecha_creacion_unix: this.fecha_creacion.getTime()
+    };
+    cobrador ? f.cobrador = cobrador : '';
+    return f;
+  }
 
 }

@@ -14369,7 +14369,7 @@ class EditarContratoComponent {
         return Number(num);
     }
     editarContrato() {
-        var _a, _b;
+        var _a, _b, _c;
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             let tipoContrato = '';
             if (this.esPsm && this.saldoOriginal != this.saldo) {
@@ -14421,7 +14421,8 @@ class EditarContratoComponent {
             const send = {
                 contrato: this.contrato,
                 editar_nro_contrato: this.editar_nro_contrato,
-                fechaPago: this.fechaPago ? this.fechaPago : new Date()
+                fechaPago: this.fechaPago ? this.fechaPago : new Date(),
+                facturaIngreso: this.crearFacturaEntregaInicial(this.entrega, this.cliente._id, this.producto._id, (_c = this.cobrador) === null || _c === void 0 ? void 0 : _c._id)
             };
             this.guardando = true;
             yield this._contratoService.updateContrato(send, this.editarproducto, tipoContrato).then(() => {
@@ -14654,6 +14655,20 @@ class EditarContratoComponent {
             this.cobradores = yield this._usuarioService.buscarUsuarios('COBRADORES', txt);
             this.loadingCobrador = false;
         }));
+    }
+    crearFacturaEntregaInicial(monto, cliente, producto, cobrador) {
+        const f = {
+            nro_factura: 0,
+            vencimiento: this.fecha_creacion.getTime(),
+            monto,
+            haber: monto,
+            precio_unitario: monto,
+            titular: cliente,
+            servicio: producto,
+            fecha_creacion_unix: this.fecha_creacion.getTime()
+        };
+        cobrador ? f.cobrador = cobrador : '';
+        return f;
     }
 }
 EditarContratoComponent.ɵfac = function EditarContratoComponent_Factory(t) { return new (t || EditarContratoComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_productos_service__WEBPACK_IMPORTED_MODULE_5__["ProductosService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_usuario_service__WEBPACK_IMPORTED_MODULE_6__["UsuarioService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_sweetalert2_ngx_sweetalert2__WEBPACK_IMPORTED_MODULE_7__["SwalPortalTargets"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_contrato_service__WEBPACK_IMPORTED_MODULE_8__["ContratoService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_9__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_9__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_pipes_edad_pipe__WEBPACK_IMPORTED_MODULE_10__["EdadPipe"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](src_app_services_factura_service__WEBPACK_IMPORTED_MODULE_11__["FacturaService"])); };
@@ -44602,4 +44617,4 @@ webpackEmptyAsyncContext.id = "zn8P";
 /***/ })
 
 },[[0,"runtime","vendor"]]]);
-//# sourceMappingURL=main.8d4c33ed757b689d6ab9.js.map
+//# sourceMappingURL=main.a0970af09d0756bd3e2f.js.map
