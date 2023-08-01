@@ -13,10 +13,11 @@ export class ModalFacturaComponent implements OnInit {
   @Input() facturaPDF;
   @Input() existe;
   loadingCancelarPago = false
+  loadingFE = false
   style: any = {};
   async ngOnInit(){
     const height = window.screen.availHeight;
- 
+
     this.style.maxHeight = (height - 340) + 'px';
     this.style.overflow = 'auto';
     console.log(this.facturaPDF);
@@ -47,10 +48,19 @@ export class ModalFacturaComponent implements OnInit {
   async cancelarPago(){
     this.loadingCancelarPago = true
     console.log(this.facturaPDF);
-    
+
     await this._facturaService.cancelarPago(this.facturaPDF._id)
     this.onClose.emit()
     this.loadingCancelarPago = false
+  }
+
+  async facturaElectronica(){
+    this.loadingFE = true
+    console.log(this.facturaPDF);
+
+    await this._facturaService.descargarArchivoPDF(this.facturaPDF._id)
+    this.onClose.emit()
+    this.loadingFE = false
   }
 
 }

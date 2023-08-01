@@ -9985,13 +9985,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function ModalFacturaComponent_div_20_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 17);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n                    ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 17);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 18);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n\n                        ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "div", 18);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "div", 19);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5, "\n                            ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](6, "h1", 19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](6, "h1", 20);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](7, "Cancelado");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](8, "\n                        ");
@@ -10002,9 +10002,9 @@ function ModalFacturaComponent_div_20_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } }
 function ModalFacturaComponent_div_22_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 21);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n                    ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](2, "app-factura-pdf", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](2, "app-factura-pdf", 22);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n                    ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](4, "\n                ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
@@ -10020,13 +10020,13 @@ function ModalFacturaComponent_span_29_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } }
 function ModalFacturaComponent_div_31_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 17);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n                            ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 17);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n        \n                                ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "div", 18);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 18);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n\n                                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "div", 19);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5, "\n                                    ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](6, "mat-spinner", 22);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](6, "mat-spinner", 23);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](7, "\n                                ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](8, "\n                            ");
@@ -10037,11 +10037,35 @@ function ModalFacturaComponent_div_31_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](6);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("color", "accent")("diameter", 20);
 } }
+function ModalFacturaComponent_span_36_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "Factura Electr\u00F3nica");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} }
+function ModalFacturaComponent_div_38_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 17);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n                          ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 18);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n                              ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "div", 19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5, "\n                                  ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](6, "mat-spinner", 23);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](7, "\n                              ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](8, "\n                          ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](9, "\n                      ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("color", "accent")("diameter", 20);
+} }
 class ModalFacturaComponent {
     constructor(_facturaService) {
         this._facturaService = _facturaService;
         this.onClose = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         this.loadingCancelarPago = false;
+        this.loadingFE = false;
         this.style = {};
     }
     ngOnInit() {
@@ -10080,9 +10104,18 @@ class ModalFacturaComponent {
             this.loadingCancelarPago = false;
         });
     }
+    facturaElectronica() {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            this.loadingFE = true;
+            console.log(this.facturaPDF);
+            yield this._facturaService.descargarArchivoPDF(this.facturaPDF._id);
+            this.onClose.emit();
+            this.loadingFE = false;
+        });
+    }
 }
 ModalFacturaComponent.ɵfac = function ModalFacturaComponent_Factory(t) { return new (t || ModalFacturaComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](src_app_services_factura_service__WEBPACK_IMPORTED_MODULE_2__["FacturaService"])); };
-ModalFacturaComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: ModalFacturaComponent, selectors: [["app-modal-factura"]], inputs: { facturaPDF: "facturaPDF", existe: "existe" }, outputs: { onClose: "onClose" }, decls: 47, vars: 5, consts: [[1, "fondo-negro", "animated", "fadeIn", 3, "click"], ["id", "afuera", "role", "dialog", 1, "modal", 2, "display", "block"], ["role", "document", 1, "modal-dialog", "modal-dialog-scrollable", "modal-xl"], [1, "modal-content"], [1, "modal-header"], [1, "modal-title"], ["type", "button", "aria-label", "Close", 1, "pointer", "close", 3, "click"], ["aria-hidden", "true"], ["style", "width: 100%;", 4, "ngIf"], ["class", " modal-body ", "align", "center", 3, "ngStyle", 4, "ngIf"], [1, "modal-footer"], [1, "btn", "btn-rounded", "mr-auto", "btn-inverse", 2, "width", "143.84px", 3, "disabled", "click"], [4, "ngIf"], [1, "btn", "btn-rounded", "btn-outline-secondary", 3, "click"], [1, "btn", "btn-rounded", "btn-inverse", 3, "click"], [1, "btn", "btn-rounded", "btn-success", 3, "click"], [2, "width", "100%"], [2, "display", "flex"], [1, "mx-auto"], [1, "text-danger"], ["align", "center", 1, "modal-body", 3, "ngStyle"], [3, "printAltoke", "existe", "facturaPDF"], [3, "color", "diameter"]], template: function ModalFacturaComponent_Template(rf, ctx) { if (rf & 1) {
+ModalFacturaComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: ModalFacturaComponent, selectors: [["app-modal-factura"]], inputs: { facturaPDF: "facturaPDF", existe: "existe" }, outputs: { onClose: "onClose" }, decls: 55, vars: 8, consts: [[1, "fondo-negro", "animated", "fadeIn", 3, "click"], ["id", "afuera", "role", "dialog", 1, "modal", 2, "display", "block"], ["role", "document", 1, "modal-dialog", "modal-dialog-scrollable", "modal-xl"], [1, "modal-content"], [1, "modal-header"], [1, "modal-title"], ["type", "button", "aria-label", "Close", 1, "pointer", "close", 3, "click"], ["aria-hidden", "true"], ["style", "width: 100%;", 4, "ngIf"], ["class", " modal-body ", "align", "center", 3, "ngStyle", 4, "ngIf"], [1, "modal-footer"], [1, "btn", "btn-rounded", "mr-auto", "btn-inverse", 2, "width", "143.84px", 3, "disabled", "click"], [4, "ngIf"], [1, "btn", "btn-rounded", "ml-auto", "btn-inverse", 2, "width", "173.84px", 3, "disabled", "click"], [1, "btn", "btn-rounded", "btn-outline-secondary", 3, "click"], [1, "btn", "btn-rounded", "btn-inverse", 3, "click"], [1, "btn", "btn-rounded", "btn-success", 3, "click"], [2, "width", "100%"], [2, "display", "flex"], [1, "mx-auto"], [1, "text-danger"], ["align", "center", 1, "modal-body", 3, "ngStyle"], [3, "printAltoke", "existe", "facturaPDF"], [3, "color", "diameter"]], template: function ModalFacturaComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ModalFacturaComponent_Template_div_click_0_listener($event) { return ctx.print($event); });
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n\n    ");
@@ -10126,29 +10159,39 @@ ModalFacturaComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵde
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](33, "\n                    ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](34, "button", 13);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ModalFacturaComponent_Template_button_click_34_listener() { return ctx.onClose.emit(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](35, "Cerrar");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ModalFacturaComponent_Template_button_click_34_listener() { return ctx.facturaElectronica(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](35, "\n                      ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](36, ModalFacturaComponent_span_36_Template, 2, 0, "span", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](37, "\n                      ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](38, ModalFacturaComponent_div_38_Template, 10, 2, "div", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](39, "\n                  ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](36, "\n                    ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](37, "button", 14);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ModalFacturaComponent_Template_button_click_37_listener() { return ctx.printTicket(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](38, "Ticket");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](40, "\n                    ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](41, "button", 14);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ModalFacturaComponent_Template_button_click_41_listener() { return ctx.onClose.emit(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](42, "Cerrar");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](39, "\n                    ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](40, "button", 15);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ModalFacturaComponent_Template_button_click_40_listener() { return ctx.printContrato(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](41, "Imprimir");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](43, "\n                    ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](44, "button", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ModalFacturaComponent_Template_button_click_44_listener() { return ctx.printTicket(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](45, "Ticket");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](42, "\n\n                ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](46, "\n                    ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](47, "button", 16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ModalFacturaComponent_Template_button_click_47_listener() { return ctx.printContrato(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](48, "Imprimir");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](43, "\n            ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](49, "\n\n                ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](44, "\n        ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](50, "\n            ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](45, "\n    ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](51, "\n        ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](46, "\n");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](52, "\n    ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](53, "\n");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](54, "\n");
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](20);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", (ctx.facturaPDF == null ? null : ctx.facturaPDF.activo) === false);
@@ -10160,6 +10203,12 @@ ModalFacturaComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵde
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !ctx.loadingCancelarPago);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.loadingCancelarPago);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("disabled", ctx.loadingFE || (ctx.facturaPDF == null ? null : ctx.facturaPDF.activo) === false);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !ctx.loadingFE);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.loadingFE);
     } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_3__["NgIf"], _angular_common__WEBPACK_IMPORTED_MODULE_3__["NgStyle"], _factura_pdf_factura_pdf_component__WEBPACK_IMPORTED_MODULE_4__["FacturaPdfComponent"], _angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_5__["MatSpinner"]], styles: [".fondo-negro[_ngcontent-%COMP%] {\r\n    background-color: rgba(0, 16, 37, 0.459);\r\n    position: fixed;\r\n    top: 0px;\r\n    left: 0px;\r\n    width: 100%;\r\n    height: 100%;\r\n    z-index: 9999;\r\n}\r\n\r\n@media (min-width: 768px) {\r\n    .modal-xl[_ngcontent-%COMP%] {\r\n        width: 90%;\r\n        max-width: 1200px;\r\n    }\r\n}\r\n\r\n.scroll[_ngcontent-%COMP%] {\r\n    overflow: auto;\r\n    height: 700px;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1vZGFsLWZhY3R1cmEuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLHdDQUF3QztJQUN4QyxlQUFlO0lBQ2YsUUFBUTtJQUNSLFNBQVM7SUFDVCxXQUFXO0lBQ1gsWUFBWTtJQUNaLGFBQWE7QUFDakI7O0FBRUE7SUFDSTtRQUNJLFVBQVU7UUFDVixpQkFBaUI7SUFDckI7QUFDSjs7QUFFQTtJQUNJLGNBQWM7SUFDZCxhQUFhO0FBQ2pCIiwiZmlsZSI6Im1vZGFsLWZhY3R1cmEuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5mb25kby1uZWdybyB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDAsIDE2LCAzNywgMC40NTkpO1xyXG4gICAgcG9zaXRpb246IGZpeGVkO1xyXG4gICAgdG9wOiAwcHg7XHJcbiAgICBsZWZ0OiAwcHg7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIGhlaWdodDogMTAwJTtcclxuICAgIHotaW5kZXg6IDk5OTk7XHJcbn1cclxuXHJcbkBtZWRpYSAobWluLXdpZHRoOiA3NjhweCkge1xyXG4gICAgLm1vZGFsLXhsIHtcclxuICAgICAgICB3aWR0aDogOTAlO1xyXG4gICAgICAgIG1heC13aWR0aDogMTIwMHB4O1xyXG4gICAgfVxyXG59XHJcblxyXG4uc2Nyb2xsIHtcclxuICAgIG92ZXJmbG93OiBhdXRvO1xyXG4gICAgaGVpZ2h0OiA3MDBweDtcclxufSJdfQ== */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](ModalFacturaComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"],
@@ -34861,7 +34910,10 @@ class FacturaService {
     crearFactura(factura) {
         let url = _config_global__WEBPACK_IMPORTED_MODULE_1__["URL_SERVICIOS"] + '/factura/crear_factura';
         url += `?token=${this._usuarioService.token}`;
-        return this.http.post(url, factura).toPromise().then((resp) => {
+        return this.http
+            .post(url, factura)
+            .toPromise()
+            .then((resp) => {
             console.log(resp);
             sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.a.fire({
                 icon: 'success',
@@ -34886,7 +34938,10 @@ class FacturaService {
             });
         }
         url += `&interes=${interes}`;
-        return this.http.get(url).toPromise().then((resp) => {
+        return this.http
+            .get(url)
+            .toPromise()
+            .then((resp) => {
             console.log(resp);
             sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.a.fire({
                 icon: 'success',
@@ -34920,7 +34975,10 @@ class FacturaService {
         url += `&accion=${accion}`;
         if (recibido)
             url += `&recibido=${recibido}`;
-        return this.http.get(url).toPromise().then((resp) => {
+        return this.http
+            .get(url)
+            .toPromise()
+            .then((resp) => {
             console.log(resp);
             sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.a.fire({
                 icon: 'success',
@@ -34941,7 +34999,10 @@ class FacturaService {
     elimnarFactura(id) {
         let url = _config_global__WEBPACK_IMPORTED_MODULE_1__["URL_SERVICIOS"] + '/factura/eliminar_factura/' + id;
         url += `?token=${this._usuarioService.token}`;
-        return this.http.delete(url).toPromise().then((resp) => {
+        return this.http
+            .delete(url)
+            .toPromise()
+            .then((resp) => {
             console.log(resp);
             window.history.back();
             sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.a.fire({
@@ -34956,7 +35017,10 @@ class FacturaService {
     pagarPorMonto(body) {
         let url = _config_global__WEBPACK_IMPORTED_MODULE_1__["URL_SERVICIOS"] + '/factura/pagar_por_monto';
         url += `?token=${this._usuarioService.token}`;
-        return this.http.post(url, body).toPromise().then((resp) => {
+        return this.http
+            .post(url, body)
+            .toPromise()
+            .then((resp) => {
             console.log(resp);
             if (body.confirmado) {
                 // swal.fire({
@@ -34972,7 +35036,7 @@ class FacturaService {
             sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.a.fire({
                 icon: 'error',
                 title: 'Error',
-                text: error.error.error
+                text: error.error.error,
             });
         });
     }
@@ -34982,9 +35046,12 @@ class FacturaService {
             let url = _config_global__WEBPACK_IMPORTED_MODULE_1__["URL_SERVICIOS"] + '/factura/pagar';
             url += `?token=${this._usuarioService.token}`;
             // url += `&caja=${caja._id}`;
-            parcial ? url += `&parcial=${parcial}` : null;
-            monto_parcial ? url += `&monto_parcial=${monto_parcial}` : null;
-            return this.http.post(url, factura).toPromise().then((resp) => {
+            parcial ? (url += `&parcial=${parcial}`) : null;
+            monto_parcial ? (url += `&monto_parcial=${monto_parcial}`) : null;
+            return this.http
+                .post(url, factura)
+                .toPromise()
+                .then((resp) => {
                 console.log(resp);
                 sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.a.fire({
                     icon: 'success',
@@ -35006,7 +35073,10 @@ class FacturaService {
     getFacturaById(id) {
         let url = `${_config_global__WEBPACK_IMPORTED_MODULE_1__["URL_SERVICIOS"]}/factura/by_id/${id}`;
         url += `?token=${this._usuarioService.token}`;
-        return this.http.get(url).toPromise().then((resp) => {
+        return this.http
+            .get(url)
+            .toPromise()
+            .then((resp) => {
             console.log(resp);
             return resp.factura;
         });
@@ -35014,7 +35084,10 @@ class FacturaService {
     getPagosAll(body) {
         let url = `${_config_global__WEBPACK_IMPORTED_MODULE_1__["URL_SERVICIOS"]}/factura/facturas_excel/listar`;
         url += `?token=${this._usuarioService.token}`;
-        return this.http.post(url, body).toPromise().then((resp) => {
+        return this.http
+            .post(url, body)
+            .toPromise()
+            .then((resp) => {
             console.log(resp);
             return resp;
         });
@@ -35025,7 +35098,9 @@ class FacturaService {
         // return this.http.post(url, body).toPromise().then((resp: any) => {
         //   window.open(resp)
         // });
-        this.http.post(url, body, { responseType: 'blob' }).subscribe((response) => {
+        this.http
+            .post(url, body, { responseType: 'blob' })
+            .subscribe((response) => {
             console.log(response);
             let dataType = response.type;
             let binaryData = [];
@@ -35055,7 +35130,10 @@ class FacturaService {
             url += `&sort_key=${sort.key}`;
             url += `&sort_value=${sort.value}`;
         }
-        return this.http.get(url, { responseType: 'blob' }).toPromise().then((response) => {
+        return this.http
+            .get(url, { responseType: 'blob' })
+            .toPromise()
+            .then((response) => {
             let dataType = response.type;
             let binaryData = [];
             binaryData.push(response);
@@ -35073,7 +35151,9 @@ class FacturaService {
     getReporteIngresos(body) {
         let url = `${_config_global__WEBPACK_IMPORTED_MODULE_1__["URL_SERVICIOS"]}/factura/cuadro_ingreso`;
         url += `?token=${this._usuarioService.token}`;
-        this.http.post(url, body, { responseType: 'blob' }).subscribe((response) => {
+        this.http
+            .post(url, body, { responseType: 'blob' })
+            .subscribe((response) => {
             let dataType = response.type;
             let binaryData = [];
             binaryData.push(response);
@@ -35088,7 +35168,10 @@ class FacturaService {
     getReporteMovimientos(body) {
         let url = `${_config_global__WEBPACK_IMPORTED_MODULE_1__["URL_SERVICIOS"]}/movimientos/get_reporte_movimientos`;
         url += `?token=${this._usuarioService.token}`;
-        return this.http.post(url, body, { responseType: 'blob' }).toPromise().then((response) => {
+        return this.http
+            .post(url, body, { responseType: 'blob' })
+            .toPromise()
+            .then((response) => {
             let dataType = response.type;
             let binaryData = [];
             binaryData.push(response);
@@ -35107,7 +35190,9 @@ class FacturaService {
     getReporteIngresoAnualCMP(body) {
         let url = `${_config_global__WEBPACK_IMPORTED_MODULE_1__["URL_SERVICIOS"]}/factura/comparacion_pagado_vencimiento`;
         url += `?token=${this._usuarioService.token}`;
-        this.http.post(url, body, { responseType: 'blob' }).subscribe((response) => {
+        this.http
+            .post(url, body, { responseType: 'blob' })
+            .subscribe((response) => {
             let dataType = response.type;
             let binaryData = [];
             binaryData.push(response);
@@ -35124,7 +35209,10 @@ class FacturaService {
         url += `?token=${this._usuarioService.token}`;
         // url += `&cliente_id=${cliente_id}`
         console.log(url);
-        return this.http.get(url).toPromise().then((resp) => {
+        return this.http
+            .get(url)
+            .toPromise()
+            .then((resp) => {
             console.log(resp);
             return resp.pagos;
         }, (err) => {
@@ -35134,8 +35222,11 @@ class FacturaService {
     modificarMonto(body) {
         let url = `${_config_global__WEBPACK_IMPORTED_MODULE_1__["URL_SERVICIOS"]}/factura/modificar_monto`;
         url += `?token=${this._usuarioService.token}`;
-        console.log("modificar monto", body);
-        return this.http.put(url, body).toPromise().then((resp) => {
+        console.log('modificar monto', body);
+        return this.http
+            .put(url, body)
+            .toPromise()
+            .then((resp) => {
             return resp;
         }, (err) => {
             console.log(err);
@@ -35144,7 +35235,10 @@ class FacturaService {
     modificar(body) {
         let url = `${_config_global__WEBPACK_IMPORTED_MODULE_1__["URL_SERVICIOS"]}/factura/modificar`;
         url += `?token=${this._usuarioService.token}`;
-        return this.http.put(url, body).toPromise().then((resp) => {
+        return this.http
+            .put(url, body)
+            .toPromise()
+            .then((resp) => {
             return resp;
         }, (err) => {
             console.log(err);
@@ -35154,7 +35248,10 @@ class FacturaService {
         let url = `${_config_global__WEBPACK_IMPORTED_MODULE_1__["URL_SERVICIOS"]}/factura/get_detalle_pago`;
         url += `?token=${this._usuarioService.token}`;
         url += `&id=${id}`;
-        return this.http.get(url).toPromise().then((resp) => {
+        return this.http
+            .get(url)
+            .toPromise()
+            .then((resp) => {
             console.log(resp);
             return resp;
         });
@@ -35162,7 +35259,10 @@ class FacturaService {
     crearLinkDePago(id, fondoId) {
         let url = `${_config_global__WEBPACK_IMPORTED_MODULE_1__["URL_SERVICIOS"]}/factura/crear_link/${id}/${fondoId}`;
         url += `?token=${this._usuarioService.token}`;
-        return this.http.get(url).toPromise().then((resp) => {
+        return this.http
+            .get(url)
+            .toPromise()
+            .then((resp) => {
             console.log(resp);
             sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.a.fire({
                 icon: 'success',
@@ -35176,7 +35276,10 @@ class FacturaService {
     getFacturasByTitular(id) {
         let url = `${_config_global__WEBPACK_IMPORTED_MODULE_1__["URL_SERVICIOS"]}/factura/by_titular/${id}`;
         url += `?token=${this._usuarioService.token}`;
-        return this.http.get(url).toPromise().then((resp) => {
+        return this.http
+            .get(url)
+            .toPromise()
+            .then((resp) => {
             console.log(resp);
             return resp.facturas;
         });
@@ -35185,7 +35288,10 @@ class FacturaService {
         let url = `${_config_global__WEBPACK_IMPORTED_MODULE_1__["URL_SERVICIOS"]}/factura/all`;
         url += `?token=${this._usuarioService.token}`;
         url += `&contrato=${id}`;
-        return this.http.get(url).toPromise().then((resp) => {
+        return this.http
+            .get(url)
+            .toPromise()
+            .then((resp) => {
             console.log(resp);
             return resp.facturas;
         });
@@ -35195,13 +35301,16 @@ class FacturaService {
         let url = _config_global__WEBPACK_IMPORTED_MODULE_1__["URL_SERVICIOS"] + '/factura/all';
         url += `?token=${this._usuarioService.token}`;
         url += `&page=${p}`;
-        pagado ? url += `&pagado=${pagado}` : null;
-        fondo ? url += `&fondo=${fondo}` : null;
-        start ? url += `&start=${start}` : null;
-        titular ? url += `&titular=${titular}` : null;
+        pagado ? (url += `&pagado=${pagado}`) : null;
+        fondo ? (url += `&fondo=${fondo}`) : null;
+        start ? (url += `&start=${start}`) : null;
+        titular ? (url += `&titular=${titular}`) : null;
         url += `&cerrado=${cerrado}`;
-        end ? url += `&end=${end}` : null;
-        return this.http.get(url).toPromise().then((resp) => {
+        end ? (url += `&end=${end}`) : null;
+        return this.http
+            .get(url)
+            .toPromise()
+            .then((resp) => {
             return resp;
         }, (error) => {
             console.log(error);
@@ -35225,7 +35334,10 @@ class FacturaService {
             url += `&sort_key=${sort.key}`;
             url += `&sort_value=${sort.value}`;
         }
-        return this.http.get(url).toPromise().then((resp) => {
+        return this.http
+            .get(url)
+            .toPromise()
+            .then((resp) => {
             console.log('respuesta ');
             return resp;
         }, (error) => {
@@ -35237,21 +35349,53 @@ class FacturaService {
         let url = _config_global__WEBPACK_IMPORTED_MODULE_1__["URL_SERVICIOS"] + '/factura/all';
         url += `?token=${this._usuarioService.token}`;
         url += `&factura_padre_id=${facturaId}`;
-        return this.http.get(url).toPromise().then((resp) => {
+        return this.http
+            .get(url)
+            .toPromise()
+            .then((resp) => {
             console.log(resp);
             return resp;
+        });
+    }
+    descargarArchivoPDF(facturaId) {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            try {
+                const url = `${_config_global__WEBPACK_IMPORTED_MODULE_1__["URL_SERVICIOS"]}/factura/factura_electronica/${facturaId}`;
+                const params = new URLSearchParams();
+                params.set('token', this._usuarioService.token);
+                const queryString = params.toString();
+                const urlCompleta = `${url}?${queryString}`;
+                const response = yield fetch(urlCompleta, { method: 'GET' });
+                const blob = yield response.blob();
+                const urlBlob = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = urlBlob;
+                a.download = `factura_${facturaId}.pdf`; // Nombre del archivo
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(urlBlob);
+                return { ok: true };
+            }
+            catch (error) {
+                console.error('Error al descargar el archivo:', error);
+                throw error.message;
+            }
         });
     }
     cancelarPago(pago_id) {
         let url = _config_global__WEBPACK_IMPORTED_MODULE_1__["URL_SERVICIOS"] + '/factura/cancelar_pago';
         url += `?token=${this._usuarioService.token}`;
         url += `&pago_id=${pago_id}`;
-        return this.http.get(url).toPromise().then((resp) => {
+        return this.http
+            .get(url)
+            .toPromise()
+            .then((resp) => {
             console.log(resp);
             sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.a.fire({
                 icon: 'success',
                 title: 'Pago cancelado',
-                timer: 5000
+                timer: 5000,
             });
             return resp;
         }, (error) => {
@@ -35259,7 +35403,7 @@ class FacturaService {
             sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.a.fire({
                 icon: 'error',
                 title: 'Error al cancelar el pago',
-                text: error.error.message
+                text: error.error.message,
             });
         });
     }
@@ -35269,7 +35413,7 @@ FacturaService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineIn
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵsetClassMetadata"](FacturaService, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"],
         args: [{
-                providedIn: 'root'
+                providedIn: 'root',
             }]
     }], function () { return [{ type: _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"] }, { type: _usuario_service__WEBPACK_IMPORTED_MODULE_5__["UsuarioService"] }, { type: _caja_service__WEBPACK_IMPORTED_MODULE_6__["CajaService"] }]; }, null); })();
 
@@ -44617,4 +44761,4 @@ webpackEmptyAsyncContext.id = "zn8P";
 /***/ })
 
 },[[0,"runtime","vendor"]]]);
-//# sourceMappingURL=main.a0970af09d0756bd3e2f.js.map
+//# sourceMappingURL=main.d0b86bdd0c20b3a89803.js.map
