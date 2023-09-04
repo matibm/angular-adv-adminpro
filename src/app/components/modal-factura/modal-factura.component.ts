@@ -15,6 +15,8 @@ export class ModalFacturaComponent implements OnInit {
   loadingCancelarPago = false
   loadingFE = false
   style: any = {};
+  facturaStatus = ''
+
   async ngOnInit(){
     const height = window.screen.availHeight;
 
@@ -23,6 +25,9 @@ export class ModalFacturaComponent implements OnInit {
     console.log(this.facturaPDF);
     this.facturaPDF = {... await this.facturaPDF}
     console.log(this.style);
+    this.facturaStatus = await this.estadoFactura(this.facturaPDF._id)
+    console.log();
+
   }
 
   print(event){
@@ -61,6 +66,23 @@ export class ModalFacturaComponent implements OnInit {
     await this._facturaService.descargarArchivoPDF(this.facturaPDF._id)
     this.onClose.emit()
     this.loadingFE = false
+  }
+
+  loadingNotaCredito = false
+  async notaCredito(){
+    this.loadingNotaCredito = true
+
+    await this._facturaService.descargarNotaCreditoPDF(this.facturaPDF._id)
+    this.onClose.emit()
+    if (this.facturaStatus == 'factura') {
+      this.cancelarPago()
+    }
+    this.loadingNotaCredito = false
+  }
+
+  async estadoFactura(pago_id: string): Promise<any> {
+    const resp = await this._facturaService.estadoFactura(pago_id)
+    return resp
   }
 
 }

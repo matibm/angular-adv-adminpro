@@ -9985,28 +9985,28 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function ModalFacturaComponent_div_20_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 17);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n                    ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 18);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n\n                        ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "div", 19);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5, "\n                            ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](6, "h1", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 18);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n          ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "div", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5, "\n              ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](6, "h1", 21);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](7, "Cancelado");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](8, "\n                        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](8, "\n            ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](9, "\n                    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](9, "\n          ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](10, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](10, "\n        ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } }
 function ModalFacturaComponent_div_22_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 21);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n                    ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](2, "app-factura-pdf", 22);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n                    ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](4, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 22);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n          ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](2, "app-factura-pdf", 23);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n          ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](4, "\n        ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
@@ -10020,45 +10020,104 @@ function ModalFacturaComponent_span_29_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } }
 function ModalFacturaComponent_div_31_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 17);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n                            ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 18);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n\n                                ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "div", 19);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5, "\n                                    ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](6, "mat-spinner", 23);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](7, "\n                                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 18);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n              ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "div", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5, "\n                  ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](6, "mat-spinner", 24);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](7, "\n                ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](8, "\n                            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](8, "\n              ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](9, "\n                        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](9, "\n            ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } if (rf & 2) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](6);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("color", "accent")("diameter", 20);
 } }
-function ModalFacturaComponent_span_36_Template(rf, ctx) { if (rf & 1) {
+function ModalFacturaComponent_button_34_span_2_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "Nota de Credito");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} }
+function ModalFacturaComponent_button_34_div_4_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 18);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n              ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "div", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5, "\n                  ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](6, "mat-spinner", 24);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](7, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](8, "\n              ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](9, "\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("color", "accent")("diameter", 20);
+} }
+function ModalFacturaComponent_button_34_Template(rf, ctx) { if (rf & 1) {
+    const _r9 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "button", 25);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ModalFacturaComponent_button_34_Template_button_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r9); const ctx_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r8.notaCredito(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](2, ModalFacturaComponent_button_34_span_2_Template, 2, 0, "span", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](4, ModalFacturaComponent_button_34_div_4_Template, 10, 2, "div", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5, "\n          ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("disabled", ctx_r4.loadingNotaCredito || (ctx_r4.facturaPDF == null ? null : ctx_r4.facturaPDF.activo) === false);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !ctx_r4.loadingNotaCredito);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx_r4.loadingNotaCredito);
+} }
+function ModalFacturaComponent_button_36_span_2_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "span");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "Factura Electr\u00F3nica");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } }
-function ModalFacturaComponent_div_38_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 17);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n                          ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 18);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n                              ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "div", 19);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5, "\n                                  ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](6, "mat-spinner", 23);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](7, "\n                              ");
+function ModalFacturaComponent_button_36_div_4_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 18);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n              ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "div", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5, "\n                  ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](6, "mat-spinner", 24);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](7, "\n                ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](8, "\n                          ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](8, "\n              ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](9, "\n                      ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](9, "\n            ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } if (rf & 2) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](6);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("color", "accent")("diameter", 20);
+} }
+function ModalFacturaComponent_button_36_Template(rf, ctx) { if (rf & 1) {
+    const _r13 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "button", 26);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ModalFacturaComponent_button_36_Template_button_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r13); const ctx_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r12.facturaElectronica(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](2, ModalFacturaComponent_button_36_span_2_Template, 2, 0, "span", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](4, ModalFacturaComponent_button_36_div_4_Template, 10, 2, "div", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5, "\n          ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("disabled", ctx_r5.loadingFE || (ctx_r5.facturaPDF == null ? null : ctx_r5.facturaPDF.activo) === false);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !ctx_r5.loadingFE);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx_r5.loadingFE);
 } }
 class ModalFacturaComponent {
     constructor(_facturaService) {
@@ -10067,6 +10126,8 @@ class ModalFacturaComponent {
         this.loadingCancelarPago = false;
         this.loadingFE = false;
         this.style = {};
+        this.facturaStatus = '';
+        this.loadingNotaCredito = false;
     }
     ngOnInit() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
@@ -10076,6 +10137,8 @@ class ModalFacturaComponent {
             console.log(this.facturaPDF);
             this.facturaPDF = Object.assign({}, yield this.facturaPDF);
             console.log(this.style);
+            this.facturaStatus = yield this.estadoFactura(this.facturaPDF._id);
+            console.log();
         });
     }
     print(event) {
@@ -10113,85 +10176,97 @@ class ModalFacturaComponent {
             this.loadingFE = false;
         });
     }
+    notaCredito() {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            this.loadingNotaCredito = true;
+            yield this._facturaService.descargarNotaCreditoPDF(this.facturaPDF._id);
+            this.onClose.emit();
+            if (this.facturaStatus == 'factura') {
+                this.cancelarPago();
+            }
+            this.loadingNotaCredito = false;
+        });
+    }
+    estadoFactura(pago_id) {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            const resp = yield this._facturaService.estadoFactura(pago_id);
+            return resp;
+        });
+    }
 }
 ModalFacturaComponent.ɵfac = function ModalFacturaComponent_Factory(t) { return new (t || ModalFacturaComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](src_app_services_factura_service__WEBPACK_IMPORTED_MODULE_2__["FacturaService"])); };
-ModalFacturaComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: ModalFacturaComponent, selectors: [["app-modal-factura"]], inputs: { facturaPDF: "facturaPDF", existe: "existe" }, outputs: { onClose: "onClose" }, decls: 55, vars: 8, consts: [[1, "fondo-negro", "animated", "fadeIn", 3, "click"], ["id", "afuera", "role", "dialog", 1, "modal", 2, "display", "block"], ["role", "document", 1, "modal-dialog", "modal-dialog-scrollable", "modal-xl"], [1, "modal-content"], [1, "modal-header"], [1, "modal-title"], ["type", "button", "aria-label", "Close", 1, "pointer", "close", 3, "click"], ["aria-hidden", "true"], ["style", "width: 100%;", 4, "ngIf"], ["class", " modal-body ", "align", "center", 3, "ngStyle", 4, "ngIf"], [1, "modal-footer"], [1, "btn", "btn-rounded", "mr-auto", "btn-inverse", 2, "width", "143.84px", 3, "disabled", "click"], [4, "ngIf"], [1, "btn", "btn-rounded", "ml-auto", "btn-inverse", 2, "width", "173.84px", 3, "disabled", "click"], [1, "btn", "btn-rounded", "btn-outline-secondary", 3, "click"], [1, "btn", "btn-rounded", "btn-inverse", 3, "click"], [1, "btn", "btn-rounded", "btn-success", 3, "click"], [2, "width", "100%"], [2, "display", "flex"], [1, "mx-auto"], [1, "text-danger"], ["align", "center", 1, "modal-body", 3, "ngStyle"], [3, "printAltoke", "existe", "facturaPDF"], [3, "color", "diameter"]], template: function ModalFacturaComponent_Template(rf, ctx) { if (rf & 1) {
+ModalFacturaComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: ModalFacturaComponent, selectors: [["app-modal-factura"]], inputs: { facturaPDF: "facturaPDF", existe: "existe" }, outputs: { onClose: "onClose" }, decls: 52, vars: 7, consts: [[1, "fondo-negro", "animated", "fadeIn", 3, "click"], ["id", "afuera", "role", "dialog", 1, "modal", 2, "display", "block"], ["role", "document", 1, "modal-dialog", "modal-dialog-scrollable", "modal-xl"], [1, "modal-content"], [1, "modal-header"], [1, "modal-title"], ["type", "button", "aria-label", "Close", 1, "pointer", "close", 3, "click"], ["aria-hidden", "true"], ["style", "width: 100%", 4, "ngIf"], ["class", "modal-body", "align", "center", 3, "ngStyle", 4, "ngIf"], [1, "modal-footer"], [1, "btn", "btn-rounded", "mr-auto", "btn-inverse", 2, "width", "143.84px", 3, "disabled", "click"], [4, "ngIf"], ["style", "width: 173.84px", "class", "btn btn-rounded ml-auto btn-danger", 3, "disabled", "click", 4, "ngIf"], ["style", "width: 173.84px", "class", "btn btn-rounded ml-auto btn-inverse", 3, "disabled", "click", 4, "ngIf"], [1, "btn", "btn-rounded", "btn-outline-secondary", 3, "click"], [1, "btn", "btn-rounded", "btn-inverse", 3, "click"], [1, "btn", "btn-rounded", "btn-success", 3, "click"], [2, "width", "100%"], [2, "display", "flex"], [1, "mx-auto"], [1, "text-danger"], ["align", "center", 1, "modal-body", 3, "ngStyle"], [3, "printAltoke", "existe", "facturaPDF"], [3, "color", "diameter"], [1, "btn", "btn-rounded", "ml-auto", "btn-danger", 2, "width", "173.84px", 3, "disabled", "click"], [1, "btn", "btn-rounded", "ml-auto", "btn-inverse", 2, "width", "173.84px", 3, "disabled", "click"]], template: function ModalFacturaComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ModalFacturaComponent_Template_div_click_0_listener($event) { return ctx.print($event); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n\n    ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n  ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n        ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n    ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "div", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5, "\n            ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5, "\n      ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](6, "div", 3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](7, "\n                ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](7, "\n        ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](8, "div", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](9, "\n                    ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](9, "\n          ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](10, "h5", 5);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](11, "Factura");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](12, "\n                    ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](12, "\n          ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](13, "button", 6);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ModalFacturaComponent_Template_button_click_13_listener() { return ctx.onClose.emit(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](14, "\n                        ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](14, "\n            ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](15, "span", 7);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](16, "\u00D7");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](17, "\n                    ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](17, "\n          ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](18, "\n                ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](18, "\n        ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](19, "\n                ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](19, "\n        ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](20, ModalFacturaComponent_div_20_Template, 11, 0, "div", 8);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](21, "\n\n                ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](21, "\n\n        ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](22, ModalFacturaComponent_div_22_Template, 5, 4, "div", 9);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](23, "\n                ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](24, "\n                ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](23, "\n        ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](24, "\n        ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](25, "div", 10);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](26, "\n                    ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](26, "\n          ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](27, "button", 11);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ModalFacturaComponent_Template_button_click_27_listener() { return ctx.cancelarPago(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](28, "\n                        ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](28, "\n            ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](29, ModalFacturaComponent_span_29_Template, 2, 0, "span", 12);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](30, "\n                        ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](30, "\n            ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](31, ModalFacturaComponent_div_31_Template, 10, 2, "div", 8);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](32, "\n\n                    ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](32, "\n          ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](33, "\n                    ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](34, "button", 13);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ModalFacturaComponent_Template_button_click_34_listener() { return ctx.facturaElectronica(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](35, "\n                      ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](36, ModalFacturaComponent_span_36_Template, 2, 0, "span", 12);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](37, "\n                      ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](38, ModalFacturaComponent_div_38_Template, 10, 2, "div", 8);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](39, "\n                  ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](33, "\n\n          ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](34, ModalFacturaComponent_button_34_Template, 6, 3, "button", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](35, "\n\n          ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](36, ModalFacturaComponent_button_36_Template, 6, 3, "button", 14);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](37, "\n          ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](38, "button", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ModalFacturaComponent_Template_button_click_38_listener() { return ctx.onClose.emit(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](39, "\n            Cerrar\n          ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](40, "\n                    ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](41, "button", 14);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ModalFacturaComponent_Template_button_click_41_listener() { return ctx.onClose.emit(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](42, "Cerrar");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](40, "\n          ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](41, "button", 16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ModalFacturaComponent_Template_button_click_41_listener() { return ctx.printTicket(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](42, "\n            Ticket\n          ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](43, "\n                    ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](44, "button", 15);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ModalFacturaComponent_Template_button_click_44_listener() { return ctx.printTicket(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](45, "Ticket");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](43, "\n          ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](44, "button", 17);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ModalFacturaComponent_Template_button_click_44_listener() { return ctx.printContrato(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](45, "\n            Imprimir\n          ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](46, "\n                    ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](47, "button", 16);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ModalFacturaComponent_Template_button_click_47_listener() { return ctx.printContrato(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](48, "Imprimir");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](46, "\n        ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](49, "\n\n                ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](47, "\n      ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](50, "\n            ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](48, "\n    ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](51, "\n        ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](49, "\n  ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](52, "\n    ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](50, "\n");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](53, "\n");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](54, "\n");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](51, "\n");
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](20);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", (ctx.facturaPDF == null ? null : ctx.facturaPDF.activo) === false);
@@ -10204,11 +10279,9 @@ ModalFacturaComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵde
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.loadingCancelarPago);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("disabled", ctx.loadingFE || (ctx.facturaPDF == null ? null : ctx.facturaPDF.activo) === false);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.facturaStatus == "factura" || ctx.facturaStatus == "nota");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !ctx.loadingFE);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.loadingFE);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.facturaStatus == "factura" || ctx.facturaStatus == "sin_factura");
     } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_3__["NgIf"], _angular_common__WEBPACK_IMPORTED_MODULE_3__["NgStyle"], _factura_pdf_factura_pdf_component__WEBPACK_IMPORTED_MODULE_4__["FacturaPdfComponent"], _angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_5__["MatSpinner"]], styles: [".fondo-negro[_ngcontent-%COMP%] {\r\n    background-color: rgba(0, 16, 37, 0.459);\r\n    position: fixed;\r\n    top: 0px;\r\n    left: 0px;\r\n    width: 100%;\r\n    height: 100%;\r\n    z-index: 9999;\r\n}\r\n\r\n@media (min-width: 768px) {\r\n    .modal-xl[_ngcontent-%COMP%] {\r\n        width: 90%;\r\n        max-width: 1200px;\r\n    }\r\n}\r\n\r\n.scroll[_ngcontent-%COMP%] {\r\n    overflow: auto;\r\n    height: 700px;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1vZGFsLWZhY3R1cmEuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLHdDQUF3QztJQUN4QyxlQUFlO0lBQ2YsUUFBUTtJQUNSLFNBQVM7SUFDVCxXQUFXO0lBQ1gsWUFBWTtJQUNaLGFBQWE7QUFDakI7O0FBRUE7SUFDSTtRQUNJLFVBQVU7UUFDVixpQkFBaUI7SUFDckI7QUFDSjs7QUFFQTtJQUNJLGNBQWM7SUFDZCxhQUFhO0FBQ2pCIiwiZmlsZSI6Im1vZGFsLWZhY3R1cmEuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5mb25kby1uZWdybyB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDAsIDE2LCAzNywgMC40NTkpO1xyXG4gICAgcG9zaXRpb246IGZpeGVkO1xyXG4gICAgdG9wOiAwcHg7XHJcbiAgICBsZWZ0OiAwcHg7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIGhlaWdodDogMTAwJTtcclxuICAgIHotaW5kZXg6IDk5OTk7XHJcbn1cclxuXHJcbkBtZWRpYSAobWluLXdpZHRoOiA3NjhweCkge1xyXG4gICAgLm1vZGFsLXhsIHtcclxuICAgICAgICB3aWR0aDogOTAlO1xyXG4gICAgICAgIG1heC13aWR0aDogMTIwMHB4O1xyXG4gICAgfVxyXG59XHJcblxyXG4uc2Nyb2xsIHtcclxuICAgIG92ZXJmbG93OiBhdXRvO1xyXG4gICAgaGVpZ2h0OiA3MDBweDtcclxufSJdfQ== */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](ModalFacturaComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"],
@@ -35383,6 +35456,39 @@ class FacturaService {
             }
         });
     }
+    estadoFactura(pago_id) {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            let url = _config_global__WEBPACK_IMPORTED_MODULE_1__["URL_SERVICIOS"] + '/factura/estado_factura/' + pago_id;
+            url += `?token=${this._usuarioService.token}`;
+            return this.http.get(url).toPromise();
+        });
+    }
+    descargarNotaCreditoPDF(facturaId) {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            try {
+                const url = `${_config_global__WEBPACK_IMPORTED_MODULE_1__["URL_SERVICIOS"]}/factura/nota_credito/${facturaId}`;
+                const params = new URLSearchParams();
+                params.set('token', this._usuarioService.token);
+                const queryString = params.toString();
+                const urlCompleta = `${url}?${queryString}`;
+                const response = yield fetch(urlCompleta, { method: 'GET' });
+                const blob = yield response.blob();
+                const urlBlob = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = urlBlob;
+                a.download = `factura_${facturaId}.pdf`; // Nombre del archivo
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(urlBlob);
+                return { ok: true };
+            }
+            catch (error) {
+                console.error('Error al descargar el archivo:', error);
+                throw error.message;
+            }
+        });
+    }
     cancelarPago(pago_id) {
         let url = _config_global__WEBPACK_IMPORTED_MODULE_1__["URL_SERVICIOS"] + '/factura/cancelar_pago';
         url += `?token=${this._usuarioService.token}`;
@@ -44761,4 +44867,4 @@ webpackEmptyAsyncContext.id = "zn8P";
 /***/ })
 
 },[[0,"runtime","vendor"]]]);
-//# sourceMappingURL=main.d0b86bdd0c20b3a89803.js.map
+//# sourceMappingURL=main.2791d76b162127bcada7.js.map

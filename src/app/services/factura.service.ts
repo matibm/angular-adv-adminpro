@@ -573,6 +573,39 @@ export class FacturaService {
     }
   }
 
+  async estadoFactura(pago_id: string) {
+    let url = URL_SERVICIOS + '/factura/estado_factura/'+pago_id;
+    url += `?token=${this._usuarioService.token}`;
+    return this.http.get(url).toPromise();
+  }
+  async descargarNotaCreditoPDF(facturaId: string) {
+    try {
+      const url = `${URL_SERVICIOS}/factura/nota_credito/${facturaId}`;
+      const params = new URLSearchParams();
+      params.set('token', this._usuarioService.token);
+      const queryString = params.toString();
+      const urlCompleta = `${url}?${queryString}`;
+
+      const response = await fetch(urlCompleta, { method: 'GET' });
+      const blob = await response.blob();
+      const urlBlob = window.URL.createObjectURL(blob);
+
+      const a = document.createElement('a');
+      a.href = urlBlob;
+      a.download = `factura_${facturaId}.pdf`; // Nombre del archivo
+
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(urlBlob);
+
+      return { ok: true };
+    } catch (error) {
+      console.error('Error al descargar el archivo:', error);
+      throw error.message;
+    }
+  }
+
   cancelarPago(pago_id) {
     let url = URL_SERVICIOS + '/factura/cancelar_pago';
     url += `?token=${this._usuarioService.token}`;
