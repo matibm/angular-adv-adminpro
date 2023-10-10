@@ -49,9 +49,7 @@ import { MatInputModule } from '@angular/material/input';
 import { CobranzaComponent } from './cobranza/cobranza.component';
 import { ModalFacturaComponent } from './modal-factura/modal-factura.component';
 import { ExtractoPdfComponent } from './extracto-pdf/extracto-pdf.component';
-// import { NestableModule } from '@ketshopweb/ngx-nestable';
-import { NestableModule } from 'ngx-nestable';
-import {MatTreeModule} from '@angular/material/tree';
+ import {MatTreeModule} from '@angular/material/tree';
 import { ModalCuentasGastosComponent } from './modal-cuentas-gastos/modal-cuentas-gastos.component';
 import { ModalBilletesComponent } from './modal-billetes/modal-billetes.component';
 import { GastoComponent } from './gasto/gasto.component';
@@ -137,8 +135,7 @@ const maskConfig: Partial<IConfig> = {
        behaviour: { autoHide: 2000},
        position: { horizontal: {position: 'right'}}
     }),
-    NestableModule,
-    MatTreeModule
+     MatTreeModule
    ],
   exports: [
     IncrementadorComponent,

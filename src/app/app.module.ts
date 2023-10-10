@@ -1,5 +1,4 @@
-// import { NestableModule } from 'ngx-nestable';
-import { PipeModule } from './pipes/pipe.module';
+ import { PipeModule } from './pipes/pipe.module';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { URL_SERVICIOS } from './config/global';
 
@@ -74,13 +73,12 @@ import { environment } from '../environments/environment';
     BrowserAnimationsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
-     
+
       registrationStrategy: 'registerWhenStable:30000'
     }),
-    // NgxBackForwardCacheModule.forRoot(), 
+    // NgxBackForwardCacheModule.forRoot(),
 
-    // NestableModule
-    // NgbModule
+     // NgbModule
   ],
   providers: [CurrencyPipe, { provide: LOCALE_ID, useValue: 'es-PY' }],
   bootstrap: [AppComponent],
