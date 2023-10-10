@@ -13,7 +13,7 @@ export class AppComponent {
   title = 'adminpro';
   constructor(router: Router){
     router.events
-    .pipe( 
+    .pipe(
       filter(
         ( event: NavigationEvent ) => {
 
@@ -25,18 +25,6 @@ export class AppComponent {
     .subscribe(
       ( event: NavigationStart ) => {
 
-        console.group( "NavigationStart Event" );
-        // Every navigation sequence is given a unique ID. Even "popstate"
-        // navigations are really just "roll forward" navigations that get
-        // a new, unique ID.
-        console.log( "navigation id:", event.id );
-        console.log( "route:", event.url );
-        // The "navigationTrigger" will be one of:
-        // --
-        // - imperative (ie, user clicked a link).
-        // - popstate (ie, browser controlled change such as Back button).
-        // - hashchange
-        // --
         // NOTE: I am not sure what triggers the "hashchange" type.
         console.log( "trigger:", event.navigationTrigger );
 
