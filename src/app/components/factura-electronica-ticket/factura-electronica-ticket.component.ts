@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Contrato } from 'src/app/models/contrato';
 import { FacturaService } from 'src/app/services/factura.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
-import * as QRCode from 'qr-image';
 
 @Component({
   selector: 'app-factura-electronica-ticket',
@@ -34,9 +33,15 @@ export class FacturaElectronicaTicketComponent implements OnInit {
   qrData: string;
   qrCodeImage: string;
   // timbrado;
-
-
+  cdc = ''
   async ngOnInit() {
+    const id = this.route.snapshot.params.id;
+    const resp: any = await this._facturaService.getTicketKUDE(id);
+    console.log(resp);
+    this.qrData = resp.pdfExists.qr_link
+    this.factura = resp.pdfExists.invoice
+    this.cdc = resp.pdfExists.cdc.match(/.{1,4}/g).join(' ');
+
 
   }
   pago;

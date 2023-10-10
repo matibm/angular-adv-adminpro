@@ -65,6 +65,7 @@ import { PdfFacturaMobileComponent } from './pdf-factura-mobile/pdf-factura-mobi
 import { MapaPublicoComponent } from './mapa-publico/mapa-publico.component';
 import { EditGastoComponent } from './edit-gasto/edit-gasto.component';
 import { FacturaElectronicaTicketComponent } from './factura-electronica-ticket/factura-electronica-ticket.component';
+import { QrCodeModule } from 'ng-qrcode';
 
 
 const maskConfig: Partial<IConfig> = {
@@ -122,6 +123,8 @@ const maskConfig: Partial<IConfig> = {
     ChartsModule, SweetAlert2Module.forRoot(),
     NgxPrintModule,
     NgSelectModule,
+    QrCodeModule,
+
     RouterModule,
     NgxPaginationModule,
     NgxLoadingModule.forRoot({}),

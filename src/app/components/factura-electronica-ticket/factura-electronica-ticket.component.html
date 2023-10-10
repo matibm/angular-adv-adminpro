@@ -69,8 +69,7 @@
             <hr class="m-1" />
             <span style="font-size: 14px">
               <b>
-                Cant: {{ item.cantidad }} Codigo:
-                {{ item.codigo }} <br />
+                Cant: {{ item.cantidad }} Codigo: {{ item.codigo }} <br />
                 {{ item.descripcion }} <br />
                 Precio Unit:
                 {{ item.precioUnitario | currency: "" : "" : "2.0" }} <br />
@@ -109,9 +108,39 @@
           >
             <div *ngIf="pago?.comentario">Nota: {{ pago.comentario }}</div>
           </span>
+          <hr />
+          <div style="display: flex !important">
+            <div *ngIf="qrData" class="mx-auto">
+              <qr-code
+                [value]="qrData"
+                size="300"
+                errorCorrectionLevel="M"
+              ></qr-code>
+            </div>
+          </div>
+          <div
+            style="
+              display: flex;
+              align-content: center;
+              justify-content: center;
+              flex-direction: column;
+              text-align: center;
+            "
+          >
+            Consulte la validez de esta Factura Electrónica
+            <br />
+             con el número de CDC impreso abajo en:
+            <br />
+
+            <span style="font-weight: bold;">https://ekuatia.set.gov.py/consultas/</span>
+            <span class="mx-auto px-1" style="font-weight: bold; background-color: black; color: white;"> {{cdc}} </span>
+
+            <br />
+            ESTE DOCUMENTO ES UNA
+            REPRESENTACIÓN GRÁFICA DE UN
+            DOCUMENTO ELECTRÓNICO (XML)
+          </div>
         </div>
-        <hr>
-        <img [src]="qrCodeImage" alt="Código QR">
       </div>
     </div>
   </div>

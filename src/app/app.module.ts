@@ -33,7 +33,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 // import { BreadcrumbsComponent } from './shared/breadcrumbs/breadcrumbs.component';
 // import { SidebarComponent } from './shared/sidebar/sidebar.component';
 // import { HeaderComponent } from './shared/header/header.component';
-
+import { QrCodeModule } from 'ng-qrcode';
 
 import { NgxLoadingModule } from 'ngx-loading';
 import { NombreCortoPipe } from './pipes/nombre-corto.pipe';
@@ -61,6 +61,7 @@ import { environment } from '../environments/environment';
     AppRoutingModule,
     PagesModule,
     HttpClientModule,
+    QrCodeModule,
     AutocompleteLibModule,
     AuthModule,
     CommonModule,
@@ -74,10 +75,10 @@ import { environment } from '../environments/environment';
     BrowserAnimationsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
-     
+
       registrationStrategy: 'registerWhenStable:30000'
     }),
-    // NgxBackForwardCacheModule.forRoot(), 
+    // NgxBackForwardCacheModule.forRoot(),
 
     // NestableModule
     // NgbModule
