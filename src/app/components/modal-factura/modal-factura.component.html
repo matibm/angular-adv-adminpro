@@ -83,6 +83,22 @@
             </div>
           </button>
           <button
+            *ngIf="facturaStatus == 'factura' || facturaStatus == 'sin_factura'"
+            style="width: 173.84px"
+            [disabled]="loadingFE || facturaPDF?.activo === false"
+            (click)="KUDETicket()"
+            class="btn btn-rounded ml-auto btn-inverse"
+          >
+            <span *ngIf="!loadingFE">KUDE Ticket</span>
+            <div *ngIf="loadingFE" style="width: 100%">
+              <div style="display: flex">
+                <div class="mx-auto">
+                  <mat-spinner [color]="'accent'" [diameter]="20"></mat-spinner>
+                </div>
+              </div>
+            </div>
+          </button>
+          <button
             (click)="onClose.emit()"
             class="btn btn-rounded btn-outline-secondary"
           >

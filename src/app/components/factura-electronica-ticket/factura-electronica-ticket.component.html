@@ -1,0 +1,125 @@
+<div
+  *ngIf="factura"
+  class=""
+  style="
+    height: fit-content;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden;
+  "
+>
+  <div class="mx-auto bg-white">
+    <div style="width: 100%">
+      <div style="display: flex; color: black">
+        <div class="mx-auto">
+          <div
+            align="center"
+            style="display: block; justify-content: center"
+            class=""
+          >
+            <img
+              width="190px"
+              src="../../../assets/images/imperialnegro.png"
+              alt=""
+            />
+            <!-- <h1>IMPERIAL</h1> -->
+            <br />
+            <h4 style="color: black" class="mx-0 mt-1">
+              Cementerio Privado - Servicios Funerarios
+            </h4>
+            <span>de <b>EDUARDO CLEBSCH S.A.</b></span>
+            <hr class="m-1" />
+            <!-- <span style="font-size: 14px;" for="">
+
+                            <b>Suc.:</b> Cerro Cora Nº 333 - Encarnación
+                            <br><b>Central:</b> Santo Domingo a 200 Mts de la Ruta 1 - (071) 202803
+                            <br>
+                            Itapúa - Paraguay
+                        </span> -->
+            <!-- <hr> -->
+          </div>
+          <span style="font-size: 12px">
+            <b>
+              Factura Electrónica KUDE
+              <!-- <br> Fecha: {{factura.invoice.params.timbradoNumero.fecha_solicitud | date}} -->
+              <br />
+              TMBRADO Nº {{ factura.params.timbradoNumero }} <br />
+              Fecha Vigencia: {{ factura.params.timbradoFecha | date }} <br />
+              RUC: {{ factura.params.ruc }}
+            </b>
+            <br />
+            <b>
+              FACTURA Nº: {{ factura.data.establecimiento }}-{{
+                factura.data.punto
+              }}-{{ factura.data.numero }}
+            </b>
+          </span>
+          <hr class="m-1" />
+          <span style="font-size: 14px">
+            <b>
+              Cond de Venta: CONTADO
+              <br />
+              Emisión: {{ factura.data.fecha | date: "dd/MM/YYYY - hh:mm" }}
+              <br />
+              RUC: {{ factura.data.cliente.ruc | ruc }} <br />
+              CLIENTE: {{ factura.data.cliente.nombreFantasia }}
+            </b>
+          </span>
+          <div *ngFor="let item of factura.data.items">
+            <hr class="m-1" />
+            <span style="font-size: 14px">
+              <b>
+                Cant: {{ item.cantidad }} Codigo:
+                {{ item.codigo }} <br />
+                {{ item.descripcion }} <br />
+                Precio Unit:
+                {{ item.precioUnitario | currency: "" : "" : "2.0" }} <br />
+                10%: {{ item.precioUnitario | currency: "" : "" : "2.0" }}
+              </b>
+            </span>
+          </div>
+          <hr class="m-1" />
+          <span style="font-size: 14px">
+            <b>
+              Liquidacion del IVA:
+              <br />
+              (5%): 0 <br />
+              (10%): {{ getTotalIVA | currency: "" : "" : "2.0" }} <br />
+              (Exenta): 0 <br />
+              Forma de Pago: Efectivo
+
+              <br />
+              Total IVA: {{ getTotalIVA | currency: "" : "" : "2.0" }} Gs
+            </b>
+          </span>
+          <hr class="m-1" />
+          <span style="font-size: 16px">
+            <b>
+              TOTAL A PAGAR en Gs: {{ getTotal | currency: "" : "" : "2.0" }}
+            </b>
+          </span>
+
+          <span
+            style="
+              font-size: 11px;
+              display: block;
+              width: 170px;
+              word-wrap: break-word;
+            "
+          >
+            <div *ngIf="pago?.comentario">Nota: {{ pago.comentario }}</div>
+          </span>
+        </div>
+        <hr>
+        <img [src]="qrCodeImage" alt="Código QR">
+      </div>
+    </div>
+  </div>
+  <!-- <div style="margin-left: 50px; text-align:left ;">
+    Autorizado como Autoimpresor por la SET
+    <br>
+    Solicitud Nº {{timbrado.nro_solicitud}}
+    <br>
+    Fecha: {{timbrado.fecha_solicitud | date}}
+</div> -->
+</div>

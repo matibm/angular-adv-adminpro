@@ -573,6 +573,20 @@ export class FacturaService {
     }
   }
 
+  async getTicketKUDE(facturaId: string) {
+    try {
+      const url = `${URL_SERVICIOS}/factura/factura_electronica/${facturaId}`;
+      const params = new URLSearchParams();
+      params.set('token', this._usuarioService.token);
+      params.set('is_ticket', 'yes');
+      const queryString = params.toString();
+      const urlCompleta = `${url}?${queryString}`;
+      return this.http.get(urlCompleta).toPromise();
+    } catch (error) {
+      console.error('Error al descargar el archivo:', error);
+      throw error.message;
+    }
+  }
   async estadoFactura(pago_id: string) {
     let url = URL_SERVICIOS + '/factura/estado_factura/'+pago_id;
     url += `?token=${this._usuarioService.token}`;

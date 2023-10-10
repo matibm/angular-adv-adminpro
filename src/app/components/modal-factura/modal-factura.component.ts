@@ -62,11 +62,23 @@ export class ModalFacturaComponent implements OnInit {
   async facturaElectronica(){
     this.loadingFE = true
     console.log(this.facturaPDF);
-
     await this._facturaService.descargarArchivoPDF(this.facturaPDF._id)
     this.onClose.emit()
     this.loadingFE = false
   }
+
+  async KUDETicket(){
+    this.loadingFE = true
+    console.log(this.facturaPDF);
+
+    const resp = await this._facturaService.getTicketKUDE(this.facturaPDF._id)
+    console.log(resp);
+    window.open(`/factura-ticket-kude/${this.facturaPDF._id}`);
+    // this.onClose.emit()
+    this.loadingFE = false
+  }
+
+
 
   loadingNotaCredito = false
   async notaCredito(){
