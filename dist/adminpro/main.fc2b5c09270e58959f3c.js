@@ -19852,18 +19852,18 @@ function FacturasComponent_tbody_59_tr_3_td_46_Template(rf, ctx) { if (rf & 1) {
 } if (rf & 2) {
     const factura_r21 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit;
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" \n                            ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](2, 1, factura_r21.recibido), "\n                        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("\n                            ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](2, 1, factura_r21.recibido), "\n                        ");
 } }
 function FacturasComponent_tbody_59_tr_3_Template(rf, ctx) { if (rf & 1) {
     const _r54 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "tr", 27);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function FacturasComponent_tbody_59_tr_3_Template_tr_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r54); const factura_r21 = ctx.$implicit; const ctx_r53 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); return ctx_r53.selectItem(factura_r21._id); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function FacturasComponent_tbody_59_tr_3_Template_tr_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r54); const factura_r21 = ctx.$implicit; const ctx_r53 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); return ctx_r53.selectItem(factura_r21._id, factura_r21); });
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n                        ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](2, "\n                        ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](3, "td", 28);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](4);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5, "\n                         \n                        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5, "\n\n                        ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](6, FacturasComponent_tbody_59_tr_3_td_6_Template, 2, 2, "td", 5);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](7, "\n                        ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](8, FacturasComponent_tbody_59_tr_3_td_8_Template, 2, 0, "td", 5);
@@ -20149,15 +20149,18 @@ class FacturasComponent {
         this.selectable = false;
         this.showTotal = false;
         this.total = false;
+        this.is_cobranza = false;
+        this.onSelectedItem = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         this.listItemsEvent = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         this.AllSelectedEvent = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         this.listItems = [];
         this.selectAll = false;
         this.sort = {
-            key: 'vencimiento', value: 1
+            key: 'vencimiento',
+            value: 1,
         };
         this.loadingDescargarExtracto = false;
-        this.fill = (number, len) => "0".repeat(len - number.toString().length) + number.toString();
+        this.fill = (number, len) => '0'.repeat(len - number.toString().length) + number.toString();
     }
     ngOnInit() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
@@ -20202,8 +20205,11 @@ class FacturasComponent {
             }, 3);
         });
     }
-    selectItem(id) {
-        if (this.selectable) {
+    selectItem(id, item) {
+        if (this.is_cobranza) {
+            this.onSelectedItem.emit(item);
+        }
+        else if (this.selectable) {
             const item = document.getElementById(`id-${id}`);
             if (item.classList.contains('table-info')) {
                 item.classList.remove('table-info');
@@ -20291,7 +20297,7 @@ class FacturasComponent {
     }
 }
 FacturasComponent.ɵfac = function FacturasComponent_Factory(t) { return new (t || FacturasComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_factura_service__WEBPACK_IMPORTED_MODULE_2__["FacturaService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"])); };
-FacturasComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: FacturasComponent, selectors: [["app-facturas"]], inputs: { fromOutside: "fromOutside", facturas: "facturas", count: "count", pagado: "pagado", fondo: "fondo", start: "start", end: "end", cerrado: "cerrado", showlabel: "showlabel", selectable: "selectable", options: "options", showTotal: "showTotal", total: "total", sort: "sort" }, outputs: { listItemsEvent: "listItemsEvent", AllSelectedEvent: "AllSelectedEvent" }, decls: 81, vars: 17, consts: [[1, "card", "ribbon-wrapper"], [1, "card-body", 2, "min-height", "517.52px"], ["class", "ribbon ribbon-success", 4, "ngIf"], [1, "", 2, "overflow-x", "auto"], [1, "table", "table-sm", "table-hover"], ["class", "text-center", 4, "ngIf"], [1, "text-center", 2, "min-width", "150px"], [1, "text-center", "pointer", 2, "min-width", "130px", 3, "click"], ["class", "ml-1 fa ", 3, "ngClass", 4, "ngIf"], [1, "text-center", "pointer", 2, "min-width", "150px", 3, "click"], ["class", "text-center", "style", "min-width: 200px;", 4, "ngIf"], [1, "pointer", "text-center", 2, "min-width", "150px", 3, "click"], [1, "text-center", 2, "min-width", "400px"], [4, "ngIf"], ["style", "width: 100%;", 4, "ngIf"], [2, "width", "100%"], [2, "display", "flex"], [1, "mx-auto"], [3, "pageChange", 4, "ngIf"], ["class", "mt-2", 4, "ngIf"], [1, "ribbon", "ribbon-success"], [1, "text-center"], ["type", "checkbox", "name", "check_all", "id", "allitems", "checked", "", 1, "filled-in", "chk-col-light-blue", 3, "ngModel", "ngModelChange", "click"], ["for", "allitems", 2, "margin-bottom", "0", "padding", "0"], [1, "ml-1", "fa", 3, "ngClass"], [1, "text-center", 2, "min-width", "200px"], ["class", "item-table pointer", 3, "id", "click", 4, "ngFor", "ngForOf"], [1, "item-table", "pointer", 3, "id", "click"], ["scope", "row", 1, "text-center"], ["class", "text-center text-danger", 4, "ngIf"], ["class", "", 4, "ngIf"], [1, ""], [1, "text-center", "text-danger"], [1, "my-5", "mx-auto"], [3, "pageChange"], [1, "mt-2"], [1, "table", "table-responsive"], [1, "table-inverse"], [1, "badge", "badge-pill", "bg-info"], [1, "badge", "badge-pill", "bg-danger"], [1, "badge", "badge-pill", "bg-secondary"], [1, "text-center", "px-4"], [1, "ml-auto"], ["type", "button", 1, "btn", "btn-inverse", 3, "click"], [1, "btn", "mr-auto", "btn-info", 2, "width", "206.52px", 3, "disabled", "click"], [3, "color", "diameter"]], template: function FacturasComponent_Template(rf, ctx) { if (rf & 1) {
+FacturasComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: FacturasComponent, selectors: [["app-facturas"]], inputs: { fromOutside: "fromOutside", facturas: "facturas", count: "count", pagado: "pagado", fondo: "fondo", start: "start", end: "end", cerrado: "cerrado", showlabel: "showlabel", selectable: "selectable", options: "options", showTotal: "showTotal", total: "total", is_cobranza: "is_cobranza", sort: "sort" }, outputs: { onSelectedItem: "onSelectedItem", listItemsEvent: "listItemsEvent", AllSelectedEvent: "AllSelectedEvent" }, decls: 82, vars: 17, consts: [[1, "card", "ribbon-wrapper"], [1, "card-body", 2, "min-height", "517.52px"], ["class", "ribbon ribbon-success", 4, "ngIf"], [1, "", 2, "overflow-x", "auto"], [1, "table", "table-sm", "table-hover"], ["class", "text-center", 4, "ngIf"], [1, "text-center", 2, "min-width", "150px"], [1, "text-center", "pointer", 2, "min-width", "130px", 3, "click"], ["class", "ml-1 fa ", 3, "ngClass", 4, "ngIf"], [1, "text-center", "pointer", 2, "min-width", "150px", 3, "click"], ["class", "text-center", "style", "min-width: 200px;", 4, "ngIf"], [1, "pointer", "text-center", 2, "min-width", "150px", 3, "click"], [1, "text-center", 2, "min-width", "400px"], [4, "ngIf"], ["style", "width: 100%;", 4, "ngIf"], [2, "width", "100%"], [2, "display", "flex"], [1, "mx-auto"], [3, "pageChange", 4, "ngIf"], ["class", "mt-2", 4, "ngIf"], [1, "ribbon", "ribbon-success"], [1, "text-center"], ["type", "checkbox", "name", "check_all", "id", "allitems", "checked", "", 1, "filled-in", "chk-col-light-blue", 3, "ngModel", "ngModelChange", "click"], ["for", "allitems", 2, "margin-bottom", "0", "padding", "0"], [1, "ml-1", "fa", 3, "ngClass"], [1, "text-center", 2, "min-width", "200px"], ["class", "item-table pointer", 3, "id", "click", 4, "ngFor", "ngForOf"], [1, "item-table", "pointer", 3, "id", "click"], ["scope", "row", 1, "text-center"], ["class", "text-center text-danger", 4, "ngIf"], ["class", "", 4, "ngIf"], [1, ""], [1, "text-center", "text-danger"], [1, "my-5", "mx-auto"], [3, "pageChange"], [1, "mt-2"], [1, "table", "table-responsive"], [1, "table-inverse"], [1, "badge", "badge-pill", "bg-info"], [1, "badge", "badge-pill", "bg-danger"], [1, "badge", "badge-pill", "bg-secondary"], [1, "text-center", "px-4"], [1, "ml-auto"], ["type", "button", 1, "btn", "btn-inverse", 3, "click"], [1, "btn", "mr-auto", "btn-info", 2, "width", "206.52px", 3, "disabled", "click"], [3, "color", "diameter"]], template: function FacturasComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n\n    ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 1);
@@ -20394,6 +20400,7 @@ FacturasComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefine
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](80, "\n");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](81, "\n");
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.showlabel && ctx.facturas);
@@ -20428,7 +20435,7 @@ FacturasComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefine
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.total);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", true);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !ctx.is_cobranza);
     } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_4__["NgIf"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["CheckboxControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["NgModel"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgClass"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgForOf"], _angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_6__["MatSpinner"], ngx_pagination__WEBPACK_IMPORTED_MODULE_7__["PaginationControlsComponent"]], pipes: [ngx_pagination__WEBPACK_IMPORTED_MODULE_7__["PaginatePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["CurrencyPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["DatePipe"], _pipes_primer_nombre_pipe__WEBPACK_IMPORTED_MODULE_8__["PrimerNombrePipe"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJmYWN0dXJhcy5jb21wb25lbnQuY3NzIn0= */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](FacturasComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"],
@@ -20463,6 +20470,10 @@ FacturasComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefine
             type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
         }], total: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
+        }], is_cobranza: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
+        }], onSelectedItem: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"]
         }], listItemsEvent: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"]
         }], AllSelectedEvent: [{
@@ -32662,10 +32673,6 @@ function CobranzaComponent_div_29_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](28, "\n                ");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-} if (rf & 2) {
-    const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](8);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("disabled", !ctx_r4.facturas);
 } }
 function CobranzaComponent_div_31_div_7_Template(rf, ctx) { if (rf & 1) {
     const _r38 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
@@ -32767,10 +32774,13 @@ function CobranzaComponent_div_31_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", ctx_r5.contrato);
 } }
 function CobranzaComponent_app_facturas_37_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](0, "app-facturas", 52);
+    const _r40 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "app-facturas", 52);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("onSelectedItem", function CobranzaComponent_app_facturas_37_Template_app_facturas_onSelectedItem_0_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r40); const ctx_r39 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](); return ctx_r39.onSelectedItem($event); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("count", ctx_r6.count)("options", ctx_r6.opciones)("facturas", ctx_r6.facturas);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("is_cobranza", true)("count", ctx_r6.count)("options", ctx_r6.opciones)("facturas", ctx_r6.facturas);
 } }
 function CobranzaComponent_div_39_div_38_tr_36_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "tr");
@@ -32800,17 +32810,17 @@ function CobranzaComponent_div_39_div_38_tr_36_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](19, "\n                                ");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const cuota_r44 = ctx.$implicit;
+    const cuota_r46 = ctx.$implicit;
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](cuota_r44.nro_factura);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](cuota_r46.nro_factura);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipeBind1"](7, 5, cuota_r44.nro_contrato));
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipeBind1"](7, 5, cuota_r46.nro_contrato));
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipeBind1"](11, 7, cuota_r44.vencimiento));
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipeBind1"](11, 7, cuota_r46.vencimiento));
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate1"]("", _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipeBind4"](15, 9, cuota_r44.haber, "", "", "2.0"), " Gs");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate1"]("", _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipeBind4"](15, 9, cuota_r46.haber, "", "", "2.0"), " Gs");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](cuota_r44.servicio.NOMBRE);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](cuota_r46.servicio.NOMBRE);
 } }
 function CobranzaComponent_div_39_div_38_div_43_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 67);
@@ -32818,7 +32828,7 @@ function CobranzaComponent_div_39_div_38_div_43_Template(rf, ctx) { if (rf & 1) 
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
 } }
 function CobranzaComponent_div_39_div_38_Template(rf, ctx) { if (rf & 1) {
-    const _r47 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
+    const _r49 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 40);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1, "\n\n            ");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](2, "div", 0);
@@ -32882,7 +32892,7 @@ function CobranzaComponent_div_39_div_38_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](47, "div", 43);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](48, "\n                    ");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](49, "button", 65);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function CobranzaComponent_div_39_div_38_Template_button_click_49_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r47); _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](); const _r40 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵreference"](23); const ctx_r46 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](); return ctx_r46.agregarIngreso(ctx_r46.contrato._id, _r40.value); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function CobranzaComponent_div_39_div_38_Template_button_click_49_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r49); _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](); const _r42 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵreference"](23); const ctx_r48 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](); return ctx_r48.agregarIngreso(ctx_r48.contrato._id, _r42.value); });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](50, "Continuar");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](51, "\n                ");
@@ -32892,14 +32902,14 @@ function CobranzaComponent_div_39_div_38_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](53, "\n        ");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const ctx_r41 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+    const ctx_r43 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](36);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngForOf", ctx_r41.facturasAPagar);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngForOf", ctx_r43.facturasAPagar);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](7);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", ctx_r41.facturasAPagarAux.length < 1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", ctx_r43.facturasAPagarAux.length < 1);
 } }
 function CobranzaComponent_div_39_Template(rf, ctx) { if (rf & 1) {
-    const _r49 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
+    const _r51 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 0);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1, "\n    ");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](2, "div", 15);
@@ -32916,7 +32926,7 @@ function CobranzaComponent_div_39_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](12, "\n        ");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](13, "form", 53, 54);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("ngSubmit", function CobranzaComponent_div_39_Template_form_ngSubmit_13_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r49); const _r40 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵreference"](23); const ctx_r48 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](); return ctx_r48.getFacturasApagar(ctx_r48.contrato._id, _r40.value); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("ngSubmit", function CobranzaComponent_div_39_Template_form_ngSubmit_13_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r51); const _r42 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵreference"](23); const ctx_r50 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](); return ctx_r50.getFacturasApagar(ctx_r50.contrato._id, _r42.value); });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](15, "\n            ");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](16, "div", 55);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](17, "\n                ");
@@ -32986,17 +32996,17 @@ function CobranzaComponent_div_41_tr_34_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](19, "\n\n                    ");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const cuota_r51 = ctx.$implicit;
+    const cuota_r53 = ctx.$implicit;
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](cuota_r51.nro_factura);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](cuota_r53.nro_factura);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipeBind1"](7, 5, cuota_r51.nro_contrato));
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipeBind1"](7, 5, cuota_r53.nro_contrato));
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipeBind1"](11, 7, cuota_r51.vencimiento));
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipeBind1"](11, 7, cuota_r53.vencimiento));
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate1"]("", _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipeBind4"](15, 9, cuota_r51.haber, "", "", "2.0"), " Gs");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate1"]("", _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipeBind4"](15, 9, cuota_r53.haber, "", "", "2.0"), " Gs");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](cuota_r51.servicio.NOMBRE);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](cuota_r53.servicio.NOMBRE);
 } }
 function CobranzaComponent_div_41_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 0);
@@ -33077,9 +33087,9 @@ function CobranzaComponent_div_41_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate1"]("Total: ", _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipeBind4"](47, 2, ctx_r8.sumaTotal, "", "", "2.0"), " Gs");
 } }
 function CobranzaComponent_div_56_Template(rf, ctx) { if (rf & 1) {
-    const _r54 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
+    const _r56 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 68);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function CobranzaComponent_div_56_Template_div_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r54); const ctx_r53 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](); return ctx_r53.fondo = null; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function CobranzaComponent_div_56_Template_div_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r56); const ctx_r55 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](); return ctx_r55.fondo = null; });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1, "\n                        ");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](2, "button", 33);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](3, "i", 34);
@@ -33092,9 +33102,9 @@ function CobranzaComponent_div_59_ng_template_4_div_3_Template(rf, ctx) { if (rf
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const item_r56 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"]().item;
+    const item_r58 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"]().item;
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate2"]("", item_r56.APELLIDOS, " ", item_r56.NOMBRES, "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate2"]("", item_r58.APELLIDOS, " ", item_r58.NOMBRES, "");
 } }
 function CobranzaComponent_div_59_ng_template_4_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](0, "\n                            ");
@@ -33110,19 +33120,19 @@ function CobranzaComponent_div_59_ng_template_4_Template(rf, ctx) { if (rf & 1) 
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](9, "\n\n                        ");
 } if (rf & 2) {
-    const item_r56 = ctx.item;
+    const item_r58 = ctx.item;
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", item_r56.APELLIDOS);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", item_r58.APELLIDOS);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipeBind1"](7, 2, item_r56.RUC));
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipeBind1"](7, 2, item_r58.RUC));
 } }
 const _c2 = function () { return { minWidth: "300px" }; };
 function CobranzaComponent_div_59_Template(rf, ctx) { if (rf & 1) {
-    const _r60 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
+    const _r62 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 40);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1, "\n                    ");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](2, "ng-select", 69);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("ngModelChange", function CobranzaComponent_div_59_Template_ng_select_ngModelChange_2_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r60); const ctx_r59 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](); return ctx_r59.fondo = $event; })("search", function CobranzaComponent_div_59_Template_ng_select_search_2_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r60); const ctx_r61 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](); return ctx_r61.searchBancos($event); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("ngModelChange", function CobranzaComponent_div_59_Template_ng_select_ngModelChange_2_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r62); const ctx_r61 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](); return ctx_r61.fondo = $event; })("search", function CobranzaComponent_div_59_Template_ng_select_search_2_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r62); const ctx_r63 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](); return ctx_r63.searchBancos($event); });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](3, "\n                        ");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](4, CobranzaComponent_div_59_ng_template_4_Template, 10, 4, "ng-template", 37);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](5, "\n                    ");
@@ -33139,9 +33149,9 @@ function CobranzaComponent_div_61_div_4_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const ctx_r62 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+    const ctx_r64 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate2"]("", ctx_r62.fondo.NOMBRES, " ", ctx_r62.fondo.APELLIDOS, "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate2"]("", ctx_r64.fondo.NOMBRES, " ", ctx_r64.fondo.APELLIDOS, "");
 } }
 function CobranzaComponent_div_61_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 40);
@@ -33166,9 +33176,9 @@ function CobranzaComponent_div_61_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipeBind1"](8, 2, ctx_r11.fondo.RUC));
 } }
 function CobranzaComponent_div_71_button_2_Template(rf, ctx) { if (rf & 1) {
-    const _r65 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
+    const _r67 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "button", 50);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function CobranzaComponent_div_71_button_2_Template_button_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r65); const ctx_r64 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2); ctx_r64.cobrador = null; return ctx_r64.filtrar(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function CobranzaComponent_div_71_button_2_Template_button_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r67); const ctx_r66 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2); ctx_r66.cobrador = null; return ctx_r66.filtrar(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](1, "i", 34);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
 } }
@@ -33197,18 +33207,18 @@ function CobranzaComponent_div_74_ng_template_4_Template(rf, ctx) { if (rf & 1) 
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](9, "\n\n                        ");
 } if (rf & 2) {
-    const item_r67 = ctx.item;
+    const item_r69 = ctx.item;
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate2"](" ", item_r67.APELLIDOS, " ", item_r67.NOMBRES, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate2"](" ", item_r69.APELLIDOS, " ", item_r69.NOMBRES, " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipeBind1"](7, 3, item_r67.RUC));
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipeBind1"](7, 3, item_r69.RUC));
 } }
 function CobranzaComponent_div_74_Template(rf, ctx) { if (rf & 1) {
-    const _r69 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
+    const _r71 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1, "\n\n                    ");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](2, "ng-select", 72);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("ngModelChange", function CobranzaComponent_div_74_Template_ng_select_ngModelChange_2_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r69); const ctx_r68 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](); return ctx_r68.cobrador = $event; })("ngModelChange", function CobranzaComponent_div_74_Template_ng_select_ngModelChange_2_listener() { return null; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("ngModelChange", function CobranzaComponent_div_74_Template_ng_select_ngModelChange_2_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r71); const ctx_r70 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](); return ctx_r70.cobrador = $event; })("ngModelChange", function CobranzaComponent_div_74_Template_ng_select_ngModelChange_2_listener() { return null; });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](3, "\n                        ");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](4, CobranzaComponent_div_74_ng_template_4_Template, 10, 5, "ng-template", 37);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](5, "\n                    ");
@@ -33225,9 +33235,9 @@ function CobranzaComponent_div_76_div_4_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const ctx_r71 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+    const ctx_r73 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate2"]("", ctx_r71.cobrador.NOMBRES, " ", ctx_r71.cobrador.APELLIDOS, "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate2"]("", ctx_r73.cobrador.NOMBRES, " ", ctx_r73.cobrador.APELLIDOS, "");
 } }
 function CobranzaComponent_div_76_div_6_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div");
@@ -33239,9 +33249,9 @@ function CobranzaComponent_div_76_div_8_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const ctx_r73 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+    const ctx_r75 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate1"]("", ctx_r73.cobrador.RAZON, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate1"]("", ctx_r75.cobrador.RAZON, " ");
 } }
 function CobranzaComponent_div_76_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 40);
@@ -33274,7 +33284,7 @@ function CobranzaComponent_div_76_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipeBind1"](12, 4, ctx_r14.cobrador.RUC));
 } }
 function CobranzaComponent_div_99_Template(rf, ctx) { if (rf & 1) {
-    const _r75 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
+    const _r77 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 0);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1, "\n    ");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](2, "div", 15);
@@ -33294,7 +33304,7 @@ function CobranzaComponent_div_99_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](15, "\n                    ");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](16, "input", 74);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("ngModelChange", function CobranzaComponent_div_99_Template_input_ngModelChange_16_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r75); const ctx_r74 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](); return ctx_r74.nombreFactura = $event; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("ngModelChange", function CobranzaComponent_div_99_Template_input_ngModelChange_16_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r77); const ctx_r76 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](); return ctx_r76.nombreFactura = $event; });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](17, "\n                ");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
@@ -33310,7 +33320,7 @@ function CobranzaComponent_div_99_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](26, "\n                    ");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](27, "input", 76);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("ngModelChange", function CobranzaComponent_div_99_Template_input_ngModelChange_27_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r75); const ctx_r76 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](); return ctx_r76.rucFactura = $event; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("ngModelChange", function CobranzaComponent_div_99_Template_input_ngModelChange_27_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r77); const ctx_r78 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](); return ctx_r78.rucFactura = $event; });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](28, "\n                ");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
@@ -33326,7 +33336,7 @@ function CobranzaComponent_div_99_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](37, "\n                    ");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](38, "input", 78);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("ngModelChange", function CobranzaComponent_div_99_Template_input_ngModelChange_38_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r75); const ctx_r77 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](); return ctx_r77.telFactura = $event; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("ngModelChange", function CobranzaComponent_div_99_Template_input_ngModelChange_38_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r77); const ctx_r79 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](); return ctx_r79.telFactura = $event; });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](39, "\n                ");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
@@ -33342,7 +33352,7 @@ function CobranzaComponent_div_99_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](47, "\n            ");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](48, "input", 80);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("ngModelChange", function CobranzaComponent_div_99_Template_input_ngModelChange_48_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r75); const ctx_r78 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](); return ctx_r78.direccionFactura = $event; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("ngModelChange", function CobranzaComponent_div_99_Template_input_ngModelChange_48_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r77); const ctx_r80 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](); return ctx_r80.direccionFactura = $event; });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](49, "\n        ");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
@@ -33354,7 +33364,7 @@ function CobranzaComponent_div_99_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](55, "\n            ");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](56, "textarea", 81);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("ngModelChange", function CobranzaComponent_div_99_Template_textarea_ngModelChange_56_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r75); const ctx_r79 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](); return ctx_r79.comentario = $event; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("ngModelChange", function CobranzaComponent_div_99_Template_textarea_ngModelChange_56_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r77); const ctx_r81 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](); return ctx_r81.comentario = $event; });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](57, "\n        ");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
@@ -33399,9 +33409,9 @@ function CobranzaComponent_div_123_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("color", "primary")("diameter", 20);
 } }
 function CobranzaComponent_app_modal_factura_129_Template(rf, ctx) { if (rf & 1) {
-    const _r81 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
+    const _r83 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "app-modal-factura", 83);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("onClose", function CobranzaComponent_app_modal_factura_129_Template_app_modal_factura_onClose_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r81); const ctx_r80 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](); return ctx_r80.showPDF = false; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("onClose", function CobranzaComponent_app_modal_factura_129_Template_app_modal_factura_onClose_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r83); const ctx_r82 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](); return ctx_r82.showPDF = false; });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1, "\n");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
 } if (rf & 2) {
@@ -33409,20 +33419,20 @@ function CobranzaComponent_app_modal_factura_129_Template(rf, ctx) { if (rf & 1)
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("existe", false)("facturaPDF", ctx_r19.facturaPdf);
 } }
 function CobranzaComponent_app_modal_contratos_131_Template(rf, ctx) { if (rf & 1) {
-    const _r83 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
+    const _r85 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "app-modal-contratos", 84);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("contratoSelected", function CobranzaComponent_app_modal_contratos_131_Template_app_modal_contratos_contratoSelected_0_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r83); const ctx_r82 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](); return ctx_r82.onContratoSelected($event); })("onClose", function CobranzaComponent_app_modal_contratos_131_Template_app_modal_contratos_onClose_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r83); const ctx_r84 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](); return ctx_r84.showModal = false; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("contratoSelected", function CobranzaComponent_app_modal_contratos_131_Template_app_modal_contratos_contratoSelected_0_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r85); const ctx_r84 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](); return ctx_r84.onContratoSelected($event); })("onClose", function CobranzaComponent_app_modal_contratos_131_Template_app_modal_contratos_onClose_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r85); const ctx_r86 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](); return ctx_r86.showModal = false; });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const ctx_r20 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("cliente", ctx_r20.cliente);
 } }
 function CobranzaComponent_div_133_Template(rf, ctx) { if (rf & 1) {
-    const _r86 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
+    const _r88 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 40);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1, "\n    ");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](2, "app-modal-factura", 85);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("onClose", function CobranzaComponent_div_133_Template_app_modal_factura_onClose_2_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r86); const ctx_r85 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](); return ctx_r85.facturapdf = null; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("onClose", function CobranzaComponent_div_133_Template_app_modal_factura_onClose_2_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r88); const ctx_r87 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](); return ctx_r87.facturapdf = null; });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](3, "\n");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
@@ -33453,32 +33463,32 @@ class CobranzaComponent {
             {
                 id: 1,
                 estado: 'TODOS',
-                color: 'dark'
+                color: 'dark',
             },
             {
                 id: 2,
                 estado: 'PAGADOS',
-                color: 'dark'
+                color: 'dark',
             },
             {
                 id: 3,
                 estado: 'PENDIENTES',
-                color: 'danger'
+                color: 'danger',
             },
         ];
         this.filtros = [];
         this.estadoSeleccionado = 'TODOS';
         this.rangeEmision = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
             start: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](),
-            end: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]()
+            end: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](),
         });
         this.rangeVencimiento = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
             start: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](),
-            end: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]()
+            end: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](),
         });
         this.rangePagado = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
             start: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](),
-            end: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]()
+            end: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](),
         });
         this.loadingConfirmarPago = false;
         this.inputClientes = new rxjs__WEBPACK_IMPORTED_MODULE_4__["Subject"]();
@@ -33495,8 +33505,10 @@ class CobranzaComponent {
     }
     ngAfterViewInit() {
         ////console.log(!this._userService.usuario.timbrado.timbrado , this._userService.usuario.role == 'USER_ROLE');
-        if (!this._userService.usuario.timbrado.timbrado && this._userService.usuario.role == 'USER_ROLE') {
-            sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire({
+        if (!this._userService.usuario.timbrado.timbrado &&
+            this._userService.usuario.role == 'USER_ROLE') {
+            sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a
+                .fire({
                 icon: 'warning',
                 title: 'No existe timbrado',
                 text: `Tu usuario no tiene Nro de Timbrado`,
@@ -33504,7 +33516,8 @@ class CobranzaComponent {
                 willClose: (e) => {
                     this.modalOutput();
                 },
-            }).then((result) => {
+            })
+                .then((result) => {
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
                     this.goBack = false;
@@ -33558,22 +33571,36 @@ class CobranzaComponent {
                 // cobrador: this.cobrador ? this.cobrador._id : null,
                 servicio: this.servicio ? this.servicio._id : null,
                 fondo: this.fondo ? this.fondo._id : null,
-                contrato: this.contrato ? this.contrato._id : null,
+                // contrato: this.contrato ? this.contrato._id : null,
+                sin_contrato: "1",
                 pagado,
-                vencimiento_start: this.rangeVencimiento.value.start ? new Date(this.rangeVencimiento.value.start).getTime() : null,
-                vencimiento_end: this.rangeVencimiento.value.end ? new Date(this.rangeVencimiento.value.end).setHours(23, 59, 59, 59) : null,
-                pagado_start: this.rangePagado.value.start ? new Date(this.rangePagado.value.start).getTime() : null,
-                pagado_end: this.rangePagado.value.end ? new Date(this.rangePagado.value.end).setHours(23, 59, 59, 59) : null,
-                start: this.rangeEmision.value.start ? new Date(this.rangeEmision.value.start).getTime() : null,
-                end: this.rangeEmision.value.end ? new Date(this.rangeEmision.value.end).setHours(23, 59, 59, 59) : null
+                vencimiento_start: this.rangeVencimiento.value.start
+                    ? new Date(this.rangeVencimiento.value.start).getTime()
+                    : null,
+                vencimiento_end: this.rangeVencimiento.value.end
+                    ? new Date(this.rangeVencimiento.value.end).setHours(23, 59, 59, 59)
+                    : null,
+                pagado_start: this.rangePagado.value.start
+                    ? new Date(this.rangePagado.value.start).getTime()
+                    : null,
+                pagado_end: this.rangePagado.value.end
+                    ? new Date(this.rangePagado.value.end).setHours(23, 59, 59, 59)
+                    : null,
+                start: this.rangeEmision.value.start
+                    ? new Date(this.rangeEmision.value.start).getTime()
+                    : null,
+                end: this.rangeEmision.value.end
+                    ? new Date(this.rangeEmision.value.end).setHours(23, 59, 59, 59)
+                    : null,
             };
             ////console.log(this.opciones);
             this.sort = {
                 key: this.sort_key,
-                value: this.sort_value
+                value: this.sort_value,
             };
             const respF = yield this._facturaService.getFacturasOptions(this.opciones, this.sort);
             this.count = respF.count;
+            console.log(respF);
             this.facturas = respF.facturas;
         });
     }
@@ -33610,10 +33637,10 @@ class CobranzaComponent {
     }
     customSearchFn(term, item) {
         term = term.toLowerCase();
-        return item.NOMBRES.toLowerCase().indexOf(term) > -1 ||
+        return (item.NOMBRES.toLowerCase().indexOf(term) > -1 ||
             item.APELLIDOS.toLowerCase().includes(term) ||
             item.RAZON.toLowerCase().includes(term) ||
-            item.RUC.toLowerCase().includes(term);
+            item.RUC.toLowerCase().includes(term));
     }
     onSelectClient(cliente) {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
@@ -33629,7 +33656,7 @@ class CobranzaComponent {
     onContratoSelected(contrato) {
         this.contrato = contrato;
         ////console.log(contrato);
-        this.filtrar();
+        // this.filtrar();
     }
     getFacturasApagar(id, monto) {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
@@ -33637,16 +33664,19 @@ class CobranzaComponent {
                 return;
             }
             //console.log(this.lista);
-            let resp = (yield this._facturaService.pagarPorMonto({ fecha_pago: this.fechaPago.getTime(), lista: [{ contrato: id, monto: parseInt(monto) }] }));
+            let resp = yield this._facturaService.pagarPorMonto({
+                fecha_pago: this.fechaPago.getTime(),
+                lista: [{ contrato: id, monto: parseInt(monto) }],
+            });
             this.facturasAPagar = resp.facturas;
             //console.log(this.facturasAPagar);
             if (monto > resp.monto_total) {
                 sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire({
-                    title: "Monto ingresado es superior a la deuda",
+                    title: 'Monto ingresado es superior a la deuda',
                     text: `Monto ingresado: ${this.currency.transform(monto, '', '', '2.0')}
          Monto de la deuda pendiente: ${this.currency.transform(resp.monto_total, '', '', '2.0')}`,
                     icon: 'info',
-                    showConfirmButton: true
+                    showConfirmButton: true,
                 });
             }
             this.montoTotal = resp.monto_total;
@@ -33667,11 +33697,17 @@ class CobranzaComponent {
             // this.montoTotal += parseInt(monto);
             const obj = {
                 contrato: id,
-                monto: this.montoTotal
+                monto: this.montoTotal,
             };
             this.lista.push(obj);
             // this.filtros.push()
-            this.facturasAPagarAux = (yield this._facturaService.pagarPorMonto({ fecha_pago: this.fechaPago.getTime(), lista: this.lista })).facturas;
+            this.facturasAPagarAux = [
+                ...this.facturasAPagarAux,
+                ...(yield this._facturaService.pagarPorMonto({
+                    fecha_pago: this.fechaPago.getTime(),
+                    lista: this.lista,
+                })).facturas,
+            ];
             ////console.log(this.facturasAPagarAux);
             this.contrato = null;
             // this.filtrar();
@@ -33679,9 +33715,16 @@ class CobranzaComponent {
         });
     }
     confirmarPago() {
-        sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire({
+        sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a
+            .fire({
             icon: 'warning',
-            title: 'Confirmar Cobro con Fecha de ' + new Date(this.fechaPago).toLocaleDateString('es-AR', { year: 'numeric', month: 'long', day: '2-digit' }) + ' ?',
+            title: 'Confirmar Cobro con Fecha de ' +
+                new Date(this.fechaPago).toLocaleDateString('es-AR', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: '2-digit',
+                }) +
+                ' ?',
             // text: `Tu usuario no tiene Nro de Timbrado`,
             confirmButtonText: `Confirmar`,
             cancelButtonText: `Cancelar`,
@@ -33689,7 +33732,8 @@ class CobranzaComponent {
             willClose: (e) => {
                 //  this.modalOutput()
             },
-        }).then((result) => {
+        })
+            .then((result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
                 this.confirmarPagoConfirmado();
@@ -33698,15 +33742,17 @@ class CobranzaComponent {
             //console.log(op);
         });
     }
+    /**
+     * Confirms the payment and performs necessary actions after the payment is confirmed.
+     *
+     * @return {Promise<void>} The promise that resolves after the payment is confirmed.
+     */
     confirmarPagoConfirmado() {
         var _a, _b;
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             if (this.loadingConfirmarPago)
                 return;
             this.loadingConfirmarPago = true;
-            // let timbrado = (await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body
-            //console.log((await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body);
-            //console.log(this.cobrador.timbrado);
             let timbrado = this.cobrador.timbrado;
             let pagoresp = yield this._facturaService.pagarPorMonto({
                 fecha_pago: this.fechaPago.getTime(),
@@ -33724,7 +33770,10 @@ class CobranzaComponent {
                 nro_timbrado: this.cobrador.timbrado.timbrado,
                 nro_factura: this.cobrador.nro_factura_actual + 1,
                 numero: this.cobrador.nro_talonario,
-                timbrado
+                timbrado,
+                selectedItems: (this.facturasAPagarAux.filter((f) => f.is_selected) || []).map((f) => {
+                    return f._id;
+                })
             });
             this.loadingConfirmarPago = false;
             ////console.log(pagoresp);
@@ -33738,7 +33787,9 @@ class CobranzaComponent {
         this.notifier.notify('success', 'pasa la edad');
     }
     observableBuscadores() {
-        this.inputClientes.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["debounceTime"])(500), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["distinctUntilChanged"])()).subscribe((txt) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+        this.inputClientes
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["debounceTime"])(500), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["distinctUntilChanged"])())
+            .subscribe((txt) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             if (!txt) {
                 return;
             }
@@ -33746,7 +33797,9 @@ class CobranzaComponent {
             this.clientes = yield this._usuarioService.buscarUsuarios('CLIENTES', txt);
             this.loadingClientes = false;
         }));
-        this.inputCobrador.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["debounceTime"])(500), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["distinctUntilChanged"])()).subscribe((txt) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+        this.inputCobrador
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["debounceTime"])(500), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["distinctUntilChanged"])())
+            .subscribe((txt) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             if (!txt) {
                 return;
             }
@@ -33787,7 +33840,8 @@ class CobranzaComponent {
                 let existe = false;
                 for (let m = 0; m < fsinrepetir.length; m++) {
                     const element = fsinrepetir[m];
-                    if (element.contrato == factura.contrato && element.haber === factura.haber) {
+                    if (element.contrato == factura.contrato &&
+                        element.haber === factura.haber) {
                         element.cantidad++;
                         element.precio += factura.haber;
                         element.diezPorciento += factura.haber / 11;
@@ -33799,11 +33853,13 @@ class CobranzaComponent {
                         contrato: factura.contrato,
                         cantidad: 1,
                         concepto: `${factura.servicio.NOMBRE}`,
-                        precioUnitario: factura.precio_unitario ? factura.precio_unitario : factura.haber,
+                        precioUnitario: factura.precio_unitario
+                            ? factura.precio_unitario
+                            : factura.haber,
                         precio: factura.haber,
                         cincoPorciento: null,
                         haber: factura.haber,
-                        diezPorciento: factura.haber / 11
+                        diezPorciento: factura.haber / 11,
                     });
                 }
                 servicios = fsinrepetir;
@@ -33820,7 +33876,7 @@ class CobranzaComponent {
                 numero: this.cobrador.nro_talonario,
                 nro_factura: this.cobrador.nro_factura_actual + 1,
                 timbrado: this.cobrador.timbrado,
-                comentario: this.comentario
+                comentario: this.comentario,
             };
             ////console.log('-----------------------------------------------');
             ////console.log(facturaPDF);
@@ -33840,7 +33896,7 @@ class CobranzaComponent {
                     concepto: factura.servicio.NOMBRE,
                     precioUnitario: factura.haber,
                     cincoPorciento: null,
-                    diezPorciento: factura.haber / 11
+                    diezPorciento: factura.haber / 11,
                 });
             }
             // let timbrado = (await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body
@@ -33853,10 +33909,15 @@ class CobranzaComponent {
                 tel: pago.cliente.TELEFONO1,
                 notaDeRemision: '123123',
                 servicios,
-                timbrado: pago.timbrado
+                timbrado: pago.timbrado,
             };
             ////console.log(this.facturapdf);
         });
+    }
+    onSelectedItem(item) {
+        console.log(item);
+        this.facturasAPagarAux.push(Object.assign(Object.assign({}, item), { is_selected: true }));
+        this.sumaTotal = this.facturasAPagarAux.reduce((a, b) => a + b.haber, 0);
     }
 }
 CobranzaComponent.ɵfac = function CobranzaComponent_Factory(t) { return new (t || CobranzaComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_services_factura_service__WEBPACK_IMPORTED_MODULE_6__["FacturaService"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_services_usuario_service__WEBPACK_IMPORTED_MODULE_7__["UsuarioService"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_services_contrato_service__WEBPACK_IMPORTED_MODULE_8__["ContratoService"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_services_productos_service__WEBPACK_IMPORTED_MODULE_9__["ProductosService"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](angular_notifier__WEBPACK_IMPORTED_MODULE_10__["NotifierService"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_services_usuario_service__WEBPACK_IMPORTED_MODULE_7__["UsuarioService"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_11__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_12__["CurrencyPipe"])); };
@@ -33867,7 +33928,7 @@ CobranzaComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefine
         let _t;
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵloadQuery"]()) && (ctx.searchCliente = _t.first);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵloadQuery"]()) && (ctx.btnContinuar = _t.first);
-    } }, decls: 134, vars: 29, consts: [[1, "card"], [1, "card-body", 2, "font-size", "medium"], [1, "lstick"], [1, "row"], [1, "col-xs", "col-md"], [1, "inline-flex", 2, "justify-content", "space-between"], [1, "card-title"], ["class", "pointer close-icon ml-auto", 3, "click", 4, "ngIf"], [4, "ngIf"], ["style", "width: 100%; ", 4, "ngIf"], ["class", "", 4, "ngIf"], ["style", "width: 100%;", "class", " mt-3", 4, "ngIf"], ["style", "width: fit-content;", "class", "mt-3", 4, "ngIf"], [3, "count", "options", "facturas", 4, "ngIf"], ["class", "card", 4, "ngIf"], [1, "card-body"], ["class", "pointer close-icon ml-5", 3, "click", 4, "ngIf"], ["class", "pointer close-icon ml-auto", 4, "ngIf"], ["appearance", "fill"], ["matInput", "", "name", "asdrdsvet321", 3, "ngModel", "matDatepicker", "ngModelChange"], ["matSuffix", "", 3, "for"], ["pickerPago", ""], [1, "", 2, "width", "100%"], [2, "display", "flex"], [1, "ml-auto"], ["type", "button", "routerLinkActive", "router-link-active", 1, "btn", "btn-info", "mx-auto", 3, "routerLink"], [1, "btn", "mx-2", "btn-inverse", 3, "click"], [1, "btn", "mx-2", "btn-info", 3, "disabled", "click"], [1, "btn", "mx-2", "btn-success", 2, "width", "138px", 3, "disabled", "click"], ["style", "width: 100%;", 4, "ngIf"], [3, "existe", "facturaPDF", "onClose", 4, "ngIf"], [3, "cliente", "contratoSelected", "onClose", 4, "ngIf"], [1, "pointer", "close-icon", "ml-auto", 3, "click"], ["type", "button", 1, "btn", "btn-sm", "btn-light"], [1, "ti-close"], ["name", "dsfdbrweqcda", "notFoundText", "no se encontraron resultados", "placeholder", "buscar cliente", "bindLabel", "NOMBRES", 3, "typeahead", "loading", "ngModel", "items", "searchFn", "ngModelChange"], ["search", ""], ["ng-option-tmp", ""], [2, "width", "100%"], [1, "col"], [1, ""], [1, "mt-3", 2, "width", "100%"], [2, "display", "block", "width", "100%"], [1, "mx-auto"], ["type", "button", 1, "btn", "mx-auto", "btn-info", 3, "disabled", "click"], ["for", ""], [1, "mt-3", 2, "width", "fit-content"], [1, "", 2, "display", "flex"], ["style", "height: fit-content;", "class", "pointer close-icon ml-auto", 4, "ngIf"], [1, "pointer", "close-icon", "ml-auto", 2, "height", "fit-content"], ["type", "button", 1, "btn", "btn-sm", "btn-light", 3, "click"], [1, "card", "bg-light"], [3, "count", "options", "facturas"], [3, "ngSubmit"], ["form", "ngForm"], [1, "my-3", "d-flex"], [1, "form-group"], ["type", "number", "name", "", "id", "", "aria-describedby", "helpId", "placeholder", "ingresar monto a pagar", 1, "form-control"], ["montoAPagar", ""], [1, "d-flex"], ["type", "submit", 1, "btn", "btn-info"], [2, "overflow", "auto", "max-height", "400px"], [1, "table"], [4, "ngFor", "ngForOf"], ["class", "inline-flex", 4, "ngIf"], ["id", "btnContinuar", 1, "btn", "mx-2", "btn-invert", 3, "click"], ["scope", "row"], [1, "inline-flex"], [1, "pointer", "close-icon", "ml-5", 3, "click"], ["notFoundText", "no se encontraron resultados", "placeholder", "buscar destinp fondo", "bindLabel", "NOMBRES", 3, "ngStyle", "items", "ngModel", "searchFn", "ngModelChange", "search"], [1, "pointer", "close-icon", "ml-auto"], ["type", "button", "class", "btn btn-sm btn-light", 3, "click", 4, "ngIf"], ["name", "dsfdbrdweqcda", "notFoundText", "no se encontraron resultados", "placeholder", "buscar cobrador", "bindLabel", "NOMBRES", 3, "typeahead", "loading", "items", "ngModel", "searchFn", "ngModelChange"], ["for", "nombre"], ["type", "text", "name", "nombre", "id", "nombre", "aria-describedby", "nombreid", "placeholder", "", 1, "form-control", 3, "ngModel", "ngModelChange"], ["for", "ruc"], ["type", "text", "name", "ruc", "id", "ruc", "aria-describedby", "rucid", "placeholder", "", 1, "form-control", 3, "ngModel", "ngModelChange"], ["for", "tel"], ["type", "text", "name", "tel", "id", "tel", "aria-describedby", "telid", "placeholder", "", 1, "form-control", 3, "ngModel", "ngModelChange"], ["for", "direccion"], ["type", "text", "name", "direccion", "id", "direccion", "aria-describedby", "direccionid", "placeholder", "", 1, "form-control", 3, "ngModel", "ngModelChange"], ["name", "notas", "id", "notas", "rows", "5", 1, "form-control", 3, "ngModel", "ngModelChange"], [3, "color", "diameter"], [3, "existe", "facturaPDF", "onClose"], [3, "cliente", "contratoSelected", "onClose"], [3, "facturaPDF", "onClose"]], template: function CobranzaComponent_Template(rf, ctx) { if (rf & 1) {
+    } }, decls: 135, vars: 29, consts: [[1, "card"], [1, "card-body", 2, "font-size", "medium"], [1, "lstick"], [1, "row"], [1, "col-xs", "col-md"], [1, "inline-flex", 2, "justify-content", "space-between"], [1, "card-title"], ["class", "pointer close-icon ml-auto", 3, "click", 4, "ngIf"], [4, "ngIf"], ["style", "width: 100%; ", 4, "ngIf"], ["class", "", 4, "ngIf"], ["style", "width: 100%;", "class", " mt-3", 4, "ngIf"], ["style", "width: fit-content;", "class", "mt-3", 4, "ngIf"], [3, "is_cobranza", "count", "options", "facturas", "onSelectedItem", 4, "ngIf"], ["class", "card", 4, "ngIf"], [1, "card-body"], ["class", "pointer close-icon ml-5", 3, "click", 4, "ngIf"], ["class", "pointer close-icon ml-auto", 4, "ngIf"], ["appearance", "fill"], ["matInput", "", "name", "asdrdsvet321", 3, "ngModel", "matDatepicker", "ngModelChange"], ["matSuffix", "", 3, "for"], ["pickerPago", ""], [1, "", 2, "width", "100%"], [2, "display", "flex"], [1, "ml-auto"], ["type", "button", "routerLinkActive", "router-link-active", 1, "btn", "btn-info", "mx-auto", 3, "routerLink"], [1, "btn", "mx-2", "btn-inverse", 3, "click"], [1, "btn", "mx-2", "btn-info", 3, "disabled", "click"], [1, "btn", "mx-2", "btn-success", 2, "width", "138px", 3, "disabled", "click"], ["style", "width: 100%;", 4, "ngIf"], [3, "existe", "facturaPDF", "onClose", 4, "ngIf"], [3, "cliente", "contratoSelected", "onClose", 4, "ngIf"], [1, "pointer", "close-icon", "ml-auto", 3, "click"], ["type", "button", 1, "btn", "btn-sm", "btn-light"], [1, "ti-close"], ["name", "dsfdbrweqcda", "notFoundText", "no se encontraron resultados", "placeholder", "buscar cliente", "bindLabel", "NOMBRES", 3, "typeahead", "loading", "ngModel", "items", "searchFn", "ngModelChange"], ["search", ""], ["ng-option-tmp", ""], [2, "width", "100%"], [1, "col"], [1, ""], [1, "mt-3", 2, "width", "100%"], [2, "display", "block", "width", "100%"], [1, "mx-auto"], ["type", "button", 1, "btn", "mx-auto", "btn-info", 3, "click"], ["for", ""], [1, "mt-3", 2, "width", "fit-content"], [1, "", 2, "display", "flex"], ["style", "height: fit-content;", "class", "pointer close-icon ml-auto", 4, "ngIf"], [1, "pointer", "close-icon", "ml-auto", 2, "height", "fit-content"], ["type", "button", 1, "btn", "btn-sm", "btn-light", 3, "click"], [1, "card", "bg-light"], [3, "is_cobranza", "count", "options", "facturas", "onSelectedItem"], [3, "ngSubmit"], ["form", "ngForm"], [1, "my-3", "d-flex"], [1, "form-group"], ["type", "number", "name", "", "id", "", "aria-describedby", "helpId", "placeholder", "ingresar monto a pagar", 1, "form-control"], ["montoAPagar", ""], [1, "d-flex"], ["type", "submit", 1, "btn", "btn-info"], [2, "overflow", "auto", "max-height", "400px"], [1, "table"], [4, "ngFor", "ngForOf"], ["class", "inline-flex", 4, "ngIf"], ["id", "btnContinuar", 1, "btn", "mx-2", "btn-invert", 3, "click"], ["scope", "row"], [1, "inline-flex"], [1, "pointer", "close-icon", "ml-5", 3, "click"], ["notFoundText", "no se encontraron resultados", "placeholder", "buscar destinp fondo", "bindLabel", "NOMBRES", 3, "ngStyle", "items", "ngModel", "searchFn", "ngModelChange", "search"], [1, "pointer", "close-icon", "ml-auto"], ["type", "button", "class", "btn btn-sm btn-light", 3, "click", 4, "ngIf"], ["name", "dsfdbrdweqcda", "notFoundText", "no se encontraron resultados", "placeholder", "buscar cobrador", "bindLabel", "NOMBRES", 3, "typeahead", "loading", "items", "ngModel", "searchFn", "ngModelChange"], ["for", "nombre"], ["type", "text", "name", "nombre", "id", "nombre", "aria-describedby", "nombreid", "placeholder", "", 1, "form-control", 3, "ngModel", "ngModelChange"], ["for", "ruc"], ["type", "text", "name", "ruc", "id", "ruc", "aria-describedby", "rucid", "placeholder", "", 1, "form-control", 3, "ngModel", "ngModelChange"], ["for", "tel"], ["type", "text", "name", "tel", "id", "tel", "aria-describedby", "telid", "placeholder", "", 1, "form-control", 3, "ngModel", "ngModelChange"], ["for", "direccion"], ["type", "text", "name", "direccion", "id", "direccion", "aria-describedby", "direccionid", "placeholder", "", 1, "form-control", 3, "ngModel", "ngModelChange"], ["name", "notas", "id", "notas", "rows", "5", 1, "form-control", 3, "ngModel", "ngModelChange"], [3, "color", "diameter"], [3, "existe", "facturaPDF", "onClose"], [3, "cliente", "contratoSelected", "onClose"], [3, "facturaPDF", "onClose"]], template: function CobranzaComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1, "\n    ");
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](2, "div", 1);
@@ -33901,7 +33962,7 @@ CobranzaComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefine
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](26, "\n\n            ");
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](27, "div", 4);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](28, "\n                ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](29, CobranzaComponent_div_29_Template, 29, 1, "div", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](29, CobranzaComponent_div_29_Template, 29, 0, "div", 11);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](30, "\n\n                ");
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](31, CobranzaComponent_div_31_Template, 12, 2, "div", 12);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](32, "\n            ");
@@ -33913,7 +33974,7 @@ CobranzaComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefine
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](35, "\n");
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](36, "\n\n");
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](37, CobranzaComponent_app_facturas_37_Template, 1, 3, "app-facturas", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](37, CobranzaComponent_app_facturas_37_Template, 1, 4, "app-facturas", 13);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](38, "\n\n");
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](39, CobranzaComponent_div_39_Template, 41, 4, "div", 14);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](40, "\n\n");
@@ -34035,6 +34096,7 @@ CobranzaComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefine
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](131, CobranzaComponent_app_modal_contratos_131_Template, 1, 1, "app-modal-contratos", 31);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](132, "\n\n");
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](133, CobranzaComponent_div_133_Template, 4, 1, "div", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](134, "\n");
     } if (rf & 2) {
         const _r15 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵreference"](92);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](17);
@@ -34095,7 +34157,7 @@ CobranzaComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefine
         args: [{
                 selector: 'app-cobranza',
                 templateUrl: './cobranza.component.html',
-                styleUrls: ['./cobranza.component.css']
+                styleUrls: ['./cobranza.component.css'],
             }]
     }], function () { return [{ type: _services_factura_service__WEBPACK_IMPORTED_MODULE_6__["FacturaService"] }, { type: _services_usuario_service__WEBPACK_IMPORTED_MODULE_7__["UsuarioService"] }, { type: _services_contrato_service__WEBPACK_IMPORTED_MODULE_8__["ContratoService"] }, { type: _services_productos_service__WEBPACK_IMPORTED_MODULE_9__["ProductosService"] }, { type: angular_notifier__WEBPACK_IMPORTED_MODULE_10__["NotifierService"] }, { type: _services_usuario_service__WEBPACK_IMPORTED_MODULE_7__["UsuarioService"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_11__["Router"] }, { type: _angular_common__WEBPACK_IMPORTED_MODULE_12__["CurrencyPipe"] }]; }, { searchCliente: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ViewChild"],
@@ -34775,6 +34837,9 @@ class FacturaElectronicaTicketComponent {
             this.qrData = resp.pdfExists.qr_link;
             this.factura = resp.pdfExists.invoice;
             this.cdc = resp.pdfExists.cdc.match(/.{1,4}/g).join(' ');
+            setTimeout(() => {
+                window.print();
+            }, 500);
         });
     }
     get getTotalIVA() {
@@ -42529,7 +42594,7 @@ class FacturaPdfComponent {
     }
     ngOnInit() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-            // this.timbrado = (await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body 
+            // this.timbrado = (await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body
             // {
             //   timbrado: '15074643',
             //   fecha_vigencia_inicio: '01/09/2021',
@@ -42761,6 +42826,7 @@ class FacturaPdfComponent {
         }
     }
     getDetallePago(id) {
+        var _a, _b;
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             const resp = yield this._facturaService.getDetallePago(id);
             const pago = resp.pago;
@@ -42791,7 +42857,7 @@ class FacturaPdfComponent {
                     // console.log("factura.contrato", factura.contrato._id);
                     // console.log("element.haber", element.haber);
                     // console.log("factura.haber", factura.haber);
-                    if (element.contrato._id == factura.contrato._id && element.haber === factura.haber) {
+                    if (((_a = element.contrato) === null || _a === void 0 ? void 0 : _a._id) == ((_b = factura.contrato) === null || _b === void 0 ? void 0 : _b._id) && element.haber === factura.haber) {
                         //console.log("sumando");
                         element.cantidad++;
                         element.precio += factura.haber;
@@ -45290,4 +45356,4 @@ webpackEmptyAsyncContext.id = "zn8P";
 /***/ })
 
 },[[0,"runtime","vendor"]]]);
-//# sourceMappingURL=main.e1714d8f46eeefad9a11.js.map
+//# sourceMappingURL=main.fc2b5c09270e58959f3c.js.map
