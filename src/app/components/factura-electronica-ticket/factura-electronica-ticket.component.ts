@@ -42,7 +42,9 @@ export class FacturaElectronicaTicketComponent implements OnInit {
     this.factura = resp.pdfExists.invoice
     this.cdc = resp.pdfExists.cdc.match(/.{1,4}/g).join(' ');
 
-
+    setTimeout(() => {
+      window.print();
+    }, 500);
   }
   pago;
 

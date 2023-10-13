@@ -14,8 +14,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class FacturasComponent implements OnInit {
   constructor(
     public _facturaService: FacturaService,
-    protected router: Router
-  ) { }
+    protected router: Router,
+  ) {}
   todos;
   page = 1;
   @Input() fromOutside = false;
@@ -31,8 +31,11 @@ export class FacturasComponent implements OnInit {
   @Input() options: any;
   @Input() showTotal: any = false;
   @Input() total: any = false;
+  @Input() is_cobranza: boolean = false;
+  @Output() onSelectedItem = new EventEmitter();
   @Output() listItemsEvent = new EventEmitter();
   @Output() AllSelectedEvent = new EventEmitter();
+
   listItems = [];
   selectAll = false;
   async ngOnInit() {
@@ -44,10 +47,11 @@ export class FacturasComponent implements OnInit {
     // }
   }
   @Input() sort = {
-    key: 'vencimiento', value: 1
-  }
+    key: 'vencimiento',
+    value: 1,
+  };
   async pageChanged(page) {
-    this.facturas = null
+    this.facturas = null;
     let options: any = {};
     if (this.pagado == true) {
       options.pagado = this.pagado;
@@ -68,7 +72,10 @@ export class FacturasComponent implements OnInit {
     options.page = page;
     // let resp = await this._facturaService.getFacturas(this.pagado, this.fondo, this.start, this.end, page, null, this.cerrado)
     this.options = options;
-    const resp = await this._facturaService.getFacturasOptions(options, this.sort);
+    const resp = await this._facturaService.getFacturasOptions(
+      options,
+      this.sort,
+    );
 
     this.facturas = resp.facturas;
     this.count = resp.count;
@@ -78,8 +85,10 @@ export class FacturasComponent implements OnInit {
     }, 3);
   }
 
-  selectItem(id) {
-    if (this.selectable) {
+  selectItem(id: string, item?: any) {
+    if (this.is_cobranza) {
+      this.onSelectedItem.emit(item);
+    } else if (this.selectable) {
       const item = document.getElementById(`id-${id}`);
       if (item.classList.contains('table-info')) {
         item.classList.remove('table-info');
@@ -97,9 +106,9 @@ export class FacturasComponent implements OnInit {
     } else {
       // this.router.navigateByUrl(`/admin/ingreso/${id}`);
       const url = this.router.serializeUrl(
-        this.router.createUrlTree([`/admin/ingreso/${id}`])
+        this.router.createUrlTree([`/admin/ingreso/${id}`]),
       );
-    
+
       window.open(url, '_blank');
     }
 
@@ -141,35 +150,35 @@ export class FacturasComponent implements OnInit {
   }
 
   async descargarExtracto() {
-
-    localStorage.setItem('options_extracto', JSON.stringify(this.options))
-    localStorage.setItem('sort_extracto', JSON.stringify(this.sort))
+    localStorage.setItem('options_extracto', JSON.stringify(this.options));
+    localStorage.setItem('sort_extracto', JSON.stringify(this.sort));
     const wopen = window.open('/extracto-cuotas');
     // wopen.onafterprint = (event) => {
     //   wopen.close();
     // };
   }
-  loadingDescargarExtracto = false
+  loadingDescargarExtracto = false;
   async descargarExtractoExcel() {
-    this.loadingDescargarExtracto = true
-   await this._facturaService.getExtractoExcel(this.options, this.sort)
-   this.loadingDescargarExtracto = false
-
+    this.loadingDescargarExtracto = true;
+    await this._facturaService.getExtractoExcel(this.options, this.sort);
+    this.loadingDescargarExtracto = false;
   }
 
-  
-  async ordenar(key){
-    this.facturas = null
-    this.sort.key = key
+  async ordenar(key) {
+    this.facturas = null;
+    this.sort.key = key;
     if (this.sort.value === 1) {
-      this.sort.value = -1
-    } else{
-      this.sort.value = 1
+      this.sort.value = -1;
+    } else {
+      this.sort.value = 1;
     }
-    const resp = await this._facturaService.getFacturasOptions(this.options, this.sort);
+    const resp = await this._facturaService.getFacturasOptions(
+      this.options,
+      this.sort,
+    );
 
     this.facturas = resp.facturas;
   }
-  fill = (number, len) => "0".repeat(len - number.toString().length) + number.toString();
-
+  fill = (number, len) =>
+    '0'.repeat(len - number.toString().length) + number.toString();
 }

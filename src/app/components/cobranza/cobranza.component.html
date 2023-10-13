@@ -62,7 +62,7 @@
                         <div style="display: flex;">
                             <div class="mx-auto">
 
-                                <button [disabled]="!facturas" type="button" (click)="showModal = true"
+                                <button  type="button" (click)="showModal = true"
                                     class="btn mx-auto btn-info">Seleccionar
                                     Contrato</button>
 
@@ -122,7 +122,7 @@
     </div>
 </div>
 
-<app-facturas *ngIf="!showModal && cliente" [count]="count" [options]="opciones" [facturas]="facturas"></app-facturas>
+<app-facturas *ngIf="!showModal && cliente" (onSelectedItem)="onSelectedItem($event)"  [is_cobranza]="true" [count]="count" [options]="opciones" [facturas]="facturas"></app-facturas>
 
 <div *ngIf="contrato" class="card">
     <div class="card-body">

@@ -25,7 +25,7 @@ export class FacturaPdfComponent implements OnInit {
   @Input() facturaPDF;
   @Input() printAltoke = true;
   @Input() existe = true;
-    pago 
+    pago
   totalTexto = '';
   @Input() contrato: Contrato;
   tipo_contrato = '';
@@ -36,7 +36,7 @@ export class FacturaPdfComponent implements OnInit {
   timbrado
   es_factura = true
   async ngOnInit() {
-    // this.timbrado = (await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body 
+    // this.timbrado = (await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body
     // {
     //   timbrado: '15074643',
     //   fecha_vigencia_inicio: '01/09/2021',
@@ -57,7 +57,7 @@ export class FacturaPdfComponent implements OnInit {
         this.factura = await this.getDetallePago(this.facturaPDF._id);
       console.log(this.factura);
       console.log(this.facturaPDF);
-      this.es_factura = this.facturaPDF.es_factura 
+      this.es_factura = this.facturaPDF.es_factura
       } else {
         this.factura = (await this.facturaPDF);
         console.log(this.factura);
@@ -76,7 +76,7 @@ export class FacturaPdfComponent implements OnInit {
         window.print();
       }, 500);
 
-     
+
       // window.onafterprint = (event) => {
       //   window.close();
       // };
@@ -95,7 +95,7 @@ export class FacturaPdfComponent implements OnInit {
 
 
     this.totalTexto = this.Millones(this.total);
-    
+
   }
 
   fill = (number, len) => "0".repeat(len - number.toString().length) + number.toString();
@@ -356,7 +356,7 @@ export class FacturaPdfComponent implements OnInit {
         // console.log("element.haber", element.haber);
         // console.log("factura.haber", factura.haber);
 
-        if (element.contrato._id == factura.contrato._id && element.haber === factura.haber) {
+        if (element.contrato?._id == factura.contrato?._id && element.haber === factura.haber) {
         //console.log("sumando");
 
           element.cantidad++;

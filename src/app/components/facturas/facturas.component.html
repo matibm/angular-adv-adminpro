@@ -66,11 +66,11 @@
                 <tbody *ngIf="facturas">
 
                     <!--  | paginate: { itemsPerPage: 10,totalItems:count, currentPage: page } -->
-                    <tr (click)="selectItem(factura._id)" id="id-{{factura._id}}" class="item-table pointer"
+                    <tr (click)="selectItem(factura._id, factura)" id="id-{{factura._id}}" class="item-table pointer"
                         *ngFor="let factura of facturas  | paginate: { itemsPerPage: 10,totalItems:count, currentPage: page } ; let i = index;">
                         <!-- <td class="text-center" scope="row">{{page*10 + (i+1) - 10}}</td> -->
                         <td class="text-center" scope="row">{{factura.nro_factura}}</td>
-                         
+
                         <td class="text-center" *ngIf="factura.fondo">{{factura.fondo.NOMBRES}}
                             {{factura.fondo.APELLIDOS}}
                         </td>
@@ -114,7 +114,7 @@
                                 ---
                             </div>
                         </td>
-                        <td class="text-center" *ngIf="!fromOutside"> 
+                        <td class="text-center" *ngIf="!fromOutside">
                             {{ factura.recibido | date}}
                         </td>
                     </tr>
@@ -169,7 +169,7 @@
             </div>
 
         </div>
-        <div class="mt-2" *ngIf="true">
+        <div  class="mt-2" *ngIf="!is_cobranza">
             <div style="width: 100%;">
                 <div style="display: flex;">
                     <div class="ml-auto">
