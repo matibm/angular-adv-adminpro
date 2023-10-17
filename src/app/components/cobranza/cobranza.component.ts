@@ -199,8 +199,8 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
       // cobrador: this.cobrador ? this.cobrador._id : null,
       servicio: this.servicio ? this.servicio._id : null,
       fondo: this.fondo ? this.fondo._id : null,
-      // contrato: this.contrato ? this.contrato._id : null,
-      sin_contrato: "1",
+      contrato: this.contrato ? this.contrato._id : null,
+      // sin_contrato: "1",
       pagado,
       vencimiento_start: this.rangeVencimiento.value.start
         ? new Date(this.rangeVencimiento.value.start).getTime()
@@ -300,7 +300,7 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
   onContratoSelected(contrato) {
     this.contrato = contrato;
     ////console.log(contrato);
-    // this.filtrar();
+    this.filtrar();
   }
 
   async getFacturasApagar(id, monto) {
@@ -361,8 +361,9 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
     ];
     ////console.log(this.facturasAPagarAux);
     this.contrato = null;
-    // this.filtrar();
+    this.filtrar();
     this.facturaPdf = this.crearPDF(this.facturasAPagarAux);
+
   }
   confirmarPago() {
     swal

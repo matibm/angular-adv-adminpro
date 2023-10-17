@@ -33571,8 +33571,8 @@ class CobranzaComponent {
                 // cobrador: this.cobrador ? this.cobrador._id : null,
                 servicio: this.servicio ? this.servicio._id : null,
                 fondo: this.fondo ? this.fondo._id : null,
-                // contrato: this.contrato ? this.contrato._id : null,
-                sin_contrato: "1",
+                contrato: this.contrato ? this.contrato._id : null,
+                // sin_contrato: "1",
                 pagado,
                 vencimiento_start: this.rangeVencimiento.value.start
                     ? new Date(this.rangeVencimiento.value.start).getTime()
@@ -33656,7 +33656,7 @@ class CobranzaComponent {
     onContratoSelected(contrato) {
         this.contrato = contrato;
         ////console.log(contrato);
-        // this.filtrar();
+        this.filtrar();
     }
     getFacturasApagar(id, monto) {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
@@ -33710,7 +33710,7 @@ class CobranzaComponent {
             ];
             ////console.log(this.facturasAPagarAux);
             this.contrato = null;
-            // this.filtrar();
+            this.filtrar();
             this.facturaPdf = this.crearPDF(this.facturasAPagarAux);
         });
     }
@@ -45356,4 +45356,4 @@ webpackEmptyAsyncContext.id = "zn8P";
 /***/ })
 
 },[[0,"runtime","vendor"]]]);
-//# sourceMappingURL=main.fc2b5c09270e58959f3c.js.map
+//# sourceMappingURL=main.ad8aa220e21bf7241835.js.map
