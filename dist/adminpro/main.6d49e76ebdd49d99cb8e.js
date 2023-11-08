@@ -33495,7 +33495,12 @@ class CobranzaComponent {
         this.inputCobrador = new rxjs__WEBPACK_IMPORTED_MODULE_4__["Subject"]();
         this.loadingClientes = false;
         this.loadingCobrador = false;
-        this.fechaPago = new Date(`${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()} 00:00`);
+        // fechaPago = new Date(
+        //   `${new Date().getFullYear()}-${
+        //     new Date().getMonth() + 1
+        //   }-${new Date().getDate()} 00:00`,
+        // );
+        this.fechaPago = new Date();
         this.sumaTotal = 0;
         this.notifier = notifier;
     }
@@ -33544,6 +33549,7 @@ class CobranzaComponent {
     ngOnInit() {
         var _a, _b;
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            this.fechaPago.setHours(0, 0, 0, 0);
             ////console.log(!this._userService.usuario?.timbrado?.timbrado , this._userService?.usuario?.role == 'USER_ROLE');
             ////console.log(this._userService?.usuario?.role);
             if (((_b = (_a = this._userService) === null || _a === void 0 ? void 0 : _a.usuario) === null || _b === void 0 ? void 0 : _b.role) == 'USER_ROLE') {
@@ -45356,4 +45362,4 @@ webpackEmptyAsyncContext.id = "zn8P";
 /***/ })
 
 },[[0,"runtime","vendor"]]]);
-//# sourceMappingURL=main.ad8aa220e21bf7241835.js.map
+//# sourceMappingURL=main.6d49e76ebdd49d99cb8e.js.map

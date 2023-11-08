@@ -163,15 +163,18 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
   rucFactura;
   telFactura;
   direccionFactura;
-  fechaPago = new Date(
-    `${new Date().getFullYear()}-${
-      new Date().getMonth() + 1
-    }-${new Date().getDate()} 00:00`,
-  );
+  // fechaPago = new Date(
+  //   `${new Date().getFullYear()}-${
+  //     new Date().getMonth() + 1
+  //   }-${new Date().getDate()} 00:00`,
+  // );
+   fechaPago = new Date();
+
   pruebaValue(variable) {
     ////console.log(getComputedStyle(variable).width);
   }
   async ngOnInit() {
+    this.fechaPago.setHours(0, 0, 0, 0);
     ////console.log(!this._userService.usuario?.timbrado?.timbrado , this._userService?.usuario?.role == 'USER_ROLE');
     ////console.log(this._userService?.usuario?.role);
     if (this._userService?.usuario?.role == 'USER_ROLE') {
