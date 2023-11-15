@@ -8,16 +8,14 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-factura-pdf',
   templateUrl: './factura-pdf.component.html',
-  styleUrls: ['./factura-pdf.component.css']
+  styleUrls: ['./factura-pdf.component.css'],
 })
 export class FacturaPdfComponent implements OnInit {
   constructor(
     public route: ActivatedRoute,
     public _facturaService: FacturaService,
-    private _userService: UsuarioService
-
-
-  ) { }
+    private _userService: UsuarioService,
+  ) {}
 
   total = 0;
   totalIva = 0;
@@ -25,16 +23,16 @@ export class FacturaPdfComponent implements OnInit {
   @Input() facturaPDF;
   @Input() printAltoke = true;
   @Input() existe = true;
-    pago
+  pago;
   totalTexto = '';
   @Input() contrato: Contrato;
   tipo_contrato = '';
   id;
-  nro_factura
-  nro_talonario
+  nro_factura;
+  nro_talonario;
   items: any[] = [];
-  timbrado
-  es_factura = true
+  timbrado;
+  es_factura = true;
   async ngOnInit() {
     // this.timbrado = (await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body
     // {
@@ -47,59 +45,49 @@ export class FacturaPdfComponent implements OnInit {
     // }
     this.id = this.route.snapshot.paramMap.get('id');
 
-  //console.log({...(await this.facturaPDF)});
-
+    //console.log({...(await this.facturaPDF)});
 
     if (this.facturaPDF) {
-      this.nro_factura = (await this.facturaPDF).nro_factura
-      this.nro_talonario = (await this.facturaPDF).numero
+      this.nro_factura = (await this.facturaPDF).nro_factura;
+      this.nro_talonario = (await this.facturaPDF).numero;
       if (this.facturaPDF._id) {
         this.factura = await this.getDetallePago(this.facturaPDF._id);
-      console.log(this.factura);
-      console.log(this.facturaPDF);
-      this.es_factura = this.facturaPDF.es_factura
-      } else {
-        this.factura = (await this.facturaPDF);
         console.log(this.factura);
-
+        console.log(this.facturaPDF);
+        this.es_factura = this.facturaPDF.es_factura;
+      } else {
+        this.factura = await this.facturaPDF;
+        console.log(this.factura);
       }
-
-
-    } else
-      if (this.id) {
-        this.factura = await this.getDetallePago(this.id);
-
-      }
+    } else if (this.id) {
+      this.factura = await this.getDetallePago(this.id);
+    }
 
     if (this.printAltoke) {
       setTimeout(() => {
         window.print();
       }, 500);
 
-
       // window.onafterprint = (event) => {
       //   window.close();
       // };
     }
 
-  //console.log(this.factura);
+    //console.log(this.factura);
     // this.crearPDF(this.factura.servicios)
     for (let i = 0; i < this.factura.servicios.length; i++) {
       const element = this.factura.servicios[i];
       // console.log(element);
 
       this.items[i] = element;
-      this.total += element.precio,
-        this.totalIva += element.diezPorciento;
+      (this.total += element.precio), (this.totalIva += element.diezPorciento);
     }
 
-
     this.totalTexto = this.Millones(this.total);
-
   }
 
-  fill = (number, len) => "0".repeat(len - number.toString().length) + number.toString();
-
+  fill = (number, len) =>
+    '0'.repeat(len - number.toString().length) + number.toString();
 
   // crearPDF(facturas) {
   //   let servicios = [];
@@ -137,7 +125,6 @@ export class FacturaPdfComponent implements OnInit {
 
   // //console.log(servicios);
 
-
   //   const facturaPDF = {
   //     nombres: this.nombreFactura,
   //     fecha: Date.now(),
@@ -153,55 +140,78 @@ export class FacturaPdfComponent implements OnInit {
   //   return facturaPDF;
   // }
 
-
   Unidades(num) {
-
     switch (num) {
-      case 1: return 'UN';
-      case 2: return 'DOS';
-      case 3: return 'TRES';
-      case 4: return 'CUATRO';
-      case 5: return 'CINCO';
-      case 6: return 'SEIS';
-      case 7: return 'SIETE';
-      case 8: return 'OCHO';
-      case 9: return 'NUEVE';
+      case 1:
+        return 'UN';
+      case 2:
+        return 'DOS';
+      case 3:
+        return 'TRES';
+      case 4:
+        return 'CUATRO';
+      case 5:
+        return 'CINCO';
+      case 6:
+        return 'SEIS';
+      case 7:
+        return 'SIETE';
+      case 8:
+        return 'OCHO';
+      case 9:
+        return 'NUEVE';
     }
 
     return '';
-  }// Unidades()
+  } // Unidades()
 
   Decenas(num) {
-
     const decena = Math.floor(num / 10);
-    const unidad = num - (decena * 10);
+    const unidad = num - decena * 10;
 
     switch (decena) {
       case 1:
         switch (unidad) {
-          case 0: return 'DIEZ';
-          case 1: return 'ONCE';
-          case 2: return 'DOCE';
-          case 3: return 'TRECE';
-          case 4: return 'CATORCE';
-          case 5: return 'QUINCE';
-          default: return 'DIECI' + this.Unidades(unidad);
+          case 0:
+            return 'DIEZ';
+          case 1:
+            return 'ONCE';
+          case 2:
+            return 'DOCE';
+          case 3:
+            return 'TRECE';
+          case 4:
+            return 'CATORCE';
+          case 5:
+            return 'QUINCE';
+          default:
+            return 'DIECI' + this.Unidades(unidad);
         }
       case 2:
         switch (unidad) {
-          case 0: return 'VEINTE';
-          default: return 'VEINTI' + this.Unidades(unidad);
+          case 0:
+            return 'VEINTE';
+          default:
+            return 'VEINTI' + this.Unidades(unidad);
         }
-      case 3: return this.DecenasY('TREINTA', unidad);
-      case 4: return this.DecenasY('CUARENTA', unidad);
-      case 5: return this.DecenasY('CINCUENTA', unidad);
-      case 6: return this.DecenasY('SESENTA', unidad);
-      case 7: return this.DecenasY('SETENTA', unidad);
-      case 8: return this.DecenasY('OCHENTA', unidad);
-      case 9: return this.DecenasY('NOVENTA', unidad);
-      case 0: return this.Unidades(unidad);
+      case 3:
+        return this.DecenasY('TREINTA', unidad);
+      case 4:
+        return this.DecenasY('CUARENTA', unidad);
+      case 5:
+        return this.DecenasY('CINCUENTA', unidad);
+      case 6:
+        return this.DecenasY('SESENTA', unidad);
+      case 7:
+        return this.DecenasY('SETENTA', unidad);
+      case 8:
+        return this.DecenasY('OCHENTA', unidad);
+      case 9:
+        return this.DecenasY('NOVENTA', unidad);
+      case 0:
+        return this.Unidades(unidad);
     }
-  }// Unidades()
+  } // Unidades()
 
   DecenasY(strSin, numUnidades) {
     if (numUnidades > 0) {
@@ -209,11 +219,11 @@ export class FacturaPdfComponent implements OnInit {
     }
 
     return strSin;
-  }// DecenasY()
+  } // DecenasY()
 
   Centenas(num) {
     const centenas = Math.floor(num / 100);
-    const decenas = num - (centenas * 100);
+    const decenas = num - centenas * 100;
 
     switch (centenas) {
       case 1:
@@ -221,30 +231,37 @@ export class FacturaPdfComponent implements OnInit {
           return 'CIENTO ' + this.Decenas(decenas);
         }
         return 'CIEN';
-      case 2: return 'DOSCIENTOS ' + this.Decenas(decenas);
-      case 3: return 'TRESCIENTOS ' + this.Decenas(decenas);
-      case 4: return 'CUATROCIENTOS ' + this.Decenas(decenas);
-      case 5: return 'QUINIENTOS ' + this.Decenas(decenas);
-      case 6: return 'SEISCIENTOS ' + this.Decenas(decenas);
-      case 7: return 'SETECIENTOS ' + this.Decenas(decenas);
-      case 8: return 'OCHOCIENTOS ' + this.Decenas(decenas);
-      case 9: return 'NOVECIENTOS ' + this.Decenas(decenas);
+      case 2:
+        return 'DOSCIENTOS ' + this.Decenas(decenas);
+      case 3:
+        return 'TRESCIENTOS ' + this.Decenas(decenas);
+      case 4:
+        return 'CUATROCIENTOS ' + this.Decenas(decenas);
+      case 5:
+        return 'QUINIENTOS ' + this.Decenas(decenas);
+      case 6:
+        return 'SEISCIENTOS ' + this.Decenas(decenas);
+      case 7:
+        return 'SETECIENTOS ' + this.Decenas(decenas);
+      case 8:
+        return 'OCHOCIENTOS ' + this.Decenas(decenas);
+      case 9:
+        return 'NOVECIENTOS ' + this.Decenas(decenas);
     }
 
     return this.Decenas(decenas);
-  }// Centenas()
+  } // Centenas()
 
   Seccion(num, divisor, strSingular, strPlural) {
     const cientos = Math.floor(num / divisor);
-    const resto = num - (cientos * divisor);
+    const resto = num - cientos * divisor;
 
     let letras = '';
 
     if (cientos > 0) {
       if (cientos > 1) {
         letras = this.Centenas(cientos) + ' ' + strPlural;
-      }
-      else {
+      } else {
         letras = strSingular;
       }
     }
@@ -254,12 +271,12 @@ export class FacturaPdfComponent implements OnInit {
     }
 
     return letras;
-  }// Seccion()
+  } // Seccion()
 
   Miles(num) {
     const divisor = 1000;
     const cientos = Math.floor(num / divisor);
-    const resto = num - (cientos * divisor);
+    const resto = num - cientos * divisor;
 
     const strMiles = this.Seccion(num, divisor, 'UN MIL', 'MIL');
     const strCentenas = this.Centenas(resto);
@@ -269,12 +286,12 @@ export class FacturaPdfComponent implements OnInit {
     }
 
     return strMiles + ' ' + strCentenas;
-  }// Miles()
+  } // Miles()
 
   Millones(num) {
     const divisor = 1000000;
     const cientos = Math.floor(num / divisor);
-    const resto = num - (cientos * divisor);
+    const resto = num - cientos * divisor;
     const strMillones = this.Seccion(num, divisor, 'UN MILLON', 'MILLONES');
     const strMiles = this.Miles(resto);
 
@@ -283,40 +300,60 @@ export class FacturaPdfComponent implements OnInit {
     }
 
     return strMillones + ' ' + strMiles;
-  }// Millones()
+  } // Millones()
 
   NumeroALetras(num) {
     const data = {
       numero: num,
       enteros: Math.floor(num),
-      centavos: (((Math.round(num * 100)) - (Math.floor(num) * 100))),
+      centavos: Math.round(num * 100) - Math.floor(num) * 100,
       letrasCentavos: '',
       letrasMonedaPlural: 'Córdobas', // "PESOS", 'Dólares', 'Bolívares', 'etcs'
       letrasMonedaSingular: 'Córdoba', // "PESO", 'Dólar', 'Bolivar', 'etc'
 
       letrasMonedaCentavoPlural: 'CENTAVOS',
-      letrasMonedaCentavoSingular: 'CENTAVO'
+      letrasMonedaCentavoSingular: 'CENTAVO',
     };
 
     if (data.centavos > 0) {
-      data.letrasCentavos = 'CON ' + (function () {
-        if (data.centavos == 1) {
-          return this.Millones(data.centavos) + ' ' + data.letrasMonedaCentavoSingular;
-        }
-        else {
-          return this.Millones(data.centavos) + ' ' + data.letrasMonedaCentavoPlural;
-        }
-      })();
+      data.letrasCentavos =
+        'CON ' +
+        (function () {
+          if (data.centavos == 1) {
+            return (
+              this.Millones(data.centavos) +
+              ' ' +
+              data.letrasMonedaCentavoSingular
+            );
+          } else {
+            return (
+              this.Millones(data.centavos) +
+              ' ' +
+              data.letrasMonedaCentavoPlural
+            );
+          }
+        })();
     }
 
     if (data.enteros == 0) {
       return 'CERO ' + data.letrasMonedaPlural + ' ' + data.letrasCentavos;
     }
     if (data.enteros == 1) {
-      return this.Millones(data.enteros) + ' ' + data.letrasMonedaSingular + ' ' + data.letrasCentavos;
-    }
-    else {
-      return this.Millones(data.enteros) + ' ' + data.letrasMonedaPlural + ' ' + data.letrasCentavos;
+      return (
+        this.Millones(data.enteros) +
+        ' ' +
+        data.letrasMonedaSingular +
+        ' ' +
+        data.letrasCentavos
+      );
+    } else {
+      return (
+        this.Millones(data.enteros) +
+        ' ' +
+        data.letrasMonedaPlural +
+        ' ' +
+        data.letrasCentavos
+      );
     }
   }
 
@@ -324,8 +361,8 @@ export class FacturaPdfComponent implements OnInit {
     const resp = await this._facturaService.getDetallePago(id);
 
     const pago = resp.pago;
-    this.pago = pago
-  //console.log(pago);
+    this.pago = pago;
+    //console.log(pago);
     // if (!pago.timbrado) Swal.fire('error timbrado', JSON.stringify(pago), 'error')
     this.timbrado = resp.pago.timbrado || {
       timbrado: 'ERROR',
@@ -333,17 +370,16 @@ export class FacturaPdfComponent implements OnInit {
       fecha_vigente_fin: new Date('2022/09/30'),
       ruc: 'ERROR',
       nro_solicitud: 'ERROR',
-      fecha_solicitud: new Date('2021/08/31')
-    }
-    this.nro_factura = pago.nro_factura
-    this.nro_talonario = pago.numero
+      fecha_solicitud: new Date('2021/08/31'),
+    };
+    this.nro_factura = pago.nro_factura;
+    this.nro_talonario = pago.numero;
     const facturas = resp.facturas;
     let servicios = [];
     const contratosSinRepetir = [];
     const fsinrepetir = [];
 
-  //console.log(facturas);
-
+    //console.log(facturas);
 
     for (let i = 0; i < facturas.length; i++) {
       const factura = facturas[i];
@@ -356,8 +392,11 @@ export class FacturaPdfComponent implements OnInit {
         // console.log("element.haber", element.haber);
         // console.log("factura.haber", factura.haber);
 
-        if (element.contrato?._id == factura.contrato?._id && element.haber === factura.haber) {
-        //console.log("sumando");
+        if (
+          element.contrato?._id == factura.contrato?._id &&
+          element.haber === factura.haber
+        ) {
+          //console.log("sumando");
 
           element.cantidad++;
           element.precio += factura.haber;
@@ -370,19 +409,18 @@ export class FacturaPdfComponent implements OnInit {
           contrato: factura.contrato,
           cantidad: 1,
           concepto: `${factura.servicio.NOMBRE}`,
-          precioUnitario: factura.precio_unitario ? factura.precio_unitario : factura.haber,
+          precioUnitario: factura.precio_unitario
+            ? factura.precio_unitario
+            : factura.haber,
           precio: factura.haber,
           cincoPorciento: null,
           haber: factura.haber,
-          diezPorciento: factura.haber / 11
+          diezPorciento: factura.haber / 11,
         });
       }
 
       servicios = fsinrepetir;
     }
-
-
-
 
     // for (let i = 0; i < facturas.length; i++) {
     //   const factura = facturas[i];
@@ -439,9 +477,13 @@ export class FacturaPdfComponent implements OnInit {
       ruc: pago.ruc,
       tel: pago.tel,
       notaDeRemision: '123123',
-      servicios
+      servicios,
     };
     return this.facturaPDF;
   }
 
+  async guardarComentario(id, comentario) {
+    await this._facturaService.guardarComentario({ id, comentario });
+    alert("Comentario guardado");
+  }
 }

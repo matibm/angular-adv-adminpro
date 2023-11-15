@@ -12,7 +12,7 @@ export class FacturaService {
   constructor(
     public http: HttpClient,
     public _usuarioService: UsuarioService,
-    public _cajaService: CajaService
+    public _cajaService: CajaService,
   ) {}
 
   crearFactura(factura) {
@@ -68,7 +68,7 @@ export class FacturaService {
             title: 'Ocurrió un error',
             text: err.error.message,
           });
-        }
+        },
       );
   }
   confirmarRecibo(options, accion, recibido?) {
@@ -107,7 +107,7 @@ export class FacturaService {
             title: 'Ocurrió un error',
             text: err.error.message,
           });
-        }
+        },
       );
   }
   elimnarFactura(id) {
@@ -157,7 +157,7 @@ export class FacturaService {
             title: 'Error',
             text: error.error.error,
           });
-        }
+        },
       );
   }
   async pagarFactura(factura, parcial?: boolean, monto_parcial?: number) {
@@ -189,7 +189,7 @@ export class FacturaService {
             title: 'Error al pagar',
             text: error.error.error,
           });
-        }
+        },
       );
   }
   getFacturaById(id) {
@@ -233,7 +233,7 @@ export class FacturaService {
         binaryData.push(response);
         let downloadLink = document.createElement('a');
         downloadLink.href = window.URL.createObjectURL(
-          new Blob(binaryData, { type: dataType })
+          new Blob(binaryData, { type: dataType }),
         );
 
         downloadLink.setAttribute('download', 'ventas.xlsx');
@@ -243,6 +243,12 @@ export class FacturaService {
       });
   }
 
+  // peticion post que manda a /factura/pago/comentario y envie id y comentario en el body
+  guardarComentario(body) {
+    let url = `${URL_SERVICIOS}/factura/pago/comentario`;
+    url += `?token=${this._usuarioService.token}`;
+    return this.http.post(url, body).toPromise();
+  }
   getExtractoExcel(options?: any, sort?) {
     let url = `${URL_SERVICIOS}/factura/all_excel`;
     url += `?token=${this._usuarioService.token}`;
@@ -270,7 +276,7 @@ export class FacturaService {
           binaryData.push(response);
           let downloadLink = document.createElement('a');
           downloadLink.href = window.URL.createObjectURL(
-            new Blob(binaryData, { type: dataType })
+            new Blob(binaryData, { type: dataType }),
           );
 
           downloadLink.setAttribute('download', 'ventas.xlsx');
@@ -282,7 +288,7 @@ export class FacturaService {
           console.log(error);
 
           swal.fire({ title: 'error', icon: 'error', text: error });
-        }
+        },
       );
   }
 
@@ -298,7 +304,7 @@ export class FacturaService {
         binaryData.push(response);
         let downloadLink = document.createElement('a');
         downloadLink.href = window.URL.createObjectURL(
-          new Blob(binaryData, { type: dataType })
+          new Blob(binaryData, { type: dataType }),
         );
 
         downloadLink.setAttribute('download', 'cuadro_ingreso.xlsx');
@@ -321,7 +327,7 @@ export class FacturaService {
           binaryData.push(response);
           let downloadLink = document.createElement('a');
           downloadLink.href = window.URL.createObjectURL(
-            new Blob(binaryData, { type: dataType })
+            new Blob(binaryData, { type: dataType }),
           );
 
           downloadLink.setAttribute('download', 'Reporte_ingreso_anual.xlsx');
@@ -334,7 +340,7 @@ export class FacturaService {
           console.log(error);
 
           swal.fire({ title: 'error', icon: 'error', text: error });
-        }
+        },
       );
   }
 
@@ -351,7 +357,7 @@ export class FacturaService {
         binaryData.push(response);
         let downloadLink = document.createElement('a');
         downloadLink.href = window.URL.createObjectURL(
-          new Blob(binaryData, { type: dataType })
+          new Blob(binaryData, { type: dataType }),
         );
 
         downloadLink.setAttribute('download', 'Reporte_ingreso_anual.xlsx');
@@ -378,7 +384,7 @@ export class FacturaService {
         },
         (err) => {
           console.log(err);
-        }
+        },
       );
   }
   modificarMonto(body) {
@@ -395,7 +401,7 @@ export class FacturaService {
         },
         (err) => {
           console.log(err);
-        }
+        },
       );
   }
   modificar(body) {
@@ -411,7 +417,7 @@ export class FacturaService {
         },
         (err) => {
           console.log(err);
-        }
+        },
       );
   }
   getDetallePago(id) {
@@ -496,7 +502,7 @@ export class FacturaService {
           console.log(error);
 
           swal.fire({ title: 'error', icon: 'error', text: error.error });
-        }
+        },
       );
   }
   getFacturasOptions(options?: any, sort?) {
@@ -528,7 +534,7 @@ export class FacturaService {
           console.log(error);
 
           swal.fire({ title: 'error', icon: 'error', text: error.error.error });
-        }
+        },
       );
   }
   getFacturasParcial(facturaId) {
@@ -588,7 +594,7 @@ export class FacturaService {
     }
   }
   async estadoFactura(pago_id: string) {
-    let url = URL_SERVICIOS + '/factura/estado_factura/'+pago_id;
+    let url = URL_SERVICIOS + '/factura/estado_factura/' + pago_id;
     url += `?token=${this._usuarioService.token}`;
     return this.http.get(url).toPromise();
   }
@@ -644,7 +650,7 @@ export class FacturaService {
             title: 'Error al cancelar el pago',
             text: error.error.message,
           });
-        }
+        },
       );
   }
 }
