@@ -42113,18 +42113,49 @@ function FacturaPdfComponent_div_2_div_239_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](32, "\n        ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const item_r3 = ctx.$implicit;
+    const item_r5 = ctx.$implicit;
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](item_r3.cantidad);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](item_r5.cantidad);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](6);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate2"]("", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](12, 5, item_r3.contrato == null ? null : item_r3.contrato.nro_contrato), " ", item_r3.concepto, "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate2"]("", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](12, 5, item_r5.contrato == null ? null : item_r5.contrato.nro_contrato), " ", item_r5.concepto, "");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](7);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind4"](19, 7, item_r3.precioUnitario, "", "", "2.0"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind4"](19, 7, item_r5.precioUnitario, "", "", "2.0"));
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](11);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind4"](30, 12, item_r3.precio, "", "", "2.0"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind4"](30, 12, item_r5.precio, "", "", "2.0"));
+} }
+function FacturaPdfComponent_div_2_div_315_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("Nota: ", ctx_r3.pago.comentario, "");
+} }
+function FacturaPdfComponent_div_2_div_318_Template(rf, ctx) { if (rf & 1) {
+    const _r7 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "h5");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "Nota:");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](4, "\n        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](5, "textarea", 59);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngModelChange", function FacturaPdfComponent_div_2_div_318_Template_textarea_ngModelChange_5_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r7); const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); return ctx_r6.pago.comentario = $event; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](6, "\n        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](7, "button", 60);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function FacturaPdfComponent_div_2_div_318_Template_button_click_7_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r7); const ctx_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); return ctx_r8.guardarComentario(ctx_r8.pago._id, ctx_r8.pago.comentario); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](8, "\n          Guardar\n        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](9, "\n      ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", ctx_r4.pago.comentario);
 } }
 function FacturaPdfComponent_div_2_Template(rf, ctx) { if (rf & 1) {
-    const _r5 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 3);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n  ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 4);
@@ -42532,48 +42563,34 @@ function FacturaPdfComponent_div_2_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](312, "br");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](313);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](314, "date");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](315, "\n      ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](315, FacturaPdfComponent_div_2_div_315_Template, 2, 1, "div", 58);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](316, "\n      ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](317, "div");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](318, "\n        ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](319, "h5");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](320, "Nota:");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](317, "\n      ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](318, FacturaPdfComponent_div_2_div_318_Template, 10, 1, "div", 58);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](319, "\n    ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](321, "\n        ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](322, "textarea", 58);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngModelChange", function FacturaPdfComponent_div_2_Template_textarea_ngModelChange_322_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r5); const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r4.pago.comentario = $event; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](320, "\n  ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](323, "\n        ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](324, "button", 59);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function FacturaPdfComponent_div_2_Template_button_click_324_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r5); const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r6.guardarComentario(ctx_r6.pago._id, ctx_r6.pago.comentario); });
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](325, "\n          Guardar\n        ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](326, "\n      ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](327, "\n    ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](328, "\n  ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](329, "\n");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](321, "\n");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](67);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("TMBRADO N\u00BA ", ctx_r1.timbrado.timbrado, " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("\n              Fecha Inicio Vigencia: ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](70, 21, ctx_r1.timbrado.fecha_vigente_inicio), "\n              ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("\n              Fecha Inicio Vigencia: ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](70, 22, ctx_r1.timbrado.fecha_vigente_inicio), "\n              ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("\n              Fecha Fin Vigencia: ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](73, 23, ctx_r1.timbrado.fecha_vigente_fin), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("\n              Fecha Fin Vigencia: ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](73, 24, ctx_r1.timbrado.fecha_vigente_fin), " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("\n              RUC: ", ctx_r1.timbrado.ruc, "\n            ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](8);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate2"]("\n                ", ctx_r1.nro_talonario, "-", ctx_r1.fill(ctx_r1.nro_factura || "0", 7), "\n              ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](19);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate3"]("", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind2"](103, 25, ctx_r1.factura.fecha, "dd"), " de\n                  ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind2"](104, 28, ctx_r1.factura.fecha, "MMMM"), " de\n                  ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind2"](105, 31, ctx_r1.factura.fecha, "YYYY"), "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate3"]("", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind2"](103, 26, ctx_r1.factura.fecha, "dd"), " de\n                  ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind2"](104, 29, ctx_r1.factura.fecha, "MMMM"), " de\n                  ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind2"](105, 32, ctx_r1.factura.fecha, "YYYY"), "");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](34);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](ctx_r1.factura.nombres);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](8);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](145, 34, ctx_r1.factura.ruc));
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](145, 35, ctx_r1.factura.ruc));
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](14);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](ctx_r1.factura.direccion);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](8);
@@ -42583,17 +42600,19 @@ function FacturaPdfComponent_div_2_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](27);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](ctx_r1.totalTexto);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](6);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind4"](273, 36, ctx_r1.total, "", "", "2.0"), " Gs");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind4"](273, 37, ctx_r1.total, "", "", "2.0"), " Gs");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](22);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("\n              (10%): ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind4"](295, 41, ctx_r1.totalIva, "", "", "2.0"), "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("\n              (10%): ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind4"](295, 42, ctx_r1.totalIva, "", "", "2.0"), "");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](7);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("TOTAL. IVA: ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind4"](302, 46, ctx_r1.totalIva, "", "", "2.0"), " Gs");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("TOTAL. IVA: ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind4"](302, 47, ctx_r1.totalIva, "", "", "2.0"), " Gs");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](10);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("\n      Solicitud N\u00BA ", ctx_r1.timbrado.nro_solicitud, "\n      ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("\n      Fecha: ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](314, 51, ctx_r1.timbrado.fecha_solicitud), "\n      ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](9);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", ctx_r1.pago.comentario);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("\n      Fecha: ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](314, 52, ctx_r1.timbrado.fecha_solicitud), "\n      ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx_r1.printAltoke);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !ctx_r1.printAltoke);
 } }
 class FacturaPdfComponent {
     constructor(route, _facturaService, _userService) {
@@ -43013,10 +43032,10 @@ class FacturaPdfComponent {
     }
 }
 FacturaPdfComponent.ɵfac = function FacturaPdfComponent_Factory(t) { return new (t || FacturaPdfComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_factura_service__WEBPACK_IMPORTED_MODULE_3__["FacturaService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](src_app_services_usuario_service__WEBPACK_IMPORTED_MODULE_4__["UsuarioService"])); };
-FacturaPdfComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: FacturaPdfComponent, selectors: [["app-factura-pdf"]], inputs: { factura: "factura", facturaPDF: "facturaPDF", printAltoke: "printAltoke", existe: "existe", contrato: "contrato" }, decls: 4, vars: 2, consts: [["style", "\n    width: 1000px;\n    height: fit-content;\n    margin: 0 !important;\n    padding: 0 !important;\n    overflow: hidden;\n  ", 4, "ngIf"], ["class", "", "style", "\n    width: 1000px;\n    height: fit-content;\n    margin: 0 !important;\n    padding: 0 !important;\n    overflow: hidden;\n  ", 4, "ngIf"], [2, "width", "1000px", "height", "fit-content", "margin", "0 !important", "padding", "0 !important", "overflow", "hidden"], [1, "", 2, "width", "1000px", "height", "fit-content", "margin", "0 !important", "padding", "0 !important", "overflow", "hidden"], [1, "mx-auto", "bg-white", 2, "width", "1000px"], [2, "width", "100%"], [2, "display", "flex"], [1, "mx-auto"], [1, "mt-3", "row", "mr-3", 2, "margin-left", "16px"], [1, "p-0", "col-8"], [2, "padding", "8px", "border", "2px solid", "border-radius", "15px", "height", "200px"], [1, "row"], [1, "p-x", "col-4"], ["width", "190px", "src", "../../../assets/images/logo2020.png", "alt", ""], [1, "px-1", "col-8"], ["align", "center", 1, "", 2, "display", "block", "justify-content", "center"], [1, "m-0"], [1, "m-1"], ["for", "", 2, "font-size", "14px"], [1, "px-1", "col-4"], [2, "text-align", "initial", "height", "200px", "padding", "8px", "border", "2px solid", "border-radius", "15px"], [2, "font-size", "18px"], [2, "display", "block"], [1, "text-danger", 2, "font-size", "24px", "margin-left", "16px"], [1, "mx-3", "my-1"], [2, "padding", "8px", "border", "2px solid", "border-radius", "15px", "height", "100%"], [1, "py-1", 2, "display", "flex"], [1, "mr-auto"], [1, "", 2, "width", "40%", "display", "flex"], [1, "mr-1"], [1, "ml-1", "mdi", "mdi-checkbox-marked-outline"], [1, "ml-1", "mdi", "mdi-checkbox-blank-outline"], [1, ""], [2, "padding", "0px", "border", "2px solid", "border-radius", "15px", "height", "100%"], [1, "", 2, "height", "100%", "display", "flex"], [2, "width", "10%", "display", "flex", "border-bottom", "1px solid", "border-right", "1px solid"], [1, "m-auto"], [2, "width", "50%", "display", "flex", "border-bottom", "1px solid", "border-right", "1px solid"], [2, "width", "30%", "display", "flex", "border-bottom", "1px solid"], [2, "width", "100%", "display", "block"], [1, "", 2, "display", "flex"], [1, "", 2, "width", "100%", "border-bottom", "1px solid"], [2, "width", "100%", "border-right", "1px solid", "display", "flex"], [2, "width", "100%", "display", "flex", "border-right", "1px solid"], [2, "width", "100%", "display", "flex"], ["style", "height: 40px; width: 100%; display: flex", "class", "", 4, "ngFor", "ngForOf"], [1, "", 2, "height", "40px", "width", "100%", "display", "flex"], [2, "width", "70%", "display", "flex", "border-bottom", "1px solid", "border-right", "1px solid"], [1, "ml-2", "my-auto"], [2, "width", "10%", "display", "flex", "border-bottom", "1px solid"], [1, "", 2, "height", "80px", "width", "100%", "display", "flex"], [2, "width", "75%", "display", "flex", "border-bottom", "1px solid", "border-right", "1px solid"], [2, "width", "25%", "display", "flex", "border-bottom", "1px solid"], [2, "width", "25%", "display", "flex"], [2, "width", "20%", "display", "flex"], [1, "my-auto"], [2, "width", "35%", "display", "flex"], [2, "margin-left", "50px", "text-align", "left"], [1, "form-control", 3, "ngModel", "ngModelChange"], [1, "btn", "btn-primary", 3, "click"]], template: function FacturaPdfComponent_Template(rf, ctx) { if (rf & 1) {
+FacturaPdfComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: FacturaPdfComponent, selectors: [["app-factura-pdf"]], inputs: { factura: "factura", facturaPDF: "facturaPDF", printAltoke: "printAltoke", existe: "existe", contrato: "contrato" }, decls: 4, vars: 2, consts: [["style", "\n    width: 1000px;\n    height: fit-content;\n    margin: 0 !important;\n    padding: 0 !important;\n    overflow: hidden;\n  ", 4, "ngIf"], ["class", "", "style", "\n    width: 1000px;\n    height: fit-content;\n    margin: 0 !important;\n    padding: 0 !important;\n    overflow: hidden;\n  ", 4, "ngIf"], [2, "width", "1000px", "height", "fit-content", "margin", "0 !important", "padding", "0 !important", "overflow", "hidden"], [1, "", 2, "width", "1000px", "height", "fit-content", "margin", "0 !important", "padding", "0 !important", "overflow", "hidden"], [1, "mx-auto", "bg-white", 2, "width", "1000px"], [2, "width", "100%"], [2, "display", "flex"], [1, "mx-auto"], [1, "mt-3", "row", "mr-3", 2, "margin-left", "16px"], [1, "p-0", "col-8"], [2, "padding", "8px", "border", "2px solid", "border-radius", "15px", "height", "200px"], [1, "row"], [1, "p-x", "col-4"], ["width", "190px", "src", "../../../assets/images/logo2020.png", "alt", ""], [1, "px-1", "col-8"], ["align", "center", 1, "", 2, "display", "block", "justify-content", "center"], [1, "m-0"], [1, "m-1"], ["for", "", 2, "font-size", "14px"], [1, "px-1", "col-4"], [2, "text-align", "initial", "height", "200px", "padding", "8px", "border", "2px solid", "border-radius", "15px"], [2, "font-size", "18px"], [2, "display", "block"], [1, "text-danger", 2, "font-size", "24px", "margin-left", "16px"], [1, "mx-3", "my-1"], [2, "padding", "8px", "border", "2px solid", "border-radius", "15px", "height", "100%"], [1, "py-1", 2, "display", "flex"], [1, "mr-auto"], [1, "", 2, "width", "40%", "display", "flex"], [1, "mr-1"], [1, "ml-1", "mdi", "mdi-checkbox-marked-outline"], [1, "ml-1", "mdi", "mdi-checkbox-blank-outline"], [1, ""], [2, "padding", "0px", "border", "2px solid", "border-radius", "15px", "height", "100%"], [1, "", 2, "height", "100%", "display", "flex"], [2, "width", "10%", "display", "flex", "border-bottom", "1px solid", "border-right", "1px solid"], [1, "m-auto"], [2, "width", "50%", "display", "flex", "border-bottom", "1px solid", "border-right", "1px solid"], [2, "width", "30%", "display", "flex", "border-bottom", "1px solid"], [2, "width", "100%", "display", "block"], [1, "", 2, "display", "flex"], [1, "", 2, "width", "100%", "border-bottom", "1px solid"], [2, "width", "100%", "border-right", "1px solid", "display", "flex"], [2, "width", "100%", "display", "flex", "border-right", "1px solid"], [2, "width", "100%", "display", "flex"], ["style", "height: 40px; width: 100%; display: flex", "class", "", 4, "ngFor", "ngForOf"], [1, "", 2, "height", "40px", "width", "100%", "display", "flex"], [2, "width", "70%", "display", "flex", "border-bottom", "1px solid", "border-right", "1px solid"], [1, "ml-2", "my-auto"], [2, "width", "10%", "display", "flex", "border-bottom", "1px solid"], [1, "", 2, "height", "80px", "width", "100%", "display", "flex"], [2, "width", "75%", "display", "flex", "border-bottom", "1px solid", "border-right", "1px solid"], [2, "width", "25%", "display", "flex", "border-bottom", "1px solid"], [2, "width", "25%", "display", "flex"], [2, "width", "20%", "display", "flex"], [1, "my-auto"], [2, "width", "35%", "display", "flex"], [2, "margin-left", "50px", "text-align", "left"], [4, "ngIf"], [1, "form-control", 3, "ngModel", "ngModelChange"], [1, "btn", "btn-primary", 3, "click"]], template: function FacturaPdfComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](0, FacturaPdfComponent_div_0_Template, 2, 1, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n\n");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](2, FacturaPdfComponent_div_2_Template, 330, 53, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](2, FacturaPdfComponent_div_2_Template, 322, 54, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n");
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.es_factura == false);
@@ -45430,4 +45449,4 @@ webpackEmptyAsyncContext.id = "zn8P";
 /***/ })
 
 },[[0,"runtime","vendor"]]]);
-//# sourceMappingURL=main.fb13fdf77e0fb1be6311.js.map
+//# sourceMappingURL=main.4f0dce9d6bc09f028c1c.js.map

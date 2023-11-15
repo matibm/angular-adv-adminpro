@@ -376,9 +376,9 @@
       Solicitud Nº {{ timbrado.nro_solicitud }}
       <br />
       Fecha: {{ timbrado.fecha_solicitud | date }}
-      <!-- <div *ngIf="pago.comentario ">Nota: {{pago.comentario }}</div> -->
+      <div *ngIf="printAltoke ">Nota: {{pago.comentario }}</div>
       <!-- hacer que comentario sea un textarea y tenga un boton de guardar -->
-      <div>
+      <div *ngIf="!printAltoke">
         <h5>Nota:</h5>
         <textarea [(ngModel)]="pago.comentario" class="form-control"></textarea>
         <button
