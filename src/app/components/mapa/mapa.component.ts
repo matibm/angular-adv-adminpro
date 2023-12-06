@@ -71,14 +71,20 @@ export class MapaComponent implements OnInit, OnChanges {
     setTimeout(() => {
       let list = document.querySelectorAll('.blob.red')
       console.log(list);
-      
+
       for (let i = 0; i < list.length; i++) {
         const element = list.item(i)
         element.classList.remove('blob')
         element.classList.remove('red')
-  
+
       }
     }, 20000);
   }
 
+  splicetext(text) {
+    // remueve el primer caracter del texto y retorna el resto
+      const rest = text.slice(1);
+      return rest;
+
+  }
 }
