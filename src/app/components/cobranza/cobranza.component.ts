@@ -137,6 +137,9 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
       color: 'danger',
     },
   ];
+  tiposDeExcentas = ['10%', '5%', 'Excenta'];
+  excentaSeleccionada: string = '10%';
+
   filtros = [];
   estadoSeleccionado = 'TODOS';
 
@@ -163,6 +166,7 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
   rucFactura;
   telFactura;
   direccionFactura;
+  tasas = []
   // fechaPago = new Date(
   //   `${new Date().getFullYear()}-${
   //     new Date().getMonth() + 1
@@ -235,7 +239,7 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
       this.sort,
     );
     this.count = respF.count;
-    console.log(respF);
+    //console.log(respF);
 
     this.facturas = respF.facturas;
   }
@@ -365,7 +369,8 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
     ////console.log(this.facturasAPagarAux);
     this.contrato = null;
     this.filtrar();
-    this.facturaPdf = this.crearPDF(this.facturasAPagarAux);
+    this.facturaPdf =  this.crearPDF(this.facturasAPagarAux);
+
 
   }
   confirmarPago() {
@@ -411,8 +416,12 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
     this.loadingConfirmarPago = true;
 
     let timbrado = this.cobrador.timbrado;
+    console.log(this.tasas);
+
 
     let pagoresp = await this._facturaService.pagarPorMonto({
+      tasa: this.excentaSeleccionada,
+      tasas: this.tasas,
       fecha_pago: this.fechaPago.getTime(),
       lista: this.lista,
       montoTotal: this.sumaTotal,
@@ -525,6 +534,7 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
         fsinrepetir.push({
           contrato: factura.contrato,
           cantidad: 1,
+          tasa: '10%',
           concepto: `${factura.servicio.NOMBRE}`,
           precioUnitario: factura.precio_unitario
             ? factura.precio_unitario
@@ -537,9 +547,11 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
       }
 
       servicios = fsinrepetir;
+
     }
     // let timbrado = (await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body
 
+    servicios.forEach((s) => this.tasas.push("10%"));
     const facturaPDF = {
       nombres: this.nombreFactura,
       fecha: this.fechaPago.getTime(),
@@ -592,7 +604,7 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   onSelectedItem(item: any) {
-    console.log(item);
+    // console.log(item);
     this.facturasAPagarAux.push({...item, is_selected: true});
     this.sumaTotal = this.facturasAPagarAux.reduce((a, b) => a + b.haber, 0);
   }

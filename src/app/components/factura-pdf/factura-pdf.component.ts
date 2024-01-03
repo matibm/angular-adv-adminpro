@@ -18,7 +18,8 @@ export class FacturaPdfComponent implements OnInit {
   ) {}
 
   total = 0;
-  totalIva = 0;
+  totalIva10 = 0;
+  totalIva5 = 0;
   @Input() factura;
   @Input() facturaPDF;
   @Input() printAltoke = true;
@@ -34,6 +35,8 @@ export class FacturaPdfComponent implements OnInit {
   timbrado;
   es_factura = true;
   async ngOnInit() {
+    console.log(await this.factura);
+
     // this.timbrado = (await this._userService.getConfigurations({ type: 'TIMBRADO' }))[0].body
     // {
     //   timbrado: '15074643',
@@ -48,16 +51,19 @@ export class FacturaPdfComponent implements OnInit {
     //console.log({...(await this.facturaPDF)});
 
     if (this.facturaPDF) {
+      console.log(await this.facturaPDF);
+
       this.nro_factura = (await this.facturaPDF).nro_factura;
       this.nro_talonario = (await this.facturaPDF).numero;
+
       if (this.facturaPDF._id) {
         this.factura = await this.getDetallePago(this.facturaPDF._id);
-        console.log(this.factura);
-        console.log(this.facturaPDF);
+
         this.es_factura = this.facturaPDF.es_factura;
       } else {
+        // esto es vista previa
         this.factura = await this.facturaPDF;
-        console.log(this.factura);
+        this.timbrado = this.factura.timbrado;
       }
     } else if (this.id) {
       this.factura = await this.getDetallePago(this.id);
@@ -73,14 +79,22 @@ export class FacturaPdfComponent implements OnInit {
       // };
     }
 
-    //console.log(this.factura);
+
     // this.crearPDF(this.factura.servicios)
     for (let i = 0; i < this.factura.servicios.length; i++) {
       const element = this.factura.servicios[i];
-      // console.log(element);
+
 
       this.items[i] = element;
-      (this.total += element.precio), (this.totalIva += element.diezPorciento);
+      this.total += element.precio;
+      if (element.tasa == '10%') {
+        this.totalIva10 += element.diezPorciento;
+      } else if (element.tasa == '5%') {
+        this.totalIva5 += element.cincoPorciento;
+
+      }
+      // this.totalIva10 += element.diezPorciento;
+      // this.totalIva5 += element.diezPorciento;
     }
 
     this.totalTexto = this.Millones(this.total);
@@ -387,10 +401,10 @@ export class FacturaPdfComponent implements OnInit {
 
       for (let m = 0; m < fsinrepetir.length; m++) {
         const element = fsinrepetir[m];
-        // console.log("element.contrato", element.contrato._id);
-        // console.log("factura.contrato", factura.contrato._id);
-        // console.log("element.haber", element.haber);
-        // console.log("factura.haber", factura.haber);
+        ////console.log("element.contrato", element.contrato._id);
+        ////console.log("factura.contrato", factura.contrato._id);
+        ////console.log("element.haber", element.haber);
+        ////console.log("factura.haber", factura.haber);
 
         if (
           element.contrato?._id == factura.contrato?._id &&
@@ -405,7 +419,9 @@ export class FacturaPdfComponent implements OnInit {
         }
       }
       if (!existe) {
+        const tasa = this.pago.tasas[fsinrepetir.length] || '10%';
         fsinrepetir.push({
+          tasa,
           contrato: factura.contrato,
           cantidad: 1,
           concepto: `${factura.servicio.NOMBRE}`,
@@ -413,7 +429,7 @@ export class FacturaPdfComponent implements OnInit {
             ? factura.precio_unitario
             : factura.haber,
           precio: factura.haber,
-          cincoPorciento: null,
+          cincoPorciento: factura.haber * 0.05,
           haber: factura.haber,
           diezPorciento: factura.haber / 11,
         });
@@ -422,53 +438,6 @@ export class FacturaPdfComponent implements OnInit {
       servicios = fsinrepetir;
     }
 
-    // for (let i = 0; i < facturas.length; i++) {
-    //   const factura = facturas[i];
-    //   let existe = false;
-
-    //   for (let m = 0; m < fsinrepetir.length; m++) {
-    //     const element = fsinrepetir[m];
-    //     if (element.contrato == factura.contrato && element.haber === factura.haber) {
-    //       element.cantidad++;
-    //       element.precio += factura.haber;
-    //       element.diezPorciento += factura.haber / 11;
-    //       existe = true;
-    //     }
-    //   }
-    //   if (!existe) {
-    //     fsinrepetir.push({
-    //       contrato: factura.contrato,
-    //       cantidad: 1,
-    //       concepto: `${factura.servicio.NOMBRE}`,
-    //       precioUnitario: factura.precio_unitario ? factura.precio_unitario : factura.haber,
-    //       precio: factura.haber,
-    //       cincoPorciento: null,
-    //       haber: factura.haber,
-    //       diezPorciento: factura.haber / 11
-    //     });
-    //   }
-
-    //   // if (contratosSinRepetir.includes(factura.contrato) && !factura.parcial) {
-    //   //   for (let j = 0; j < servicios.length; j++) {
-    //   //     const element = servicios[j];
-    //   //     element.cantidad++
-    //   //     element.precio += factura.haber
-    //   //     element.diezPorciento += factura.haber / 11
-    //   //   }
-    //   // } else {
-    //   //   servicios.push({
-    //   //     contrato: factura.contrato,
-    //   //     cantidad: 1,
-    //   //     concepto: `${factura.servicio.NOMBRE}`,
-    //   //     precioUnitario: factura.precio_unitario ? factura.precio_unitario : factura.haber,
-    //   //     precio: factura.haber,
-    //   //     cincoPorciento: null,
-    //   //     diezPorciento: factura.haber / 11
-    //   //   })
-    //   //   contratosSinRepetir.push(factura.contrato)
-    //   // }
-    //   servicios = fsinrepetir;
-    // }
     this.facturaPDF = {
       _id: pago._id,
       nombres: pago.nombre,
@@ -484,6 +453,16 @@ export class FacturaPdfComponent implements OnInit {
 
   async guardarComentario(id, comentario) {
     await this._facturaService.guardarComentario({ id, comentario });
-    alert("Comentario guardado");
+    alert('Comentario guardado');
+  }
+
+  calcularTasa(tasa: string, precio: number) {
+    if (tasa === '10%') {
+      return precio / 11;
+    } else if (tasa === '5%') {
+      return precio / 20;
+    } else if (tasa === 'Excenta') {
+      return precio;
+    }
   }
 }

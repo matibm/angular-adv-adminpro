@@ -79,6 +79,10 @@ export class ListaContratosComponent implements OnInit {
     start: new FormControl(),
     end: new FormControl()
   });
+  CMPaPSVRange = new FormGroup({
+    start: new FormControl(),
+    end: new FormControl()
+  });
   beneficiarioNombre
   beneficiarioCi
   inhumadoNombre
@@ -492,7 +496,7 @@ export class ListaContratosComponent implements OnInit {
     if (this.vendedor) {
       query.vendedor = this.vendedor._id
     }
-   
+
     if (this.ventaDeTarjetaRange.value.start) {
       query['fecha'] = {
         start : this.ventaDeTarjetaRange.value.start ? new Date(`${new Date(this.ventaDeTarjetaRange.value.start).toLocaleDateString('en-US')} 00:00`).getTime() : null,
@@ -500,6 +504,19 @@ export class ListaContratosComponent implements OnInit {
       }
     }
     this._contratoService.reporte_clientes_nro_tarjeta(query)
+
+  }
+  reporte_CMP_a_PSV() {
+    let query: any = {}
+
+
+    if (this.CMPaPSVRange.value.start) {
+      query['fecha'] = {
+        date_start : this.CMPaPSVRange.value.start ? new Date(`${new Date(this.CMPaPSVRange.value.start).toLocaleDateString('en-US')} 00:00`).getTime() : null,
+        date_end: this.CMPaPSVRange.value.end ? new Date(`${new Date(this.CMPaPSVRange.value.end).toLocaleDateString('en-US')} 23:59:59`).getTime() : null
+      }
+    }
+    this._contratoService.reporte_CMP_a_PSV(query.fecha)
 
   }
 }

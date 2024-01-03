@@ -25,7 +25,10 @@ export class ModalFacturaComponent implements OnInit {
     console.log(this.facturaPDF);
     this.facturaPDF = {... await this.facturaPDF}
     console.log(this.style);
-    this.facturaStatus = await this.estadoFactura(this.facturaPDF._id)
+    if (this.facturaPDF._id) {
+      this.facturaStatus = await this.estadoFactura(this.facturaPDF._id)
+
+    }
     console.log();
 
   }

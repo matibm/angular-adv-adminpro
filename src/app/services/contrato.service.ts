@@ -273,8 +273,8 @@ export class ContratoService {
 
     let url = URL_SERVICIOS + '/contrato/vendedor_ult_cobro';
     url += `?token=${this._usuarioService.token}`;
-    
-    
+
+
     return this.http.post(url, body, { responseType: 'blob' as 'json' }).toPromise().then(
       (response: any) => {
         let dataType = response.type;
@@ -297,7 +297,7 @@ export class ContratoService {
     )
   }
 
-  
+
   revisarContrato(body): Promise<any> {
 
     let url = URL_SERVICIOS + '/contrato/revisar'
@@ -371,6 +371,31 @@ export class ContratoService {
         downloadLink.href = window.URL.createObjectURL(new Blob(binaryData, { type: dataType }));
 
         downloadLink.setAttribute('download', 'nro_tarjeta_clientes.xlsx');
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        downloadLink.remove()
+      },
+
+      (error) => {
+        console.log(error);
+
+        swal.fire({ title: 'error', icon: 'error', text: error })
+      }
+    )
+  }
+  reporte_CMP_a_PSV(body): Promise<any> {
+
+    let url = URL_SERVICIOS + '/contrato/psm_y_psv_relacionados'
+    url += `?token=${this._usuarioService.token}`;
+    return this.http.post(url, body, { responseType: 'blob' as 'json' }).toPromise().then(
+      (response: any) => {
+        let dataType = response.type;
+        let binaryData = [];
+        binaryData.push(response);
+        let downloadLink = document.createElement('a');
+        downloadLink.href = window.URL.createObjectURL(new Blob(binaryData, { type: dataType }));
+
+        downloadLink.setAttribute('download', 'psm_y_psv_relacionados.xlsx');
         document.body.appendChild(downloadLink);
         downloadLink.click();
         downloadLink.remove()

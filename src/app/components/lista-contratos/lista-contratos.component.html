@@ -359,21 +359,21 @@
                         <td *ngIf="!contrato.titular">---</td>
                         <td *ngIf="contrato.titular">{{contrato.titular.RUC | ruc}}</td>
                         <div *ngIf="contrato.producto.COD_CORTO == 'P.S.V.'">
-                            <td *ngIf="contrato.inhumados">{{contrato.inhumados.length}}</td>                           
-                            <td *ngIf="!contrato.inhumados.length">0</td>                           
+                            <td *ngIf="contrato.inhumados">{{contrato.inhumados.length}}</td>
+                            <td *ngIf="!contrato.inhumados.length">0</td>
 
                         </div>
                         <div *ngIf="contrato.producto.COD_CORTO !== 'P.S.V.'">
-                        <td *ngIf="contrato.inhumados">{{contrato.inhumados.length}}</td>                           
+                        <td *ngIf="contrato.inhumados">{{contrato.inhumados.length}}</td>
                         </div>
-                        
+
                         <td *ngIf="!contrato.manzana">---</td>
                         <td *ngIf="contrato.manzana">{{contrato.manzana}}</td>
 
                         <td *ngIf="!contrato.fila">---</td>
                         <td *ngIf="contrato.fila">{{contrato.fila}}</td>
                         <td *ngIf="!contrato.parcela">---</td>
-                        
+
 
                         <td *ngIf="contrato.parcela">{{contrato.parcela}}</td>
                         <td>
@@ -470,8 +470,8 @@
                                     Invalid end date</mat-error>
                             </mat-form-field>
                             <div></div>
-                            <button style="width: 155.57px;" [disabled]="!rangeReporteBajas.value.start 
-                    || !rangeReporteBajas.value.end 
+                            <button style="width: 155.57px;" [disabled]="!rangeReporteBajas.value.start
+                    || !rangeReporteBajas.value.end
                     || loadingGenerarReporteBajas " (click)="generarReporteBajas()"
                                 class="btn btn-rounded mr-auto btn-inverse">
                                 <span *ngIf="!loadingGenerarReporteBajas">Descargar Excel</span>
@@ -487,7 +487,7 @@
                             </button>
 
                             <!-- <div style="display: block;">
-                    
+
                         <button type="button" [disabled]="!rangeReporteBajas.value.start || !rangeReporteBajas.value.end" (click)="generarReporteMovimientos()" class="btn btn-rounded btn-inverse mx-auto">Descargar Excel</button></div>
                    </div> -->
                         </div>
@@ -556,7 +556,7 @@
                         </mat-date-range-input>
                         <mat-datepicker-toggle matSuffix [for]="pickerVentaTarjeta"></mat-datepicker-toggle>
                         <mat-date-range-picker #pickerVentaTarjeta></mat-date-range-picker>
-    
+
                         <mat-error *ngIf="ventaDeTarjetaRange.controls.start.hasError('matStartDateInvalid')">Fecha inicio incorrecta
                         </mat-error>
                         <mat-error *ngIf="ventaDeTarjetaRange.controls.end.hasError('matEndDateInvalid')">Fecha fin incorrecta</mat-error>
@@ -564,6 +564,33 @@
                     <div class="mt-1  d-flex">
                         <div class="mx-auto">
                             <button (click)="reporte_clientes_nro_tarjeta()" class="btn btn-inverse">
+                                Generar Reporte
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h3>Reporte CMP a PSV</h3>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Rango de fecha</mat-label>
+                        <mat-date-range-input [formGroup]="CMPaPSVRange" [rangePicker]="pickerCMPaPSV">
+                            <input matStartDate formControlName="start" placeholder="fecha inicio">
+                            <input matEndDate formControlName="end" placeholder="fecha fin">
+                        </mat-date-range-input>
+                        <mat-datepicker-toggle matSuffix [for]="pickerCMPaPSV"></mat-datepicker-toggle>
+                        <mat-date-range-picker #pickerCMPaPSV></mat-date-range-picker>
+
+                        <mat-error *ngIf="CMPaPSVRange.controls.start.hasError('matStartDateInvalid')">Fecha inicio incorrecta
+                        </mat-error>
+                        <mat-error *ngIf="CMPaPSVRange.controls.end.hasError('matEndDateInvalid')">Fecha fin incorrecta</mat-error>
+                    </mat-form-field>
+                    <div class="mt-1  d-flex">
+                        <div class="mx-auto">
+                            <button (click)="reporte_CMP_a_PSV()" class="btn btn-inverse">
                                 Generar Reporte
                             </button>
                         </div>

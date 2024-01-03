@@ -1,27 +1,20 @@
-<div
-  *ngIf="es_factura == false"
-  style="
+<div *ngIf="es_factura == false" style="
     width: 1000px;
     height: fit-content;
     margin: 0 !important;
     padding: 0 !important;
     overflow: hidden;
-  "
->
+  ">
   comprobante de ingreso por monto {{ total }}
 </div>
 
-<div
-  *ngIf="factura"
-  class=""
-  style="
+<div *ngIf="factura && timbrado" class="" style="
     width: 1000px;
     height: fit-content;
     margin: 0 !important;
     padding: 0 !important;
     overflow: hidden;
-  "
->
+  ">
   <div style="width: 1000px" class="mx-auto bg-white">
     <div style="width: 100%">
       <div style="display: flex">
@@ -30,37 +23,25 @@
     </div>
     <div style="margin-left: 16px" class="mt-3 row mr-3">
       <div class="p-0 col-8">
-        <div
-          style="
+        <div style="
             padding: 8px;
             border: 2px solid;
             border-radius: 15px;
             height: 200px;
-          "
-        >
+          ">
           <div class="row">
             <div class="p-x col-4">
-              <img
-                width="190px"
-                src="../../../assets/images/logo2020.png"
-                alt=""
-              />
+              <img width="190px" src="../../../assets/images/logo2020.png" alt="" />
             </div>
 
             <div class="px-1 col-8">
-              <div
-                align="center"
-                style="display: block; justify-content: center"
-                class=""
-              >
+              <div align="center" style="display: block; justify-content: center" class="">
                 <h1>IMPERIAL</h1>
                 <h4 class="m-0">Cementerio Privado - Servicios Funerarios</h4>
                 <span>de <b>EDUARDO CLEBSCH S.A.</b></span>
                 <hr class="m-1" />
                 <span style="font-size: 14px" for="">
-                  <b>Suc.:</b> Cerro Cora Nº 333 - Encarnación <br /><b
-                    >Central:</b
-                  >
+                  <b>Suc.:</b> Cerro Cora Nº 333 - Encarnación <br /><b>Central:</b>
                   Santo Domingo a 200 Mts de la Ruta 1 - (071) 202803
                   <br />
                   Itapúa - Paraguay
@@ -71,18 +52,15 @@
         </div>
       </div>
       <div class="px-1 col-4">
-        <div
-          style="
+        <div style="
             text-align: initial;
             height: 200px;
             padding: 8px;
             border: 2px solid;
             border-radius: 15px;
-          "
-        >
+          ">
           <span style="font-size: 18px">
-            <b
-              >TMBRADO Nº {{ timbrado.timbrado }} <br />
+            <b>TMBRADO Nº {{ timbrado.timbrado }} <br />
               Fecha Inicio Vigencia: {{ timbrado.fecha_vigente_inicio | date }}
               <br />
               Fecha Fin Vigencia: {{ timbrado.fecha_vigente_fin | date }} <br />
@@ -91,10 +69,7 @@
             <div style="display: block">
               <div>FACTURA Nº:</div>
 
-              <div
-                style="font-size: 24px; margin-left: 16px"
-                class="text-danger"
-              >
+              <div style="font-size: 24px; margin-left: 16px" class="text-danger">
                 {{ nro_talonario }}-{{ fill(nro_factura || "0", 7) }}
               </div>
             </div>
@@ -103,33 +78,24 @@
       </div>
     </div>
     <div class="mx-3 my-1">
-      <div
-        style="
+      <div style="
           padding: 8px;
           border: 2px solid;
           border-radius: 15px;
           height: 100%;
-        "
-      >
+        ">
         <div style="display: flex" class="py-1">
           <div class="mr-auto">
-            <span
-              >Encarnación,
-              <u
-                ><b
-                  >{{ factura.fecha | date: "dd" }} de
+            <span>Encarnación,
+              <u><b>{{ factura.fecha | date: "dd" }} de
                   {{ factura.fecha | date: "MMMM" }} de
-                  {{ factura.fecha | date: "YYYY" }}</b
-                ></u
-              >
+                  {{ factura.fecha | date: "YYYY" }}</b></u>
             </span>
           </div>
           <div style="width: 40%; display: flex" class="">
             <div class="mr-1">Cond. de Venta:</div>
             <div class="mr-auto">
-              <span
-                >Contado: <i class="ml-1 mdi mdi-checkbox-marked-outline"></i
-              ></span>
+              <span>Contado: <i class="ml-1 mdi mdi-checkbox-marked-outline"></i></span>
             </div>
             <div class="mr-auto">
               credito: <i class="ml-1 mdi mdi-checkbox-blank-outline"></i>
@@ -138,12 +104,8 @@
         </div>
         <div style="display: flex" class="py-1">
           <div class="mr-auto">
-            <span
-              >Señor(es):
-              <u
-                ><b>{{ factura.nombres }}</b></u
-              ></span
-            >
+            <span>Señor(es):
+              <u><b>{{ factura.nombres }}</b></u></span>
           </div>
           <div style="width: 40%; display: flex" class="">
             <div class="mr-1">
@@ -153,12 +115,8 @@
         </div>
         <div style="display: flex" class="py-1">
           <div class="mr-auto">
-            <span
-              >Direccion:
-              <u
-                ><b>{{ factura.direccion }}</b></u
-              ></span
-            >
+            <span>Direccion:
+              <u><b>{{ factura.direccion }}</b></u></span>
           </div>
           <div style="width: 40%; display: flex" class="">
             <div class="mr-auto">
@@ -170,43 +128,35 @@
       </div>
     </div>
     <div class="mx-3 my-1">
-      <div
-        style="
+      <div style="
           padding: 0px;
           border: 2px solid;
           border-radius: 15px;
           height: 100%;
-        "
-      >
+        ">
         <div style="height: 100%; display: flex" class="">
-          <div
-            style="
+          <div style="
               width: 10%;
               display: flex;
               border-bottom: 1px solid;
               border-right: 1px solid;
-            "
-          >
+            ">
             <div class="m-auto">Cant</div>
           </div>
-          <div
-            style="
+          <div style="
               width: 50%;
               display: flex;
               border-bottom: 1px solid;
               border-right: 1px solid;
-            "
-          >
+            ">
             <div class="m-auto">Clase de Mercaderías y/o Servicios</div>
           </div>
-          <div
-            style="
+          <div style="
               width: 10%;
               display: flex;
               border-bottom: 1px solid;
               border-right: 1px solid;
-            "
-          >
+            ">
             <div class="m-auto">
               Precio <br />
               Unitario
@@ -219,15 +169,11 @@
               </div>
               <div style="width: 100%; border-bottom: 1px solid" class=""></div>
               <div class="" style="display: flex">
-                <div
-                  style="width: 100%; border-right: 1px solid; display: flex"
-                >
+                <div style="width: 100%; border-right: 1px solid; display: flex">
                   <div class="m-auto">exentas</div>
                 </div>
 
-                <div
-                  style="width: 100%; display: flex; border-right: 1px solid"
-                >
+                <div style="width: 100%; display: flex; border-right: 1px solid">
                   <div class="m-auto">5%</div>
                 </div>
 
@@ -238,108 +184,100 @@
             </div>
           </div>
         </div>
-        <div
-          *ngFor="let item of items"
-          style="height: 40px; width: 100%; display: flex"
-          class=""
-        >
-          <div
-            style="
+        <div *ngFor="let item of items" style="height: 40px; width: 100%; display: flex" class="">
+          <div style="
               width: 10%;
               display: flex;
               border-bottom: 1px solid;
               border-right: 1px solid;
-            "
-          >
+            ">
             <span class="m-auto">{{ item.cantidad }}</span>
           </div>
-          <div
-            style="
+          <div style="
               width: 50%;
               display: flex;
               border-bottom: 1px solid;
               border-right: 1px solid;
-            "
-          >
-            <span class="m-auto"
-              >{{ item.contrato?.nro_contrato | ruc }} {{ item.concepto }}</span
-            >
+            ">
+            <span class="m-auto">{{ item.contrato?.nro_contrato | ruc }} {{ item.concepto }}</span>
           </div>
-          <div
-            style="
+          <div style="
               width: 10%;
               display: flex;
               border-bottom: 1px solid;
               border-right: 1px solid;
-            "
-          >
+            ">
             <span class="m-auto">{{
               item.precioUnitario | currency: "" : "" : "2.0"
-            }}</span>
+              }}</span>
           </div>
-          <div
-            style="
+          <div style="
               width: 10%;
               display: flex;
               border-bottom: 1px solid;
               border-right: 1px solid;
-            "
-          ></div>
-          <div
-            style="
-              width: 10%;
-              display: flex;
-              border-bottom: 1px solid;
-              border-right: 1px solid;
-            "
-          ></div>
-          <div style="width: 10%; display: flex; border-bottom: 1px solid">
-            <span class="m-auto">{{
+            ">
+
+            <span   (click)="item.tasa = 'Excenta'" title="Click para usar tasa Excenta" [ngStyle]="{'opacity': item.tasa == 'Excenta'? '1' : '0'}"
+              class="pointer m-auto">{{
               item.precio | currency: "" : "" : "2.0"
-            }}</span>
+              }}</span>
+
+          </div>
+          <div style="
+              width: 10%;
+              display: flex;
+              border-bottom: 1px solid;
+              border-right: 1px solid;
+            ">
+            <span   (click)="item.tasa = '5%'" title="Click para usar tasa 5%" [ngStyle]="{'opacity': item.tasa == '5%'? '1' : '0'}"
+              class="pointer m-auto">{{
+              item.precio | currency: "" : "" : "2.0"
+              }}</span>
+          </div>
+          <div style="width: 10%; display: flex; border-bottom: 1px solid">
+            <!-- <span class="m-auto">{{
+              item.precio | currency: "" : "" : "2.0"
+              }}</span> -->
+              <span   (click)="item.tasa = '10%'" title="Click para usar tasa 10%" [ngStyle]="{'opacity': item.tasa == '10%' || !item.tasa? '1' : '0'}"
+              class="pointer m-auto">{{
+              item.precio | currency: "" : "" : "2.0"
+              }}</span>
           </div>
         </div>
         <div style="height: 40px; width: 100%; display: flex" class="">
-          <div
-            style="
+          <div style="
               width: 70%;
               display: flex;
               border-bottom: 1px solid;
               border-right: 1px solid;
-            "
-          >
+            ">
             <h2 class="ml-2 my-auto">VALOR PARCIAL</h2>
           </div>
 
-          <div
-            style="
+          <div style="
               width: 10%;
               display: flex;
               border-bottom: 1px solid;
               border-right: 1px solid;
-            "
-          ></div>
-          <div
-            style="
+            "></div>
+          <div style="
               width: 10%;
               display: flex;
               border-bottom: 1px solid;
               border-right: 1px solid;
-            "
-          ></div>
+            "></div>
           <div style="width: 10%; display: flex; border-bottom: 1px solid">
             <!-- <span class="m-auto">{{totalIva | currency: '':'':'2.0'}}</span> -->
           </div>
         </div>
         <div style="height: 80px; width: 100%; display: flex" class="">
-          <div
-            style="
+          <div style="
               width: 75%;
               display: flex;
               border-bottom: 1px solid;
               border-right: 1px solid;
-            "
-          >
+            ">
             <h2 class="ml-2 my-auto">TOTAL A PAGAR Gs:</h2>
 
             <span class="ml-2 my-auto">{{ totalTexto }}</span>
@@ -354,17 +292,14 @@
             <h4 class="ml-2 my-auto">LIQUIDACION DEL IVA:</h4>
           </div>
           <div style="width: 20%; display: flex">
-            <span class="my-auto"> (5%):</span>
+            <span class="my-auto"> (5%): {{ totalIva5 | currency: "" : "" : "2.0" }}</span>
           </div>
           <div style="width: 20%; display: flex">
             <span class="my-auto">
-              (10%): {{ totalIva | currency: "" : "" : "2.0" }}</span
-            >
+              (10%): {{ totalIva10 | currency: "" : "" : "2.0" }}</span>
           </div>
           <div style="width: 35%; display: flex">
-            <span class="ml-2 my-auto"
-              >TOTAL. IVA: {{ totalIva | currency: "" : "" : "2.0" }} Gs</span
-            >
+            <span class="ml-2 my-auto">TOTAL. IVA: {{ totalIva10 + totalIva5 | currency: "" : "" : "2.0" }} Gs</span>
           </div>
         </div>
       </div>
@@ -378,13 +313,10 @@
       Fecha: {{ timbrado.fecha_solicitud | date }}
       <div *ngIf="printAltoke ">Nota: {{pago.comentario }}</div>
       <!-- hacer que comentario sea un textarea y tenga un boton de guardar -->
-      <div *ngIf="!printAltoke">
+      <div *ngIf="!printAltoke && pago">
         <h5>Nota:</h5>
         <textarea [(ngModel)]="pago.comentario" class="form-control"></textarea>
-        <button
-          (click)="guardarComentario(pago._id, pago.comentario)"
-          class="btn btn-primary"
-        >
+        <button (click)="guardarComentario(pago._id, pago.comentario)" class="btn btn-primary">
           Guardar
         </button>
       </div>
