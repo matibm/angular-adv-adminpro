@@ -42886,6 +42886,7 @@ class FacturaPdfComponent {
             for (let i = 0; i < this.factura.servicios.length; i++) {
                 const element = this.factura.servicios[i];
                 this.items[i] = element;
+                this.items[i].tasa = this.pago.tasa;
                 this.total += element.precio;
                 if (element.tasa == '10%') {
                     this.totalIva10 += element.diezPorciento;
@@ -45638,4 +45639,4 @@ webpackEmptyAsyncContext.id = "zn8P";
 /***/ })
 
 },[[0,"runtime","vendor"]]]);
-//# sourceMappingURL=main.10df9e4ca66b86d5261b.js.map
+//# sourceMappingURL=main.0d644e48e15c58404e7a.js.map

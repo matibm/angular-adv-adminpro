@@ -86,6 +86,8 @@ export class FacturaPdfComponent implements OnInit {
 
 
       this.items[i] = element;
+      this.items[i].tasa =this.pago.tasa
+
       this.total += element.precio;
       if (element.tasa == '10%') {
         this.totalIva10 += element.diezPorciento;
