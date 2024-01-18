@@ -171,23 +171,23 @@ ngOnDestroy(): void {
   async guardar() {
     if(this.fondo?._id ) this.gasto.fondo = this.fondo._id
     if(this.proveedor?._id ) this.gasto.proveedor = this.proveedor._id
-    if(this.nroFacturaProveedor ) this.gasto.nro_comp_banco = this.nroFacturaProveedor
+    this.gasto.nro_comp_banco = this.nroFacturaProveedor
     if(this.nro ) this.gasto.nro_factura = this.nro
     if(this.comentario ) this.gasto.comentario = this.comentario
     if(this.monto ) this.gasto.monto_total = this.monto
     if(this.fechaVencimientoTimbrado?.getTime() ) this.gasto.vencimiento_timbrado = this.fechaVencimientoTimbrado.getTime()
-    
+
     if(this.cuentaGasto?.cuenta ) this.gasto.id_cuentacaja = this.cuentaGasto.cuenta
     if(this.cuentaGasto?._id ) this.gasto.tipo_movimiento = this.cuentaGasto._id
     if(this.fechaCreacion?.getTime() ) this.gasto.fecha_creacion_unix = this.fechaCreacion.getTime()
-    this.cliente?._id ? this.gasto.cliente = this.cliente._id : delete this.gasto.cliente 
+    this.cliente?._id ? this.gasto.cliente = this.cliente._id : delete this.gasto.cliente
     this.contrato?._id ? this.gasto.contrato = this.contrato._id : this.gasto.contrato = null
 
     if (this.tipoIva == 'IVA 10%') this.gasto.tipo_iva = 'iva10'
     if (this.tipoIva == 'IVA 5%') this.gasto.tipo_iva = 'iva5'
     if (this.tipoIva == 'EXENTAS') this.gasto.tipo_iva = 'exenta'
     console.log(this.gasto);
-    
+
     let resp = await this.egresoService.updateEgreso(this.gasto)
     console.log(resp);
     // this.ngOnInit()

@@ -19143,8 +19143,7 @@ class EditGastoComponent {
                 this.gasto.fondo = this.fondo._id;
             if ((_b = this.proveedor) === null || _b === void 0 ? void 0 : _b._id)
                 this.gasto.proveedor = this.proveedor._id;
-            if (this.nroFacturaProveedor)
-                this.gasto.nro_comp_banco = this.nroFacturaProveedor;
+            this.gasto.nro_comp_banco = this.nroFacturaProveedor;
             if (this.nro)
                 this.gasto.nro_factura = this.nro;
             if (this.comentario)
@@ -45639,4 +45638,4 @@ webpackEmptyAsyncContext.id = "zn8P";
 /***/ })
 
 },[[0,"runtime","vendor"]]]);
-//# sourceMappingURL=main.0d644e48e15c58404e7a.js.map
+//# sourceMappingURL=main.14bc2d66325604b03c1f.js.map
