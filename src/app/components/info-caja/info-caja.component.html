@@ -1,5 +1,5 @@
 <div class="my-k">
-    <!-- 
+    <!--
     <ng-template #customLoadingTemplate>
 
     </ng-template> -->
@@ -211,7 +211,7 @@
         <div class="card-body ">
             <!-- <div style=" width: 100%;">
                 <div [style.display]="'flex'">
-                   
+
                 </div>
             </div> -->
             <!-- <div>Saldo En fondo: {{saldoFondo | currency: '':'':'2.0'}} Gs</div> -->
@@ -299,7 +299,7 @@
 
                             </td>
                             <!-- fecha -->
-                            <td [ngClass]="'text-center'">{{item.fecha | date: 'dd-MM-YY'}}</td>
+                            <td [ngClass]="'text-center'">{{item.fecha | date: 'dd MMM yy'}}</td>
                             <!-- nro factura -->
                             <td [ngClass]="'text-center'">
                                 <div *ngIf="item.factura">
@@ -407,7 +407,7 @@
                             </td>
                             <td [ngClass]="'text-center'">
                                 {{item.movimiento?.comentario || item.factura?.nota || '---' }}
-                                <!-- 
+                                <!--
                                 <div *ngIf="item.factura?.nota">
                                 </div>
                                 <div *ngIf="item.movimiento?.comentario">
@@ -590,16 +590,16 @@
                     <thead>
                         <tr #tableHeaad class="thead">
                             <th class="mx-3">Fondo</th>
-                            <th class="mx-3">Monto</th>                            
+                            <th class="mx-3">Monto</th>
                         </tr>
-        
+
                     </thead>
                     <tbody>
-                        
+
                         <tr *ngFor="let item of listaFondosActuales">
                             <td>{{item.fondo}}</td>
-                            <td>{{item.monto | currency:'':'':'2.0' }}</td>                            
-            
+                            <td>{{item.monto | currency:'':'':'2.0' }}</td>
+
                         </tr>
                     </tbody>
                 </table>
