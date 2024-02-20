@@ -1,6 +1,6 @@
 <div *ngIf="usuario" class="row">
-    <!-- Column -->
-    <!-- <div *ngIf="false" class="col-lg-4 col-xlg-3 col-md-5">
+  <!-- Column -->
+  <!-- <div *ngIf="false" class="col-lg-4 col-xlg-3 col-md-5">
         <div class="card"> <img class="card-img" src="../assets/images/background/socialbg.jpg" alt="Card image">
             <div class="card-img-overlay card-inverse social-profile d-flex ">
                 <div class="align-self-center"> <img src="../assets/images/users/1.jpg" class="img-circle" width="100">
@@ -26,887 +26,627 @@
             </div>
         </div>
     </div> -->
-    <!-- Column -->
-    <!-- Column -->
-    <!-- <div class="col-lg-8 col-xlg-9 col-md-7"> -->
-    <div class="col">
-        <div class="card mb-0">
-            <!-- Nav tabs -->
-            <ul class="nav nav-tabs profile-tab" role="tablist">
-                <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Perfil</a>
-                </li>
-                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Contratos
-                    </a>
-                    <!-- <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#contratos_inactivos"
+  <!-- Column -->
+  <!-- Column -->
+  <!-- <div class="col-lg-8 col-xlg-9 col-md-7"> -->
+  <div class="col">
+    <div class="card mb-0">
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs profile-tab" role="tablist">
+        <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Perfil</a>
+        </li>
+        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Contratos
+          </a>
+          <!-- <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#contratos_inactivos"
                         role="tab">Contratos Inactivos</a>
                 </li> -->
-                <li class="nav-item"> <a class="nav-link" data-toggle="tab" [routerLink]="['/admin/ingresos']"
-                        [queryParams]="{cliente: id, estado: 'TODOS'}" routerLinkActive="router-link-active"
-                        role="tab">Facturas</a>
-                </li>
-                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#movimientos"
-                        role="tab">Movimientos</a>
-                </li>
-                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#pagosa" role="tab">Pagos</a>
-                </li>
-                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#settings" role="tab">Ajustes</a>
-                </li>
-            </ul>
-            <!-- Tab panes -->
-            <div class="tab-content">
-                <div class="tab-pane active" id="home" role="tabpanel">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-3 col-xs-6 b-r"> <strong>Nombre Completo</strong>
-                                <br>
-                                <p class="text-muted">{{usuario.NOMBRES}} {{usuario.APELLIDOS}}</p>
-                            </div>
-                            <div class="col-md-3 col-xs-6 b-r"> <strong>RUC</strong>
-                                <br>
-                                <p class="text-muted">{{usuario.RUC | ruc}}</p>
-                            </div>
-                            <div *ngIf="false" class="col-md-3 col-xs-6 b-r"> <strong>Rol de Usuario</strong>
-                                <br>
-                                <p class="text-muted">administrador</p>
-                            </div>
-                            <div class="col-md-3 col-xs-6 b-r"> <strong>Fecha de creacion</strong>
-                                <br>
-                                <p class="text-muted">{{usuario.fecha_creacion | date}}</p>
-                            </div>
-                            <div class="col-md-3 col-xs-6"> <strong>Estado</strong>
-                                <br>
-                                <p *ngIf="usuario.ACTIVO == '1'" class="text-muted">Inactivo</p>
-                                <p *ngIf="usuario.ACTIVO == '0'" class="text-muted">Activo</p>
-
-                            </div>
-                        </div>
-                        <hr>
-
-                        <div class="row">
-                            <div class="col-xs text-capitalize col-md b-r">
-
-                                <h4>General</h4>
-                                <div class="form-dsamaterial ">
-                                    <div class=" form-group">
-                                        <label>Nombres: <b>{{usuario.NOMBRES}}</b></label>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Apellidos: <b>{{usuario.APELLIDOS}}</b></label>
-
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>RUC/CI: <b>{{usuario.RUC | ruc}}</b></label>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="example-email">Email: <b>{{usuario.EMAIL}}</b> </label>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="">Perfil de Facebook:<b> <span class="text-lowercase ">
-                                                    {{usuario.facebook}}</span></b> </label>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="">Banco:<b> <span class="text-lowercase ">
-                                                    {{usuario.cuenta_bancaria}}</span></b> </label>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="">Tipo de Cuenta Bancaria:<b> <span class="text-lowercase ">
-                                                    {{usuario.tipo_cuenta_bancaria }}</span></b> </label>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="">Número de Cuenta:<b> <span class="text-lowercase ">
-                                                    {{usuario.nro_cuenta_bancaria}}</span></b> </label>
-                                    </div>
-
-
-                                </div>
-
-                                <label for=""><b>Nota:</b> {{usuario.NOTAS}}</label>
-
-                            </div>
-                            <div class="col-xs b-r  col-md">
-                                <h4>Particular</h4>
-                                <form class="form-dsamaterial ">
-
-                                    <div class="form-group">
-                                        <label for="">Direccion: <b>{{usuario.DIRECCION}}</b> </label>
-
-                                    </div>
-
-
-
-                                    <div class="form-group">
-                                        <label for="">Ciudad: <b>{{usuario.NOMCIUDAD}}</b> </label>
-
-                                    </div>
-
-
-
-                                    <div class="form-group">
-                                        <label for="">Departamento: <b>{{usuario.NOMDEPAR}}</b> </label>
-
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="">Celular: <b>{{usuario.TELEFONO1}}</b></label>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="">Línea Baja: <b>{{usuario.TELEFONO2}}</b></label>
-
-                                    </div>
-                                </form>
-
-                            </div>
-                            <div class="col-xs col-md">
-
-                                <h4>Laboral</h4>
-                                <form class="form-dsamaterial ">
-
-                                    <div class="form-group">
-                                        <label for="">Lugar de Trabajo: <b>{{usuario.LUGAR_TRABAJO}}</b> </label>
-
-                                    </div>
-                                </form>
-                                <form class="form-dsamaterial ">
-
-                                    <div class="form-group">
-                                        <label for="">Direccion: <b>{{usuario.direccion_laboral}}</b> </label>
-
-                                    </div>
-                                </form>
-
-                                <form class="form-dsamaterial ">
-                                    <div class="form-group">
-                                        <label for="">Ciudad: <b>{{usuario.ciudad_trabajo}}</b> </label>
-
-                                    </div>
-                                </form>
-                                <form class="form-dsamaterial ">
-
-                                    <div class="form-group">
-                                        <label for="">Departamento: <b>{{usuario.DEPARTAMENTO_TRABAJO}}</b> </label>
-
-                                    </div>
-
-
-                                    <div class="form-group">
-                                        <label for="">Celular: <b>{{usuario.TELEFONO3}}</b></label>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="">Línea Baja: <b>{{usuario.TEL_TRABAJO}}</b></label>
-
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <hr>
-                        <h3 class="font-medium ">Características de Usuario</h3>
-                        <div class="row">
-                            <div class="col-xs col-md-2 mt-1">
-                                <input [(ngModel)]="isVendedor" type="checkbox" name="check_vendedor"
-                                    id="check_vendedor" class="filled-in chk-col-light-blue"
-                                    (click)="$event.preventDefault()" checked />
-                                <label for="check_vendedor">Vendedor</label>
-                            </div>
-                            <div class="col-xs col-md-2 mt-1">
-                                <input [(ngModel)]="isCobrador" type="checkbox" name="check_cobrador"
-                                    id="check_cobrador" class="filled-in chk-col-light-blue"
-                                    (click)="$event.preventDefault()" checked />
-                                <label for="check_cobrador">Cobrador</label>
-                            </div>
-                            <div class="col-xs col-md-2 mt-1">
-                                <input [(ngModel)]="isCliente" type="checkbox" name="check_cliente" id="check_cliente"
-                                    class="filled-in chk-col-light-blue" (click)="$event.preventDefault()" checked />
-                                <label for="check_cliente">Cliente</label>
-                            </div>
-                            <div class="col-xs col-md-2 mt-1">
-                                <input [(ngModel)]="isEmpleado" type="checkbox" name="check_empleado"
-                                    id="check_empleado" class="filled-in chk-col-light-blue"
-                                    (click)="$event.preventDefault()" checked />
-                                <label for="check_empleado">Empleado</label>
-                            </div>
-                            <div class="col-xs col-md-2 mt-1">
-                                <input [(ngModel)]="isPersona" type="checkbox" name="check_persona" id="check_persona"
-                                    class="filled-in chk-col-light-blue" (click)="$event.preventDefault()" checked />
-                                <label for="check_persona">Persona</label>
-                            </div>
-                            <div class="col-xs col-md-2 mt-1">
-                                <input [(ngModel)]="isContratado" type="checkbox" name="check_contratado"
-                                    id="check_contratado" class="filled-in chk-col-light-blue"
-                                    (click)="$event.preventDefault()" checked />
-                                <label for="check_contratado">Contratado</label>
-                            </div>
-                            <div class="col-xs col-md-2 mt-1">
-                                <input [(ngModel)]="isEmpresa" type="checkbox" name="check_empresa" id="check_empresa"
-                                    class="filled-in chk-col-light-blue" (click)="$event.preventDefault()" checked />
-                                <label for="check_empresa">Empresa</label>
-                            </div>
-                            <div class="col-xs col-md-2 mt-1">
-                                <input [(ngModel)]="isBanco" type="checkbox" name="check_banco" id="check_banco"
-                                    class="filled-in chk-col-light-blue" (click)="$event.preventDefault()" checked />
-                                <label for="check_banco">Banco</label>
-                            </div>
-                            <div class="col-xs col-md-2 mt-1">
-                                <input [(ngModel)]="manejaCaja" type="checkbox" name="check_maneja_caja"
-                                    id="check_maneja_caja" class="filled-in chk-col-light-blue"
-                                    (click)="$event.preventDefault()" checked />
-                                <label for="check_maneja_caja">Maneja Caja</label>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="tab-pane" id="profile" role="tabpanel">
-                    <div class="card-body">
-
-                        <app-lista-contratos [showFilter]="false" [options]="contratosActivosOptios">
-                        </app-lista-contratos>
-                        <!-- <div *ngIf="contratos" class="card">
-
-                            <div class="card-body">
-                                <h4 class="card-title">Contratos</h4>
-
-                                <table class="table table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>fecha</th>
-                                            <th>Nro. Contrato</th>
-                                            <th>Servicio o Producto</th>
-
-                                            <th>Manzana</th>
-                                            <th>Fila</th>
-                                            <th>Parcela</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr style="text-decoration: none;" [routerLink]="['/admin/info_contrato', contrato._id]" class="pointer"
-                                            *ngFor="let contrato of contratos | paginate: { itemsPerPage: 10,totalItems:contratosActivosCount, currentPage: contratosActivosPage }; let i = index;">
-                                            <td scope="row">
-                                                <a [routerLink]="['/admin/info_contrato', contrato._id]" href="">
-                                                    {{i+1}}
-                                                </a>
-
-                                            </td>
-                                            <td>
-                                                <a [routerLink]="['/admin/info_contrato', contrato._id]" href="">
-                                                    {{contrato.fecha_creacion_unix | date}}
-                                                </a>
-
-                                            </td>
-                                            <td>
-                                                <a [routerLink]="['/admin/info_contrato', contrato._id]" href="">
-                                                    {{contrato.nro_contrato}}
-                                                </a>
-
-                                            </td>
-                                            <td>
-                                                <a [routerLink]="['/admin/info_contrato', contrato._id]" href="">
-                                                    {{contrato.nombre_servicio}}
-                                                </a>
-
-                                            </td>
-                                            <td *ngIf="!contrato.manzana">
-                                                <a [routerLink]="['/admin/info_contrato', contrato._id]" href="">
-                                                    ---
-                                                </a>
-
-                                            </td>
-                                            <td *ngIf="!contrato.fila">
-                                                <a [routerLink]="['/admin/info_contrato', contrato._id]" href="">
-                                                    ---
-                                                </a>
-
-                                            </td>
-                                            <td *ngIf="!contrato.parcela">
-                                                <a [routerLink]="['/admin/info_contrato', contrato._id]" href="">
-                                                    ---
-                                                </a>
-
-                                            </td>
-                                            <td *ngIf="contrato.manzana">
-                                                <a [routerLink]="['/admin/info_contrato', contrato._id]" href="">
-                                                    {{contrato.manzana}}
-                                                </a>
-
-                                            </td>
-                                            <td *ngIf="contrato.fila">
-                                                <a [routerLink]="['/admin/info_contrato', contrato._id]" href="">
-                                                    {{contrato.fila}}
-                                                </a>
-
-                                            </td>
-                                            <td *ngIf="contrato.parcela">
-                                                <a href="">
-                                                    {{contrato.parcela}}
-                                                </a>
-
-                                            </td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-                                <div style="width: 100%;">
-                                    <div style="display: flex;">
-                                        <div class="mx-auto">
-                                            <pagination-controls
-                                                (pageChange)="pageChangeContratosActivos($event); contratosActivosPage = $event">
-                                            </pagination-controls>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
-                    </div>
-                </div>
-                <div class="tab-pane" id="contratos_inactivos" role="tabpanel">
-                    <div class="card-body">
-
-                        <!-- <app-lista-contratos [showFilter]="false" [options]="contratosInactivosOptios" ></app-lista-contratos> -->
-                        <!-- <div *ngIf="contratosInactivos" class="card">
-
-                            <div class="card-body">
-                                <h4 class="card-title">Contratos</h4>
-
-                                <table class="table table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>fecha</th>
-                                            <th>Nro. Contrato</th>
-                                            <th>Servicio o Producto</th>
-
-                                            <th>Manzana</th>
-                                            <th>Fila</th>
-                                            <th>Parcela</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                        <tr [routerLink]="['/admin/info_contrato', contrato._id]" class="pointer"
-                                            *ngFor="let contrato of contratosInactivos | paginate: { itemsPerPage: 10,totalItems:contratosInactivosCount, currentPage: contratosInactivosPage }; let i = index;">
-                                            <td scope="row">{{i+1}}</td>
-                                            <td>{{contrato.fecha_creacion_unix | date}}</td>
-                                            <td>{{contrato.nro_contrato}}</td>
-                                            <td>{{contrato.nombre_servicio}}</td>
-
-                                            <td *ngIf="!contrato.manzana">---</td>
-                                            <td *ngIf="!contrato.fila">---</td>
-                                            <td *ngIf="!contrato.parcela">---</td>
-                                            <td *ngIf="contrato.manzana">{{contrato.manzana}}</td>
-                                            <td *ngIf="contrato.fila">{{contrato.fila}}</td>
-                                            <td *ngIf="contrato.parcela">{{contrato.parcela}}</td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-                                <div style="width: 100%;">
-                                    <div style="display: flex;">
-                                        <div class="mx-auto">
-                                            <pagination-controls
-                                                (pageChange)="pageChangeContratosActivos($event); contratosInactivosPage = $event">
-                                            </pagination-controls>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
-                    </div>
-                </div>
-                <div class="tab-pane" id="facturas" role="tabpanel">
-                    <div *ngIf="facturas" class="card-body">
-                        <app-facturas [fromOutside]="true" [facturas]="facturas"></app-facturas>
-
-                    </div>
-                </div>
-                <div class="tab-pane" id="movimientos" role="tabpanel">
-                    <div *ngIf="facturas" class="card-body">
-
-                        <app-lista-movimientos [movimientos]="movimientos"></app-lista-movimientos>
-                    </div>
-                </div>
-                <div class="tab-pane" id="pagosa" role="tabpanel">
-                    <div *ngIf="pagos" class="card-body">
-
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Nro Factura</th>
-                                    <th>Fecha</th>
-                                    <th>Monto</th>
-                                    <th>Estado</th>
-
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr (click)="mostrarModal(item._id)" class="pointer" *ngFor="let item of pagos">
-                                    <td>{{item.numero }}-{{ fill(item.nro_factura||0, 7) }}</td>
-                                    <td> {{item.fecha_creacion | date}} </td>
-                                    <td> {{item.monto | currency: '':'':'2.0'}} Gs</td>
-                                    <td>
-                                        <div *ngIf="item.activo ">Activo</div>
-                                        <div style="color: red;" *ngIf="!item.activo ">Cancelado</div>
-
-                                    </td>
-                                </tr>
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="tab-pane" id="settings" role="tabpanel">
-                    <div class="card-body">
-                        <div class="form-horizsontal forms-material">
-                            <div class="row">
-                                <div class="col-xs col-md b-r">
-
-                                    <h4>General</h4>
-                                    <div class="form-group">
-                                        <label>Nombres</label>
-                                        <div>
-                                            <input autocomplete="nope" [(ngModel)]="usuario.NOMBRES" name="nomdbre"
-                                                type="text" placeholder="Johnathan Doe"
-                                                class="form-control form-control-line">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Apellidos</label>
-                                        <div>
-                                            <input autocomplete="nope" [(ngModel)]="usuario.APELLIDOS" name="noambre"
-                                                type="text" placeholder="Johnathan Doe"
-                                                class="form-control form-control-line">
-                                        </div>
-                                    </div>
-                                    <div class="form-group" *ngIf="usuario.fantasia">
-                                        <div style="display: flex;">
-                                            <label>Nombre Fantasia</label>
-                                            <div style="margin-left: 5px; display: flex;align-content: center;flex-wrap: nowrap;flex-direction: row;justify-content: center;align-items: center;">
-                                                <button (click)="usuario.fantasia.push({value:''})" type="button" class="btn btn-success btn-sm">+</button>
-                                            </div>
-                                        </div>
-                                        <div *ngFor="let nombre of usuario.fantasia; let i = index;">
-                                            <div style="display: flex;">
-                                                <input autocomplete="nope" [(ngModel)]="nombre.value" name="fantasia-{{i}}"
-                                                    type="text" placeholder="NOMBRE FANTASIA"
-                                                    class="form-control form-control-line">
-                                               <div style="margin-left: 5px; display: flex;align-content: center;flex-wrap: nowrap;flex-direction: row;justify-content: center;align-items: center;">
-                                                    <button (click)="usuario.fantasia.splice(i, 1)" type="button" class="btn btn-danger btn-sm">-</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>RUC/CI</label>
-                                        <div>
-                                            <input autocomplete="nope" [(ngModel)]="usuario.RUC" name="ruc" type="text"
-                                                placeholder="Johnathan Doe" class="form-control form-control-line">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="example-email">Email</label>
-                                        <div>
-                                            <input autocomplete="nope" type="email" [(ngModel)]="usuario.EMAIL"
-                                                name="email" placeholder="correo electronico"
-                                                class="form-control form-control-line" name="example-email"
-                                                id="example-email">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="">Perfil de Facebook</label>
-                                        <input [(ngModel)]="usuario.facebook" type="text" class="form-control"
-                                            name="facebook" autocomplete="nope">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="">Banco</label>
-                                        <input [(ngModel)]="usuario.cuenta_bancaria" type="text" class="form-control"
-                                            name="banco" autocomplete="nope">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="">Tipo de Cuenta Bancaria</label>
-                                        <input [(ngModel)]="usuario.tipo_cuenta_bancaria" type="text"
-                                            class="form-control" name="tipocuenta" autocomplete="nope">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="">Número de Cuenta</label>
-                                        <input [(ngModel)]="usuario.nro_cuenta_bancaria" type="text"
-                                            class="form-control" name="nrocuenta" autocomplete="nope">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Contraseña</label>
-                                        <div>
-                                            <input autocomplete="nope" [(ngModel)]="usuario.password" type="password"
-                                                name="pass" placeholder="contraseña para ingresar al sistema"
-                                                class="form-control form-control-line">
-                                        </div>
-                                    </div>
-
-                                    <div *ngIf="is_admin_role">
-
-                                        <div style="justify-content: space-between;" class="inline-flex">
-                                            <label>Rol de Usuario</label>
-
-                                        </div>
-                                        <div *ngIf="usuario" class="">
-                                            <ng-select [(ngModel)]="role">
-                                                <ng-option name="asdasdasdasgrefwvefrv" *ngFor="let item of roles"
-                                                    [value]="item.role">
-                                                    <div>
-                                                        {{item.role}}
-                                                    </div>
-
-                                                </ng-option>
-                                            </ng-select>
-                                        </div>
-                                    </div>
-
-
-
-
-                                </div>
-                                <div class="col-xs b-r  col-md">
-                                    <h4>Particular</h4>
-                                    <form class="form-dsamaterial ">
-
-                                        <div class="form-group">
-                                            <label for="">Direccion: </label>
-                                            <input type="text" [(ngModel)]="usuario.DIRECCION" name="Direccion:"
-                                                class="form-control" placeholder="" aria-describedby="helpId"
-                                                autocomplete="nope">
-
-                                        </div>
-                                    </form>
-
-                                    <form class="form-dsamaterial ">
-                                        <div class="form-group">
-                                            <label for="">Ciudad: </label>
-                                            <input type="text" [(ngModel)]="usuario.NOMCIUDAD" name="</lserrabel"
-                                                class="form-control" placeholder="" aria-describedby="helpId">
-
-                                        </div>
-                                    </form>
-                                    <form class="form-dsamaterial ">
-
-                                        <div class="form-group">
-                                            <label for="">Departamento: </label>
-                                            <input type="text" [(ngModel)]="usuario.NOMDEPAR" name="departamento"
-                                                class="form-control" placeholder="" aria-describedby="helpId">
-
-                                        </div>
-                                    </form>
-                                    <div class="form-group">
-                                        <label for="">Celular:</label>
-                                        <input type="text" [(ngModel)]="usuario.TELEFONO1" name="Telefonso-1"
-                                            class="form-control" placeholder="" aria-describedby="helpId"
-                                            autocomplete="nope">
-
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="">Línea Baja:</label>
-                                        <input type="text" [(ngModel)]="usuario.TELEFONO2" name="Telefonasso-1"
-                                            class="form-control" placeholder="" aria-describedby="helpId"
-                                            autocomplete="nope">
-
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="">Saldo Inicial de Fondo:</label>
-                                        <input type="text" [(ngModel)]="usuario.SALDO" name="saldoinicial"
-                                            class="form-control" placeholder="" aria-describedby="helpId"
-                                            autocomplete="nope">
-
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="notas">Notas</label>
-                                        <textarea class="form-control" [(ngModel)]="usuario.NOTAS" name="notas"
-                                            id="notas" rows="5"></textarea>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="">tarjeta de descuento</label>
-                                        <input type="text" [(ngModel)]="usuario.nro_tarjeta" name="nro_tarjeta"
-                                            class="form-control" placeholder="" aria-describedby="helpId"
-                                            autocomplete="nope">
-                                    </div>
-
-
-                                </div>
-                                <div class="col-xs col-md">
-
-                                    <h4>Laboral</h4>
-                                    <form class="form-dsamaterial ">
-
-                                        <div class="form-group">
-                                            <label for="">Lugar de Trabajo: </label>
-                                            <input type="text" [(ngModel)]="usuario.LUGAR_TRABAJO" name="lugartrabajo"
-                                                class="form-control" placeholder="" aria-describedby="helpId"
-                                                autocomplete="nope">
-
-                                        </div>
-                                    </form>
-                                    <form class="form-dsamaterial ">
-
-                                        <div class="form-group">
-                                            <label for="">Direccion: </label>
-                                            <input type="text" [(ngModel)]="usuario.direccion_laboral" name="Direccion:"
-                                                class="form-control" placeholder="" aria-describedby="helpId"
-                                                autocomplete="nope">
-
-                                        </div>
-                                    </form>
-
-                                    <form class="form-dsamaterial ">
-                                        <div class="form-group">
-                                            <label for="">Ciudad: </label>
-                                            <input type="text" [(ngModel)]="usuario.ciudad_trabajo" name="</ldwwwwabel"
-                                                class="form-control" placeholder="" aria-describedby="helpId">
-
-                                        </div>
-                                    </form>
-                                    <form class="form-dsamaterial ">
-
-                                        <div class="form-group">
-                                            <label for="">Departamento: </label>
-                                            <input type="text" [(ngModel)]="usuario.DEPARTAMENTO_TRABAJO"
-                                                name="departsamento" class="form-control" placeholder=""
-                                                aria-describedby="helpId">
-
-                                        </div>
-                                    </form>
-
-
-                                    <div class="form-group">
-                                        <label for="">Celular:</label>
-                                        <input type="text" [(ngModel)]="usuario.TELEFONO3" name="Telefoassano-1"
-                                            class="form-control" placeholder="" aria-describedby="helpId"
-                                            autocomplete="nope">
-
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="">Línea Baja:</label>
-                                        <input type="text" [(ngModel)]="usuario.TEL_TRABAJO" name="Teleferfono-1"
-                                            class="form-control" placeholder="" aria-describedby="helpId"
-                                            autocomplete="nope">
-
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="">Numero de Talonario</label>
-                                        <input type="text" name="asasdsdasasdsadstgfd"
-                                            [(ngModel)]="usuario.nro_talonario" class="form-control" placeholder=""
-                                            aria-describedby="helpId" autocomplete="off">
-                                    </div>
-                                    <div >
-                                        
-                                        <div class="form-group">
-                                            <label for="">Numero de Factura</label>
-                                            <input  type="number" name="asasdsdasasdsads"
-                                                [(ngModel)]="usuario.nro_factura_actual" class="form-control"
-                                                placeholder="" aria-describedby="helpId" autocomplete="off">
-                                        </div>
-
-                                        <h4>Ajuste de Timbrado</h4>
-                                        <div class="form-group">
-                                            <label for="">Nro Timbrado</label>
-                                            <input [disabled]="!is_admin_role" [(ngModel)]="usuario.timbrado.timbrado"
-                                                placeholder="Numero de Timbrado" type="text" class="form-control"
-                                                name="timbrado" autocomplete="nope">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="">Nro de solicitud</label>
-                                            <input [disabled]="!is_admin_role" [(ngModel)]="usuario.timbrado.nro_solicitud"
-                                                placeholder="Numero de solicitud" type="text" class="form-control"
-                                                name="nro_solicitud" autocomplete="nope">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="">Tipo de Factura</label>
-                                            <input [disabled]="!is_admin_role" [(ngModel)]="usuario.timbrado.tipo" placeholder="Numero de solicitud"
-                                                type="text" class="form-control" name="nro_solicitud"
-                                                autocomplete="nope">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="">RUC</label>
-                                            <input [disabled]="!is_admin_role" [(ngModel)]="usuario.timbrado.ruc" placeholder="RUC de la empresa"
-                                                type="text" class="form-control" name="ruc" autocomplete="nope">
-                                        </div>
-                                        <mat-form-field appearance="fill">
-                                            <mat-label>Fecha de solicitud</mat-label>
-                                            <input [disabled]="!is_admin_role" matInput name="asdrdssvet321"
-                                                [(ngModel)]="usuario.timbrado.fecha_solicitud"
-                                                [matDatepicker]="pickerSolicitud">
-                                            <mat-datepicker-toggle matSuffix [for]="pickerSolicitud">
-                                            </mat-datepicker-toggle>
-                                            <mat-datepicker #pickerSolicitud></mat-datepicker>
-                                        </mat-form-field>
-                                        <mat-form-field appearance="fill">
-                                            <mat-label>Fecha Inicio Vigencia</mat-label>
-                                            <input [disabled]="!is_admin_role" matInput name="asdrdssvet321"
-                                                [(ngModel)]="usuario.timbrado.fecha_vigente_inicio"
-                                                [matDatepicker]="pickerInicioVigencia">
-                                            <mat-datepicker-toggle matSuffix [for]="pickerInicioVigencia">
-                                            </mat-datepicker-toggle>
-                                            <mat-datepicker #pickerInicioVigencia></mat-datepicker>
-                                        </mat-form-field>
-                                        <mat-form-field appearance="fill">
-                                            <mat-label>Fecha Fin Vigencia</mat-label>
-                                            <input [disabled]="!is_admin_role" matInput name="asdrdssvet321"
-                                                [(ngModel)]="usuario.timbrado.fecha_vigente_fin"
-                                                [matDatepicker]="pickerFinVigencia">
-                                            <mat-datepicker-toggle matSuffix [for]="pickerFinVigencia">
-                                            </mat-datepicker-toggle>
-                                            <mat-datepicker #pickerFinVigencia></mat-datepicker>
-                                        </mat-form-field>
-                                        <div style="display: block;">
-                                        </div>
-
-
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-xs col-md-2 mt-1">
-                                        <input [(ngModel)]="isCliente" type="checkbox" name="check_cliente_edit"
-                                            id="check_cliente_edit" class="filled-in chk-col-light-blue"
-                                            (click)="isCliente? null: isCliente = 'check_cliente_edit'" checked />
-                                        <label for="check_cliente_edit">Cliente</label>
-                                    </div>
-                                    <div class="col-xs col-md-2 mt-1">
-                                        <input [(ngModel)]="isVendedor" type="checkbox" name="check_vendedor_edit"
-                                            id="check_vendedor_edit" class="filled-in chk-col-light-blue"
-                                            (click)="prueba();isVendedor? null: isVendedor = 'check_vendedor_edit'"
-                                            checked />
-                                        <label for="check_vendedor_edit">Vendedor</label>
-                                    </div>
-                                    <div class="col-xs col-md-2 mt-1">
-                                        <input [(ngModel)]="isCobrador" type="checkbox" name="check_cobrador_edit"
-                                            id="check_cobrador_edit" class="filled-in chk-col-light-blue"
-                                            (click)="isCobrador? null: isCobrador = 'check_cobrador_edit'" checked />
-                                        <label for="check_cobrador_edit">Cobrador</label>
-                                    </div>
-
-                                    <div class="col-xs col-md-2 mt-1">
-                                        <input [(ngModel)]="isEmpleado" type="checkbox" name="check_empleado_edit"
-                                            id="check_empleado_edit" class="filled-in chk-col-light-blue"
-                                            (click)="isEmpleado? null: isEmpleado = 'check_empleado_edit'" checked />
-                                        <label for="check_empleado_edit">Empleado</label>
-                                    </div>
-                                    <div class="col-xs col-md-2 mt-1">
-                                        <input [(ngModel)]="isPersona" type="checkbox" name="check_persona_edit"
-                                            id="check_persona_edit" class="filled-in chk-col-light-blue"
-                                            (click)="isPersona? null: isPersona = 'check_persona_edit'" checked />
-                                        <label for="check_persona_edit">Persona</label>
-                                    </div>
-                                    <div class="col-xs col-md-2 mt-1">
-                                        <input [(ngModel)]="isContratado" type="checkbox" name="check_contratado_edit"
-                                            id="check_contratado_edit" class="filled-in chk-col-light-blue"
-                                            (click)="isContratado? null: isContratado = 'check_contratado_edit'"
-                                            checked />
-                                        <label for="check_contratado_edit">Contratado</label>
-                                    </div>
-                                    <div class="col-xs col-md-2 mt-1">
-                                        <input [(ngModel)]="isEmpresa" type="checkbox" name="check_empresa_edit"
-                                            id="check_empresa_edit" class="filled-in chk-col-light-blue"
-                                            (click)="isEmpresa? null: isEmpresa = 'check_empresa_edit'" checked />
-                                        <label for="check_empresa_edit">Empresa</label>
-                                    </div>
-                                    <div class="col-xs col-md-2 mt-1">
-                                        <input [(ngModel)]="isBanco" type="checkbox" name="check_banco_edit"
-                                            id="check_banco_edit" class="filled-in chk-col-light-blue"
-                                            (click)="isBanco? null: isBanco = 'check_banco_edit'" checked />
-                                        <label for="check_banco_edit">Banco</label>
-                                    </div>
-                                    <div class="col-xs col-md-2 mt-1">
-                                        <input [(ngModel)]="manejaCaja" type="checkbox" name="check_maneja_caja_edit"
-                                            id="check_maneja_caja_edit" class="filled-in chk-col-light-blue"
-                                            (click)="manejaCaja? null: manejaCaja = 'check_maneja_caja_edit'" checked />
-                                        <label for="check_maneja_caja_edit">Maneja Caja</label>
-                                    </div>
-                                    <div class="col-xs col-md-2 mt-1">
-                                        <input [(ngModel)]="cobroOnline" type="checkbox" name="check_cobro_online"
-                                            id="check_cobro_online" class="filled-in chk-col-light-blue"
-                                            (click)="cobroOnline? null: cobroOnline = 'check_cobro_online'" checked />
-                                        <label for="check_cobro_online">Cobro Online</label>
-                                    </div>
-                                    <div class="col-xs col-md-2 mt-1">
-                                        <input [(ngModel)]="isProveedor" type="checkbox" name="check_proveedor"
-                                            id="check_proveedor" class="filled-in chk-col-light-blue"
-                                            (click)="isProveedor? null: isProveedor = 'check_proveedor'" checked />
-                                        <label for="check_proveedor">Proveedor</label>
-                                    </div>
-                                </div>
-
-                                <div class=" mt-3 form-group">
-
-                                    <button type="button" (click)="eliminarUsuario(usuario._id)"
-                                        class="btn mx-auto btn-danger">ELIMINAR USUARIO</button>
-
-                                </div>
-                                <div class="d-flex mt-3 form-group">
-
-                                    <button type="button" (click)="actualizarUsuario(usuario)"
-                                        class="btn mx-auto btn-success">Guardar Cambios</button>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <li class="nav-item"> <a class="nav-link" data-toggle="tab" [routerLink]="['/admin/ingresos']" [queryParams]="{cliente: id, estado: 'TODOS'}"
+            routerLinkActive="router-link-active" role="tab">Facturas</a>
+        </li>
+        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#movimientos" role="tab">Movimientos</a>
+        </li>
+        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#pagosa" role="tab">Pagos</a>
+        </li>
+        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#settings" role="tab">Ajustes</a>
+        </li>
+      </ul>
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div class="tab-pane active" id="home" role="tabpanel">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-3 col-xs-6 b-r"> <strong>Nombre Completo</strong>
+                <br>
+                <p class="text-muted">{{usuario.NOMBRES}} {{usuario.APELLIDOS}}</p>
+              </div>
+              <div class="col-md-3 col-xs-6 b-r"> <strong>RUC</strong>
+                <br>
+                <p class="text-muted">{{usuario.RUC | ruc}}</p>
+              </div>
+              <div *ngIf="false" class="col-md-3 col-xs-6 b-r"> <strong>Rol de Usuario</strong>
+                <br>
+                <p class="text-muted">administrador</p>
+              </div>
+              <div class="col-md-3 col-xs-6 b-r"> <strong>Fecha de creacion</strong>
+                <br>
+                <p class="text-muted">{{usuario.fecha_creacion | date}}</p>
+              </div>
+              <div class="col-md-3 col-xs-6"> <strong>Estado</strong>
+                <br>
+                <p *ngIf="usuario.ACTIVO == '1'" class="text-muted">Inactivo</p>
+                <p *ngIf="usuario.ACTIVO == '0'" class="text-muted">Activo</p>
+
+              </div>
             </div>
-            <div *ngIf="false" class="card">
-                <div class="card-body">
-                    <h4 class="card-title"><span class="lstick"></span>Recent Comments</h4>
+            <hr>
+
+            <div class="row">
+              <div class="col-xs text-capitalize col-md b-r">
+
+                <h4>General</h4>
+                <div class="form-dsamaterial ">
+                  <div class=" form-group">
+                    <label>Nombres: <b>{{usuario.NOMBRES}}</b></label>
+
+                  </div>
+                  <div class="form-group">
+                    <label>Apellidos: <b>{{usuario.APELLIDOS}}</b></label>
+
+                  </div>
+
+                  <div class="form-group">
+                    <label>RUC/CI: <b>{{usuario.RUC | ruc}}</b></label>
+
+                  </div>
+                  <div class="form-group">
+                    <label for="example-email">Email: <b>{{usuario.EMAIL}}</b> </label>
+
+                  </div>
+                  <div class="form-group">
+                    <label for="">Perfil de Facebook:<b> <span class="text-lowercase ">
+                          {{usuario.facebook}}</span></b> </label>
+                  </div>
+                  <div class="form-group">
+                    <label for="">Banco:<b> <span class="text-lowercase ">
+                          {{usuario.cuenta_bancaria}}</span></b> </label>
+                  </div>
+                  <div class="form-group">
+                    <label for="">Tipo de Cuenta Bancaria:<b> <span class="text-lowercase ">
+                          {{usuario.tipo_cuenta_bancaria }}</span></b> </label>
+                  </div>
+                  <div class="form-group">
+                    <label for="">Número de Cuenta:<b> <span class="text-lowercase ">
+                          {{usuario.nro_cuenta_bancaria}}</span></b> </label>
+                  </div>
+
+
                 </div>
-                <!-- ============================================================== -->
-                <!-- Comment widgets -->
-                <!-- ============================================================== -->
-                <div class="chat-right-aside comment-widgets">
-                    <!-- Comment Row -->
 
-                    <div style="max-height: 600px ;overflow: auto;" class="chat-rbox">
-                        <div *ngFor="let item of comentarios" class="d-flex flex-row comment-row">
-                            <div class="p-2"><span class="round">
-                                    <ngx-avatar
-                                        name="{{[item.titular.NOMBRES, item.titular.APELLIDOS ] | nombreCorto }}">
-                                    </ngx-avatar>
+                <label for=""><b>Nota:</b> {{usuario.NOTAS}}</label>
 
-                                </span></div>
-                            <div class="comment-text w-100">
-                                <h5>{{item.titular.NOMBRES}}</h5>
-                                <p class="m-b-5">{{item.texto}}</p>
-                                <div class="comment-footer"> <span class="text-muted pull-right">{{item.fecha_unix |
-                                        date}}</span> <span class="action-icons">
-                                        <a href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
-                                        <a href="javascript:void(0)"><i class="ti-check"></i></a>
-                                        <a href="javascript:void(0)"><i class="ti-heart"></i></a>
-                                    </span> </div>
-                            </div>
-                        </div>
+              </div>
+              <div class="col-xs b-r  col-md">
+                <h4>Particular</h4>
+                <form class="form-dsamaterial ">
 
-                    </div>
+                  <div class="form-group">
+                    <label for="">Direccion: <b>{{usuario.DIRECCION}}</b> </label>
 
-                    <div class="card-body b-t">
-                        <div class="row">
-                            <div class="col-8">
-                                <textarea placeholder="Type your message here" #texto
-                                    class="form-control b-0"></textarea>
-                            </div>
-                            <div class="col-4 text-right">
-                                <button type="button" (click)="comentar(texto.value)" class="btn btn-info ">Comentar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                  </div>
+
+
+
+                  <div class="form-group">
+                    <label for="">Ciudad: <b>{{usuario.NOMCIUDAD}}</b> </label>
+
+                  </div>
+
+
+
+                  <div class="form-group">
+                    <label for="">Departamento: <b>{{usuario.NOMDEPAR}}</b> </label>
+
+                  </div>
+
+                  <div class="form-group">
+                    <label for="">Celular: <b>{{usuario.TELEFONO1}}</b></label>
+
+                  </div>
+                  <div class="form-group">
+                    <label for="">Línea Baja: <b>{{usuario.TELEFONO2}}</b></label>
+
+                  </div>
+                </form>
+
+              </div>
+              <div class="col-xs col-md">
+
+                <h4>Laboral</h4>
+                <form class="form-dsamaterial ">
+
+                  <div class="form-group">
+                    <label for="">Lugar de Trabajo: <b>{{usuario.LUGAR_TRABAJO}}</b> </label>
+
+                  </div>
+                </form>
+                <form class="form-dsamaterial ">
+
+                  <div class="form-group">
+                    <label for="">Direccion: <b>{{usuario.direccion_laboral}}</b> </label>
+
+                  </div>
+                </form>
+
+                <form class="form-dsamaterial ">
+                  <div class="form-group">
+                    <label for="">Ciudad: <b>{{usuario.ciudad_trabajo}}</b> </label>
+
+                  </div>
+                </form>
+                <form class="form-dsamaterial ">
+
+                  <div class="form-group">
+                    <label for="">Departamento: <b>{{usuario.DEPARTAMENTO_TRABAJO}}</b> </label>
+
+                  </div>
+
+
+                  <div class="form-group">
+                    <label for="">Celular: <b>{{usuario.TELEFONO3}}</b></label>
+
+                  </div>
+                  <div class="form-group">
+                    <label for="">Línea Baja: <b>{{usuario.TEL_TRABAJO}}</b></label>
+
+                  </div>
+                </form>
+              </div>
             </div>
+            <hr>
+            <h3 class="font-medium ">Características de Usuario</h3>
+            <div class="row">
+              <div class="col-xs col-md-2 mt-1">
+                <input [(ngModel)]="isVendedor" type="checkbox" name="check_vendedor" id="check_vendedor" class="filled-in chk-col-light-blue" (click)="$event.preventDefault()"
+                  checked />
+                <label for="check_vendedor">Vendedor</label>
+              </div>
+              <div class="col-xs col-md-2 mt-1">
+                <input [(ngModel)]="isCobrador" type="checkbox" name="check_cobrador" id="check_cobrador" class="filled-in chk-col-light-blue" (click)="$event.preventDefault()"
+                  checked />
+                <label for="check_cobrador">Cobrador</label>
+              </div>
+              <div class="col-xs col-md-2 mt-1">
+                <input [(ngModel)]="isCliente" type="checkbox" name="check_cliente" id="check_cliente" class="filled-in chk-col-light-blue" (click)="$event.preventDefault()"
+                  checked />
+                <label for="check_cliente">Cliente</label>
+              </div>
+              <div class="col-xs col-md-2 mt-1">
+                <input [(ngModel)]="isEmpleado" type="checkbox" name="check_empleado" id="check_empleado" class="filled-in chk-col-light-blue" (click)="$event.preventDefault()"
+                  checked />
+                <label for="check_empleado">Empleado</label>
+              </div>
+              <div class="col-xs col-md-2 mt-1">
+                <input [(ngModel)]="isPersona" type="checkbox" name="check_persona" id="check_persona" class="filled-in chk-col-light-blue" (click)="$event.preventDefault()"
+                  checked />
+                <label for="check_persona">Persona</label>
+              </div>
+              <div class="col-xs col-md-2 mt-1">
+                <input [(ngModel)]="isContratado" type="checkbox" name="check_contratado" id="check_contratado" class="filled-in chk-col-light-blue"
+                  (click)="$event.preventDefault()" checked />
+                <label for="check_contratado">Contratado</label>
+              </div>
+              <div class="col-xs col-md-2 mt-1">
+                <input [(ngModel)]="isEmpresa" type="checkbox" name="check_empresa" id="check_empresa" class="filled-in chk-col-light-blue" (click)="$event.preventDefault()"
+                  checked />
+                <label for="check_empresa">Empresa</label>
+              </div>
+              <div class="col-xs col-md-2 mt-1">
+                <input [(ngModel)]="isBanco" type="checkbox" name="check_banco" id="check_banco" class="filled-in chk-col-light-blue" (click)="$event.preventDefault()" checked />
+                <label for="check_banco">Banco</label>
+              </div>
+              <div class="col-xs col-md-2 mt-1">
+                <input [(ngModel)]="manejaCaja" type="checkbox" name="check_maneja_caja" id="check_maneja_caja" class="filled-in chk-col-light-blue"
+                  (click)="$event.preventDefault()" checked />
+                <label for="check_maneja_caja">Maneja Caja</label>
+              </div>
+            </div>
+
+          </div>
         </div>
-        <!-- Column -->
-    </div>
+        <div class="tab-pane" id="profile" role="tabpanel">
+          <div class="card-body">
+
+            <app-lista-contratos [showFilter]="false" [options]="contratosActivosOptios">
+            </app-lista-contratos>
+
+          </div>
+        </div>
+        <div class="tab-pane" id="contratos_inactivos" role="tabpanel">
+          <div class="card-body">
+
+          </div>
+        </div>
+        <div class="tab-pane" id="facturas" role="tabpanel">
+          <div *ngIf="facturas" class="card-body">
+            <app-facturas [fromOutside]="true" [facturas]="facturas"></app-facturas>
+
+          </div>
+        </div>
+        <div class="tab-pane" id="movimientos" role="tabpanel">
+          <div *ngIf="facturas" class="card-body">
+
+            <app-lista-movimientos [movimientos]="movimientos"></app-lista-movimientos>
+          </div>
+        </div>
+        <div class="tab-pane" id="pagosa" role="tabpanel">
+          <div *ngIf="pagos" class="card-body">
+
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Nro Factura</th>
+                  <th>Fecha</th>
+                  <th>Monto</th>
+                  <th>Estado</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr (click)="mostrarModal(item._id)" class="pointer" *ngFor="let item of pagos">
+                  <td>{{item.numero }}-{{ fill(item.nro_factura||0, 7) }}</td>
+                  <td> {{item.fecha_creacion | date}} </td>
+                  <td> {{item.monto | currency: '':'':'2.0'}} Gs</td>
+                  <td>
+                    <div *ngIf="item.activo ">Activo</div>
+                    <div style="color: red;" *ngIf="!item.activo ">Cancelado</div>
+
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="tab-pane" id="settings" role="tabpanel">
+          <div class="card-body">
+            <div class="form-horizsontal forms-material">
+              <div class="row">
+                <div class="col-xs col-md b-r">
+
+                  <h4>General</h4>
+                  <div class="form-group">
+                    <label>Nombres</label>
+                    <div>
+                      <input autocomplete="nope" [(ngModel)]="usuario.NOMBRES" name="nomdbre" type="text" placeholder="Johnathan Doe" class="form-control form-control-line">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Apellidos</label>
+                    <div>
+                      <input autocomplete="nope" [(ngModel)]="usuario.APELLIDOS" name="noambre" type="text" placeholder="Johnathan Doe" class="form-control form-control-line">
+                    </div>
+                  </div>
+                  <div class="form-group" *ngIf="usuario.fantasia">
+                    <div style="display: flex;">
+                      <label>Nombre Fantasia</label>
+                      <div style="margin-left: 5px; display: flex;align-content: center;flex-wrap: nowrap;flex-direction: row;justify-content: center;align-items: center;">
+                        <button (click)="usuario.fantasia.push({value:''})" type="button" class="btn btn-success btn-sm">+</button>
+                      </div>
+                    </div>
+                    <div *ngFor="let nombre of usuario.fantasia; let i = index;">
+                      <div style="display: flex;">
+                        <input autocomplete="nope" [(ngModel)]="nombre.value" name="fantasia-{{i}}" type="text" placeholder="NOMBRE FANTASIA"
+                          class="form-control form-control-line">
+                        <div style="margin-left: 5px; display: flex;align-content: center;flex-wrap: nowrap;flex-direction: row;justify-content: center;align-items: center;">
+                          <button (click)="usuario.fantasia.splice(i, 1)" type="button" class="btn btn-danger btn-sm">-</button>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="form-group">
+                    <label>RUC/CI</label>
+                    <div>
+                      <input autocomplete="nope" [(ngModel)]="usuario.RUC" name="ruc" type="text" placeholder="Johnathan Doe" class="form-control form-control-line">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="example-email">Email</label>
+                    <div>
+                      <input autocomplete="nope" type="email" [(ngModel)]="usuario.EMAIL" name="email" placeholder="correo electronico" class="form-control form-control-line"
+                        name="example-email" id="example-email">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="">Perfil de Facebook</label>
+                    <input [(ngModel)]="usuario.facebook" type="text" class="form-control" name="facebook" autocomplete="nope">
+                  </div>
+                  <div class="form-group">
+                    <label for="">Banco</label>
+                    <input [(ngModel)]="usuario.cuenta_bancaria" type="text" class="form-control" name="banco" autocomplete="nope">
+                  </div>
+                  <div class="form-group">
+                    <label for="">Tipo de Cuenta Bancaria</label>
+                    <input [(ngModel)]="usuario.tipo_cuenta_bancaria" type="text" class="form-control" name="tipocuenta" autocomplete="nope">
+                  </div>
+                  <div class="form-group">
+                    <label for="">Número de Cuenta</label>
+                    <input [(ngModel)]="usuario.nro_cuenta_bancaria" type="text" class="form-control" name="nrocuenta" autocomplete="nope">
+                  </div>
+                  <div class="form-group">
+                    <label>Contraseña</label>
+                    <div>
+                      <input autocomplete="nope" [(ngModel)]="usuario.password" type="password" name="pass" placeholder="contraseña para ingresar al sistema"
+                        class="form-control form-control-line">
+                    </div>
+                  </div>
+
+                  <div *ngIf="is_admin_role">
+
+                    <div style="justify-content: space-between;" class="inline-flex">
+                      <label>Rol de Usuario</label>
+
+                    </div>
+                    <div *ngIf="usuario" class="">
+                      <ng-select [(ngModel)]="role">
+                        <ng-option name="asdasdasdasgrefwvefrv" *ngFor="let item of roles" [value]="item.role">
+                          <div>
+                            {{item.role}}
+                          </div>
+
+                        </ng-option>
+                      </ng-select>
+                    </div>
+                  </div>
 
 
-    <div class="" *ngIf="facturapdf">
-        <app-modal-factura (onClose)="facturapdf = null" [facturaPDF]="facturapdf"></app-modal-factura>
+
+
+                </div>
+                <div class="col-xs b-r  col-md">
+                  <h4>Particular</h4>
+                  <form class="form-dsamaterial ">
+
+                    <div class="form-group">
+                      <label for="">Direccion: </label>
+                      <input type="text" [(ngModel)]="usuario.DIRECCION" name="Direccion:" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="nope">
+
+                    </div>
+                  </form>
+
+                  <form class="form-dsamaterial ">
+                    <div class="form-group">
+                      <label for="">Ciudad: </label>
+                      <input type="text" [(ngModel)]="usuario.NOMCIUDAD" name="</lserrabel" class="form-control" placeholder="" aria-describedby="helpId">
+
+                    </div>
+                  </form>
+                  <form class="form-dsamaterial ">
+
+                    <div class="form-group">
+                      <label for="">Departamento: </label>
+                      <input type="text" [(ngModel)]="usuario.NOMDEPAR" name="departamento" class="form-control" placeholder="" aria-describedby="helpId">
+
+                    </div>
+                  </form>
+                  <div class="form-group">
+                    <label for="">Celular:</label>
+                    <input type="text" [(ngModel)]="usuario.TELEFONO1" name="Telefonso-1" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="nope">
+
+                  </div>
+                  <div class="form-group">
+                    <label for="">Línea Baja:</label>
+                    <input type="text" [(ngModel)]="usuario.TELEFONO2" name="Telefonasso-1" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="nope">
+
+                  </div>
+                  <div class="form-group">
+                    <label for="">Saldo Inicial de Fondo:</label>
+                    <input type="text" [(ngModel)]="usuario.SALDO" name="saldoinicial" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="nope">
+
+                  </div>
+                  <div class="form-group">
+                    <label for="notas">Notas</label>
+                    <textarea class="form-control" [(ngModel)]="usuario.NOTAS" name="notas" id="notas" rows="5"></textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="">tarjeta de descuento</label>
+                    <input type="text" [(ngModel)]="usuario.nro_tarjeta" name="nro_tarjeta" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="nope">
+                  </div>
+
+
+                </div>
+                <div class="col-xs col-md">
+
+                  <h4>Laboral</h4>
+                  <form class="form-dsamaterial ">
+
+                    <div class="form-group">
+                      <label for="">Lugar de Trabajo: </label>
+                      <input type="text" [(ngModel)]="usuario.LUGAR_TRABAJO" name="lugartrabajo" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="nope">
+
+                    </div>
+                  </form>
+                  <form class="form-dsamaterial ">
+
+                    <div class="form-group">
+                      <label for="">Direccion: </label>
+                      <input type="text" [(ngModel)]="usuario.direccion_laboral" name="Direccion:" class="form-control" placeholder="" aria-describedby="helpId"
+                        autocomplete="nope">
+
+                    </div>
+                  </form>
+
+                  <form class="form-dsamaterial ">
+                    <div class="form-group">
+                      <label for="">Ciudad: </label>
+                      <input type="text" [(ngModel)]="usuario.ciudad_trabajo" name="</ldwwwwabel" class="form-control" placeholder="" aria-describedby="helpId">
+
+                    </div>
+                  </form>
+                  <form class="form-dsamaterial ">
+
+                    <div class="form-group">
+                      <label for="">Departamento: </label>
+                      <input type="text" [(ngModel)]="usuario.DEPARTAMENTO_TRABAJO" name="departsamento" class="form-control" placeholder="" aria-describedby="helpId">
+
+                    </div>
+                  </form>
+
+
+                  <div class="form-group">
+                    <label for="">Celular:</label>
+                    <input type="text" [(ngModel)]="usuario.TELEFONO3" name="Telefoassano-1" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="nope">
+
+                  </div>
+                  <div class="form-group">
+                    <label for="">Línea Baja:</label>
+                    <input type="text" [(ngModel)]="usuario.TEL_TRABAJO" name="Teleferfono-1" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="nope">
+
+                  </div>
+                  <div class="form-group">
+                    <label for="">Numero de Talonario</label>
+                    <input type="text" name="asasdsdasasdsadstgfd" [(ngModel)]="usuario.nro_talonario" class="form-control" placeholder="" aria-describedby="helpId"
+                      autocomplete="off">
+                  </div>
+                  <div>
+
+                    <div class="form-group">
+                      <label for="">Numero de Factura</label>
+                      <input type="number" name="asasdsdasasdsads" [(ngModel)]="usuario.nro_factura_actual" class="form-control" placeholder="" aria-describedby="helpId"
+                        autocomplete="off">
+                    </div>
+
+                    <h4>Ajuste de Timbrado</h4>
+                    <div class="form-group">
+                      <label for="">Nro Timbrado</label>
+                      <input [disabled]="!is_admin_role" [(ngModel)]="usuario.timbrado.timbrado" placeholder="Numero de Timbrado" type="text" class="form-control" name="timbrado"
+                        autocomplete="nope">
+                    </div>
+                    <div class="form-group">
+                      <label for="">Nro de solicitud</label>
+                      <input [disabled]="!is_admin_role" [(ngModel)]="usuario.timbrado.nro_solicitud" placeholder="Numero de solicitud" type="text" class="form-control"
+                        name="nro_solicitud" autocomplete="nope">
+                    </div>
+                    <div class="form-group">
+                      <label for="">Tipo de Factura</label>
+                      <input [disabled]="!is_admin_role" [(ngModel)]="usuario.timbrado.tipo" placeholder="Numero de solicitud" type="text" class="form-control" name="nro_solicitud"
+                        autocomplete="nope">
+                    </div>
+                    <div class="form-group">
+                      <label for="">RUC</label>
+                      <input [disabled]="!is_admin_role" [(ngModel)]="usuario.timbrado.ruc" placeholder="RUC de la empresa" type="text" class="form-control" name="ruc"
+                        autocomplete="nope">
+                    </div>
+                    <mat-form-field appearance="fill">
+                      <mat-label>Fecha de solicitud</mat-label>
+                      <input [disabled]="!is_admin_role" matInput name="asdrdssvet321" [(ngModel)]="usuario.timbrado.fecha_solicitud" [matDatepicker]="pickerSolicitud">
+                      <mat-datepicker-toggle matSuffix [for]="pickerSolicitud">
+                      </mat-datepicker-toggle>
+                      <mat-datepicker #pickerSolicitud></mat-datepicker>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                      <mat-label>Fecha Inicio Vigencia</mat-label>
+                      <input [disabled]="!is_admin_role" matInput name="asdrdssvet321" [(ngModel)]="usuario.timbrado.fecha_vigente_inicio" [matDatepicker]="pickerInicioVigencia">
+                      <mat-datepicker-toggle matSuffix [for]="pickerInicioVigencia">
+                      </mat-datepicker-toggle>
+                      <mat-datepicker #pickerInicioVigencia></mat-datepicker>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                      <mat-label>Fecha Fin Vigencia</mat-label>
+                      <input [disabled]="!is_admin_role" matInput name="asdrdssvet321" [(ngModel)]="usuario.timbrado.fecha_vigente_fin" [matDatepicker]="pickerFinVigencia">
+                      <mat-datepicker-toggle matSuffix [for]="pickerFinVigencia">
+                      </mat-datepicker-toggle>
+                      <mat-datepicker #pickerFinVigencia></mat-datepicker>
+                    </mat-form-field>
+                    <div style="display: block;">
+                    </div>
+
+
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-xs col-md-2 mt-1">
+                    <input [(ngModel)]="isCliente" type="checkbox" name="check_cliente_edit" id="check_cliente_edit" class="filled-in chk-col-light-blue"
+                      (click)="isCliente? null: isCliente = 'check_cliente_edit'" checked />
+                    <label for="check_cliente_edit">Cliente</label>
+                  </div>
+                  <div class="col-xs col-md-2 mt-1">
+                    <input [(ngModel)]="isVendedor" type="checkbox" name="check_vendedor_edit" id="check_vendedor_edit" class="filled-in chk-col-light-blue"
+                      (click)="prueba();isVendedor? null: isVendedor = 'check_vendedor_edit'" checked />
+                    <label for="check_vendedor_edit">Vendedor</label>
+                  </div>
+                  <div class="col-xs col-md-2 mt-1">
+                    <input [(ngModel)]="isCobrador" type="checkbox" name="check_cobrador_edit" id="check_cobrador_edit" class="filled-in chk-col-light-blue"
+                      (click)="isCobrador? null: isCobrador = 'check_cobrador_edit'" checked />
+                    <label for="check_cobrador_edit">Cobrador</label>
+                  </div>
+
+                  <div class="col-xs col-md-2 mt-1">
+                    <input [(ngModel)]="isEmpleado" type="checkbox" name="check_empleado_edit" id="check_empleado_edit" class="filled-in chk-col-light-blue"
+                      (click)="isEmpleado? null: isEmpleado = 'check_empleado_edit'" checked />
+                    <label for="check_empleado_edit">Empleado</label>
+                  </div>
+                  <div class="col-xs col-md-2 mt-1">
+                    <input [(ngModel)]="isPersona" type="checkbox" name="check_persona_edit" id="check_persona_edit" class="filled-in chk-col-light-blue"
+                      (click)="isPersona? null: isPersona = 'check_persona_edit'" checked />
+                    <label for="check_persona_edit">Persona</label>
+                  </div>
+                  <div class="col-xs col-md-2 mt-1">
+                    <input [(ngModel)]="isContratado" type="checkbox" name="check_contratado_edit" id="check_contratado_edit" class="filled-in chk-col-light-blue"
+                      (click)="isContratado? null: isContratado = 'check_contratado_edit'" checked />
+                    <label for="check_contratado_edit">Contratado</label>
+                  </div>
+                  <div class="col-xs col-md-2 mt-1">
+                    <input [(ngModel)]="isEmpresa" type="checkbox" name="check_empresa_edit" id="check_empresa_edit" class="filled-in chk-col-light-blue"
+                      (click)="isEmpresa? null: isEmpresa = 'check_empresa_edit'" checked />
+                    <label for="check_empresa_edit">Empresa</label>
+                  </div>
+                  <div class="col-xs col-md-2 mt-1">
+                    <input [(ngModel)]="isBanco" type="checkbox" name="check_banco_edit" id="check_banco_edit" class="filled-in chk-col-light-blue"
+                      (click)="isBanco? null: isBanco = 'check_banco_edit'" checked />
+                    <label for="check_banco_edit">Banco</label>
+                  </div>
+                  <div class="col-xs col-md-2 mt-1">
+                    <input [(ngModel)]="manejaCaja" type="checkbox" name="check_maneja_caja_edit" id="check_maneja_caja_edit" class="filled-in chk-col-light-blue"
+                      (click)="manejaCaja? null: manejaCaja = 'check_maneja_caja_edit'" checked />
+                    <label for="check_maneja_caja_edit">Maneja Caja</label>
+                  </div>
+                  <div class="col-xs col-md-2 mt-1">
+                    <input [(ngModel)]="cobroOnline" type="checkbox" name="check_cobro_online" id="check_cobro_online" class="filled-in chk-col-light-blue"
+                      (click)="cobroOnline? null: cobroOnline = 'check_cobro_online'" checked />
+                    <label for="check_cobro_online">Cobro Online</label>
+                  </div>
+                  <div class="col-xs col-md-2 mt-1">
+                    <input [(ngModel)]="isProveedor" type="checkbox" name="check_proveedor" id="check_proveedor" class="filled-in chk-col-light-blue"
+                      (click)="isProveedor? null: isProveedor = 'check_proveedor'" checked />
+                    <label for="check_proveedor">Proveedor</label>
+                  </div>
+                </div>
+
+                <div class=" mt-3 form-group">
+
+                  <button type="button" (click)="eliminarUsuario(usuario._id)" class="btn mx-auto btn-danger">ELIMINAR USUARIO</button>
+
+                </div>
+                <div class="d-flex mt-3 form-group">
+
+                  <button type="button" (click)="actualizarUsuario(usuario)" class="btn mx-auto btn-success">Guardar Cambios</button>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
+    <!-- Column -->
+  </div>
+
+
+  <div class="" *ngIf="facturapdf">
+    <app-modal-factura (onClose)="facturapdf = null" [facturaPDF]="facturapdf"></app-modal-factura>
+  </div>

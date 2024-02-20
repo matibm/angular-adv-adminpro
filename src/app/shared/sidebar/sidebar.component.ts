@@ -8,14 +8,14 @@ import { UsuarioService } from 'src/app/services/usuario.service';
   styles: [
   ]
 })
-export class SidebarComponent implements OnInit, AfterViewInit {  
+export class SidebarComponent implements OnInit, AfterViewInit {
   class = '';
   menuItems: any[];
   constructor(
     public _usuario: UsuarioService,
     public sidebarService: SidebarService) {
     this.menuItems = sidebarService.menu;
-    console.log(this.menuItems);
+    //console.log(this.menuItems);
 
   }
   usuario
@@ -26,15 +26,15 @@ export class SidebarComponent implements OnInit, AfterViewInit {
     // if (doc) {
       doc.style = { display : 'none'}
       gastos.style = { display : 'none'}
-      trans.style = {display : 'none'} 
+      trans.style = {display : 'none'}
     // }
-    
-    console.log(this.sidebarService.usuario?.role);
+
+    //console.log(this.sidebarService.usuario?.role);
 
     this.usuario = await this.sidebarService._usuario.inicializarUsuario()
     if (this.usuario.role === 'ADMIN_ROLE') {
       // if (doc) {
-    
+
 
         gastos.style = { display : 'block'}
         doc.style = { display : 'block'}
@@ -44,7 +44,7 @@ export class SidebarComponent implements OnInit, AfterViewInit {
   async ngOnInit() {
     if (!this.sidebarService.usuario) {
      let id = localStorage.getItem('user_id')
-     this.usuario = await this._usuario.getUsuarioPorId(id); 
+     this.usuario = await this._usuario.getUsuarioPorId(id);
     }
   }
 
@@ -62,7 +62,7 @@ export class SidebarComponent implements OnInit, AfterViewInit {
 
 
     if(!this.usuario) this.usuario = await this.sidebarService._usuario.inicializarUsuario()
-    console.log(this.usuario?.role);
+    //console.log(this.usuario?.role);
     if (this.usuario.role === 'ADMIN_ROLE') {
       doc.style = { display : 'block'}
       trans.style = {display : 'block'}

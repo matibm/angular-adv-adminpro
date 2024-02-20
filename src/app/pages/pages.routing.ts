@@ -40,6 +40,7 @@ import { PdfFacturaMobileComponent } from '../components/pdf-factura-mobile/pdf-
 import { MapaPublicoComponent } from '../components/mapa-publico/mapa-publico.component';
 import { EditGastoComponent } from '../components/edit-gasto/edit-gasto.component';
 import { FacturaElectronicaTicketComponent } from '../components/factura-electronica-ticket/factura-electronica-ticket.component';
+import { RecibosComponent } from '../components/recibos/recibos.component';
 const routes: Routes = [
   // {
   //   path: 'contrato',
@@ -88,6 +89,7 @@ const routes: Routes = [
       { path: 'pagos', component: PagosComponent },
       { path: 'account-settings', component: AccountSettingsComponent },
       { path: 'mapa', component: MapaComponent },
+      { path: 'recibos', component: RecibosComponent },
       { path: '**', component: DashboardComponent },
 
 

@@ -36,6 +36,7 @@ export class SidebarService {
         { titulo: 'Egresos/Gastos', url: 'gastos' },
         { titulo: 'Cajas/Bancos', url: 'info_caja' },
         { titulo: 'Transf. Deposito', url: 'transferencia' },
+        { titulo: 'Recibos', url: 'recibos' },
 
       ]
     },
@@ -71,6 +72,6 @@ export class SidebarService {
 
   refreshRoute() {
     this.urlActual = this.router.url;
- 
+
   }
 }

@@ -272,13 +272,13 @@
                     id="check_de_baja" class="filled-in chk-col-light-blue" checked />
                 <label class="mx-3" for="check_de_baja">de baja</label>
             </div>
-           
+
 
             <!-- <div class="col-xs col-md mt-3">
                 <div class="form-group">
                     <input type="number" class="form-control" #nro_factura name="" id="" aria-describedby="helpId" placeholder="buscar por nro de factura">
                     <small>ingresar sin nro de talonario</small>
-    
+
                 </div>
             </div> -->
 
@@ -354,7 +354,7 @@
                         <button class="btn btn-outline-secondary" (click)="filtrar()">Filtrar</button>
                     </div>
 
-                    <!-- <input [(ngModel)]="nro_contrato" class="form-control" type="text" name="" id="">                
+                    <!-- <input [(ngModel)]="nro_contrato" class="form-control" type="text" name="" id="">
                 <div><button class="btn btn-info mt-2" (click)="filtrar()">Buscar</button></div> -->
                 </div>
             </div>
@@ -529,8 +529,8 @@
                                 Invalid end date</mat-error>
                         </mat-form-field>
                         <div></div>
-                        <button style="width: 155.57px;" [disabled]="!rangeReporteMovimientos.value.start 
-                    || !rangeReporteMovimientos.value.end 
+                        <button style="width: 155.57px;" [disabled]="!rangeReporteMovimientos.value.start
+                    || !rangeReporteMovimientos.value.end
                     || loadingGenerarReporteMov " (click)="generarReporteMovimientos()"
                             class="btn btn-rounded mr-auto btn-inverse">
                             <span *ngIf="!loadingGenerarReporteMov">Descargar Excel</span>
@@ -551,7 +551,7 @@
 
 
                         <!-- <div style="display: block;">
-                    
+
                         <button type="button" [disabled]="!rangeReporteMovimientos.value.start || !rangeReporteMovimientos.value.end" (click)="generarReporteMovimientos()" class="btn btn-rounded btn-inverse mx-auto">Descargar Excel</button></div>
                    </div> -->
                     </div>

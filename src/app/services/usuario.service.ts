@@ -15,7 +15,7 @@ export class UsuarioService {
   constructor(
     public http: HttpClient
   ) {
-    console.log("constructor usuariooooooooooooooooooo");
+    //console.log("constructor usuariooooooooooooooooooo");
 
     this.token = localStorage.getItem('token');
     this.user_id = localStorage.getItem('user_id');
@@ -28,7 +28,7 @@ export class UsuarioService {
     let id = localStorage.getItem('user_id')
     if (id) {
       this.usuario = await this.getUsuarioPorId(this.user_id);
-      console.log(this.usuario);
+      //console.log(this.usuario);
       localStorage.setItem('usuario', JSON.stringify(this.usuario))
       return this.usuario
     } else {
@@ -86,17 +86,17 @@ export class UsuarioService {
       });
     },
       (err) => {
-        console.error(err);
+        //console.error(err);
         swal.fire({
           icon: 'error',
-          title: err.error.message          
+          title: err.error.message
         });
-        
+
       }
     );
   }
   buscarUsuarios(tipo, busqueda) {
-    console.log('buscando', busqueda);
+    //console.log('buscando', busqueda);
 
     let url = `${URL_SERVICIOS}/usuario/search/${tipo}`;
     url += `?token=${this.token}`;
@@ -109,7 +109,7 @@ export class UsuarioService {
     let url = `${URL_SERVICIOS}/usuario/edit/${usuario._id}`;
     url += `?token=${this.token}`;
     return this.http.put(url, usuario).toPromise().then((resp: any) => {
-      console.log(resp);
+      //console.log(resp);
       this.inicializarUsuario()
       swal.fire({
         icon: 'success',
@@ -124,13 +124,13 @@ export class UsuarioService {
   excelUsuarios(){
     let url = `${URL_SERVICIOS}/usuario/all_excel`;
     url += `?token=${this.token}`;
-      
+
 
     return this.http.get(url, { responseType: 'blob' as 'json' }).toPromise().then(
       (response: any) => {
         let dataType = response.type;
         let binaryData = [];
-        binaryData.push(response);  
+        binaryData.push(response);
         let downloadLink = document.createElement('a');
         downloadLink.href = window.URL.createObjectURL(new Blob(binaryData, { type: dataType }));
 
@@ -140,8 +140,8 @@ export class UsuarioService {
         downloadLink.remove()
       },
       (error) => {
-        console.log(error);
-        
+        //console.log(error);
+
         swal.fire({ title: 'error', icon: 'error', text: error })
       }
     )
@@ -151,7 +151,7 @@ export class UsuarioService {
     let url = `${URL_SERVICIOS}/usuario/crear_usuario`;
     url += `?token=${this.token}`;
     return this.http.post(url, usuario).toPromise().then((resp: any) => {
-      console.log(resp);
+      //console.log(resp);
       swal.fire({
         icon: 'success',
         title: 'Usuario creado',
@@ -171,11 +171,11 @@ export class UsuarioService {
   }
 
   login(usuario) {
-    console.log(usuario);
+    //console.log(usuario);
 
     const url = `${URL_SERVICIOS}/usuario/login`;
     return this.http.post(url, usuario).toPromise().then((resp: any) => {
-      console.log(resp);
+      //console.log(resp);
       this.usuario = resp.user;
       this.user_id = resp.user._id;
       localStorage.setItem('user_id', this.user_id);

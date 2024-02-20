@@ -1,0 +1,57 @@
+<div class="card ">
+  <div style="min-height: 517.52px" class="card-body" *ngIf="!reciboSeleccionado">
+    <div style="overflow-x: auto;" class="">
+      <table class="table table-sm table-hover">
+        <thead>
+          <tr>
+            <th class="text-center">#</th>
+            <th class="text-center">Cliente</th>
+            <th class="text-center">Nro Factura</th>
+            <th class="text-center">Monto</th>
+            <th class="text-center">Fecha</th>
+            <th class="text-center">Pagado</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr class="pointer" *ngFor="let item of items; let i = index" (click)="verCuotas(item)">
+            <td class="text-center">{{ i + 1 }}</td>
+            <td class="text-center">{{ item.cliente.APELLIDOS }}</td>
+            <td class="text-center">{{ item.pago?.numero }}</td>
+            <td class="text-center">{{ item.pago?.monto | currency:'':'':'2.0' }}</td>
+            <td class="text-center">{{ item.fecha | date:'dd/MM/yyyy' }}</td>
+            <td class="text-center">{{ item.pagado ? (item.fechaPagado | date:'dd/MM/yyyy') : 'PENDIENTE' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div *ngIf="reciboSeleccionado" class="card">
+  <div class="card-body">
+    Cliente: {{ reciboSeleccionado?.cliente?.NOMBRES }} {{ reciboSeleccionado?.cliente?.APELLIDOS }}
+    <br />
+    Fecha: {{ reciboSeleccionado?.fecha | date:'dd/MM/yyyy' }}
+    <br />
+    Monto: {{ reciboSeleccionado?.pago?.monto | currency:'':'':'2.0' }}
+
+    <div class="d-flex my-3 w-100 justify-content-center">
+      <button (click)="mostrarModal(reciboSeleccionado.pago?._id)" type="button" class="btn mx-2 btn-success">
+        Ver Factura
+      </button>
+      <button (click)="reciboSeleccionado = null" type="button" class="btn btn-dark">
+        Volver
+      </button>
+    </div>
+  </div>
+
+</div>
+
+
+<div *ngIf="reciboSeleccionado">
+  <app-facturas [options]="facturasOptions" [facturas]="facturas"></app-facturas>
+</div>
+
+<div class="" *ngIf="facturapdf">
+  <app-modal-factura (onClose)="facturapdf = null" [facturaPDF]="facturapdf"></app-modal-factura>
+</div>

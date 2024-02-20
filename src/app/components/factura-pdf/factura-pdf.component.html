@@ -95,10 +95,20 @@
           <div style="width: 40%; display: flex" class="">
             <div class="mr-1">Cond. de Venta:</div>
             <div class="mr-auto">
-              <span>Contado: <i class="ml-1 mdi mdi-checkbox-marked-outline"></i></span>
+              <span>Contado: <i class="ml-1 mdi "
+                [ngClass]="{
+                  'mdi-checkbox-blank-outline': pago.tipo_factura == 'CREDITO',
+                  'mdi-checkbox-marked-outline': pago.tipo_factura == 'CONTADO'
+
+                  }"
+                ></i></span>
             </div>
             <div class="mr-auto">
-              credito: <i class="ml-1 mdi mdi-checkbox-blank-outline"></i>
+              credito: <i class="ml-1 mdi " [ngClass]="{
+                'mdi-checkbox-marked-outline': pago.tipo_factura == 'CREDITO',
+                'mdi-checkbox-blank-outline': pago.tipo_factura == 'CONTADO'
+
+                }"  ></i>
             </div>
           </div>
         </div>

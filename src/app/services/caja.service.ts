@@ -29,7 +29,7 @@ export class CajaService {
     fondo ? url += `&fondo=${fondo}` : null;
 
     return this.http.get(url).toPromise().then((resp: any) => {
-      console.log(resp);
+      //console.log(resp);
 
       swal.fire({
         icon: 'success',
@@ -41,8 +41,8 @@ export class CajaService {
     });
   }
   cerrarCajaOptions(body, options?) {
-    console.log(options);
-    
+    //console.log(options);
+
     let url = URL_SERVICIOS + '/caja/cerrar_caja';
     url += `?token=${this._usuarioService.token}`;
 
@@ -55,10 +55,10 @@ export class CajaService {
       });
     }
     url += `&caja=caja_id_que_no_se_usa`;
-    console.log(url);
-    
+    //console.log(url);
+
     return this.http.put(url, body).toPromise().then((resp: any) => {
-      console.log(resp);
+      //console.log(resp);
 
       swal.fire({
         icon: 'success',
@@ -75,7 +75,7 @@ export class CajaService {
     url += `?token=${this._usuarioService.token}`;
 
     return this.http.get(url).toPromise().then((resp: any) => {
-      console.log(resp);
+      //console.log(resp);
       this.cajaActual = resp.caja;
       return resp.caja;
     });
@@ -85,7 +85,7 @@ export class CajaService {
     url += `?token=${this._usuarioService.token}`;
 
     return this.http.get(url).toPromise().then((resp: any) => {
-      console.log(resp);
+      //console.log(resp);
 
       return resp.cierres;
     });

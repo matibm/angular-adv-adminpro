@@ -653,4 +653,10 @@ export class FacturaService {
         },
       );
   }
+
+  async getRecibos() {
+    let url = URL_SERVICIOS + '/factura/recibos';
+    url += `?token=${this._usuarioService.token}`;
+    return this.http.get(url).toPromise();
+  }
 }

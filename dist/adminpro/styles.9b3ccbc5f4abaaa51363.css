@@ -249,7 +249,7 @@
     cursor: pointer;
 }
 
-/* 
+/*
 .ng-select-container {
     background-color: #2f3d4a !important;
     color: azure !important;
@@ -282,9 +282,9 @@
     font-size: large;
 }
 
-/* .page-wrapper {
-    background-color: #212529;
-} */
+.page-wrapper {
+    background-color: #cad0da6e;
+}
 
 .inline-flex {
     display: flex;
@@ -673,4 +673,4 @@ body {
 }
 
 
-/*# sourceMappingURL=styles.cdb1f585d5dd413cdd45.css.map*/
+/*# sourceMappingURL=styles.9b3ccbc5f4abaaa51363.css.map*/

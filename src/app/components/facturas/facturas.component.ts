@@ -31,6 +31,7 @@ export class FacturasComponent implements OnInit {
   @Input() options: any;
   @Input() showTotal: any = false;
   @Input() total: any = false;
+  @Input() pago: any ;
   @Input() is_cobranza: boolean = false;
   @Output() onSelectedItem = new EventEmitter();
   @Output() listItemsEvent = new EventEmitter();

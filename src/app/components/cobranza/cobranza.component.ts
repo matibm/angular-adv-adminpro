@@ -138,7 +138,9 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
     },
   ];
   tiposDeExcentas = ['10%', '5%', 'Excenta'];
+  tiposDeFactura = ['CONTADO', 'CREDITO'];
   excentaSeleccionada: string = '10%';
+  tipoFacturaSeleccionada: string = 'CONTADO';
 
   filtros = [];
   estadoSeleccionado = 'TODOS';
@@ -379,7 +381,7 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
         icon: 'warning',
         title:
           'Confirmar Cobro con Fecha de ' +
-          new Date(this.fechaPago).toLocaleDateString('es-AR', {
+          new Date(this.fechaPago).toLocaleDateString('es-PY', {
             year: 'numeric',
             month: 'long',
             day: '2-digit',
@@ -422,6 +424,7 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
     let pagoresp = await this._facturaService.pagarPorMonto({
       tasa: this.excentaSeleccionada,
       tasas: this.tasas,
+      tipo_factura: this.tipoFacturaSeleccionada,
       fecha_pago: this.fechaPago.getTime(),
       lista: this.lista,
       montoTotal: this.sumaTotal,

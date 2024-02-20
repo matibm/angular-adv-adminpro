@@ -245,7 +245,7 @@
 </div>
 
 
-<div class="card">
+<div class="card" *ngIf="cliente">
     <div class="card-body">
         <div class="row">
             <div class="col-xs col-md">
@@ -334,12 +334,17 @@
                   <option *ngFor="let opcion of tiposDeExcentas" [value]="opcion">{{ opcion }}</option>
                 </select>
               </div>
-              <!-- <div class="mb-3 input-grpup">
-                <label for="tasa" class="form-label">Tasa</label>
-                <select class="form-select form-select-lg" name="tasa" id="tasa" [(ngModel)]="excentaSeleccionada">
-                  <option *ngFor="let tasa of tiposDeExcentas" [value]="tasa">{{ tasa }}</option>
+            </div>
+            <div class="col-xs-2 col-md-2">
+
+              <div class="input-group mb-3 d-block">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="inputGroupSelect01paraTipoDEFactura">Factura</label>
+                </div>
+                <select class="custom-select" id="inputGroupSelect01paraTipoDEFactura" [(ngModel)]="tipoFacturaSeleccionada">
+                  <option *ngFor="let opcion of tiposDeFactura" [value]="opcion">{{ opcion }}</option>
                 </select>
-              </div> -->
+              </div>
             </div>
         </div>
     </div>
