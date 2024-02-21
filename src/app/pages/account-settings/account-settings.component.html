@@ -1,124 +1,135 @@
 <div class="row">
-    <div class="col-4">
-        <div class="card">
-            <div class="card-body">
-                <h3>Seleccione el tema</h3>
-                <div class="r-panel-body">
-                    <ul id="themecolors" class="m-t-20">
-                        <li><b>Con el sidebar claro</b></li>
-                        <li><a (click)="changeTheme('default')" data-theme="default"
-                                class="selector default-theme">1</a></li>
-                        <li><a (click)="changeTheme('green')" data-theme="green" class="selector green-theme">2</a></li>
-                        <li><a (click)="changeTheme('red')" data-theme="red" class="selector red-theme">3</a></li>
-                        <li><a (click)="changeTheme('blue')" data-theme="blue" class="selector blue-theme">4</a></li>
-                        <li><a (click)="changeTheme('purple')" data-theme="purple" class="selector purple-theme">5</a>
-                        </li>
-                        <li><a (click)="changeTheme('megna')" data-theme="megna" class="selector megna-theme">6</a></li>
+  <div class="col-4">
+    <div class="card">
+      <div class="card-body">
+        <h3>Seleccione el tema</h3>
+        <div class="r-panel-body">
+          <ul id="themecolors" class="m-t-20">
+            <li><b>Con el sidebar claro</b></li>
+            <li><a (click)="changeTheme('default')" data-theme="default" class="selector default-theme">1</a></li>
+            <li><a (click)="changeTheme('green')" data-theme="green" class="selector green-theme">2</a></li>
+            <li><a (click)="changeTheme('red')" data-theme="red" class="selector red-theme">3</a></li>
+            <li><a (click)="changeTheme('blue')" data-theme="blue" class="selector blue-theme">4</a></li>
+            <li><a (click)="changeTheme('purple')" data-theme="purple" class="selector purple-theme">5</a>
+            </li>
+            <li><a (click)="changeTheme('megna')" data-theme="megna" class="selector megna-theme">6</a></li>
 
-                        <li class="d-block m-t-30"><b>Con el sidebar oscuro</b></li>
-                        <li><a (click)="changeTheme('default-dark')" data-theme="default-dark"
-                                class="selector default-dark-theme">7</a></li>
-                        <li><a (click)="changeTheme('green-dark')" data-theme="green-dark"
-                                class="selector green-dark-theme">8</a></li>
-                        <li><a (click)="changeTheme('red-dark')" data-theme="red-dark"
-                                class="selector red-dark-theme">9</a></li>
-                        <li><a (click)="changeTheme('blue-dark')" data-theme="blue-dark"
-                                class="selector blue-dark-theme">10</a></li>
-                        <li><a (click)="changeTheme('purple-dark')" data-theme="purple-dark"
-                                class="selector purple-dark-theme">11</a></li>
-                        <li><a (click)="changeTheme('megna-dark')" data-theme="megna-dark"
-                                class="selector megna-dark-theme">12</a></li>
-                    </ul>
+            <li class="d-block m-t-30"><b>Con el sidebar oscuro</b></li>
+            <li><a (click)="changeTheme('default-dark')" data-theme="default-dark" class="selector default-dark-theme">7</a></li>
+            <li><a (click)="changeTheme('green-dark')" data-theme="green-dark" class="selector green-dark-theme">8</a></li>
+            <li><a (click)="changeTheme('red-dark')" data-theme="red-dark" class="selector red-dark-theme">9</a></li>
+            <li><a (click)="changeTheme('blue-dark')" data-theme="blue-dark" class="selector blue-dark-theme">10</a></li>
+            <li><a (click)="changeTheme('purple-dark')" data-theme="purple-dark" class="selector purple-dark-theme">11</a></li>
+            <li><a (click)="changeTheme('megna-dark')" data-theme="megna-dark" class="selector megna-dark-theme">12</a></li>
+          </ul>
 
-                </div>
-
-            </div>
         </div>
+
+        <div>
+
+          <div class="mb-3">
+            <label for="" class="form-label">Ultimo numero de Factura electronica</label>
+            <input
+              type="text"
+              class="form-control"
+              name="sad"
+              id=""
+              aria-describedby="helpId"
+              placeholder=""
+              [(ngModel)]="utlNroFactura"
+            />
+            <button
+              type="button"
+              class="btn mt-2 btn-primary"
+              (click)="updateConfiguration(setConfigurations, utlNroFactura)"
+            >
+              Guardar
+            </button>
+
+          </div>
+
+        </div>
+      </div>
     </div>
-    <div *ngIf="false" class="col">
-        <div class="card">
-            <div class="card-body">
-                <h3>Timbrado</h3>
-                <table *ngIf="timbrados" class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>Timbrado</th>
-                            <th>RUC</th>
-                            <th>Nro Solicitud</th>
-                            <th style="min-width: 120px;">Fecha Solicitud</th>
-                            <th style="min-width: 120px;">Vigencia Inicio</th>
-                            <th style="min-width: 120px;">Vigencia Fin</th>
+  </div>
+  <div *ngIf="false" class="col">
+    <div class="card">
+      <div class="card-body">
+        <h3>Timbrado</h3>
+        <table *ngIf="timbrados" class="table table-hover">
+          <thead>
+            <tr>
+              <th>Timbrado</th>
+              <th>RUC</th>
+              <th>Nro Solicitud</th>
+              <th style="min-width: 120px;">Fecha Solicitud</th>
+              <th style="min-width: 120px;">Vigencia Inicio</th>
+              <th style="min-width: 120px;">Vigencia Fin</th>
 
 
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let item of timbrados">
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of timbrados">
 
-                            <td>{{item.body.timbrado}}</td>
-                            <td>{{item.body.ruc}}</td>
-                            <td>{{item.body.nro_solicitud}}</td>
-                            <td>{{item.body.fecha_solicitud | date}}</td>
-                            <td>{{item.body.fecha_vigente_inicio | date}}</td>
-                            <td>{{item.body.fecha_vigente_fin | date}}</td>
+              <td>{{item.body.timbrado}}</td>
+              <td>{{item.body.ruc}}</td>
+              <td>{{item.body.nro_solicitud}}</td>
+              <td>{{item.body.fecha_solicitud | date}}</td>
+              <td>{{item.body.fecha_vigente_inicio | date}}</td>
+              <td>{{item.body.fecha_vigente_fin | date}}</td>
 
-                        </tr>
+            </tr>
 
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-body ">
-                <h4>Nuevo Timbrado</h4>
-                <div class="form-group">
-                    <label for="">Timbrado</label>
-                    <input [(ngModel)]="timbrado.timbrado" placeholder="Numero de Timbrado" type="text"
-                        class="form-control" name="timbrado" autocomplete="nope">
-                </div>
-                <div class="form-group">
-                    <label for="">Nro de solicitud</label>
-                    <input [(ngModel)]="timbrado.nro_solicitud" placeholder="Numero de solicitud" type="text"
-                        class="form-control" name="nro_solicitud" autocomplete="nope">
-                </div>
-                <div class="form-group">
-                    <label for="">RUC</label>
-                    <input [(ngModel)]="timbrado.ruc" placeholder="RUC de la empresa" type="text" class="form-control"
-                        name="ruc" autocomplete="nope">
-                </div>
-                <mat-form-field appearance="fill">
-                    <mat-label>Fecha de solicitud</mat-label>
-                    <input matInput name="asdrdssvet321" [(ngModel)]="fechaSolicitud" [matDatepicker]="pickerSolicitud">
-                    <mat-datepicker-toggle matSuffix [for]="pickerSolicitud">
-                    </mat-datepicker-toggle>
-                    <mat-datepicker #pickerSolicitud></mat-datepicker>
-                </mat-form-field>
-                <mat-form-field appearance="fill">
-                    <mat-label>Fecha Inicio Vigencia</mat-label>
-                    <input matInput name="asdrdssvet321" [(ngModel)]="fechaVigenciaInicio"
-                        [matDatepicker]="pickerInicioVigencia">
-                    <mat-datepicker-toggle matSuffix [for]="pickerInicioVigencia">
-                    </mat-datepicker-toggle>
-                    <mat-datepicker #pickerInicioVigencia></mat-datepicker>
-                </mat-form-field>
-                <mat-form-field appearance="fill">
-                    <mat-label>Fecha Fin Vigencia</mat-label>
-                    <input matInput name="asdrdssvet321" [(ngModel)]="fechaVigenciaFin"
-                        [matDatepicker]="pickerFinVigencia">
-                    <mat-datepicker-toggle matSuffix [for]="pickerFinVigencia">
-                    </mat-datepicker-toggle>
-                    <mat-datepicker #pickerFinVigencia></mat-datepicker>
-                </mat-form-field>
-                <div style="display: block;">
-                    
-                    <button type="button" [disabled]="false" (click)="crearTimbrado()"
-                        class="mx-auto btn btn-inverse">Crear
-                        Timbrado</button>
-                </div>
-            </div>
-
-        </div>
+          </tbody>
+        </table>
+      </div>
     </div>
+
+    <div class="card">
+      <div class="card-body ">
+        <h4>Nuevo Timbrado</h4>
+        <div class="form-group">
+          <label for="">Timbrado</label>
+          <input [(ngModel)]="timbrado.timbrado" placeholder="Numero de Timbrado" type="text" class="form-control" name="timbrado" autocomplete="nope">
+        </div>
+        <div class="form-group">
+          <label for="">Nro de solicitud</label>
+          <input [(ngModel)]="timbrado.nro_solicitud" placeholder="Numero de solicitud" type="text" class="form-control" name="nro_solicitud" autocomplete="nope">
+        </div>
+        <div class="form-group">
+          <label for="">RUC</label>
+          <input [(ngModel)]="timbrado.ruc" placeholder="RUC de la empresa" type="text" class="form-control" name="ruc" autocomplete="nope">
+        </div>
+        <mat-form-field appearance="fill">
+          <mat-label>Fecha de solicitud</mat-label>
+          <input matInput name="asdrdssvet321" [(ngModel)]="fechaSolicitud" [matDatepicker]="pickerSolicitud">
+          <mat-datepicker-toggle matSuffix [for]="pickerSolicitud">
+          </mat-datepicker-toggle>
+          <mat-datepicker #pickerSolicitud></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Fecha Inicio Vigencia</mat-label>
+          <input matInput name="asdrdssvet321" [(ngModel)]="fechaVigenciaInicio" [matDatepicker]="pickerInicioVigencia">
+          <mat-datepicker-toggle matSuffix [for]="pickerInicioVigencia">
+          </mat-datepicker-toggle>
+          <mat-datepicker #pickerInicioVigencia></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Fecha Fin Vigencia</mat-label>
+          <input matInput name="asdrdssvet321" [(ngModel)]="fechaVigenciaFin" [matDatepicker]="pickerFinVigencia">
+          <mat-datepicker-toggle matSuffix [for]="pickerFinVigencia">
+          </mat-datepicker-toggle>
+          <mat-datepicker #pickerFinVigencia></mat-datepicker>
+        </mat-form-field>
+        <div style="display: block;">
+
+          <button type="button" [disabled]="false" (click)="crearTimbrado()" class="mx-auto btn btn-inverse">Crear
+            Timbrado</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </div>
 <button (click)="updateDB()" class="btn btn-primary">Actulizar Base de Datos</button>

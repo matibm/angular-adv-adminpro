@@ -1,198 +1,192 @@
 <div class="card ribbon-wrapper">
 
-    <div style="min-height: 517.52px " class="card-body">
-        <h4 *ngIf="showlabel && facturas" class="ribbon ribbon-success"> Extracto de Cuotas </h4>
-        <div style="overflow-x: auto;" class="">
-            <table class="table table-sm table-hover">
-                <thead>
-                    <tr>
-                        <th class="text-center" *ngIf="!selectable">#</th>
-                        <th class="text-center" *ngIf="selectable">
-                            <input [(ngModel)]="selectAll" type="checkbox" name="check_all" id="allitems"
-                                class="filled-in  chk-col-light-blue" (click)="selectToAll()" checked />
-                            <label style="margin-bottom:0 ; padding: 0;" for="allitems"></label>
+  <div style="min-height: 517.52px " class="card-body">
+    <h4 *ngIf="showlabel && facturas" class="ribbon ribbon-success"> Extracto de Cuotas </h4>
+    <div style="overflow-x: auto;" class="">
+      <table class="table table-sm table-hover">
+        <thead>
+          <tr>
+            <th class="text-center" *ngIf="!selectable">#</th>
+            <th class="text-center" *ngIf="selectable">
+              <input [(ngModel)]="selectAll" type="checkbox" name="check_all" id="allitems" class="filled-in  chk-col-light-blue" (click)="selectToAll()" checked />
+              <label style="margin-bottom:0 ; padding: 0;" for="allitems"></label>
 
-                        </th>
-                        <th class="text-center" style="min-width: 150px;">
-                            fondo
-                        </th>
-                        <th (click)="ordenar('nro_contrato')" class="text-center pointer" style="min-width: 130px;">
-                            Nro. Contrato
-                            <i *ngIf="sort.key === 'nro_contrato'" class="ml-1 fa "
-                                [ngClass]="{'fa-sort-asc': sort.value === 1 , 'fa-sort-desc': sort.value === -1 }"></i>
-                        </th>
-                        <th (click)="ordenar('numero_factura')" class="text-center pointer" style="min-width: 150px;">
-                            Nro. Factura
-                            <i *ngIf="sort.key === 'numero_factura'" class="ml-1 fa "
-                            [ngClass]="{'fa-sort-asc': sort.value === 1 , 'fa-sort-desc': sort.value === -1 }"></i>
-                        </th>
-                        <th *ngIf="false" class="text-center" style="min-width: 200px;">
-                            Emisión
-                        </th>
-                        <th (click)="ordenar('haber')" class="pointer text-center" style="min-width: 150px;">
-                            Monto
-                            <i *ngIf="sort.key === 'haber'" class="ml-1 fa "
-                                [ngClass]="{'fa-sort-asc': sort.value === 1 , 'fa-sort-desc': sort.value === -1 }"></i>
-                        </th>
-                        <th class="text-center" style="min-width: 200px;" *ngIf="!fromOutside">
-                            Cliente
-                        </th>
-                        <th (click)="ordenar('vencimiento')" class="pointer text-center" style="min-width: 150px;">
-                            Vencimiento
-                            <i *ngIf="sort.key === 'vencimiento'" class="ml-1 fa "
-                                [ngClass]="{'fa-sort-asc': sort.value === 1 , 'fa-sort-desc': sort.value === -1 }"></i>
-                        </th>
-                        <th class="text-center" style="min-width: 400px;">
-                            Servicio
-                        </th>
-                        <th (click)="ordenar('fecha_pagado_unix')" class="pointer text-center"
-                            style="min-width: 150px;">
-                            Pagado
-                            <i *ngIf="sort.key === 'fecha_pagado_unix'" class="ml-1 fa "
-                                [ngClass]="{'fa-sort-asc': sort.value === 1 , 'fa-sort-desc': sort.value === -1 }"></i>
+            </th>
+            <th class="text-center" style="min-width: 150px;">
+              fondo
+            </th>
+            <th (click)="ordenar('nro_contrato')" class="text-center pointer" style="min-width: 130px;">
+              Nro. Contrato
+              <i *ngIf="sort.key === 'nro_contrato'" class="ml-1 fa " [ngClass]="{'fa-sort-asc': sort.value === 1 , 'fa-sort-desc': sort.value === -1 }"></i>
+            </th>
+            <th (click)="ordenar('numero_factura')" class="text-center pointer" style="min-width: 150px;">
+              Nro. Factura
+              <i *ngIf="sort.key === 'numero_factura'" class="ml-1 fa " [ngClass]="{'fa-sort-asc': sort.value === 1 , 'fa-sort-desc': sort.value === -1 }"></i>
+            </th>
+            <th *ngIf="false" class="text-center" style="min-width: 200px;">
+              Emisión
+            </th>
+            <th (click)="ordenar('haber')" class="pointer text-center" style="min-width: 150px;">
+              Monto
+              <i *ngIf="sort.key === 'haber'" class="ml-1 fa " [ngClass]="{'fa-sort-asc': sort.value === 1 , 'fa-sort-desc': sort.value === -1 }"></i>
+            </th>
 
-                        </th>
-                        <th class="text-center" *ngIf="!fromOutside" style="min-width: 200px;">
-                            cobrador
-                        </th>
-                        <th class="text-center" *ngIf="!fromOutside" style="min-width: 200px;">
-                            recibido
-                        </th>
+            <th (click)="ordenar('fecha_pagado_unix')" class="pointer text-center" style="min-width: 150px;">
+              Pagado
+              <i *ngIf="sort.key === 'fecha_pagado_unix'" class="ml-1 fa " [ngClass]="{'fa-sort-asc': sort.value === 1 , 'fa-sort-desc': sort.value === -1 }"></i>
 
-                    </tr>
-                </thead>
+            </th>
+            <th class="text-center" style="min-width: 200px;" *ngIf="!fromOutside">
+              Cliente
+            </th>
+            <th (click)="ordenar('vencimiento')" class="pointer text-center" style="min-width: 150px;">
+              Vencimiento
+              <i *ngIf="sort.key === 'vencimiento'" class="ml-1 fa " [ngClass]="{'fa-sort-asc': sort.value === 1 , 'fa-sort-desc': sort.value === -1 }"></i>
+            </th>
+            <th class="text-center" style="min-width: 400px;">
+              Servicio
+            </th>
+
+            <th class="text-center" *ngIf="!fromOutside" style="min-width: 200px;">
+              cobrador
+            </th>
+            <th class="text-center" *ngIf="!fromOutside" style="min-width: 200px;">
+              recibido
+            </th>
+
+          </tr>
+        </thead>
 
 
-                <tbody *ngIf="facturas">
+        <tbody *ngIf="facturas">
 
-                    <!--  | paginate: { itemsPerPage: 10,totalItems:count, currentPage: page } -->
-                    <tr (click)="selectItem(factura._id, factura)" id="id-{{factura._id}}" class="item-table pointer"
-                        *ngFor="let factura of facturas  | paginate: { itemsPerPage: 10,totalItems:count, currentPage: page } ; let i = index;">
-                        <!-- <td class="text-center" scope="row">{{page*10 + (i+1) - 10}}</td> -->
-                        <td class="text-center" scope="row">{{factura.nro_factura}}</td>
+          <!--  | paginate: { itemsPerPage: 10,totalItems:count, currentPage: page } -->
+          <tr (click)="selectItem(factura._id, factura)" id="id-{{factura._id}}" class="item-table pointer"
+            *ngFor="let factura of facturas  | paginate: { itemsPerPage: 10,totalItems:count, currentPage: page } ; let i = index;">
+            <!-- <td class="text-center" scope="row">{{page*10 + (i+1) - 10}}</td> -->
+            <td class="text-center" scope="row">{{factura.nro_factura}}</td>
 
-                        <td class="text-center" *ngIf="factura.fondo">{{factura.fondo.NOMBRES}}
-                            {{factura.fondo.APELLIDOS}}
-                        </td>
-                        <td class="text-center" *ngIf="!factura.fondo">Sin fondo</td>
+            <td class="text-center" *ngIf="factura.fondo">{{factura.fondo.NOMBRES}}
+              {{factura.fondo.APELLIDOS}}
+            </td>
+            <td class="text-center" *ngIf="!factura.fondo">Sin fondo</td>
 
-                        <td class="text-center">
-                            <div *ngIf="factura.nro_contrato">{{factura.nro_contrato | currency:'':'':'2.0'}}</div>
-                            <div *ngIf="!factura.nro_contrato">---</div>
-                        </td>
-                        <td class="text-center">
-                            <div *ngIf="factura.pago?.numero">{{factura.pago?.numero}}-{{fill(factura.pago?.nro_factura,7)}}
-                            </div>
-                            <div *ngIf="!factura.pago">---</div>
-                        </td>
+            <td class="text-center">
+              <div *ngIf="factura.nro_contrato">{{factura.nro_contrato | currency:'':'':'2.0'}}</div>
+              <div *ngIf="!factura.nro_contrato">---</div>
+            </td>
+            <td class="text-center">
+              <div [ngStyle]="{'color':  factura.recibo ? 'red': ''}" title="{{factura.recibo? 'Corresponde a factura a credito': 'factura contado'}}" *ngIf="factura.pago?.numero">
+                {{factura.pago?.numero}}-{{fill(factura.pago?.nro_factura,7)}}
+              </div>
+              <div *ngIf="!factura.pago">---</div>
+            </td>
 
-                        <td *ngIf="false" class="text-center">
-                            {{factura.fecha_creacion_unix | date:' d, MMM y'}}
-                            <span class="" *ngIf="!fromOutside"> {{factura.fecha_creacion_unix | date:' h:mm a'}}</span>
+            <td *ngIf="false" class="text-center">
+              {{factura.fecha_creacion_unix | date:' d, MMM y'}}
+              <span class="" *ngIf="!fromOutside"> {{factura.fecha_creacion_unix | date:' h:mm a'}}</span>
+            </td>
 
-                        </td>
+            <td class="text-center">{{factura.haber | currency:'':'':'2.0'}} Gs</td>
 
-                        <td class="text-center">{{factura.haber | currency:'':'':'2.0'}} Gs</td>
-                        <td class="text-center" *ngIf="!fromOutside">
-                            {{factura.titular.NOMBRES | primerNombre}} {{factura.titular.APELLIDOS | primerNombre }}
-                        </td>
-                        <td class="text-center">{{factura.vencimiento | date:' d, MMM y'}}</td>
-                        <td class="text-center" *ngIf="!fromOutside && factura.servicio">
-                            <div *ngIf="factura.servicio?.COD_CORTO == 'C.M.P.'"></div> {{factura.servicio.NOMBRE }}
-                        </td>
-                        <td class="text-center" *ngIf="fromOutside && factura.servicio">
-                            {{factura.servicio.COD_CORTO }}
-                        </td>
-                        <td class="text-center" *ngIf="factura.pagado"><b>{{factura.fecha_pagado_unix | date}}</b></td>
-                        <td class="text-center text-danger" *ngIf="!factura.pagado">Pendiente</td>
-                        <td class="text-center" *ngIf="!fromOutside">
-                            <div *ngIf="factura.cobrador">
-                                {{factura.cobrador.NOMBRES | primerNombre}} {{factura.cobrador.APELLIDOS | primerNombre
-                                }}
-                            </div>
-                            <div *ngIf="!factura.cobrador">
-                                ---
-                            </div>
-                        </td>
-                        <td class="text-center" *ngIf="!fromOutside">
-                            {{ factura.recibido | date}}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <div style="width: 100%;" *ngIf="!facturas">
-                <div style="display: flex;">
-                    <div class="my-5 mx-auto">
-                        <mat-spinner></mat-spinner>
+            <td class="text-center" *ngIf="factura.pagado"><b>{{factura.fecha_pagado_unix | date}}</b></td>
+            <td class="text-center text-danger" *ngIf="!factura.pagado">Pendiente</td>
 
-                    </div>
-                </div>
-            </div>
+            <td class="text-center" *ngIf="!fromOutside">
+              {{factura.titular.NOMBRES | primerNombre}} {{factura.titular.APELLIDOS | primerNombre }}
+            </td>
+            <td class="text-center">{{factura.vencimiento | date:' d, MMM y'}}</td>
+            <td class="text-center" *ngIf="!fromOutside && factura.servicio">
+              <div *ngIf="factura.servicio?.COD_CORTO == 'C.M.P.'"></div> {{factura.servicio.NOMBRE }}
+            </td>
+            <td class="text-center" *ngIf="fromOutside && factura.servicio">
+              {{factura.servicio.COD_CORTO }}
+            </td>
+
+            <td class="text-center" *ngIf="!fromOutside">
+              <div *ngIf="factura.cobrador">
+                {{factura.cobrador.NOMBRES | primerNombre}} {{factura.cobrador.APELLIDOS | primerNombre
+                }}
+              </div>
+              <div *ngIf="!factura.cobrador">
+                ---
+              </div>
+            </td>
+            <td class="text-center" *ngIf="!fromOutside">
+              {{ factura.recibido | date}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="width: 100%;" *ngIf="!facturas">
+        <div style="display: flex;">
+          <div class="my-5 mx-auto">
+            <mat-spinner></mat-spinner>
+
+          </div>
         </div>
-        <div style="width: 100%;">
-            <div style="display: flex;">
-                <div class="mx-auto">
-                    <pagination-controls *ngIf="count>10" (pageChange)="pageChanged($event); page = $event">
-                    </pagination-controls>
-                </div>
-            </div>
-        </div>
-        <div class="mt-2" *ngIf="total">
-            <div style="width: 100%;">
-                <div style="display: flex;">
-                    <div class="mx-auto">
-                        <table class="table  table-responsive">
-                            <thead class="table-inverse">
-                                <tr>
-
-                                    <th class="text-center ">Pagados <span
-                                            class="badge badge-pill bg-info">{{total.pagadosCount}}</span>
-                                    </th>
-                                    <th class="text-center ">Deuda <span
-                                            class="badge badge-pill bg-danger">{{total.deudaCount}}</span></th>
-                                    <th class="text-center ">Total <span
-                                            class="badge badge-pill bg-secondary">{{total.cantidad}}</span> </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-
-                                    <td class="text-center px-4">{{total.pagados | currency: '':'':'2.0'}} Gs</td>
-                                    <td class="text-center px-4">{{total.deuda | currency: '':'':'2.0'}} Gs</td>
-                                    <td class="text-center px-4">{{total.total | currency: '':'':'2.0'}} Gs</td>
-                                </tr>
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <div  class="mt-2" *ngIf="!is_cobranza">
-            <div style="width: 100%;">
-                <div style="display: flex;">
-                    <div class="ml-auto">
-                        <button type="button" (click)="descargarExtracto()" class="btn btn-inverse">Descargar
-                            Extracto PDF</button>
-                        <button style="width: 206.52px;"
-                            [disabled]="loadingDescargarExtracto || total?.cantidad > 30000 || total?.cantidad < 1 "
-                            (click)="descargarExtractoExcel()" class="btn mr-auto btn-info">
-                            <span *ngIf="!loadingDescargarExtracto">Descargar Extracto Excel </span>
-                            <div *ngIf="loadingDescargarExtracto" style="width: 100%;">
-                                <div style="display: flex;">
-
-                                    <div class="mx-auto">
-                                        <mat-spinner [color]="'secondary'" [diameter]="20"></mat-spinner>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </button>
-
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+    <div style="width: 100%;">
+      <div style="display: flex;">
+        <div class="mx-auto">
+          <pagination-controls *ngIf="count>10" (pageChange)="pageChanged($event); page = $event">
+          </pagination-controls>
+        </div>
+      </div>
+    </div>
+    <div class="mt-2" *ngIf="total">
+      <div style="width: 100%;">
+        <div style="display: flex;">
+          <div class="mx-auto">
+            <table class="table  table-responsive">
+              <thead class="table-inverse">
+                <tr>
+
+                  <th class="text-center ">Pagados <span class="badge badge-pill bg-info">{{total.pagadosCount}}</span>
+                  </th>
+                  <th class="text-center ">Deuda <span class="badge badge-pill bg-danger">{{total.deudaCount}}</span></th>
+                  <th class="text-center ">Total <span class="badge badge-pill bg-secondary">{{total.cantidad}}</span> </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+
+                  <td class="text-center px-4">{{total.pagados | currency: '':'':'2.0'}} Gs</td>
+                  <td class="text-center px-4">{{total.deuda | currency: '':'':'2.0'}} Gs</td>
+                  <td class="text-center px-4">{{total.total | currency: '':'':'2.0'}} Gs</td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="mt-2" *ngIf="!is_cobranza">
+      <div style="width: 100%;">
+        <div style="display: flex;">
+          <div class="ml-auto">
+            <button type="button" (click)="descargarExtracto()" class="btn btn-inverse">Descargar
+              Extracto PDF</button>
+            <button style="width: 206.52px;" [disabled]="loadingDescargarExtracto || total?.cantidad > 30000 || total?.cantidad < 1 " (click)="descargarExtractoExcel()"
+              class="btn mr-auto btn-info">
+              <span *ngIf="!loadingDescargarExtracto">Descargar Extracto Excel </span>
+              <div *ngIf="loadingDescargarExtracto" style="width: 100%;">
+                <div style="display: flex;">
+
+                  <div class="mx-auto">
+                    <mat-spinner [color]="'secondary'" [diameter]="20"></mat-spinner>
+                  </div>
+                </div>
+              </div>
+
+            </button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

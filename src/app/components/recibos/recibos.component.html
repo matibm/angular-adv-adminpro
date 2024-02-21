@@ -55,3 +55,18 @@
 <div class="" *ngIf="facturapdf">
   <app-modal-factura (onClose)="facturapdf = null" [facturaPDF]="facturapdf"></app-modal-factura>
 </div>
+
+
+<div *ngIf="reciboSeleccionado" class="d-flex w-100 justify-content-center">
+  <div class="card">
+    <div class="card-body mb-3">
+      <label for="" class="form-label">Pagar</label>
+      <input type="number" #montoAPagar class="form-control" name="" id="" aria-describedby="helpId" placeholder="" />
+      <button (click)="pagarRecibo(montoAPagar.value)" type="button" class="btn btn-primary">
+        Confirmar
+      </button>
+
+    </div>
+
+  </div>
+</div>

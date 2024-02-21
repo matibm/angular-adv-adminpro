@@ -659,4 +659,10 @@ export class FacturaService {
     url += `?token=${this._usuarioService.token}`;
     return this.http.get(url).toPromise();
   }
+
+  async pagarRecibo(recibo) {
+    let url = URL_SERVICIOS + '/factura/pagar_recibo';
+    url += `?token=${this._usuarioService.token}`;
+    return this.http.post(url, recibo).toPromise();
+  }
 }

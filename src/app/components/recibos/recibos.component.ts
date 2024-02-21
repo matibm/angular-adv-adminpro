@@ -69,4 +69,13 @@ export class RecibosComponent implements OnInit {
 
   }
 
+
+  async pagarRecibo(monto:number){
+    console.log(this.reciboSeleccionado);
+
+    await this.recibosService.pagarRecibo({
+      pago: this.reciboSeleccionado.pago._id,
+      monto: Number(monto)
+    })
+  }
 }

@@ -6,25 +6,27 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 @Component({
   selector: 'app-account-settings',
   templateUrl: './account-settings.component.html',
-  styles: [
-  ]
+  styles: [],
 })
 export class AccountSettingsComponent implements OnInit {
-  configurations
   chats = [];
-  constructor(private settingsService: SettingsService,
+  constructor(
+    private settingsService: SettingsService,
 
     private _whatsappService: WhatsappService,
-    private _userService: UsuarioService
-  ) { }
+    private _userService: UsuarioService,
+  ) {}
   tokenQr;
   authenticated = false;
-  timbrado: any = {}
-  fechaSolicitud
-  fechaVigenciaInicio
-  fechaVigenciaFin
-  ruc
-  timbrados
+  timbrado: any = {};
+  fechaSolicitud;
+  fechaVigenciaInicio;
+  fechaVigenciaFin;
+  ruc;
+  timbrados;
+  configurations: any;
+  setConfigurations: any;
+  utlNroFactura = 0
   ngOnInit(): void {
     this._whatsappService.listen('push_actividad').subscribe((data: any) => {
       console.log(data);
@@ -38,22 +40,21 @@ export class AccountSettingsComponent implements OnInit {
           this.chats.push(data.message);
         }
       }
-
     });
-    this.getConfigurations()
+    this.getConfigurations();
     this.settingsService.checkCurrentTheme();
   }
   async getConfigurations() {
-    // this.timbrados = await this._userService.getConfigurations({ type: 'TIMBRADO' })
-    console.log(this.timbrados);
-    
+    this.configurations = await this._userService.getConfigurations();
+    console.log(this.configurations);
+    this.configurations.forEach((element) => {
+      this.setConfigurations = element;
+      console.log(element.data?.ult_nro_factura_creado);
+      this.utlNroFactura = element.data?.ult_nro_factura_creado
+    });
   }
   changeTheme(theme: string) {
-
     this.settingsService.changeTheme(theme);
-
-
-
   }
 
   async generateQr() {
@@ -62,25 +63,38 @@ export class AccountSettingsComponent implements OnInit {
   }
 
   async crearTimbrado() {
-    this.timbrado.fecha_vigente_inicio = this.fechaVigenciaInicio
-    this.timbrado.fecha_vigente_fin = this.fechaVigenciaFin
-    this.timbrado.fecha_solicitud = this.fechaSolicitud
+    this.timbrado.fecha_vigente_inicio = this.fechaVigenciaInicio;
+    this.timbrado.fecha_vigente_fin = this.fechaVigenciaFin;
+    this.timbrado.fecha_solicitud = this.fechaSolicitud;
     let obj = {
       key: 'TIMBRADO_ACTUAL',
       type: 'TIMBRADO',
       tag: 'timbrado',
       value: null,
       body: this.timbrado,
-      nota: ''
-    }
+      nota: '',
+    };
     console.log(obj);
-    
-    await this._userService.createConfiguration(obj)
-    window.location.reload()
+
+    await this._userService.createConfiguration(obj);
+    window.location.reload();
   }
 
-  updateDB(){
-    this._whatsappService.updateDB()
+  updateDB() {
+    this._whatsappService.updateDB();
   }
 
+  async updateConfiguration(configuration, nro_factura) {
+    console.log(nro_factura);
+
+    const body = {
+      ...configuration,
+
+      data: {
+        ult_nro_factura_creado: +nro_factura,
+      },
+    }
+    await this._userService.updateConfiguration(body);
+
+  }
 }

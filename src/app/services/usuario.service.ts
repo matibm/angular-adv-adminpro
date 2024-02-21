@@ -188,16 +188,7 @@ export class UsuarioService {
     localStorage.removeItem('token');
     this.itsLogued = false;
   }
-  // getConfigurations(body) {
 
-
-  //   let url = `${URL_SERVICIOS}/configurations/get_configurations`;
-  //   url += `?token=${this.token}`;
-
-  //   return this.http.post(url, body).toPromise().then((resp: any) => {
-  //     return resp.data;
-  //   });
-  // }
 
   createConfiguration(body) {
 
@@ -209,4 +200,20 @@ export class UsuarioService {
     });
   }
 
+  getConfigurations() {
+    let url = `${URL_SERVICIOS}/configurations/get_configurations`;
+    url += `?token=${this.token}`;
+
+    return this.http.get(url).toPromise().then((resp: any) => {
+      return resp.data;
+    });
+  }
+
+  updateConfiguration(body) {
+    let url = `${URL_SERVICIOS}/configurations/update_configuration/${body._id}`;
+    url += `?token=${this.token}`;
+    return this.http.patch(url, body).toPromise().then((resp: any) => {
+      return resp.data;
+    });
+  }
 }
