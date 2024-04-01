@@ -665,4 +665,11 @@ export class FacturaService {
     url += `?token=${this._usuarioService.token}`;
     return this.http.post(url, recibo).toPromise();
   }
+
+  getRecibosPagados(id_recibo) {
+    let url = URL_SERVICIOS + '/factura/recibo_pagados/'+id_recibo;
+    url += `?token=${this._usuarioService.token}`;
+    return this.http.get(url).toPromise();
+  }
+
 }

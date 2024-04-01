@@ -12,6 +12,8 @@ export class RecibosComponent implements OnInit {
   facturas: any[] = []
   facturasOptions: any
   facturapdf:any
+  montoTotal
+  recibosPagados: any[] = []
   constructor(
     private readonly recibosService: FacturaService
   ) { }
@@ -25,12 +27,15 @@ export class RecibosComponent implements OnInit {
   async verCuotas(item) {
     this.facturasOptions = {
       tipo_factura: 'CREDITO',
-      pago: item.pago?._id
+      pago: item.pago?._id,
+      get_total: '1'
     }
     const facturas = await this.recibosService.getFacturasOptions(this.facturasOptions)
     console.log(facturas);
     this.facturas = facturas.facturas
     this.reciboSeleccionado = item
+    this.montoTotal = facturas.montoTotal
+    this.getRecibosPagados()
 
   }
 
@@ -75,7 +80,17 @@ export class RecibosComponent implements OnInit {
 
     await this.recibosService.pagarRecibo({
       pago: this.reciboSeleccionado.pago._id,
-      monto: Number(monto)
+      monto: Number(monto),
+      recibo: this.reciboSeleccionado._id
     })
+
+    this.verCuotas(this.reciboSeleccionado)
+  }
+
+  async getRecibosPagados() {
+    const resp:any = await this.recibosService.getRecibosPagados(this.reciboSeleccionado._id);
+    console.log(resp);
+
+    this.recibosPagados = resp.list
   }
 }

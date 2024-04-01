@@ -49,7 +49,7 @@
 
 
 <div *ngIf="reciboSeleccionado">
-  <app-facturas [options]="facturasOptions" [facturas]="facturas"></app-facturas>
+  <app-facturas [options]="facturasOptions" [total]="montoTotal" [facturas]="facturas"></app-facturas>
 </div>
 
 <div class="" *ngIf="facturapdf">
@@ -67,6 +67,46 @@
       </button>
 
     </div>
+
+  </div>
+</div>
+
+
+<div *ngIf="reciboSeleccionado" class="d-flex w-100" >
+  <div class="card">
+    <div class="card-body mb-3" style="min-width: 400px;">
+      <label for="" class="form-label">Pagados</label>
+      <div *ngFor="let reciboPagado of recibosPagados">
+        <div>Monto: {{ reciboPagado?.monto | currency:'':'':'2.0' }}</div>
+        <div>Fecha: {{ reciboPagado?.fecha | date }}</div>
+        <div>Nro recibo: {{ reciboPagado?.nro_recibo  }}</div>
+
+        <table class="table table-sm table-hover">
+          <thead>
+            <tr>
+              <th class="text-center">#</th>
+              <th class="text-center">Nro Factura</th>
+              <th class="text-center">Monto</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr class="pointer" *ngFor="let factura of reciboPagado.facturas; let i = index"  >
+              <td class="text-center" scope="row">{{factura.nro_factura}}</td>
+              <td class="text-center">
+                <div *ngIf="factura.nro_contrato">{{factura.nro_contrato | currency:'':'':'2.0'}}</div>
+                <div *ngIf="!factura.nro_contrato">---</div>
+              </td>
+              <td class="text-center">{{factura.haber | currency:'':'':'2.0'}} Gs</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <hr>
+      </div>
+
+    </div>
+
 
   </div>
 </div>
