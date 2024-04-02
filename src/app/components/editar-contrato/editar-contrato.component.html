@@ -728,7 +728,7 @@
                                         <input class="form-control" [(ngModel)]="contrato.lugar_inhumacion"
                                             name="lugar_inhumacion" id="lugar_inhumacion">
                                     </div>
-                                    <div class="mt-3">
+                                    <div *ngIf="_usuarioService.usuario.role == 'ADMIN_ROLE'" class="mt-3">
                                         <h4>Estado</h4>
                                         <input [(ngModel)]="contrato.utilizado" type="checkbox" name="check_utilizado"
                                             id="check_utilizado" class="filled-in chk-col-light-blue" checked />
