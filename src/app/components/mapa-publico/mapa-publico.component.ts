@@ -40,7 +40,7 @@ export class MapaPublicoComponent implements OnInit {
         this.loadingClientes = true;
         this.clientes = await this._contratoService.getInhumado({ search: { nombre: txt } });
         console.log(this.clientes);
-        
+
         this.loadingClientes = false;
       });
   }
@@ -51,12 +51,17 @@ export class MapaPublicoComponent implements OnInit {
     if (this.cliente?.contrato_udp) {
       this.ubicaion_contrato = this.cliente.contrato_udp[0]
       this.clientes = []
-      
+
     }
   }
   scale = 1
   onScale(value){
     this.scale += value
     this._contratoService.onScale.emit(this.scale)
+  }
+
+  refresh() {
+    localStorage.clear()
+    window.location.reload()
   }
 }

@@ -32408,9 +32408,13 @@ class MapaPublicoComponent {
         this.scale += value;
         this._contratoService.onScale.emit(this.scale);
     }
+    refresh() {
+        localStorage.clear();
+        window.location.reload();
+    }
 }
 MapaPublicoComponent.ɵfac = function MapaPublicoComponent_Factory(t) { return new (t || MapaPublicoComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](src_app_services_contrato_service__WEBPACK_IMPORTED_MODULE_4__["ContratoService"])); };
-MapaPublicoComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: MapaPublicoComponent, selectors: [["app-mapa-publico"]], decls: 24, vars: 7, consts: [[2, "width", "100%", "height", "60px"], [1, "w-100", "bg-white", "sticky-top", "d-flex", 2, "position", "fixed"], [1, "mx-auto", "mt-1", 2, "font-size", "larger", "width", "100%"], [2, "display", "flex", "flex-wrap", "nowrap", "justify-content", "center"], [1, "btn", "btn-info", 3, "click"], ["id", "searchclient", "name", "dsfdbrweqcda", "notFoundText", "no se encontraron resultados", "placeholder", "buscar", "bindLabel", "NOMBRES", 2, "width", "500px", 3, "typeahead", "loading", "items", "ngModel", "searchFn", "ngModelChange", "click"], ["productsearch", ""], ["ng-option-tmp", ""], [3, "publico", "ubicacion_contrato"]], template: function MapaPublicoComponent_Template(rf, ctx) { if (rf & 1) {
+MapaPublicoComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: MapaPublicoComponent, selectors: [["app-mapa-publico"]], decls: 39, vars: 7, consts: [[2, "width", "100%", "height", "60px"], [1, "w-100", "bg-white", "sticky-top", "d-flex", 2, "position", "fixed"], [1, "mx-auto", "mt-1", 2, "font-size", "larger", "width", "100%"], [2, "display", "flex", "flex-wrap", "nowrap", "justify-content", "center"], [1, "btn", "btn-info", 3, "click"], ["id", "searchclient", "name", "dsfdbrweqcda", "notFoundText", "no se encontraron resultados", "placeholder", "buscar", "bindLabel", "NOMBRES", 2, "width", "500px", 3, "typeahead", "loading", "items", "ngModel", "searchFn", "ngModelChange", "click"], ["productsearch", ""], ["ng-option-tmp", ""], [1, "mt-1", "me-1"], ["type", "button", 1, "btn", "btn-light", 3, "click"], ["width", "18", "height", "18", "viewBox", "0 0 24 24", "fill", "none", "xmlns", "http://www.w3.org/2000/svg"], ["id", "SVGRepo_bgCarrier", "stroke-width", "0"], ["id", "SVGRepo_tracerCarrier", "stroke-linecap", "round", "stroke-linejoin", "round"], ["id", "SVGRepo_iconCarrier"], ["d", "M21 3V8M21 8H16M21 8L18 5.29168C16.4077 3.86656 14.3051 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.2832 21 19.8675 18.008 20.777 14", "stroke", "#000000", "stroke-width", "2", "stroke-linecap", "round", "stroke-linejoin", "round"], [3, "publico", "ubicacion_contrato"]], template: function MapaPublicoComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 1);
@@ -32439,14 +32443,36 @@ MapaPublicoComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdef
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](20, "\n\n  ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](21, "\n");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](21, "\n  ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](22, "div", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](23, "\n    ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](24, "button", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function MapaPublicoComponent_Template_button_click_24_listener() { return ctx.refresh(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](25, "\n    ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnamespaceSVG"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](26, "svg", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](27, "g", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](28, "g", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](29, "g", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](30, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](31, "path", 14);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](32, " ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](22, "\n\n");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](23, "app-mapa", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](33, "\n    ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](34, "\n\n  ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](35, "\n");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](36, "\n\n");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnamespaceHTML"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](37, "app-mapa", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](38, "\n");
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](11);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("typeahead", ctx.inputClientes)("loading", ctx.loadingClientes)("items", ctx.clientes)("ngModel", ctx.cliente)("searchFn", ctx.customSearchFn);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](26);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("publico", true)("ubicacion_contrato", ctx.ubicaion_contrato);
     } }, directives: [_ng_select_ng_select__WEBPACK_IMPORTED_MODULE_5__["NgSelectComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["NgModel"], _ng_select_ng_select__WEBPACK_IMPORTED_MODULE_5__["ɵf"], _mapa_mapa_component__WEBPACK_IMPORTED_MODULE_7__["MapaComponent"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJtYXBhLXB1YmxpY28uY29tcG9uZW50LmNzcyJ9 */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](MapaPublicoComponent, [{
@@ -46120,4 +46146,4 @@ webpackEmptyAsyncContext.id = "zn8P";
 /***/ })
 
 },[[0,"runtime","vendor"]]]);
-//# sourceMappingURL=main.868fd0d57949bcef0596.js.map
+//# sourceMappingURL=main.813ff1ce966ee564e87b.js.map
