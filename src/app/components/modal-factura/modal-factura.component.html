@@ -52,7 +52,7 @@
           <button
             *ngIf="facturaStatus == 'factura' || facturaStatus == 'nota'"
             style="width: 173.84px"
-            [disabled]="loadingNotaCredito || facturaPDF?.activo === false"
+            [disabled]="loadingNotaCredito "
             (click)="notaCredito()"
             class="btn btn-rounded ml-auto btn-danger"
           >
