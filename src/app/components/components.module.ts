@@ -67,6 +67,7 @@ import { EditGastoComponent } from './edit-gasto/edit-gasto.component';
 import { FacturaElectronicaTicketComponent } from './factura-electronica-ticket/factura-electronica-ticket.component';
 import { QrCodeModule } from 'ng-qrcode';
 import { RecibosComponent } from './recibos/recibos.component';
+import { ReciboComponent } from './recibo/recibo.component';
 
 
 const maskConfig: Partial<IConfig> = {
@@ -115,7 +116,8 @@ const maskConfig: Partial<IConfig> = {
     MapaPublicoComponent,
     EditGastoComponent,
     FacturaElectronicaTicketComponent,
-    RecibosComponent
+    RecibosComponent,
+    ReciboComponent
   ],
   imports: [
     AvatarModule,

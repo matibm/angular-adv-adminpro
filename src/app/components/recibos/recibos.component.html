@@ -72,15 +72,30 @@
 </div>
 
 
-<div *ngIf="reciboSeleccionado" class="d-flex w-100" >
+<div *ngIf="reciboSeleccionado" class="d-flex w-100">
   <div class="card">
     <div class="card-body mb-3" style="min-width: 400px;">
       <label for="" class="form-label">Pagados</label>
       <div *ngFor="let reciboPagado of recibosPagados">
-        <div>Monto: {{ reciboPagado?.monto | currency:'':'':'2.0' }}</div>
-        <div>Fecha: {{ reciboPagado?.fecha | date }}</div>
-        <div>Nro recibo: {{ reciboPagado?.nro_recibo  }}</div>
+        <div class="d-flex justify-content-between">
+          <div>
+            <div>Monto: {{ reciboPagado?.monto | currency:'':'':'2.0' }}</div>
+            <div>Fecha: {{ reciboPagado?.fecha | date }}</div>
+            <div>Nro recibo: {{ reciboPagado?.nro_recibo }}</div>
+          </div>
 
+          <div>
+            <button
+            (click)="printRecibo(reciboPagado)"
+              type="button"
+              class="btn btn-info"
+            >
+            <span class="mdi mdi-printer"></span>
+            </button>
+
+          </div>
+
+        </div>
         <table class="table table-sm table-hover">
           <thead>
             <tr>
@@ -91,7 +106,7 @@
           </thead>
           <tbody>
 
-            <tr class="pointer" *ngFor="let factura of reciboPagado.facturas; let i = index"  >
+            <tr class="pointer" *ngFor="let factura of reciboPagado.facturas; let i = index">
               <td class="text-center" scope="row">{{factura.nro_factura}}</td>
               <td class="text-center">
                 <div *ngIf="factura.nro_contrato">{{factura.nro_contrato | currency:'':'':'2.0'}}</div>

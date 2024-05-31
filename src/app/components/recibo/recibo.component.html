@@ -1,0 +1,107 @@
+<div style="max-width: 1100px;">
+  <div style="margin-left: 16px; " class="mt-3 row mr-3">
+    <div class="p-0 col-8">
+      <div style="
+        padding: 8px;
+        border: 2px solid;
+        border-radius: 15px;
+        height: 200px;
+      ">
+        <div class="row">
+          <div class="p-x col-4">
+            <img width="190px" src="../../../assets/images/logo2020.png" alt="" />
+          </div>
+
+          <div class="px-1 col-8">
+            <div align="center" style="display: block; justify-content: center" class="">
+              <h1>IMPERIAL</h1>
+              <h4 class="m-0">Cementerio Privado - Servicios Funerarios</h4>
+              <span>de <b>EDUARDO CLEBSCH S.A.</b></span>
+              <hr class="m-1" />
+              <span style="font-size: 14px" for="">
+                <b>Suc.:</b> Cerro Cora Nº 333 - Encarnación <br /><b>Central:</b>
+                Santo Domingo a 200 Mts de la Ruta 1 - (071) 202803
+                <br />
+                Itapúa - Paraguay
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="px-1 col-4">
+      <div style="
+        text-align: initial;
+        height: 200px;
+        padding: 8px;
+        border: 2px solid;
+        border-radius: 15px;
+      ">
+        <span style="font-size: 18px">
+
+          <div style="display: flex; align-items: center;">
+            <div>RECIBO Nº:</div>
+
+            <div style="font-size: 24px; margin-left: 16px" class="text-danger">
+              {{ reciboPagado?.nro_recibo }}
+            </div>
+          </div>
+          <div style="display: flex; align-items: center;">
+            <div>FECHA:</div>
+
+            <div style="font-size: 24px; margin-left: 16px" class="text-danger">
+              {{ reciboPagado?.fecha | date }}
+            </div>
+          </div>
+          <div style="display: flex; align-items: center;">
+            <div>TOTAL:</div>
+
+            <div style="font-size: 24px; margin-left: 16px" class="text-danger">
+              {{ reciboPagado?.monto | currency:'':'':'2.0' }} Gs
+            </div>
+          </div>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div style="
+    padding: 8px;
+    border: 2px solid;
+    border-radius: 15px; " class="m-3 ">
+
+    <div>
+      <span>Cliente: {{ cliente?.NOMBRES }} {{ cliente?.APELLIDOS }}</span>
+      <br>
+      <span>RUC o CI: {{ cliente?.RUC | ruc}}</span>
+    </div>
+
+  </div>
+  <div style="
+    padding: 8px;
+    border: 2px solid;
+    border-radius: 15px; " class="m-3 ">
+
+    <table class="table table-sm table-hover">
+      <thead>
+        <tr>
+          <th class="text-center">#</th>
+          <th class="text-center">Nro Factura</th>
+          <th class="text-center">Monto</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr class="pointer" *ngFor="let factura of reciboPagado.facturas; let i = index">
+          <td class="text-center" scope="row">{{factura.nro_factura}}</td>
+          <td class="text-center">
+            <div *ngIf="factura.nro_contrato">{{factura.nro_contrato | currency:'':'':'2.0'}}</div>
+            <div *ngIf="!factura.nro_contrato">---</div>
+          </td>
+          <td class="text-center">{{factura.haber | currency:'':'':'2.0'}} Gs</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

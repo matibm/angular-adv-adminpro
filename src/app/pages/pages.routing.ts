@@ -41,6 +41,7 @@ import { MapaPublicoComponent } from '../components/mapa-publico/mapa-publico.co
 import { EditGastoComponent } from '../components/edit-gasto/edit-gasto.component';
 import { FacturaElectronicaTicketComponent } from '../components/factura-electronica-ticket/factura-electronica-ticket.component';
 import { RecibosComponent } from '../components/recibos/recibos.component';
+import { ReciboComponent } from '../components/recibo/recibo.component';
 const routes: Routes = [
   // {
   //   path: 'contrato',
@@ -100,6 +101,7 @@ const routes: Routes = [
   { path: 'contratos-pdf/:id', component: ContratoPdfComponent },
 
   { path: 'factura-pdf/:id', component: FacturaPdfComponent },
+  { path: 'recibo-pdf', component: ReciboComponent },
   { path: 'extracto-cuotas', component: ExtractoPdfComponent },
   { path: 'extracto-contratos', component: ExportarContratosPdfComponent },
   { path: 'extracto-gastos', component: ExportarGastosPdfComponent },

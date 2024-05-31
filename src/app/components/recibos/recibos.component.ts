@@ -93,4 +93,11 @@ export class RecibosComponent implements OnInit {
 
     this.recibosPagados = resp.list
   }
+
+  printRecibo(item) {
+    console.log(item);
+    localStorage.setItem('recibo', JSON.stringify(item));
+    localStorage.setItem('recibo-cliente', JSON.stringify(this.reciboSeleccionado.cliente));
+    const wopen = window.open('/recibo-pdf');
+  }
 }
