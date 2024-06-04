@@ -34506,7 +34506,7 @@ class CobranzaComponent {
      * @return {Promise<void>} The promise that resolves after the payment is confirmed.
      */
     confirmarPagoConfirmado() {
-        var _a, _b;
+        var _a, _b, _c, _d;
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             if (this.loadingConfirmarPago)
                 return;
@@ -34540,6 +34540,9 @@ class CobranzaComponent {
             this.loadingConfirmarPago = false;
             ////console.log(pagoresp);
             this.mostrarModal((_b = pagoresp === null || pagoresp === void 0 ? void 0 : pagoresp.pago) === null || _b === void 0 ? void 0 : _b._id);
+            if ((_c = pagoresp === null || pagoresp === void 0 ? void 0 : pagoresp.pago) === null || _c === void 0 ? void 0 : _c._id) {
+                this._facturaService.descargarArchivoPDF((_d = pagoresp === null || pagoresp === void 0 ? void 0 : pagoresp.pago) === null || _d === void 0 ? void 0 : _d._id);
+            }
             this.ngOnInit();
             this.reset();
         });
@@ -36610,6 +36613,10 @@ class FacturaService {
                 const queryString = params.toString();
                 const urlCompleta = `${url}?${queryString}`;
                 const response = yield fetch(urlCompleta, { method: 'GET' });
+                if (!response.ok) {
+                    const errorResponse = yield response.json();
+                    throw new Error(errorResponse.error || 'Error al generar la factura');
+                }
                 const blob = yield response.blob();
                 const urlBlob = window.URL.createObjectURL(blob);
                 const a = document.createElement('a');
@@ -36623,7 +36630,12 @@ class FacturaService {
             }
             catch (error) {
                 console.error('Error al descargar el archivo:', error);
-                throw error.message;
+                sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.a.fire({
+                    title: 'Error con Factura Electronica',
+                    icon: 'error',
+                    text: error.message || 'No se pudo generar la factura',
+                });
+                throw error;
             }
         });
     }
@@ -46453,4 +46465,4 @@ webpackEmptyAsyncContext.id = "zn8P";
 /***/ })
 
 },[[0,"runtime","vendor"]]]);
-//# sourceMappingURL=main.200ea1c287819c3b5dbe.js.map
+//# sourceMappingURL=main.c1a0980c934cd830e903.js.map

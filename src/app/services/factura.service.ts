@@ -560,6 +560,12 @@ export class FacturaService {
       const urlCompleta = `${url}?${queryString}`;
 
       const response = await fetch(urlCompleta, { method: 'GET' });
+
+      if (!response.ok) {
+        const errorResponse = await response.json();
+        throw new Error(errorResponse.error || 'Error al generar la factura');
+      }
+
       const blob = await response.blob();
       const urlBlob = window.URL.createObjectURL(blob);
 
@@ -575,7 +581,12 @@ export class FacturaService {
       return { ok: true };
     } catch (error) {
       console.error('Error al descargar el archivo:', error);
-      throw error.message;
+      swal.fire({
+        title: 'Error con Factura Electronica',
+        icon: 'error',
+        text: error.message || 'No se pudo generar la factura',
+      });
+      throw error;
     }
   }
 
