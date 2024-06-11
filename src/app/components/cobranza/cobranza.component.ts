@@ -449,7 +449,7 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
 
     ////console.log(pagoresp);
     this.mostrarModal(pagoresp?.pago?._id);
-    if (pagoresp?.pago?._id) {
+    if (pagoresp?.pago?._id && localStorage.getItem('print_invoice')) {
       this._facturaService.descargarArchivoPDF(pagoresp?.pago?._id)
     }
     this.ngOnInit();

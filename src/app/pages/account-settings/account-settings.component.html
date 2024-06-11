@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-4">
+  <div class="col-6">
     <div class="card">
       <div class="card-body">
         <h3>Seleccione el tema</h3>
@@ -26,6 +26,19 @@
         </div>
 
         <div>
+
+          <div class="checkbox checkbox-primary p-t-0 mt-3" (click)="$event.stopPropagation(); " style="
+          display: flex;
+
+          align-items: center;
+          align-content: center;
+          flex-wrap: nowrap;
+      ">
+              <input id="printInvoice" [(ngModel)]="printInvoice"
+                  (ngModelChange)="printInvoice != printInvoice; printInvoiceSwitch(printInvoice)" name="printInvoice"
+                  type="checkbox">
+              <label for="printInvoice">Generar Factura Electronica Automatico</label>
+          </div>
 
           <div class="mb-3">
             <label for="" class="form-label">Ultimo numero de Factura electronica</label>

@@ -27,7 +27,9 @@ export class AccountSettingsComponent implements OnInit {
   configurations: any;
   setConfigurations: any;
   utlNroFactura = 0
+  printInvoice = false
   ngOnInit(): void {
+    this.printInvoice = localStorage.getItem('print_invoice') ? true : false
     this._whatsappService.listen('push_actividad').subscribe((data: any) => {
       console.log(data);
 
@@ -96,5 +98,13 @@ export class AccountSettingsComponent implements OnInit {
     }
     await this._userService.updateConfiguration(body);
 
+  }
+
+  printInvoiceSwitch(value){
+    if (value) {
+      localStorage.setItem('print_invoice', 'true')
+    } else {
+      localStorage.removeItem('print_invoice')
+    }
   }
 }
