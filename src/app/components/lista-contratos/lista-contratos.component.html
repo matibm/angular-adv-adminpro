@@ -198,13 +198,7 @@
                         </div>
                     </ng-option>
                 </ng-select>
-                <!-- <input [(ngModel)]="options.utilizado" (ngModelChange)="filtrar()" type="checkbox"
-                    name="check_utilizado" id="check_utilizado" class="filled-in chk-col-light-blue" checked />
-                <label class="mx-3" for="check_utilizado">Utilizado</label>
 
-                <input [(ngModel)]="options.de_baja" (ngModelChange)="filtrar()" type="checkbox" name="check_de_baja"
-                    id="check_de_baja" class="filled-in chk-col-light-blue" checked />
-                <label class="mx-3" for="check_de_baja">de baja</label> -->
                 <h4>Cod Servicio</h4>
                 <div class="">
                     <ng-select [(ngModel)]="codSeleccionado" (ngModelChange)="filtrar()">
@@ -230,6 +224,18 @@
                     <mat-error *ngIf="rangeInhumado.controls.end.hasError('matEndDateInvalid')">Invalid end date
                     </mat-error>
                 </mat-form-field>
+
+                <div>
+                  <h4>Revisados</h4>
+
+                <ng-select [(ngModel)]="revisadoSeleccionado" (ngModelChange)="retrasarFiltrar()">
+                    <ng-option *ngFor="let item of ['TODOS','REVISADOS', 'SIN REVISAR']" [value]="item">
+                        <div>
+                            {{item}}
+                        </div>
+                    </ng-option>
+                </ng-select>
+                </div>
             </div>
             <div class="col-xs col-md mt-3">
                 <h4>Beneficiarios</h4>

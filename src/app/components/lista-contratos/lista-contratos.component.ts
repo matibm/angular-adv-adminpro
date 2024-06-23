@@ -89,6 +89,7 @@ export class ListaContratosComponent implements OnInit {
   inhumadoCi
   codSeleccionado
   estadoSeleccionado = 'ACTIVOS'
+  revisadoSeleccionado = 'TODOS'
   rangeInhumado = new FormGroup({
     start: new FormControl(),
     end: new FormControl()
@@ -221,7 +222,15 @@ export class ListaContratosComponent implements OnInit {
     }
   }
 
+  retrasarFiltrar() {console.log(this.revisadoSeleccionado);
+
+    setTimeout(() => {
+      this.filtrar()
+    }, 1500);
+  }
+
   async filtrar() {
+    console.log(this.revisadoSeleccionado);
 
     this.options.inhumados_date_start = this.rangeInhumado.value.start ? new Date(
       new Date(`${new Date(this.rangeInhumado.value.start).getFullYear()}-${new Date(this.rangeInhumado.value.start).getMonth() + 1}-${new Date(this.rangeInhumado.value.start).getDate()} 00:00`)
@@ -245,6 +254,9 @@ export class ListaContratosComponent implements OnInit {
     this.options.vendedor = this.vendedor ? this.vendedor._id : null
     this.options.codigo_producto = this.codSeleccionado ? this.codSeleccionado : null
 
+    if (this.revisadoSeleccionado != 'TODOS') {
+      this.options.revisado = this.revisadoSeleccionado == 'REVISADOS' ? 'true' : 'false'
+    }
     this.sort = {
       key: this.sort_key,
       value: this.sort_value
