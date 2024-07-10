@@ -115,7 +115,7 @@ export class CobranzaComponent implements OnInit {
   //   this.inputClientes = new Subject<string>();
   // this.inputCobrador = new Subject<string>();
     this.observableBuscadores();
-  
+
     // this.servicios = await this._productoService.getProductos();
     this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', '');
   }
@@ -320,6 +320,7 @@ export class CobranzaComponent implements OnInit {
     this.montoTotal = 0;
     this.facturasAPagar = null;
     this.cliente = null;
+    this.fechaPago = new Date();
     this.ngOnInit();
   }
 
