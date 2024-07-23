@@ -539,6 +539,15 @@
                       <input [disabled]="!is_admin_role" [(ngModel)]="usuario.timbrado.ruc" placeholder="RUC de la empresa" type="text" class="form-control" name="ruc"
                         autocomplete="nope">
                     </div>
+                    <hr>
+                    <h4>Factura Electronica</h4>
+                    <div class="form-group">
+                      <label for="punto">Punto</label>
+                      <input [disabled]="!is_admin_role" [(ngModel)]="usuario.punto" placeholder="punto para nro de factura" type="number" class="form-control"
+                        name="punto" autocomplete="nope">
+                    </div>
+                    <hr>
+
                     <mat-form-field appearance="fill">
                       <mat-label>Fecha de solicitud</mat-label>
                       <input [disabled]="!is_admin_role" matInput name="asdrdssvet321" [(ngModel)]="usuario.timbrado.fecha_solicitud" [matDatepicker]="pickerSolicitud">

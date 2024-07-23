@@ -90,6 +90,7 @@ export class Usuario {
         public nro_talonario?: string,
         public ciudad_trabajo?: string,
         public timbrado?: any,
+        public punto?: number,
     ) {
 
     }
