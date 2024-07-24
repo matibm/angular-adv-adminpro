@@ -46,7 +46,7 @@ export class InfoContratoComponent implements OnInit {
   showModalPdf = false;
   radioValue;
   montoTotal:any = {};
-  saldo = 0
+  saldo = 0 // saldo es el total de plus edad
   egresoOptions = {}
   tipos_pago = [
     {
@@ -74,14 +74,14 @@ export class InfoContratoComponent implements OnInit {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
     this.contrato = await this._contratoService.getContratoById(this.id);
     console.log(this.contrato);
-    
+
     this.calcularSaldoPendiente(this.contrato)
     if (this.contrato.eliminado === true) {
       swal.fire({
         icon: 'error',
         title: 'Contrato No Disponible',
         // text: 'I will close in 2 seconds.',
-        confirmButtonText: 'OK' 
+        confirmButtonText: 'OK'
       });
       this.router.navigateByUrl('/')
     }
@@ -114,8 +114,8 @@ export class InfoContratoComponent implements OnInit {
     this.totalMovimientos = respMovimientos.total?.monto_total;
     this.countMovimientos = respMovimientos.count;
   }
-  totalMovimientos = 0 
-  countMovimientos = 0 
+  totalMovimientos = 0
+  countMovimientos = 0
   calcularPagoPorMonto(monto) {
     let montoAuxiliar = 0;
     const facturasAux = [];
@@ -164,17 +164,17 @@ export class InfoContratoComponent implements OnInit {
       item.RUC.toLowerCase().includes(term);
   }
 
-  
+
   calcularSaldoPendiente(contrato) {
     this.saldo = 0
- 
+
     for (let i = 0; i < contrato.beneficiarios.length; i++) {
       const beneficiario = contrato.beneficiarios[i];
       this.saldo += parseInt((beneficiario.plus_edad || '0').toString()) || 0
     }
- 
 
-    this.saldo += contrato.precio_total || 0
+
+    // this.saldo += contrato.precio_total || 0
     return this.saldo
   }
 

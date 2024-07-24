@@ -28955,20 +28955,7 @@ function InfoContratoComponent_div_92_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](6);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](18, 4, ctx_r12.contrato.fecha_creacion_unix));
 } }
-function InfoContratoComponent_div_105_h5_19_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "h5");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "Deuda: ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "b");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](4, "currency");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-} if (rf & 2) {
-    const ctx_r18 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind4"](4, 1, ctx_r18.montoTotal.deuda, "", "", "2.0"), " Gs");
-} }
-function InfoContratoComponent_div_105_h5_22_Template(rf, ctx) { if (rf & 1) {
+function InfoContratoComponent_div_105_h5_13_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "h5");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "Saldo: ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "b");
@@ -28977,9 +28964,22 @@ function InfoContratoComponent_div_105_h5_22_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } if (rf & 2) {
+    const ctx_r18 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind4"](4, 1, ctx_r18.saldo, "", "", "2.0"), " Gs");
+} }
+function InfoContratoComponent_div_105_h5_21_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "h5");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "Deuda: ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "b");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](4, "currency");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
     const ctx_r19 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind4"](4, 1, ctx_r19.saldo, "", "", "2.0"), " Gs");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind4"](4, 1, ctx_r19.montoTotal.deuda, "", "", "2.0"), " Gs");
 } }
 function InfoContratoComponent_div_105_div_25_span_6_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "span");
@@ -29103,19 +29103,19 @@ function InfoContratoComponent_div_105_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](12, "\n                ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](13, "h5");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](14, "Total: ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](15, "b");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](16);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](17, "currency");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](13, InfoContratoComponent_div_105_h5_13_Template, 5, 6, "h5", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](14, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](15, "h5");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](16, "Total: ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](17, "b");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](18);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](19, "currency");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](18, "\n                ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](19, InfoContratoComponent_div_105_h5_19_Template, 5, 6, "h5", 8);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](20, "\n                ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](21, "\n                ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](22, InfoContratoComponent_div_105_h5_22_Template, 5, 6, "h5", 8);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](23, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](21, InfoContratoComponent_div_105_h5_21_Template, 5, 6, "h5", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](22, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](23, "\n\n                ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](24, "\n                ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](25, InfoContratoComponent_div_105_div_25_Template, 22, 5, "div", 25);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](26, "\n                ");
@@ -29139,13 +29139,13 @@ function InfoContratoComponent_div_105_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate2"]("", ctx_r13.producto.NOMBRE, " - ", ctx_r13.producto.COD_CORTO, "");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind4"](11, 8, ctx_r13.producto.PRECIO_MAYORISTA, "", "", "2.0"), " Gs");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](6);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind4"](17, 13, ctx_r13.contrato.precio_total, "", "", "2.0"), " Gs");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !ctx_r13.esPsm);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx_r13.esPsm);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind4"](19, 13, ctx_r13.contrato.precio_total, "", "", "2.0"), " Gs");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !ctx_r13.esPsm);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !ctx_r13.esPsm);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](8);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngForOf", ctx_r13.tipos_pago);
@@ -29560,7 +29560,7 @@ function InfoContratoComponent_div_122_div_4_tr_111_Template(rf, ctx) { if (rf &
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](6);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](7, "ruc");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](8, "\n                                        \n                                        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](8, "\n\n                                        ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](9, "td", 59);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](10);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](11, "date");
@@ -29587,7 +29587,7 @@ function InfoContratoComponent_div_122_div_4_tr_111_Template(rf, ctx) { if (rf &
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](27, "td", 59);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](28);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](29, "\n                                        \n                                        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](29, "\n\n                                        ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](30, "td", 59);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](31);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
@@ -29595,7 +29595,7 @@ function InfoContratoComponent_div_122_div_4_tr_111_Template(rf, ctx) { if (rf &
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](33, "td", 59);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](34);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](35, "   \n                                        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](35, "\n                                        ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](36, "td", 59);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](37);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
@@ -29607,7 +29607,7 @@ function InfoContratoComponent_div_122_div_4_tr_111_Template(rf, ctx) { if (rf &
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](42, "td", 59);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](43);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](44, "\n                                              \n                                    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](44, "\n\n                                    ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const item_r63 = ctx.$implicit;
@@ -29755,7 +29755,7 @@ function InfoContratoComponent_div_122_div_4_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](89, "th", 65);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](90, "Certif N");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](91, "                                        \n                                        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](91, "\n                                        ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](92, "th", 65);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](93, "Oficina");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
@@ -29771,11 +29771,11 @@ function InfoContratoComponent_div_122_div_4_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](101, "th", 65);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](102, "Acta N");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](103, " \n                                        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](103, "\n                                        ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](104, "th", 65);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](105, "Lugar parcela");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](106, " \n                                    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](106, "\n                                    ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](107, "\n                                ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
@@ -29791,7 +29791,7 @@ function InfoContratoComponent_div_122_div_4_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](115, "\n\n                    ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](116, "\n\n                   \n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](116, "\n\n\n                ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](117, "\n            ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
@@ -30074,7 +30074,7 @@ class InfoContratoComponent {
         this.facturasCount = 0;
         this.showModalPdf = false;
         this.montoTotal = {};
-        this.saldo = 0;
+        this.saldo = 0; // saldo es el total de plus edad
         this.egresoOptions = {};
         this.tipos_pago = [
             {
@@ -30203,12 +30203,12 @@ class InfoContratoComponent {
             const beneficiario = contrato.beneficiarios[i];
             this.saldo += parseInt((beneficiario.plus_edad || '0').toString()) || 0;
         }
-        this.saldo += contrato.precio_total || 0;
+        // this.saldo += contrato.precio_total || 0
         return this.saldo;
     }
 }
 InfoContratoComponent.ɵfac = function InfoContratoComponent_Factory(t) { return new (t || InfoContratoComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_contrato_service__WEBPACK_IMPORTED_MODULE_3__["ContratoService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_factura_service__WEBPACK_IMPORTED_MODULE_5__["FacturaService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_usuario_service__WEBPACK_IMPORTED_MODULE_6__["UsuarioService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_movimiento_service__WEBPACK_IMPORTED_MODULE_7__["MovimientoService"])); };
-InfoContratoComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: InfoContratoComponent, selectors: [["app-info-contrato"]], decls: 144, vars: 26, consts: [[1, ""], [1, "row"], [1, "col-md-6", "col-xs"], [1, "card", 2, "min-width", "fit-content"], [1, "card-body"], [1, "inline-flex", 2, "justify-content", "space-between"], [1, "card-title"], ["routerLinkActive", "router-link-active", 3, "routerLink", 4, "ngIf"], [4, "ngIf"], ["style", "width: 100%; ", 4, "ngIf"], [1, "card"], ["class", "card-body", 4, "ngIf"], ["class", "", 4, "ngIf"], ["class", "col-md col-xs", 4, "ngIf"], [1, "col-lg"], [3, "count", "total", "options", "fromOutside", "facturas"], ["class", "card", 4, "ngIf"], [2, "width", "100%"], [2, "display", "flex"], [1, "ml-auto"], ["type", "button", 1, "btn", "btn-rounded", "mr-2", "btn-inverse", 3, "routerLink"], ["aria-hidden", "true", 1, "fa", "fa-pencil"], ["type", "button", 1, "btn", "btn-rounded", "mx-2", "btn-success", 3, "click"], ["routerLinkActive", "router-link-active", 3, "routerLink"], [1, "col"], ["class", "mt-2 inline-flex", 4, "ngIf"], [1, "mt-2", "inline-flex"], [1, "row", 2, "width", "100%"], ["class", "col-md-3 col-xs", 4, "ngFor", "ngForOf"], [1, "mr-3"], ["class", " mr-3", 4, "ngIf"], [1, "col-md-3", "col-xs"], ["name", "idTipoPlan", "type", "radio", "required", "", 1, "with-gap", "radio-col-blue-grey", 3, "ngModel", "value", "ngModelChange"], [1, "col-md", "col-xs"], [3, "count", "total", "hiddeFilter", "options", "movimientos"], [1, "lstick"], [1, "my-3", "d-flex"], [1, "mx-auto"], [1, "form-group"], ["type", "text", "name", "", "id", "", "aria-describedby", "helpId", "placeholder", "ingresar monto a pagar", 1, "form-control"], ["montoAPagar", ""], [1, "d-flex"], [1, "btn", "btn-info", 3, "click"], [2, "overflow", "auto", "max-height", "400px"], [1, "table"], [4, "ngFor", "ngForOf"], [1, "inline-flex"], [1, "btn", "btn-success", 3, "disabled", "click"], ["scope", "row"], ["notFoundText", "no se encontraron resultados", "placeholder", "buscar origen fondo", "bindLabel", "NOMBRES", 3, "ngStyle", "items", "ngModel", "searchFn", "ngModelChange", "search"], ["ng-option-tmp", ""], [1, "col-xs", "col-md"], ["readonly", "", "name", "notas", "id", "notas", "rows", "5", 1, "form-control", 3, "ngModel", "ngModelChange"], ["readonly", "", "type", "number", "placeholder", "nro de contrato sin puntos", "name", "contrato_relacionado", "id", "contrato_relacionado", 1, "form-control", 3, "ngModel", "ngModelChange"], [1, "mt-3"], ["type", "checkbox", "name", "check_utilizado", "id", "check_utilizado", "checked", "", 1, "filled-in", "chk-col-light-blue", 3, "ngModel", "ngModelChange", "click"], ["for", "check_utilizado", 1, "mx-3"], ["type", "checkbox", "name", "check_de_baja", "id", "check_de_baja", "checked", "", 1, "filled-in", "chk-col-light-blue", 3, "ngModel", "ngModelChange", "click"], ["for", "check_de_baja", 1, "mx-3"], [1, "text-center"], [1, "table", 2, "width", "100%"], [1, "card", 2, "min-width", "auto !important"], [1, "card", 2, "display", "initial"], [2, "overflow-x", "auto"], [1, "text-center", 2, "min-width", "300px"], [1, "text-center", 2, "min-width", "200px"], ["readonly", "", "name", "lugar_inhumacion", "id", "lugar_inhumacion", 1, "form-control", 3, "ngModel", "ngModelChange"], [3, "contrato", "onClose"]], template: function InfoContratoComponent_Template(rf, ctx) { if (rf & 1) {
+InfoContratoComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: InfoContratoComponent, selectors: [["app-info-contrato"]], decls: 145, vars: 26, consts: [[1, ""], [1, "row"], [1, "col-md-6", "col-xs"], [1, "card", 2, "min-width", "fit-content"], [1, "card-body"], [1, "inline-flex", 2, "justify-content", "space-between"], [1, "card-title"], ["routerLinkActive", "router-link-active", 3, "routerLink", 4, "ngIf"], [4, "ngIf"], ["style", "width: 100%; ", 4, "ngIf"], [1, "card"], ["class", "card-body", 4, "ngIf"], ["class", "", 4, "ngIf"], ["class", "col-md col-xs", 4, "ngIf"], [1, "col-lg"], [3, "count", "total", "options", "fromOutside", "facturas"], ["class", "card", 4, "ngIf"], [2, "width", "100%"], [2, "display", "flex"], [1, "ml-auto"], ["type", "button", 1, "btn", "btn-rounded", "mr-2", "btn-inverse", 3, "routerLink"], ["aria-hidden", "true", 1, "fa", "fa-pencil"], ["type", "button", 1, "btn", "btn-rounded", "mx-2", "btn-success", 3, "click"], ["routerLinkActive", "router-link-active", 3, "routerLink"], [1, "col"], ["class", "mt-2 inline-flex", 4, "ngIf"], [1, "mt-2", "inline-flex"], [1, "row", 2, "width", "100%"], ["class", "col-md-3 col-xs", 4, "ngFor", "ngForOf"], [1, "mr-3"], ["class", " mr-3", 4, "ngIf"], [1, "col-md-3", "col-xs"], ["name", "idTipoPlan", "type", "radio", "required", "", 1, "with-gap", "radio-col-blue-grey", 3, "ngModel", "value", "ngModelChange"], [1, "col-md", "col-xs"], [3, "count", "total", "hiddeFilter", "options", "movimientos"], [1, "lstick"], [1, "my-3", "d-flex"], [1, "mx-auto"], [1, "form-group"], ["type", "text", "name", "", "id", "", "aria-describedby", "helpId", "placeholder", "ingresar monto a pagar", 1, "form-control"], ["montoAPagar", ""], [1, "d-flex"], [1, "btn", "btn-info", 3, "click"], [2, "overflow", "auto", "max-height", "400px"], [1, "table"], [4, "ngFor", "ngForOf"], [1, "inline-flex"], [1, "btn", "btn-success", 3, "disabled", "click"], ["scope", "row"], ["notFoundText", "no se encontraron resultados", "placeholder", "buscar origen fondo", "bindLabel", "NOMBRES", 3, "ngStyle", "items", "ngModel", "searchFn", "ngModelChange", "search"], ["ng-option-tmp", ""], [1, "col-xs", "col-md"], ["readonly", "", "name", "notas", "id", "notas", "rows", "5", 1, "form-control", 3, "ngModel", "ngModelChange"], ["readonly", "", "type", "number", "placeholder", "nro de contrato sin puntos", "name", "contrato_relacionado", "id", "contrato_relacionado", 1, "form-control", 3, "ngModel", "ngModelChange"], [1, "mt-3"], ["type", "checkbox", "name", "check_utilizado", "id", "check_utilizado", "checked", "", 1, "filled-in", "chk-col-light-blue", 3, "ngModel", "ngModelChange", "click"], ["for", "check_utilizado", 1, "mx-3"], ["type", "checkbox", "name", "check_de_baja", "id", "check_de_baja", "checked", "", 1, "filled-in", "chk-col-light-blue", 3, "ngModel", "ngModelChange", "click"], ["for", "check_de_baja", 1, "mx-3"], [1, "text-center"], [1, "table", 2, "width", "100%"], [1, "card", 2, "min-width", "auto !important"], [1, "card", 2, "display", "initial"], [2, "overflow-x", "auto"], [1, "text-center", 2, "min-width", "300px"], [1, "text-center", 2, "min-width", "200px"], ["readonly", "", "name", "lugar_inhumacion", "id", "lugar_inhumacion", 1, "form-control", 3, "ngModel", "ngModelChange"], [3, "contrato", "onClose"]], template: function InfoContratoComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n    ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 1);
@@ -30389,6 +30389,7 @@ InfoContratoComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵde
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](142, "\n\n");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](143, InfoContratoComponent_div_143_Template, 5, 1, "div", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](144, "\n");
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](14);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.cliente);
@@ -46556,4 +46557,4 @@ webpackEmptyAsyncContext.id = "zn8P";
 /***/ })
 
 },[[0,"runtime","vendor"]]]);
-//# sourceMappingURL=main.ffde2bddf3ad0791853f.js.map
+//# sourceMappingURL=main.da3c7346c114bcf4b693.js.map

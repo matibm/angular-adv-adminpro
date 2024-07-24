@@ -153,10 +153,11 @@
             <div class="" *ngIf="producto">
                 <h5>Nombre: <b>{{producto.NOMBRE}} - {{producto.COD_CORTO}}</b></h5>
                 <h5>Precio actual: <b>{{producto.PRECIO_MAYORISTA | currency:'':'':'2.0'}} Gs</b></h5>
+                <h5 *ngIf="esPsm">Saldo: <b>{{saldo | currency:'':'':'2.0'}} Gs</b></h5>
                 <h5>Total: <b>{{contrato.precio_total | currency:'':'':'2.0'}} Gs</b></h5>
                 <h5 *ngIf="!esPsm">Deuda: <b>{{montoTotal.deuda | currency:'':'':'2.0'}} Gs</b></h5>
                 <!-- <h5 *ngIf="!esPsm" >Saldo: <b>{{contrato.saldo_pendiente | currency:'':'':'2.0'}} Gs</b></h5> -->
-                <h5 *ngIf="esPsm">Saldo: <b>{{saldo | currency:'':'':'2.0'}} Gs</b></h5>
+
                 <!-- <h5>Entrega: </h5>  -->
                 <div *ngIf="!esPsm" class="mt-2 inline-flex">
                     <h4 class=" mr-3"><b>Forma de Pago:</b>
@@ -419,12 +420,12 @@
                                         </th>
                                         <th style="min-width: 300px;" class="text-center">Fecha Nacimiento
                                         </th>
-                                        <th style="min-width: 200px;" class="text-center">Certif N</th>                                        
+                                        <th style="min-width: 200px;" class="text-center">Certif N</th>
                                         <th style="min-width: 200px;" class="text-center">Oficina</th>
                                         <th style="min-width: 200px;" class="text-center">Tomo Libro</th>
                                         <th style="min-width: 200px;" class="text-center">Folio N</th>
-                                        <th style="min-width: 200px;" class="text-center">Acta N</th> 
-                                        <th style="min-width: 200px;" class="text-center">Lugar parcela</th> 
+                                        <th style="min-width: 200px;" class="text-center">Acta N</th>
+                                        <th style="min-width: 200px;" class="text-center">Lugar parcela</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -436,7 +437,7 @@
                                         <td class="text-center">
                                             {{item?.ci | ruc}}
                                         </td>
-                                        
+
                                         <td class="text-center">
                                             {{item?.fecha_fallecimiento| date}}
                                         </td>
@@ -455,13 +456,13 @@
                                         <td class="text-center">
                                             {{item?.certif }}
                                         </td>
-                                        
+
                                         <td class="text-center">
                                             {{item?.oficina }}
                                         </td>
                                         <td class="text-center">
                                             {{item?.tomoLibro }}
-                                        </td>   
+                                        </td>
                                         <td class="text-center">
                                             {{item?.folio }}
                                         </td>
@@ -471,7 +472,7 @@
                                         <td class="text-center">
                                             {{item?.lugar_parcela }}
                                         </td>
-                                              
+
                                     </tr>
                                 </tbody>
                             </table>
@@ -479,7 +480,7 @@
 
                     </div>
 
-                   
+
                 </div>
             </div>
 
