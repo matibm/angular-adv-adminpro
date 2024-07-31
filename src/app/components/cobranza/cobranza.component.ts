@@ -611,7 +611,12 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
 
   onSelectedItem(item: any) {
     // console.log(item);
-    this.facturasAPagarAux.push({...item, is_selected: true});
-    this.sumaTotal = this.facturasAPagarAux.reduce((a, b) => a + b.haber, 0);
+    // this.facturasAPagarAux.push({...item, is_selected: true});
+    // this.sumaTotal = this.facturasAPagarAux.reduce((a, b) => a + b.haber, 0);
+    swal.fire('Atención', 'No seleccione la cuota, ingrese el monto exacto en el campo de abajo', 'warning');
+  }
+
+  onClosedModalFactura(){
+    window.location.reload()
   }
 }

@@ -34271,7 +34271,7 @@ function CobranzaComponent_div_79_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 33);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1, "\n    ");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](2, "app-modal-factura", 94);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("onClose", function CobranzaComponent_div_79_Template_app_modal_factura_onClose_2_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r97); const ctx_r96 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](); return ctx_r96.facturapdf = null; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("onClose", function CobranzaComponent_div_79_Template_app_modal_factura_onClose_2_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r97); const ctx_r96 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](); ctx_r96.facturapdf = null; return ctx_r96.onClosedModalFactura(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](3, "\n");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
@@ -34775,8 +34775,12 @@ class CobranzaComponent {
     }
     onSelectedItem(item) {
         // console.log(item);
-        this.facturasAPagarAux.push(Object.assign(Object.assign({}, item), { is_selected: true }));
-        this.sumaTotal = this.facturasAPagarAux.reduce((a, b) => a + b.haber, 0);
+        // this.facturasAPagarAux.push({...item, is_selected: true});
+        // this.sumaTotal = this.facturasAPagarAux.reduce((a, b) => a + b.haber, 0);
+        sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire('Atención', 'No seleccione la cuota, ingrese el monto exacto en el campo de abajo', 'warning');
+    }
+    onClosedModalFactura() {
+        window.location.reload();
     }
 }
 CobranzaComponent.ɵfac = function CobranzaComponent_Factory(t) { return new (t || CobranzaComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_services_factura_service__WEBPACK_IMPORTED_MODULE_6__["FacturaService"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_services_usuario_service__WEBPACK_IMPORTED_MODULE_7__["UsuarioService"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_services_contrato_service__WEBPACK_IMPORTED_MODULE_8__["ContratoService"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_services_productos_service__WEBPACK_IMPORTED_MODULE_9__["ProductosService"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](angular_notifier__WEBPACK_IMPORTED_MODULE_10__["NotifierService"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_services_usuario_service__WEBPACK_IMPORTED_MODULE_7__["UsuarioService"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_11__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_12__["CurrencyPipe"])); };
@@ -46557,4 +46561,4 @@ webpackEmptyAsyncContext.id = "zn8P";
 /***/ })
 
 },[[0,"runtime","vendor"]]]);
-//# sourceMappingURL=main.43c9707409c26b98f593.js.map
+//# sourceMappingURL=main.f3f6e464cc01aa3da5ef.js.map
