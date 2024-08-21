@@ -76,7 +76,7 @@ const routes: Routes = [
       { path: 'ingreso/:id', component: FacturaComponent },
       { path: 'ingresos', component: ListaFacturasComponent },
       { path: 'cobranzas', component: CobranzaComponent },
-      { path: 'gastos', component: MovimientosComponent, canActivate: [AdminGuard] },
+      { path: 'gastos', component: MovimientosComponent },
       { path: 'contrato_pdf/:id', component: ContratoPdfComponent },
       { path: 'editar_contrato/:id', component: EditarContratoComponent },
       { path: 'gasto/:id', component: GastoComponent },

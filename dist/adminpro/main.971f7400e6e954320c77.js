@@ -36182,7 +36182,7 @@ const routes = [
             { path: 'ingreso/:id', component: _components_factura_factura_component__WEBPACK_IMPORTED_MODULE_15__["FacturaComponent"] },
             { path: 'ingresos', component: _components_lista_facturas_lista_facturas_component__WEBPACK_IMPORTED_MODULE_8__["ListaFacturasComponent"] },
             { path: 'cobranzas', component: _components_cobranza_cobranza_component__WEBPACK_IMPORTED_MODULE_1__["CobranzaComponent"] },
-            { path: 'gastos', component: _components_movimientos_movimientos_component__WEBPACK_IMPORTED_MODULE_14__["MovimientosComponent"], canActivate: [_admin_guard__WEBPACK_IMPORTED_MODULE_31__["AdminGuard"]] },
+            { path: 'gastos', component: _components_movimientos_movimientos_component__WEBPACK_IMPORTED_MODULE_14__["MovimientosComponent"] },
             { path: 'contrato_pdf/:id', component: _components_contrato_pdf_contrato_pdf_component__WEBPACK_IMPORTED_MODULE_13__["ContratoPdfComponent"] },
             { path: 'editar_contrato/:id', component: _components_editar_contrato_editar_contrato_component__WEBPACK_IMPORTED_MODULE_10__["EditarContratoComponent"] },
             { path: 'gasto/:id', component: _components_gasto_gasto_component__WEBPACK_IMPORTED_MODULE_29__["GastoComponent"] },
@@ -46576,4 +46576,4 @@ webpackEmptyAsyncContext.id = "zn8P";
 /***/ })
 
 },[[0,"runtime","vendor"]]]);
-//# sourceMappingURL=main.5f9f53830861daed7a49.js.map
+//# sourceMappingURL=main.971f7400e6e954320c77.js.map
