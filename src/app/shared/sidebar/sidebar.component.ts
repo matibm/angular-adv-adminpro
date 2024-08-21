@@ -25,7 +25,7 @@ export class SidebarComponent implements OnInit, AfterViewInit {
     let gastos: any = document.getElementById('gastos')
     // if (doc) {
       doc.style = { display : 'none'}
-      gastos.style = { display : 'none'}
+      // gastos.style = { display : 'none'}
       trans.style = {display : 'none'}
     // }
 
@@ -54,7 +54,7 @@ export class SidebarComponent implements OnInit, AfterViewInit {
     let trans:any = document.getElementById('transferencia')
     let gastos: any = document.getElementById('gastos')
     // trans.style.display = 'none'
-    gastos.style = { display : 'none'}
+    // gastos.style = { display : 'none'}
 
     // doc.style.display = 'none'
     doc.style = { display : 'none'}

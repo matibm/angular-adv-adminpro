@@ -1,7 +1,7 @@
 <div class="my-container">
 
     <div class="card">
-        <ul class="nav nav-tabs profile-tab" role="tablist">
+        <ul *ngIf="is_admin_role" class="nav nav-tabs profile-tab" role="tablist">
             <li class="nav-item"> <a class="nav-link " [ngClass]="{'active': secction === 'home'}" data-toggle="tab"
                     (click)="cancelarCambiosEditar('home'); ocultarOnCategory = false; cuentaGasto = null; goHome()" href="#home"
                     role="tab">Nuevo Gasto</a>
@@ -191,7 +191,7 @@
                                     </mat-form-field>
                                 </div>
                             </div>
-                            
+
                         </div>
 
 
@@ -589,11 +589,11 @@
                                     <div class="form-group">
                                         <div *ngIf="!categoriaGasto">
                                             <ng-select [items]="categoriaGastos" name="dsfdbssaasdrwseqcda"
-                                                [(ngModel)]="categoriaGasto"                                                
+                                                [(ngModel)]="categoriaGasto"
                                                 notFoundText="no se encontraron resultados"
                                                 placeholder="buscar Categoria Gasto" bindLabel="codigo">
                                                 <ng-template ng-option-tmp let-item="item">
-                                                     {{item.codigo}}                                                    
+                                                     {{item.codigo}}
                                                 </ng-template>
                                             </ng-select>
                                         </div>
@@ -718,7 +718,7 @@
                                 <mat-error *ngIf="rangeReporte.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
                             </mat-form-field>
                             <div style="display: block;">
-                            
+
                                 <button type="button" (click)="generarReporte()" class="btn btn-rounded btn-inverse mx-auto">Descargar Excel</button></div>
                            </div>
                         </div>
@@ -791,16 +791,16 @@
 <app-modal-contratos (contratoSelected)="onContratoSelected($event)" [showFilters]="true" [cliente]="cliente"
     (onClose)="showModal = false" *ngIf="showModal"></app-modal-contratos>
 <app-modal-cuentas-gastos *ngIf="showModalCuentas" (onSelectedCategory)="
-    editandoCuentaGasto? seleccionarCuentaGastoAEditar($event) : categorySelected = $event; 
-    editandoCuentaPadre? seleccionarCuentaPadreToEdit($event) : categorySelected = $event; 
-     
+    editandoCuentaGasto? seleccionarCuentaGastoAEditar($event) : categorySelected = $event;
+    editandoCuentaPadre? seleccionarCuentaPadreToEdit($event) : categorySelected = $event;
+
     ocultarOnclickCategory()" (onSelected)="
-    editandoCuentaGasto? seleccionarCuentaGastoAEditar($event) : ''; 
-    editandoCuentaPadre? seleccionarCuentaPadreToEdit($event) : ''; 
-    cuentaGasto = $event; 
+    editandoCuentaGasto? seleccionarCuentaGastoAEditar($event) : '';
+    editandoCuentaPadre? seleccionarCuentaPadreToEdit($event) : '';
+    cuentaGasto = $event;
     cuentaGastoSelected();
     showModalCuentas = false;
-    ocultarOnCategory? categorySelected = $event : '' 
+    ocultarOnCategory? categorySelected = $event : ''
     " (onClose)="
 showModalCuentas = false
 

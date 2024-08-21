@@ -90,17 +90,21 @@ export class MovimientosComponent implements OnInit, OnDestroy {
     public _productoService: ProductosService,
     // public route: ActivatedRoute,
     private router: Router
-  ) { }
+  ) {
+
+  }
   tipos_movimiento;
   tipo;
   pruebaDisabled = true
   async ngOnInit() {
     this._usuarioService.usuario = await this._usuarioService.inicializarUsuario()
     console.log(this._usuarioService?.usuario?.role);
-    
-    if (this._usuarioService?.usuario?.role != 'ADMIN_ROLE') {            
-      this.is_admin_role = false 
-    } else{ 
+
+    if (this._usuarioService?.usuario?.role != 'ADMIN_ROLE') {
+      this.is_admin_role = false
+      this.goHome()
+      this.secction = 'home'
+    } else{
       this.is_admin_role = true
 
     }
@@ -136,10 +140,10 @@ export class MovimientosComponent implements OnInit, OnDestroy {
     //   ''
     // );
     this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', '');
-    this.loading = false; 
+    this.loading = false;
     this.categoriaGastos = await this._movimientoService.getAllCategorias()
     console.log(this.categoriaGastos);
-    
+
   }
 
   async revisarRuta() {
@@ -216,7 +220,7 @@ export class MovimientosComponent implements OnInit, OnDestroy {
     term = term.toLowerCase();
     return (
       item?.codigo?.toLowerCase().indexOf(term) > -1 ||
-      item?.descripcion?.toLowerCase().includes(term)       
+      item?.descripcion?.toLowerCase().includes(term)
     );
   }
   add(event) {
@@ -275,7 +279,7 @@ export class MovimientosComponent implements OnInit, OnDestroy {
     if (this.tipoIva == 'IVA 5%') tipoIVA = 'iva5'
     if (this.tipoIva == 'EXENTAS') tipoIVA = 'exenta'
     console.log(this.cuentaGasto);
-    
+
     const movimiento: Movimiento = {
       cliente: this.cliente,
       fondo: this.fondo,
@@ -287,7 +291,7 @@ export class MovimientosComponent implements OnInit, OnDestroy {
       nro_comp_banco: this.nroFacturaProveedor,
       id_cuentacaja: this.cuentaGasto.cuenta,
       nombre: this.cuentaGasto.descripcion,
-      tipo_iva: tipoIVA,  
+      tipo_iva: tipoIVA,
       monto_haber: montoIngreso,
       monto_total: montoEgreso,
       tipo_movimiento: this.cuentaGasto._id,
@@ -499,7 +503,7 @@ export class MovimientosComponent implements OnInit, OnDestroy {
       distinctUntilChanged()
     ).toPromise().then(async (txt) => {
       console.log(txt);
-      
+
         if (!txt) {
           return;
         }
@@ -517,7 +521,7 @@ export class MovimientosComponent implements OnInit, OnDestroy {
         if (!txt) {
           return;
         }
-         
+
         this.loadingProveedores = true;
         this.proveedores = await this._usuarioService.buscarUsuarios(
           'PROVEEDORES',
@@ -527,7 +531,7 @@ export class MovimientosComponent implements OnInit, OnDestroy {
         this.loadingProveedores = false;
       })
     )
-      
+
     this.inputcategorias.pipe(
 
       debounceTime(300),
@@ -621,7 +625,7 @@ export class MovimientosComponent implements OnInit, OnDestroy {
     this.cuentaAbaco = null;
 
   }
- 
+
   cancelarEditar() {
     this.cuentaGasto = null;
     this.categorySelected = null;
