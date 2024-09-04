@@ -34786,12 +34786,23 @@ class CobranzaComponent {
     }
     onSelectedItem(item) {
         console.log(item);
-        if (!item.contrato) {
-            this.facturasAPagarAux.push(Object.assign(Object.assign({}, item), { is_selected: true }));
-            this.sumaTotal = this.facturasAPagarAux.reduce((a, b) => a + b.haber, 0);
-        }
-        else {
-            sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire('Atención', 'No seleccione la cuota, ingrese el monto exacto en el campo de abajo', 'warning');
+        if (item.contrato) {
+            sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire({
+                title: 'Confirmar acción',
+                text: '¿Está seguro de continuar? Este ingreso corresponde a un contrato, si es una cuota no seleccione la cuota, ingrese el monto exacto en el campo de abajo',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Sí, continuar',
+                cancelButtonText: 'Cancelar',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.facturasAPagarAux.push(Object.assign(Object.assign({}, item), { is_selected: true }));
+                    this.sumaTotal = this.facturasAPagarAux.reduce((a, b) => a + b.haber, 0);
+                }
+                else {
+                    console.log('Acción cancelada');
+                }
+            });
         }
     }
     onClosedModalFactura() {
@@ -46576,4 +46587,4 @@ webpackEmptyAsyncContext.id = "zn8P";
 /***/ })
 
 },[[0,"runtime","vendor"]]]);
-//# sourceMappingURL=main.971f7400e6e954320c77.js.map
+//# sourceMappingURL=main.fc30b56fda8b16549c11.js.map

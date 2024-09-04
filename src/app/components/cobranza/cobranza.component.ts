@@ -612,12 +612,22 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
   onSelectedItem(item: any) {
     console.log(item);
 
-    if (!item.contrato) {
-      this.facturasAPagarAux.push({...item, is_selected: true});
-      this.sumaTotal = this.facturasAPagarAux.reduce((a, b) => a + b.haber, 0);
-    } else {
-    swal.fire('Atención', 'No seleccione la cuota, ingrese el monto exacto en el campo de abajo', 'warning');
-
+    if (item.contrato) {
+      swal.fire({
+        title: 'Confirmar acción',
+        text: '¿Está seguro de continuar? Este ingreso corresponde a un contrato, si es una cuota no seleccione la cuota, ingrese el monto exacto en el campo de abajo',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, continuar',
+        cancelButtonText: 'Cancelar',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.facturasAPagarAux.push({...item, is_selected: true});
+          this.sumaTotal = this.facturasAPagarAux.reduce((a, b) => a + b.haber, 0);
+        } else {
+          console.log('Acción cancelada');
+        }
+      });
     }
   }
 
