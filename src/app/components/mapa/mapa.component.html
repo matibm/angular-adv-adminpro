@@ -1,5 +1,5 @@
 <div style="font-size: small; overflow-x: scroll;" class="mx-5 scale" id="main_map">
-    <div class="row" style="width: 4000px;  ">
+    <div class="row" style="width: 5000px;  ">
         <div class="col-xs col-md-3" style="max-width: fit-content;border: 2px solid;padding: 20px;margin-left: 30px; margin-top: 10px; " *ngFor="let ubicacion of ubicaciones;">
               <h3 *ngIf="ubicacion.manzana[0] != '-'">Manzana: {{ubicacion.manzana}}</h3>
               <h3 *ngIf="ubicacion.manzana[0] == '-'"> <div style="height: 1px;" [ngStyle]="{'width': ubicacion.manzana.slice(1)+'px'}"></div></h3>
