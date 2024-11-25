@@ -441,6 +441,9 @@ export class ListaContratosComponent implements OnInit {
   reporteVentas() {
     this._contratoService.getReporteVentas(null, this.options, this.sort)
   }
+  reportePSM() {
+    this._contratoService.getReportePSM()
+  }
 
   generarReporteBajas() {
     console.log(this.rangeReporteBajas);

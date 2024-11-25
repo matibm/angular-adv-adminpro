@@ -133,6 +133,28 @@ export class ContratoService {
       }
     )
   }
+
+  getReportePSM() {
+
+
+    let url = URL_SERVICIOS + '/contrato/reporte_psm';
+    url += `?token=${this._usuarioService.token}`;
+
+    return this.http.get(url, { responseType: 'blob' as 'json' }).subscribe(
+      (response: any) => {
+        let dataType = response.type;
+        let binaryData = [];
+        binaryData.push(response);
+        let downloadLink = document.createElement('a');
+        downloadLink.href = window.URL.createObjectURL(new Blob(binaryData, { type: dataType }));
+
+        downloadLink.setAttribute('download', 'ReportePSV.xlsx');
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        downloadLink.remove()
+      }
+    )
+  }
   getContratosByTitular(id): Promise<Contrato[]> {
 
     let url = URL_SERVICIOS + '/contrato/by_titular/' + id;
