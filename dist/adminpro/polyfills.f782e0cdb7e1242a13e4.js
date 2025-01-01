@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\kewel\desarrollo\imperial\angular-adv-adminpro\src\polyfills.ts */"hN/g");
+module.exports = __webpack_require__(/*! /Users/usuario/Documents/develop/imperial/angular-adv-adminpro/src/polyfills.ts */"hN/g");
 
 
 /***/ }),
