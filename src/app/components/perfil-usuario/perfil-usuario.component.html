@@ -545,6 +545,9 @@
                       <label for="punto">Punto</label>
                       <input [disabled]="!is_admin_role" [(ngModel)]="usuario.punto" placeholder="punto para nro de factura" type="number" class="form-control"
                         name="punto" autocomplete="nope">
+                      <label for="ultimo_nro_factura">Ultima Factura emitida</label>
+                      <input [disabled]="!is_admin_role" [(ngModel)]="usuario.ultimo_nro_factura" placeholder="ultimo_nro_factura para nro de factura" type="number" class="form-control"
+                        name="ultimo_nro_factura" autocomplete="nope">
                     </div>
                     <hr>
 

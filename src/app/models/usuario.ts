@@ -91,6 +91,7 @@ export class Usuario {
         public ciudad_trabajo?: string,
         public timbrado?: any,
         public punto?: number,
+        public ultimo_nro_factura?: number,
     ) {
 
     }
