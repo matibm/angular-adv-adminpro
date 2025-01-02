@@ -8239,7 +8239,7 @@ function ContratoPdfComponent_div_6_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind2"](56, 40, ctx_r2.contrato.fecha_creacion_unix, "MMMM"));
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind2"](60, 43, ctx_r2.contrato.fecha_creacion_unix, "YYYY"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind2"](60, 43, ctx_r2.contrato.fecha_creacion_unix, "yyyy"));
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](22);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](ctx_r2.contrato.titular.APELLIDOS);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](20);
@@ -31183,7 +31183,7 @@ function FacturaTicketComponent_div_0_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate2"]("\n                            FACTURA N\u00BA: ", ctx_r0.nro_talonario, "-", ctx_r0.fill(ctx_r0.nro_factura, 7), "                               \n                        ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](10);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" Emisi\u00F3n: ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind2"](66, 22, ctx_r0.factura.fecha, "dd/MM/YYYY - hh:mm"), "\n                            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" Emisi\u00F3n: ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind2"](66, 22, ctx_r0.factura.fecha, "dd/MM/yyyy - hh:mm"), "\n                            ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" RUC: ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](69, 25, ctx_r0.factura.ruc), "\n                            ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
@@ -35639,7 +35639,7 @@ function FacturaElectronicaTicketComponent_div_0_Template(rf, ctx) { if (rf & 1)
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate3"]("\n              FACTURA N\u00BA: ", ctx_r0.factura.data.establecimiento, "-", ctx_r0.factura.data.punto, "-", ctx_r0.factura.data.numero, "\n            ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](10);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("\n              Emisi\u00F3n: ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind2"](57, 18, ctx_r0.factura.data.fecha, "dd/MM/YYYY - hh:mm"), "\n              ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("\n              Emisi\u00F3n: ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind2"](57, 18, ctx_r0.factura.data.fecha, "dd/MM/yyyy - hh:mm"), "\n              ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("\n              RUC: ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](60, 21, ctx_r0.factura.data.cliente.ruc), " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
@@ -43499,7 +43499,7 @@ function FacturaPdfComponent_div_2_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](8);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate2"]("\n                ", ctx_r1.nro_talonario, "-", ctx_r1.fill(ctx_r1.nro_factura || "0", 7), "\n              ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](19);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate3"]("", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind2"](103, 29, ctx_r1.factura.fecha, "dd"), " de\n                  ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind2"](104, 32, ctx_r1.factura.fecha, "MMMM"), " de\n                  ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind2"](105, 35, ctx_r1.factura.fecha, "YYYY"), "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate3"]("", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind2"](103, 29, ctx_r1.factura.fecha, "dd"), " de\n                  ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind2"](104, 32, ctx_r1.factura.fecha, "MMMM"), " de\n                  ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind2"](105, 35, ctx_r1.factura.fecha, "yyyy"), "");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](16);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpureFunction2"](62, _c1, ctx_r1.pago.tipo_factura == "CREDITO", ctx_r1.pago.tipo_factura == "CONTADO"));
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
@@ -46618,4 +46618,4 @@ webpackEmptyAsyncContext.id = "zn8P";
 /***/ })
 
 },[[0,"runtime","vendor"]]]);
-//# sourceMappingURL=main.c210d2c25350f4af6ad2.js.map
+//# sourceMappingURL=main.c7b38b745c7494390b26.js.map
