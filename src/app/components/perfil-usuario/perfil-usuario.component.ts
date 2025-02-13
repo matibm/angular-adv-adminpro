@@ -53,6 +53,10 @@ export class PerfilUsuarioComponent implements OnInit {
       id: 2,
       role: 'USER_ROLE'
     },
+    {
+      id: 3,
+      role: 'INTERNAL_ROLE'
+    },
 
   ]
   constructor(

@@ -5336,6 +5336,10 @@ class PerfilUsuarioComponent {
                 id: 2,
                 role: 'USER_ROLE'
             },
+            {
+                id: 3,
+                role: 'INTERNAL_ROLE'
+            },
         ];
         this.is_admin_role = false;
         this.fill = (number, len) => "0".repeat(len - number.toString().length) + number.toString();
@@ -46618,4 +46622,4 @@ webpackEmptyAsyncContext.id = "zn8P";
 /***/ })
 
 },[[0,"runtime","vendor"]]]);
-//# sourceMappingURL=main.c7b38b745c7494390b26.js.map
+//# sourceMappingURL=main.f271e9e1ddf4b02b455e.js.map
