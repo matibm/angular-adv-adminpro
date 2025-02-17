@@ -141,6 +141,10 @@
                         class="pointer close-icon ml-auto">
                         <button type="button" class="btn btn-sm btn-light"><i class=" ti-close  "></i></button>
                     </div>
+                    <div *ngIf="cobrador && is_internal_role" (click)="cobrador = null; filtrar()"
+                    class="pointer close-icon ml-auto">
+                    <button type="button" class="btn btn-sm btn-light"><i class=" ti-close  "></i></button>
+                </div>
                 </div>
                 <div class="" *ngIf="!cobrador">
                     <ng-select [typeahead]="inputCobradores" [loading]="loadingCobradores" [items]="cobradores"

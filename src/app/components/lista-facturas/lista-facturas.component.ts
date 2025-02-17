@@ -67,6 +67,7 @@ export class ListaFacturasComponent implements OnInit {
   utilizado = false
   de_baja = false
   is_admin_role = false
+  is_internal_role = false
   estados = [
     {
       id: 1,
@@ -154,12 +155,22 @@ export class ListaFacturasComponent implements OnInit {
     console.log(this._usuarioService?.usuario?.role);
 
     this.cod_servicios = await this._productoService.getCodigos()
-    if (this._usuarioService?.usuario?.role != 'ADMIN_ROLE') {
+    if (this._usuarioService?.usuario?.role != 'ADMIN_ROLE' && this._usuarioService?.usuario?.role != 'INTERNAL_ROLE') {
       console.log(await this.setUsuarioCobrador(this._usuarioService?.usuario?._id));
 
       this.is_admin_role = false
     } else {
       this.is_admin_role = true
+
+    }
+
+    if (this._usuarioService?.usuario?.role != 'INTERNAL_ROLE') {
+      if (!this.is_admin_role) {
+        await this.setUsuarioCobrador(this._usuarioService?.usuario?._id)        
+      }
+      this.is_internal_role = false
+    } else {
+      this.is_internal_role = true
 
     }
 
