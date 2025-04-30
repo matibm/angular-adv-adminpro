@@ -461,96 +461,70 @@
 
                   <h4>Laboral</h4>
                   <form class="form-dsamaterial ">
-
                     <div class="form-group">
                       <label for="">Lugar de Trabajo: </label>
-                      <input type="text" [(ngModel)]="usuario.LUGAR_TRABAJO" name="lugartrabajo" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="nope">
-
+                      <input type="text" [(ngModel)]="usuario.LUGAR_TRABAJO" name="lugartrabajo" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="nope" [disabled]="!is_admin_role">
                     </div>
                   </form>
                   <form class="form-dsamaterial ">
-
                     <div class="form-group">
                       <label for="">Direccion: </label>
-                      <input type="text" [(ngModel)]="usuario.direccion_laboral" name="Direccion:" class="form-control" placeholder="" aria-describedby="helpId"
-                        autocomplete="nope">
-
+                      <input type="text" [(ngModel)]="usuario.direccion_laboral" name="Direccion:" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="nope" [disabled]="!is_admin_role">
                     </div>
                   </form>
-
                   <form class="form-dsamaterial ">
                     <div class="form-group">
                       <label for="">Ciudad: </label>
-                      <input type="text" [(ngModel)]="usuario.ciudad_trabajo" name="</ldwwwwabel" class="form-control" placeholder="" aria-describedby="helpId">
-
+                      <input type="text" [(ngModel)]="usuario.ciudad_trabajo" name="</ldwwwwabel" class="form-control" placeholder="" aria-describedby="helpId" [disabled]="!is_admin_role">
                     </div>
                   </form>
                   <form class="form-dsamaterial ">
-
                     <div class="form-group">
                       <label for="">Departamento: </label>
-                      <input type="text" [(ngModel)]="usuario.DEPARTAMENTO_TRABAJO" name="departsamento" class="form-control" placeholder="" aria-describedby="helpId">
-
+                      <input type="text" [(ngModel)]="usuario.DEPARTAMENTO_TRABAJO" name="departsamento" class="form-control" placeholder="" aria-describedby="helpId" [disabled]="!is_admin_role">
                     </div>
-                  </form>
-
-
-                  <div class="form-group">
-                    <label for="">Celular:</label>
-                    <input type="text" [(ngModel)]="usuario.TELEFONO3" name="Telefoassano-1" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="nope">
-
-                  </div>
-                  <div class="form-group">
-                    <label for="">Línea Baja:</label>
-                    <input type="text" [(ngModel)]="usuario.TEL_TRABAJO" name="Teleferfono-1" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="nope">
-
-                  </div>
-                  <div class="form-group">
-                    <label for="">Numero de Talonario</label>
-                    <input type="text" name="asasdsdasasdsadstgfd" [(ngModel)]="usuario.nro_talonario" class="form-control" placeholder="" aria-describedby="helpId"
-                      autocomplete="off">
-                  </div>
-                  <div>
-
+                    <div class="form-group">
+                      <label for="">Celular:</label>
+                      <input type="text" [(ngModel)]="usuario.TELEFONO3" name="Telefoassano-1" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="nope" [disabled]="!is_admin_role">
+                    </div>
+                    <div class="form-group">
+                      <label for="">Línea Baja:</label>
+                      <input type="text" [(ngModel)]="usuario.TEL_TRABAJO" name="Teleferfono-1" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="nope" [disabled]="!is_admin_role">
+                    </div>
+                    <div class="form-group">
+                      <label for="">Numero de Talonario</label>
+                      <input type="text" name="asasdsdasasdsadstgfd" [(ngModel)]="usuario.nro_talonario" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="off" [disabled]="!is_admin_role">
+                    </div>
                     <div class="form-group">
                       <label for="">Numero de Factura</label>
-                      <input type="number" name="asasdsdasasdsads" [(ngModel)]="usuario.nro_factura_actual" class="form-control" placeholder="" aria-describedby="helpId"
-                        autocomplete="off">
+                      <input type="number" name="asasdsdasasdsads" [(ngModel)]="usuario.nro_factura_actual" class="form-control" placeholder="" aria-describedby="helpId" autocomplete="off" [disabled]="!is_admin_role">
                     </div>
-
                     <h4>Ajuste de Timbrado</h4>
                     <div class="form-group">
                       <label for="">Nro Timbrado</label>
-                      <input [disabled]="!is_admin_role" [(ngModel)]="usuario.timbrado.timbrado" placeholder="Numero de Timbrado" type="text" class="form-control" name="timbrado"
-                        autocomplete="nope">
+                      <input [disabled]="!is_admin_role" [(ngModel)]="usuario.timbrado.timbrado" placeholder="Numero de Timbrado" type="text" class="form-control" name="timbrado" autocomplete="nope">
                     </div>
                     <div class="form-group">
                       <label for="">Nro de solicitud</label>
-                      <input [disabled]="!is_admin_role" [(ngModel)]="usuario.timbrado.nro_solicitud" placeholder="Numero de solicitud" type="text" class="form-control"
-                        name="nro_solicitud" autocomplete="nope">
+                      <input [disabled]="!is_admin_role" [(ngModel)]="usuario.timbrado.nro_solicitud" placeholder="Numero de solicitud" type="text" class="form-control" name="nro_solicitud" autocomplete="nope">
                     </div>
                     <div class="form-group">
                       <label for="">Tipo de Factura</label>
-                      <input [disabled]="!is_admin_role" [(ngModel)]="usuario.timbrado.tipo" placeholder="Numero de solicitud" type="text" class="form-control" name="nro_solicitud"
-                        autocomplete="nope">
+                      <input [disabled]="!is_admin_role" [(ngModel)]="usuario.timbrado.tipo" placeholder="Numero de solicitud" type="text" class="form-control" name="nro_solicitud" autocomplete="nope">
                     </div>
                     <div class="form-group">
                       <label for="">RUC</label>
-                      <input [disabled]="!is_admin_role" [(ngModel)]="usuario.timbrado.ruc" placeholder="RUC de la empresa" type="text" class="form-control" name="ruc"
-                        autocomplete="nope">
+                      <input [disabled]="!is_admin_role" [(ngModel)]="usuario.timbrado.ruc" placeholder="RUC de la empresa" type="text" class="form-control" name="ruc" autocomplete="nope">
                     </div>
                     <hr>
                     <h4>Factura Electronica</h4>
                     <div class="form-group">
                       <label for="punto">Punto</label>
-                      <input [disabled]="!is_admin_role" [(ngModel)]="usuario.punto" placeholder="punto para nro de factura" type="number" class="form-control"
-                        name="punto" autocomplete="nope">
+                      <input [disabled]="!is_admin_role" [(ngModel)]="usuario.punto" placeholder="punto para nro de factura" type="number" class="form-control" name="punto" autocomplete="nope">
                       <label for="ultimo_nro_factura">Ultima Factura emitida</label>
-                      <input [disabled]="!is_admin_role" [(ngModel)]="usuario.ultimo_nro_factura" placeholder="ultimo_nro_factura para nro de factura" type="number" class="form-control"
-                        name="ultimo_nro_factura" autocomplete="nope">
+                      <input [disabled]="!is_admin_role" [(ngModel)]="usuario.ultimo_nro_factura" placeholder="ultimo_nro_factura para nro de factura" type="number" class="form-control" name="ultimo_nro_factura" autocomplete="nope">
                     </div>
                     <hr>
-
                     <mat-form-field appearance="fill">
                       <mat-label>Fecha de solicitud</mat-label>
                       <input [disabled]="!is_admin_role" matInput name="asdrdssvet321" [(ngModel)]="usuario.timbrado.fecha_solicitud" [matDatepicker]="pickerSolicitud">
@@ -572,11 +546,8 @@
                       </mat-datepicker-toggle>
                       <mat-datepicker #pickerFinVigencia></mat-datepicker>
                     </mat-form-field>
-                    <div style="display: block;">
-                    </div>
-
-
-                  </div>
+                    <div style="display: block;"></div>
+                  </form>
                 </div>
                 <hr>
                 <div class="row">
