@@ -10769,10 +10769,15 @@ class ModalFacturaComponent {
     notaCredito() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             this.loadingNotaCredito = true;
-            yield this._facturaService.descargarNotaCreditoPDF(this.facturaPDF._id);
-            this.onClose.emit();
-            if (this.facturaStatus == 'factura') {
-                this.cancelarPago();
+            try {
+                yield this._facturaService.descargarNotaCreditoPDF(this.facturaPDF._id);
+                this.onClose.emit();
+                if (this.facturaStatus == 'factura') {
+                    this.cancelarPago();
+                }
+            }
+            catch (error) {
+                console.error(error);
             }
             this.loadingNotaCredito = false;
         });
@@ -36848,11 +36853,15 @@ class FacturaService {
                 const queryString = params.toString();
                 const urlCompleta = `${url}?${queryString}`;
                 const response = yield fetch(urlCompleta, { method: 'GET' });
+                if (!response.ok) {
+                    const errorResponse = yield response.json();
+                    throw new Error(errorResponse.error || 'Error al generar la nota de crédito');
+                }
                 const blob = yield response.blob();
                 const urlBlob = window.URL.createObjectURL(blob);
                 const a = document.createElement('a');
                 a.href = urlBlob;
-                a.download = `factura_${facturaId}.pdf`; // Nombre del archivo
+                a.download = `nota_credito_${facturaId}.pdf`; // Nombre del archivo actualizado
                 document.body.appendChild(a);
                 a.click();
                 document.body.removeChild(a);
@@ -36861,7 +36870,12 @@ class FacturaService {
             }
             catch (error) {
                 console.error('Error al descargar el archivo:', error);
-                throw error.message;
+                sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.a.fire({
+                    title: 'Error con Nota de Crédito',
+                    icon: 'error',
+                    text: error.message || 'No se pudo generar la nota de crédito'
+                });
+                throw error;
             }
         });
     }
@@ -46641,4 +46655,4 @@ webpackEmptyAsyncContext.id = "zn8P";
 /***/ })
 
 },[[0,"runtime","vendor"]]]);
-//# sourceMappingURL=main.5a83d39dcb8a313916bf.js.map
+//# sourceMappingURL=main.5f02318f00d911835fd5.js.map
