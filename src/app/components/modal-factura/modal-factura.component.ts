@@ -87,11 +87,16 @@ export class ModalFacturaComponent implements OnInit {
   async notaCredito(){
     this.loadingNotaCredito = true
 
+   try {
     await this._facturaService.descargarNotaCreditoPDF(this.facturaPDF._id)
     this.onClose.emit()
     if (this.facturaStatus == 'factura') {
       this.cancelarPago()
     }
+   } catch (error) {
+    console.error(error);
+    
+   }
     this.loadingNotaCredito = false
   }
 

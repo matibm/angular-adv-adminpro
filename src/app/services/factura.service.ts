@@ -618,12 +618,18 @@ export class FacturaService {
       const urlCompleta = `${url}?${queryString}`;
 
       const response = await fetch(urlCompleta, { method: 'GET' });
+      
+      if (!response.ok) {
+        const errorResponse = await response.json();
+        throw new Error(errorResponse.error || 'Error al generar la nota de crédito');
+      }
+
       const blob = await response.blob();
       const urlBlob = window.URL.createObjectURL(blob);
 
       const a = document.createElement('a');
       a.href = urlBlob;
-      a.download = `factura_${facturaId}.pdf`; // Nombre del archivo
+      a.download = `nota_credito_${facturaId}.pdf`; // Nombre del archivo actualizado
 
       document.body.appendChild(a);
       a.click();
@@ -633,7 +639,12 @@ export class FacturaService {
       return { ok: true };
     } catch (error) {
       console.error('Error al descargar el archivo:', error);
-      throw error.message;
+      swal.fire({
+        title: 'Error con Nota de Crédito',
+        icon: 'error',
+        text: error.message || 'No se pudo generar la nota de crédito'
+      });
+      throw error;
     }
   }
 
