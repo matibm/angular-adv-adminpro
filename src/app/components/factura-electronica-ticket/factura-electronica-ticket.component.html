@@ -1,154 +1,183 @@
-<div
-  *ngIf="factura"
-  class=""
-  style="
-    height: fit-content;
-    margin: 0 !important;
-    padding: 0 !important;
-    overflow: hidden;
-  "
->
-  <div class="mx-auto bg-white">
-    <div style="width: 100%">
-      <div style="display: flex; color: black">
-        <div class="mx-auto">
-          <div
-            align="center"
-            style="display: block; justify-content: center"
-            class=""
-          >
-            <img
-              width="190px"
-              src="../../../assets/images/imperialnegro.png"
-              alt=""
-            />
-            <!-- <h1>IMPERIAL</h1> -->
-            <br />
-            <h4 style="color: black" class="mx-0 mt-1">
-              Cementerio Privado - Servicios Funerarios
-            </h4>
-            <span>de <b>EDUARDO CLEBSCH S.A.</b></span>
-            <hr class="m-1" />
-            <!-- <span style="font-size: 14px;" for="">
+<style>
+  .ticket-wrapper {
+    width: 300px; /* Ancho típico para impresoras de 80mm */
+    margin: 0 auto;
+    padding: 10px;
+    font-family: "monospace";
+    font-size: 12px;
+    color: #000;
+    background-color: #fff;
+  }
+  .text-center {
+    text-align: center;
+  }
+  .text-bold {
+    font-weight: bold;
+  }
+  .mt-1 {
+    margin-top: 0.25rem;
+  }
+  .mb-1 {
+    margin-bottom: 0.25rem;
+  }
+  .mx-0 {
+    margin-left: 0;
+    margin-right: 0;
+  }
 
-                            <b>Suc.:</b> Cerro Cora Nº 333 - Encarnación
-                            <br><b>Central:</b> Santo Domingo a 200 Mts de la Ruta 1 - (071) 202803
-                            <br>
-                            Itapúa - Paraguay
-                        </span> -->
-            <!-- <hr> -->
-          </div>
-          <span style="font-size: 12px">
-            <b>
-              Factura Electrónica KUDE
-              <!-- <br> Fecha: {{factura.invoice.params.timbradoNumero.fecha_solicitud | date}} -->
-              <br />
-              TMBRADO Nº {{ factura.params.timbradoNumero }} <br />
-              Fecha Vigencia: {{ factura.params.timbradoFecha | date }} <br />
-              RUC: {{ factura.params.ruc }}
-            </b>
-            <br />
-            <b>
-              FACTURA Nº: {{ factura.data.establecimiento }}-{{
-                factura.data.punto
-              }}-{{ factura.data.numero }}
-            </b>
-          </span>
-          <hr class="m-1" />
-          <span style="font-size: 14px">
-            <b>
-              Cond de Venta: CONTADO
-              <br />
-              Emisión: {{ factura.data.fecha | date: "dd/MM/yyyy - hh:mm" }}
-              <br />
-              RUC: {{ factura.data.cliente.ruc | ruc }} <br />
-              CLIENTE: {{ factura.data.cliente.nombreFantasia }}
-            </b>
-          </span>
-          <div *ngFor="let item of factura.data.items">
-            <hr class="m-1" />
-            <span style="font-size: 14px">
-              <b>
-                Cant: {{ item.cantidad }} Codigo: {{ item.codigo }} <br />
-                {{ item.descripcion }} <br />
-                Precio Unit:
-                {{ item.precioUnitario | currency: "" : "" : "2.0" }} <br />
-                10%: {{ item.precioUnitario | currency: "" : "" : "2.0" }}
-              </b>
-            </span>
-          </div>
-          <hr class="m-1" />
-          <span style="font-size: 14px">
-            <b>
-              Liquidacion del IVA:
-              <br />
-              (5%): 0 <br />
-              (10%): {{ getTotalIVA | currency: "" : "" : "2.0" }} <br />
-              (Exenta): 0 <br />
-              Forma de Pago: Efectivo
+  .header-img {
+    width: 190px;
+  }
 
-              <br />
-              Total IVA: {{ getTotalIVA | currency: "" : "" : "2.0" }} Gs
-            </b>
-          </span>
-          <hr class="m-1" />
-          <span style="font-size: 16px">
-            <b>
-              TOTAL A PAGAR en Gs: {{ getTotal | currency: "" : "" : "2.0" }}
-            </b>
-          </span>
+  .line {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
 
-          <span
-            style="
-              font-size: 11px;
-              display: block;
-              width: 170px;
-              word-wrap: break-word;
-            "
-          >
-            <div *ngIf="pago?.comentario">Nota: {{ pago.comentario }}</div>
-          </span>
-          <hr />
-          <div style="display: flex !important">
-            <div *ngIf="qrData" class="mx-auto">
-              <qr-code
-                [value]="qrData"
-                size="300"
-                errorCorrectionLevel="M"
-              ></qr-code>
-            </div>
-          </div>
-          <div
-            style="
-              display: flex;
-              align-content: center;
-              justify-content: center;
-              flex-direction: column;
-              text-align: center;
-            "
-          >
-            Consulte la validez de esta Factura Electrónica
-            <br />
-             con el número de CDC impreso abajo en:
-            <br />
+  hr.dashed {
+    border: none;
+    border-top: 1px dashed #000;
+    margin: 10px 0;
+  }
 
-            <span style="font-weight: bold;">https://ekuatia.set.gov.py/consultas/</span>
-            <span class="mx-auto px-1" style="font-weight: bold; background-color: black; color: white;"> {{cdc}} </span>
+  .totals .line {
+    padding: 1px 0;
+  }
 
-            <br />
-            ESTE DOCUMENTO ES UNA
-            REPRESENTACIÓN GRÁFICA DE UN
-            DOCUMENTO ELECTRÓNICO (XML)
-          </div>
-        </div>
-      </div>
+  .qr-container {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+  }
+
+  .cdc-code {
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    padding: 2px 0;
+    margin-top: 5px;
+    text-align: center;
+  }
+</style>
+
+<div *ngIf="factura" class="ticket-wrapper">
+  <div class="text-center">
+    <img
+      class="header-img"
+      src="../../../assets/images/imperialnegro.png"
+      alt="Logo"
+    />
+    <h4 class="mx-0 mt-1 mb-1" style="font-size: 14px">
+      Cementerio Privado - Servicios Funerarios
+    </h4>
+    <span>de <b class="text-bold">EDUARDO CLEBSCH S.A.</b></span>
+  </div>
+
+  <hr class="dashed" />
+
+  <div class="text-center text-bold">Factura Electrónica KUDE</div>
+  <div class="line">
+    <span>TMBRADO Nº:</span>
+    <span class="text-bold">{{ factura.params.timbradoNumero }}</span>
+  </div>
+  <div class="line">
+    <span>Fecha Vigencia:</span>
+    <span class="text-bold">{{ factura.params.timbradoFecha | date }}</span>
+  </div>
+  <div class="line">
+    <span>RUC:</span>
+    <span class="text-bold">{{ factura.params.ruc }}</span>
+  </div>
+  <div class="line text-bold">
+    <span>FACTURA Nº:</span>
+    <span
+      >{{ factura.data.establecimiento }}-{{ factura.data.punto }}-{{
+        factura.data.numero
+      }}</span
+    >
+  </div>
+
+  <hr class="dashed" />
+
+  <div class="line">
+    <span>Cond de Venta:</span> <span class="text-bold">CONTADO</span>
+  </div>
+  <div class="line">
+    <span>Emisión:</span>
+    <span class="text-bold">{{
+      factura.data.fecha | date: "dd/MM/yyyy - HH:mm"
+    }}</span>
+  </div>
+
+  <div *ngIf="factura.data.cliente.ruc" class="line">
+    <span>RUC:</span>
+    <span class="text-bold">{{ factura.data.cliente.ruc | ruc }}</span>
+  </div>
+  <div *ngIf="factura.data.cliente.ci" class="line">
+    <span>CI:</span>
+    <span class="text-bold">{{ factura.data.cliente.ci | ruc }}</span>
+  </div>
+  <div>
+    CLIENTE:
+    <span class="text-bold">{{ factura.data.cliente.nombreFantasia }}</span>
+  </div>
+
+  <hr class="dashed" />
+
+  <div *ngFor="let item of factura.data.items">
+    <div class="line">
+      <span>Cant: {{ item.cantidad }} Cod: {{ item.codigo }}</span>
+      <span>{{ item.precioUnitario | currency: "" : "" : "2.0" }}</span>
+    </div>
+    <div>{{ item.descripcion }}</div>
+  </div>
+
+  <hr class="dashed" />
+
+  <div class="totals">
+    <div class="text-bold">Liquidación del IVA:</div>
+    <div class="line">
+      <span>(10%):</span>
+      <span>{{ getTotalIVA | currency: "" : "" : "2.0" }}</span>
+    </div>
+    <div class="line"><span>(5%):</span> <span>0</span></div>
+    <div class="line"><span>(Exenta):</span> <span>0</span></div>
+    <hr class="dashed" style="margin: 5px 0" />
+    <div class="line text-bold">
+      <span>Total IVA:</span>
+      <span>{{ getTotalIVA | currency: "" : "" : "2.0" }} Gs</span>
+    </div>
+    <div class="line">
+      <span>Forma de Pago:</span>
+      <span>Efectivo</span>
     </div>
   </div>
-  <!-- <div style="margin-left: 50px; text-align:left ;">
-    Autorizado como Autoimpresor por la SET
-    <br>
-    Solicitud Nº {{timbrado.nro_solicitud}}
-    <br>
-    Fecha: {{timbrado.fecha_solicitud | date}}
-</div> -->
+
+  <hr class="dashed" />
+
+  <div class="line text-bold" style="font-size: 16px">
+    <span>TOTAL A PAGAR Gs:</span>
+    <span>{{ getTotal | currency: "" : "" : "2.0" }}</span>
+  </div>
+
+  <div *ngIf="pago?.comentario" style="font-size: 11px; margin-top: 10px">
+    Nota: {{ pago.comentario }}
+  </div>
+
+  <div *ngIf="qrData" class="qr-container">
+    <qr-code [value]="qrData" size="180" errorCorrectionLevel="M"></qr-code>
+  </div>
+
+  <div class="text-center" style="font-size: 11px">
+    <div>
+      Consulte la validez de esta Factura Electrónica con el número de CDC
+      impreso abajo en:
+    </div>
+    <div class="text-bold">https://ekuatia.set.gov.py/consultas/</div>
+    <div class="cdc-code">{{ cdc }}</div>
+    <div style="margin-top: 10px">
+      ESTE DOCUMENTO ES UNA REPRESENTACIÓN GRÁFICA DE UN DOCUMENTO ELECTRÓNICO
+      (XML)
+    </div>
+  </div>
 </div>

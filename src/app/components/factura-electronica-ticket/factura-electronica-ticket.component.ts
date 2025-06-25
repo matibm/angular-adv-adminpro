@@ -32,21 +32,25 @@ export class FacturaElectronicaTicketComponent implements OnInit {
   items: any[] = [];
   qrData: string;
   qrCodeImage: string;
+  pago: any;
+
   // timbrado;
   cdc = ''
   async ngOnInit() {
     const id = this.route.snapshot.params.id;
+    const pagoresp = await this._facturaService.getDetallePago(id);
+    this.pago = pagoresp.pago;
+ 
     const resp: any = await this._facturaService.getTicketKUDE(id);
     console.log(resp);
     this.qrData = resp.pdfExists.qr_link
     this.factura = resp.pdfExists.invoice
     this.cdc = resp.pdfExists.cdc.match(/.{1,4}/g).join(' ');
-
+ 
     setTimeout(() => {
       window.print();
     }, 500);
   }
-  pago;
 
   get getTotalIVA() {
     let total = 0;
