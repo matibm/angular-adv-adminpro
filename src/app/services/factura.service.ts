@@ -160,6 +160,38 @@ export class FacturaService {
         },
       );
   }
+
+  pagarPorFacturas(body) {
+    let url = URL_SERVICIOS + '/factura/pagar_por_facturas';
+    url += `?token=${this._usuarioService.token}`;
+
+    return this.http
+      .post(url, body)
+      .toPromise()
+      .then(
+        (resp: any) => {
+          console.log(resp);
+          if (body.confirmado) {
+            // swal.fire({
+            //   icon: 'success',
+            //   title: 'Pago realizado',
+            //   text: `Se pagaron ${resp.total} factura(s)`,
+            //   timer: 3000,
+            // });
+          }
+          return resp;
+        },
+        (error) => {
+          console.log(error);
+
+          swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: error.error.error,
+          });
+        },
+      );
+  }
   async pagarFactura(factura, parcial?: boolean, monto_parcial?: number) {
     console.log(factura);
 

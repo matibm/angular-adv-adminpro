@@ -176,6 +176,10 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
   // );
    fechaPago = new Date();
 
+  // Nuevas propiedades para el modo de pago
+  modoPago: 'monto' | 'seleccion' = 'monto';
+  facturasSeleccionadas = [];
+
   pruebaValue(variable) {
     ////console.log(getComputedStyle(variable).width);
   }
@@ -244,6 +248,77 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
     //console.log(respF);
 
     this.facturas = respF.facturas;
+  }
+
+  async filtrarFacturasSinContrato() {
+    let pagado = false;
+    if (this.estadoSeleccionado == 'PAGADOS') {
+      pagado = true;
+    } else if (this.estadoSeleccionado == 'PENDIENTES') {
+      pagado = false;
+    }
+
+    this.opciones = {
+      titular: this.cliente ? this.cliente._id : null,
+      vendedor: this.vendedor ? this.vendedor._id : null,
+      servicio: this.servicio ? this.servicio._id : null,
+      fondo: this.fondo ? this.fondo._id : null,
+      sin_contrato: "1", // Filtrar solo facturas sin contrato
+      pagado,
+      vencimiento_start: this.rangeVencimiento.value.start
+        ? new Date(this.rangeVencimiento.value.start).getTime()
+        : null,
+      vencimiento_end: this.rangeVencimiento.value.end
+        ? new Date(this.rangeVencimiento.value.end).setHours(23, 59, 59, 59)
+        : null,
+      pagado_start: this.rangePagado.value.start
+        ? new Date(this.rangePagado.value.start).getTime()
+        : null,
+      pagado_end: this.rangePagado.value.end
+        ? new Date(this.rangePagado.value.end).setHours(23, 59, 59, 59)
+        : null,
+      start: this.rangeEmision.value.start
+        ? new Date(this.rangeEmision.value.start).getTime()
+        : null,
+      end: this.rangeEmision.value.end
+        ? new Date(this.rangeEmision.value.end).setHours(23, 59, 59, 59)
+        : null,
+    };
+
+    this.sort = {
+      key: this.sort_key,
+      value: this.sort_value,
+    };
+    const respF = await this._facturaService.getFacturasOptions(
+      this.opciones,
+      this.sort,
+    );
+    this.count = respF.count;
+    this.facturas = respF.facturas;
+  }
+
+  cambiarModoPago() {
+    // Limpiar selección visual
+    this.limpiarSeleccionVisual();
+    
+    if (this.modoPago === 'seleccion') {
+      // Limpiar contrato seleccionado
+      this.contrato = null;
+      // Filtrar solo facturas sin contrato
+      this.filtrarFacturasSinContrato();
+    } else {
+      // Volver al filtro normal
+      this.filtrar();
+    }
+  }
+
+  limpiarSeleccionVisual() {
+    setTimeout(() => {
+      const elementos = document.querySelectorAll('.table-info');
+      elementos.forEach(element => {
+        element.classList.remove('table-info');
+      });
+    }, 100);
   }
 
   seleccionarProducto(producto: Producto) {
@@ -420,41 +495,76 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
     let timbrado = this.cobrador.timbrado;
     console.log(this.tasas);
 
+    if (this.modoPago === 'seleccion') {
+      // Usar el nuevo endpoint para pagar por facturas seleccionadas
+      let pagoresp = await this._facturaService.pagarPorFacturas({
+        fecha_pago: this.fechaPago.getTime(),
+        selectedItems: this.facturasSeleccionadas.map((f) => f._id),
+        montoTotal: this.sumaTotal,
+        fondo: this.fondo._id,
+        cliente: this.cliente._id,
+        cobrador: this.cobrador?._id,
+        confirmado: true,
+        timbrado: {
+          timbrado: this.cobrador.timbrado.timbrado
+        },
+        nro_factura: this.cobrador.nro_factura_actual + 1,
+        numero: this.cobrador.nro_talonario,
+        nro_timbrado: this.cobrador.timbrado.timbrado,
+        nombre: this.nombreFactura,
+        ruc: this.rucFactura,
+        tel: this.telFactura,
+        direccion: this.direccionFactura,
+        tasa: this.excentaSeleccionada,
+        tasas: this.tasas,
+        tipo_factura: this.tipoFacturaSeleccionada,
+        comentario: this.comentario
+      });
+      
+      this.loadingConfirmarPago = false;
+      this.mostrarModal(pagoresp?.pago?._id);
+      if (pagoresp?.pago?._id && localStorage.getItem('print_invoice')) {
+        this._facturaService.descargarArchivoPDF(pagoresp?.pago?._id)
+      }
+      this.ngOnInit();
+      this.reset();
+    } else {
+      // Lógica actual para modo monto
+      let pagoresp = await this._facturaService.pagarPorMonto({
+        tasa: this.excentaSeleccionada,
+        tasas: this.tasas,
+        tipo_factura: this.tipoFacturaSeleccionada,
+        fecha_pago: this.fechaPago.getTime(),
+        lista: this.lista,
+        montoTotal: this.sumaTotal,
+        cliente: this.cliente._id,
+        comentario: this.comentario,
+        nombre: this.nombreFactura,
+        ruc: this.rucFactura,
+        tel: this.telFactura,
+        direccion: this.direccionFactura,
+        cobrador: this.cobrador?._id,
+        confirmado: true,
+        fondo: this.fondo._id,
+        nro_timbrado: this.cobrador.timbrado.timbrado,
+        nro_factura: this.cobrador.nro_factura_actual + 1,
+        numero: this.cobrador.nro_talonario,
+        timbrado,
+        selectedItems: (this.facturasAPagarAux.filter((f) => f.is_selected) || []).map((f) => {
+          return f._id
+        })
+      });
+      this.loadingConfirmarPago = false;
 
-    let pagoresp = await this._facturaService.pagarPorMonto({
-      tasa: this.excentaSeleccionada,
-      tasas: this.tasas,
-      tipo_factura: this.tipoFacturaSeleccionada,
-      fecha_pago: this.fechaPago.getTime(),
-      lista: this.lista,
-      montoTotal: this.sumaTotal,
-      cliente: this.cliente._id,
-      comentario: this.comentario,
-      nombre: this.nombreFactura,
-      ruc: this.rucFactura,
-      tel: this.telFactura,
-      direccion: this.direccionFactura,
-      cobrador: this.cobrador?._id,
-      confirmado: true,
-      fondo: this.fondo._id,
-      nro_timbrado: this.cobrador.timbrado.timbrado,
-      nro_factura: this.cobrador.nro_factura_actual + 1,
-      numero: this.cobrador.nro_talonario,
-      timbrado,
-      selectedItems: (this.facturasAPagarAux.filter((f) => f.is_selected) || []).map((f) => {
-        return f._id
-      })
-    });
-    this.loadingConfirmarPago = false;
+      ////console.log(pagoresp);
+      this.mostrarModal(pagoresp?.pago?._id);
+      if (pagoresp?.pago?._id && localStorage.getItem('print_invoice')) {
+        this._facturaService.descargarArchivoPDF(pagoresp?.pago?._id)
+      }
+      this.ngOnInit();
 
-    ////console.log(pagoresp);
-    this.mostrarModal(pagoresp?.pago?._id);
-    if (pagoresp?.pago?._id && localStorage.getItem('print_invoice')) {
-      this._facturaService.descargarArchivoPDF(pagoresp?.pago?._id)
+      this.reset();
     }
-    this.ngOnInit();
-
-    this.reset();
   }
 
   prueba() {
@@ -512,6 +622,9 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
     this.cliente = null;
     this.comentario = null;
     this.sumaTotal = 0;
+    // Resetear nuevas propiedades
+    this.modoPago = 'monto';
+    this.facturasSeleccionadas = [];
     this.ngOnInit();
   }
 
@@ -612,23 +725,68 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
   onSelectedItem(item: any) {
     console.log(item);
 
-    if (item.contrato) {
-      swal.fire({
-        title: 'Confirmar acción',
-        text: '¿Está seguro de continuar? Este ingreso corresponde a un contrato, si es una cuota no seleccione la cuota, ingrese el monto exacto en el campo de abajo',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Sí, continuar',
-        cancelButtonText: 'Cancelar',
-      }).then((result) => {
-        if (result.isConfirmed) {
-          this.facturasAPagarAux.push({...item, is_selected: true});
-          this.sumaTotal = this.facturasAPagarAux.reduce((a, b) => a + b.haber, 0);
-        } else {
-          console.log('Acción cancelada');
-        }
-      });
+    if (this.modoPago === 'seleccion') {
+      // En modo selección, solo permitir facturas sin contrato
+      if (item.contrato) {
+        swal.fire({
+          title: 'Factura con Contrato',
+          text: 'En modo selección solo se pueden pagar facturas sin contrato. Use el modo "Pagar por Monto" para facturas con contrato.',
+          icon: 'warning',
+          confirmButtonText: 'Entendido'
+        });
+        return;
+      }
+      
+      // Verificar si ya está seleccionada
+      const yaSeleccionada = this.facturasSeleccionadas.find(f => f._id === item._id);
+      if (yaSeleccionada) {
+        // Remover de la selección
+        this.facturasSeleccionadas = this.facturasSeleccionadas.filter(f => f._id !== item._id);
+      } else {
+        // Agregar a la selección
+        this.facturasSeleccionadas.push({...item, is_selected: true});
+      }
+      
+      // Recalcular total
+      this.sumaTotal = this.facturasSeleccionadas.reduce((a, b) => a + b.haber, 0);
+      
+      // Actualizar selección visual
+      this.actualizarSeleccionVisual(item._id, !yaSeleccionada);
+    } else {
+      // Lógica actual para modo monto
+      if (item.contrato) {
+        swal.fire({
+          title: 'Confirmar acción',
+          text: '¿Está seguro de continuar? Este ingreso corresponde a un contrato, si es una cuota no seleccione la cuota, ingrese el monto exacto en el campo de abajo',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Sí, continuar',
+          cancelButtonText: 'Cancelar',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.facturasAPagarAux.push({...item, is_selected: true});
+            this.sumaTotal = this.facturasAPagarAux.reduce((a, b) => a + b.haber, 0);
+          } else {
+            console.log('Acción cancelada');
+          }
+        });
+      } else {
+        this.facturasAPagarAux.push({...item, is_selected: true});
+      }
     }
+  }
+
+  actualizarSeleccionVisual(facturaId: string, seleccionar: boolean) {
+    setTimeout(() => {
+      const element = document.getElementById(`id-${facturaId}`);
+      if (element) {
+        if (seleccionar) {
+          element.classList.add('table-info');
+        } else {
+          element.classList.remove('table-info');
+        }
+      }
+    }, 100);
   }
 
   onClosedModalFactura(){
