@@ -25817,7 +25817,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AccountSettingsComponent", function() { return AccountSettingsComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
-/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/environments/environment */ "AytR");
+/* harmony import */ var _config_global__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../config/global */ "iz4r");
 /* harmony import */ var src_app_services_settings_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/settings.service */ "6nr9");
 /* harmony import */ var _services_whatsapp_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../../services/whatsapp.service */ "TX1A");
 /* harmony import */ var src_app_services_usuario_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/services/usuario.service */ "on2l");
@@ -26148,6 +26148,7 @@ class AccountSettingsComponent {
         this.backups = [];
         this.backupLoading = false;
         this.backupMessage = '';
+        this.URL_ENVIRONMENT = _config_global__WEBPACK_IMPORTED_MODULE_2__["URL_SERVICIOS"];
         this.selectedBackupFile = null;
     }
     ngOnInit() {
@@ -26233,7 +26234,7 @@ class AccountSettingsComponent {
             this.backupMessage = '';
             try {
                 const token = this._userService.token;
-                const res = yield fetch(`${src_environments_environment__WEBPACK_IMPORTED_MODULE_2__["URL_ENVIRONMENT"]}/backup/list?token=${token}`);
+                const res = yield fetch(`${this.URL_ENVIRONMENT}/backup/list?token=${token}`);
                 this.backups = yield res.json();
             }
             catch (e) {
@@ -26248,7 +26249,7 @@ class AccountSettingsComponent {
             this.backupMessage = '';
             try {
                 const token = this._userService.token;
-                const res = yield fetch(`${src_environments_environment__WEBPACK_IMPORTED_MODULE_2__["URL_ENVIRONMENT"]}/backup/now?token=${token}`, { method: 'POST' });
+                const res = yield fetch(`${this.URL_ENVIRONMENT}/backup/now?token=${token}`, { method: 'POST' });
                 const data = yield res.json();
                 this.backupMessage = data.message || 'Backup creado';
                 this.listBackups();
@@ -26261,7 +26262,7 @@ class AccountSettingsComponent {
     }
     downloadBackup(filename) {
         const token = this._userService.token;
-        window.open(`${src_environments_environment__WEBPACK_IMPORTED_MODULE_2__["URL_ENVIRONMENT"]}/backup/download/${filename}?token=${token}`, '_blank');
+        window.open(`${this.URL_ENVIRONMENT}/backup/download/${filename}?token=${token}`, '_blank');
     }
     onBackupFileSelected(event) {
         this.selectedBackupFile = event.target.files[0];
@@ -26276,7 +26277,7 @@ class AccountSettingsComponent {
                 const token = this._userService.token;
                 const formData = new FormData();
                 formData.append('backupFile', this.selectedBackupFile);
-                const res = yield fetch(`${src_environments_environment__WEBPACK_IMPORTED_MODULE_2__["URL_ENVIRONMENT"]}/backup/restore?token=${token}`, {
+                const res = yield fetch(`${this.URL_ENVIRONMENT}/backup/restore?token=${token}`, {
                     method: 'POST',
                     body: formData,
                 });
@@ -35609,7 +35610,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "URL_SERVICIOS", function() { return URL_SERVICIOS; });
 // import { URL_ENVIRONMENT } from './../../environments/environment';
 // export const URL_SERVICIOS = URL_ENVIRONMENT
-// export const URL_SERVICIOS = 'https://imperial.mburgos.xyz';
+// export const URL_SERVICIOS = 'https://imperial.dondehoy.com';
 const URL_SERVICIOS = window.location.origin.includes('localhost:') ? 'http://localhost:4000' : window.location.origin;
 // export const URL_SERVICIOS = 'http://localhost:4000'
 // export const URL_SERVICIOS = 'http://192.168.0.18:4000'
@@ -47326,4 +47327,4 @@ webpackEmptyAsyncContext.id = "zn8P";
 /***/ })
 
 },[[0,"runtime","vendor"]]]);
-//# sourceMappingURL=main.7fec7a83455637ed6dcd.js.map
+//# sourceMappingURL=main.c531e7cb0fd0627663b8.js.map

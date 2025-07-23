@@ -2,7 +2,7 @@ import { WhatsappService } from './../../services/whatsapp.service';
 import { Component, OnInit } from '@angular/core';
 import { SettingsService } from 'src/app/services/settings.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
-import { URL_ENVIRONMENT } from 'src/environments/environment';
+import { URL_SERVICIOS } from '../../config/global'
 
 @Component({
   selector: 'app-account-settings',
@@ -33,6 +33,7 @@ export class AccountSettingsComponent implements OnInit {
   backups: string[] = [];
   backupLoading = false;
   backupMessage = '';
+  URL_ENVIRONMENT = URL_SERVICIOS;
   selectedBackupFile: File | null = null;
 
   ngOnInit(): void {
@@ -121,7 +122,7 @@ export class AccountSettingsComponent implements OnInit {
     this.backupMessage = '';
     try {
       const token = this._userService.token;
-      const res = await fetch(`${URL_ENVIRONMENT}/backup/list?token=${token}`);
+      const res = await fetch(`${this.URL_ENVIRONMENT}/backup/list?token=${token}`);
       this.backups = await res.json();
     } catch (e) {
       this.backupMessage = 'Error al listar backups';
@@ -134,7 +135,7 @@ export class AccountSettingsComponent implements OnInit {
     this.backupMessage = '';
     try {
       const token = this._userService.token;
-      const res = await fetch(`${URL_ENVIRONMENT}/backup/now?token=${token}`, { method: 'POST' });
+      const res = await fetch(`${this.URL_ENVIRONMENT}/backup/now?token=${token}`, { method: 'POST' });
       const data = await res.json();
       this.backupMessage = data.message || 'Backup creado';
       this.listBackups();
@@ -146,7 +147,7 @@ export class AccountSettingsComponent implements OnInit {
 
   downloadBackup(filename: string) {
     const token = this._userService.token;
-    window.open(`${URL_ENVIRONMENT}/backup/download/${filename}?token=${token}`, '_blank');
+    window.open(`${this.URL_ENVIRONMENT}/backup/download/${filename}?token=${token}`, '_blank');
   }
 
   onBackupFileSelected(event: any) {
@@ -161,7 +162,7 @@ export class AccountSettingsComponent implements OnInit {
       const token = this._userService.token;
       const formData = new FormData();
       formData.append('backupFile', this.selectedBackupFile);
-      const res = await fetch(`${URL_ENVIRONMENT}/backup/restore?token=${token}`, {
+      const res = await fetch(`${this.URL_ENVIRONMENT}/backup/restore?token=${token}`, {
         method: 'POST',
         body: formData,
       });
