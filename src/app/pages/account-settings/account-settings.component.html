@@ -146,3 +146,28 @@
   </div>
 </div>
 <button (click)="updateDB()" class="btn btn-primary">Actulizar Base de Datos</button>
+
+<!-- BLOQUE DE BACKUPS -->
+<div class="card mt-4">
+  <div class="card-body">
+    <h4>Backups</h4>
+    <button class="btn btn-success mb-2" (click)="createBackup()" [disabled]="backupLoading">
+      Crear backup manual
+    </button>
+    <div *ngIf="backupMessage" class="alert alert-info">{{ backupMessage }}</div>
+    <div *ngIf="backupLoading">Cargando...</div>
+    <ul *ngIf="backups.length">
+      <li *ngFor="let backup of backups">
+        {{ backup }}
+        <button class="btn btn-link" (click)="downloadBackup(backup)">Descargar</button>
+      </li>
+    </ul>
+    <div *ngIf="!backups.length && !backupLoading">No hay backups disponibles.</div>
+    <hr>
+    <label for="restoreBackup" class="form-label">Restaurar backup:</label>
+    <input type="file" id="restoreBackup" (change)="onBackupFileSelected($event)" accept=".gz" class="form-control mb-2">
+    <button class="btn btn-warning" (click)="restoreBackup()" [disabled]="!selectedBackupFile || backupLoading">
+      Subir y restaurar backup
+    </button>
+  </div>
+</div>
