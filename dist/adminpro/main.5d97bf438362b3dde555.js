@@ -35982,7 +35982,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function FacturaElectronicaTicketComponent_div_1_div_78_Template(rf, ctx) { if (rf & 1) {
+function FacturaElectronicaTicketComponent_div_1_div_57_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n    FACTURA EXENTA DE IVA\n  ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} }
+function FacturaElectronicaTicketComponent_div_1_div_80_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 8);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n    ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "span");
@@ -35996,11 +36001,11 @@ function FacturaElectronicaTicketComponent_div_1_div_78_Template(rf, ctx) { if (
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](8, "\n  ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
+    const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](6);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](7, 1, ctx_r1.factura.data.cliente.ruc));
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](7, 1, ctx_r2.factura.data.cliente.ruc));
 } }
-function FacturaElectronicaTicketComponent_div_1_div_80_Template(rf, ctx) { if (rf & 1) {
+function FacturaElectronicaTicketComponent_div_1_div_82_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 8);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n    ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "span");
@@ -36014,11 +36019,11 @@ function FacturaElectronicaTicketComponent_div_1_div_80_Template(rf, ctx) { if (
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](8, "\n  ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
+    const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](6);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](7, 1, ctx_r2.factura.data.cliente.ci));
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](7, 1, ctx_r3.factura.data.cliente.ci));
 } }
-function FacturaElectronicaTicketComponent_div_1_div_90_Template(rf, ctx) { if (rf & 1) {
+function FacturaElectronicaTicketComponent_div_1_div_92_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n    ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 8);
@@ -36040,33 +36045,33 @@ function FacturaElectronicaTicketComponent_div_1_div_90_Template(rf, ctx) { if (
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](14, "\n  ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const item_r6 = ctx.$implicit;
+    const item_r7 = ctx.$implicit;
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate2"]("Cant: ", item_r6.cantidad, " Cod: ", item_r6.codigo, "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate2"]("Cant: ", item_r7.cantidad, " Cod: ", item_r7.codigo, "");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind4"](9, 4, item_r6.precioUnitario, "", "", "2.0"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind4"](9, 4, item_r7.precioUnitario, "", "", "2.0"));
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](item_r6.descripcion);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](item_r7.descripcion);
 } }
-function FacturaElectronicaTicketComponent_div_1_div_157_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 20);
+function FacturaElectronicaTicketComponent_div_1_div_152_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 22);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
+    const ctx_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("\n    Nota: ", ctx_r4.pago.comentario, "\n  ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("\n    Nota: ", ctx_r5.pago.comentario, "\n  ");
 } }
-function FacturaElectronicaTicketComponent_div_1_div_159_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 21);
+function FacturaElectronicaTicketComponent_div_1_div_154_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 23);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n    ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](2, "qr-code", 22);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](2, "qr-code", 24);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n  ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const ctx_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
+    const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("value", ctx_r5.qrData);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("value", ctx_r6.qrData);
 } }
 function FacturaElectronicaTicketComponent_div_1_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 1);
@@ -36143,171 +36148,165 @@ function FacturaElectronicaTicketComponent_div_1_Template(rf, ctx) { if (rf & 1)
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](55, "\n  ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](56, "\n\n  ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](57, "hr", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](57, FacturaElectronicaTicketComponent_div_1_div_57_Template, 2, 0, "div", 10);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](58, "\n\n  ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](59, "div", 8);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](60, "\n    ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](61, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](62, "Cond de Venta:");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](59, "hr", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](60, "\n\n  ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](61, "div", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](62, "\n    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](63, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](64, "Cond de Venta:");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](63, " ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](64, "span", 5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](65, "CONTADO");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](65, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](66, "span", 5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](67, "CONTADO");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](66, "\n  ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](68, "\n  ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](67, "\n  ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](68, "div", 8);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](69, "\n    ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](70, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](71, "Emisi\u00F3n:");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](69, "\n  ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](70, "div", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](71, "\n    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](72, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](73, "Emisi\u00F3n:");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](72, "\n    ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](73, "span", 5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](74);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](75, "date");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](74, "\n    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](75, "span", 5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](76);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](77, "date");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](76, "\n  ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](78, "\n  ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](77, "\n\n  ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](78, FacturaElectronicaTicketComponent_div_1_div_78_Template, 9, 3, "div", 10);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](79, "\n  ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](80, FacturaElectronicaTicketComponent_div_1_div_80_Template, 9, 3, "div", 10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](79, "\n\n  ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](80, FacturaElectronicaTicketComponent_div_1_div_80_Template, 9, 3, "div", 11);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](81, "\n  ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](82, "div");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](83, "\n    CLIENTE:\n    ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](84, "span", 5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](85);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](82, FacturaElectronicaTicketComponent_div_1_div_82_Template, 9, 3, "div", 11);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](83, "\n  ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](84, "div", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](85, "\n    CLIENTE:\n    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](86, "span", 5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](87);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](86, "\n  ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](88, "\n  ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](87, "\n\n  ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](88, "hr", 6);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](89, "\n\n  ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](90, FacturaElectronicaTicketComponent_div_1_div_90_Template, 15, 9, "div", 11);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](90, "hr", 6);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](91, "\n\n  ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](92, "hr", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](92, FacturaElectronicaTicketComponent_div_1_div_92_Template, 15, 9, "div", 12);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](93, "\n\n  ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](94, "div", 12);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](95, "\n    ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](96, "div", 5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](97, "Liquidaci\u00F3n del IVA:");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](94, "hr", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](95, "\n\n  ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](96, "div", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](97, "\n    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](98, "div", 5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](99, "Liquidaci\u00F3n del IVA:");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](98, "\n    ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](99, "div", 8);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](100, "\n      ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](101, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](102, "(10%):");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](100, "\n    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](101, "div", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](102, "\n      ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](103, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](104, "(10%):");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](103, "\n      ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](104, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](105);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](106, "currency");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](105, "\n      ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](106, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](107);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](108, "currency");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](107, "\n    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](109, "\n    ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](108, "\n    ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](109, "div", 8);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](110, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](111, "(5%):");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](110, "\n    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](111, "div", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](112, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](113, "(5%):");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](112, " ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](113, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](114, "0");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](115, "\n    ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](116, "div", 8);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](117, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](118, "(Exenta):");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](119, " ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](120, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](121, "0");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](114, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](115, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](116, "0");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](122, "\n    ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](123, "hr", 13);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](124, "\n    ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](125, "div", 9);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](126, "\n      ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](127, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](128, "Total IVA:");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](117, "\n    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](118, "div", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](119, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](120, "(Exenta):");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](121, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](122, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](123);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](124, "currency");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](125, "\n    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](126, "hr", 14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](127, "\n    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](128, "div", 9);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](129, "\n      ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](130, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](131);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](132, "currency");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](131, "Total IVA:");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](133, "\n    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](132, "\n      ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](133, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](134);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](135, "currency");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](134, "\n    ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](135, "div", 8);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](136, "\n      ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](137, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](138, "Forma de Pago:");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](136, "\n    ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](139, "\n      ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](140, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](141, "Efectivo");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](137, "\n    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](138, "\n  ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](142, "\n    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](139, "\n\n  ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](140, "hr", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](141, "\n\n  ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](142, "div", 15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](143, "\n    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](144, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](145, "TOTAL A PAGAR Gs:");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](143, "\n  ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](146, "\n    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](147, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](148);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](149, "currency");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](144, "\n\n  ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](145, "hr", 6);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](146, "\n\n  ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](147, "div", 14);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](148, "\n    ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](149, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](150, "TOTAL A PAGAR Gs:");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](150, "\n  ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](151, "\n    ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](152, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](153);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](154, "currency");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](151, "\n\n  ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](152, FacturaElectronicaTicketComponent_div_1_div_152_Template, 2, 1, "div", 16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](153, "\n\n  ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](154, FacturaElectronicaTicketComponent_div_1_div_154_Template, 4, 1, "div", 17);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](155, "\n\n  ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](156, "div", 18);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](157, "\n    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](158, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](159, "\n      Consulte la validez de esta Factura Electr\u00F3nica con el n\u00FAmero de CDC\n      impreso abajo en:\n    ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](155, "\n  ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](160, "\n    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](161, "div", 5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](162, "https://ekuatia.set.gov.py/consultas/");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](156, "\n\n  ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](157, FacturaElectronicaTicketComponent_div_1_div_157_Template, 2, 1, "div", 15);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](158, "\n\n  ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](159, FacturaElectronicaTicketComponent_div_1_div_159_Template, 4, 1, "div", 16);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](160, "\n\n  ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](161, "div", 17);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](162, "\n    ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](163, "div");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](164, "\n      Consulte la validez de esta Factura Electr\u00F3nica con el n\u00FAmero de CDC\n      impreso abajo en:\n    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](163, "\n    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](164, "div", 19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](165);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](165, "\n    ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](166, "div", 5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](167, "https://ekuatia.set.gov.py/consultas/");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](166, "\n    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](167, "div", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](168, "\n      ESTE DOCUMENTO ES UNA REPRESENTACI\u00D3N GR\u00C1FICA DE UN DOCUMENTO ELECTR\u00D3NICO\n      (XML)\n    ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](168, "\n    ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](169, "div", 18);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](170);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](169, "\n  ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](171, "\n    ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](172, "div", 19);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](173, "\n      ESTE DOCUMENTO ES UNA REPRESENTACI\u00D3N GR\u00C1FICA DE UN DOCUMENTO ELECTR\u00D3NICO\n      (XML)\n    ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](174, "\n  ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](175, "\n");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](170, "\n");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](26);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](ctx_r0.factura.params.timbradoNumero);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](9);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](36, 17, ctx_r0.factura.params.timbradoFecha));
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](36, 19, ctx_r0.factura.params.timbradoFecha));
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](10);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](ctx_r0.factura.params.ruc);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](9);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate3"]("", ctx_r0.factura.data.establecimiento, "-", ctx_r0.factura.data.punto, "-", ctx_r0.factura.data.numero, "");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](20);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind2"](75, 19, ctx_r0.factura.data.fecha, "dd/MM/yyyy - HH:mm"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx_r0.isExenta);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind2"](77, 21, ctx_r0.factura.data.fecha, "dd/MM/yyyy - HH:mm"));
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx_r0.factura.data.cliente.ruc);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
@@ -36317,11 +36316,13 @@ function FacturaElectronicaTicketComponent_div_1_Template(rf, ctx) { if (rf & 1)
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngForOf", ctx_r0.factura.data.items);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](15);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind4"](106, 22, ctx_r0.getTotalIVA, "", "", "2.0"));
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](26);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind4"](132, 27, ctx_r0.getTotalIVA, "", "", "2.0"), " Gs");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](22);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind4"](154, 32, ctx_r0.getTotal, "", "", "2.0"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind4"](108, 24, ctx_r0.getTotalGravado, "", "", "2.0"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind4"](124, 29, ctx_r0.getTotalExento, "", "", "2.0"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](11);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind4"](135, 34, ctx_r0.getTotalIVA, "", "", "2.0"), " Gs");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind4"](149, 39, ctx_r0.getTotal, "", "", "2.0"));
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx_r0.pago == null ? null : ctx_r0.pago.comentario);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
@@ -36363,9 +36364,39 @@ class FacturaElectronicaTicketComponent {
         let total = 0;
         for (let index = 0; index < this.factura.data.items.length; index++) {
             const item = this.factura.data.items[index];
-            total += (item.cantidad * item.precioUnitario) / 11;
+            // Solo sumar IVA si no es exento (ivaTipo !== 3)
+            if (item.ivaTipo !== 3) {
+                total += item.iva || 0;
+            }
         }
         return total;
+    }
+    get getTotalExento() {
+        let total = 0;
+        for (let index = 0; index < this.factura.data.items.length; index++) {
+            const item = this.factura.data.items[index];
+            // Sumar solo items exentos (ivaTipo === 3)
+            if (item.ivaTipo === 3) {
+                total += item.cantidad * item.precioUnitario;
+            }
+        }
+        return total;
+    }
+    get getTotalGravado() {
+        let total = 0;
+        for (let index = 0; index < this.factura.data.items.length; index++) {
+            const item = this.factura.data.items[index];
+            // Sumar solo items gravados (ivaTipo !== 3)
+            if (item.ivaTipo !== 3) {
+                total += item.cantidad * item.precioUnitario;
+            }
+        }
+        return total;
+    }
+    get isExenta() {
+        var _a, _b, _c;
+        // Verificar si todos los items son exentos
+        return ((_c = (_b = (_a = this.factura) === null || _a === void 0 ? void 0 : _a.data) === null || _b === void 0 ? void 0 : _b.items) === null || _c === void 0 ? void 0 : _c.every(item => item.ivaTipo === 3)) || false;
     }
     get getTotal() {
         let total = 0;
@@ -36377,9 +36408,9 @@ class FacturaElectronicaTicketComponent {
     }
 }
 FacturaElectronicaTicketComponent.ɵfac = function FacturaElectronicaTicketComponent_Factory(t) { return new (t || FacturaElectronicaTicketComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](src_app_services_factura_service__WEBPACK_IMPORTED_MODULE_3__["FacturaService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](src_app_services_usuario_service__WEBPACK_IMPORTED_MODULE_4__["UsuarioService"])); };
-FacturaElectronicaTicketComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: FacturaElectronicaTicketComponent, selectors: [["app-factura-electronica-ticket"]], inputs: { facturaPDF: "facturaPDF", printAltoke: "printAltoke", existe: "existe", contrato: "contrato" }, decls: 3, vars: 1, consts: [["class", "ticket-wrapper", 4, "ngIf"], [1, "ticket-wrapper"], [1, "text-center"], ["src", "../../../assets/images/imperialnegro.png", "alt", "Logo", 1, "header-img"], [1, "mx-0", "mt-1", "mb-1", 2, "font-size", "14px"], [1, "text-bold"], [1, "dashed"], [1, "text-center", "text-bold"], [1, "line"], [1, "line", "text-bold"], ["class", "line", 4, "ngIf"], [4, "ngFor", "ngForOf"], [1, "totals"], [1, "dashed", 2, "margin", "5px 0"], [1, "line", "text-bold", 2, "font-size", "16px"], ["style", "font-size: 11px; margin-top: 10px", 4, "ngIf"], ["class", "qr-container", 4, "ngIf"], [1, "text-center", 2, "font-size", "11px"], [1, "cdc-code"], [2, "margin-top", "10px"], [2, "font-size", "11px", "margin-top", "10px"], [1, "qr-container"], ["size", "180", "errorCorrectionLevel", "M", 3, "value"]], template: function FacturaElectronicaTicketComponent_Template(rf, ctx) { if (rf & 1) {
+FacturaElectronicaTicketComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: FacturaElectronicaTicketComponent, selectors: [["app-factura-electronica-ticket"]], inputs: { facturaPDF: "facturaPDF", printAltoke: "printAltoke", existe: "existe", contrato: "contrato" }, decls: 3, vars: 1, consts: [["class", "ticket-wrapper", 4, "ngIf"], [1, "ticket-wrapper"], [1, "text-center"], ["src", "../../../assets/images/imperialnegro.png", "alt", "Logo", 1, "header-img"], [1, "mx-0", "mt-1", "mb-1", 2, "font-size", "14px"], [1, "text-bold"], [1, "dashed"], [1, "text-center", "text-bold"], [1, "line"], [1, "line", "text-bold"], ["class", "text-center text-bold", "style", "color: #d32f2f; font-size: 11px; margin-top: 5px;", 4, "ngIf"], ["class", "line", 4, "ngIf"], [4, "ngFor", "ngForOf"], [1, "totals"], [1, "dashed", 2, "margin", "5px 0"], [1, "line", "text-bold", 2, "font-size", "16px"], ["style", "font-size: 11px; margin-top: 10px", 4, "ngIf"], ["class", "qr-container", 4, "ngIf"], [1, "text-center", 2, "font-size", "11px"], [1, "cdc-code"], [2, "margin-top", "10px"], [1, "text-center", "text-bold", 2, "color", "#d32f2f", "font-size", "11px", "margin-top", "5px"], [2, "font-size", "11px", "margin-top", "10px"], [1, "qr-container"], ["size", "180", "errorCorrectionLevel", "M", 3, "value"]], template: function FacturaElectronicaTicketComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](0, "\n\n");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](1, FacturaElectronicaTicketComponent_div_1_Template, 176, 37, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](1, FacturaElectronicaTicketComponent_div_1_Template, 171, 44, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](2, "\n");
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
@@ -47327,4 +47358,4 @@ webpackEmptyAsyncContext.id = "zn8P";
 /***/ })
 
 },[[0,"runtime","vendor"]]]);
-//# sourceMappingURL=main.c531e7cb0fd0627663b8.js.map
+//# sourceMappingURL=main.5d97bf438362b3dde555.js.map
