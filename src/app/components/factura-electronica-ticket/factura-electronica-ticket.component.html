@@ -97,6 +97,10 @@
     >
   </div>
 
+  <div *ngIf="isExenta" class="text-center text-bold" style="color: #d32f2f; font-size: 11px; margin-top: 5px;">
+    FACTURA EXENTA DE IVA
+  </div>
+
   <hr class="dashed" />
 
   <div class="line">
@@ -117,7 +121,7 @@
     <span>CI:</span>
     <span class="text-bold">{{ factura.data.cliente.ci | ruc }}</span>
   </div>
-  <div>
+  <div class="line">
     CLIENTE:
     <span class="text-bold">{{ factura.data.cliente.nombreFantasia }}</span>
   </div>
@@ -138,19 +142,19 @@
     <div class="text-bold">Liquidación del IVA:</div>
     <div class="line">
       <span>(10%):</span>
-      <span>{{ getTotalIVA | currency: "" : "" : "2.0" }}</span>
+      <span>{{ getTotalGravado | currency: "" : "" : "2.0" }}</span>
     </div>
     <div class="line"><span>(5%):</span> <span>0</span></div>
-    <div class="line"><span>(Exenta):</span> <span>0</span></div>
+    <div class="line"><span>(Exenta):</span> <span>{{ getTotalExento | currency: "" : "" : "2.0" }}</span></div>
     <hr class="dashed" style="margin: 5px 0" />
     <div class="line text-bold">
       <span>Total IVA:</span>
       <span>{{ getTotalIVA | currency: "" : "" : "2.0" }} Gs</span>
     </div>
-    <div class="line">
+    <!-- <div class="line">
       <span>Forma de Pago:</span>
       <span>Efectivo</span>
-    </div>
+    </div> -->
   </div>
 
   <hr class="dashed" />

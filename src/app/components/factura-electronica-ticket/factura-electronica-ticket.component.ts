@@ -56,10 +56,43 @@ export class FacturaElectronicaTicketComponent implements OnInit {
     let total = 0;
     for (let index = 0; index < this.factura.data.items.length; index++) {
       const item = this.factura.data.items[index];
-      total += (item.cantidad * item.precioUnitario) / 11;
+      // Solo sumar IVA si no es exento (ivaTipo !== 3)
+      if (item.ivaTipo !== 3) {
+        total += item.iva || 0;
+      }
     }
     return total;
   }
+
+  get getTotalExento() {
+    let total = 0;
+    for (let index = 0; index < this.factura.data.items.length; index++) {
+      const item = this.factura.data.items[index];
+      // Sumar solo items exentos (ivaTipo === 3)
+      if (item.ivaTipo === 3) {
+        total += item.cantidad * item.precioUnitario;
+      }
+    }
+    return total;
+  }
+
+  get getTotalGravado() {
+    let total = 0;
+    for (let index = 0; index < this.factura.data.items.length; index++) {
+      const item = this.factura.data.items[index];
+      // Sumar solo items gravados (ivaTipo !== 3)
+      if (item.ivaTipo !== 3) {
+        total += item.cantidad * item.precioUnitario;
+      }
+    }
+    return total;
+  }
+
+  get isExenta() {
+    // Verificar si todos los items son exentos
+    return this.factura?.data?.items?.every(item => item.ivaTipo === 3) || false;
+  }
+
   get getTotal() {
     let total = 0;
     for (let index = 0; index < this.factura.data.items.length; index++) {
