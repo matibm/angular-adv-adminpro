@@ -36361,15 +36361,16 @@ class FacturaElectronicaTicketComponent {
         });
     }
     get getTotalIVA() {
-        let total = 0;
+        // Calcular el IVA solo para items no exentos (ivaTipo !== 3)
+        let totalGravado = 0;
         for (let index = 0; index < this.factura.data.items.length; index++) {
             const item = this.factura.data.items[index];
-            // Solo sumar IVA si no es exento (ivaTipo !== 3)
             if (item.ivaTipo !== 3) {
-                total += item.iva || 0;
+                totalGravado += item.cantidad * item.precioUnitario;
             }
         }
-        return total;
+        // Calcular el IVA como el total gravado dividido por 11, redondeado a número entero
+        return Math.round(totalGravado / 11);
     }
     get getTotalExento() {
         let total = 0;
@@ -47358,4 +47359,4 @@ webpackEmptyAsyncContext.id = "zn8P";
 /***/ })
 
 },[[0,"runtime","vendor"]]]);
-//# sourceMappingURL=main.5d97bf438362b3dde555.js.map
+//# sourceMappingURL=main.dd982e692cbcbcadf01c.js.map
