@@ -764,14 +764,39 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
           cancelButtonText: 'Cancelar',
         }).then((result) => {
           if (result.isConfirmed) {
-            this.facturasAPagarAux.push({...item, is_selected: true});
-            this.sumaTotal = this.facturasAPagarAux.reduce((a, b) => a + b.haber, 0);
+            // Verificar si ya está seleccionada para evitar duplicados
+            const yaSeleccionada = this.facturasAPagarAux.find(f => f._id === item._id);
+            if (!yaSeleccionada) {
+              this.facturasAPagarAux.push({...item, is_selected: true});
+              this.sumaTotal = this.facturasAPagarAux.reduce((a, b) => a + b.haber, 0);
+            } else {
+              // Mostrar alert de cuota duplicada
+              swal.fire({
+                title: 'Cuota Duplicada',
+                text: 'Esta cuota ya ha sido seleccionada anteriormente.',
+                icon: 'warning',
+                confirmButtonText: 'Entendido'
+              });
+            }
           } else {
             console.log('Acción cancelada');
           }
         });
       } else {
-        this.facturasAPagarAux.push({...item, is_selected: true});
+        // Verificar si ya está seleccionada para evitar duplicados
+        const yaSeleccionada = this.facturasAPagarAux.find(f => f._id === item._id);
+        if (!yaSeleccionada) {
+          this.facturasAPagarAux.push({...item, is_selected: true});
+          this.sumaTotal = this.facturasAPagarAux.reduce((a, b) => a + b.haber, 0);
+        } else {
+          // Mostrar alert de cuota duplicada
+          swal.fire({
+            title: 'Cuota Duplicada',
+            text: 'Esta cuota ya ha sido seleccionada anteriormente.',
+            icon: 'warning',
+            confirmButtonText: 'Entendido'
+          });
+        }
       }
     }
   }
