@@ -35353,8 +35353,21 @@ class CobranzaComponent {
                     cancelButtonText: 'Cancelar',
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        this.facturasAPagarAux.push(Object.assign(Object.assign({}, item), { is_selected: true }));
-                        this.sumaTotal = this.facturasAPagarAux.reduce((a, b) => a + b.haber, 0);
+                        // Verificar si ya está seleccionada para evitar duplicados
+                        const yaSeleccionada = this.facturasAPagarAux.find(f => f._id === item._id);
+                        if (!yaSeleccionada) {
+                            this.facturasAPagarAux.push(Object.assign(Object.assign({}, item), { is_selected: true }));
+                            this.sumaTotal = this.facturasAPagarAux.reduce((a, b) => a + b.haber, 0);
+                        }
+                        else {
+                            // Mostrar alert de cuota duplicada
+                            sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire({
+                                title: 'Cuota Duplicada',
+                                text: 'Esta cuota ya ha sido seleccionada anteriormente.',
+                                icon: 'warning',
+                                confirmButtonText: 'Entendido'
+                            });
+                        }
                     }
                     else {
                         console.log('Acción cancelada');
@@ -35362,7 +35375,21 @@ class CobranzaComponent {
                 });
             }
             else {
-                this.facturasAPagarAux.push(Object.assign(Object.assign({}, item), { is_selected: true }));
+                // Verificar si ya está seleccionada para evitar duplicados
+                const yaSeleccionada = this.facturasAPagarAux.find(f => f._id === item._id);
+                if (!yaSeleccionada) {
+                    this.facturasAPagarAux.push(Object.assign(Object.assign({}, item), { is_selected: true }));
+                    this.sumaTotal = this.facturasAPagarAux.reduce((a, b) => a + b.haber, 0);
+                }
+                else {
+                    // Mostrar alert de cuota duplicada
+                    sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire({
+                        title: 'Cuota Duplicada',
+                        text: 'Esta cuota ya ha sido seleccionada anteriormente.',
+                        icon: 'warning',
+                        confirmButtonText: 'Entendido'
+                    });
+                }
             }
         }
     }
@@ -47359,4 +47386,4 @@ webpackEmptyAsyncContext.id = "zn8P";
 /***/ })
 
 },[[0,"runtime","vendor"]]]);
-//# sourceMappingURL=main.dd982e692cbcbcadf01c.js.map
+//# sourceMappingURL=main.02a5b5126819a747ad95.js.map
