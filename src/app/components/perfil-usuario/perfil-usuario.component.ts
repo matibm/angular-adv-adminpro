@@ -77,10 +77,14 @@ export class PerfilUsuarioComponent implements OnInit {
   comentarios;
   role
   is_admin_role = false
+  is_internal_role = false
   async ngOnInit() {
     let user = await this._usuarioService.inicializarUsuario()
     if (user?.role == 'ADMIN_ROLE') {
       this.is_admin_role = true
+    }
+    if (user?.role == 'INTERNAL_ROLE') {
+      this.is_internal_role = true
     }
     this.id = this.route.snapshot.paramMap.get('id');
     this.contratosActivosOptios.cliente = this.id
