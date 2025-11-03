@@ -5242,43 +5242,43 @@ function PerfilUsuarioComponent_div_0_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](8);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", ctx_r0.usuario.nro_tarjeta);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](16);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", ctx_r0.usuario.LUGAR_TRABAJO)("disabled", !ctx_r0.is_admin_role);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", ctx_r0.usuario.LUGAR_TRABAJO)("disabled", !ctx_r0.is_admin_role && !ctx_r0.is_internal_role);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](11);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", ctx_r0.usuario.direccion_laboral)("disabled", !ctx_r0.is_admin_role);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", ctx_r0.usuario.direccion_laboral)("disabled", !ctx_r0.is_admin_role && !ctx_r0.is_internal_role);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](11);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", ctx_r0.usuario.ciudad_trabajo)("disabled", !ctx_r0.is_admin_role);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", ctx_r0.usuario.ciudad_trabajo)("disabled", !ctx_r0.is_admin_role && !ctx_r0.is_internal_role);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](11);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", ctx_r0.usuario.DEPARTAMENTO_TRABAJO)("disabled", !ctx_r0.is_admin_role);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", ctx_r0.usuario.DEPARTAMENTO_TRABAJO)("disabled", !ctx_r0.is_admin_role && !ctx_r0.is_internal_role);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](8);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", ctx_r0.usuario.TELEFONO3)("disabled", !ctx_r0.is_admin_role);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", ctx_r0.usuario.TELEFONO3)("disabled", !ctx_r0.is_admin_role && !ctx_r0.is_internal_role);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](8);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", ctx_r0.usuario.TEL_TRABAJO)("disabled", !ctx_r0.is_admin_role);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", ctx_r0.usuario.TEL_TRABAJO)("disabled", !ctx_r0.is_admin_role && !ctx_r0.is_internal_role);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](8);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", ctx_r0.usuario.nro_talonario)("disabled", !ctx_r0.is_admin_role);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", ctx_r0.usuario.nro_talonario)("disabled", !ctx_r0.is_admin_role && !ctx_r0.is_internal_role);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](8);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", ctx_r0.usuario.nro_factura_actual)("disabled", !ctx_r0.is_admin_role);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", ctx_r0.usuario.nro_factura_actual)("disabled", !ctx_r0.is_admin_role && !ctx_r0.is_internal_role);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](11);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("disabled", !ctx_r0.is_admin_role)("ngModel", ctx_r0.usuario.timbrado.timbrado);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("disabled", !ctx_r0.is_admin_role && !ctx_r0.is_internal_role)("ngModel", ctx_r0.usuario.timbrado.timbrado);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](8);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("disabled", !ctx_r0.is_admin_role)("ngModel", ctx_r0.usuario.timbrado.nro_solicitud);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("disabled", !ctx_r0.is_admin_role && !ctx_r0.is_internal_role)("ngModel", ctx_r0.usuario.timbrado.nro_solicitud);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](8);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("disabled", !ctx_r0.is_admin_role)("ngModel", ctx_r0.usuario.timbrado.tipo);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("disabled", !ctx_r0.is_admin_role && !ctx_r0.is_internal_role)("ngModel", ctx_r0.usuario.timbrado.tipo);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](8);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("disabled", !ctx_r0.is_admin_role)("ngModel", ctx_r0.usuario.timbrado.ruc);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("disabled", !ctx_r0.is_admin_role && !ctx_r0.is_internal_role)("ngModel", ctx_r0.usuario.timbrado.ruc);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](13);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("disabled", !ctx_r0.is_admin_role)("ngModel", ctx_r0.usuario.punto);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("disabled", !ctx_r0.is_admin_role && !ctx_r0.is_internal_role)("ngModel", ctx_r0.usuario.punto);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("disabled", !ctx_r0.is_admin_role)("ngModel", ctx_r0.usuario.ultimo_nro_factura);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("disabled", !ctx_r0.is_admin_role && !ctx_r0.is_internal_role)("ngModel", ctx_r0.usuario.ultimo_nro_factura);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](10);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("disabled", !ctx_r0.is_admin_role)("ngModel", ctx_r0.usuario.timbrado.fecha_solicitud)("matDatepicker", _r9);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("disabled", !ctx_r0.is_admin_role && !ctx_r0.is_internal_role)("ngModel", ctx_r0.usuario.timbrado.fecha_solicitud)("matDatepicker", _r9);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("for", _r9);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](12);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("disabled", !ctx_r0.is_admin_role)("ngModel", ctx_r0.usuario.timbrado.fecha_vigente_inicio)("matDatepicker", _r10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("disabled", !ctx_r0.is_admin_role && !ctx_r0.is_internal_role)("ngModel", ctx_r0.usuario.timbrado.fecha_vigente_inicio)("matDatepicker", _r10);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("for", _r10);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](12);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("disabled", !ctx_r0.is_admin_role)("ngModel", ctx_r0.usuario.timbrado.fecha_vigente_fin)("matDatepicker", _r11);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("disabled", !ctx_r0.is_admin_role && !ctx_r0.is_internal_role)("ngModel", ctx_r0.usuario.timbrado.fecha_vigente_fin)("matDatepicker", _r11);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("for", _r11);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](17);
@@ -5336,6 +5336,7 @@ class PerfilUsuarioComponent {
             },
         ];
         this.is_admin_role = false;
+        this.is_internal_role = false;
         this.fill = (number, len) => "0".repeat(len - number.toString().length) + number.toString();
     }
     ngOnInit() {
@@ -5343,6 +5344,9 @@ class PerfilUsuarioComponent {
             let user = yield this._usuarioService.inicializarUsuario();
             if ((user === null || user === void 0 ? void 0 : user.role) == 'ADMIN_ROLE') {
                 this.is_admin_role = true;
+            }
+            if ((user === null || user === void 0 ? void 0 : user.role) == 'INTERNAL_ROLE') {
+                this.is_internal_role = true;
             }
             this.id = this.route.snapshot.paramMap.get('id');
             this.contratosActivosOptios.cliente = this.id;
@@ -47386,4 +47390,4 @@ webpackEmptyAsyncContext.id = "zn8P";
 /***/ })
 
 },[[0,"runtime","vendor"]]]);
-//# sourceMappingURL=main.02a5b5126819a747ad95.js.map
+//# sourceMappingURL=main.44b2c72207bbe6a24da4.js.map
