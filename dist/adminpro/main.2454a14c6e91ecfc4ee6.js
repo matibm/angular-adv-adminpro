@@ -9911,10 +9911,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RecibosComponent", function() { return RecibosComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
-/* harmony import */ var src_app_services_factura_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/factura.service */ "lamn");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "ofXK");
-/* harmony import */ var _facturas_facturas_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../facturas/facturas.component */ "Nq96");
-/* harmony import */ var _modal_factura_modal_factura_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../modal-factura/modal-factura.component */ "7Ya0");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sweetalert2 */ "PSD3");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var src_app_services_factura_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/factura.service */ "lamn");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var _facturas_facturas_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../facturas/facturas.component */ "Nq96");
+/* harmony import */ var _modal_factura_modal_factura_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../modal-factura/modal-factura.component */ "7Ya0");
 
 
 
@@ -9922,10 +9924,26 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+function RecibosComponent_div_2_tr_32_span_21_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "span", 14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "CANCELADO");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} }
+function RecibosComponent_div_2_tr_32_span_23_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](2, "date");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const item_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](item_r7.pagado ? _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind2"](2, 1, item_r7.fechaPagado, "dd/MM/yyyy") : "PENDIENTE");
+} }
 function RecibosComponent_div_2_tr_32_Template(rf, ctx) { if (rf & 1) {
-    const _r10 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    const _r13 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "tr", 12);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function RecibosComponent_div_2_tr_32_Template_tr_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r10); const item_r7 = ctx.$implicit; const ctx_r9 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); return ctx_r9.verCuotas(item_r7); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function RecibosComponent_div_2_tr_32_Template_tr_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r13); const item_r7 = ctx.$implicit; const ctx_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); return ctx_r12.verCuotas(item_r7); });
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n            ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "td", 10);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3);
@@ -9950,10 +9968,13 @@ function RecibosComponent_div_2_tr_32_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](18, "\n            ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](19, "td", 10);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](20);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](21, "date");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](20, "\n              ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](21, RecibosComponent_div_2_tr_32_span_21_Template, 2, 0, "span", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](22, "\n              ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](23, RecibosComponent_div_2_tr_32_span_23_Template, 3, 4, "span", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](24, "\n            ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](22, "\n          ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](25, "\n          ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const item_r7 = ctx.$implicit;
@@ -9965,11 +9986,13 @@ function RecibosComponent_div_2_tr_32_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](item_r7.pago == null ? null : item_r7.pago.numero);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind4"](13, 6, item_r7.pago == null ? null : item_r7.pago.monto, "", "", "2.0"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind4"](13, 7, item_r7.pago == null ? null : item_r7.pago.monto, "", "", "2.0"));
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind2"](17, 11, item_r7.fecha, "dd/MM/yyyy"));
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](item_r7.pagado ? _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind2"](21, 14, item_r7.fechaPagado, "dd/MM/yyyy") : "PENDIENTE");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind2"](17, 12, item_r7.fecha, "dd/MM/yyyy"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", item_r7.cancelado);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !item_r7.cancelado);
 } }
 function RecibosComponent_div_2_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 7);
@@ -10012,7 +10035,7 @@ function RecibosComponent_div_2_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](29, "\n        ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](30, "tbody");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](31, "\n\n          ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](32, RecibosComponent_div_2_tr_32_Template, 23, 17, "tr", 11);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](32, RecibosComponent_div_2_tr_32_Template, 26, 15, "tr", 11);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](33, "\n        ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](34, "\n      ");
@@ -10026,48 +10049,98 @@ function RecibosComponent_div_2_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](32);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngForOf", ctx_r0.items);
 } }
+function RecibosComponent_div_5_div_4_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 22);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n      ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "strong");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "Recibo Cancelado");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](5, "date");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r14 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" - Fecha de cancelaci\u00F3n: ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind2"](5, 1, ctx_r14.reciboSeleccionado.fecha_cancelado, "dd/MM/yyyy HH:mm"), "\n    ");
+} }
+function RecibosComponent_div_5_span_16_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](0, "span", 23);
+} }
+function RecibosComponent_div_5_button_19_span_2_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](0, "span", 23);
+} }
+function RecibosComponent_div_5_button_19_Template(rf, ctx) { if (rf & 1) {
+    const _r19 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "button", 24);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function RecibosComponent_div_5_button_19_Template_button_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r19); const ctx_r18 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); return ctx_r18.cancelarRecibo(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](2, RecibosComponent_div_5_button_19_span_2_Template, 1, 0, "span", 19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n        Cancelar Recibo\n      ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r16 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("disabled", ctx_r16.loadingCancelarRecibo);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx_r16.loadingCancelarRecibo);
+} }
 function RecibosComponent_div_5_Template(rf, ctx) { if (rf & 1) {
-    const _r12 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    const _r21 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 0);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n  ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 13);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](4, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](4, RecibosComponent_div_5_div_4_Template, 6, 4, "div", 16);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](6, "date");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](7, "br");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](8);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](9, "currency");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](10, "div", 14);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](11, "\n      ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](12, "button", 15);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function RecibosComponent_div_5_Template_button_click_12_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r12); const ctx_r11 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r11.mostrarModal(ctx_r11.reciboSeleccionado.pago == null ? null : ctx_r11.reciboSeleccionado.pago._id); });
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](13, "\n        Ver Factura\n      ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](6, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](8, "date");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](9, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](11, "currency");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](12, "div", 17);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](13, "\n      ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](14, "button", 18);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function RecibosComponent_div_5_Template_button_click_14_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r21); const ctx_r20 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r20.mostrarModal(ctx_r20.reciboSeleccionado.pago == null ? null : ctx_r20.reciboSeleccionado.pago._id); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](15, "\n        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](16, RecibosComponent_div_5_span_16_Template, 1, 0, "span", 19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](17, "\n        Ver Factura\n      ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](14, "\n      ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](15, "button", 16);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function RecibosComponent_div_5_Template_button_click_15_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r12); const ctx_r13 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r13.reciboSeleccionado = null; });
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](16, "\n        Volver\n      ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](18, "\n      ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](19, RecibosComponent_div_5_button_19_Template, 4, 2, "button", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](20, "\n      ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](21, "button", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function RecibosComponent_div_5_Template_button_click_21_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r21); const ctx_r22 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r22.reciboSeleccionado = null; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](22, "\n        Volver\n      ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](17, "\n    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](23, "\n    ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](18, "\n  ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](24, "\n  ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](19, "\n\n");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](25, "\n\n");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx_r1.reciboSeleccionado.cancelado);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate2"]("\n    Cliente: ", ctx_r1.reciboSeleccionado == null ? null : ctx_r1.reciboSeleccionado.cliente == null ? null : ctx_r1.reciboSeleccionado.cliente.NOMBRES, " ", ctx_r1.reciboSeleccionado == null ? null : ctx_r1.reciboSeleccionado.cliente == null ? null : ctx_r1.reciboSeleccionado.cliente.APELLIDOS, "\n    ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("\n    Fecha: ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind2"](6, 4, ctx_r1.reciboSeleccionado == null ? null : ctx_r1.reciboSeleccionado.fecha, "dd/MM/yyyy"), "\n    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("\n    Fecha: ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind2"](8, 9, ctx_r1.reciboSeleccionado == null ? null : ctx_r1.reciboSeleccionado.fecha, "dd/MM/yyyy"), "\n    ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("\n    Monto: ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind4"](9, 7, ctx_r1.reciboSeleccionado == null ? null : ctx_r1.reciboSeleccionado.pago == null ? null : ctx_r1.reciboSeleccionado.pago.monto, "", "", "2.0"), "\n\n    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("\n    Monto: ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind4"](11, 12, ctx_r1.reciboSeleccionado == null ? null : ctx_r1.reciboSeleccionado.pago == null ? null : ctx_r1.reciboSeleccionado.pago.monto, "", "", "2.0"), "\n\n    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("disabled", ctx_r1.loadingMostrarModal);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx_r1.loadingMostrarModal);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !ctx_r1.reciboSeleccionado.cancelado);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("disabled", ctx_r1.loadingCancelarRecibo || ctx_r1.loadingMostrarModal);
 } }
 function RecibosComponent_div_7_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n  ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](2, "app-facturas", 17);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](2, "app-facturas", 25);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } if (rf & 2) {
@@ -10076,11 +10149,11 @@ function RecibosComponent_div_7_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("options", ctx_r2.facturasOptions)("total", ctx_r2.montoTotal)("facturas", ctx_r2.facturas);
 } }
 function RecibosComponent_div_9_Template(rf, ctx) { if (rf & 1) {
-    const _r15 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 18);
+    const _r24 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 26);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n  ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "app-modal-factura", 19);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("onClose", function RecibosComponent_div_9_Template_app_modal_factura_onClose_2_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r15); const ctx_r14 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r14.facturapdf = null; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "app-modal-factura", 27);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("onClose", function RecibosComponent_div_9_Template_app_modal_factura_onClose_2_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r24); const ctx_r23 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r23.facturapdf = null; });
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
@@ -10089,180 +10162,524 @@ function RecibosComponent_div_9_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("facturaPDF", ctx_r3.facturapdf);
 } }
+function RecibosComponent_div_11_span_14_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](0, "span", 23);
+} }
 function RecibosComponent_div_11_Template(rf, ctx) { if (rf & 1) {
-    const _r18 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 20);
+    const _r28 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 28);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n  ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 0);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n    ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "div", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "div", 29);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5, "\n      ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](6, "label", 22);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](6, "label", 30);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](7, "Pagar");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](8, "\n      ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](9, "input", 23, 24);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](9, "input", 31, 32);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](11, "\n      ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](12, "button", 25);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function RecibosComponent_div_11_Template_button_click_12_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r18); const _r16 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵreference"](10); const ctx_r17 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r17.pagarRecibo(_r16.value); });
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](13, "\n        Confirmar\n      ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](12, "button", 33);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function RecibosComponent_div_11_Template_button_click_12_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r28); const _r25 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵreference"](10); const ctx_r27 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r27.pagarRecibo(_r25.value); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](13, "\n        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](14, RecibosComponent_div_11_span_14_Template, 1, 0, "span", 19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](15, "\n        Confirmar\n      ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](14, "\n\n    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](16, "\n\n    ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](15, "\n\n  ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](17, "\n\n  ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](16, "\n");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-} }
-function RecibosComponent_div_13_div_9_tr_46_div_7_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](2, "currency");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](18, "\n");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const factura_r22 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit;
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind4"](2, 1, factura_r22.nro_contrato, "", "", "2.0"));
+    const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](9);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("disabled", ctx_r4.loadingPagarRecibo);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("disabled", ctx_r4.loadingPagarRecibo);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx_r4.loadingPagarRecibo);
 } }
-function RecibosComponent_div_13_div_9_tr_46_div_9_Template(rf, ctx) { if (rf & 1) {
+function RecibosComponent_div_13_button_11_span_2_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](0, "span", 23);
+} }
+function RecibosComponent_div_13_button_11_span_4_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](0, "span", 42);
+} }
+function RecibosComponent_div_13_button_11_Template(rf, ctx) { if (rf & 1) {
+    const _r34 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "button", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function RecibosComponent_div_13_button_11_Template_button_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r34); const ctx_r33 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); return ctx_r33.cancelarRecibosPagadosSeleccionados(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n          ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](2, RecibosComponent_div_13_button_11_span_2_Template, 1, 0, "span", 19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n          ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](4, RecibosComponent_div_13_button_11_span_4_Template, 1, 0, "span", 41);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r29 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("disabled", ctx_r29.loadingCancelarMultiples);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx_r29.loadingCancelarMultiples);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !ctx_r29.loadingCancelarMultiples);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" Cancelar Seleccionados (", ctx_r29.recibosPagadosSeleccionados.size, ")\n        ");
+} }
+function RecibosComponent_div_13_div_14_div_2_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 59);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n          ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "strong");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "Cancelado");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](5, "date");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const reciboPagado_r35 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" - Fecha: ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind2"](5, 1, reciboPagado_r35.fecha_cancelado, "dd/MM/yyyy HH:mm"), "\n        ");
+} }
+function RecibosComponent_div_13_div_14_input_8_Template(rf, ctx) { if (rf & 1) {
+    const _r50 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "input", 60);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("change", function RecibosComponent_div_13_div_14_input_8_Template_input_change_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r50); const reciboPagado_r35 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit; const ctx_r48 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); return ctx_r48.toggleReciboPagadoSeleccionado(reciboPagado_r35); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const reciboPagado_r35 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit;
+    const ctx_r37 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("checked", ctx_r37.estaSeleccionado(reciboPagado_r35));
+} }
+function RecibosComponent_div_13_div_14_div_29_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 61);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n                Seleccionado\n              ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} }
+function RecibosComponent_div_13_div_14_button_35_Template(rf, ctx) { if (rf & 1) {
+    const _r54 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "button", 62);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function RecibosComponent_div_13_div_14_button_35_Template_button_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r54); const reciboPagado_r35 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit; const ctx_r52 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); return ctx_r52.printRecibo(reciboPagado_r35); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](2, "span", 63);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} }
+function RecibosComponent_div_13_div_14_button_37_span_2_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](0, "span", 23);
+} }
+function RecibosComponent_div_13_div_14_button_37_span_4_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](0, "span", 42);
+} }
+function RecibosComponent_div_13_div_14_button_37_Template(rf, ctx) { if (rf & 1) {
+    const _r59 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "button", 64);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function RecibosComponent_div_13_div_14_button_37_Template_button_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r59); const reciboPagado_r35 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit; const ctx_r57 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); return ctx_r57.cancelarReciboPagado(reciboPagado_r35); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](2, RecibosComponent_div_13_div_14_button_37_span_2_Template, 1, 0, "span", 19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](4, RecibosComponent_div_13_div_14_button_37_span_4_Template, 1, 0, "span", 41);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5, " Cancelar\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const reciboPagado_r35 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit;
+    const ctx_r40 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("disabled", ctx_r40.isLoadingCancelarReciboPagado(reciboPagado_r35));
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx_r40.isLoadingCancelarReciboPagado(reciboPagado_r35));
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !ctx_r40.isLoadingCancelarReciboPagado(reciboPagado_r35));
+} }
+function RecibosComponent_div_13_div_14_div_41_span_4_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](0, "span", 23);
+} }
+function RecibosComponent_div_13_div_14_div_41_span_6_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](0, "span", 42);
+} }
+function RecibosComponent_div_13_div_14_div_41_Template(rf, ctx) { if (rf & 1) {
+    const _r65 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 65);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n          ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "button", 66);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function RecibosComponent_div_13_div_14_div_41_Template_button_click_2_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r65); const reciboPagado_r35 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit; const ctx_r63 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); return ctx_r63.cancelarFacturasSeleccionadas(reciboPagado_r35); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](4, RecibosComponent_div_13_div_14_div_41_span_4_Template, 1, 0, "span", 19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5, "\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](6, RecibosComponent_div_13_div_14_div_41_span_6_Template, 1, 0, "span", 41);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](8, "\n        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const reciboPagado_r35 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit;
+    const ctx_r41 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("disabled", ctx_r41.isLoadingCancelarFacturas(reciboPagado_r35));
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx_r41.isLoadingCancelarFacturas(reciboPagado_r35));
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !ctx_r41.isLoadingCancelarFacturas(reciboPagado_r35));
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("\n            Cancelar Facturas Seleccionadas (", ctx_r41.getFacturasSeleccionadasCount(reciboPagado_r35), ")\n          ");
+} }
+function RecibosComponent_div_13_div_14_input_51_Template(rf, ctx) { if (rf & 1) {
+    const _r69 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "input", 67);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function RecibosComponent_div_13_div_14_input_51_Template_input_click_0_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r69); const reciboPagado_r35 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit; const ctx_r67 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); return ctx_r67.toggleTodasLasFacturas(reciboPagado_r35, $event); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const reciboPagado_r35 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit;
+    const ctx_r42 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("checked", ctx_r42.getFacturasSeleccionadasCount(reciboPagado_r35) === reciboPagado_r35.facturas.length && reciboPagado_r35.facturas.length > 0);
+} }
+function RecibosComponent_div_13_div_14_span_65_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](0, "span", 68);
+} }
+function RecibosComponent_div_13_div_14_span_67_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](0, "span", 69);
+} }
+function RecibosComponent_div_13_div_14_span_69_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](0, "span", 70);
+} }
+function RecibosComponent_div_13_div_14_tr_82_input_4_Template(rf, ctx) { if (rf & 1) {
+    const _r85 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "input", 74);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function RecibosComponent_div_13_div_14_tr_82_input_4_Template_input_click_0_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r85); const factura_r71 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit; const reciboPagado_r35 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit; const ctx_r83 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); ctx_r83.toggleFacturaSeleccionada(reciboPagado_r35, factura_r71, $event); return $event.stopPropagation(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const factura_r71 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit;
+    const reciboPagado_r35 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit;
+    const ctx_r73 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("checked", ctx_r73.estaFacturaSeleccionada(reciboPagado_r35, factura_r71));
+} }
+function RecibosComponent_div_13_div_14_tr_82_div_12_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const factura_r71 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate3"]("\n                  ", factura_r71.numero_talonario || "", "", factura_r71.numero_talonario && factura_r71.numero_factura ? "-" : "", "", factura_r71.numero_factura || "", "\n                ");
+} }
+function RecibosComponent_div_13_div_14_tr_82_div_14_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "---");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } }
-function RecibosComponent_div_13_div_9_tr_46_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "tr", 33);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n              ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "td", 34);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](4, "\n              ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](5, "td", 10);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](6, "\n                ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](7, RecibosComponent_div_13_div_9_tr_46_div_7_Template, 3, 6, "div", 3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](8, "\n                ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](9, RecibosComponent_div_13_div_9_tr_46_div_9_Template, 2, 0, "div", 3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](10, "\n              ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](11, "\n              ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](12, "td", 10);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](13);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](14, "currency");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](15, "\n            ");
+function RecibosComponent_div_13_div_14_tr_82_span_19_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const factura_r22 = ctx.$implicit;
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](factura_r22.nro_factura);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", factura_r22.nro_contrato);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !factura_r22.nro_contrato);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind4"](14, 4, factura_r22.haber, "", "", "2.0"), " Gs");
+    const factura_r71 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](factura_r71.nro_contrato);
 } }
-function RecibosComponent_div_13_div_9_Template(rf, ctx) { if (rf & 1) {
-    const _r28 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n        ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 29);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n          ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "div");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5, "\n            ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](6, "div");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](7);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](8, "currency");
+function RecibosComponent_div_13_div_14_tr_82_span_21_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "---");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} }
+function RecibosComponent_div_13_div_14_tr_82_span_26_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](2, "date");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const factura_r71 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind2"](2, 1, factura_r71.vencimiento, "dd/MM/yyyy"));
+} }
+function RecibosComponent_div_13_div_14_tr_82_span_28_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "---");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} }
+function RecibosComponent_div_13_div_14_tr_82_span_33_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](2, "date");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const factura_r71 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit;
+    const ctx_r80 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind2"](2, 1, ctx_r80.getFechaLocal(factura_r71.fecha_pagado_unix), "dd/MM/yyyy HH:mm"));
+} }
+function RecibosComponent_div_13_div_14_tr_82_span_35_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](2, "date");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const factura_r71 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit;
+    const ctx_r81 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind2"](2, 1, ctx_r81.getFechaLocal(factura_r71.fecha_de_pago), "dd/MM/yyyy HH:mm"));
+} }
+function RecibosComponent_div_13_div_14_tr_82_span_37_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "---");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} }
+function RecibosComponent_div_13_div_14_tr_82_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "tr", 71);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n              ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "td", 52);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](4, RecibosComponent_div_13_div_14_tr_82_input_4_Template, 1, 1, "input", 72);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5, "\n              ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](6, "\n              ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](7, "td", 73);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](9, "\n              ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](10, "td", 10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](11, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](12, RecibosComponent_div_13_div_14_tr_82_div_12_Template, 2, 3, "div", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](13, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](14, RecibosComponent_div_13_div_14_tr_82_div_14_Template, 2, 0, "div", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](15, "\n              ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](16, "\n              ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](17, "td", 10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](18, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](19, RecibosComponent_div_13_div_14_tr_82_span_19_Template, 2, 1, "span", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](20, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](21, RecibosComponent_div_13_div_14_tr_82_span_21_Template, 2, 0, "span", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](22, "\n              ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](23, "\n              ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](24, "td", 10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](25, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](26, RecibosComponent_div_13_div_14_tr_82_span_26_Template, 3, 4, "span", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](27, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](28, RecibosComponent_div_13_div_14_tr_82_span_28_Template, 2, 0, "span", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](29, "\n              ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](30, "\n              ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](31, "td", 10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](32, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](33, RecibosComponent_div_13_div_14_tr_82_span_33_Template, 3, 4, "span", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](34, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](35, RecibosComponent_div_13_div_14_tr_82_span_35_Template, 3, 4, "span", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](36, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](37, RecibosComponent_div_13_div_14_tr_82_span_37_Template, 2, 0, "span", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](38, "\n              ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](39, "\n              ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](40, "td", 10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](41);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](42, "currency");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](43, "\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const factura_r71 = ctx.$implicit;
+    const i_r72 = ctx.index;
+    const reciboPagado_r35 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit;
+    const ctx_r46 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵclassProp"]("bg-light", ctx_r46.estaFacturaSeleccionada(reciboPagado_r35, factura_r71) && !reciboPagado_r35.cancelado)("border", ctx_r46.estaFacturaSeleccionada(reciboPagado_r35, factura_r71) && !reciboPagado_r35.cancelado)("border-primary", ctx_r46.estaFacturaSeleccionada(reciboPagado_r35, factura_r71) && !reciboPagado_r35.cancelado);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !reciboPagado_r35.cancelado);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](i_r72 + 1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", factura_r71.numero_factura || factura_r71.numero_talonario);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !factura_r71.numero_factura && !factura_r71.numero_talonario);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", factura_r71.nro_contrato);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !factura_r71.nro_contrato);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", factura_r71.vencimiento);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !factura_r71.vencimiento);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", factura_r71.fecha_pagado_unix);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !factura_r71.fecha_pagado_unix && factura_r71.fecha_de_pago);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !factura_r71.fecha_pagado_unix && !factura_r71.fecha_de_pago);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind4"](42, 18, factura_r71.haber, "", "", "2.0"), " Gs");
+} }
+function RecibosComponent_div_13_div_14_Template(rf, ctx) { if (rf & 1) {
+    const _r96 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 43);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](2, RecibosComponent_div_13_div_14_div_2_Template, 6, 4, "div", 44);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "div", 45);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5, "\n          ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](6, "div", 46);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](7, "\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](8, RecibosComponent_div_13_div_14_input_8_Template, 1, 1, "input", 47);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](9, "\n            ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](10, "div");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](11);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](12, "date");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](11, "\n              ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](12, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](13, "strong");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](14, "Monto:");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](13, "\n            ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](14, "div");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](16, "currency");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](16, "\n          ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](17, "\n\n          ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](17, "\n              ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](18, "div");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](19, "\n            ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](20, "button", 30);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function RecibosComponent_div_13_div_9_Template_button_click_20_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r28); const reciboPagado_r20 = ctx.$implicit; const ctx_r27 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); return ctx_r27.printRecibo(reciboPagado_r20); });
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](21, "\n            ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](22, "span", 31);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](23, "\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](19, "strong");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](20, "Fecha:");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](24, "\n\n          ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](22, "date");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](25, "\n\n        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](23, "\n              ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](24, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](25, "strong");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](26, "Nro recibo:");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](26, "\n        ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](27, "table", 9);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](28, "\n          ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](29, "thead");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](27);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](28, "\n              ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](29, RecibosComponent_div_13_div_14_div_29_Template, 2, 0, "div", 48);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](30, "\n            ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](31, "tr");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](32, "\n              ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](33, "th", 10);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](34, "#");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](35, "\n              ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](36, "th", 10);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](37, "Nro Factura");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](31, "\n          ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](38, "\n              ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](39, "th", 10);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](40, "Monto");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](32, "\n\n          ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](33, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](34, "\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](35, RecibosComponent_div_13_div_14_button_35_Template, 4, 0, "button", 49);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](36, "\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](37, RecibosComponent_div_13_div_14_button_37_Template, 6, 3, "button", 50);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](38, "\n\n          ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](41, "\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](39, "\n\n        ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](42, "\n          ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](40, "\n        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](41, RecibosComponent_div_13_div_14_div_41_Template, 9, 4, "div", 51);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](42, "\n        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](43, "table", 9);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](44, "\n          ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](45, "thead");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](46, "\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](47, "tr");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](48, "\n              ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](49, "th", 52);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](50, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](51, RecibosComponent_div_13_div_14_input_51_Template, 1, 1, "input", 53);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](52, "\n              ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](43, "\n          ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](44, "tbody");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](45, "\n\n            ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](46, RecibosComponent_div_13_div_9_tr_46_Template, 16, 9, "tr", 32);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](47, "\n          ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](53, "\n              ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](54, "th", 10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](55, "#");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](48, "\n        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](56, "\n              ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](57, "th", 10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](58, "Nro Factura");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](49, "\n\n        ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](50, "hr");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](51, "\n      ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](59, "\n              ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](60, "th", 10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](61, "Nro Contrato");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](62, "\n              ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](63, "th", 54);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function RecibosComponent_div_13_div_14_Template_th_click_63_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r96); const reciboPagado_r35 = ctx.$implicit; const ctx_r95 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); return ctx_r95.toggleOrdenVencimiento(reciboPagado_r35); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](64, "\n                Vencimiento\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](65, RecibosComponent_div_13_div_14_span_65_Template, 1, 0, "span", 55);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](66, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](67, RecibosComponent_div_13_div_14_span_67_Template, 1, 0, "span", 56);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](68, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](69, RecibosComponent_div_13_div_14_span_69_Template, 1, 0, "span", 57);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](70, "\n              ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](71, "\n              ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](72, "th", 10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](73, "Fecha de Pago");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](74, "\n              ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](75, "th", 10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](76, "Monto");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](77, "\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](78, "\n          ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](79, "\n          ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](80, "tbody");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](81, "\n\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](82, RecibosComponent_div_13_div_14_tr_82_Template, 44, 23, "tr", 58);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](83, "\n          ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](84, "\n        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](85, "\n\n        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](86, "hr");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](87, "\n      ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const reciboPagado_r20 = ctx.$implicit;
+    const reciboPagado_r35 = ctx.$implicit;
+    const ctx_r30 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵclassProp"]("border", ctx_r30.estaSeleccionado(reciboPagado_r35) && !reciboPagado_r35.cancelado)("border-primary", ctx_r30.estaSeleccionado(reciboPagado_r35) && !reciboPagado_r35.cancelado)("bg-light", ctx_r30.estaSeleccionado(reciboPagado_r35) && !reciboPagado_r35.cancelado)("p-2", ctx_r30.estaSeleccionado(reciboPagado_r35) && !reciboPagado_r35.cancelado)("rounded", ctx_r30.estaSeleccionado(reciboPagado_r35) && !reciboPagado_r35.cancelado);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", reciboPagado_r35.cancelado);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !reciboPagado_r35.cancelado);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](7);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("Monto: ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind4"](8, 4, reciboPagado_r20 == null ? null : reciboPagado_r20.monto, "", "", "2.0"), "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind4"](16, 24, reciboPagado_r35 == null ? null : reciboPagado_r35.monto, "", "", "2.0"), "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind2"](22, 29, reciboPagado_r35 == null ? null : reciboPagado_r35.fecha, "dd/MM/yyyy"), "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", reciboPagado_r35 == null ? null : reciboPagado_r35.nro_recibo, "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx_r30.estaSeleccionado(reciboPagado_r35) && !reciboPagado_r35.cancelado);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !reciboPagado_r35.cancelado);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !reciboPagado_r35.cancelado);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("Fecha: ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](12, 9, reciboPagado_r20 == null ? null : reciboPagado_r20.fecha), "");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("Nro recibo: ", reciboPagado_r20 == null ? null : reciboPagado_r20.nro_recibo, "");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](31);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngForOf", reciboPagado_r20.facturas);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx_r30.getFacturasSeleccionadasCount(reciboPagado_r35) > 0 && !reciboPagado_r35.cancelado);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !reciboPagado_r35.cancelado && reciboPagado_r35.facturas.length > 0);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx_r30.getOrdenVencimiento(reciboPagado_r35) === "asc");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx_r30.getOrdenVencimiento(reciboPagado_r35) === "desc");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !ctx_r30.getOrdenVencimiento(reciboPagado_r35));
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngForOf", ctx_r30.getFacturasOrdenadas(reciboPagado_r35));
 } }
 function RecibosComponent_div_13_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 26);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 34);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n  ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 0);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n    ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "div", 27);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "div", 35);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5, "\n      ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](6, "label", 22);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](7, "Pagados");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](6, "div", 36);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](7, "\n        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](8, "label", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](9, "Pagados");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](8, "\n      ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](9, RecibosComponent_div_13_div_9_Template, 52, 11, "div", 28);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](10, "\n\n    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](10, "\n        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](11, RecibosComponent_div_13_button_11_Template, 6, 4, "button", 38);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](12, "\n      ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](11, "\n\n\n  ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](13, "\n      ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](14, RecibosComponent_div_13_div_14_Template, 88, 32, "div", 39);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](15, "\n\n    ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](12, "\n");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](16, "\n\n\n  ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](17, "\n");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const ctx_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](9);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](11);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx_r5.recibosPagadosSeleccionados.size > 0);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngForOf", ctx_r5.recibosPagados);
 } }
 class RecibosComponent {
@@ -10271,6 +10688,16 @@ class RecibosComponent {
         this.items = [];
         this.facturas = [];
         this.recibosPagados = [];
+        this.recibosPagadosSeleccionados = new Set(); // IDs de recibos pagados seleccionados
+        this.facturasSeleccionadas = {}; // Mapa de recibo_pagado_id -> Set de factura_ids seleccionadas
+        this.loadingCancelarFacturas = {}; // Estados de carga por recibo pagado
+        this.ordenVencimiento = {}; // Ordenamiento por vencimiento por recibo pagado
+        // Estados de carga
+        this.loadingCancelarRecibo = false;
+        this.loadingPagarRecibo = false;
+        this.loadingCancelarReciboPagado = {}; // Mapa de IDs de recibos pagados a su estado de carga
+        this.loadingCancelarMultiples = false;
+        this.loadingMostrarModal = false;
     }
     ngOnInit() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
@@ -10297,47 +10724,67 @@ class RecibosComponent {
     }
     mostrarModal(id) {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-            const resp = yield this.recibosService.getDetallePago(id);
-            console.log(resp);
-            const pago = resp.pago;
-            const facturas = resp.facturas;
-            const servicios = [];
-            for (let i = 0; i < facturas.length; i++) {
-                const factura = facturas[i];
-                servicios.push({
-                    cantidad: 1,
-                    concepto: factura.servicio.NOMBRE,
-                    precioUnitario: factura.haber,
-                    cincoPorciento: null,
-                    diezPorciento: factura.haber / 11
-                });
+            this.loadingMostrarModal = true;
+            try {
+                const resp = yield this.recibosService.getDetallePago(id);
+                console.log(resp);
+                const pago = resp.pago;
+                const facturas = resp.facturas;
+                const servicios = [];
+                for (let i = 0; i < facturas.length; i++) {
+                    const factura = facturas[i];
+                    servicios.push({
+                        cantidad: 1,
+                        concepto: factura.servicio.NOMBRE,
+                        precioUnitario: factura.haber,
+                        cincoPorciento: null,
+                        diezPorciento: factura.haber / 11
+                    });
+                }
+                this.facturapdf = {
+                    _id: pago._id,
+                    comentario: pago.comentario,
+                    activo: pago.activo,
+                    nombres: `${pago.cliente.NOMBRES} ${pago.cliente.APELLIDOS}`,
+                    fecha: pago.fecha_creacion,
+                    direccion: `direccion de prueba`,
+                    ruc: pago.cliente.RUC,
+                    tel: pago.cliente.TELEFONO1,
+                    notaDeRemision: '123123',
+                    servicios,
+                    nro_talonario: 'tukii',
+                    nro_factura: 'tuki'
+                };
+                console.log(this.facturapdf);
             }
-            this.facturapdf = {
-                _id: pago._id,
-                comentario: pago.comentario,
-                activo: pago.activo,
-                nombres: `${pago.cliente.NOMBRES} ${pago.cliente.APELLIDOS}`,
-                fecha: pago.fecha_creacion,
-                direccion: `direccion de prueba`,
-                ruc: pago.cliente.RUC,
-                tel: pago.cliente.TELEFONO1,
-                notaDeRemision: '123123',
-                servicios,
-                nro_talonario: 'tukii',
-                nro_factura: 'tuki'
-            };
-            console.log(this.facturapdf);
+            catch (error) {
+                console.error('Error al cargar detalle de pago:', error);
+            }
+            finally {
+                this.loadingMostrarModal = false;
+            }
         });
     }
     pagarRecibo(monto) {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-            console.log(this.reciboSeleccionado);
-            yield this.recibosService.pagarRecibo({
-                pago: this.reciboSeleccionado.pago._id,
-                monto: Number(monto),
-                recibo: this.reciboSeleccionado._id
-            });
-            this.verCuotas(this.reciboSeleccionado);
+            if (this.loadingPagarRecibo)
+                return;
+            this.loadingPagarRecibo = true;
+            try {
+                console.log(this.reciboSeleccionado);
+                yield this.recibosService.pagarRecibo({
+                    pago: this.reciboSeleccionado.pago._id,
+                    monto: Number(monto),
+                    recibo: this.reciboSeleccionado._id
+                });
+                yield this.verCuotas(this.reciboSeleccionado);
+            }
+            catch (error) {
+                console.error('Error al pagar recibo:', error);
+            }
+            finally {
+                this.loadingPagarRecibo = false;
+            }
         });
     }
     getRecibosPagados() {
@@ -10353,24 +10800,346 @@ class RecibosComponent {
         localStorage.setItem('recibo-cliente', JSON.stringify(this.reciboSeleccionado.cliente));
         const wopen = window.open('/recibo-pdf');
     }
+    cancelarReciboPagado(reciboPagado) {
+        var _a;
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            if (!reciboPagado._id || this.loadingCancelarReciboPagado[reciboPagado._id])
+                return;
+            // Confirmación con SweetAlert2
+            const result = yield sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire({
+                icon: 'warning',
+                title: '¿Cancelar recibo pagado?',
+                html: `
+        <div class="text-start">
+          <p><strong>Nro Recibo:</strong> ${reciboPagado.nro_recibo}</p>
+          <p><strong>Monto:</strong> ${(_a = reciboPagado.monto) === null || _a === void 0 ? void 0 : _a.toLocaleString('es-PY')} Gs</p>
+          <p><strong>Fecha:</strong> ${new Date(reciboPagado.fecha).toLocaleDateString('es-PY')}</p>
+          <p class="mt-2"><strong>Esta acción revertirá el pago de las cuotas asociadas.</strong></p>
+        </div>
+      `,
+                showCancelButton: true,
+                confirmButtonText: 'Sí, cancelar',
+                cancelButtonText: 'No, mantener',
+                confirmButtonColor: '#dc3545',
+                cancelButtonColor: '#6c757d',
+            });
+            if (!result.isConfirmed) {
+                return;
+            }
+            this.loadingCancelarReciboPagado[reciboPagado._id] = true;
+            try {
+                yield this.recibosService.cancelarReciboPagado(reciboPagado._id);
+                // Recargar los recibos pagados después de cancelar
+                yield this.getRecibosPagados();
+                // Recargar las facturas también
+                yield this.verCuotas(this.reciboSeleccionado);
+            }
+            catch (error) {
+                console.error('Error al cancelar recibo pagado:', error);
+            }
+            finally {
+                this.loadingCancelarReciboPagado[reciboPagado._id] = false;
+            }
+        });
+    }
+    toggleReciboPagadoSeleccionado(reciboPagado) {
+        if (reciboPagado.cancelado)
+            return; // No permitir seleccionar cancelados
+        const id = reciboPagado._id;
+        if (this.recibosPagadosSeleccionados.has(id)) {
+            this.recibosPagadosSeleccionados.delete(id);
+        }
+        else {
+            this.recibosPagadosSeleccionados.add(id);
+        }
+    }
+    estaSeleccionado(reciboPagado) {
+        return this.recibosPagadosSeleccionados.has(reciboPagado._id);
+    }
+    cancelarRecibosPagadosSeleccionados() {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            if (this.recibosPagadosSeleccionados.size === 0 || this.loadingCancelarMultiples)
+                return;
+            // Obtener los recibos pagados seleccionados para mostrar detalles
+            const recibosSeleccionados = this.recibosPagados.filter(rp => this.recibosPagadosSeleccionados.has(rp._id));
+            // Calcular monto total
+            const montoTotal = recibosSeleccionados.reduce((sum, rp) => sum + (rp.monto || 0), 0);
+            // Confirmación con SweetAlert2
+            const result = yield sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire({
+                icon: 'warning',
+                title: '¿Cancelar recibos pagados seleccionados?',
+                html: `
+        <div class="text-start">
+          <p><strong>Cantidad:</strong> ${recibosSeleccionados.length} recibo(s) pagado(s)</p>
+          <p><strong>Monto total:</strong> ${montoTotal.toLocaleString('es-PY')} Gs</p>
+          <p class="mt-2"><strong>Esta acción revertirá el pago de todas las facturas asociadas a los recibos seleccionados.</strong></p>
+          <div class="mt-3">
+            <strong>Recibos a cancelar:</strong>
+            <ul class="text-start mt-2">
+              ${recibosSeleccionados.map(rp => `<li>Nro ${rp.nro_recibo} - ${(rp.monto || 0).toLocaleString('es-PY')} Gs</li>`).join('')}
+            </ul>
+          </div>
+        </div>
+      `,
+                showCancelButton: true,
+                confirmButtonText: 'Sí, cancelar todos',
+                cancelButtonText: 'No, mantener',
+                confirmButtonColor: '#dc3545',
+                cancelButtonColor: '#6c757d',
+            });
+            if (!result.isConfirmed) {
+                return;
+            }
+            this.loadingCancelarMultiples = true;
+            const ids = Array.from(this.recibosPagadosSeleccionados);
+            try {
+                if (ids.length === 1) {
+                    // Si es solo uno, usar el método individual
+                    yield this.recibosService.cancelarReciboPagado(ids[0]);
+                }
+                else {
+                    // Si son múltiples, usar el método de múltiples
+                    yield this.recibosService.cancelarReciboPagados(ids);
+                }
+                // Limpiar selección
+                this.recibosPagadosSeleccionados.clear();
+                // Recargar los recibos pagados después de cancelar
+                yield this.getRecibosPagados();
+                // Recargar las facturas también
+                yield this.verCuotas(this.reciboSeleccionado);
+            }
+            catch (error) {
+                console.error('Error al cancelar recibos pagados:', error);
+            }
+            finally {
+                this.loadingCancelarMultiples = false;
+            }
+        });
+    }
+    cancelarRecibo() {
+        var _a, _b, _c, _d;
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            if (!((_a = this.reciboSeleccionado) === null || _a === void 0 ? void 0 : _a._id) || this.loadingCancelarRecibo)
+                return;
+            // Confirmación con SweetAlert2
+            const result = yield sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire({
+                icon: 'warning',
+                title: '¿Cancelar recibo?',
+                html: `
+        <div class="text-start">
+          <p><strong>Cliente:</strong> ${(_b = this.reciboSeleccionado.cliente) === null || _b === void 0 ? void 0 : _b.NOMBRES} ${(_c = this.reciboSeleccionado.cliente) === null || _c === void 0 ? void 0 : _c.APELLIDOS}</p>
+          <p><strong>Monto:</strong> ${(((_d = this.reciboSeleccionado.pago) === null || _d === void 0 ? void 0 : _d.monto) || 0).toLocaleString('es-PY')} Gs</p>
+          <p><strong>Fecha:</strong> ${new Date(this.reciboSeleccionado.fecha).toLocaleDateString('es-PY')}</p>
+          <p class="mt-2 text-danger"><strong>⚠️ Solo puedes cancelar un recibo si no tiene recibos pagados asociados.</strong></p>
+        </div>
+      `,
+                showCancelButton: true,
+                confirmButtonText: 'Sí, cancelar',
+                cancelButtonText: 'No, mantener',
+                confirmButtonColor: '#dc3545',
+                cancelButtonColor: '#6c757d',
+            });
+            if (!result.isConfirmed) {
+                return;
+            }
+            this.loadingCancelarRecibo = true;
+            try {
+                yield this.recibosService.cancelarRecibo(this.reciboSeleccionado._id);
+                // Volver a la lista de recibos
+                this.reciboSeleccionado = null;
+                // Recargar la lista de recibos
+                yield this.ngOnInit();
+            }
+            catch (error) {
+                console.error('Error al cancelar recibo:', error);
+            }
+            finally {
+                this.loadingCancelarRecibo = false;
+            }
+        });
+    }
+    isLoadingCancelarReciboPagado(reciboPagado) {
+        return this.loadingCancelarReciboPagado[reciboPagado._id] || false;
+    }
+    toggleFacturaSeleccionada(reciboPagado, factura, event) {
+        if (reciboPagado.cancelado || factura.pagado === false) {
+            if (event)
+                event.preventDefault();
+            return;
+        }
+        const reciboId = reciboPagado._id;
+        if (!this.facturasSeleccionadas[reciboId]) {
+            this.facturasSeleccionadas[reciboId] = new Set();
+        }
+        const facturaId = factura._id;
+        if (this.facturasSeleccionadas[reciboId].has(facturaId)) {
+            this.facturasSeleccionadas[reciboId].delete(facturaId);
+        }
+        else {
+            this.facturasSeleccionadas[reciboId].add(facturaId);
+        }
+    }
+    estaFacturaSeleccionada(reciboPagado, factura) {
+        const reciboId = reciboPagado._id;
+        if (!this.facturasSeleccionadas[reciboId]) {
+            return false;
+        }
+        return this.facturasSeleccionadas[reciboId].has(factura._id);
+    }
+    getFacturasSeleccionadasCount(reciboPagado) {
+        const reciboId = reciboPagado._id;
+        if (!this.facturasSeleccionadas[reciboId]) {
+            return 0;
+        }
+        return this.facturasSeleccionadas[reciboId].size;
+    }
+    cancelarFacturasSeleccionadas(reciboPagado) {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            const reciboId = reciboPagado._id;
+            if (!this.facturasSeleccionadas[reciboId] || this.facturasSeleccionadas[reciboId].size === 0) {
+                return;
+            }
+            if (this.loadingCancelarFacturas[reciboId])
+                return;
+            const facturasIds = Array.from(this.facturasSeleccionadas[reciboId]);
+            const facturas = reciboPagado.facturas.filter((f) => facturasIds.includes(f._id));
+            const montoTotal = facturas.reduce((sum, f) => sum + (f.haber || 0), 0);
+            // Confirmación con SweetAlert2
+            const result = yield sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire({
+                icon: 'warning',
+                title: '¿Cancelar facturas seleccionadas?',
+                html: `
+        <div class="text-start">
+          <p><strong>Cantidad:</strong> ${facturas.length} factura(s)</p>
+          <p><strong>Monto total:</strong> ${montoTotal.toLocaleString('es-PY')} Gs</p>
+          <p class="mt-2"><strong>Esta acción revertirá el pago de las facturas seleccionadas.</strong></p>
+          <div class="mt-3">
+            <strong>Facturas a cancelar:</strong>
+            <ul class="text-start mt-2">
+              ${facturas.map((f) => `<li>${(f.numero_talonario || '') + (f.numero_talonario && f.numero_factura ? '-' : '') + (f.numero_factura || '---')} - ${(f.haber || 0).toLocaleString('es-PY')} Gs</li>`).join('')}
+            </ul>
+          </div>
+        </div>
+      `,
+                showCancelButton: true,
+                confirmButtonText: 'Sí, cancelar facturas',
+                cancelButtonText: 'No, mantener',
+                confirmButtonColor: '#dc3545',
+                cancelButtonColor: '#6c757d',
+            });
+            if (!result.isConfirmed) {
+                return;
+            }
+            this.loadingCancelarFacturas[reciboId] = true;
+            try {
+                yield this.recibosService.cancelarFacturasReciboPagado(reciboId, facturasIds);
+                // Limpiar selección
+                this.facturasSeleccionadas[reciboId] = new Set();
+                // Recargar los recibos pagados después de cancelar
+                yield this.getRecibosPagados();
+                // Recargar las facturas también
+                yield this.verCuotas(this.reciboSeleccionado);
+            }
+            catch (error) {
+                console.error('Error al cancelar facturas:', error);
+            }
+            finally {
+                this.loadingCancelarFacturas[reciboId] = false;
+            }
+        });
+    }
+    isLoadingCancelarFacturas(reciboPagado) {
+        return this.loadingCancelarFacturas[reciboPagado._id] || false;
+    }
+    toggleTodasLasFacturas(reciboPagado, event) {
+        if (reciboPagado.cancelado) {
+            if (event)
+                event.preventDefault();
+            return;
+        }
+        const reciboId = reciboPagado._id;
+        if (!this.facturasSeleccionadas[reciboId]) {
+            this.facturasSeleccionadas[reciboId] = new Set();
+        }
+        const todasSeleccionadas = this.getFacturasSeleccionadasCount(reciboPagado) === reciboPagado.facturas.length;
+        if (todasSeleccionadas) {
+            // Deseleccionar todas
+            this.facturasSeleccionadas[reciboId].clear();
+        }
+        else {
+            // Seleccionar todas
+            reciboPagado.facturas.forEach((factura) => {
+                if (factura.pagado !== false) {
+                    this.facturasSeleccionadas[reciboId].add(factura._id);
+                }
+            });
+        }
+    }
+    // Convierte timestamp UTC a hora local
+    getFechaLocal(timestamp) {
+        if (!timestamp)
+            return null;
+        // Si el timestamp está en segundos, convertir a milisegundos
+        const timestampMs = timestamp < 10000000000 ? timestamp * 1000 : timestamp;
+        return new Date(timestampMs);
+    }
+    // Obtiene las facturas ordenadas por vencimiento
+    getFacturasOrdenadas(reciboPagado) {
+        if (!reciboPagado || !reciboPagado.facturas)
+            return [];
+        const reciboId = reciboPagado._id;
+        const orden = this.ordenVencimiento[reciboId];
+        if (!orden) {
+            // Si no hay orden definido, retornar las facturas sin ordenar
+            return [...reciboPagado.facturas];
+        }
+        // Crear una copia del array para no modificar el original
+        const facturasOrdenadas = [...reciboPagado.facturas];
+        facturasOrdenadas.sort((a, b) => {
+            const vencimientoA = a.vencimiento || 0;
+            const vencimientoB = b.vencimiento || 0;
+            if (orden === 'asc') {
+                return vencimientoA - vencimientoB;
+            }
+            else {
+                return vencimientoB - vencimientoA;
+            }
+        });
+        return facturasOrdenadas;
+    }
+    // Alterna el ordenamiento por vencimiento
+    toggleOrdenVencimiento(reciboPagado) {
+        const reciboId = reciboPagado._id;
+        const ordenActual = this.ordenVencimiento[reciboId];
+        if (!ordenActual || ordenActual === 'desc') {
+            this.ordenVencimiento[reciboId] = 'asc';
+        }
+        else {
+            this.ordenVencimiento[reciboId] = 'desc';
+        }
+    }
+    // Obtiene el orden actual para un recibo pagado
+    getOrdenVencimiento(reciboPagado) {
+        return this.ordenVencimiento[reciboPagado._id] || null;
+    }
 }
-RecibosComponent.ɵfac = function RecibosComponent_Factory(t) { return new (t || RecibosComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](src_app_services_factura_service__WEBPACK_IMPORTED_MODULE_2__["FacturaService"])); };
-RecibosComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: RecibosComponent, selectors: [["app-recibos"]], decls: 15, vars: 6, consts: [[1, "card"], ["style", "min-height: 517.52px", "class", "card-body", 4, "ngIf"], ["class", "card", 4, "ngIf"], [4, "ngIf"], ["class", "", 4, "ngIf"], ["class", "d-flex w-100 justify-content-center", 4, "ngIf"], ["class", "d-flex w-100", 4, "ngIf"], [1, "card-body", 2, "min-height", "517.52px"], [1, "", 2, "overflow-x", "auto"], [1, "table", "table-sm", "table-hover"], [1, "text-center"], ["class", "pointer", 3, "click", 4, "ngFor", "ngForOf"], [1, "pointer", 3, "click"], [1, "card-body"], [1, "d-flex", "my-3", "w-100", "justify-content-center"], ["type", "button", 1, "btn", "mx-2", "btn-success", 3, "click"], ["type", "button", 1, "btn", "btn-dark", 3, "click"], [3, "options", "total", "facturas"], [1, ""], [3, "facturaPDF", "onClose"], [1, "d-flex", "w-100", "justify-content-center"], [1, "card-body", "mb-3"], ["for", "", 1, "form-label"], ["type", "number", "name", "", "id", "", "aria-describedby", "helpId", "placeholder", "", 1, "form-control"], ["montoAPagar", ""], ["type", "button", 1, "btn", "btn-primary", 3, "click"], [1, "d-flex", "w-100"], [1, "card-body", "mb-3", 2, "min-width", "400px"], [4, "ngFor", "ngForOf"], [1, "d-flex", "justify-content-between"], ["type", "button", 1, "btn", "btn-info", 3, "click"], [1, "mdi", "mdi-printer"], ["class", "pointer", 4, "ngFor", "ngForOf"], [1, "pointer"], ["scope", "row", 1, "text-center"]], template: function RecibosComponent_Template(rf, ctx) { if (rf & 1) {
+RecibosComponent.ɵfac = function RecibosComponent_Factory(t) { return new (t || RecibosComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](src_app_services_factura_service__WEBPACK_IMPORTED_MODULE_3__["FacturaService"])); };
+RecibosComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: RecibosComponent, selectors: [["app-recibos"]], decls: 15, vars: 6, consts: [[1, "card"], ["style", "min-height: 517.52px", "class", "card-body", 4, "ngIf"], ["class", "card", 4, "ngIf"], [4, "ngIf"], ["class", "", 4, "ngIf"], ["class", "d-flex w-100 justify-content-center", 4, "ngIf"], ["class", "d-flex w-100", 4, "ngIf"], [1, "card-body", 2, "min-height", "517.52px"], [1, "", 2, "overflow-x", "auto"], [1, "table", "table-sm", "table-hover"], [1, "text-center"], ["class", "pointer", 3, "click", 4, "ngFor", "ngForOf"], [1, "pointer", 3, "click"], ["class", "badge bg-danger", 4, "ngIf"], [1, "badge", "bg-danger"], [1, "card-body"], ["class", "alert alert-warning mb-3", 4, "ngIf"], [1, "d-flex", "my-3", "w-100", "justify-content-center"], ["type", "button", 1, "btn", "mx-2", "btn-success", 3, "disabled", "click"], ["class", "spinner-border spinner-border-sm me-2", "role", "status", "aria-hidden", "true", 4, "ngIf"], ["type", "button", "class", "btn mx-2 btn-danger", 3, "disabled", "click", 4, "ngIf"], ["type", "button", 1, "btn", "btn-dark", 3, "disabled", "click"], [1, "alert", "alert-warning", "mb-3"], ["role", "status", "aria-hidden", "true", 1, "spinner-border", "spinner-border-sm", "me-2"], ["type", "button", 1, "btn", "mx-2", "btn-danger", 3, "disabled", "click"], [3, "options", "total", "facturas"], [1, ""], [3, "facturaPDF", "onClose"], [1, "d-flex", "w-100", "justify-content-center"], [1, "card-body", "mb-3"], ["for", "", 1, "form-label"], ["type", "number", "name", "", "id", "", "aria-describedby", "helpId", "placeholder", "", 1, "form-control", 3, "disabled"], ["montoAPagar", ""], ["type", "button", 1, "btn", "btn-primary", 3, "disabled", "click"], [1, "d-flex", "w-100"], [1, "card-body", "mb-3", 2, "min-width", "400px"], [1, "d-flex", "justify-content-between", "align-items-center", "mb-3"], ["for", "", 1, "form-label", "mb-0"], ["type", "button", "class", "btn btn-danger btn-sm", "title", "Cancelar recibos pagados seleccionados", 3, "disabled", "click", 4, "ngIf"], ["class", "mb-3", 3, "border", "border-primary", "bg-light", "p-2", "rounded", 4, "ngFor", "ngForOf"], ["type", "button", "title", "Cancelar recibos pagados seleccionados", 1, "btn", "btn-danger", "btn-sm", 3, "disabled", "click"], ["class", "mdi mdi-close-circle", 4, "ngIf"], [1, "mdi", "mdi-close-circle"], [1, "mb-3"], ["class", "alert alert-danger mb-2", 4, "ngIf"], [1, "d-flex", "justify-content-between"], [1, "d-flex", "align-items-start"], ["type", "checkbox", "class", "form-check-input me-2 mt-2", "title", "Seleccionar para cancelar m\u00FAltiples", 3, "checked", "change", 4, "ngIf"], ["class", "badge bg-primary mt-1", 4, "ngIf"], ["type", "button", "class", "btn btn-info me-2", "title", "Imprimir recibo", 3, "click", 4, "ngIf"], ["type", "button", "class", "btn btn-danger", "title", "Cancelar recibo pagado", 3, "disabled", "click", 4, "ngIf"], ["class", "mb-2", 4, "ngIf"], [1, "text-center", 2, "width", "60px", "vertical-align", "middle", "padding", "12px 8px"], ["type", "checkbox", "class", "form-check-input", "title", "Seleccionar todas las facturas", 3, "checked", "click", 4, "ngIf"], ["title", "Ordenar por vencimiento", 1, "text-center", 2, "cursor", "pointer", 3, "click"], ["class", "mdi mdi-arrow-up", 4, "ngIf"], ["class", "mdi mdi-arrow-down", 4, "ngIf"], ["class", "mdi mdi-sort", "style", "opacity: 0.3;", 4, "ngIf"], ["class", "pointer", 3, "bg-light", "border", "border-primary", 4, "ngFor", "ngForOf"], [1, "alert", "alert-danger", "mb-2"], ["type", "checkbox", "title", "Seleccionar para cancelar m\u00FAltiples", 1, "form-check-input", "me-2", "mt-2", 3, "checked", "change"], [1, "badge", "bg-primary", "mt-1"], ["type", "button", "title", "Imprimir recibo", 1, "btn", "btn-info", "me-2", 3, "click"], [1, "mdi", "mdi-printer"], ["type", "button", "title", "Cancelar recibo pagado", 1, "btn", "btn-danger", 3, "disabled", "click"], [1, "mb-2"], ["type", "button", "title", "Cancelar facturas seleccionadas", 1, "btn", "btn-danger", "btn-sm", 3, "disabled", "click"], ["type", "checkbox", "title", "Seleccionar todas las facturas", 1, "form-check-input", 3, "checked", "click"], [1, "mdi", "mdi-arrow-up"], [1, "mdi", "mdi-arrow-down"], [1, "mdi", "mdi-sort", 2, "opacity", "0.3"], [1, "pointer"], ["type", "checkbox", "class", "form-check-input", "title", "Seleccionar factura para cancelar", 3, "checked", "click", 4, "ngIf"], ["scope", "row", 1, "text-center"], ["type", "checkbox", "title", "Seleccionar factura para cancelar", 1, "form-check-input", 3, "checked", "click"]], template: function RecibosComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n  ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](2, RecibosComponent_div_2_Template, 37, 1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](4, "\n");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](5, RecibosComponent_div_5_Template, 20, 12, "div", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](5, RecibosComponent_div_5_Template, 26, 17, "div", 2);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](6, "\n\n\n");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](7, RecibosComponent_div_7_Template, 4, 3, "div", 3);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](8, "\n\n");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](9, RecibosComponent_div_9_Template, 4, 1, "div", 4);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](10, "\n\n\n");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](11, RecibosComponent_div_11_Template, 17, 0, "div", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](11, RecibosComponent_div_11_Template, 19, 3, "div", 5);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](12, "\n\n\n");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](13, RecibosComponent_div_13_Template, 13, 1, "div", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](13, RecibosComponent_div_13_Template, 18, 2, "div", 6);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](14, "\n");
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
@@ -10382,10 +11151,10 @@ RecibosComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineC
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.facturapdf);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.reciboSeleccionado);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.reciboSeleccionado && !ctx.reciboSeleccionado.cancelado);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.reciboSeleccionado);
-    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_3__["NgIf"], _angular_common__WEBPACK_IMPORTED_MODULE_3__["NgForOf"], _facturas_facturas_component__WEBPACK_IMPORTED_MODULE_4__["FacturasComponent"], _modal_factura_modal_factura_component__WEBPACK_IMPORTED_MODULE_5__["ModalFacturaComponent"]], pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_3__["CurrencyPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_3__["DatePipe"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJyZWNpYm9zLmNvbXBvbmVudC5jc3MifQ== */"] });
+    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_4__["NgIf"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgForOf"], _facturas_facturas_component__WEBPACK_IMPORTED_MODULE_5__["FacturasComponent"], _modal_factura_modal_factura_component__WEBPACK_IMPORTED_MODULE_6__["ModalFacturaComponent"]], pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_4__["CurrencyPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["DatePipe"]], styles: ["table[_ngcontent-%COMP%]   input[type=\"checkbox\"][_ngcontent-%COMP%] {\n  position: relative !important;\n  left: 0 !important;\n  opacity: 1 !important;\n  width: 20px !important;\n  height: 20px !important;\n  cursor: pointer !important;\n  margin: 0 !important;\n  z-index: 1 !important;\n  appearance: checkbox !important;\n  -webkit-appearance: checkbox !important;\n  -moz-appearance: checkbox !important;\n}\ntable[_ngcontent-%COMP%]   input[type=\"checkbox\"].form-check-input[_ngcontent-%COMP%] {\n  position: relative !important;\n  left: 0 !important;\n  opacity: 1 !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJlY2lib3MuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSx5REFBeUQ7QUFDekQ7RUFDRSw2QkFBNkI7RUFDN0Isa0JBQWtCO0VBQ2xCLHFCQUFxQjtFQUNyQixzQkFBc0I7RUFDdEIsdUJBQXVCO0VBQ3ZCLDBCQUEwQjtFQUMxQixvQkFBb0I7RUFDcEIscUJBQXFCO0VBQ3JCLCtCQUErQjtFQUMvQix1Q0FBdUM7RUFDdkMsb0NBQW9DO0FBQ3RDO0FBRUE7RUFDRSw2QkFBNkI7RUFDN0Isa0JBQWtCO0VBQ2xCLHFCQUFxQjtBQUN2QiIsImZpbGUiOiJyZWNpYm9zLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIvKiBTb2JyZXNjcmliaXIgZXN0aWxvcyBnbG9iYWxlcyBxdWUgb2N1bHRhbiBjaGVja2JveGVzICovXG50YWJsZSBpbnB1dFt0eXBlPVwiY2hlY2tib3hcIl0ge1xuICBwb3NpdGlvbjogcmVsYXRpdmUgIWltcG9ydGFudDtcbiAgbGVmdDogMCAhaW1wb3J0YW50O1xuICBvcGFjaXR5OiAxICFpbXBvcnRhbnQ7XG4gIHdpZHRoOiAyMHB4ICFpbXBvcnRhbnQ7XG4gIGhlaWdodDogMjBweCAhaW1wb3J0YW50O1xuICBjdXJzb3I6IHBvaW50ZXIgIWltcG9ydGFudDtcbiAgbWFyZ2luOiAwICFpbXBvcnRhbnQ7XG4gIHotaW5kZXg6IDEgIWltcG9ydGFudDtcbiAgYXBwZWFyYW5jZTogY2hlY2tib3ggIWltcG9ydGFudDtcbiAgLXdlYmtpdC1hcHBlYXJhbmNlOiBjaGVja2JveCAhaW1wb3J0YW50O1xuICAtbW96LWFwcGVhcmFuY2U6IGNoZWNrYm94ICFpbXBvcnRhbnQ7XG59XG5cbnRhYmxlIGlucHV0W3R5cGU9XCJjaGVja2JveFwiXS5mb3JtLWNoZWNrLWlucHV0IHtcbiAgcG9zaXRpb246IHJlbGF0aXZlICFpbXBvcnRhbnQ7XG4gIGxlZnQ6IDAgIWltcG9ydGFudDtcbiAgb3BhY2l0eTogMSAhaW1wb3J0YW50O1xufVxuXG4iXX0= */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](RecibosComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"],
         args: [{
@@ -10393,7 +11162,7 @@ RecibosComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineC
                 templateUrl: './recibos.component.html',
                 styleUrls: ['./recibos.component.css']
             }]
-    }], function () { return [{ type: src_app_services_factura_service__WEBPACK_IMPORTED_MODULE_2__["FacturaService"] }]; }, null); })();
+    }], function () { return [{ type: src_app_services_factura_service__WEBPACK_IMPORTED_MODULE_3__["FacturaService"] }]; }, null); })();
 
 
 /***/ }),
@@ -36133,7 +36902,7 @@ function FacturaElectronicaTicketComponent_div_1_Template(rf, ctx) { if (rf & 1)
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](20, "div", 8);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](21, "\n    ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](22, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](23, "TMBRADO N\u00BA:");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](23, "TIMBRADO N\u00BA:");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](24, "\n    ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](25, "span", 5);
@@ -36145,7 +36914,7 @@ function FacturaElectronicaTicketComponent_div_1_Template(rf, ctx) { if (rf & 1)
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](29, "div", 8);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](30, "\n    ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](31, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](32, "Fecha Vigencia:");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](32, "Inicio de Vigencia:");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](33, "\n    ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](34, "span", 5);
@@ -37656,6 +38425,106 @@ class FacturaService {
         let url = _config_global__WEBPACK_IMPORTED_MODULE_1__["URL_SERVICIOS"] + '/factura/recibo_pagados/' + id_recibo;
         url += `?token=${this._usuarioService.token}`;
         return this.http.get(url).toPromise();
+    }
+    cancelarReciboPagado(recibo_pagado_id) {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            let url = _config_global__WEBPACK_IMPORTED_MODULE_1__["URL_SERVICIOS"] + '/factura/cancelar_recibo_pagado';
+            url += `?token=${this._usuarioService.token}`;
+            return this.http.post(url, { recibo_pagado_id }).toPromise().then((resp) => {
+                console.log(resp);
+                sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.a.fire({
+                    icon: 'success',
+                    title: 'Recibo pagado cancelado',
+                    text: resp.message || 'El recibo pagado fue cancelado correctamente',
+                    timer: 3000,
+                });
+                return resp;
+            }, (error) => {
+                var _a, _b;
+                console.error(error);
+                sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.a.fire({
+                    icon: 'error',
+                    title: 'Error al cancelar el recibo pagado',
+                    text: ((_a = error.error) === null || _a === void 0 ? void 0 : _a.error) || ((_b = error.error) === null || _b === void 0 ? void 0 : _b.message) || 'No se pudo cancelar el recibo pagado',
+                });
+                throw error;
+            });
+        });
+    }
+    cancelarReciboPagados(recibo_pagado_ids) {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            let url = _config_global__WEBPACK_IMPORTED_MODULE_1__["URL_SERVICIOS"] + '/factura/cancelar_recibo_pagado';
+            url += `?token=${this._usuarioService.token}`;
+            return this.http.post(url, { recibo_pagado_ids }).toPromise().then((resp) => {
+                console.log(resp);
+                sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.a.fire({
+                    icon: 'success',
+                    title: 'Recibos pagados cancelados',
+                    text: resp.message || `Se cancelaron ${resp.exitosos} recibo(s) pagado(s)`,
+                    timer: 3000,
+                });
+                return resp;
+            }, (error) => {
+                var _a, _b;
+                console.error(error);
+                sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.a.fire({
+                    icon: 'error',
+                    title: 'Error al cancelar los recibos pagados',
+                    text: ((_a = error.error) === null || _a === void 0 ? void 0 : _a.error) || ((_b = error.error) === null || _b === void 0 ? void 0 : _b.message) || 'No se pudieron cancelar los recibos pagados',
+                });
+                throw error;
+            });
+        });
+    }
+    cancelarRecibo(recibo_id) {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            let url = _config_global__WEBPACK_IMPORTED_MODULE_1__["URL_SERVICIOS"] + '/factura/cancelar_recibo';
+            url += `?token=${this._usuarioService.token}`;
+            return this.http.post(url, { recibo_id }).toPromise().then((resp) => {
+                console.log(resp);
+                sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.a.fire({
+                    icon: 'success',
+                    title: 'Recibo cancelado',
+                    text: resp.message || 'El recibo fue cancelado correctamente',
+                    timer: 3000,
+                });
+                return resp;
+            }, (error) => {
+                var _a, _b;
+                console.error(error);
+                sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.a.fire({
+                    icon: 'error',
+                    title: 'Error al cancelar el recibo',
+                    text: ((_a = error.error) === null || _a === void 0 ? void 0 : _a.error) || ((_b = error.error) === null || _b === void 0 ? void 0 : _b.message) || 'No se pudo cancelar el recibo',
+                });
+                throw error;
+            });
+        });
+    }
+    cancelarFacturasReciboPagado(recibo_pagado_id, factura_ids) {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            let url = _config_global__WEBPACK_IMPORTED_MODULE_1__["URL_SERVICIOS"] + '/factura/cancelar_facturas_recibo_pagado';
+            url += `?token=${this._usuarioService.token}`;
+            return this.http.post(url, { recibo_pagado_id, factura_ids }).toPromise().then((resp) => {
+                console.log(resp);
+                sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.a.fire({
+                    icon: 'success',
+                    title: 'Facturas canceladas',
+                    text: resp.message || 'Las facturas fueron canceladas correctamente',
+                    timer: 3000,
+                });
+                return resp;
+            }, (error) => {
+                var _a, _b;
+                console.error(error);
+                sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.a.fire({
+                    icon: 'error',
+                    title: 'Error al cancelar las facturas',
+                    text: ((_a = error.error) === null || _a === void 0 ? void 0 : _a.error) || ((_b = error.error) === null || _b === void 0 ? void 0 : _b.message) || 'No se pudieron cancelar las facturas',
+                });
+                throw error;
+            });
+        });
     }
 }
 FacturaService.ɵfac = function FacturaService_Factory(t) { return new (t || FacturaService)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_usuario_service__WEBPACK_IMPORTED_MODULE_5__["UsuarioService"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_caja_service__WEBPACK_IMPORTED_MODULE_6__["CajaService"])); };
@@ -47390,4 +48259,4 @@ webpackEmptyAsyncContext.id = "zn8P";
 /***/ })
 
 },[[0,"runtime","vendor"]]]);
-//# sourceMappingURL=main.44b2c72207bbe6a24da4.js.map
+//# sourceMappingURL=main.2454a14c6e91ecfc4ee6.js.map

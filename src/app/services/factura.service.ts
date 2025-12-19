@@ -726,4 +726,108 @@ export class FacturaService {
     return this.http.get(url).toPromise();
   }
 
+  async cancelarReciboPagado(recibo_pagado_id: string) {
+    let url = URL_SERVICIOS + '/factura/cancelar_recibo_pagado';
+    url += `?token=${this._usuarioService.token}`;
+    return this.http.post(url, { recibo_pagado_id }).toPromise().then(
+      (resp: any) => {
+        console.log(resp);
+        swal.fire({
+          icon: 'success',
+          title: 'Recibo pagado cancelado',
+          text: resp.message || 'El recibo pagado fue cancelado correctamente',
+          timer: 3000,
+        });
+        return resp;
+      },
+      (error) => {
+        console.error(error);
+        swal.fire({
+          icon: 'error',
+          title: 'Error al cancelar el recibo pagado',
+          text: error.error?.error || error.error?.message || 'No se pudo cancelar el recibo pagado',
+        });
+        throw error;
+      },
+    );
+  }
+
+  async cancelarReciboPagados(recibo_pagado_ids: string[]) {
+    let url = URL_SERVICIOS + '/factura/cancelar_recibo_pagado';
+    url += `?token=${this._usuarioService.token}`;
+    return this.http.post(url, { recibo_pagado_ids }).toPromise().then(
+      (resp: any) => {
+        console.log(resp);
+        swal.fire({
+          icon: 'success',
+          title: 'Recibos pagados cancelados',
+          text: resp.message || `Se cancelaron ${resp.exitosos} recibo(s) pagado(s)`,
+          timer: 3000,
+        });
+        return resp;
+      },
+      (error) => {
+        console.error(error);
+        swal.fire({
+          icon: 'error',
+          title: 'Error al cancelar los recibos pagados',
+          text: error.error?.error || error.error?.message || 'No se pudieron cancelar los recibos pagados',
+        });
+        throw error;
+      },
+    );
+  }
+
+  async cancelarRecibo(recibo_id: string) {
+    let url = URL_SERVICIOS + '/factura/cancelar_recibo';
+    url += `?token=${this._usuarioService.token}`;
+    return this.http.post(url, { recibo_id }).toPromise().then(
+      (resp: any) => {
+        console.log(resp);
+        swal.fire({
+          icon: 'success',
+          title: 'Recibo cancelado',
+          text: resp.message || 'El recibo fue cancelado correctamente',
+          timer: 3000,
+        });
+        return resp;
+      },
+      (error) => {
+        console.error(error);
+        swal.fire({
+          icon: 'error',
+          title: 'Error al cancelar el recibo',
+          text: error.error?.error || error.error?.message || 'No se pudo cancelar el recibo',
+        });
+        throw error;
+      },
+    );
+  }
+
+  async cancelarFacturasReciboPagado(recibo_pagado_id: string, factura_ids: string[]) {
+    let url = URL_SERVICIOS + '/factura/cancelar_facturas_recibo_pagado';
+    url += `?token=${this._usuarioService.token}`;
+    return this.http.post(url, { recibo_pagado_id, factura_ids }).toPromise().then(
+      (resp: any) => {
+        console.log(resp);
+        swal.fire({
+          icon: 'success',
+          title: 'Facturas canceladas',
+          text: resp.message || 'Las facturas fueron canceladas correctamente',
+          timer: 3000,
+        });
+        return resp;
+      },
+      (error) => {
+        console.error(error);
+        swal.fire({
+          icon: 'error',
+          title: 'Error al cancelar las facturas',
+          text: error.error?.error || error.error?.message || 'No se pudieron cancelar las facturas',
+        });
+        throw error;
+      },
+    );
+  }
+
 }

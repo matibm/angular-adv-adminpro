@@ -1,0 +1,21 @@
+/* Sobrescribir estilos globales que ocultan checkboxes */
+table input[type="checkbox"] {
+  position: relative !important;
+  left: 0 !important;
+  opacity: 1 !important;
+  width: 20px !important;
+  height: 20px !important;
+  cursor: pointer !important;
+  margin: 0 !important;
+  z-index: 1 !important;
+  appearance: checkbox !important;
+  -webkit-appearance: checkbox !important;
+  -moz-appearance: checkbox !important;
+}
+
+table input[type="checkbox"].form-check-input {
+  position: relative !important;
+  left: 0 !important;
+  opacity: 1 !important;
+}
+

@@ -20,7 +20,10 @@
             <td class="text-center">{{ item.pago?.numero }}</td>
             <td class="text-center">{{ item.pago?.monto | currency:'':'':'2.0' }}</td>
             <td class="text-center">{{ item.fecha | date:'dd/MM/yyyy' }}</td>
-            <td class="text-center">{{ item.pagado ? (item.fechaPagado | date:'dd/MM/yyyy') : 'PENDIENTE' }}</td>
+            <td class="text-center">
+              <span *ngIf="item.cancelado" class="badge bg-danger">CANCELADO</span>
+              <span *ngIf="!item.cancelado">{{ item.pagado ? (item.fechaPagado | date:'dd/MM/yyyy') : 'PENDIENTE' }}</span>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -29,6 +32,9 @@
 </div>
 <div *ngIf="reciboSeleccionado" class="card">
   <div class="card-body">
+    <div *ngIf="reciboSeleccionado.cancelado" class="alert alert-warning mb-3">
+      <strong>Recibo Cancelado</strong> - Fecha de cancelación: {{ reciboSeleccionado.fecha_cancelado | date:'dd/MM/yyyy HH:mm' }}
+    </div>
     Cliente: {{ reciboSeleccionado?.cliente?.NOMBRES }} {{ reciboSeleccionado?.cliente?.APELLIDOS }}
     <br />
     Fecha: {{ reciboSeleccionado?.fecha | date:'dd/MM/yyyy' }}
@@ -36,10 +42,31 @@
     Monto: {{ reciboSeleccionado?.pago?.monto | currency:'':'':'2.0' }}
 
     <div class="d-flex my-3 w-100 justify-content-center">
-      <button (click)="mostrarModal(reciboSeleccionado.pago?._id)" type="button" class="btn mx-2 btn-success">
+      <button 
+        (click)="mostrarModal(reciboSeleccionado.pago?._id)" 
+        type="button" 
+        class="btn mx-2 btn-success"
+        [disabled]="loadingMostrarModal"
+      >
+        <span *ngIf="loadingMostrarModal" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
         Ver Factura
       </button>
-      <button (click)="reciboSeleccionado = null" type="button" class="btn btn-dark">
+      <button 
+        *ngIf="!reciboSeleccionado.cancelado" 
+        (click)="cancelarRecibo()" 
+        type="button" 
+        class="btn mx-2 btn-danger"
+        [disabled]="loadingCancelarRecibo"
+      >
+        <span *ngIf="loadingCancelarRecibo" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+        Cancelar Recibo
+      </button>
+      <button 
+        (click)="reciboSeleccionado = null" 
+        type="button" 
+        class="btn btn-dark"
+        [disabled]="loadingCancelarRecibo || loadingMostrarModal"
+      >
         Volver
       </button>
     </div>
@@ -57,12 +84,27 @@
 </div>
 
 
-<div *ngIf="reciboSeleccionado" class="d-flex w-100 justify-content-center">
+<div *ngIf="reciboSeleccionado && !reciboSeleccionado.cancelado" class="d-flex w-100 justify-content-center">
   <div class="card">
     <div class="card-body mb-3">
       <label for="" class="form-label">Pagar</label>
-      <input type="number" #montoAPagar class="form-control" name="" id="" aria-describedby="helpId" placeholder="" />
-      <button (click)="pagarRecibo(montoAPagar.value)" type="button" class="btn btn-primary">
+      <input 
+        type="number" 
+        #montoAPagar 
+        class="form-control" 
+        name="" 
+        id="" 
+        aria-describedby="helpId" 
+        placeholder=""
+        [disabled]="loadingPagarRecibo"
+      />
+      <button 
+        (click)="pagarRecibo(montoAPagar.value)" 
+        type="button" 
+        class="btn btn-primary"
+        [disabled]="loadingPagarRecibo"
+      >
+        <span *ngIf="loadingPagarRecibo" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
         Confirmar
       </button>
 
@@ -75,42 +117,152 @@
 <div *ngIf="reciboSeleccionado" class="d-flex w-100">
   <div class="card">
     <div class="card-body mb-3" style="min-width: 400px;">
-      <label for="" class="form-label">Pagados</label>
-      <div *ngFor="let reciboPagado of recibosPagados">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <label for="" class="form-label mb-0">Pagados</label>
+        <button
+          *ngIf="recibosPagadosSeleccionados.size > 0"
+          (click)="cancelarRecibosPagadosSeleccionados()"
+          type="button"
+          class="btn btn-danger btn-sm"
+          title="Cancelar recibos pagados seleccionados"
+          [disabled]="loadingCancelarMultiples"
+        >
+          <span *ngIf="loadingCancelarMultiples" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+          <span *ngIf="!loadingCancelarMultiples" class="mdi mdi-close-circle"></span> Cancelar Seleccionados ({{ recibosPagadosSeleccionados.size }})
+        </button>
+      </div>
+      <div *ngFor="let reciboPagado of recibosPagados" 
+           [class.border]="estaSeleccionado(reciboPagado) && !reciboPagado.cancelado"
+           [class.border-primary]="estaSeleccionado(reciboPagado) && !reciboPagado.cancelado"
+           [class.bg-light]="estaSeleccionado(reciboPagado) && !reciboPagado.cancelado"
+           [class.p-2]="estaSeleccionado(reciboPagado) && !reciboPagado.cancelado"
+           [class.rounded]="estaSeleccionado(reciboPagado) && !reciboPagado.cancelado"
+           class="mb-3">
+        <div *ngIf="reciboPagado.cancelado" class="alert alert-danger mb-2">
+          <strong>Cancelado</strong> - Fecha: {{ reciboPagado.fecha_cancelado | date:'dd/MM/yyyy HH:mm' }}
+        </div>
         <div class="d-flex justify-content-between">
-          <div>
-            <div>Monto: {{ reciboPagado?.monto | currency:'':'':'2.0' }}</div>
-            <div>Fecha: {{ reciboPagado?.fecha | date }}</div>
-            <div>Nro recibo: {{ reciboPagado?.nro_recibo }}</div>
+          <div class="d-flex align-items-start">
+            <input
+              *ngIf="!reciboPagado.cancelado"
+              type="checkbox"
+              class="form-check-input me-2 mt-2"
+              [checked]="estaSeleccionado(reciboPagado)"
+              (change)="toggleReciboPagadoSeleccionado(reciboPagado)"
+              title="Seleccionar para cancelar múltiples"
+            />
+            <div>
+              <div><strong>Monto:</strong> {{ reciboPagado?.monto | currency:'':'':'2.0' }}</div>
+              <div><strong>Fecha:</strong> {{ reciboPagado?.fecha | date:'dd/MM/yyyy' }}</div>
+              <div><strong>Nro recibo:</strong> {{ reciboPagado?.nro_recibo }}</div>
+              <div *ngIf="estaSeleccionado(reciboPagado) && !reciboPagado.cancelado" class="badge bg-primary mt-1">
+                Seleccionado
+              </div>
+            </div>
           </div>
 
           <div>
             <button
+            *ngIf="!reciboPagado.cancelado"
             (click)="printRecibo(reciboPagado)"
               type="button"
-              class="btn btn-info"
+              class="btn btn-info me-2"
+              title="Imprimir recibo"
             >
             <span class="mdi mdi-printer"></span>
+            </button>
+            <button
+            *ngIf="!reciboPagado.cancelado"
+            (click)="cancelarReciboPagado(reciboPagado)"
+              type="button"
+              class="btn btn-danger"
+              title="Cancelar recibo pagado"
+              [disabled]="isLoadingCancelarReciboPagado(reciboPagado)"
+            >
+            <span *ngIf="isLoadingCancelarReciboPagado(reciboPagado)" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+            <span *ngIf="!isLoadingCancelarReciboPagado(reciboPagado)" class="mdi mdi-close-circle"></span> Cancelar
             </button>
 
           </div>
 
         </div>
+        <div *ngIf="getFacturasSeleccionadasCount(reciboPagado) > 0 && !reciboPagado.cancelado" class="mb-2">
+          <button
+            (click)="cancelarFacturasSeleccionadas(reciboPagado)"
+            type="button"
+            class="btn btn-danger btn-sm"
+            [disabled]="isLoadingCancelarFacturas(reciboPagado)"
+            title="Cancelar facturas seleccionadas"
+          >
+            <span *ngIf="isLoadingCancelarFacturas(reciboPagado)" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+            <span *ngIf="!isLoadingCancelarFacturas(reciboPagado)" class="mdi mdi-close-circle"></span>
+            Cancelar Facturas Seleccionadas ({{ getFacturasSeleccionadasCount(reciboPagado) }})
+          </button>
+        </div>
         <table class="table table-sm table-hover">
           <thead>
             <tr>
+              <th class="text-center" style="width: 60px; vertical-align: middle; padding: 12px 8px;">
+                <input
+                  *ngIf="!reciboPagado.cancelado && reciboPagado.facturas.length > 0"
+                  type="checkbox"
+                  class="form-check-input"
+                  [checked]="getFacturasSeleccionadasCount(reciboPagado) === reciboPagado.facturas.length && reciboPagado.facturas.length > 0"
+                  (click)="toggleTodasLasFacturas(reciboPagado, $event)"
+                  title="Seleccionar todas las facturas"
+                />
+              </th>
               <th class="text-center">#</th>
               <th class="text-center">Nro Factura</th>
+              <th class="text-center">Nro Contrato</th>
+              <th class="text-center" style="cursor: pointer;" (click)="toggleOrdenVencimiento(reciboPagado)" title="Ordenar por vencimiento">
+                Vencimiento
+                <span *ngIf="getOrdenVencimiento(reciboPagado) === 'asc'" class="mdi mdi-arrow-up"></span>
+                <span *ngIf="getOrdenVencimiento(reciboPagado) === 'desc'" class="mdi mdi-arrow-down"></span>
+                <span *ngIf="!getOrdenVencimiento(reciboPagado)" class="mdi mdi-sort" style="opacity: 0.3;"></span>
+              </th>
+              <th class="text-center">Fecha de Pago</th>
               <th class="text-center">Monto</th>
             </tr>
           </thead>
           <tbody>
 
-            <tr class="pointer" *ngFor="let factura of reciboPagado.facturas; let i = index">
-              <td class="text-center" scope="row">{{factura.nro_factura}}</td>
+            <tr 
+              class="pointer" 
+              *ngFor="let factura of getFacturasOrdenadas(reciboPagado); let i = index"
+              [class.bg-light]="estaFacturaSeleccionada(reciboPagado, factura) && !reciboPagado.cancelado"
+              [class.border]="estaFacturaSeleccionada(reciboPagado, factura) && !reciboPagado.cancelado"
+              [class.border-primary]="estaFacturaSeleccionada(reciboPagado, factura) && !reciboPagado.cancelado"
+            >
+              <td class="text-center" style="width: 60px; vertical-align: middle; padding: 12px 8px;">
+                <input
+                  *ngIf="!reciboPagado.cancelado"
+                  type="checkbox"
+                  class="form-check-input"
+                  [checked]="estaFacturaSeleccionada(reciboPagado, factura)"
+                  (click)="toggleFacturaSeleccionada(reciboPagado, factura, $event); $event.stopPropagation()"
+                  title="Seleccionar factura para cancelar"
+                />
+              </td>
+              <td class="text-center" scope="row">{{ i + 1 }}</td>
               <td class="text-center">
-                <div *ngIf="factura.nro_contrato">{{factura.nro_contrato | currency:'':'':'2.0'}}</div>
-                <div *ngIf="!factura.nro_contrato">---</div>
+                <div *ngIf="factura.numero_factura || factura.numero_talonario">
+                  {{factura.numero_talonario || ''}}{{factura.numero_talonario && factura.numero_factura ? '-' : ''}}{{factura.numero_factura || ''}}
+                </div>
+                <div *ngIf="!factura.numero_factura && !factura.numero_talonario">---</div>
+              </td>
+              <td class="text-center">
+                <span *ngIf="factura.nro_contrato">{{ factura.nro_contrato }}</span>
+                <span *ngIf="!factura.nro_contrato">---</span>
+              </td>
+              <td class="text-center">
+                <span *ngIf="factura.vencimiento">{{ factura.vencimiento | date:'dd/MM/yyyy' }}</span>
+                <span *ngIf="!factura.vencimiento">---</span>
+              </td>
+              <td class="text-center">
+                <span *ngIf="factura.fecha_pagado_unix">{{ getFechaLocal(factura.fecha_pagado_unix) | date:'dd/MM/yyyy HH:mm' }}</span>
+                <span *ngIf="!factura.fecha_pagado_unix && factura.fecha_de_pago">{{ getFechaLocal(factura.fecha_de_pago) | date:'dd/MM/yyyy HH:mm' }}</span>
+                <span *ngIf="!factura.fecha_pagado_unix && !factura.fecha_de_pago">---</span>
               </td>
               <td class="text-center">{{factura.haber | currency:'':'':'2.0'}} Gs</td>
             </tr>
