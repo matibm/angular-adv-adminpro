@@ -152,7 +152,7 @@
               title="Seleccionar para cancelar múltiples"
             />
             <div>
-              <div><strong>Monto:</strong> {{ reciboPagado?.monto | currency:'':'':'2.0' }}</div>
+              <div><strong>Monto:</strong> {{ calcularTotalFacturas(reciboPagado) | currency:'':'':'2.0' }}</div>
               <div><strong>Fecha:</strong> {{ reciboPagado?.fecha | date:'dd/MM/yyyy' }}</div>
               <div><strong>Nro recibo:</strong> {{ reciboPagado?.nro_recibo }}</div>
               <div *ngIf="estaSeleccionado(reciboPagado) && !reciboPagado.cancelado" class="badge bg-primary mt-1">

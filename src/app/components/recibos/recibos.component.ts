@@ -472,4 +472,14 @@ export class RecibosComponent implements OnInit {
   getOrdenVencimiento(reciboPagado: any): 'asc' | 'desc' | null {
     return this.ordenVencimiento[reciboPagado._id] || null;
   }
+
+  // Calcula el total sumando las facturas de un recibo pagado
+  calcularTotalFacturas(reciboPagado: any): number {
+    if (!reciboPagado || !reciboPagado.facturas || !Array.isArray(reciboPagado.facturas)) {
+      return 0;
+    }
+    return reciboPagado.facturas.reduce((sum: number, factura: any) => {
+      return sum + (factura.haber || 0);
+    }, 0);
+  }
 }
