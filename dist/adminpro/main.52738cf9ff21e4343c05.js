@@ -10627,7 +10627,7 @@ function RecibosComponent_div_13_div_14_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](6);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !reciboPagado_r35.cancelado);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](7);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind4"](16, 24, reciboPagado_r35 == null ? null : reciboPagado_r35.monto, "", "", "2.0"), "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind4"](16, 24, ctx_r30.calcularTotalFacturas(reciboPagado_r35), "", "", "2.0"), "");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](6);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind2"](22, 29, reciboPagado_r35 == null ? null : reciboPagado_r35.fecha, "dd/MM/yyyy"), "");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](6);
@@ -11121,6 +11121,15 @@ class RecibosComponent {
     // Obtiene el orden actual para un recibo pagado
     getOrdenVencimiento(reciboPagado) {
         return this.ordenVencimiento[reciboPagado._id] || null;
+    }
+    // Calcula el total sumando las facturas de un recibo pagado
+    calcularTotalFacturas(reciboPagado) {
+        if (!reciboPagado || !reciboPagado.facturas || !Array.isArray(reciboPagado.facturas)) {
+            return 0;
+        }
+        return reciboPagado.facturas.reduce((sum, factura) => {
+            return sum + (factura.haber || 0);
+        }, 0);
     }
 }
 RecibosComponent.ɵfac = function RecibosComponent_Factory(t) { return new (t || RecibosComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](src_app_services_factura_service__WEBPACK_IMPORTED_MODULE_3__["FacturaService"])); };
@@ -47736,10 +47745,18 @@ class ReciboComponent {
     constructor() {
         this.reciboPagado = {};
         this.cliente = {};
+        this.totalCalculado = 0;
     }
     ngOnInit() {
         this.reciboPagado = localStorage.getItem('recibo') ? JSON.parse(localStorage.getItem('recibo')) : {};
         this.cliente = localStorage.getItem('recibo-cliente') ? JSON.parse(localStorage.getItem('recibo-cliente')) : {};
+        // Calcular el total sumando las facturas
+        this.totalCalculado = 0;
+        if (this.reciboPagado.facturas && Array.isArray(this.reciboPagado.facturas)) {
+            this.totalCalculado = this.reciboPagado.facturas.reduce((sum, factura) => {
+                return sum + (factura.haber || 0);
+            }, 0);
+        }
         setTimeout(() => {
             window.print();
         }, 500);
@@ -47922,7 +47939,7 @@ ReciboComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCo
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](9);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("\n              ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](71, 7, ctx.reciboPagado == null ? null : ctx.reciboPagado.fecha), "\n            ");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("\n              ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind4"](81, 9, ctx.reciboPagado == null ? null : ctx.reciboPagado.monto, "", "", "2.0"), " Gs\n            ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("\n              ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind4"](81, 9, ctx.totalCalculado, "", "", "2.0"), " Gs\n            ");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](13);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"]("Cliente: ", ctx.cliente == null ? null : ctx.cliente.NOMBRES, " ", ctx.cliente == null ? null : ctx.cliente.APELLIDOS, "");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
@@ -48259,4 +48276,4 @@ webpackEmptyAsyncContext.id = "zn8P";
 /***/ })
 
 },[[0,"runtime","vendor"]]]);
-//# sourceMappingURL=main.2454a14c6e91ecfc4ee6.js.map
+//# sourceMappingURL=main.52738cf9ff21e4343c05.js.map
