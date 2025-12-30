@@ -64,6 +64,14 @@ export class SidebarService {
       submenu: [
         { titulo: 'mapa', url: 'mapa' }
        ]
+    },
+    {
+      titulo: 'Avisos Fúnebres',
+      icono: 'mdi mdi-account-card-details',
+      submenu: [
+        { titulo: 'crear aviso fúnebre', url: 'crear_aviso_funebre' },
+        { titulo: 'lista de avisos fúnebres', url: 'lista_avisos_funebres' }
+       ]
     }
 
 

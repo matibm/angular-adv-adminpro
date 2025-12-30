@@ -1,0 +1,104 @@
+<div class="card">
+    <div class="card-header">
+        <h4>Crear Aviso Fúnebre</h4>
+    </div>
+    <div class="card-body">
+        <form ngNativeValidate (ngSubmit)="crearAvisoFunebre()" #form="ngForm">
+            <div class="form-group">
+                <label for="nombre_completo">Nombre Completo *</label>
+                <input type="text" 
+                       [(ngModel)]="aviso.nombre_completo" 
+                       name="nombre_completo" 
+                       id="nombre_completo" 
+                       class="form-control" 
+                       placeholder="Ingrese el nombre completo" 
+                       required>
+            </div>
+
+            <div class="form-group">
+                <label for="fecha_defuncion">Fecha de Defunción *</label>
+                <input type="date" 
+                       [(ngModel)]="aviso.fecha_defuncion" 
+                       name="fecha_defuncion" 
+                       id="fecha_defuncion" 
+                       class="form-control" 
+                       required>
+            </div>
+
+            <div class="form-group">
+                <label for="foto">Foto</label>
+                <input type="file" 
+                       (change)="onFileSelected($event)" 
+                       name="foto" 
+                       id="foto" 
+                       class="form-control" 
+                       accept="image/*">
+                <small class="form-text text-muted">Formatos permitidos: JPG, PNG, GIF (máx. 5MB)</small>
+                
+                <div *ngIf="fotoPreview" class="mt-3">
+                    <img [src]="fotoPreview" alt="Vista previa" class="img-thumbnail" style="max-width: 300px; max-height: 300px;">
+                    <button type="button" (click)="eliminarFoto()" class="btn btn-sm btn-danger ml-2">
+                        <i class="fa fa-trash"></i> Eliminar
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="descripcion">Descripción</label>
+                <textarea [(ngModel)]="aviso.descripcion" 
+                          name="descripcion" 
+                          id="descripcion" 
+                          class="form-control" 
+                          rows="4" 
+                          placeholder="Ingrese una descripción (opcional)"></textarea>
+            </div>
+
+            <div class="form-group">
+                <div class="form-check">
+                    <input type="checkbox" 
+                           [(ngModel)]="aviso.activo" 
+                           name="activo" 
+                           id="activo" 
+                           class="form-check-input">
+                    <label class="form-check-label" for="activo">
+                        Activo
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-check">
+                    <input type="checkbox" 
+                           [(ngModel)]="aviso.publicado" 
+                           name="publicado" 
+                           id="publicado" 
+                           class="form-check-input">
+                    <label class="form-check-label" for="publicado">
+                        Publicado
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group" *ngIf="aviso.publicado">
+                <label for="fecha_caducidad_publicado">Fecha de Caducidad de Publicación</label>
+                <input type="date" 
+                       [(ngModel)]="aviso.fecha_caducidad_publicado" 
+                       name="fecha_caducidad_publicado" 
+                       id="fecha_caducidad_publicado" 
+                       class="form-control">
+                <small class="form-text text-muted">Dejar vacío si no tiene fecha de caducidad</small>
+            </div>
+
+            <div class="form-group">
+                <button type="reset" (click)="cancelar()" class="btn mr-3 btn-danger" [disabled]="loading">
+                    Cancelar
+                </button>
+                <button type="submit" class="btn btn-info" [disabled]="loading">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-2"></span>
+                    Crear Aviso Fúnebre
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+

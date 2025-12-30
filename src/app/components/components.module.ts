@@ -68,6 +68,9 @@ import { FacturaElectronicaTicketComponent } from './factura-electronica-ticket/
 import { QrCodeModule } from 'ng-qrcode';
 import { RecibosComponent } from './recibos/recibos.component';
 import { ReciboComponent } from './recibo/recibo.component';
+import { ListaAvisosFunebresComponent } from './lista-avisos-funebres/lista-avisos-funebres.component';
+import { CrearAvisoFunebreComponent } from './crear-aviso-funebre/crear-aviso-funebre.component';
+import { EditarAvisoFunebreComponent } from './editar-aviso-funebre/editar-aviso-funebre.component';
 
 
 const maskConfig: Partial<IConfig> = {
@@ -117,7 +120,10 @@ const maskConfig: Partial<IConfig> = {
     EditGastoComponent,
     FacturaElectronicaTicketComponent,
     RecibosComponent,
-    ReciboComponent
+    ReciboComponent,
+    ListaAvisosFunebresComponent,
+    CrearAvisoFunebreComponent,
+    EditarAvisoFunebreComponent
   ],
   imports: [
     AvatarModule,
