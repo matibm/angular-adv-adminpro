@@ -9,15 +9,15 @@ import swal from 'sweetalert2';
 })
 export class AvisosFunebresService {
   constructor(
-    public http: HttpClient, 
+    public http: HttpClient,
     public _usuarioService: UsuarioService
   ) { }
 
-  getAvisosFunebres() {
-    let url = URL_SERVICIOS + '/avisos-funebres/all';
-    url += `?token=${this._usuarioService.token}`;
+  getAvisosFunebres(page: number = 1, limit: number = 10) {
+    let url = URL_SERVICIOS + `/avisos-funebres/all?page=${page}&limit=${limit}`;
+    url += `&token=${this._usuarioService.token}`;
     return this.http.get(url).toPromise().then((resp: any) => {
-      return resp.avisos;
+      return resp; // Devolvemos toda la respuesta para tener access al total
     });
   }
 

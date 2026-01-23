@@ -17,8 +17,14 @@ export class ListaAvisosFunebresComponent implements OnInit {
     public _usuarioService: UsuarioService
   ) { }
 
+  Math = Math; // Expose Math to template
   avisos: AvisoFunebre[] = [];
   loading = false;
+
+  // Paginación
+  page = 1;
+  limit = 10;
+  total = 0;
 
   async ngOnInit() {
     await this.cargarAvisos();
@@ -27,11 +33,22 @@ export class ListaAvisosFunebresComponent implements OnInit {
   async cargarAvisos() {
     this.loading = true;
     try {
-      this.avisos = await this._avisosFunebresService.getAvisosFunebres();
+      const resp = await this._avisosFunebresService.getAvisosFunebres(this.page, this.limit);
+      this.avisos = resp.avisos;
+      this.total = resp.total;
     } catch (error) {
       console.error(error);
     } finally {
       this.loading = false;
+    }
+  }
+
+  cambiarPagina(valor: number) {
+    const nuevaPagina = this.page + valor;
+
+    if (nuevaPagina >= 1 && nuevaPagina <= Math.ceil(this.total / this.limit)) {
+      this.page = nuevaPagina;
+      this.cargarAvisos();
     }
   }
 
@@ -60,20 +77,20 @@ export class ListaAvisosFunebresComponent implements OnInit {
   getImagenUrl(foto: string): string {
     if (!foto) return '';
     if (foto.startsWith('http')) return foto;
-    
+
     // Si la foto viene como /uploads/avisos_funebres/..., convertir a endpoint protegido
     if (foto.startsWith('/uploads/avisos_funebres/')) {
       const filename = foto.split('/').pop();
       const token = this._usuarioService?.token || '';
       return `${URL_SERVICIOS}/avisos-funebres/imagen/${filename}?token=${token}`;
     }
-    
+
     // Si ya viene como endpoint protegido, solo agregar token
     if (foto.startsWith('/avisos-funebres/imagen/')) {
       const token = this._usuarioService?.token || '';
       return `${URL_SERVICIOS}${foto}?token=${token}`;
     }
-    
+
     return `${URL_SERVICIOS}${foto}`;
   }
 
