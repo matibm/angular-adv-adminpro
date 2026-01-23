@@ -45,11 +45,17 @@ export class CrearAvisoFunebreComponent implements OnInit {
     try {
       const formData = new FormData();
       formData.append('nombre_completo', this.aviso.nombre_completo);
+      if (this.aviso.nacionalidad) formData.append('nacionalidad', this.aviso.nacionalidad);
+      if (this.aviso.fecha_nacimiento) formData.append('fecha_nacimiento', this.aviso.fecha_nacimiento.toString());
       formData.append('fecha_defuncion', this.aviso.fecha_defuncion.toString());
+      if (this.aviso.fecha_entierro) formData.append('fecha_entierro', this.aviso.fecha_entierro.toString());
+
       formData.append('descripcion', this.aviso.descripcion || '');
+      formData.append('biografia', this.aviso.biografia || '');
+      if (this.aviso.ubicacion_cementerio) formData.append('ubicacion_cementerio', this.aviso.ubicacion_cementerio);
       formData.append('activo', this.aviso.activo ? 'true' : 'false');
       formData.append('publicado', this.aviso.publicado ? 'true' : 'false');
-      
+
       if (this.aviso.fecha_caducidad_publicado) {
         formData.append('fecha_caducidad_publicado', this.aviso.fecha_caducidad_publicado.toString());
       }

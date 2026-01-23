@@ -28,13 +28,23 @@ export class EditarAvisoFunebreComponent implements OnInit {
   async ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
     this.aviso = await this._avisosFunebresService.getAvisoFunebreById(this.id);
-    
+
     // Formatear fechas para el input date
     if (this.aviso.fecha_defuncion) {
       const fechaDef = new Date(this.aviso.fecha_defuncion);
       this.aviso.fecha_defuncion = fechaDef.toISOString().split('T')[0];
     }
-    
+
+    if (this.aviso.fecha_nacimiento) {
+      const fechaNac = new Date(this.aviso.fecha_nacimiento);
+      this.aviso.fecha_nacimiento = fechaNac.toISOString().split('T')[0];
+    }
+
+    if (this.aviso.fecha_entierro) {
+      const fechaEnt = new Date(this.aviso.fecha_entierro);
+      this.aviso.fecha_entierro = fechaEnt.toISOString().split('T')[0];
+    }
+
     if (this.aviso.fecha_caducidad_publicado) {
       const fechaCad = new Date(this.aviso.fecha_caducidad_publicado);
       this.aviso.fecha_caducidad_publicado = fechaCad.toISOString().split('T')[0];
@@ -79,11 +89,17 @@ export class EditarAvisoFunebreComponent implements OnInit {
       const formData = new FormData();
       formData.append('_id', this.aviso._id);
       formData.append('nombre_completo', this.aviso.nombre_completo);
+      if (this.aviso.nacionalidad) formData.append('nacionalidad', this.aviso.nacionalidad);
+      if (this.aviso.fecha_nacimiento) formData.append('fecha_nacimiento', this.aviso.fecha_nacimiento.toString());
       formData.append('fecha_defuncion', this.aviso.fecha_defuncion.toString());
+      if (this.aviso.fecha_entierro) formData.append('fecha_entierro', this.aviso.fecha_entierro.toString());
+
       formData.append('descripcion', this.aviso.descripcion || '');
+      formData.append('biografia', this.aviso.biografia || '');
+      if (this.aviso.ubicacion_cementerio) formData.append('ubicacion_cementerio', this.aviso.ubicacion_cementerio);
       formData.append('activo', this.aviso.activo ? 'true' : 'false');
       formData.append('publicado', this.aviso.publicado ? 'true' : 'false');
-      
+
       if (this.aviso.fecha_caducidad_publicado) {
         formData.append('fecha_caducidad_publicado', this.aviso.fecha_caducidad_publicado.toString());
       } else {

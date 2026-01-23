@@ -6,37 +6,55 @@
         <form ngNativeValidate (ngSubmit)="crearAvisoFunebre()" #form="ngForm">
             <div class="form-group">
                 <label for="nombre_completo">Nombre Completo *</label>
-                <input type="text" 
-                       [(ngModel)]="aviso.nombre_completo" 
-                       name="nombre_completo" 
-                       id="nombre_completo" 
-                       class="form-control" 
-                       placeholder="Ingrese el nombre completo" 
-                       required>
+                <input type="text" [(ngModel)]="aviso.nombre_completo" name="nombre_completo" id="nombre_completo"
+                    class="form-control" placeholder="Ingrese el nombre completo" required>
             </div>
 
             <div class="form-group">
-                <label for="fecha_defuncion">Fecha de Defunción *</label>
-                <input type="date" 
-                       [(ngModel)]="aviso.fecha_defuncion" 
-                       name="fecha_defuncion" 
-                       id="fecha_defuncion" 
-                       class="form-control" 
-                       required>
+                <label for="nacionalidad">Nacionalidad</label>
+                <input type="text" [(ngModel)]="aviso.nacionalidad" name="nacionalidad" id="nacionalidad"
+                    class="form-control" placeholder="Ingrese la nacionalidad">
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+                        <input type="date" [(ngModel)]="aviso.fecha_nacimiento" name="fecha_nacimiento"
+                            id="fecha_nacimiento" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="fecha_defuncion">Fecha de Defunción *</label>
+                        <input type="date" [(ngModel)]="aviso.fecha_defuncion" name="fecha_defuncion"
+                            id="fecha_defuncion" class="form-control" required>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="fecha_entierro">Fecha de Entierro</label>
+                        <input type="date" [(ngModel)]="aviso.fecha_entierro" name="fecha_entierro" id="fecha_entierro"
+                            class="form-control">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="ubicacion_cementerio">Ubicación en Cementerio</label>
+                <input type="text" [(ngModel)]="aviso.ubicacion_cementerio" name="ubicacion_cementerio"
+                    id="ubicacion_cementerio" class="form-control" placeholder="Ej: Sector A, Parcela 123">
             </div>
 
             <div class="form-group">
                 <label for="foto">Foto</label>
-                <input type="file" 
-                       (change)="onFileSelected($event)" 
-                       name="foto" 
-                       id="foto" 
-                       class="form-control" 
-                       accept="image/*">
+                <input type="file" (change)="onFileSelected($event)" name="foto" id="foto" class="form-control"
+                    accept="image/*">
                 <small class="form-text text-muted">Formatos permitidos: JPG, PNG, GIF (máx. 5MB)</small>
-                
+
                 <div *ngIf="fotoPreview" class="mt-3">
-                    <img [src]="fotoPreview" alt="Vista previa" class="img-thumbnail" style="max-width: 300px; max-height: 300px;">
+                    <img [src]="fotoPreview" alt="Vista previa" class="img-thumbnail"
+                        style="max-width: 300px; max-height: 300px;">
                     <button type="button" (click)="eliminarFoto()" class="btn btn-sm btn-danger ml-2">
                         <i class="fa fa-trash"></i> Eliminar
                     </button>
@@ -44,22 +62,21 @@
             </div>
 
             <div class="form-group">
-                <label for="descripcion">Descripción</label>
-                <textarea [(ngModel)]="aviso.descripcion" 
-                          name="descripcion" 
-                          id="descripcion" 
-                          class="form-control" 
-                          rows="4" 
-                          placeholder="Ingrese una descripción (opcional)"></textarea>
+                <label for="descripcion">Descripción (Aviso Fúnebre)</label>
+                <textarea [(ngModel)]="aviso.descripcion" name="descripcion" id="descripcion" class="form-control"
+                    rows="4" placeholder="Ingrese una descripción (opcional)"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="biografia">Biografía / Historia de Vida</label>
+                <textarea [(ngModel)]="aviso.biografia" name="biografia" id="biografia" class="form-control" rows="6"
+                    placeholder="Ingrese la biografía o historia de vida (opcional)"></textarea>
             </div>
 
             <div class="form-group">
                 <div class="form-check">
-                    <input type="checkbox" 
-                           [(ngModel)]="aviso.activo" 
-                           name="activo" 
-                           id="activo" 
-                           class="form-check-input">
+                    <input type="checkbox" [(ngModel)]="aviso.activo" name="activo" id="activo"
+                        class="form-check-input">
                     <label class="form-check-label" for="activo">
                         Activo
                     </label>
@@ -68,11 +85,8 @@
 
             <div class="form-group">
                 <div class="form-check">
-                    <input type="checkbox" 
-                           [(ngModel)]="aviso.publicado" 
-                           name="publicado" 
-                           id="publicado" 
-                           class="form-check-input">
+                    <input type="checkbox" [(ngModel)]="aviso.publicado" name="publicado" id="publicado"
+                        class="form-check-input">
                     <label class="form-check-label" for="publicado">
                         Publicado
                     </label>
@@ -81,11 +95,8 @@
 
             <div class="form-group" *ngIf="aviso.publicado">
                 <label for="fecha_caducidad_publicado">Fecha de Caducidad de Publicación</label>
-                <input type="date" 
-                       [(ngModel)]="aviso.fecha_caducidad_publicado" 
-                       name="fecha_caducidad_publicado" 
-                       id="fecha_caducidad_publicado" 
-                       class="form-control">
+                <input type="date" [(ngModel)]="aviso.fecha_caducidad_publicado" name="fecha_caducidad_publicado"
+                    id="fecha_caducidad_publicado" class="form-control">
                 <small class="form-text text-muted">Dejar vacío si no tiene fecha de caducidad</small>
             </div>
 
@@ -101,4 +112,3 @@
         </form>
     </div>
 </div>
-
