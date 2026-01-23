@@ -16416,26 +16416,26 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function ListaAvisosFunebresComponent_div_15_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 9);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n            ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](2, "i", 9);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](2, "i", 10);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n        ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } }
 function ListaAvisosFunebresComponent_div_17_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 11);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n            No hay avisos f\u00FAnebres registrados.\n        ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } }
 function ListaAvisosFunebresComponent_div_19_tr_33_img_4_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](0, "img", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](0, "img", 22);
 } if (rf & 2) {
-    const aviso_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit;
-    const ctx_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("src", ctx_r5.getImagenUrl(aviso_r4.foto), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsanitizeUrl"]);
+    const aviso_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit;
+    const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("src", ctx_r6.getImagenUrl(aviso_r5.foto), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsanitizeUrl"]);
 } }
 function ListaAvisosFunebresComponent_div_19_tr_33_span_6_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "span", 22);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "span", 23);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "Sin foto");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } }
@@ -16444,26 +16444,26 @@ function ListaAvisosFunebresComponent_div_19_tr_33_span_29_Template(rf, ctx) { i
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const aviso_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit;
-    const ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
+    const aviso_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit;
+    const ctx_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("\n                                ", ctx_r7.formatearFecha(aviso_r4.fecha_caducidad_publicado), "\n                            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("\n                                ", ctx_r8.formatearFecha(aviso_r5.fecha_caducidad_publicado), "\n                            ");
 } }
 function ListaAvisosFunebresComponent_div_19_tr_33_span_31_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "span", 22);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "span", 23);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "-");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } }
 const _c0 = function (a1) { return ["/admin/editar_aviso_funebre", a1]; };
 function ListaAvisosFunebresComponent_div_19_tr_33_Template(rf, ctx) { if (rf & 1) {
-    const _r12 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    const _r13 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "tr");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n                        ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "td");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n                            ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](4, ListaAvisosFunebresComponent_div_19_tr_33_img_4_Template, 1, 1, "img", 14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](4, ListaAvisosFunebresComponent_div_19_tr_33_img_4_Template, 1, 1, "img", 15);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5, "\n                            ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](6, ListaAvisosFunebresComponent_div_19_tr_33_span_6_Template, 2, 0, "span", 15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](6, ListaAvisosFunebresComponent_div_19_tr_33_span_6_Template, 2, 0, "span", 16);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](7, "\n                        ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](8, "\n                        ");
@@ -16493,24 +16493,24 @@ function ListaAvisosFunebresComponent_div_19_tr_33_Template(rf, ctx) { if (rf & 
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](26, "\n                        ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](27, "td");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](28, "\n                            ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](29, ListaAvisosFunebresComponent_div_19_tr_33_span_29_Template, 2, 1, "span", 16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](29, ListaAvisosFunebresComponent_div_19_tr_33_span_29_Template, 2, 1, "span", 17);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](30, "\n                            ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](31, ListaAvisosFunebresComponent_div_19_tr_33_span_31_Template, 2, 0, "span", 15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](31, ListaAvisosFunebresComponent_div_19_tr_33_span_31_Template, 2, 0, "span", 16);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](32, "\n                        ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](33, "\n                        ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](34, "td");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](35, "\n                            ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](36, "a", 17);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](36, "a", 18);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](37, "\n                                ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](38, "i", 18);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](38, "i", 19);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](39, " Editar\n                            ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](40, "\n                            ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](41, "button", 19);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ListaAvisosFunebresComponent_div_19_tr_33_Template_button_click_41_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r12); const aviso_r4 = ctx.$implicit; const ctx_r11 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); return ctx_r11.eliminarAviso(aviso_r4); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](41, "button", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ListaAvisosFunebresComponent_div_19_tr_33_Template_button_click_41_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r13); const aviso_r5 = ctx.$implicit; const ctx_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); return ctx_r12.eliminarAviso(aviso_r5); });
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](42, "\n                                ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](43, "i", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](43, "i", 21);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](44, " Eliminar\n                            ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](45, "\n                        ");
@@ -16518,35 +16518,35 @@ function ListaAvisosFunebresComponent_div_19_tr_33_Template(rf, ctx) { if (rf & 
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](46, "\n                    ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const aviso_r4 = ctx.$implicit;
-    const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
+    const aviso_r5 = ctx.$implicit;
+    const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", aviso_r4.foto);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", aviso_r5.foto);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !aviso_r4.foto);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !aviso_r5.foto);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](aviso_r4.nombre_completo);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](aviso_r5.nombre_completo);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](ctx_r3.formatearFecha(aviso_r4.fecha_defuncion));
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](ctx_r4.formatearFecha(aviso_r5.fecha_defuncion));
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵclassMap"](aviso_r4.activo ? "badge badge-success" : "badge badge-danger");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵclassMap"](aviso_r5.activo ? "badge badge-success" : "badge badge-danger");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("\n                                ", aviso_r4.activo ? "S\u00ED" : "No", "\n                            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("\n                                ", aviso_r5.activo ? "S\u00ED" : "No", "\n                            ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵclassMap"](aviso_r4.publicado ? "badge badge-success" : "badge badge-secondary");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵclassMap"](aviso_r5.publicado ? "badge badge-success" : "badge badge-secondary");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("\n                                ", aviso_r4.publicado ? "S\u00ED" : "No", "\n                            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("\n                                ", aviso_r5.publicado ? "S\u00ED" : "No", "\n                            ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", aviso_r4.fecha_caducidad_publicado);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", aviso_r5.fecha_caducidad_publicado);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !aviso_r4.fecha_caducidad_publicado);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !aviso_r5.fecha_caducidad_publicado);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpureFunction1"](13, _c0, aviso_r4._id));
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpureFunction1"](13, _c0, aviso_r5._id));
 } }
 function ListaAvisosFunebresComponent_div_19_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 11);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 12);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n            ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "table", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "table", 13);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n                ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "thead");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5, "\n                    ");
@@ -16586,7 +16586,7 @@ function ListaAvisosFunebresComponent_div_19_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](30, "\n                ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](31, "tbody");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](32, "\n                    ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](33, ListaAvisosFunebresComponent_div_19_tr_33_Template, 47, 15, "tr", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](33, ListaAvisosFunebresComponent_div_19_tr_33_Template, 47, 15, "tr", 14);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](34, "\n                ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](35, "\n            ");
@@ -16598,13 +16598,58 @@ function ListaAvisosFunebresComponent_div_19_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](33);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngForOf", ctx_r2.avisos);
 } }
+function ListaAvisosFunebresComponent_div_21_Template(rf, ctx) { if (rf & 1) {
+    const _r15 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 24);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 25);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "p");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](6, "\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](7, "\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](8, "div", 26);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](9, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](10, "button", 27);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ListaAvisosFunebresComponent_div_21_Template_button_click_10_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r15); const ctx_r14 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r14.cambiarPagina(-1); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](11, "\n                    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](12, "i", 28);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](13, " Anterior\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](14, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](15, "button", 29);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ListaAvisosFunebresComponent_div_21_Template_button_click_15_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r15); const ctx_r16 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r16.cambiarPagina(1); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](16, "\n                    Siguiente ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](17, "i", 30);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](18, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](19, "\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](20, "\n        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate3"]("Mostrando p\u00E1gina ", ctx_r3.page, " de ", ctx_r3.Math.ceil(ctx_r3.total / ctx_r3.limit), " (Total: ", ctx_r3.total, " avisos)");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("disabled", ctx_r3.page === 1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("disabled", ctx_r3.page >= ctx_r3.Math.ceil(ctx_r3.total / ctx_r3.limit));
+} }
 const _c1 = function () { return ["/admin/crear_aviso_funebre"]; };
 class ListaAvisosFunebresComponent {
     constructor(_avisosFunebresService, _usuarioService) {
         this._avisosFunebresService = _avisosFunebresService;
         this._usuarioService = _usuarioService;
+        this.Math = Math; // Expose Math to template
         this.avisos = [];
         this.loading = false;
+        // Paginación
+        this.page = 1;
+        this.limit = 10;
+        this.total = 0;
     }
     ngOnInit() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
@@ -16615,7 +16660,9 @@ class ListaAvisosFunebresComponent {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             this.loading = true;
             try {
-                this.avisos = yield this._avisosFunebresService.getAvisosFunebres();
+                const resp = yield this._avisosFunebresService.getAvisosFunebres(this.page, this.limit);
+                this.avisos = resp.avisos;
+                this.total = resp.total;
             }
             catch (error) {
                 console.error(error);
@@ -16624,6 +16671,13 @@ class ListaAvisosFunebresComponent {
                 this.loading = false;
             }
         });
+    }
+    cambiarPagina(valor) {
+        const nuevaPagina = this.page + valor;
+        if (nuevaPagina >= 1 && nuevaPagina <= Math.ceil(this.total / this.limit)) {
+            this.page = nuevaPagina;
+            this.cargarAvisos();
+        }
     }
     eliminarAviso(aviso) {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
@@ -16675,7 +16729,7 @@ class ListaAvisosFunebresComponent {
     }
 }
 ListaAvisosFunebresComponent.ɵfac = function ListaAvisosFunebresComponent_Factory(t) { return new (t || ListaAvisosFunebresComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_avisos_funebres_service__WEBPACK_IMPORTED_MODULE_4__["AvisosFunebresService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_usuario_service__WEBPACK_IMPORTED_MODULE_5__["UsuarioService"])); };
-ListaAvisosFunebresComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: ListaAvisosFunebresComponent, selectors: [["app-lista-avisos-funebres"]], decls: 23, vars: 5, consts: [[1, "card"], [1, "card-header", "d-flex", "justify-content-between", "align-items-center"], [1, "btn", "btn-primary", 3, "routerLink"], [1, "fa", "fa-plus"], [1, "card-body"], ["class", "text-center", 4, "ngIf"], ["class", "alert alert-info", 4, "ngIf"], ["class", "table-responsive", 4, "ngIf"], [1, "text-center"], [1, "fa", "fa-spinner", "fa-spin", "fa-2x"], [1, "alert", "alert-info"], [1, "table-responsive"], [1, "table", "table-hover"], [4, "ngFor", "ngForOf"], ["alt", "Foto", "class", "img-thumbnail", "style", "width: 80px; height: 80px; object-fit: cover;", 3, "src", 4, "ngIf"], ["class", "text-muted", 4, "ngIf"], [4, "ngIf"], [1, "btn", "btn-sm", "btn-info", "mr-2", 3, "routerLink"], [1, "fa", "fa-edit"], [1, "btn", "btn-sm", "btn-danger", 3, "click"], [1, "fa", "fa-trash"], ["alt", "Foto", 1, "img-thumbnail", 2, "width", "80px", "height", "80px", "object-fit", "cover", 3, "src"], [1, "text-muted"]], template: function ListaAvisosFunebresComponent_Template(rf, ctx) { if (rf & 1) {
+ListaAvisosFunebresComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: ListaAvisosFunebresComponent, selectors: [["app-lista-avisos-funebres"]], decls: 24, vars: 6, consts: [[1, "card"], [1, "card-header", "d-flex", "justify-content-between", "align-items-center"], [1, "btn", "btn-primary", 3, "routerLink"], [1, "fa", "fa-plus"], [1, "card-body"], ["class", "text-center", 4, "ngIf"], ["class", "alert alert-info", 4, "ngIf"], ["class", "table-responsive", 4, "ngIf"], ["class", "row mt-3", 4, "ngIf"], [1, "text-center"], [1, "fa", "fa-spinner", "fa-spin", "fa-2x"], [1, "alert", "alert-info"], [1, "table-responsive"], [1, "table", "table-hover"], [4, "ngFor", "ngForOf"], ["alt", "Foto", "class", "img-thumbnail", "style", "width: 80px; height: 80px; object-fit: cover;", 3, "src", 4, "ngIf"], ["class", "text-muted", 4, "ngIf"], [4, "ngIf"], [1, "btn", "btn-sm", "btn-info", "mr-2", 3, "routerLink"], [1, "fa", "fa-edit"], [1, "btn", "btn-sm", "btn-danger", 3, "click"], [1, "fa", "fa-trash"], ["alt", "Foto", 1, "img-thumbnail", 2, "width", "80px", "height", "80px", "object-fit", "cover", 3, "src"], [1, "text-muted"], [1, "row", "mt-3"], [1, "col-8"], [1, "col-4", "text-right"], [1, "btn", "btn-secondary", "mr-2", 3, "disabled", "click"], [1, "fa", "fa-angle-left"], [1, "btn", "btn-secondary", 3, "disabled", "click"], [1, "fa", "fa-angle-right"]], template: function ListaAvisosFunebresComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n    ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 1);
@@ -16699,20 +16753,23 @@ ListaAvisosFunebresComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__[
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](17, ListaAvisosFunebresComponent_div_17_Template, 2, 0, "div", 6);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](18, "\n        ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](19, ListaAvisosFunebresComponent_div_19_Template, 37, 1, "div", 7);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](20, "\n    ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](20, "\n\n        ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](21, ListaAvisosFunebresComponent_div_21_Template, 21, 5, "div", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](22, "\n    ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](21, "\n");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](23, "\n");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](22, "\n\n");
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](7);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpureFunction0"](4, _c1));
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpureFunction0"](5, _c1));
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](8);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.loading);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !ctx.loading && ctx.avisos.length === 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !ctx.loading && ctx.avisos.length > 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !ctx.loading && ctx.total > 0);
     } }, directives: [_angular_router__WEBPACK_IMPORTED_MODULE_6__["RouterLinkWithHref"], _angular_common__WEBPACK_IMPORTED_MODULE_7__["NgIf"], _angular_common__WEBPACK_IMPORTED_MODULE_7__["NgForOf"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImxpc3RhLWF2aXNvcy1mdW5lYnJlcy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLHNEQUFzRCIsImZpbGUiOiJsaXN0YS1hdmlzb3MtZnVuZWJyZXMuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qIEVzdGlsb3MgZXNwZWPDrWZpY29zIHBhcmEgbGlzdGEgZGUgYXZpc29zIGbDum5lYnJlcyAqL1xuXG4iXX0= */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](ListaAvisosFunebresComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"],
@@ -19574,12 +19631,17 @@ AuthRoutingModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefine
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AvisoFunebre", function() { return AvisoFunebre; });
 class AvisoFunebre {
-    constructor(_id, nombre_completo, fecha_defuncion, foto, descripcion, activo, eliminado, publicado, fecha_caducidad_publicado, fecha_creacion, fecha_actualizacion) {
+    constructor(_id, nombre_completo, nacionalidad, fecha_nacimiento, fecha_defuncion, fecha_entierro, foto, descripcion, biografia, ubicacion_cementerio, activo, eliminado, publicado, fecha_caducidad_publicado, fecha_creacion, fecha_actualizacion) {
         this._id = _id;
         this.nombre_completo = nombre_completo;
+        this.nacionalidad = nacionalidad;
+        this.fecha_nacimiento = fecha_nacimiento;
         this.fecha_defuncion = fecha_defuncion;
+        this.fecha_entierro = fecha_entierro;
         this.foto = foto;
         this.descripcion = descripcion;
+        this.biografia = biografia;
+        this.ubicacion_cementerio = ubicacion_cementerio;
         this.activo = activo;
         this.eliminado = eliminado;
         this.publicado = publicado;
@@ -20150,16 +20212,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function EditarAvisoFunebreComponent_form_10_div_29_Template(rf, ctx) { if (rf & 1) {
+function EditarAvisoFunebreComponent_form_10_div_73_Template(rf, ctx) { if (rf & 1) {
     const _r6 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 26);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 38);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n                    ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](2, "img", 27);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](2, "img", 39);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n                    ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "button", 28);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function EditarAvisoFunebreComponent_form_10_div_29_Template_button_click_4_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r6); const ctx_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); return ctx_r5.eliminarFoto(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "button", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function EditarAvisoFunebreComponent_form_10_div_73_Template_button_click_4_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r6); const ctx_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); return ctx_r5.eliminarFoto(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5, "\n                        ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](6, "i", 29);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](6, "i", 41);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](7, " Eliminar Nueva Foto\n                    ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](8, "\n                ");
@@ -20169,19 +20231,19 @@ function EditarAvisoFunebreComponent_form_10_div_29_Template(rf, ctx) { if (rf &
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("src", ctx_r2.fotoPreview, _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsanitizeUrl"]);
 } }
-function EditarAvisoFunebreComponent_form_10_div_62_Template(rf, ctx) { if (rf & 1) {
+function EditarAvisoFunebreComponent_form_10_div_114_Template(rf, ctx) { if (rf & 1) {
     const _r8 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 6);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n                ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "label", 30);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "label", 42);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "Fecha de Caducidad de Publicaci\u00F3n");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](4, "\n                ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](5, "input", 31);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngModelChange", function EditarAvisoFunebreComponent_form_10_div_62_Template_input_ngModelChange_5_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r8); const ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); return ctx_r7.aviso.fecha_caducidad_publicado = $event; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](5, "input", 43);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngModelChange", function EditarAvisoFunebreComponent_form_10_div_114_Template_input_ngModelChange_5_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r8); const ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); return ctx_r7.aviso.fecha_caducidad_publicado = $event; });
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](6, "\n                ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](7, "small", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](7, "small", 23);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](8, "Dejar vac\u00EDo si no tiene fecha de caducidad");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](9, "\n            ");
@@ -20191,8 +20253,8 @@ function EditarAvisoFunebreComponent_form_10_div_62_Template(rf, ctx) { if (rf &
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", ctx_r3.aviso.fecha_caducidad_publicado);
 } }
-function EditarAvisoFunebreComponent_form_10_span_71_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](0, "span", 32);
+function EditarAvisoFunebreComponent_form_10_span_123_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](0, "span", 44);
 } }
 function EditarAvisoFunebreComponent_form_10_Template(rf, ctx) { if (rf & 1) {
     const _r10 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
@@ -20214,105 +20276,191 @@ function EditarAvisoFunebreComponent_form_10_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](11, "div", 6);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](12, "\n                ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](13, "label", 9);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](14, "Fecha de Defunci\u00F3n *");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](14, "Nacionalidad");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](15, "\n                ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](16, "input", 10);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngModelChange", function EditarAvisoFunebreComponent_form_10_Template_input_ngModelChange_16_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r10); const ctx_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r12.aviso.fecha_defuncion = $event; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngModelChange", function EditarAvisoFunebreComponent_form_10_Template_input_ngModelChange_16_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r10); const ctx_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r12.aviso.nacionalidad = $event; });
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](17, "\n            ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](18, "\n\n            ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](19, "div", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](19, "div", 11);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](20, "\n                ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](21, "label", 11);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](22, "Foto");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](21, "div", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](22, "\n                    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](23, "div", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](24, "\n                        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](25, "label", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](26, "Fecha de Nacimiento");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](23, "\n                ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](24, "input", 12);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("change", function EditarAvisoFunebreComponent_form_10_Template_input_change_24_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r10); const ctx_r13 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r13.onFileSelected($event); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](27, "\n                        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](28, "input", 14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngModelChange", function EditarAvisoFunebreComponent_form_10_Template_input_ngModelChange_28_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r10); const ctx_r13 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r13.aviso.fecha_nacimiento = $event; });
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](25, "\n                ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](26, "small", 13);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](27, "Formatos permitidos: JPG, PNG, GIF (m\u00E1x. 5MB). Dejar vac\u00EDo para mantener la foto actual.");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](29, "\n                    ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](28, "\n                \n                ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](29, EditarAvisoFunebreComponent_form_10_div_29_Template, 9, 1, "div", 14);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](30, "\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](30, "\n                ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](31, "\n\n            ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](32, "div", 6);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](33, "\n                ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](34, "label", 15);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](35, "Descripci\u00F3n");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](31, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](32, "div", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](33, "\n                    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](34, "div", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](35, "\n                        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](36, "label", 15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](37, "Fecha de Defunci\u00F3n *");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](36, "\n                ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](37, "textarea", 16);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngModelChange", function EditarAvisoFunebreComponent_form_10_Template_textarea_ngModelChange_37_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r10); const ctx_r14 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r14.aviso.descripcion = $event; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](38, "\n                        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](39, "input", 16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngModelChange", function EditarAvisoFunebreComponent_form_10_Template_input_ngModelChange_39_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r10); const ctx_r14 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r14.aviso.fecha_defuncion = $event; });
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](38, "\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](40, "\n                    ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](39, "\n\n            ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](40, "div", 6);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](41, "\n                ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](42, "div", 17);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](43, "\n                    ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](44, "input", 18);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngModelChange", function EditarAvisoFunebreComponent_form_10_Template_input_ngModelChange_44_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r10); const ctx_r15 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r15.aviso.activo = $event; });
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](45, "\n                    ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](46, "label", 19);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](47, "\n                        Activo\n                    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](42, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](43, "div", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](44, "\n                    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](45, "div", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](46, "\n                        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](47, "label", 17);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](48, "Fecha de Entierro");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](48, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](49, "\n                        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](50, "input", 18);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngModelChange", function EditarAvisoFunebreComponent_form_10_Template_input_ngModelChange_50_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r10); const ctx_r15 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r15.aviso.fecha_entierro = $event; });
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](49, "\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](51, "\n                    ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](50, "\n\n            ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](51, "div", 6);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](52, "\n                ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](53, "div", 17);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](54, "\n                    ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](55, "input", 20);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngModelChange", function EditarAvisoFunebreComponent_form_10_Template_input_ngModelChange_55_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r10); const ctx_r16 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r16.aviso.publicado = $event; });
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](56, "\n                    ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](57, "label", 21);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](58, "\n                        Publicado\n                    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](53, "\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](54, "\n\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](55, "div", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](56, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](57, "label", 19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](58, "Ubicaci\u00F3n en Cementerio");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](59, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](60, "input", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngModelChange", function EditarAvisoFunebreComponent_form_10_Template_input_ngModelChange_60_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r10); const ctx_r16 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r16.aviso.ubicacion_cementerio = $event; });
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](60, "\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](61, "\n            ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](61, "\n\n            ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](62, EditarAvisoFunebreComponent_form_10_div_62_Template, 10, 1, "div", 22);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](63, "\n\n            ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](64, "div", 6);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](65, "\n                ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](66, "button", 23);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function EditarAvisoFunebreComponent_form_10_Template_button_click_66_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r10); const ctx_r17 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r17.cancelar(); });
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](67, "\n                    Cancelar\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](62, "\n\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](63, "div", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](64, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](65, "label", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](66, "Foto");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](68, "\n                ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](69, "button", 24);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](70, "\n                    ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](71, EditarAvisoFunebreComponent_form_10_span_71_Template, 1, 0, "span", 25);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](72, "\n                    Guardar Cambios\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](67, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](68, "input", 22);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("change", function EditarAvisoFunebreComponent_form_10_Template_input_change_68_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r10); const ctx_r17 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r17.onFileSelected($event); });
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](73, "\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](69, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](70, "small", 23);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](71, "Formatos permitidos: JPG, PNG, GIF (m\u00E1x. 5MB). Dejar vac\u00EDo para\n                    mantener la foto actual.");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](74, "\n        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](72, "\n\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](73, EditarAvisoFunebreComponent_form_10_div_73_Template, 9, 1, "div", 24);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](74, "\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](75, "\n\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](76, "div", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](77, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](78, "label", 25);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](79, "Descripci\u00F3n (Aviso F\u00FAnebre)");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](80, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](81, "textarea", 26);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngModelChange", function EditarAvisoFunebreComponent_form_10_Template_textarea_ngModelChange_81_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r10); const ctx_r18 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r18.aviso.descripcion = $event; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](82, "\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](83, "\n\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](84, "div", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](85, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](86, "label", 27);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](87, "Biograf\u00EDa / Historia de Vida");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](88, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](89, "textarea", 28);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngModelChange", function EditarAvisoFunebreComponent_form_10_Template_textarea_ngModelChange_89_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r10); const ctx_r19 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r19.aviso.biografia = $event; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](90, "\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](91, "\n\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](92, "div", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](93, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](94, "div", 29);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](95, "\n                    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](96, "input", 30);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngModelChange", function EditarAvisoFunebreComponent_form_10_Template_input_ngModelChange_96_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r10); const ctx_r20 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r20.aviso.activo = $event; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](97, "\n                    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](98, "label", 31);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](99, "\n                        Activo\n                    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](100, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](101, "\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](102, "\n\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](103, "div", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](104, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](105, "div", 29);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](106, "\n                    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](107, "input", 32);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngModelChange", function EditarAvisoFunebreComponent_form_10_Template_input_ngModelChange_107_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r10); const ctx_r21 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r21.aviso.publicado = $event; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](108, "\n                    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](109, "label", 33);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](110, "\n                        Publicado\n                    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](111, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](112, "\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](113, "\n\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](114, EditarAvisoFunebreComponent_form_10_div_114_Template, 10, 1, "div", 34);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](115, "\n\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](116, "div", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](117, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](118, "button", 35);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function EditarAvisoFunebreComponent_form_10_Template_button_click_118_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r10); const ctx_r22 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r22.cancelar(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](119, "\n                    Cancelar\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](120, "\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](121, "button", 36);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](122, "\n                    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](123, EditarAvisoFunebreComponent_form_10_span_123_Template, 1, 0, "span", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](124, "\n                    Guardar Cambios\n                ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](125, "\n            ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](126, "\n        ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](8);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", ctx_r0.aviso.nombre_completo);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", ctx_r0.aviso.nacionalidad);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", ctx_r0.aviso.fecha_nacimiento);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](11);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", ctx_r0.aviso.fecha_defuncion);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](11);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", ctx_r0.aviso.fecha_entierro);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", ctx_r0.aviso.ubicacion_cementerio);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](13);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx_r0.fotoPreview);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](8);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", ctx_r0.aviso.descripcion);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", ctx_r0.aviso.biografia);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](7);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", ctx_r0.aviso.activo);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](11);
@@ -20345,6 +20493,14 @@ class EditarAvisoFunebreComponent {
             if (this.aviso.fecha_defuncion) {
                 const fechaDef = new Date(this.aviso.fecha_defuncion);
                 this.aviso.fecha_defuncion = fechaDef.toISOString().split('T')[0];
+            }
+            if (this.aviso.fecha_nacimiento) {
+                const fechaNac = new Date(this.aviso.fecha_nacimiento);
+                this.aviso.fecha_nacimiento = fechaNac.toISOString().split('T')[0];
+            }
+            if (this.aviso.fecha_entierro) {
+                const fechaEnt = new Date(this.aviso.fecha_entierro);
+                this.aviso.fecha_entierro = fechaEnt.toISOString().split('T')[0];
             }
             if (this.aviso.fecha_caducidad_publicado) {
                 const fechaCad = new Date(this.aviso.fecha_caducidad_publicado);
@@ -20390,8 +20546,17 @@ class EditarAvisoFunebreComponent {
                 const formData = new FormData();
                 formData.append('_id', this.aviso._id);
                 formData.append('nombre_completo', this.aviso.nombre_completo);
+                if (this.aviso.nacionalidad)
+                    formData.append('nacionalidad', this.aviso.nacionalidad);
+                if (this.aviso.fecha_nacimiento)
+                    formData.append('fecha_nacimiento', this.aviso.fecha_nacimiento.toString());
                 formData.append('fecha_defuncion', this.aviso.fecha_defuncion.toString());
+                if (this.aviso.fecha_entierro)
+                    formData.append('fecha_entierro', this.aviso.fecha_entierro.toString());
                 formData.append('descripcion', this.aviso.descripcion || '');
+                formData.append('biografia', this.aviso.biografia || '');
+                if (this.aviso.ubicacion_cementerio)
+                    formData.append('ubicacion_cementerio', this.aviso.ubicacion_cementerio);
                 formData.append('activo', this.aviso.activo ? 'true' : 'false');
                 formData.append('publicado', this.aviso.publicado ? 'true' : 'false');
                 if (this.aviso.fecha_caducidad_publicado) {
@@ -20441,7 +20606,7 @@ class EditarAvisoFunebreComponent {
     }
 }
 EditarAvisoFunebreComponent.ɵfac = function EditarAvisoFunebreComponent_Factory(t) { return new (t || EditarAvisoFunebreComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_avisos_funebres_service__WEBPACK_IMPORTED_MODULE_4__["AvisosFunebresService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_usuario_service__WEBPACK_IMPORTED_MODULE_5__["UsuarioService"])); };
-EditarAvisoFunebreComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: EditarAvisoFunebreComponent, selectors: [["app-editar-aviso-funebre"]], decls: 14, vars: 1, consts: [[1, "card"], [1, "card-header"], [1, "card-body"], ["ngNativeValidate", "", 3, "ngSubmit", 4, "ngIf"], ["ngNativeValidate", "", 3, "ngSubmit"], ["form", "ngForm"], [1, "form-group"], ["for", "nombre_completo"], ["type", "text", "name", "nombre_completo", "id", "nombre_completo", "placeholder", "Ingrese el nombre completo", "required", "", 1, "form-control", 3, "ngModel", "ngModelChange"], ["for", "fecha_defuncion"], ["type", "date", "name", "fecha_defuncion", "id", "fecha_defuncion", "required", "", 1, "form-control", 3, "ngModel", "ngModelChange"], ["for", "foto"], ["type", "file", "name", "foto", "id", "foto", "accept", "image/*", 1, "form-control", 3, "change"], [1, "form-text", "text-muted"], ["class", "mt-3", 4, "ngIf"], ["for", "descripcion"], ["name", "descripcion", "id", "descripcion", "rows", "4", "placeholder", "Ingrese una descripci\u00F3n (opcional)", 1, "form-control", 3, "ngModel", "ngModelChange"], [1, "form-check"], ["type", "checkbox", "name", "activo", "id", "activo", 1, "form-check-input", 3, "ngModel", "ngModelChange"], ["for", "activo", 1, "form-check-label"], ["type", "checkbox", "name", "publicado", "id", "publicado", 1, "form-check-input", 3, "ngModel", "ngModelChange"], ["for", "publicado", 1, "form-check-label"], ["class", "form-group", 4, "ngIf"], ["type", "reset", 1, "btn", "mr-3", "btn-danger", 3, "disabled", "click"], ["type", "submit", 1, "btn", "btn-info", 3, "disabled"], ["class", "spinner-border spinner-border-sm mr-2", 4, "ngIf"], [1, "mt-3"], ["alt", "Vista previa", 1, "img-thumbnail", 2, "max-width", "300px", "max-height", "300px", 3, "src"], ["type", "button", 1, "btn", "btn-sm", "btn-danger", "ml-2", 3, "click"], [1, "fa", "fa-trash"], ["for", "fecha_caducidad_publicado"], ["type", "date", "name", "fecha_caducidad_publicado", "id", "fecha_caducidad_publicado", 1, "form-control", 3, "ngModel", "ngModelChange"], [1, "spinner-border", "spinner-border-sm", "mr-2"]], template: function EditarAvisoFunebreComponent_Template(rf, ctx) { if (rf & 1) {
+EditarAvisoFunebreComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: EditarAvisoFunebreComponent, selectors: [["app-editar-aviso-funebre"]], decls: 13, vars: 1, consts: [[1, "card"], [1, "card-header"], [1, "card-body"], ["ngNativeValidate", "", 3, "ngSubmit", 4, "ngIf"], ["ngNativeValidate", "", 3, "ngSubmit"], ["form", "ngForm"], [1, "form-group"], ["for", "nombre_completo"], ["type", "text", "name", "nombre_completo", "id", "nombre_completo", "placeholder", "Ingrese el nombre completo", "required", "", 1, "form-control", 3, "ngModel", "ngModelChange"], ["for", "nacionalidad"], ["type", "text", "name", "nacionalidad", "id", "nacionalidad", "placeholder", "Ingrese la nacionalidad", 1, "form-control", 3, "ngModel", "ngModelChange"], [1, "row"], [1, "col-md-4"], ["for", "fecha_nacimiento"], ["type", "date", "name", "fecha_nacimiento", "id", "fecha_nacimiento", 1, "form-control", 3, "ngModel", "ngModelChange"], ["for", "fecha_defuncion"], ["type", "date", "name", "fecha_defuncion", "id", "fecha_defuncion", "required", "", 1, "form-control", 3, "ngModel", "ngModelChange"], ["for", "fecha_entierro"], ["type", "date", "name", "fecha_entierro", "id", "fecha_entierro", 1, "form-control", 3, "ngModel", "ngModelChange"], ["for", "ubicacion_cementerio"], ["type", "text", "name", "ubicacion_cementerio", "id", "ubicacion_cementerio", "placeholder", "Ej: Sector A, Parcela 123", 1, "form-control", 3, "ngModel", "ngModelChange"], ["for", "foto"], ["type", "file", "name", "foto", "id", "foto", "accept", "image/*", 1, "form-control", 3, "change"], [1, "form-text", "text-muted"], ["class", "mt-3", 4, "ngIf"], ["for", "descripcion"], ["name", "descripcion", "id", "descripcion", "rows", "4", "placeholder", "Ingrese una descripci\u00F3n (opcional)", 1, "form-control", 3, "ngModel", "ngModelChange"], ["for", "biografia"], ["name", "biografia", "id", "biografia", "rows", "6", "placeholder", "Ingrese la biograf\u00EDa o historia de vida (opcional)", 1, "form-control", 3, "ngModel", "ngModelChange"], [1, "form-check"], ["type", "checkbox", "name", "activo", "id", "activo", 1, "form-check-input", 3, "ngModel", "ngModelChange"], ["for", "activo", 1, "form-check-label"], ["type", "checkbox", "name", "publicado", "id", "publicado", 1, "form-check-input", 3, "ngModel", "ngModelChange"], ["for", "publicado", 1, "form-check-label"], ["class", "form-group", 4, "ngIf"], ["type", "reset", 1, "btn", "mr-3", "btn-danger", 3, "disabled", "click"], ["type", "submit", 1, "btn", "btn-info", 3, "disabled"], ["class", "spinner-border spinner-border-sm mr-2", 4, "ngIf"], [1, "mt-3"], ["alt", "Vista previa", 1, "img-thumbnail", 2, "max-width", "300px", "max-height", "300px", 3, "src"], ["type", "button", 1, "btn", "btn-sm", "btn-danger", "ml-2", 3, "click"], [1, "fa", "fa-trash"], ["for", "fecha_caducidad_publicado"], ["type", "date", "name", "fecha_caducidad_publicado", "id", "fecha_caducidad_publicado", 1, "form-control", 3, "ngModel", "ngModelChange"], [1, "spinner-border", "spinner-border-sm", "mr-2"]], template: function EditarAvisoFunebreComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n    ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 1);
@@ -20454,12 +20619,11 @@ EditarAvisoFunebreComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](7, "\n    ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](8, "div", 2);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](9, "\n        ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](10, EditarAvisoFunebreComponent_form_10_Template, 75, 10, "form", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](10, EditarAvisoFunebreComponent_form_10_Template, 127, 15, "form", 3);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](11, "\n    ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](12, "\n");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](13, "\n\n");
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](10);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.aviso);
@@ -30120,11 +30284,11 @@ class AvisosFunebresService {
         this.http = http;
         this._usuarioService = _usuarioService;
     }
-    getAvisosFunebres() {
-        let url = _config_global__WEBPACK_IMPORTED_MODULE_0__["URL_SERVICIOS"] + '/avisos-funebres/all';
-        url += `?token=${this._usuarioService.token}`;
+    getAvisosFunebres(page = 1, limit = 10) {
+        let url = _config_global__WEBPACK_IMPORTED_MODULE_0__["URL_SERVICIOS"] + `/avisos-funebres/all?page=${page}&limit=${limit}`;
+        url += `&token=${this._usuarioService.token}`;
         return this.http.get(url).toPromise().then((resp) => {
-            return resp.avisos;
+            return resp; // Devolvemos toda la respuesta para tener access al total
         });
     }
     getAvisoFunebreById(id) {
@@ -30253,16 +30417,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function CrearAvisoFunebreComponent_div_39_Template(rf, ctx) { if (rf & 1) {
+function CrearAvisoFunebreComponent_div_83_Template(rf, ctx) { if (rf & 1) {
     const _r5 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 25);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 37);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](1, "\n                    ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](2, "img", 26);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](2, "img", 38);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](3, "\n                    ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](4, "button", 27);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("click", function CrearAvisoFunebreComponent_div_39_Template_button_click_4_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵrestoreView"](_r5); const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](); return ctx_r4.eliminarFoto(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](4, "button", 39);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("click", function CrearAvisoFunebreComponent_div_83_Template_button_click_4_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵrestoreView"](_r5); const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](); return ctx_r4.eliminarFoto(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](5, "\n                        ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](6, "i", 28);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](6, "i", 40);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](7, " Eliminar\n                    ");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](8, "\n                ");
@@ -30272,19 +30436,19 @@ function CrearAvisoFunebreComponent_div_39_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("src", ctx_r1.fotoPreview, _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵsanitizeUrl"]);
 } }
-function CrearAvisoFunebreComponent_div_72_Template(rf, ctx) { if (rf & 1) {
+function CrearAvisoFunebreComponent_div_124_Template(rf, ctx) { if (rf & 1) {
     const _r7 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 5);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](1, "\n                ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "label", 29);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "label", 41);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](3, "Fecha de Caducidad de Publicaci\u00F3n");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](4, "\n                ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](5, "input", 30);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("ngModelChange", function CrearAvisoFunebreComponent_div_72_Template_input_ngModelChange_5_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵrestoreView"](_r7); const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](); return ctx_r6.aviso.fecha_caducidad_publicado = $event; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](5, "input", 42);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("ngModelChange", function CrearAvisoFunebreComponent_div_124_Template_input_ngModelChange_5_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵrestoreView"](_r7); const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](); return ctx_r6.aviso.fecha_caducidad_publicado = $event; });
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](6, "\n                ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](7, "small", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](7, "small", 22);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](8, "Dejar vac\u00EDo si no tiene fecha de caducidad");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](9, "\n            ");
@@ -30294,8 +30458,8 @@ function CrearAvisoFunebreComponent_div_72_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](5);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngModel", ctx_r2.aviso.fecha_caducidad_publicado);
 } }
-function CrearAvisoFunebreComponent_span_81_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](0, "span", 31);
+function CrearAvisoFunebreComponent_span_133_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](0, "span", 43);
 } }
 class CrearAvisoFunebreComponent {
     constructor(_avisosFunebresService) {
@@ -30330,8 +30494,17 @@ class CrearAvisoFunebreComponent {
             try {
                 const formData = new FormData();
                 formData.append('nombre_completo', this.aviso.nombre_completo);
+                if (this.aviso.nacionalidad)
+                    formData.append('nacionalidad', this.aviso.nacionalidad);
+                if (this.aviso.fecha_nacimiento)
+                    formData.append('fecha_nacimiento', this.aviso.fecha_nacimiento.toString());
                 formData.append('fecha_defuncion', this.aviso.fecha_defuncion.toString());
+                if (this.aviso.fecha_entierro)
+                    formData.append('fecha_entierro', this.aviso.fecha_entierro.toString());
                 formData.append('descripcion', this.aviso.descripcion || '');
+                formData.append('biografia', this.aviso.biografia || '');
+                if (this.aviso.ubicacion_cementerio)
+                    formData.append('ubicacion_cementerio', this.aviso.ubicacion_cementerio);
                 formData.append('activo', this.aviso.activo ? 'true' : 'false');
                 formData.append('publicado', this.aviso.publicado ? 'true' : 'false');
                 if (this.aviso.fecha_caducidad_publicado) {
@@ -30361,7 +30534,7 @@ class CrearAvisoFunebreComponent {
     }
 }
 CrearAvisoFunebreComponent.ɵfac = function CrearAvisoFunebreComponent_Factory(t) { return new (t || CrearAvisoFunebreComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](src_app_services_avisos_funebres_service__WEBPACK_IMPORTED_MODULE_3__["AvisosFunebresService"])); };
-CrearAvisoFunebreComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({ type: CrearAvisoFunebreComponent, selectors: [["app-crear-aviso-funebre"]], decls: 88, vars: 10, consts: [[1, "card"], [1, "card-header"], [1, "card-body"], ["ngNativeValidate", "", 3, "ngSubmit"], ["form", "ngForm"], [1, "form-group"], ["for", "nombre_completo"], ["type", "text", "name", "nombre_completo", "id", "nombre_completo", "placeholder", "Ingrese el nombre completo", "required", "", 1, "form-control", 3, "ngModel", "ngModelChange"], ["for", "fecha_defuncion"], ["type", "date", "name", "fecha_defuncion", "id", "fecha_defuncion", "required", "", 1, "form-control", 3, "ngModel", "ngModelChange"], ["for", "foto"], ["type", "file", "name", "foto", "id", "foto", "accept", "image/*", 1, "form-control", 3, "change"], [1, "form-text", "text-muted"], ["class", "mt-3", 4, "ngIf"], ["for", "descripcion"], ["name", "descripcion", "id", "descripcion", "rows", "4", "placeholder", "Ingrese una descripci\u00F3n (opcional)", 1, "form-control", 3, "ngModel", "ngModelChange"], [1, "form-check"], ["type", "checkbox", "name", "activo", "id", "activo", 1, "form-check-input", 3, "ngModel", "ngModelChange"], ["for", "activo", 1, "form-check-label"], ["type", "checkbox", "name", "publicado", "id", "publicado", 1, "form-check-input", 3, "ngModel", "ngModelChange"], ["for", "publicado", 1, "form-check-label"], ["class", "form-group", 4, "ngIf"], ["type", "reset", 1, "btn", "mr-3", "btn-danger", 3, "disabled", "click"], ["type", "submit", 1, "btn", "btn-info", 3, "disabled"], ["class", "spinner-border spinner-border-sm mr-2", 4, "ngIf"], [1, "mt-3"], ["alt", "Vista previa", 1, "img-thumbnail", 2, "max-width", "300px", "max-height", "300px", 3, "src"], ["type", "button", 1, "btn", "btn-sm", "btn-danger", "ml-2", 3, "click"], [1, "fa", "fa-trash"], ["for", "fecha_caducidad_publicado"], ["type", "date", "name", "fecha_caducidad_publicado", "id", "fecha_caducidad_publicado", 1, "form-control", 3, "ngModel", "ngModelChange"], [1, "spinner-border", "spinner-border-sm", "mr-2"]], template: function CrearAvisoFunebreComponent_Template(rf, ctx) { if (rf & 1) {
+CrearAvisoFunebreComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({ type: CrearAvisoFunebreComponent, selectors: [["app-crear-aviso-funebre"]], decls: 139, vars: 15, consts: [[1, "card"], [1, "card-header"], [1, "card-body"], ["ngNativeValidate", "", 3, "ngSubmit"], ["form", "ngForm"], [1, "form-group"], ["for", "nombre_completo"], ["type", "text", "name", "nombre_completo", "id", "nombre_completo", "placeholder", "Ingrese el nombre completo", "required", "", 1, "form-control", 3, "ngModel", "ngModelChange"], ["for", "nacionalidad"], ["type", "text", "name", "nacionalidad", "id", "nacionalidad", "placeholder", "Ingrese la nacionalidad", 1, "form-control", 3, "ngModel", "ngModelChange"], [1, "row"], [1, "col-md-4"], ["for", "fecha_nacimiento"], ["type", "date", "name", "fecha_nacimiento", "id", "fecha_nacimiento", 1, "form-control", 3, "ngModel", "ngModelChange"], ["for", "fecha_defuncion"], ["type", "date", "name", "fecha_defuncion", "id", "fecha_defuncion", "required", "", 1, "form-control", 3, "ngModel", "ngModelChange"], ["for", "fecha_entierro"], ["type", "date", "name", "fecha_entierro", "id", "fecha_entierro", 1, "form-control", 3, "ngModel", "ngModelChange"], ["for", "ubicacion_cementerio"], ["type", "text", "name", "ubicacion_cementerio", "id", "ubicacion_cementerio", "placeholder", "Ej: Sector A, Parcela 123", 1, "form-control", 3, "ngModel", "ngModelChange"], ["for", "foto"], ["type", "file", "name", "foto", "id", "foto", "accept", "image/*", 1, "form-control", 3, "change"], [1, "form-text", "text-muted"], ["class", "mt-3", 4, "ngIf"], ["for", "descripcion"], ["name", "descripcion", "id", "descripcion", "rows", "4", "placeholder", "Ingrese una descripci\u00F3n (opcional)", 1, "form-control", 3, "ngModel", "ngModelChange"], ["for", "biografia"], ["name", "biografia", "id", "biografia", "rows", "6", "placeholder", "Ingrese la biograf\u00EDa o historia de vida (opcional)", 1, "form-control", 3, "ngModel", "ngModelChange"], [1, "form-check"], ["type", "checkbox", "name", "activo", "id", "activo", 1, "form-check-input", 3, "ngModel", "ngModelChange"], ["for", "activo", 1, "form-check-label"], ["type", "checkbox", "name", "publicado", "id", "publicado", 1, "form-check-input", 3, "ngModel", "ngModelChange"], ["for", "publicado", 1, "form-check-label"], ["class", "form-group", 4, "ngIf"], ["type", "reset", 1, "btn", "mr-3", "btn-danger", 3, "disabled", "click"], ["type", "submit", 1, "btn", "btn-info", 3, "disabled"], ["class", "spinner-border spinner-border-sm mr-2", 4, "ngIf"], [1, "mt-3"], ["alt", "Vista previa", 1, "img-thumbnail", 2, "max-width", "300px", "max-height", "300px", 3, "src"], ["type", "button", 1, "btn", "btn-sm", "btn-danger", "ml-2", 3, "click"], [1, "fa", "fa-trash"], ["for", "fecha_caducidad_publicado"], ["type", "date", "name", "fecha_caducidad_publicado", "id", "fecha_caducidad_publicado", 1, "form-control", 3, "ngModel", "ngModelChange"], [1, "spinner-border", "spinner-border-sm", "mr-2"]], template: function CrearAvisoFunebreComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](1, "\n    ");
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "div", 1);
@@ -30392,109 +30565,194 @@ CrearAvisoFunebreComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_2__["�
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](21, "div", 5);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](22, "\n                ");
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](23, "label", 8);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](24, "Fecha de Defunci\u00F3n *");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](24, "Nacionalidad");
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](25, "\n                ");
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](26, "input", 9);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("ngModelChange", function CrearAvisoFunebreComponent_Template_input_ngModelChange_26_listener($event) { return ctx.aviso.fecha_defuncion = $event; });
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("ngModelChange", function CrearAvisoFunebreComponent_Template_input_ngModelChange_26_listener($event) { return ctx.aviso.nacionalidad = $event; });
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](27, "\n            ");
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](28, "\n\n            ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](29, "div", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](29, "div", 10);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](30, "\n                ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](31, "label", 10);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](32, "Foto");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](31, "div", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](32, "\n                    ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](33, "div", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](34, "\n                        ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](35, "label", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](36, "Fecha de Nacimiento");
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](33, "\n                ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](34, "input", 11);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("change", function CrearAvisoFunebreComponent_Template_input_change_34_listener($event) { return ctx.onFileSelected($event); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](37, "\n                        ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](38, "input", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("ngModelChange", function CrearAvisoFunebreComponent_Template_input_ngModelChange_38_listener($event) { return ctx.aviso.fecha_nacimiento = $event; });
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](35, "\n                ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](36, "small", 12);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](37, "Formatos permitidos: JPG, PNG, GIF (m\u00E1x. 5MB)");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](39, "\n                    ");
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](38, "\n                \n                ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](39, CrearAvisoFunebreComponent_div_39_Template, 9, 1, "div", 13);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](40, "\n            ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](40, "\n                ");
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](41, "\n\n            ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](42, "div", 5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](43, "\n                ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](44, "label", 14);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](45, "Descripci\u00F3n");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](41, "\n                ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](42, "div", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](43, "\n                    ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](44, "div", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](45, "\n                        ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](46, "label", 14);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](47, "Fecha de Defunci\u00F3n *");
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](46, "\n                ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](47, "textarea", 15);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("ngModelChange", function CrearAvisoFunebreComponent_Template_textarea_ngModelChange_47_listener($event) { return ctx.aviso.descripcion = $event; });
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](48, "\n                        ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](49, "input", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("ngModelChange", function CrearAvisoFunebreComponent_Template_input_ngModelChange_49_listener($event) { return ctx.aviso.fecha_defuncion = $event; });
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](48, "\n            ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](50, "\n                    ");
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](49, "\n\n            ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](50, "div", 5);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](51, "\n                ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](52, "div", 16);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](53, "\n                    ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](54, "input", 17);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("ngModelChange", function CrearAvisoFunebreComponent_Template_input_ngModelChange_54_listener($event) { return ctx.aviso.activo = $event; });
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](55, "\n                    ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](56, "label", 18);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](57, "\n                        Activo\n                    ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](52, "\n                ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](53, "div", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](54, "\n                    ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](55, "div", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](56, "\n                        ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](57, "label", 16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](58, "Fecha de Entierro");
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](58, "\n                ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](59, "\n                        ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](60, "input", 17);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("ngModelChange", function CrearAvisoFunebreComponent_Template_input_ngModelChange_60_listener($event) { return ctx.aviso.fecha_entierro = $event; });
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](59, "\n            ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](61, "\n                    ");
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](60, "\n\n            ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](61, "div", 5);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](62, "\n                ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](63, "div", 16);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](64, "\n                    ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](65, "input", 19);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("ngModelChange", function CrearAvisoFunebreComponent_Template_input_ngModelChange_65_listener($event) { return ctx.aviso.publicado = $event; });
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](66, "\n                    ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](67, "label", 20);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](68, "\n                        Publicado\n                    ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](63, "\n            ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](64, "\n\n            ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](65, "div", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](66, "\n                ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](67, "label", 18);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](68, "Ubicaci\u00F3n en Cementerio");
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](69, "\n                ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](70, "input", 19);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("ngModelChange", function CrearAvisoFunebreComponent_Template_input_ngModelChange_70_listener($event) { return ctx.aviso.ubicacion_cementerio = $event; });
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](70, "\n            ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](71, "\n            ");
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](71, "\n\n            ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](72, CrearAvisoFunebreComponent_div_72_Template, 10, 1, "div", 21);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](73, "\n\n            ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](74, "div", 5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](75, "\n                ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](76, "button", 22);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("click", function CrearAvisoFunebreComponent_Template_button_click_76_listener() { return ctx.cancelar(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](77, "\n                    Cancelar\n                ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](72, "\n\n            ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](73, "div", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](74, "\n                ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](75, "label", 20);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](76, "Foto");
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](78, "\n                ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](79, "button", 23);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](80, "\n                    ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](81, CrearAvisoFunebreComponent_span_81_Template, 1, 0, "span", 24);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](82, "\n                    Crear Aviso F\u00FAnebre\n                ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](77, "\n                ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](78, "input", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("change", function CrearAvisoFunebreComponent_Template_input_change_78_listener($event) { return ctx.onFileSelected($event); });
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](83, "\n            ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](79, "\n                ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](80, "small", 22);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](81, "Formatos permitidos: JPG, PNG, GIF (m\u00E1x. 5MB)");
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](84, "\n        ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](82, "\n\n                ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](83, CrearAvisoFunebreComponent_div_83_Template, 9, 1, "div", 23);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](84, "\n            ");
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](85, "\n    ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](85, "\n\n            ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](86, "div", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](87, "\n                ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](88, "label", 24);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](89, "Descripci\u00F3n (Aviso F\u00FAnebre)");
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](86, "\n");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](90, "\n                ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](91, "textarea", 25);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("ngModelChange", function CrearAvisoFunebreComponent_Template_textarea_ngModelChange_91_listener($event) { return ctx.aviso.descripcion = $event; });
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](87, "\n\n");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](92, "\n            ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](93, "\n\n            ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](94, "div", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](95, "\n                ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](96, "label", 26);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](97, "Biograf\u00EDa / Historia de Vida");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](98, "\n                ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](99, "textarea", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("ngModelChange", function CrearAvisoFunebreComponent_Template_textarea_ngModelChange_99_listener($event) { return ctx.aviso.biografia = $event; });
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](100, "\n            ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](101, "\n\n            ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](102, "div", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](103, "\n                ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](104, "div", 28);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](105, "\n                    ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](106, "input", 29);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("ngModelChange", function CrearAvisoFunebreComponent_Template_input_ngModelChange_106_listener($event) { return ctx.aviso.activo = $event; });
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](107, "\n                    ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](108, "label", 30);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](109, "\n                        Activo\n                    ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](110, "\n                ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](111, "\n            ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](112, "\n\n            ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](113, "div", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](114, "\n                ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](115, "div", 28);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](116, "\n                    ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](117, "input", 31);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("ngModelChange", function CrearAvisoFunebreComponent_Template_input_ngModelChange_117_listener($event) { return ctx.aviso.publicado = $event; });
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](118, "\n                    ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](119, "label", 32);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](120, "\n                        Publicado\n                    ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](121, "\n                ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](122, "\n            ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](123, "\n\n            ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](124, CrearAvisoFunebreComponent_div_124_Template, 10, 1, "div", 33);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](125, "\n\n            ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](126, "div", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](127, "\n                ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](128, "button", 34);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("click", function CrearAvisoFunebreComponent_Template_button_click_128_listener() { return ctx.cancelar(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](129, "\n                    Cancelar\n                ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](130, "\n                ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](131, "button", 35);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](132, "\n                    ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](133, CrearAvisoFunebreComponent_span_133_Template, 1, 0, "span", 36);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](134, "\n                    Crear Aviso F\u00FAnebre\n                ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](135, "\n            ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](136, "\n        ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](137, "\n    ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](138, "\n");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](18);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngModel", ctx.aviso.nombre_completo);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngModel", ctx.aviso.nacionalidad);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngModel", ctx.aviso.fecha_nacimiento);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](11);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngModel", ctx.aviso.fecha_defuncion);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngModel", ctx.aviso.fecha_entierro);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngModel", ctx.aviso.ubicacion_cementerio);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](13);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", ctx.fotoPreview);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](8);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngModel", ctx.aviso.descripcion);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngModel", ctx.aviso.biografia);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](7);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngModel", ctx.aviso.activo);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](11);
@@ -49412,4 +49670,4 @@ webpackEmptyAsyncContext.id = "zn8P";
 /***/ })
 
 },[[0,"runtime","vendor"]]]);
-//# sourceMappingURL=main.e96a127276a760ad1ce1.js.map
+//# sourceMappingURL=main.c6b895ac5a7e633554c7.js.map
