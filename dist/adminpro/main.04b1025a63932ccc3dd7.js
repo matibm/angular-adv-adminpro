@@ -9942,6 +9942,22 @@ class OrdenesCobroService {
             body.email = email;
         return this.http.post(url, body).toPromise();
     }
+    getConfigPagosOnline() {
+        const url = _config_global__WEBPACK_IMPORTED_MODULE_0__["URL_SERVICIOS"] + '/ordenes-cobro/config-pagos-online?token=' + this._usuarioService.token;
+        return this.http.get(url).toPromise();
+    }
+    saveConfigPagosOnline(cobrador_id, fondo_id) {
+        const url = _config_global__WEBPACK_IMPORTED_MODULE_0__["URL_SERVICIOS"] + '/ordenes-cobro/config-pagos-online?token=' + this._usuarioService.token;
+        return this.http.put(url, { cobrador_id, fondo_id }).toPromise();
+    }
+    getCobradores() {
+        const url = _config_global__WEBPACK_IMPORTED_MODULE_0__["URL_SERVICIOS"] + '/ordenes-cobro/cobradores?token=' + this._usuarioService.token;
+        return this.http.get(url).toPromise();
+    }
+    getFondos() {
+        const url = _config_global__WEBPACK_IMPORTED_MODULE_0__["URL_SERVICIOS"] + '/ordenes-cobro/fondos?token=' + this._usuarioService.token;
+        return this.http.get(url).toPromise();
+    }
 }
 OrdenesCobroService.ɵfac = function OrdenesCobroService_Factory(t) { return new (t || OrdenesCobroService)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_usuario_service__WEBPACK_IMPORTED_MODULE_3__["UsuarioService"])); };
 OrdenesCobroService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({ token: OrdenesCobroService, factory: OrdenesCobroService.ɵfac, providedIn: 'root' });
@@ -40063,6 +40079,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _crear_aviso_funebre_crear_aviso_funebre_component__WEBPACK_IMPORTED_MODULE_68__ = __webpack_require__(/*! ./crear-aviso-funebre/crear-aviso-funebre.component */ "Vxuz");
 /* harmony import */ var _editar_aviso_funebre_editar_aviso_funebre_component__WEBPACK_IMPORTED_MODULE_69__ = __webpack_require__(/*! ./editar-aviso-funebre/editar-aviso-funebre.component */ "IHbd");
 /* harmony import */ var _lista_ordenes_cobro_lista_ordenes_cobro_component__WEBPACK_IMPORTED_MODULE_70__ = __webpack_require__(/*! ./lista-ordenes-cobro/lista-ordenes-cobro.component */ "h+Ay");
+/* harmony import */ var _config_pagos_online_config_pagos_online_component__WEBPACK_IMPORTED_MODULE_71__ = __webpack_require__(/*! ./config-pagos-online/config-pagos-online.component */ "lBCe");
 
 
 
@@ -40114,6 +40131,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 // import { NestableModule } from '@ketshopweb/ngx-nestable';
+
 
 
 
@@ -40224,7 +40242,8 @@ ComponentsModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdefineI
         _lista_avisos_funebres_lista_avisos_funebres_component__WEBPACK_IMPORTED_MODULE_67__["ListaAvisosFunebresComponent"],
         _crear_aviso_funebre_crear_aviso_funebre_component__WEBPACK_IMPORTED_MODULE_68__["CrearAvisoFunebreComponent"],
         _editar_aviso_funebre_editar_aviso_funebre_component__WEBPACK_IMPORTED_MODULE_69__["EditarAvisoFunebreComponent"],
-        _lista_ordenes_cobro_lista_ordenes_cobro_component__WEBPACK_IMPORTED_MODULE_70__["ListaOrdenesCobroComponent"]], imports: [ngx_avatar__WEBPACK_IMPORTED_MODULE_2__["AvatarModule"],
+        _lista_ordenes_cobro_lista_ordenes_cobro_component__WEBPACK_IMPORTED_MODULE_70__["ListaOrdenesCobroComponent"],
+        _config_pagos_online_config_pagos_online_component__WEBPACK_IMPORTED_MODULE_71__["ConfigPagosOnlineComponent"]], imports: [ngx_avatar__WEBPACK_IMPORTED_MODULE_2__["AvatarModule"],
         _angular_common__WEBPACK_IMPORTED_MODULE_5__["CommonModule"],
         _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormsModule"],
         _angular_forms__WEBPACK_IMPORTED_MODULE_7__["ReactiveFormsModule"],
@@ -40291,7 +40310,8 @@ ComponentsModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdefineI
                     _lista_avisos_funebres_lista_avisos_funebres_component__WEBPACK_IMPORTED_MODULE_67__["ListaAvisosFunebresComponent"],
                     _crear_aviso_funebre_crear_aviso_funebre_component__WEBPACK_IMPORTED_MODULE_68__["CrearAvisoFunebreComponent"],
                     _editar_aviso_funebre_editar_aviso_funebre_component__WEBPACK_IMPORTED_MODULE_69__["EditarAvisoFunebreComponent"],
-                    _lista_ordenes_cobro_lista_ordenes_cobro_component__WEBPACK_IMPORTED_MODULE_70__["ListaOrdenesCobroComponent"]
+                    _lista_ordenes_cobro_lista_ordenes_cobro_component__WEBPACK_IMPORTED_MODULE_70__["ListaOrdenesCobroComponent"],
+                    _config_pagos_online_config_pagos_online_component__WEBPACK_IMPORTED_MODULE_71__["ConfigPagosOnlineComponent"]
                 ],
                 imports: [
                     ngx_avatar__WEBPACK_IMPORTED_MODULE_2__["AvatarModule"],
@@ -40331,6 +40351,251 @@ ComponentsModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdefineI
                 ]
             }]
     }], null, null); })();
+
+
+/***/ }),
+
+/***/ "lBCe":
+/*!*********************************************************************************!*\
+  !*** ./src/app/components/config-pagos-online/config-pagos-online.component.ts ***!
+  \*********************************************************************************/
+/*! exports provided: ConfigPagosOnlineComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConfigPagosOnlineComponent", function() { return ConfigPagosOnlineComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var src_app_services_ordenes_cobro_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/ordenes-cobro.service */ "5a5z");
+/* harmony import */ var angular_notifier__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! angular-notifier */ "VO+5");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
+
+
+
+
+
+
+
+function ConfigPagosOnlineComponent_div_13_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n      ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 9);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "span", 10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5, "Cargando...");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](6, "\n      ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](7, "\n    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} }
+function ConfigPagosOnlineComponent_div_15_option_12_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "option", 15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const c_r5 = ctx.$implicit;
+    const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngValue", c_r5._id);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](ctx_r3.getNombre(c_r5));
+} }
+function ConfigPagosOnlineComponent_div_15_option_26_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "option", 15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const f_r6 = ctx.$implicit;
+    const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngValue", f_r6._id);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](ctx_r4.getNombre(f_r6));
+} }
+function ConfigPagosOnlineComponent_div_15_Template(rf, ctx) { if (rf & 1) {
+    const _r8 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 11);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n      ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "label", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5, "Cobrador por defecto");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](6, "\n        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](7, "select", 14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngModelChange", function ConfigPagosOnlineComponent_div_15_Template_select_ngModelChange_7_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r8); const ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r7.cobradorId = $event; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](8, "\n          ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](9, "option", 15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](10, "-- Sin definir (usa el de la factura) --");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](11, "\n          ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](12, ConfigPagosOnlineComponent_div_15_option_12_Template, 2, 2, "option", 16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](13, "\n        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](14, "\n      ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](15, "\n      ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](16, "div", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](17, "\n        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](18, "label", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](19, "Fondo por defecto");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](20, "\n        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](21, "select", 14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngModelChange", function ConfigPagosOnlineComponent_div_15_Template_select_ngModelChange_21_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r8); const ctx_r9 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r9.fondoId = $event; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](22, "\n          ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](23, "option", 15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](24, "-- Sin definir (usa el de la factura) --");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](25, "\n          ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](26, ConfigPagosOnlineComponent_div_15_option_26_Template, 2, 2, "option", 16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](27, "\n        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](28, "\n      ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](29, "\n    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", ctx_r1.cobradorId);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngValue", null);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngForOf", ctx_r1.cobradores);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](9);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", ctx_r1.fondoId);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngValue", null);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngForOf", ctx_r1.fondos);
+} }
+function ConfigPagosOnlineComponent_div_17_span_4_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](0, "span", 20);
+} }
+function ConfigPagosOnlineComponent_div_17_Template(rf, ctx) { if (rf & 1) {
+    const _r12 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 17);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n      ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "button", 18);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ConfigPagosOnlineComponent_div_17_Template_button_click_2_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r12); const ctx_r11 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r11.guardar(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](4, ConfigPagosOnlineComponent_div_17_span_4_Template, 1, 0, "span", 19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5, "\n        Guardar configuraci\u00F3n\n      ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](6, "\n    ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("disabled", ctx_r2.saving);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx_r2.saving);
+} }
+class ConfigPagosOnlineComponent {
+    constructor(_ordenesCobroService, notifier) {
+        this._ordenesCobroService = _ordenesCobroService;
+        this.notifier = notifier;
+        this.cobradores = [];
+        this.fondos = [];
+        this.cobradorId = null;
+        this.fondoId = null;
+        this.loading = false;
+        this.saving = false;
+    }
+    ngOnInit() {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            yield this.cargar();
+        });
+    }
+    cargar() {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            this.loading = true;
+            try {
+                const [configRes, cobradoresRes, fondosRes] = yield Promise.all([
+                    this._ordenesCobroService.getConfigPagosOnline(),
+                    this._ordenesCobroService.getCobradores(),
+                    this._ordenesCobroService.getFondos(),
+                ]);
+                this.cobradorId = (configRes === null || configRes === void 0 ? void 0 : configRes.cobrador_id) || null;
+                this.fondoId = (configRes === null || configRes === void 0 ? void 0 : configRes.fondo_id) || null;
+                this.cobradores = (cobradoresRes === null || cobradoresRes === void 0 ? void 0 : cobradoresRes.usuarios) || [];
+                this.fondos = (fondosRes === null || fondosRes === void 0 ? void 0 : fondosRes.usuarios) || [];
+            }
+            catch (error) {
+                console.error('Error al cargar:', error);
+                this.notifier.notify('error', 'Error al cargar configuración');
+            }
+            finally {
+                this.loading = false;
+            }
+        });
+    }
+    guardar() {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            this.saving = true;
+            try {
+                yield this._ordenesCobroService.saveConfigPagosOnline(this.cobradorId, this.fondoId);
+                this.notifier.notify('success', 'Configuración guardada correctamente');
+            }
+            catch (error) {
+                console.error('Error al guardar:', error);
+                this.notifier.notify('error', 'Error al guardar configuración');
+            }
+            finally {
+                this.saving = false;
+            }
+        });
+    }
+    getNombre(u) {
+        return [u === null || u === void 0 ? void 0 : u.NOMBRES, u === null || u === void 0 ? void 0 : u.APELLIDOS].filter(Boolean).join(' ').trim() || '-';
+    }
+}
+ConfigPagosOnlineComponent.ɵfac = function ConfigPagosOnlineComponent_Factory(t) { return new (t || ConfigPagosOnlineComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](src_app_services_ordenes_cobro_service__WEBPACK_IMPORTED_MODULE_2__["OrdenesCobroService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](angular_notifier__WEBPACK_IMPORTED_MODULE_3__["NotifierService"])); };
+ConfigPagosOnlineComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: ConfigPagosOnlineComponent, selectors: [["app-config-pagos-online"]], decls: 21, vars: 3, consts: [[1, "card"], [1, "card-header"], [1, "card-title", "mb-0"], [1, "text-muted", "mb-0", "small"], [1, "card-body"], ["class", "text-center py-5", 4, "ngIf"], ["class", "row", 4, "ngIf"], ["class", "mt-3", 4, "ngIf"], [1, "text-center", "py-5"], ["role", "status", 1, "spinner-border", "text-primary"], [1, "visually-hidden"], [1, "row"], [1, "col-md-6", "mb-3"], [1, "form-label"], [1, "form-select", 3, "ngModel", "ngModelChange"], [3, "ngValue"], [3, "ngValue", 4, "ngFor", "ngForOf"], [1, "mt-3"], ["type", "button", 1, "btn", "btn-primary", 3, "disabled", "click"], ["class", "spinner-border spinner-border-sm me-1", 4, "ngIf"], [1, "spinner-border", "spinner-border-sm", "me-1"]], template: function ConfigPagosOnlineComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n  ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n    ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "h4", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5, "Configuraci\u00F3n de Pagos Online");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](6, "\n    ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](7, "p", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](8, "Cobrador y fondo por defecto al registrar pagos desde PagoPar");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](9, "\n  ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](10, "\n  ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](11, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](12, "\n    ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](13, ConfigPagosOnlineComponent_div_13_Template, 8, 0, "div", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](14, "\n\n    ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](15, ConfigPagosOnlineComponent_div_15_Template, 30, 6, "div", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](16, "\n\n    ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](17, ConfigPagosOnlineComponent_div_17_Template, 7, 2, "div", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](18, "\n  ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](19, "\n");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](20, "\n");
+    } if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.loading);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !ctx.loading);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !ctx.loading);
+    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_4__["NgIf"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["SelectControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["NgModel"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["ɵangular_packages_forms_forms_x"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgForOf"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbmZpZy1wYWdvcy1vbmxpbmUuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSx3QkFBd0IiLCJmaWxlIjoiY29uZmlnLXBhZ29zLW9ubGluZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLyogY29uZmlnLXBhZ29zLW9ubGluZSAqL1xuIl19 */"] });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](ConfigPagosOnlineComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"],
+        args: [{
+                selector: 'app-config-pagos-online',
+                templateUrl: './config-pagos-online.component.html',
+                styleUrls: ['./config-pagos-online.component.css']
+            }]
+    }], function () { return [{ type: src_app_services_ordenes_cobro_service__WEBPACK_IMPORTED_MODULE_2__["OrdenesCobroService"] }, { type: angular_notifier__WEBPACK_IMPORTED_MODULE_3__["NotifierService"] }]; }, null); })();
 
 
 /***/ }),
@@ -41239,6 +41504,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_crear_aviso_funebre_crear_aviso_funebre_component__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ../components/crear-aviso-funebre/crear-aviso-funebre.component */ "Vxuz");
 /* harmony import */ var _components_editar_aviso_funebre_editar_aviso_funebre_component__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ../components/editar-aviso-funebre/editar-aviso-funebre.component */ "IHbd");
 /* harmony import */ var _components_lista_ordenes_cobro_lista_ordenes_cobro_component__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ../components/lista-ordenes-cobro/lista-ordenes-cobro.component */ "h+Ay");
+/* harmony import */ var _components_config_pagos_online_config_pagos_online_component__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ../components/config-pagos-online/config-pagos-online.component */ "lBCe");
+
 
 
 
@@ -41334,6 +41601,7 @@ const routes = [
             { path: 'mapa', component: _components_mapa_mapa_component__WEBPACK_IMPORTED_MODULE_35__["MapaComponent"] },
             { path: 'recibos', component: _components_recibos_recibos_component__WEBPACK_IMPORTED_MODULE_40__["RecibosComponent"] },
             { path: 'ordenes-cobro', component: _components_lista_ordenes_cobro_lista_ordenes_cobro_component__WEBPACK_IMPORTED_MODULE_45__["ListaOrdenesCobroComponent"] },
+            { path: 'config-pagos-online', component: _components_config_pagos_online_config_pagos_online_component__WEBPACK_IMPORTED_MODULE_46__["ConfigPagosOnlineComponent"] },
             { path: 'lista_avisos_funebres', component: _components_lista_avisos_funebres_lista_avisos_funebres_component__WEBPACK_IMPORTED_MODULE_42__["ListaAvisosFunebresComponent"] },
             { path: 'crear_aviso_funebre', component: _components_crear_aviso_funebre_crear_aviso_funebre_component__WEBPACK_IMPORTED_MODULE_43__["CrearAvisoFunebreComponent"] },
             { path: 'editar_aviso_funebre/:id', component: _components_editar_aviso_funebre_editar_aviso_funebre_component__WEBPACK_IMPORTED_MODULE_44__["EditarAvisoFunebreComponent"] },
@@ -50441,6 +50709,7 @@ class SidebarService {
                     { titulo: 'Transf. Deposito', url: 'transferencia' },
                     { titulo: 'Facturas a Credito', url: 'recibos' },
                     { titulo: 'Órdenes de Cobro', url: 'ordenes-cobro' },
+                    { titulo: 'Config. Pagos Online', url: 'config-pagos-online' },
                 ]
             },
             {
@@ -51868,4 +52137,4 @@ webpackEmptyAsyncContext.id = "zn8P";
 /***/ })
 
 },[[0,"runtime","vendor"]]]);
-//# sourceMappingURL=main.a01592bdfd2bbc32bf56.js.map
+//# sourceMappingURL=main.04b1025a63932ccc3dd7.js.map
