@@ -1,0 +1,131 @@
+<div class="card">
+  <div class="card-header">
+    <h4 class="card-title mb-0">Órdenes de Cobro</h4>
+    <p class="text-muted mb-0 small">Órdenes generadas desde la web de pago online</p>
+  </div>
+  <div class="card-body">
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <label class="form-label">Estado</label>
+        <select class="form-select" [(ngModel)]="estadoFiltro" (ngModelChange)="onFiltroEstadoChange()">
+          <option *ngFor="let e of estados" [ngValue]="e.value">{{ e.label }}</option>
+        </select>
+      </div>
+    </div>
+
+    <div *ngIf="loading" class="text-center py-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Cargando...</span>
+      </div>
+    </div>
+
+    <div *ngIf="!loading" class="table-responsive">
+      <table class="table table-sm table-hover">
+        <thead>
+          <tr>
+            <th class="text-center">#</th>
+            <th>Fecha</th>
+            <th>Cliente</th>
+            <th class="text-center">Documento</th>
+            <th>Email</th>
+            <th class="text-end">Monto</th>
+            <th class="text-center">Estado</th>
+            <th class="text-center">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let orden of ordenes; let i = index">
+            <td class="text-center">{{ (page - 1) * limit + i + 1 }}</td>
+            <td>{{ orden.fecha_creacion | date:'dd/MM/yyyy HH:mm' }}</td>
+            <td>{{ getNombreCliente(orden) }}</td>
+            <td class="text-center">{{ orden.documento }}</td>
+            <td>{{ orden.email || '-' }}</td>
+            <td class="text-end">{{ orden.monto_total | currency:'':'':'2.0' }} Gs</td>
+            <td class="text-center">
+              <span class="badge" [ngClass]="getBadgeClass(orden.estado)">{{ orden.estado }}</span>
+            </td>
+            <td class="text-center">
+              <button type="button" class="btn btn-sm btn-outline-primary" (click)="verDetalle(orden)">
+                Ver detalle
+              </button>
+            </td>
+          </tr>
+          <tr *ngIf="ordenes.length === 0">
+            <td colspan="8" class="text-center py-4 text-muted">No hay órdenes de cobro</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div *ngIf="!loading && count > limit" class="d-flex justify-content-between align-items-center mt-3">
+      <div class="text-muted small">Total: {{ count }} orden(es)</div>
+      <nav>
+        <ul class="pagination pagination-sm mb-0">
+          <li class="page-item" [class.disabled]="page <= 1">
+            <a class="page-link" (click)="page > 1 && cambiarPagina(page - 1)">Anterior</a>
+          </li>
+          <li class="page-item" [class.active]="true">
+            <span class="page-link">{{ page }} / {{ totalPaginas }}</span>
+          </li>
+          <li class="page-item" [class.disabled]="page >= totalPaginas">
+            <a class="page-link" (click)="page < totalPaginas && cambiarPagina(page + 1)">Siguiente</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="ordenSeleccionada" class="modal show d-block" tabindex="-1" style="background: rgba(0,0,0,0.5);">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Orden de cobro #{{ ordenSeleccionada._id?.slice(-8) }}</h5>
+        <button type="button" class="btn-close" (click)="cerrarDetalle()"></button>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="loadingDetalle" class="text-center py-4">
+          <div class="spinner-border text-primary"></div>
+        </div>
+        <div *ngIf="!loadingDetalle && ordenSeleccionada">
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <strong>Cliente:</strong> {{ getNombreCliente(ordenSeleccionada) }}<br>
+              <strong>Documento:</strong> {{ ordenSeleccionada.documento }}<br>
+              <strong>Email:</strong> {{ ordenSeleccionada.email || ordenSeleccionada.titular?.EMAIL || '-' }}<br>
+              <strong>Teléfono:</strong> {{ ordenSeleccionada.titular?.TELEFONO1 || '-' }}<br>
+              <strong>Dirección:</strong> {{ ordenSeleccionada.titular?.DIRECCION || '-' }}
+            </div>
+            <div class="col-md-6">
+              <strong>Fecha creación:</strong> {{ ordenSeleccionada.fecha_creacion | date:'dd/MM/yyyy HH:mm' }}<br>
+              <strong>Estado:</strong> <span class="badge" [ngClass]="getBadgeClass(ordenSeleccionada.estado)">{{ ordenSeleccionada.estado }}</span><br>
+              <strong>Monto total:</strong> {{ ordenSeleccionada.monto_total | currency:'':'':'2.0' }} Gs
+            </div>
+          </div>
+          <div *ngIf="ordenSeleccionada.factura_ids?.length" class="mt-3">
+            <strong>Facturas asociadas:</strong>
+            <table class="table table-sm mt-2">
+              <thead>
+                <tr>
+                  <th>Concepto</th>
+                  <th class="text-end">Monto</th>
+                  <th class="text-center">Vencimiento</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let f of ordenSeleccionada.factura_ids">
+                  <td>{{ f.servicio?.NOMBRE || f.nombre_concepto || '-' }}</td>
+                  <td class="text-end">{{ f.haber | currency:'':'':'2.0' }} Gs</td>
+                  <td class="text-center">{{ f.vencimiento | date:'dd/MM/yyyy' }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="cerrarDetalle()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>

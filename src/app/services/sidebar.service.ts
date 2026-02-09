@@ -37,6 +37,7 @@ export class SidebarService {
         { titulo: 'Cajas/Bancos', url: 'info_caja' },
         { titulo: 'Transf. Deposito', url: 'transferencia' },
         { titulo: 'Facturas a Credito', url: 'recibos' },
+        { titulo: 'Órdenes de Cobro', url: 'ordenes-cobro' },
 
       ]
     },

@@ -71,6 +71,7 @@ import { ReciboComponent } from './recibo/recibo.component';
 import { ListaAvisosFunebresComponent } from './lista-avisos-funebres/lista-avisos-funebres.component';
 import { CrearAvisoFunebreComponent } from './crear-aviso-funebre/crear-aviso-funebre.component';
 import { EditarAvisoFunebreComponent } from './editar-aviso-funebre/editar-aviso-funebre.component';
+import { ListaOrdenesCobroComponent } from './lista-ordenes-cobro/lista-ordenes-cobro.component';
 
 
 const maskConfig: Partial<IConfig> = {
@@ -123,7 +124,8 @@ const maskConfig: Partial<IConfig> = {
     ReciboComponent,
     ListaAvisosFunebresComponent,
     CrearAvisoFunebreComponent,
-    EditarAvisoFunebreComponent
+    EditarAvisoFunebreComponent,
+    ListaOrdenesCobroComponent
   ],
   imports: [
     AvatarModule,
