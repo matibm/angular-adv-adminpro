@@ -46,6 +46,7 @@ import { ListaAvisosFunebresComponent } from '../components/lista-avisos-funebre
 import { CrearAvisoFunebreComponent } from '../components/crear-aviso-funebre/crear-aviso-funebre.component';
 import { EditarAvisoFunebreComponent } from '../components/editar-aviso-funebre/editar-aviso-funebre.component';
 import { ListaOrdenesCobroComponent } from '../components/lista-ordenes-cobro/lista-ordenes-cobro.component';
+import { ConfigPagosOnlineComponent } from '../components/config-pagos-online/config-pagos-online.component';
 const routes: Routes = [
   // {
   //   path: 'contrato',
@@ -96,6 +97,7 @@ const routes: Routes = [
       { path: 'mapa', component: MapaComponent },
       { path: 'recibos', component: RecibosComponent },
       { path: 'ordenes-cobro', component: ListaOrdenesCobroComponent },
+      { path: 'config-pagos-online', component: ConfigPagosOnlineComponent },
       { path: 'lista_avisos_funebres', component: ListaAvisosFunebresComponent },
       { path: 'crear_aviso_funebre', component: CrearAvisoFunebreComponent },
       { path: 'editar_aviso_funebre/:id', component: EditarAvisoFunebreComponent },

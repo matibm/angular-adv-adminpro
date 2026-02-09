@@ -31,4 +31,24 @@ export class OrdenesCobroService {
     if (email) body.email = email;
     return this.http.post(url, body).toPromise();
   }
+
+  getConfigPagosOnline() {
+    const url = URL_SERVICIOS + '/ordenes-cobro/config-pagos-online?token=' + this._usuarioService.token;
+    return this.http.get(url).toPromise();
+  }
+
+  saveConfigPagosOnline(cobrador_id: string | null, fondo_id: string | null) {
+    const url = URL_SERVICIOS + '/ordenes-cobro/config-pagos-online?token=' + this._usuarioService.token;
+    return this.http.put(url, { cobrador_id, fondo_id }).toPromise();
+  }
+
+  getCobradores() {
+    const url = URL_SERVICIOS + '/ordenes-cobro/cobradores?token=' + this._usuarioService.token;
+    return this.http.get(url).toPromise();
+  }
+
+  getFondos() {
+    const url = URL_SERVICIOS + '/ordenes-cobro/fondos?token=' + this._usuarioService.token;
+    return this.http.get(url).toPromise();
+  }
 }

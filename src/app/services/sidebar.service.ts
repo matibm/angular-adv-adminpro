@@ -38,6 +38,7 @@ export class SidebarService {
         { titulo: 'Transf. Deposito', url: 'transferencia' },
         { titulo: 'Facturas a Credito', url: 'recibos' },
         { titulo: 'Órdenes de Cobro', url: 'ordenes-cobro' },
+        { titulo: 'Config. Pagos Online', url: 'config-pagos-online' },
 
       ]
     },
