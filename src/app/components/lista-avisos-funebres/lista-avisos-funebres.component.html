@@ -1,82 +1,374 @@
 <div class="card">
-    <div class="card-header d-flex justify-content-between align-items-center">
-        <h4>Avisos Fúnebres</h4>
-        <a [routerLink]="['/admin/crear_aviso_funebre']" class="btn btn-primary">
-            <i class="fa fa-plus"></i> Nuevo Aviso
-        </a>
+    <div class="card-header">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="mb-0">Avisos Fúnebres</h4>
+            <a [routerLink]="['/admin/crear_aviso_funebre']" class="btn btn-primary">
+                <i class="fa fa-plus"></i> Nuevo Aviso
+            </a>
+        </div>
+        
+        <!-- Pestañas -->
+        <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item">
+                <a class="nav-link" [class.active]="tabActiva === 'avisos'" 
+                   (click)="cambiarTab('avisos')" style="cursor: pointer;">
+                    <i class="fa fa-list"></i> Avisos
+                    <span class="badge badge-secondary ml-1">{{totalAvisos}}</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [class.active]="tabActiva === 'condolencias'" 
+                   (click)="cambiarTab('condolencias')" style="cursor: pointer;">
+                    <i class="fa fa-heart"></i> Pésames
+                    <span *ngIf="estadisticasCondolencias.pendientes > 0" class="badge badge-warning ml-1">
+                        {{estadisticasCondolencias.pendientes}}
+                    </span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [class.active]="tabActiva === 'recuerdos'" 
+                   (click)="cambiarTab('recuerdos')" style="cursor: pointer;">
+                    <i class="fa fa-bookmark"></i> Recuerdos
+                    <span *ngIf="estadisticasRecuerdos.pendientes > 0" class="badge badge-warning ml-1">
+                        {{estadisticasRecuerdos.pendientes}}
+                    </span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [class.active]="tabActiva === 'fotografias'" 
+                   (click)="cambiarTab('fotografias')" style="cursor: pointer;">
+                    <i class="fa fa-camera"></i> Fotografías
+                    <span *ngIf="estadisticasFotografias.pendientes > 0" class="badge badge-warning ml-1">
+                        {{estadisticasFotografias.pendientes}}
+                    </span>
+                </a>
+            </li>
+        </ul>
     </div>
+
     <div class="card-body">
-        <div *ngIf="loading" class="text-center">
-            <i class="fa fa-spinner fa-spin fa-2x"></i>
-        </div>
-        <div *ngIf="!loading && avisos.length === 0" class="alert alert-info">
-            No hay avisos fúnebres registrados.
-        </div>
-        <div *ngIf="!loading && avisos.length > 0" class="table-responsive">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>Foto</th>
-                        <th>Nombre Completo</th>
-                        <th>Fecha de Defunción</th>
-                        <th>Activo</th>
-                        <th>Publicado</th>
-                        <th>Fecha Caducidad</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let aviso of avisos">
-                        <td>
-                            <img *ngIf="aviso.foto" [src]="getImagenUrl(aviso.foto)" alt="Foto" class="img-thumbnail"
-                                style="width: 80px; height: 80px; object-fit: cover;">
-                            <span *ngIf="!aviso.foto" class="text-muted">Sin foto</span>
-                        </td>
-                        <td>{{aviso.nombre_completo}}</td>
-                        <td>{{formatearFecha(aviso.fecha_defuncion)}}</td>
-                        <td>
-                            <span [class]="aviso.activo ? 'badge badge-success' : 'badge badge-danger'">
-                                {{aviso.activo ? 'Sí' : 'No'}}
-                            </span>
-                        </td>
-                        <td>
-                            <span [class]="aviso.publicado ? 'badge badge-success' : 'badge badge-secondary'">
-                                {{aviso.publicado ? 'Sí' : 'No'}}
-                            </span>
-                        </td>
-                        <td>
-                            <span *ngIf="aviso.fecha_caducidad_publicado">
-                                {{formatearFecha(aviso.fecha_caducidad_publicado)}}
-                            </span>
-                            <span *ngIf="!aviso.fecha_caducidad_publicado" class="text-muted">-</span>
-                        </td>
-                        <td>
-                            <a [routerLink]="['/admin/editar_aviso_funebre', aviso._id]"
-                                class="btn btn-sm btn-info mr-2">
-                                <i class="fa fa-edit"></i> Editar
-                            </a>
-                            <button (click)="eliminarAviso(aviso)" class="btn btn-sm btn-danger">
-                                <i class="fa fa-trash"></i> Eliminar
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        <!-- ================================================================ -->
+        <!-- TAB: AVISOS -->
+        <!-- ================================================================ -->
+        <div *ngIf="tabActiva === 'avisos'">
+            <div *ngIf="loadingAvisos" class="text-center">
+                <i class="fa fa-spinner fa-spin fa-2x"></i>
+            </div>
+            <div *ngIf="!loadingAvisos && avisos.length === 0" class="alert alert-info">
+                No hay avisos fúnebres registrados.
+            </div>
+            <div *ngIf="!loadingAvisos && avisos.length > 0" class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Foto</th>
+                            <th>Nombre Completo</th>
+                            <th>Fecha de Defunción</th>
+                            <th>Activo</th>
+                            <th>Publicado</th>
+                            <th>Fecha Caducidad</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let aviso of avisos">
+                            <td>
+                                <img *ngIf="aviso.foto" [src]="getImagenUrl(aviso.foto)" alt="Foto" class="img-thumbnail"
+                                    style="width: 80px; height: 80px; object-fit: cover;">
+                                <span *ngIf="!aviso.foto" class="text-muted">Sin foto</span>
+                            </td>
+                            <td>{{aviso.nombre_completo}}</td>
+                            <td>{{formatearFecha(aviso.fecha_defuncion)}}</td>
+                            <td>
+                                <span [class]="aviso.activo ? 'badge badge-success' : 'badge badge-danger'">
+                                    {{aviso.activo ? 'Sí' : 'No'}}
+                                </span>
+                            </td>
+                            <td>
+                                <span [class]="aviso.publicado ? 'badge badge-success' : 'badge badge-secondary'">
+                                    {{aviso.publicado ? 'Sí' : 'No'}}
+                                </span>
+                            </td>
+                            <td>
+                                <span *ngIf="aviso.fecha_caducidad_publicado">
+                                    {{formatearFecha(aviso.fecha_caducidad_publicado)}}
+                                </span>
+                                <span *ngIf="!aviso.fecha_caducidad_publicado" class="text-muted">-</span>
+                            </td>
+                            <td>
+                                <a [routerLink]="['/admin/editar_aviso_funebre', aviso._id]"
+                                    class="btn btn-sm btn-info mr-2">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                                <button (click)="eliminarAviso(aviso)" class="btn btn-sm btn-danger">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div *ngIf="!loadingAvisos && totalAvisos > 0" class="row mt-3">
+                <div class="col-8">
+                    <p>Página {{pageAvisos}} de {{Math.ceil(totalAvisos / limitAvisos)}} (Total: {{totalAvisos}})</p>
+                </div>
+                <div class="col-4 text-right">
+                    <button (click)="cambiarPaginaAvisos(-1)" [disabled]="pageAvisos === 1" class="btn btn-secondary mr-2">
+                        <i class="fa fa-angle-left"></i>
+                    </button>
+                    <button (click)="cambiarPaginaAvisos(1)" [disabled]="pageAvisos >= Math.ceil(totalAvisos / limitAvisos)"
+                        class="btn btn-secondary">
+                        <i class="fa fa-angle-right"></i>
+                    </button>
+                </div>
+            </div>
         </div>
 
-        <div *ngIf="!loading && total > 0" class="row mt-3">
-            <div class="col-8">
-                <p>Mostrando página {{page}} de {{ Math.ceil(total / limit) }} (Total: {{total}} avisos)</p>
+        <!-- ================================================================ -->
+        <!-- TAB: CONDOLENCIAS (Pésames) -->
+        <!-- ================================================================ -->
+        <div *ngIf="tabActiva === 'condolencias'">
+            <ng-container *ngTemplateOutlet="estadisticasTemplate; context: {stats: estadisticasCondolencias, tipo: 'condolencias'}"></ng-container>
+            <ng-container *ngTemplateOutlet="accionesMasivasTemplate"></ng-container>
+
+            <div *ngIf="loadingCondolencias" class="text-center py-4">
+                <i class="fa fa-spinner fa-spin fa-2x"></i>
             </div>
-            <div class="col-4 text-right">
-                <button (click)="cambiarPagina(-1)" [disabled]="page === 1" class="btn btn-secondary mr-2">
-                    <i class="fa fa-angle-left"></i> Anterior
-                </button>
-                <button (click)="cambiarPagina(1)" [disabled]="page >= Math.ceil(total / limit)"
-                    class="btn btn-secondary">
-                    Siguiente <i class="fa fa-angle-right"></i>
-                </button>
+
+            <div *ngIf="!loadingCondolencias && condolencias.length === 0" class="alert alert-success">
+                <i class="fa fa-check-circle"></i> No hay pésames pendientes de aprobación.
             </div>
+
+            <div *ngIf="!loadingCondolencias && condolencias.length > 0" class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" [checked]="seleccionarTodas" (change)="toggleSeleccionarTodas()"></th>
+                            <th>Fecha</th>
+                            <th>Aviso</th>
+                            <th>Autor</th>
+                            <th>Mensaje</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of condolencias">
+                            <td><input type="checkbox" [checked]="seleccionadas.has(item._id)" (change)="toggleSeleccion(item._id)"></td>
+                            <td><small>{{formatearFechaHora(item.fecha_creacion)}}</small></td>
+                            <td>
+                                <strong *ngIf="item.aviso_funebre">{{item.aviso_funebre.nombre_completo}}</strong>
+                            </td>
+                            <td>
+                                <strong>{{item.nombre}}</strong>
+                                <br><small class="text-muted" *ngIf="item.email">{{item.email}}</small>
+                            </td>
+                            <td><span [title]="item.mensaje">{{truncarTexto(item.mensaje, 60)}}</span></td>
+                            <td class="text-nowrap">
+                                <button (click)="aprobarCondolencia(item)" class="btn btn-sm btn-success mr-1" title="Aprobar">
+                                    <i class="fa fa-check"></i>
+                                </button>
+                                <button (click)="rechazarCondolencia(item)" class="btn btn-sm btn-danger" title="Rechazar">
+                                    <i class="fa fa-times"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <ng-container *ngTemplateOutlet="paginacionTemplate; context: {
+                page: pageCondolencias, 
+                total: totalCondolencias, 
+                limit: limitCondolencias, 
+                cambiarPagina: cambiarPaginaCondolencias.bind(this)
+            }"></ng-container>
+        </div>
+
+        <!-- ================================================================ -->
+        <!-- TAB: RECUERDOS -->
+        <!-- ================================================================ -->
+        <div *ngIf="tabActiva === 'recuerdos'">
+            <ng-container *ngTemplateOutlet="estadisticasTemplate; context: {stats: estadisticasRecuerdos, tipo: 'recuerdos'}"></ng-container>
+            <ng-container *ngTemplateOutlet="accionesMasivasTemplate"></ng-container>
+
+            <div *ngIf="loadingRecuerdos" class="text-center py-4">
+                <i class="fa fa-spinner fa-spin fa-2x"></i>
+            </div>
+
+            <div *ngIf="!loadingRecuerdos && recuerdos.length === 0" class="alert alert-success">
+                <i class="fa fa-check-circle"></i> No hay recuerdos pendientes de aprobación.
+            </div>
+
+            <div *ngIf="!loadingRecuerdos && recuerdos.length > 0" class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" [checked]="seleccionarTodas" (change)="toggleSeleccionarTodas()"></th>
+                            <th>Fecha</th>
+                            <th>Aviso</th>
+                            <th>Autor</th>
+                            <th>Título</th>
+                            <th>Mensaje</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of recuerdos">
+                            <td><input type="checkbox" [checked]="seleccionadas.has(item._id)" (change)="toggleSeleccion(item._id)"></td>
+                            <td><small>{{formatearFechaHora(item.fecha_creacion)}}</small></td>
+                            <td>
+                                <strong *ngIf="item.aviso_funebre">{{item.aviso_funebre.nombre_completo}}</strong>
+                            </td>
+                            <td>
+                                <strong>{{item.nombre}}</strong>
+                                <br><small class="text-muted" *ngIf="item.relacion">{{item.relacion}}</small>
+                            </td>
+                            <td>{{item.titulo || '-'}}</td>
+                            <td><span [title]="item.mensaje">{{truncarTexto(item.mensaje, 50)}}</span></td>
+                            <td class="text-nowrap">
+                                <button (click)="aprobarRecuerdo(item)" class="btn btn-sm btn-success mr-1" title="Aprobar">
+                                    <i class="fa fa-check"></i>
+                                </button>
+                                <button (click)="rechazarRecuerdo(item)" class="btn btn-sm btn-danger" title="Rechazar">
+                                    <i class="fa fa-times"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <ng-container *ngTemplateOutlet="paginacionTemplate; context: {
+                page: pageRecuerdos, 
+                total: totalRecuerdos, 
+                limit: limitRecuerdos, 
+                cambiarPagina: cambiarPaginaRecuerdos.bind(this)
+            }"></ng-container>
+        </div>
+
+        <!-- ================================================================ -->
+        <!-- TAB: FOTOGRAFÍAS -->
+        <!-- ================================================================ -->
+        <div *ngIf="tabActiva === 'fotografias'">
+            <ng-container *ngTemplateOutlet="estadisticasTemplate; context: {stats: estadisticasFotografias, tipo: 'fotografias'}"></ng-container>
+            <ng-container *ngTemplateOutlet="accionesMasivasTemplate"></ng-container>
+
+            <div *ngIf="loadingFotografias" class="text-center py-4">
+                <i class="fa fa-spinner fa-spin fa-2x"></i>
+            </div>
+
+            <div *ngIf="!loadingFotografias && fotografias.length === 0" class="alert alert-success">
+                <i class="fa fa-check-circle"></i> No hay fotografías pendientes de aprobación.
+            </div>
+
+            <div *ngIf="!loadingFotografias && fotografias.length > 0">
+                <div class="row">
+                    <div *ngFor="let item of fotografias" class="col-md-4 col-lg-3 mb-3">
+                        <div class="card h-100">
+                            <img [src]="getFotografiaVisitanteUrl(item.imagen_url)" 
+                                 class="card-img-top" 
+                                 style="height: 200px; object-fit: cover;"
+                                 alt="Fotografía">
+                            <div class="card-body p-2">
+                                <p class="card-text mb-1"><strong>{{item.nombre}}</strong></p>
+                                <p class="card-text mb-1" *ngIf="item.aviso_funebre">
+                                    <small class="text-muted">Para: {{item.aviso_funebre.nombre_completo}}</small>
+                                </p>
+                                <p class="card-text mb-2" *ngIf="item.descripcion">
+                                    <small>{{truncarTexto(item.descripcion, 50)}}</small>
+                                </p>
+                                <div class="d-flex justify-content-between">
+                                    <button (click)="aprobarFotografia(item)" class="btn btn-sm btn-success">
+                                        <i class="fa fa-check"></i> Aprobar
+                                    </button>
+                                    <button (click)="rechazarFotografia(item)" class="btn btn-sm btn-danger">
+                                        <i class="fa fa-times"></i> Rechazar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <ng-container *ngTemplateOutlet="paginacionTemplate; context: {
+                page: pageFotografias, 
+                total: totalFotografias, 
+                limit: limitFotografias, 
+                cambiarPagina: cambiarPaginaFotografias.bind(this)
+            }"></ng-container>
         </div>
     </div>
 </div>
+
+<!-- ================================================================ -->
+<!-- TEMPLATES REUTILIZABLES -->
+<!-- ================================================================ -->
+
+<!-- Template: Estadísticas -->
+<ng-template #estadisticasTemplate let-stats="stats" let-tipo="tipo">
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <div class="card bg-warning text-white">
+                <div class="card-body text-center py-2">
+                    <h4 class="mb-0">{{stats.pendientes}}</h4>
+                    <small>Pendientes</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-success text-white">
+                <div class="card-body text-center py-2">
+                    <h4 class="mb-0">{{stats.aprobadas || stats.aprobados}}</h4>
+                    <small>Aprobados</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-danger text-white">
+                <div class="card-body text-center py-2">
+                    <h4 class="mb-0">{{stats.rechazadas || stats.rechazados}}</h4>
+                    <small>Rechazados</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-info text-white">
+                <div class="card-body text-center py-2">
+                    <h4 class="mb-0">{{stats.total}}</h4>
+                    <small>Total</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<!-- Template: Acciones Masivas -->
+<ng-template #accionesMasivasTemplate>
+    <div *ngIf="seleccionadas.size > 0" class="mb-3">
+        <button (click)="aprobarSeleccionadas()" class="btn btn-success mr-2">
+            <i class="fa fa-check"></i> Aprobar ({{seleccionadas.size}})
+        </button>
+        <button (click)="rechazarSeleccionadas()" class="btn btn-danger">
+            <i class="fa fa-times"></i> Rechazar ({{seleccionadas.size}})
+        </button>
+    </div>
+</ng-template>
+
+<!-- Template: Paginación -->
+<ng-template #paginacionTemplate let-page="page" let-total="total" let-limit="limit" let-cambiarPagina="cambiarPagina">
+    <div *ngIf="total > 0" class="row mt-3">
+        <div class="col-8">
+            <p>Página {{page}} de {{Math.ceil(total / limit)}} (Total: {{total}})</p>
+        </div>
+        <div class="col-4 text-right">
+            <button (click)="cambiarPagina(-1)" [disabled]="page === 1" class="btn btn-secondary mr-2">
+                <i class="fa fa-angle-left"></i>
+            </button>
+            <button (click)="cambiarPagina(1)" [disabled]="page >= Math.ceil(total / limit)" class="btn btn-secondary">
+                <i class="fa fa-angle-right"></i>
+            </button>
+        </div>
+    </div>
+</ng-template>

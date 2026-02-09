@@ -1,2 +1,34 @@
 /* Estilos específicos para lista de avisos fúnebres */
 
+.nav-tabs .nav-link {
+    color: #6c757d;
+}.nav-tabs .nav-link.active {
+    font-weight: bold;
+}
+
+.nav-tabs .nav-link:hover {
+    border-color: transparent;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+}
+
+.text-nowrap {
+    white-space: nowrap;
+}
+
+input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.card .card-body.text-center h4 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
