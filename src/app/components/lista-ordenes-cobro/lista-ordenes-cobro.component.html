@@ -124,6 +124,15 @@
         </div>
       </div>
       <div class="modal-footer">
+        <ng-container *ngIf="ordenSeleccionada?.estado === 'PAGADO' && getPagoId(ordenSeleccionada)">
+          <button type="button" class="btn btn-outline-primary me-2" [disabled]="loadingFE" (click)="descargarFacturaPDF()">
+            <span *ngIf="!loadingFE">Factura PDF</span>
+            <span *ngIf="loadingFE" class="spinner-border spinner-border-sm"></span>
+          </button>
+          <button type="button" class="btn btn-outline-secondary me-2" [disabled]="loadingFE" (click)="abrirKUDETicket()">
+            KUDE Ticket
+          </button>
+        </ng-container>
         <button type="button" class="btn btn-secondary" (click)="cerrarDetalle()">Cerrar</button>
       </div>
     </div>

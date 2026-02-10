@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OrdenesCobroService } from 'src/app/services/ordenes-cobro.service';
+import { FacturaService } from 'src/app/services/factura.service';
 import { NotifierService } from 'angular-notifier';
 @Component({
   selector: 'app-lista-ordenes-cobro',
@@ -15,6 +16,7 @@ export class ListaOrdenesCobroComponent implements OnInit {
   estadoFiltro: string | null = null;
   ordenSeleccionada: any = null;
   loadingDetalle = false;
+  loadingFE = false;
 
   estados = [
     { value: null, label: 'Todos' },
@@ -26,6 +28,7 @@ export class ListaOrdenesCobroComponent implements OnInit {
 
   constructor(
     private _ordenesCobroService: OrdenesCobroService,
+    private _facturaService: FacturaService,
     private notifier: NotifierService,
   ) {}
 
@@ -98,5 +101,43 @@ export class ListaOrdenesCobroComponent implements OnInit {
 
   get totalPaginas(): number {
     return Math.ceil(this.count / this.limit) || 1;
+  }
+
+  getPagoId(orden: any): string | null {
+    if (!orden || !orden.pago) return null;
+    return orden.pago._id || orden.pago;
+  }
+
+  async descargarFacturaPDF() {
+    const pagoId = this.getPagoId(this.ordenSeleccionada);
+    if (!pagoId) {
+      this.notifier.notify('warning', 'No hay pago asociado para descargar la factura');
+      return;
+    }
+    this.loadingFE = true;
+    try {
+      await this._facturaService.descargarArchivoPDF(pagoId);
+    } catch (e) {
+      this.notifier.notify('error', 'No se pudo descargar la factura');
+    } finally {
+      this.loadingFE = false;
+    }
+  }
+
+  async abrirKUDETicket() {
+    const pagoId = this.getPagoId(this.ordenSeleccionada);
+    if (!pagoId) {
+      this.notifier.notify('warning', 'No hay pago asociado para el ticket KUDE');
+      return;
+    }
+    this.loadingFE = true;
+    try {
+      await this._facturaService.getTicketKUDE(pagoId);
+      window.open(`/admin/factura-ticket-kude/${pagoId}`, '_blank');
+    } catch (e) {
+      this.notifier.notify('error', 'No se pudo generar el ticket KUDE');
+    } finally {
+      this.loadingFE = false;
+    }
   }
 }
