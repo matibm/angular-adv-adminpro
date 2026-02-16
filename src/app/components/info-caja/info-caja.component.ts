@@ -112,7 +112,12 @@ export class InfoCajaComponent implements OnInit {
   async searchCobradores(val) {
     this.cobradores = await this._usuarioService.buscarUsuarios('COBRADORES', val.term);
   }
-  fill = (number, len) => "0".repeat(len - number.toString().length) + number.toString();
+  fill = (number, len) => {
+    const val = number != null ? number : 0;
+    const str = String(val);
+    const pad = Math.max(0, len - str.length);
+    return "0".repeat(pad) + str;
+  };
 
   async filtrarPorEstado(estado) {
     this.loading = true

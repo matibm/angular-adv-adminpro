@@ -8,17 +8,11 @@
 
 .nav-tabs .nav-link:hover {
     border-color: transparent;
-}
-
-.table td {
+}.table td {
     vertical-align: middle;
-}
-
-.btn-sm {
+}.btn-sm {
     padding: 0.25rem 0.5rem;
-}
-
-.text-nowrap {
+}.text-nowrap {
     white-space: nowrap;
 }
 
