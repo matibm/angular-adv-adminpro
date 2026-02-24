@@ -17,21 +17,28 @@
             </div>
 
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="fecha_nacimiento">Fecha de Nacimiento</label>
                         <input type="date" [(ngModel)]="aviso.fecha_nacimiento" name="fecha_nacimiento"
                             id="fecha_nacimiento" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="form-group">
-                        <label for="fecha_defuncion">Fecha de Defunción *</label>
+                        <label for="fecha_defuncion">Fallecimiento *</label>
                         <input type="date" [(ngModel)]="aviso.fecha_defuncion" name="fecha_defuncion"
                             id="fecha_defuncion" class="form-control" required>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="hora_fallecimiento">Hora de Fallecimiento</label>
+                        <input type="time" [(ngModel)]="aviso.hora_fallecimiento" name="hora_fallecimiento"
+                            id="hora_fallecimiento" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="fecha_entierro">Fecha de Entierro</label>
                         <input type="date" [(ngModel)]="aviso.fecha_entierro" name="fecha_entierro" id="fecha_entierro"
@@ -40,10 +47,34 @@
                 </div>
             </div>
 
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="causa_muerte">Causa de Muerte</label>
+                        <input type="text" [(ngModel)]="aviso.causa_muerte" name="causa_muerte" id="causa_muerte"
+                            class="form-control" placeholder="Ingrese la causa de muerte">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="quien_realizo_servicio">Quién realizó el servicio</label>
+                        <input type="text" [(ngModel)]="aviso.quien_realizo_servicio" name="quien_realizo_servicio"
+                            id="quien_realizo_servicio" class="form-control"
+                            placeholder="Ingrese quién realizó el servicio">
+                    </div>
+                </div>
+            </div>
+
             <div class="form-group">
                 <label for="ubicacion_cementerio">Ubicación en Cementerio</label>
                 <input type="text" [(ngModel)]="aviso.ubicacion_cementerio" name="ubicacion_cementerio"
                     id="ubicacion_cementerio" class="form-control" placeholder="Ej: Sector A, Parcela 123">
+            </div>
+
+            <div class="form-group">
+                <label for="comentarios">Comentarios (Solo visible en admin)</label>
+                <textarea [(ngModel)]="aviso.comentarios" name="comentarios" id="comentarios" class="form-control"
+                    rows="3" placeholder="Ingresar comentarios internos aquí"></textarea>
             </div>
 
             <div class="form-group">

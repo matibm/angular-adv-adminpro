@@ -49,6 +49,10 @@ export class CrearAvisoFunebreComponent implements OnInit {
       if (this.aviso.fecha_nacimiento) formData.append('fecha_nacimiento', this.aviso.fecha_nacimiento.toString());
       formData.append('fecha_defuncion', this.aviso.fecha_defuncion.toString());
       if (this.aviso.fecha_entierro) formData.append('fecha_entierro', this.aviso.fecha_entierro.toString());
+      if (this.aviso.hora_fallecimiento) formData.append('hora_fallecimiento', this.aviso.hora_fallecimiento);
+      if (this.aviso.causa_muerte) formData.append('causa_muerte', this.aviso.causa_muerte);
+      if (this.aviso.comentarios) formData.append('comentarios', this.aviso.comentarios);
+      if (this.aviso.quien_realizo_servicio) formData.append('quien_realizo_servicio', this.aviso.quien_realizo_servicio);
 
       formData.append('descripcion', this.aviso.descripcion || '');
       formData.append('biografia', this.aviso.biografia || '');
