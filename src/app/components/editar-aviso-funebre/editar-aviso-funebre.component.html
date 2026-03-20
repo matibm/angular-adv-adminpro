@@ -105,6 +105,77 @@
                     placeholder="Ingrese la biografía o historia de vida (opcional)"></textarea>
             </div>
 
+            <!-- Configuración de campos visibles en la web -->
+            <div class="card mt-4 mb-4" *ngIf="aviso.campos_modal">
+                <div class="card-header bg-light">
+                    <h5 class="mb-0">
+                        <i class="fa fa-eye mr-2"></i>
+                        Campos visibles en Aviso Fúnebre (Modal del Homepage)
+                    </h5>
+                    <small class="text-muted">Seleccione qué campos se mostrarán en el modal de avisos fúnebres de la página principal</small>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4" *ngFor="let campo of [
+                            {key: 'foto', label: 'Foto'},
+                            {key: 'nombre_completo', label: 'Nombre Completo'},
+                            {key: 'fecha_nacimiento', label: 'Fecha de Nacimiento'},
+                            {key: 'fecha_defuncion', label: 'Fecha de Fallecimiento'},
+                            {key: 'nacionalidad', label: 'Nacionalidad'},
+                            {key: 'ubicacion_cementerio', label: 'Ubicación en Cementerio'},
+                            {key: 'fecha_entierro', label: 'Fecha de Entierro'},
+                            {key: 'descripcion', label: 'Descripción (Aviso Fúnebre)'},
+                            {key: 'biografia', label: 'Biografía'},
+                            {key: 'galeria', label: 'Galería de Fotos'},
+                            {key: 'condolencias', label: 'Pésames / Condolencias'},
+                            {key: 'recuerdos', label: 'Recuerdos'},
+                            {key: 'fotografias', label: 'Fotografías de Visitantes'}
+                        ]">
+                            <div class="form-check mb-2">
+                                <input type="checkbox" [(ngModel)]="aviso.campos_modal[campo.key]"
+                                    [name]="'cm_' + campo.key" [id]="'cm_' + campo.key" class="form-check-input">
+                                <label class="form-check-label" [for]="'cm_' + campo.key">{{ campo.label }}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4" *ngIf="aviso.campos_exequias">
+                <div class="card-header bg-light">
+                    <h5 class="mb-0">
+                        <i class="fa fa-eye mr-2"></i>
+                        Campos visibles en Exequias (Página de Detalle)
+                    </h5>
+                    <small class="text-muted">Seleccione qué campos se mostrarán en la página de detalle de exequias</small>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4" *ngFor="let campo of [
+                            {key: 'foto', label: 'Foto'},
+                            {key: 'nombre_completo', label: 'Nombre Completo'},
+                            {key: 'fecha_nacimiento', label: 'Fecha de Nacimiento'},
+                            {key: 'fecha_defuncion', label: 'Fecha de Fallecimiento'},
+                            {key: 'nacionalidad', label: 'Nacionalidad'},
+                            {key: 'ubicacion_cementerio', label: 'Ubicación en Cementerio'},
+                            {key: 'fecha_entierro', label: 'Fecha de Entierro'},
+                            {key: 'descripcion', label: 'Descripción (Aviso Fúnebre)'},
+                            {key: 'biografia', label: 'Biografía'},
+                            {key: 'galeria', label: 'Galería de Fotos'},
+                            {key: 'condolencias', label: 'Pésames / Condolencias'},
+                            {key: 'recuerdos', label: 'Recuerdos'},
+                            {key: 'fotografias', label: 'Fotografías de Visitantes'}
+                        ]">
+                            <div class="form-check mb-2">
+                                <input type="checkbox" [(ngModel)]="aviso.campos_exequias[campo.key]"
+                                    [name]="'ce_' + campo.key" [id]="'ce_' + campo.key" class="form-check-input">
+                                <label class="form-check-label" [for]="'ce_' + campo.key">{{ campo.label }}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="form-group">
                 <div class="form-check">
                     <input type="checkbox" [(ngModel)]="aviso.activo" name="activo" id="activo"

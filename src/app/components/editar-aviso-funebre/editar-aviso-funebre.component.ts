@@ -1,4 +1,4 @@
-import { AvisoFunebre } from './../../models/aviso-funebre';
+import { AvisoFunebre, crearCamposVisibilidadDefault } from './../../models/aviso-funebre';
 import { AvisosFunebresService } from './../../services/avisos-funebres.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -48,6 +48,14 @@ export class EditarAvisoFunebreComponent implements OnInit {
     if (this.aviso.fecha_caducidad_publicado) {
       const fechaCad = new Date(this.aviso.fecha_caducidad_publicado);
       this.aviso.fecha_caducidad_publicado = fechaCad.toISOString().split('T')[0];
+    }
+
+    // Asegurar que campos de visibilidad existan (para registros antiguos)
+    if (!this.aviso.campos_modal) {
+      this.aviso.campos_modal = crearCamposVisibilidadDefault();
+    }
+    if (!this.aviso.campos_exequias) {
+      this.aviso.campos_exequias = crearCamposVisibilidadDefault();
     }
 
     // Cargar foto actual si existe
@@ -113,6 +121,9 @@ export class EditarAvisoFunebreComponent implements OnInit {
       if (this.fotoSeleccionada) {
         formData.append('foto', this.fotoSeleccionada);
       }
+
+      formData.append('campos_modal', JSON.stringify(this.aviso.campos_modal));
+      formData.append('campos_exequias', JSON.stringify(this.aviso.campos_exequias));
 
       await this._avisosFunebresService.actualizarAvisoFunebre(formData);
       window.history.back();

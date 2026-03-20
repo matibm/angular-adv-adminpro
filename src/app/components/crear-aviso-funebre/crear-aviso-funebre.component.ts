@@ -1,4 +1,4 @@
-import { AvisoFunebre } from './../../models/aviso-funebre';
+import { AvisoFunebre, crearCamposVisibilidadDefault } from './../../models/aviso-funebre';
 import { Component, OnInit } from '@angular/core';
 import { AvisosFunebresService } from 'src/app/services/avisos-funebres.service';
 
@@ -21,6 +21,8 @@ export class CrearAvisoFunebreComponent implements OnInit {
   ngOnInit(): void {
     this.aviso.activo = true;
     this.aviso.publicado = false;
+    this.aviso.campos_modal = crearCamposVisibilidadDefault();
+    this.aviso.campos_exequias = crearCamposVisibilidadDefault();
   }
 
   onFileSelected(event: any) {
@@ -67,6 +69,9 @@ export class CrearAvisoFunebreComponent implements OnInit {
       if (this.fotoSeleccionada) {
         formData.append('foto', this.fotoSeleccionada);
       }
+
+      formData.append('campos_modal', JSON.stringify(this.aviso.campos_modal));
+      formData.append('campos_exequias', JSON.stringify(this.aviso.campos_exequias));
 
       await this._avisosFunebresService.crearAvisoFunebre(formData);
       window.history.back();
