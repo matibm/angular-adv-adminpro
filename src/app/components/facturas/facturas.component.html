@@ -19,9 +19,12 @@
               Nro. Contrato
               <i *ngIf="sort.key === 'nro_contrato'" class="ml-1 fa " [ngClass]="{'fa-sort-asc': sort.value === 1 , 'fa-sort-desc': sort.value === -1 }"></i>
             </th>
-            <th (click)="ordenar('numero_factura')" class="text-center pointer" style="min-width: 150px;">
+            <th *ngIf="false" (click)="ordenar('numero_factura')" class="text-center pointer" style="min-width: 150px;">
               Nro. Factura
               <i *ngIf="sort.key === 'numero_factura'" class="ml-1 fa " [ngClass]="{'fa-sort-asc': sort.value === 1 , 'fa-sort-desc': sort.value === -1 }"></i>
+            </th>
+            <th class="text-center" style="min-width: 170px;">
+              Factura Electrónica
             </th>
             <th *ngIf="false" class="text-center" style="min-width: 200px;">
               Emisión
@@ -75,11 +78,20 @@
               <div *ngIf="factura.nro_contrato">{{factura.nro_contrato | currency:'':'':'2.0'}}</div>
               <div *ngIf="!factura.nro_contrato">---</div>
             </td>
-            <td class="text-center">
+            <td *ngIf="false" class="text-center">
               <div [ngStyle]="{'color':  factura.recibo ? 'red': ''}" title="{{factura.recibo? 'Corresponde a factura a credito': 'factura contado'}}" *ngIf="factura.pago?.numero">
                 {{factura.pago?.numero}}-{{fill(factura.pago?.nro_factura,7)}}
               </div>
               <div *ngIf="!factura.pago">---</div>
+            </td>
+
+            <td class="text-center">
+              <a *ngIf="factura.factura_electronica && factura.pago?._id"
+                 [routerLink]="['/factura-ticket-kude', factura.pago._id]"
+                 target="_blank"
+                 (click)="$event.stopPropagation()">
+                {{factura.factura_electronica}}
+              </a>
             </td>
 
             <td *ngIf="false" class="text-center">

@@ -177,28 +177,25 @@ export class ListaFacturasComponent implements OnInit {
 
 
     if (!this.route.snapshot.queryParams.vencimiento_start && !this.route.snapshot.queryParams.vencimiento_end) {
-      let month = new Date().getMonth() + 1
-      let year = new Date().getFullYear()
-      // this.rangeVencimiento.setValue({ start: new Date(`${year}-${month}-01`), end: new Date() })
-      // this.cambiarQueryParams([
-      //   {
-      //     vencimiento_start: new Date(`${year}-${month}-01`).toLocaleDateString('fr-CA', { year: "numeric", month: "2-digit", day: "2-digit" })
-      //   },
-      //   {
-      //     vencimiento_end: new Date().toLocaleDateString('fr-CA', { year: "numeric", month: "2-digit", day: "2-digit" })
-      //   }
-      // ])
+      const end = new Date()
+      const start = new Date()
+      start.setDate(start.getDate() - 30)
+      this.rangeVencimiento.setValue({ start, end })
+      this.cambiarQueryParams([
+        { vencimiento_start: start.toLocaleDateString('fr-CA', { year: "numeric", month: "2-digit", day: "2-digit" }) },
+        { vencimiento_end: end.toLocaleDateString('fr-CA', { year: "numeric", month: "2-digit", day: "2-digit" }) }
+      ])
     }
     if (this.route.snapshot.queryParams.vencimiento_start && this.route.snapshot.queryParams.vencimiento_end) {
       let value = { start: new Date(`${this.route.snapshot.queryParams.vencimiento_start} 00:00`), end: new Date(`${this.route.snapshot.queryParams.vencimiento_end} 00:00`) }
       this.rangeVencimiento.setValue(value)
     }
-    
-    if (this.route.snapshot.queryParams.cliente) this.cliente = await this._usuarioService.getUsuarioPorId(this.route.snapshot.queryParams.cliente) 
-    // if (this.route.snapshot.queryParams.servicio) this.cliente = await this._usuarioService.getUsuarioPorId(this.route.snapshot.queryParams.cliente) 
 
-    this.route.snapshot.queryParams.estado ? null : this.cambiarQueryParams([{ estado: 'PENDIENTES' }])
-    this.estadoSeleccionado = this.route.snapshot.queryParams?.estado || 'PENDIENTES'
+    if (this.route.snapshot.queryParams.cliente) this.cliente = await this._usuarioService.getUsuarioPorId(this.route.snapshot.queryParams.cliente)
+    // if (this.route.snapshot.queryParams.servicio) this.cliente = await this._usuarioService.getUsuarioPorId(this.route.snapshot.queryParams.cliente)
+
+    this.route.snapshot.queryParams.estado ? null : this.cambiarQueryParams([{ estado: 'TODOS' }])
+    this.estadoSeleccionado = this.route.snapshot.queryParams?.estado || 'TODOS'
 
     this.filtrar(null, '0');
     this.observableBuscadores()
