@@ -26312,16 +26312,6 @@ class ListaFacturasComponent {
             else {
                 this.is_internal_role = true;
             }
-            if (!this.route.snapshot.queryParams.vencimiento_start && !this.route.snapshot.queryParams.vencimiento_end) {
-                const end = new Date();
-                const start = new Date();
-                start.setDate(start.getDate() - 30);
-                this.rangeVencimiento.setValue({ start, end });
-                this.cambiarQueryParams([
-                    { vencimiento_start: start.toLocaleDateString('fr-CA', { year: "numeric", month: "2-digit", day: "2-digit" }) },
-                    { vencimiento_end: end.toLocaleDateString('fr-CA', { year: "numeric", month: "2-digit", day: "2-digit" }) }
-                ]);
-            }
             if (this.route.snapshot.queryParams.vencimiento_start && this.route.snapshot.queryParams.vencimiento_end) {
                 let value = { start: new Date(`${this.route.snapshot.queryParams.vencimiento_start} 00:00`), end: new Date(`${this.route.snapshot.queryParams.vencimiento_end} 00:00`) };
                 this.rangeVencimiento.setValue(value);
@@ -52749,4 +52739,4 @@ webpackEmptyAsyncContext.id = "zn8P";
 /***/ })
 
 },[[0,"runtime","vendor"]]]);
-//# sourceMappingURL=main.ba37f8954213f49cb484.js.map
+//# sourceMappingURL=main.d49cecee30593f90336c.js.map
