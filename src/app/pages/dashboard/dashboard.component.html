@@ -1,75 +1,323 @@
-<div *ngIf="false" class="row">
+<!-- Dashboard solo para ADMIN_ROLE -->
+<ng-container *ngIf="esAdmin; else noAdmin">
 
-    <div class="col-lg-6 col-md-12">
-        <div class="card">
-            <div class="card-body">
-                <div *ngFor="let alerta of alertas" class="alert alert-info" role="alert">
-                    <h3>{{alerta.titulo}}</h3>
-                    <span>{{alerta.mensaje}}</span>
-                </div>
+    <div *ngIf="cargando" class="text-center p-5">
+        <div class="spinner-border text-primary"></div>
+        <p class="mt-3 text-muted">Cargando resumen...</p>
+    </div>
+
+    <div *ngIf="error && !cargando" class="alert alert-warning m-3">
+        {{ error }}
+        <button class="btn btn-sm btn-outline-warning ml-3" (click)="cargarResumen()">Reintentar</button>
+    </div>
+
+    <div *ngIf="resumen && !cargando" class="container-fluid p-3">
+
+        <!-- KPIs cobranzas -->
+        <div class="row mb-2">
+            <div class="col-12">
+                <h5 class="text-muted mb-3"><i class="mdi mdi-cash-multiple"></i> Cobranzas</h5>
             </div>
         </div>
-    </div>
-    <div class="col-lg-6 col-md-12">
-        <div class="card">
-            <div class="card-body">
-                <div class="d-flex">
-                    <h4 class="card-title"><span class="lstick"></span>Actividad</h4>
-                    <!-- <span class="badge badge-success">9</span> -->
-                    <div class="btn-group ml-auto m-t-10">
-                        <a href="JavaScript:void(0)" class="icon-options-vertical link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="javascript:void(0)">Action</a>
-                            <a class="dropdown-item" href="javascript:void(0)">Another action</a>
-                            <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="javascript:void(0)">Separated link</a>
+        <div class="row">
+            <div class="col-md-3 col-sm-6 mb-3">
+                <div class="card kpi-card">
+                    <div class="card-body">
+                        <div class="kpi-label">Cobrado hoy</div>
+                        <div class="kpi-value">{{ resumen.cobranzas.hoy.total | currency:'':'':'1.0-0' }} Gs</div>
+                        <div class="kpi-sub">
+                            {{ resumen.cobranzas.hoy.count }} pagos
+                            <ng-container *ngIf="variacionVsAyer() as v">
+                                · <span [class.text-success]="v.positivo" [class.text-danger]="!v.positivo">
+                                    <i class="mdi" [class.mdi-arrow-up]="v.positivo" [class.mdi-arrow-down]="!v.positivo"></i>
+                                    {{ v.pct }}% vs ayer
+                                </span>
+                            </ng-container>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="activity-box">
-                <div class="card-body">
-                    <!-- Activity item-->
-                    <div *ngFor="let alerta of alertas" class="activity-item">
-                        <div class="round m-r-20">
-                            <ngx-avatar *ngIf="alerta.vendedor" name="{{alerta.vendedor.NOMBRES}}"></ngx-avatar>
-                            <ngx-avatar *ngIf="alerta.tipo == 'PAGO' && alerta.titular" name="{{alerta.titular.NOMBRES}}"></ngx-avatar>
-                        </div>
-                        <div class="m-t-10">
-                            <h5 *ngIf="alerta.vendedor" class="m-b-0 font-medium">{{alerta.vendedor.NOMBRES}}<span class="text-muted font-14 m-l-10">| &nbsp; {{alerta.fecha_unix | date:'short'}}</span></h5>
-                            <h5 *ngIf="alerta.tipo == 'PAGO' && alerta.titular" class="m-b-0 font-medium">{{alerta.titular.NOMBRES}}<span class="text-muted font-14 m-l-10">| &nbsp; {{alerta.fecha_unix | date:'short'}}</span></h5>
-                            <h6 *ngIf="alerta.tipo == 'CONTRATO'" class="text-muted">nuevo contrato </h6>
-                            <h6 *ngIf="alerta.tipo == 'PAGO'" class="text-muted">pago de factura</h6>
-                            <h6 *ngIf="alerta.tipo == 'FACTURA'" class="text-muted">nuevo contrato </h6>
-                            <table class="table vm b-0 m-b-0">
-                                <div class="ml-3 m-1 inline-flex">
-                                    <!-- <img style="width: 60px;" src="../assets/images/contrato.svg" alt="user" /> -->
-                                    <img style="width: 60px;" src="{{alerta.tipo | icon}}" alt="user" />
-                                    <div class="col ">
-                                        <h5 *ngIf="alerta.tipo == 'PAGO'" class="m-b-0 ml-4 font-medium ">{{alerta.factura.haber | currency: '':'':'2.0'}} Gs</h5>
-                                        <h5 *ngIf="alerta.tipo == 'CONTRATO'" class="m-b-0 ml-4 font-medium ">{{alerta.producto.COD_CORTO}}</h5>
-                                        <p class="ml-4 mt-1" style="max-width: 300px;">{{alerta.mensaje}}</p>
-                                    </div>
 
+            <div class="col-md-3 col-sm-6 mb-3">
+                <div class="card kpi-card">
+                    <div class="card-body">
+                        <div class="kpi-label">Cobrado ayer</div>
+                        <div class="kpi-value">{{ resumen.cobranzas.ayer.total | currency:'':'':'1.0-0' }} Gs</div>
+                        <div class="kpi-sub">{{ resumen.cobranzas.ayer.count }} pagos</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6 mb-3">
+                <div class="card kpi-card">
+                    <div class="card-body">
+                        <div class="kpi-label">Cobrado última semana</div>
+                        <div class="kpi-value">{{ resumen.cobranzas.semana.total | currency:'':'':'1.0-0' }} Gs</div>
+                        <div class="kpi-sub">{{ resumen.cobranzas.semana.count }} pagos · 7 días</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6 mb-3">
+                <div class="card kpi-card">
+                    <div class="card-body">
+                        <div class="kpi-label">Cobrado mes</div>
+                        <div class="kpi-value">{{ resumen.cobranzas.mes.total | currency:'':'':'1.0-0' }} Gs</div>
+                        <div class="kpi-sub">{{ resumen.cobranzas.mes.count }} pagos</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- KPIs gastos y contratos -->
+        <div class="row">
+            <div class="col-md-4 col-sm-6 mb-3">
+                <div class="card kpi-card">
+                    <div class="card-body">
+                        <div class="kpi-label"><i class="mdi mdi-cash-minus text-danger"></i> Gastos semana</div>
+                        <div class="kpi-value text-danger">{{ resumen.gastos.semana.total | currency:'':'':'1.0-0' }} Gs</div>
+                        <div class="kpi-sub">{{ resumen.gastos.semana.count }} gastos</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 mb-3">
+                <div class="card kpi-card">
+                    <div class="card-body">
+                        <div class="kpi-label"><i class="mdi mdi-cash-minus text-danger"></i> Gastos mes</div>
+                        <div class="kpi-value text-danger">{{ resumen.gastos.mes.total | currency:'':'':'1.0-0' }} Gs</div>
+                        <div class="kpi-sub">{{ resumen.gastos.mes.count }} gastos</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 mb-3">
+                <div class="card kpi-card">
+                    <div class="card-body">
+                        <div class="kpi-label"><i class="mdi mdi-file-document"></i> Contratos del mes</div>
+                        <div class="kpi-value">{{ resumen.contratos.count_mes }}</div>
+                        <div class="kpi-sub">contratos creados</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Accesos directos -->
+        <div class="row mt-3">
+            <div class="col-12">
+                <h5 class="text-muted mb-3"><i class="mdi mdi-lightning-bolt"></i> Accesos directos</h5>
+            </div>
+            <div class="col-md col-sm-6 mb-3" *ngFor="let acceso of accesosDirectos">
+                <div class="quick-action" (click)="irA(acceso)">
+                    <i [class]="acceso.icon"></i>
+                    <span>{{ acceso.titulo }}</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Listas: últimos contratos y últimos gastos -->
+        <div class="row mt-3">
+            <div class="col-md-6 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">
+                            <i class="mdi mdi-file-document-edit"></i> Últimos contratos del mes
+                        </h5>
+                        <div *ngIf="!resumen.contratos.ultimos.length" class="text-muted small">
+                            Sin contratos creados este mes.
+                        </div>
+                        <div *ngFor="let c of resumen.contratos.ultimos" class="ultimo-item">
+                            <div>
+                                <div class="titulo">
+                                    #{{ c.nro_contrato || '—' }} · {{ c.nombre_servicio || c.codigo_producto || 'Servicio' }}
                                 </div>
-                                <!-- <tr>
-                                    <td class="m-r-10 b-0"></td>
-                                    <td class="b-0">
-                                        <h6>54 MB</h6>
-                                    </td>
-                                </tr> -->
+                                <div class="meta">
+                                    {{ c.titular?.NOMBRES }} {{ c.titular?.APELLIDOS }}
+                                    <span *ngIf="c.nombre_vendedor"> · vend. {{ c.nombre_vendedor }}</span>
+                                    · {{ c.fecha_creacion_unix | date:'dd/MM/yyyy' }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">
+                            <i class="mdi mdi-cash-minus"></i> Últimos gastos de la semana
+                        </h5>
+                        <div *ngIf="!resumen.ultimos_gastos.length" class="text-muted small">
+                            Sin gastos registrados esta semana.
+                        </div>
+                        <div class="table-responsive" *ngIf="resumen.ultimos_gastos.length">
+                            <table class="table table-sm table-hover align-middle mb-0">
+                                <thead class="text-muted small">
+                                    <tr>
+                                        <th>Comentario</th>
+                                        <th>Proveedor</th>
+                                        <th>Fondo</th>
+                                        <th class="text-right">Monto</th>
+                                        <th>Fecha</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let g of resumen.ultimos_gastos">
+                                        <td class="small">{{ g.comentario || '—' }}</td>
+                                        <td class="small">
+                                            <ng-container *ngIf="g.proveedor; else sinProv">
+                                                {{ g.proveedor.RAZON
+                                                   || ((g.proveedor.NOMBRES || '') + ' ' + (g.proveedor.APELLIDOS || '')).trim() }}
+                                            </ng-container>
+                                            <ng-template #sinProv>—</ng-template>
+                                        </td>
+                                        <td class="small">
+                                            <ng-container *ngIf="g.fondo; else sinFondoG">
+                                                {{ g.fondo.NOMBRES }} {{ g.fondo.APELLIDOS }}
+                                            </ng-container>
+                                            <ng-template #sinFondoG>
+                                                <span class="text-muted">—</span>
+                                            </ng-template>
+                                        </td>
+                                        <td class="text-right monto gasto">
+                                            {{ g.monto_total | currency:'':'':'1.0-0' }} Gs
+                                        </td>
+                                        <td class="small text-muted">
+                                            {{ g.fecha_creacion_unix | date:'dd/MM/yyyy HH:mm' }}
+                                        </td>
+                                    </tr>
+                                </tbody>
                             </table>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
+
+        <!-- Facturas emitidas esta semana (paginado) -->
+        <div class="row mt-3">
+            <div class="col-12 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h5 class="card-title mb-0">
+                                <i class="mdi mdi-receipt"></i> Facturas emitidas esta semana
+                            </h5>
+                            <small *ngIf="facturasSemana" class="text-muted">
+                                {{ facturasSemana.total }} total · página {{ facturasSemana.page }} de {{ facturasSemana.pages }}
+                            </small>
+                        </div>
+
+                        <div *ngIf="cargandoFacturas" class="text-center text-muted py-3">
+                            <div class="spinner-border spinner-border-sm"></div> Cargando...
+                        </div>
+
+                        <div *ngIf="facturasSemana && !cargandoFacturas">
+                            <div *ngIf="!facturasSemana.items.length" class="text-muted small">
+                                No se emitieron facturas esta semana.
+                            </div>
+
+                            <div *ngIf="facturasSemana.items.length" class="table-responsive">
+                                <table class="table table-hover align-middle text-center mb-0">
+                                    <thead class="text-muted small">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Fondo</th>
+                                            <th>Nro. Contrato</th>
+                                            <th>Factura Electrónica</th>
+                                            <th>Monto</th>
+                                            <th>Pagado</th>
+                                            <th>Cliente</th>
+                                            <th>Vencimiento</th>
+                                            <th>Servicio</th>
+                                            <th>Cobrador</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let f of facturasSemana.items">
+                                            <td>{{ f.nro_factura || '—' }}</td>
+                                            <td class="small">
+                                                <ng-container *ngIf="f.fondo; else sinFondo">
+                                                    {{ f.fondo.NOMBRES }} {{ f.fondo.APELLIDOS }}
+                                                </ng-container>
+                                                <ng-template #sinFondo>
+                                                    <span class="text-muted">Sin fondo</span>
+                                                </ng-template>
+                                            </td>
+                                            <td>
+                                                <ng-container *ngIf="f.nro_contrato; else sinContrato">
+                                                    {{ f.nro_contrato | currency:'':'':'1.0-0' }}
+                                                </ng-container>
+                                                <ng-template #sinContrato>
+                                                    <span class="text-muted">—</span>
+                                                </ng-template>
+                                            </td>
+                                            <td class="small">
+                                                {{ f.factura_electronica || f.nro_fact_fiscal || '—' }}
+                                            </td>
+                                            <td class="font-medium">
+                                                {{ f.haber | currency:'':'':'1.0-0' }} Gs
+                                            </td>
+                                            <td class="small">
+                                                <b>{{ f.fecha_pagado_unix | date:'d, MMM y' }}</b>
+                                            </td>
+                                            <td class="small">
+                                                {{ f.titular?.RAZON
+                                                   || ((f.titular?.NOMBRES || '') + ' ' + (f.titular?.APELLIDOS || '')).trim()
+                                                   || '—' }}
+                                            </td>
+                                            <td class="small">
+                                                <ng-container *ngIf="f.vencimiento; else sinVenc">
+                                                    {{ f.vencimiento | date:'d, MMM y' }}
+                                                </ng-container>
+                                                <ng-template #sinVenc>—</ng-template>
+                                            </td>
+                                            <td class="small">
+                                                {{ f.servicio?.NOMBRE || f.servicio?.COD_CORTO || '—' }}
+                                            </td>
+                                            <td class="small">
+                                                <ng-container *ngIf="f.cobrador; else sinCobr">
+                                                    {{ f.cobrador.NOMBRES }} {{ f.cobrador.APELLIDOS }}
+                                                </ng-container>
+                                                <ng-template #sinCobr>
+                                                    <span class="text-muted">—</span>
+                                                </ng-template>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center mt-3"
+                                 *ngIf="facturasSemana.pages > 1">
+                                <button class="btn btn-sm btn-outline-secondary"
+                                        [disabled]="paginaFacturas <= 1"
+                                        (click)="paginaAnterior()">
+                                    <i class="mdi mdi-chevron-left"></i> Anterior
+                                </button>
+                                <span class="text-muted small">
+                                    Página {{ paginaFacturas }} / {{ facturasSemana.pages }}
+                                </span>
+                                <button class="btn btn-sm btn-outline-secondary"
+                                        [disabled]="paginaFacturas >= facturasSemana.pages"
+                                        (click)="paginaSiguiente()">
+                                    Siguiente <i class="mdi mdi-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
-</div>
-<div style="display: flex;align-content: center;height: 800px;align-items: center;justify-content: center;">
-    <div class="mx-auto">
-        <div class="display-2 " style="color: rgba(177, 177, 177, 0.667); text-shadow: 3px 3px 5px rgba(218, 218, 218, 0.667);" >¡Hola {{usuarioService.usuario.NOMBRES}}!</div>
+</ng-container>
+
+<ng-template #noAdmin>
+    <div style="display: flex; align-items: center; justify-content: center; height: 800px;">
+        <div class="display-2" style="color: rgba(177, 177, 177, 0.667); text-shadow: 3px 3px 5px rgba(218, 218, 218, 0.667);">
+            ¡Hola {{ usuarioService.usuario?.NOMBRES }}!
+        </div>
     </div>
-</div>
+</ng-template>

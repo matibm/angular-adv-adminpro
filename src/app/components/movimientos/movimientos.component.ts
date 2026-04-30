@@ -88,7 +88,7 @@ export class MovimientosComponent implements OnInit, OnDestroy {
     public _usuarioService: UsuarioService,
     public _contratoService: ContratoService,
     public _productoService: ProductosService,
-    // public route: ActivatedRoute,
+    public route: ActivatedRoute,
     private router: Router
   ) {
 
@@ -109,8 +109,10 @@ export class MovimientosComponent implements OnInit, OnDestroy {
 
     }
 
-
-
+    const seccionQuery = this.route.snapshot.queryParams['seccion'];
+    if (seccionQuery) {
+      this.secction = seccionQuery;
+    }
 
 
 
