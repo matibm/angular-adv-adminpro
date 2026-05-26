@@ -196,6 +196,13 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
 
     // this.servicios = await this._productoService.getProductos();
     this.fondos = await this._usuarioService.buscarUsuarios('BANCOS', '');
+
+    // Para cobradores (USER_ROLE) el fondo destino queda fijo en CAJA PRINCIPAL
+    if (this._userService?.usuario?.role == 'USER_ROLE') {
+      this.fondo =
+        (this.fondos || []).find((f) => f.RAZON === 'CAJA PRINCIPAL') ||
+        this.fondo;
+    }
   }
 
   async filtrar() {

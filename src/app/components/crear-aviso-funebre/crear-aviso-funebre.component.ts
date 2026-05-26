@@ -1,6 +1,10 @@
 import { AvisoFunebre, crearCamposVisibilidadDefault } from './../../models/aviso-funebre';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AvisosFunebresService } from 'src/app/services/avisos-funebres.service';
+import {
+  FlyerPortadaModalComponent,
+  PortadaGenerada,
+} from '../flyer-portada-modal/flyer-portada-modal.component';
 
 @Component({
   selector: 'app-crear-aviso-funebre',
@@ -13,9 +17,11 @@ export class CrearAvisoFunebreComponent implements OnInit {
     public _avisosFunebresService: AvisosFunebresService
   ) { }
 
+  @ViewChild('flyerModal') flyerModal: FlyerPortadaModalComponent;
+
   aviso: AvisoFunebre = new AvisoFunebre();
-  fotoSeleccionada: File = null;
-  fotoPreview: string | ArrayBuffer = null;
+  portadaFile: File = null;
+  portadaPreview: string | null = null;
   loading = false;
 
   ngOnInit(): void {
@@ -25,16 +31,22 @@ export class CrearAvisoFunebreComponent implements OnInit {
     this.aviso.campos_exequias = crearCamposVisibilidadDefault();
   }
 
-  onFileSelected(event: any) {
-    const file = event.target.files[0];
-    if (file) {
-      this.fotoSeleccionada = file;
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        this.fotoPreview = e.target.result;
-      };
-      reader.readAsDataURL(file);
+  abrirEditorPortada() {
+    if (!this.aviso.nombre_completo) {
+      alert('Ingresa al menos el nombre del difunto antes de diseñar la portada.');
+      return;
     }
+    this.flyerModal.abrir();
+  }
+
+  onPortadaGenerada(evt: PortadaGenerada) {
+    this.portadaFile = evt.file;
+    this.portadaPreview = evt.dataUrl;
+  }
+
+  eliminarPortada() {
+    this.portadaFile = null;
+    this.portadaPreview = null;
   }
 
   async crearAvisoFunebre() {
@@ -66,8 +78,8 @@ export class CrearAvisoFunebreComponent implements OnInit {
         formData.append('fecha_caducidad_publicado', this.aviso.fecha_caducidad_publicado.toString());
       }
 
-      if (this.fotoSeleccionada) {
-        formData.append('foto', this.fotoSeleccionada);
+      if (this.portadaFile) {
+        formData.append('foto', this.portadaFile);
       }
 
       formData.append('campos_modal', JSON.stringify(this.aviso.campos_modal));
@@ -86,10 +98,4 @@ export class CrearAvisoFunebreComponent implements OnInit {
   cancelar() {
     window.history.back();
   }
-
-  eliminarFoto() {
-    this.fotoSeleccionada = null;
-    this.fotoPreview = null;
-  }
 }
-

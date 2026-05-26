@@ -318,7 +318,7 @@
             <div class="col-xs col-md">
                 <div style="justify-content: space-between;" class="inline-flex">
                     <h4>Fondo Destino:</h4>
-                    <div *ngIf="fondo" (click)="fondo = null" class="pointer close-icon ml-5">
+                    <div *ngIf="fondo && _userService.usuario.role != 'USER_ROLE'" (click)="fondo = null" class="pointer close-icon ml-5">
                         <button type="button" class="btn btn-sm btn-light"><i class=" ti-close  "></i></button>
                     </div>
                 </div>

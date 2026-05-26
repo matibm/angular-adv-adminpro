@@ -1,9 +1,13 @@
 import { AvisoFunebre, crearCamposVisibilidadDefault } from './../../models/aviso-funebre';
 import { AvisosFunebresService } from './../../services/avisos-funebres.service';
 import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { URL_SERVICIOS } from '../../config/global';
 import { UsuarioService } from '../../services/usuario.service';
+import {
+  FlyerPortadaModalComponent,
+  PortadaGenerada,
+} from '../flyer-portada-modal/flyer-portada-modal.component';
 
 @Component({
   selector: 'app-editar-aviso-funebre',
@@ -18,11 +22,18 @@ export class EditarAvisoFunebreComponent implements OnInit {
     public _usuarioService: UsuarioService
   ) { }
 
+  @ViewChild('flyerModal') flyerModal: FlyerPortadaModalComponent;
+
   id: string;
   aviso: AvisoFunebre;
-  fotoSeleccionada: File = null;
-  fotoPreview: string | ArrayBuffer = null;
-  fotoActual: string = null;
+
+  // Portada nueva generada por flyer-gen (sólo se envía al backend si existe).
+  portadaFile: File = null;
+
+  // Preview en pantalla: si hay portadaFile usa el dataUrl del flyer; en caso contrario
+  // muestra la foto ya guardada en el aviso.
+  portadaPreview: string | null = null;
+
   loading = false;
 
   async ngOnInit() {
@@ -58,31 +69,48 @@ export class EditarAvisoFunebreComponent implements OnInit {
       this.aviso.campos_exequias = crearCamposVisibilidadDefault();
     }
 
-    // Cargar foto actual si existe
+    // Cargar preview de la portada existente si existe.
     if (this.aviso.foto) {
-      this.fotoActual = this.aviso.foto;
       if (this.aviso.foto.startsWith('http')) {
-        this.fotoPreview = this.aviso.foto;
+        this.portadaPreview = this.aviso.foto;
       } else if (this.aviso.foto.startsWith('/uploads/avisos_funebres/')) {
-        // Convertir a endpoint protegido con token
         const filename = this.aviso.foto.split('/').pop();
         const token = this._usuarioService?.token || '';
-        this.fotoPreview = `${URL_SERVICIOS}/avisos-funebres/imagen/${filename}?token=${token}`;
+        this.portadaPreview = `${URL_SERVICIOS}/avisos-funebres/imagen/${filename}?token=${token}`;
       } else {
-        this.fotoPreview = `${URL_SERVICIOS}${this.aviso.foto}`;
+        this.portadaPreview = `${URL_SERVICIOS}${this.aviso.foto}`;
       }
     }
   }
 
-  onFileSelected(event: any) {
-    const file = event.target.files[0];
-    if (file) {
-      this.fotoSeleccionada = file;
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        this.fotoPreview = e.target.result;
-      };
-      reader.readAsDataURL(file);
+  abrirEditorPortada() {
+    if (!this.aviso?.nombre_completo) {
+      alert('El aviso debe tener un nombre antes de diseñar la portada.');
+      return;
+    }
+    this.flyerModal.abrir();
+  }
+
+  onPortadaGenerada(evt: PortadaGenerada) {
+    this.portadaFile = evt.file;
+    this.portadaPreview = evt.dataUrl;
+  }
+
+  /** Descarta la portada recién generada y vuelve a mostrar la actual del aviso. */
+  eliminarPortadaNueva() {
+    this.portadaFile = null;
+    if (this.aviso?.foto) {
+      if (this.aviso.foto.startsWith('http')) {
+        this.portadaPreview = this.aviso.foto;
+      } else if (this.aviso.foto.startsWith('/uploads/avisos_funebres/')) {
+        const filename = this.aviso.foto.split('/').pop();
+        const token = this._usuarioService?.token || '';
+        this.portadaPreview = `${URL_SERVICIOS}/avisos-funebres/imagen/${filename}?token=${token}`;
+      } else {
+        this.portadaPreview = `${URL_SERVICIOS}${this.aviso.foto}`;
+      }
+    } else {
+      this.portadaPreview = null;
     }
   }
 
@@ -118,8 +146,8 @@ export class EditarAvisoFunebreComponent implements OnInit {
         formData.append('fecha_caducidad_publicado', '');
       }
 
-      if (this.fotoSeleccionada) {
-        formData.append('foto', this.fotoSeleccionada);
+      if (this.portadaFile) {
+        formData.append('foto', this.portadaFile);
       }
 
       formData.append('campos_modal', JSON.stringify(this.aviso.campos_modal));
@@ -138,23 +166,4 @@ export class EditarAvisoFunebreComponent implements OnInit {
   cancelar() {
     window.history.back();
   }
-
-  eliminarFoto() {
-    this.fotoSeleccionada = null;
-    if (this.fotoActual) {
-      if (this.fotoActual.startsWith('http')) {
-        this.fotoPreview = this.fotoActual;
-      } else if (this.fotoActual.startsWith('/uploads/avisos_funebres/')) {
-        // Convertir a endpoint protegido con token
-        const filename = this.fotoActual.split('/').pop();
-        const token = this._usuarioService?.token || '';
-        this.fotoPreview = `${URL_SERVICIOS}/avisos-funebres/imagen/${filename}?token=${token}`;
-      } else {
-        this.fotoPreview = `${URL_SERVICIOS}${this.fotoActual}`;
-      }
-    } else {
-      this.fotoPreview = null;
-    }
-  }
 }
-

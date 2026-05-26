@@ -1,0 +1,35 @@
+<div class="flyer-modal-backdrop" *ngIf="visible" (click)="cerrar()"></div>
+<div class="flyer-modal" *ngIf="visible">
+    <div class="flyer-modal-header">
+        <h5 class="m-0">
+            <i class="fa fa-image mr-2"></i>
+            Diseñar portada del aviso
+        </h5>
+        <div class="d-flex align-items-center">
+            <span *ngIf="!flyerReady" class="text-muted small mr-3">
+                <span class="spinner-border spinner-border-sm mr-1"></span>
+                Cargando editor...
+            </span>
+            <span *ngIf="flyerReady && !procesando" class="text-success small mr-3">
+                <i class="fa fa-check-circle mr-1"></i>
+                Editor listo
+            </span>
+            <span *ngIf="procesando" class="text-info small mr-3">
+                <span class="spinner-border spinner-border-sm mr-1"></span>
+                Procesando portada...
+            </span>
+            <button type="button" class="close ml-2" (click)="cerrar()" aria-label="Cerrar">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+    <div class="flyer-modal-body">
+        <iframe
+            #iframe
+            [src]="flyerSafeUrl"
+            title="Editor de portada"
+            frameborder="0"
+            allow="clipboard-write"
+        ></iframe>
+    </div>
+</div>

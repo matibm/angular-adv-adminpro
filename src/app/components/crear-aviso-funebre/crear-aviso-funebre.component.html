@@ -78,15 +78,21 @@
             </div>
 
             <div class="form-group">
-                <label for="foto">Foto</label>
-                <input type="file" (change)="onFileSelected($event)" name="foto" id="foto" class="form-control"
-                    accept="image/*">
-                <small class="form-text text-muted">Formatos permitidos: JPG, PNG, GIF (máx. 5MB)</small>
+                <label>Portada del aviso</label>
+                <div>
+                    <button type="button" class="btn btn-primary" (click)="abrirEditorPortada()">
+                        <i class="fa fa-image mr-1"></i>
+                        {{ portadaPreview ? 'Volver a diseñar portada' : 'Diseñar portada' }}
+                    </button>
+                    <small class="form-text text-muted">
+                        Abre el editor para generar la imagen de portada (incluye foto del difunto, fechas y datos del servicio).
+                    </small>
+                </div>
 
-                <div *ngIf="fotoPreview" class="mt-3">
-                    <img [src]="fotoPreview" alt="Vista previa" class="img-thumbnail"
+                <div *ngIf="portadaPreview" class="mt-3">
+                    <img [src]="portadaPreview" alt="Portada generada" class="img-thumbnail"
                         style="max-width: 300px; max-height: 300px;">
-                    <button type="button" (click)="eliminarFoto()" class="btn btn-sm btn-danger ml-2">
+                    <button type="button" (click)="eliminarPortada()" class="btn btn-sm btn-danger ml-2">
                         <i class="fa fa-trash"></i> Eliminar
                     </button>
                 </div>
@@ -214,3 +220,10 @@
         </form>
     </div>
 </div>
+
+<app-flyer-portada-modal
+    #flyerModal
+    [aviso]="aviso"
+    mode="create"
+    (portadaGenerada)="onPortadaGenerada($event)">
+</app-flyer-portada-modal>
