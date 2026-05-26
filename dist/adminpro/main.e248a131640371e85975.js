@@ -40834,7 +40834,7 @@ class CobranzaComponent {
                 vendedor: this.vendedor ? this.vendedor._id : null,
                 // cobrador: this.cobrador ? this.cobrador._id : null,
                 servicio: this.servicio ? this.servicio._id : null,
-                fondo: this.fondo ? this.fondo._id : null,
+                // El fondo destino NO debe filtrar la lista: las cuotas pendientes no tienen fondo asignado
                 contrato: this.contrato ? this.contrato._id : null,
                 // sin_contrato: "1",
                 pagado,
@@ -40881,7 +40881,7 @@ class CobranzaComponent {
                 titular: this.cliente ? this.cliente._id : null,
                 vendedor: this.vendedor ? this.vendedor._id : null,
                 servicio: this.servicio ? this.servicio._id : null,
-                fondo: this.fondo ? this.fondo._id : null,
+                // El fondo destino NO debe filtrar la lista: las cuotas pendientes no tienen fondo asignado
                 sin_contrato: "1",
                 pagado,
                 vencimiento_start: this.rangeVencimiento.value.start
@@ -53778,4 +53778,4 @@ webpackEmptyAsyncContext.id = "zn8P";
 /***/ })
 
 },[[0,"runtime","vendor"]]]);
-//# sourceMappingURL=main.7275c1464fc9d6f5ae15.js.map
+//# sourceMappingURL=main.e248a131640371e85975.js.map
