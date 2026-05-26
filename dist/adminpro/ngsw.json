@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1778797939907,
+  "timestamp": 1779824946988,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -13,12 +13,12 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main.js",
+        "/main.7275c1464fc9d6f5ae15.js",
         "/manifest.webmanifest",
-        "/polyfills.js",
-        "/runtime.js",
-        "/styles.css",
-        "/vendor.js"
+        "/polyfills.f782e0cdb7e1242a13e4.js",
+        "/runtime.d6c52737d4587c65265f.js",
+        "/styles.4731e93a50c18687d041.css",
+        "/vendor.0550851960cf5919c6b2.js"
       ],
       "patterns": []
     },
@@ -30,10 +30,10 @@
         "ignoreVary": true
       },
       "urls": [
-        "/MaterialIcons-Regular.eot",
-        "/MaterialIcons-Regular.ttf",
-        "/MaterialIcons-Regular.woff",
-        "/MaterialIcons-Regular.woff2",
+        "/MaterialIcons-Regular.4674f8ded773cb03e824.eot",
+        "/MaterialIcons-Regular.5e7382c63da0098d634a.ttf",
+        "/MaterialIcons-Regular.83bebaf37c09c7e1c3ee.woff",
+        "/MaterialIcons-Regular.cff684e59ffb052d72cb.woff2",
         "/assets/css/animate.css",
         "/assets/css/colors/blue-dark.css",
         "/assets/css/colors/blue.css",
@@ -3959,17 +3959,17 @@
         "/assets/scss/widgets/topbar-mail.scss",
         "/assets/scss/widgets/weather-widget.scss",
         "/assets/scss/widgets/widgets.scss",
-        "/error-bg.jpg"
+        "/error-bg.9ff9b9625781034c1add.jpg"
       ],
       "patterns": []
     }
   ],
   "dataGroups": [],
   "hashTable": {
-    "/MaterialIcons-Regular.eot": "26fb8cecb5512223277b4d290a24492a0f09ede1",
-    "/MaterialIcons-Regular.ttf": "fc05de31234e0090f7ddc28ce1b23af4026cb1da",
-    "/MaterialIcons-Regular.woff": "c6c953c2ccb2ca9abb21db8dbf473b5a435f0082",
-    "/MaterialIcons-Regular.woff2": "09963592e8c953cc7e14e3fb0a5b05d5042e8435",
+    "/MaterialIcons-Regular.4674f8ded773cb03e824.eot": "26fb8cecb5512223277b4d290a24492a0f09ede1",
+    "/MaterialIcons-Regular.5e7382c63da0098d634a.ttf": "fc05de31234e0090f7ddc28ce1b23af4026cb1da",
+    "/MaterialIcons-Regular.83bebaf37c09c7e1c3ee.woff": "c6c953c2ccb2ca9abb21db8dbf473b5a435f0082",
+    "/MaterialIcons-Regular.cff684e59ffb052d72cb.woff2": "09963592e8c953cc7e14e3fb0a5b05d5042e8435",
     "/assets/css/animate.css": "b31d210bda17be3ad8af2fff4cb412347a1982c1",
     "/assets/css/colors/blue-dark.css": "43f371657fd2eeb508ec293969b257da630a2da7",
     "/assets/css/colors/blue.css": "9ed8cdb9bd8f82ff4a286298ef457a1f9f7befdc",
@@ -7895,15 +7895,15 @@
     "/assets/scss/widgets/topbar-mail.scss": "edf68040a243c8c634ff376f544afa0e0b0f3ed7",
     "/assets/scss/widgets/weather-widget.scss": "449b71cc625e107c74505e9c206433a3d2a827ad",
     "/assets/scss/widgets/widgets.scss": "ae37f9cba30eca3835f660575145c91a31585a76",
-    "/error-bg.jpg": "d5381105e14b48ce54a804873b8cff5526440769",
+    "/error-bg.9ff9b9625781034c1add.jpg": "d5381105e14b48ce54a804873b8cff5526440769",
     "/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/index.html": "0537e8d2cc81a584d1e831f71f20cbc3c387ba95",
-    "/main.js": "b4efbc5d663b1f25ee09c0d27811c81de8f83b11",
+    "/index.html": "64130a98f79b6734375fe0180764f6e0c27a09fa",
+    "/main.7275c1464fc9d6f5ae15.js": "f9263504cfda1d80977e7d7767ab661443ff7905",
     "/manifest.webmanifest": "72bdf2a65ee50f97feaafeb41b77a1ebda81dd65",
-    "/polyfills.js": "51d5a1c25a0e0efb66d5dc170b0e0ae5089a8d24",
-    "/runtime.js": "154c277c076cfc8ee335df5d9349395c6bf58db5",
-    "/styles.css": "6a23b887a1672e1dbc1f54610ef069706c219d49",
-    "/vendor.js": "a51dc33418398309917fe6f54d0c98400058f77d"
+    "/polyfills.f782e0cdb7e1242a13e4.js": "63d7edb41fd71257de6ef3e3ea174028faf587c5",
+    "/runtime.d6c52737d4587c65265f.js": "01ac41e2161be24725e14cf005c2ddd8ad9769f6",
+    "/styles.4731e93a50c18687d041.css": "9ee6d53580417321f3465a3cc3f2c33944c50213",
+    "/vendor.0550851960cf5919c6b2.js": "ad5cb4a10411e52bae0c7e5ee40628a571aba789"
   },
   "navigationUrls": [
     {

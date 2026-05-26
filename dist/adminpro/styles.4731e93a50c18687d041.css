@@ -639,12 +639,12 @@ body {
   font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;
-  src: url(MaterialIcons-Regular.eot); /* For IE6-8 */
+  src: url('MaterialIcons-Regular.4674f8ded773cb03e824.eot'); /* For IE6-8 */
   src: local('Material Icons'),
        local('MaterialIcons-Regular'),
-       url(MaterialIcons-Regular.woff2) format('woff2'),
-       url(MaterialIcons-Regular.woff) format('woff'),
-       url(MaterialIcons-Regular.ttf) format('truetype');
+       url('MaterialIcons-Regular.cff684e59ffb052d72cb.woff2') format('woff2'),
+       url('MaterialIcons-Regular.83bebaf37c09c7e1c3ee.woff') format('woff'),
+       url('MaterialIcons-Regular.5e7382c63da0098d634a.ttf') format('truetype');
 }
 
 .material-icons {
@@ -673,4 +673,4 @@ body {
 }
 
 
-/*# sourceMappingURL=styles.css.map*/
+/*# sourceMappingURL=styles.4731e93a50c18687d041.css.map*/

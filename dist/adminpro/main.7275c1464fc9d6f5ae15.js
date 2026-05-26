@@ -40503,7 +40503,7 @@ function CobranzaComponent_div_53_Template(rf, ctx) { if (rf & 1) {
     const _r68 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵreference"](49);
     const ctx_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](13);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", ctx_r12.fondo);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", ctx_r12.fondo && ctx_r12._userService.usuario.role != "USER_ROLE");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", !ctx_r12.fondo);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
@@ -40799,7 +40799,7 @@ class CobranzaComponent {
         ////console.log(getComputedStyle(variable).width);
     }
     ngOnInit() {
-        var _a, _b;
+        var _a, _b, _c, _d;
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             this.fechaPago.setHours(0, 0, 0, 0);
             ////console.log(!this._userService.usuario?.timbrado?.timbrado , this._userService?.usuario?.role == 'USER_ROLE');
@@ -40812,6 +40812,12 @@ class CobranzaComponent {
             this.observableBuscadores();
             // this.servicios = await this._productoService.getProductos();
             this.fondos = yield this._usuarioService.buscarUsuarios('BANCOS', '');
+            // Para cobradores (USER_ROLE) el fondo destino queda fijo en CAJA PRINCIPAL
+            if (((_d = (_c = this._userService) === null || _c === void 0 ? void 0 : _c.usuario) === null || _d === void 0 ? void 0 : _d.role) == 'USER_ROLE') {
+                this.fondo =
+                    (this.fondos || []).find((f) => f.RAZON === 'CAJA PRINCIPAL') ||
+                        this.fondo;
+            }
         });
     }
     filtrar() {
@@ -51156,7 +51162,7 @@ NopagefoundComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdef
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](23);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("\u00A9", ctx.year, " Admin Pro.");
-    } }, styles: [".error-box[_ngcontent-%COMP%] {\n    height: 100%;\n    position: fixed;\n    background: url('error-bg.jpg') no-repeat center center #fff;\n    width: 100%; }\n    .error-box[_ngcontent-%COMP%]   .footer[_ngcontent-%COMP%] {\n      width: 100%;\n      left: 0px;\n      right: 0px; }\n    .error-body[_ngcontent-%COMP%] {\n    padding-top: 5%; }\n    .error-body[_ngcontent-%COMP%]   h1[_ngcontent-%COMP%] {\n      font-size: 210px;\n      font-weight: 900;\n      text-shadow: 4px 4px 0 #ffffff, 6px 6px 0 #263238;\n      line-height: 210px; }\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm5vcGFnZWZvdW5kLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxZQUFZO0lBQ1osZUFBZTtJQUNmLDREQUF5RjtJQUN6RixXQUFXLEVBQUU7SUFDYjtNQUNFLFdBQVc7TUFDWCxTQUFTO01BQ1QsVUFBVSxFQUFFO0lBRWhCO0lBQ0UsZUFBZSxFQUFFO0lBQ2pCO01BQ0UsZ0JBQWdCO01BQ2hCLGdCQUFnQjtNQUNoQixpREFBaUQ7TUFDakQsa0JBQWtCLEVBQUUiLCJmaWxlIjoibm9wYWdlZm91bmQuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5lcnJvci1ib3gge1xuICAgIGhlaWdodDogMTAwJTtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgYmFja2dyb3VuZDogdXJsKC4uLy4uL2Fzc2V0cy9pbWFnZXMvYmFja2dyb3VuZC9lcnJvci1iZy5qcGcpIG5vLXJlcGVhdCBjZW50ZXIgY2VudGVyICNmZmY7XG4gICAgd2lkdGg6IDEwMCU7IH1cbiAgICAuZXJyb3ItYm94IC5mb290ZXIge1xuICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICBsZWZ0OiAwcHg7XG4gICAgICByaWdodDogMHB4OyB9XG4gIFxuICAuZXJyb3ItYm9keSB7XG4gICAgcGFkZGluZy10b3A6IDUlOyB9XG4gICAgLmVycm9yLWJvZHkgaDEge1xuICAgICAgZm9udC1zaXplOiAyMTBweDtcbiAgICAgIGZvbnQtd2VpZ2h0OiA5MDA7XG4gICAgICB0ZXh0LXNoYWRvdzogNHB4IDRweCAwICNmZmZmZmYsIDZweCA2cHggMCAjMjYzMjM4O1xuICAgICAgbGluZS1oZWlnaHQ6IDIxMHB4OyB9XG4gICJdfQ== */"] });
+    } }, styles: [".error-box[_ngcontent-%COMP%] {\n    height: 100%;\n    position: fixed;\n    background: url('error-bg.9ff9b9625781034c1add.jpg') no-repeat center center #fff;\n    width: 100%; }\n    .error-box[_ngcontent-%COMP%]   .footer[_ngcontent-%COMP%] {\n      width: 100%;\n      left: 0px;\n      right: 0px; }\n    .error-body[_ngcontent-%COMP%] {\n    padding-top: 5%; }\n    .error-body[_ngcontent-%COMP%]   h1[_ngcontent-%COMP%] {\n      font-size: 210px;\n      font-weight: 900;\n      text-shadow: 4px 4px 0 #ffffff, 6px 6px 0 #263238;\n      line-height: 210px; }\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm5vcGFnZWZvdW5kLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxZQUFZO0lBQ1osZUFBZTtJQUNmLGlGQUF5RjtJQUN6RixXQUFXLEVBQUU7SUFDYjtNQUNFLFdBQVc7TUFDWCxTQUFTO01BQ1QsVUFBVSxFQUFFO0lBRWhCO0lBQ0UsZUFBZSxFQUFFO0lBQ2pCO01BQ0UsZ0JBQWdCO01BQ2hCLGdCQUFnQjtNQUNoQixpREFBaUQ7TUFDakQsa0JBQWtCLEVBQUUiLCJmaWxlIjoibm9wYWdlZm91bmQuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5lcnJvci1ib3gge1xuICAgIGhlaWdodDogMTAwJTtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgYmFja2dyb3VuZDogdXJsKC4uLy4uL2Fzc2V0cy9pbWFnZXMvYmFja2dyb3VuZC9lcnJvci1iZy5qcGcpIG5vLXJlcGVhdCBjZW50ZXIgY2VudGVyICNmZmY7XG4gICAgd2lkdGg6IDEwMCU7IH1cbiAgICAuZXJyb3ItYm94IC5mb290ZXIge1xuICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICBsZWZ0OiAwcHg7XG4gICAgICByaWdodDogMHB4OyB9XG4gIFxuICAuZXJyb3ItYm9keSB7XG4gICAgcGFkZGluZy10b3A6IDUlOyB9XG4gICAgLmVycm9yLWJvZHkgaDEge1xuICAgICAgZm9udC1zaXplOiAyMTBweDtcbiAgICAgIGZvbnQtd2VpZ2h0OiA5MDA7XG4gICAgICB0ZXh0LXNoYWRvdzogNHB4IDRweCAwICNmZmZmZmYsIDZweCA2cHggMCAjMjYzMjM4O1xuICAgICAgbGluZS1oZWlnaHQ6IDIxMHB4OyB9XG4gICJdfQ== */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NopagefoundComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
@@ -53772,4 +53778,4 @@ webpackEmptyAsyncContext.id = "zn8P";
 /***/ })
 
 },[[0,"runtime","vendor"]]]);
-//# sourceMappingURL=main.js.map
+//# sourceMappingURL=main.7275c1464fc9d6f5ae15.js.map
