@@ -218,7 +218,7 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
       vendedor: this.vendedor ? this.vendedor._id : null,
       // cobrador: this.cobrador ? this.cobrador._id : null,
       servicio: this.servicio ? this.servicio._id : null,
-      fondo: this.fondo ? this.fondo._id : null,
+      // El fondo destino NO debe filtrar la lista: las cuotas pendientes no tienen fondo asignado
       contrato: this.contrato ? this.contrato._id : null,
       // sin_contrato: "1",
       pagado,
@@ -269,7 +269,7 @@ export class CobranzaComponent implements OnInit, AfterViewInit, OnDestroy {
       titular: this.cliente ? this.cliente._id : null,
       vendedor: this.vendedor ? this.vendedor._id : null,
       servicio: this.servicio ? this.servicio._id : null,
-      fondo: this.fondo ? this.fondo._id : null,
+      // El fondo destino NO debe filtrar la lista: las cuotas pendientes no tienen fondo asignado
       sin_contrato: "1", // Filtrar solo facturas sin contrato
       pagado,
       vencimiento_start: this.rangeVencimiento.value.start
