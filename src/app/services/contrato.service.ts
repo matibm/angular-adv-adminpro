@@ -18,7 +18,7 @@ export class ContratoService {
   ) { }
 
 
-  getContratos(page?, options?: { de_baja?: boolean, utilizado?: boolean, fecha_inicio?: number, fecha_fin?: number, nro_contrato?: string, producto?: string, cliente?: string, ruc?: string, manzana?: string, fila?, parcela?: string, tipo?: string }, sort?: { key: string, value: number }) {
+  getContratos(page?, options?: { de_baja?: boolean, utilizado?: boolean, fecha_inicio?: number, fecha_fin?: number, nro_contrato?: string, exact_nro?: boolean, codigo_producto?: string, producto?: string, cliente?: string, ruc?: string, manzana?: string, fila?, parcela?: string, tipo?: string }, sort?: { key: string, value: number }) {
     console.log(options);
 
 
@@ -28,9 +28,8 @@ export class ContratoService {
 
     if (options) {
       Object.entries(options).forEach(([key, value]) => {
-        if (value) {
+        if (value !== undefined && value !== null && value !== '') {
           url += `&${key}=${value}`;
-
         }
       });
     }
@@ -38,7 +37,7 @@ export class ContratoService {
       url += `&sort_key=${sort.key}`;
       url += `&sort_value=${sort.value}`;
     }
-    if (options.utilizado === false) {
+    if (options?.utilizado === false) {
       url += `&utilizado=false`;
     }
     if (options.de_baja === false) {

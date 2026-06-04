@@ -552,10 +552,16 @@ export class CrearContratoComponent implements OnInit, AfterViewInit {
   }
 
   async verificar_nro_contrato(nro_contrato) {
-    let resp = await this._contratoService.getContratos(1, { nro_contrato: nro_contrato })
-    if (resp.count === 0) {
-      return true
-    } else return false
+    const nro = String(nro_contrato ?? '').trim();
+    if (!nro) {
+      return false;
+    }
+    const options: any = { nro_contrato: nro, exact_nro: true };
+    if (this.producto?.COD_CORTO) {
+      options.codigo_producto = this.producto.COD_CORTO;
+    }
+    const resp = await this._contratoService.getContratos(1, options);
+    return resp.count === 0;
   }
 
 }

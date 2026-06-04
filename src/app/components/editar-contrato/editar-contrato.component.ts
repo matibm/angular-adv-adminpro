@@ -350,6 +350,7 @@ export class EditarContratoComponent implements OnInit {
     this.cliente = titular;
     this.producto = producto;
     this.cobrador = cobrador;
+    this.contrato.nro_contrato = String(this.contrato.nro_contrato ?? '').trim();
 
     this.contrato.id_contrato = new Date().getTime().toString(),   // se puede quitar
       // this.contrato.cobrador = this.cobrador || {},
