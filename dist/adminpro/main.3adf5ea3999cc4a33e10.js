@@ -13283,7 +13283,7 @@ __webpack_require__.r(__webpack_exports__);
 function EditarContratoComponent_div_0_div_17_Template(rf, ctx) { if (rf & 1) {
     const _r22 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 29);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function EditarContratoComponent_div_0_div_17_Template_div_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r22); const ctx_r21 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); return ctx_r21.contrato.titular = null; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function EditarContratoComponent_div_0_div_17_Template_div_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r22); const ctx_r21 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); ctx_r21.contrato.titular = null; return ctx_r21.cliente = null; });
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n                                ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "button", 30);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](3, "i", 31);
@@ -13316,7 +13316,7 @@ function EditarContratoComponent_div_0_div_20_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\n\n                            ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "ng-select", 32);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngModelChange", function EditarContratoComponent_div_0_div_20_Template_ng_select_ngModelChange_2_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r26); const ctx_r25 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); return ctx_r25.contrato.titular = $event; })("ngModelChange", function EditarContratoComponent_div_0_div_20_Template_ng_select_ngModelChange_2_listener() { return null; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngModelChange", function EditarContratoComponent_div_0_div_20_Template_ng_select_ngModelChange_2_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r26); const ctx_r25 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); return ctx_r25.contrato.titular = $event; })("ngModelChange", function EditarContratoComponent_div_0_div_20_Template_ng_select_ngModelChange_2_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r26); const ctx_r27 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); return ctx_r27.cliente = $event; });
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "\n                                ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](4, EditarContratoComponent_div_0_div_20_ng_template_4_Template, 10, 5, "ng-template", 33);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5, "\n                            ");
@@ -15953,7 +15953,7 @@ class EditarContratoComponent {
         return Number(num);
     }
     editarContrato() {
-        var _a, _b, _c;
+        var _a, _b, _c, _d, _e;
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             let tipoContrato = '';
             if (this.esPsm && this.saldoOriginal != this.saldo) {
@@ -15986,27 +15986,47 @@ class EditarContratoComponent {
             if (this.esCMP) {
                 tipoContrato = 'cmp';
             }
+            const titular = ((_a = this.contrato) === null || _a === void 0 ? void 0 : _a.titular) || this.cliente;
+            const producto = this.producto || ((_b = this.contrato) === null || _b === void 0 ? void 0 : _b.producto);
+            const cobrador = ((_c = this.contrato) === null || _c === void 0 ? void 0 : _c.cobrador) || this.cobrador;
+            if (!(titular === null || titular === void 0 ? void 0 : titular._id)) {
+                return sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire({
+                    title: 'Error',
+                    icon: 'error',
+                    text: 'Debe seleccionar un cliente (titular) antes de guardar'
+                });
+            }
+            if (!(producto === null || producto === void 0 ? void 0 : producto._id)) {
+                return sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire({
+                    title: 'Error',
+                    icon: 'error',
+                    text: 'Debe seleccionar un producto antes de guardar'
+                });
+            }
+            this.cliente = titular;
+            this.producto = producto;
+            this.cobrador = cobrador;
             this.contrato.id_contrato = new Date().getTime().toString(), // se puede quitar
                 // this.contrato.cobrador = this.cobrador || {},
                 this.contrato.cuota = this.montoCuotas,
                 this.contrato.entrega = this.entrega,
-                this.contrato.id_servicio = this.producto.ID_PRODUCTO, // se puede quitar
-                this.contrato.nombre_servicio = this.producto.NOMBRE,
+                this.contrato.id_servicio = producto.ID_PRODUCTO, // se puede quitar
+                this.contrato.nombre_servicio = producto.NOMBRE,
                 this.contrato.plazo = this.plazo,
                 // this.contrato.precio_total = this.producto.PRECIO_MAYORISTA,
-                this.contrato.producto = this.producto,
-                // this.contrato.titular = this.cliente,
+                this.contrato.producto = producto,
+                this.contrato.titular = titular,
                 this.contrato.activo = '1',
                 // this.contrato.vendedor = this.vendedor,
                 this.contrato.fecha_creacion_unix = this.fecha_creacion.getTime(); // falta poner campode fecha para poder modificar
-            this.contrato.nro_contrato_relacionado = parseInt(((_b = (_a = this.contrato) === null || _a === void 0 ? void 0 : _a.nro_contrato_relacionado) === null || _b === void 0 ? void 0 : _b.toString()) || '0') || 0;
+            this.contrato.nro_contrato_relacionado = parseInt(((_e = (_d = this.contrato) === null || _d === void 0 ? void 0 : _d.nro_contrato_relacionado) === null || _e === void 0 ? void 0 : _e.toString()) || '0') || 0;
             console.log(this.saldo);
             console.log(this.contrato);
             const send = {
                 contrato: this.contrato,
                 editar_nro_contrato: this.editar_nro_contrato,
                 fechaPago: this.fechaPago ? this.fechaPago : new Date(),
-                facturaIngreso: this.crearFacturaEntregaInicial(this.entrega, this.cliente._id, this.producto._id, (_c = this.cobrador) === null || _c === void 0 ? void 0 : _c._id)
+                facturaIngreso: this.crearFacturaEntregaInicial(this.entrega, titular._id, producto._id, cobrador === null || cobrador === void 0 ? void 0 : cobrador._id)
             };
             this.guardando = true;
             yield this._contratoService.updateContrato(send, this.editarproducto, tipoContrato).then(() => {
@@ -16099,12 +16119,16 @@ class EditarContratoComponent {
         this.cobrador = cobrador;
     }
     disableCrearContrato() {
-        if (this.producto && this.contrato.vendedor && this.contrato.vendedor) {
+        var _a, _b, _c;
+        const titular = ((_a = this.contrato) === null || _a === void 0 ? void 0 : _a.titular) || this.cliente;
+        const producto = this.producto || ((_b = this.contrato) === null || _b === void 0 ? void 0 : _b.producto);
+        if (producto && titular && ((_c = this.contrato) === null || _c === void 0 ? void 0 : _c.vendedor)) {
             return false;
         }
         return true;
     }
     crearFacturas(monto, cantidad) {
+        var _a, _b, _c;
         if (!cantidad) {
             return null;
         }
@@ -16122,8 +16146,8 @@ class EditarContratoComponent {
                 vencimiento: new Date(`${year}/${mes}/${dia}`),
                 monto,
                 haber: monto,
-                titular: this.cliente,
-                servicio: this.producto._id,
+                titular: ((_a = this.contrato) === null || _a === void 0 ? void 0 : _a.titular) || this.cliente,
+                servicio: (_c = (this.producto || ((_b = this.contrato) === null || _b === void 0 ? void 0 : _b.producto))) === null || _c === void 0 ? void 0 : _c._id,
                 fecha_creacion_unix: new Date().getTime()
             });
             mes++;
@@ -53778,4 +53802,4 @@ webpackEmptyAsyncContext.id = "zn8P";
 /***/ })
 
 },[[0,"runtime","vendor"]]]);
-//# sourceMappingURL=main.e248a131640371e85975.js.map
+//# sourceMappingURL=main.3adf5ea3999cc4a33e10.js.map
