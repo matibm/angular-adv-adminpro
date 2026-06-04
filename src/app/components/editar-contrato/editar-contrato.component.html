@@ -6,7 +6,7 @@
                     <div class="card-body">
                         <div style="justify-content: space-between;" class="inline-flex">
                             <h4 class="card-title">Cliente</h4>
-                            <div *ngIf="contrato.titular" (click)="contrato.titular = null"
+                            <div *ngIf="contrato.titular" (click)="contrato.titular = null; cliente = null"
                                 class="pointer close-icon ml-auto">
                                 <button type="button" class="btn btn-sm btn-light"><i class=" ti-close  "></i></button>
                             </div>
@@ -15,7 +15,7 @@
                         <div *ngIf="!contrato.titular">
 
                             <ng-select [typeahead]="inputClientes" [loading]="loadingClientes" [items]="clientes"
-                                name="dsfdbrweqcda" [(ngModel)]="contrato.titular" (ngModelChange)="null"
+                                name="dsfdbrweqcda" [(ngModel)]="contrato.titular" (ngModelChange)="cliente = $event"
                                 notFoundText="no se encontraron resultados" placeholder="buscar cliente"
                                 bindLabel="NOMBRES" [searchFn]="customSearchFn">
                                 <ng-template ng-option-tmp let-item="item">

@@ -327,17 +327,41 @@ export class EditarContratoComponent implements OnInit {
       tipoContrato = 'cmp'
 
     }
+
+    const titular = this.contrato?.titular || this.cliente;
+    const producto = this.producto || this.contrato?.producto;
+    const cobrador = this.contrato?.cobrador || this.cobrador;
+
+    if (!titular?._id) {
+      return swal.fire({
+        title: 'Error',
+        icon: 'error',
+        text: 'Debe seleccionar un cliente (titular) antes de guardar'
+      });
+    }
+    if (!producto?._id) {
+      return swal.fire({
+        title: 'Error',
+        icon: 'error',
+        text: 'Debe seleccionar un producto antes de guardar'
+      });
+    }
+
+    this.cliente = titular;
+    this.producto = producto;
+    this.cobrador = cobrador;
+
     this.contrato.id_contrato = new Date().getTime().toString(),   // se puede quitar
       // this.contrato.cobrador = this.cobrador || {},
       this.contrato.cuota = this.montoCuotas,
       this.contrato.entrega = this.entrega,
-      this.contrato.id_servicio = this.producto.ID_PRODUCTO, // se puede quitar
-      this.contrato.nombre_servicio = this.producto.NOMBRE,
+      this.contrato.id_servicio = producto.ID_PRODUCTO, // se puede quitar
+      this.contrato.nombre_servicio = producto.NOMBRE,
       this.contrato.plazo = this.plazo,
       // this.contrato.precio_total = this.producto.PRECIO_MAYORISTA,
 
-      this.contrato.producto = this.producto,
-      // this.contrato.titular = this.cliente,
+      this.contrato.producto = producto,
+      this.contrato.titular = titular,
       this.contrato.activo = '1',
       // this.contrato.vendedor = this.vendedor,
       this.contrato.fecha_creacion_unix = this.fecha_creacion.getTime();  // falta poner campode fecha para poder modificar
@@ -351,7 +375,7 @@ export class EditarContratoComponent implements OnInit {
       contrato: this.contrato,
       editar_nro_contrato: this.editar_nro_contrato,
       fechaPago: this.fechaPago ? this.fechaPago : new Date(),
-      facturaIngreso: this.crearFacturaEntregaInicial(this.entrega, this.cliente._id, this.producto._id, this.cobrador?._id)
+      facturaIngreso: this.crearFacturaEntregaInicial(this.entrega, titular._id, producto._id, cobrador?._id)
     };
     this.guardando = true;
     await this._contratoService.updateContrato(send, this.editarproducto, tipoContrato).then(() => {
@@ -444,7 +468,9 @@ export class EditarContratoComponent implements OnInit {
   }
 
   disableCrearContrato() {
-    if (this.producto && this.contrato.vendedor && this.contrato.vendedor  ) {
+    const titular = this.contrato?.titular || this.cliente;
+    const producto = this.producto || this.contrato?.producto;
+    if (producto && titular && this.contrato?.vendedor) {
       return false;
     }
     return true;
@@ -468,8 +494,8 @@ export class EditarContratoComponent implements OnInit {
         vencimiento: new Date(`${year}/${mes}/${dia}`),
         monto,
         haber: monto,
-        titular: this.cliente,
-        servicio: this.producto._id,
+        titular: this.contrato?.titular || this.cliente,
+        servicio: (this.producto || this.contrato?.producto)?._id,
         fecha_creacion_unix: new Date().getTime()
       });
       mes++;
