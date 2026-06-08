@@ -96,6 +96,23 @@ export class EditarAvisoFunebreComponent implements OnInit {
     this.portadaPreview = evt.dataUrl;
   }
 
+  /** Opción "Subir imagen": usa el archivo elegido tal cual como portada (sin editor). */
+  onImagenSeleccionada(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const file = input.files && input.files[0];
+    if (!file) return;
+    if (!file.type.startsWith('image/')) {
+      alert('El archivo debe ser una imagen.');
+      input.value = '';
+      return;
+    }
+    this.portadaFile = file;
+    const reader = new FileReader();
+    reader.onload = () => { this.portadaPreview = reader.result as string; };
+    reader.readAsDataURL(file);
+    input.value = ''; // permite volver a elegir el mismo archivo
+  }
+
   /** Descarta la portada recién generada y vuelve a mostrar la actual del aviso. */
   eliminarPortadaNueva() {
     this.portadaFile = null;
