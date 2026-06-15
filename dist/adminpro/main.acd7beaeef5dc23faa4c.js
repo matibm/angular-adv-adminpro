@@ -36196,12 +36196,10 @@ class ContratoService {
             url += `&sort_key=${sort.key}`;
             url += `&sort_value=${sort.value}`;
         }
-        if ((options === null || options === void 0 ? void 0 : options.utilizado) === false) {
-            url += `&utilizado=false`;
-        }
-        if (options.de_baja === false) {
-            url += `&de_baja=false`;
-        }
+        // Nota: utilizado/de_baja === false ya los agrega el forEach de arriba
+        // (la condicion value !== undefined deja pasar el booleano false).
+        // Agregarlos de nuevo aca duplicaba el parametro en el query string,
+        // Express lo parseaba como array ['false','false'] y el filtro se caia.
         return this.http.get(url).toPromise().then((resp) => {
             return resp;
         });
@@ -53877,4 +53875,4 @@ webpackEmptyAsyncContext.id = "zn8P";
 /***/ })
 
 },[[0,"runtime","vendor"]]]);
-//# sourceMappingURL=main.2d9363758c6db8ab9968.js.map
+//# sourceMappingURL=main.acd7beaeef5dc23faa4c.js.map
