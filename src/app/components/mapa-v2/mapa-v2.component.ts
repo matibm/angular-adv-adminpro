@@ -29,7 +29,9 @@ export class MapaV2Component implements OnInit {
     this.publico = this.route.snapshot.data?.publico === true;
     const modo = this.publico ? 'publico' : 'admin';
 
-    let url = `${URL_SERVICIOS}/mapa-v2/?modo=${modo}`;
+    // Servido como asset dentro del build de Angular (ver mapa-v2/vite.config.js).
+    // El path /assets/... no es una ruta de Angular, así que no hay colisión.
+    let url = `${URL_SERVICIOS}/assets/mapa-v2/?modo=${modo}`;
     const token = this._usuarioService.token;
     if (!this.publico && token) {
       url += `&token=${encodeURIComponent(token)}`;
