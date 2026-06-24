@@ -61,6 +61,7 @@ import { FacturaTicketComponent } from './factura-ticket/factura-ticket.componen
 import { ExportarContratosPdfComponent } from './exportar-contratos-pdf/exportar-contratos-pdf.component';
 import { ExportarGastosPdfComponent } from './exportar-gastos-pdf/exportar-gastos-pdf.component';
 import { MapaComponent } from './mapa/mapa.component';
+import { MapaV2Component } from './mapa-v2/mapa-v2.component';
 import { PdfFacturaMobileComponent } from './pdf-factura-mobile/pdf-factura-mobile.component';
 import { MapaPublicoComponent } from './mapa-publico/mapa-publico.component';
 import { EditGastoComponent } from './edit-gasto/edit-gasto.component';
@@ -118,6 +119,7 @@ const maskConfig: Partial<IConfig> = {
     ExportarContratosPdfComponent,
     ExportarGastosPdfComponent,
     MapaComponent,
+    MapaV2Component,
     PdfFacturaMobileComponent,
     MapaPublicoComponent,
     EditGastoComponent,

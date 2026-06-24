@@ -1,0 +1,11 @@
+.mapa-v2-frame {
+  width: 100%;
+  height: calc(100vh - 90px);
+  border: 0;
+  display: block;
+}
+
+/* Vista pública: ocupa toda la pantalla (no hay layout admin alrededor). */
+.mapa-v2-frame.publico {
+  height: 100vh;
+}

@@ -36,6 +36,7 @@ import { FacturaTicketComponent } from '../components/factura-ticket/factura-tic
 import { ExportarContratosPdfComponent } from '../components/exportar-contratos-pdf/exportar-contratos-pdf.component';
 import { ExportarGastosPdfComponent } from '../components/exportar-gastos-pdf/exportar-gastos-pdf.component';
 import { MapaComponent } from '../components/mapa/mapa.component';
+import { MapaV2Component } from '../components/mapa-v2/mapa-v2.component';
 import { PdfFacturaMobileComponent } from '../components/pdf-factura-mobile/pdf-factura-mobile.component';
 import { MapaPublicoComponent } from '../components/mapa-publico/mapa-publico.component';
 import { EditGastoComponent } from '../components/edit-gasto/edit-gasto.component';
@@ -95,6 +96,7 @@ const routes: Routes = [
       { path: 'pagos', component: PagosComponent },
       { path: 'account-settings', component: AccountSettingsComponent },
       { path: 'mapa', component: MapaComponent },
+      { path: 'mapa-v2', component: MapaV2Component },
       { path: 'recibos', component: RecibosComponent },
       { path: 'ordenes-cobro', component: ListaOrdenesCobroComponent },
       { path: 'config-pagos-online', component: ConfigPagosOnlineComponent },
@@ -119,6 +121,7 @@ const routes: Routes = [
   { path: 'factura-ticket-kude/:id', component: FacturaElectronicaTicketComponent },
   { path: 'factura_mobile/:id', component: PdfFacturaMobileComponent },
   { path: 'mapa', component: MapaPublicoComponent },
+  { path: 'mapa-v2', component: MapaV2Component, data: { publico: true } },
 
 
 
