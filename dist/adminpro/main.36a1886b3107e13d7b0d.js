@@ -38034,6 +38034,87 @@ PagesModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInject
 
 /***/ }),
 
+/***/ "eQGh":
+/*!*********************************************************!*\
+  !*** ./src/app/components/mapa-v2/mapa-v2.component.ts ***!
+  \*********************************************************/
+/*! exports provided: MapaV2Component */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MapaV2Component", function() { return MapaV2Component; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _config_global__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../config/global */ "iz4r");
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/platform-browser */ "jhN1");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var _services_usuario_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/usuario.service */ "on2l");
+
+
+
+
+
+
+// Wrapper Angular del mapa moderno (React+Vite). El mapa real vive en /mapa-v2
+// servido por el backend y se embebe como iframe. Este componente solo:
+//  - arma la URL del iframe (modo admin/publico + token)
+//  - escucha el postMessage del iframe para navegar a la ficha del contrato
+class MapaV2Component {
+    constructor(sanitizer, route, router, _usuarioService) {
+        this.sanitizer = sanitizer;
+        this.route = route;
+        this.router = router;
+        this._usuarioService = _usuarioService;
+        this.publico = false;
+    }
+    ngOnInit() {
+        var _a;
+        this.publico = ((_a = this.route.snapshot.data) === null || _a === void 0 ? void 0 : _a.publico) === true;
+        const modo = this.publico ? 'publico' : 'admin';
+        let url = `${_config_global__WEBPACK_IMPORTED_MODULE_1__["URL_SERVICIOS"]}/mapa-v2/?modo=${modo}`;
+        const token = this._usuarioService.token;
+        if (!this.publico && token) {
+            url += `&token=${encodeURIComponent(token)}`;
+        }
+        this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+        this.expectedOrigin = new URL(_config_global__WEBPACK_IMPORTED_MODULE_1__["URL_SERVICIOS"], window.location.origin).origin;
+    }
+    onMessage(event) {
+        if (event.origin !== this.expectedOrigin)
+            return;
+        const data = event.data;
+        if (!data || typeof data !== 'object')
+            return;
+        if (data.type === 'mapa-v2:open-contrato' && data.id) {
+            this.router.navigateByUrl(`/admin/info_contrato/${data.id}`);
+        }
+    }
+}
+MapaV2Component.ɵfac = function MapaV2Component_Factory(t) { return new (t || MapaV2Component)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["DomSanitizer"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_usuario_service__WEBPACK_IMPORTED_MODULE_4__["UsuarioService"])); };
+MapaV2Component.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: MapaV2Component, selectors: [["app-mapa-v2"]], hostBindings: function MapaV2Component_HostBindings(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("message", function MapaV2Component_message_HostBindingHandler($event) { return ctx.onMessage($event); }, false, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵresolveWindow"]);
+    } }, decls: 2, vars: 3, consts: [["title", "Mapa de parcelas", 1, "mapa-v2-frame", 3, "src"]], template: function MapaV2Component_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "iframe", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "\n");
+    } if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("publico", ctx.publico);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("src", ctx.safeUrl, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeResourceUrl"]);
+    } }, styles: [".mapa-v2-frame[_ngcontent-%COMP%] {\n  width: 100%;\n  height: calc(100vh - 90px);\n  border: 0;\n  display: block;\n}\n\n\n\n.mapa-v2-frame.publico[_ngcontent-%COMP%] {\n  height: 100vh;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1hcGEtdjIuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQVc7RUFDWCwwQkFBMEI7RUFDMUIsU0FBUztFQUNULGNBQWM7QUFDaEI7O0FBRUEsMkVBQTJFOztBQUMzRTtFQUNFLGFBQWE7QUFDZiIsImZpbGUiOiJtYXBhLXYyLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubWFwYS12Mi1mcmFtZSB7XG4gIHdpZHRoOiAxMDAlO1xuICBoZWlnaHQ6IGNhbGMoMTAwdmggLSA5MHB4KTtcbiAgYm9yZGVyOiAwO1xuICBkaXNwbGF5OiBibG9jaztcbn1cblxuLyogVmlzdGEgcMO6YmxpY2E6IG9jdXBhIHRvZGEgbGEgcGFudGFsbGEgKG5vIGhheSBsYXlvdXQgYWRtaW4gYWxyZWRlZG9yKS4gKi9cbi5tYXBhLXYyLWZyYW1lLnB1YmxpY28ge1xuICBoZWlnaHQ6IDEwMHZoO1xufVxuIl19 */"] });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MapaV2Component, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
+                selector: 'app-mapa-v2',
+                templateUrl: './mapa-v2.component.html',
+                styleUrls: ['./mapa-v2.component.css'],
+            }]
+    }], function () { return [{ type: _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["DomSanitizer"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }, { type: _services_usuario_service__WEBPACK_IMPORTED_MODULE_4__["UsuarioService"] }]; }, { onMessage: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"],
+            args: ['window:message', ['$event']]
+        }] }); })();
+
+
+/***/ }),
+
 /***/ "flDB":
 /*!*******************************************************************!*\
   !*** ./src/app/components/mapa-publico/mapa-publico.component.ts ***!
@@ -41792,19 +41873,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _exportar_contratos_pdf_exportar_contratos_pdf_component__WEBPACK_IMPORTED_MODULE_57__ = __webpack_require__(/*! ./exportar-contratos-pdf/exportar-contratos-pdf.component */ "zFbA");
 /* harmony import */ var _exportar_gastos_pdf_exportar_gastos_pdf_component__WEBPACK_IMPORTED_MODULE_58__ = __webpack_require__(/*! ./exportar-gastos-pdf/exportar-gastos-pdf.component */ "A8wD");
 /* harmony import */ var _mapa_mapa_component__WEBPACK_IMPORTED_MODULE_59__ = __webpack_require__(/*! ./mapa/mapa.component */ "GWIG");
-/* harmony import */ var _pdf_factura_mobile_pdf_factura_mobile_component__WEBPACK_IMPORTED_MODULE_60__ = __webpack_require__(/*! ./pdf-factura-mobile/pdf-factura-mobile.component */ "lOkK");
-/* harmony import */ var _mapa_publico_mapa_publico_component__WEBPACK_IMPORTED_MODULE_61__ = __webpack_require__(/*! ./mapa-publico/mapa-publico.component */ "flDB");
-/* harmony import */ var _edit_gasto_edit_gasto_component__WEBPACK_IMPORTED_MODULE_62__ = __webpack_require__(/*! ./edit-gasto/edit-gasto.component */ "JYLY");
-/* harmony import */ var _factura_electronica_ticket_factura_electronica_ticket_component__WEBPACK_IMPORTED_MODULE_63__ = __webpack_require__(/*! ./factura-electronica-ticket/factura-electronica-ticket.component */ "lKwx");
-/* harmony import */ var ng_qrcode__WEBPACK_IMPORTED_MODULE_64__ = __webpack_require__(/*! ng-qrcode */ "H7zf");
-/* harmony import */ var _recibos_recibos_component__WEBPACK_IMPORTED_MODULE_65__ = __webpack_require__(/*! ./recibos/recibos.component */ "5s6o");
-/* harmony import */ var _recibo_recibo_component__WEBPACK_IMPORTED_MODULE_66__ = __webpack_require__(/*! ./recibo/recibo.component */ "z1d0");
-/* harmony import */ var _lista_avisos_funebres_lista_avisos_funebres_component__WEBPACK_IMPORTED_MODULE_67__ = __webpack_require__(/*! ./lista-avisos-funebres/lista-avisos-funebres.component */ "BK9l");
-/* harmony import */ var _crear_aviso_funebre_crear_aviso_funebre_component__WEBPACK_IMPORTED_MODULE_68__ = __webpack_require__(/*! ./crear-aviso-funebre/crear-aviso-funebre.component */ "Vxuz");
-/* harmony import */ var _editar_aviso_funebre_editar_aviso_funebre_component__WEBPACK_IMPORTED_MODULE_69__ = __webpack_require__(/*! ./editar-aviso-funebre/editar-aviso-funebre.component */ "IHbd");
-/* harmony import */ var _lista_ordenes_cobro_lista_ordenes_cobro_component__WEBPACK_IMPORTED_MODULE_70__ = __webpack_require__(/*! ./lista-ordenes-cobro/lista-ordenes-cobro.component */ "h+Ay");
-/* harmony import */ var _config_pagos_online_config_pagos_online_component__WEBPACK_IMPORTED_MODULE_71__ = __webpack_require__(/*! ./config-pagos-online/config-pagos-online.component */ "lBCe");
-/* harmony import */ var _flyer_portada_modal_flyer_portada_modal_component__WEBPACK_IMPORTED_MODULE_72__ = __webpack_require__(/*! ./flyer-portada-modal/flyer-portada-modal.component */ "SZZU");
+/* harmony import */ var _mapa_v2_mapa_v2_component__WEBPACK_IMPORTED_MODULE_60__ = __webpack_require__(/*! ./mapa-v2/mapa-v2.component */ "eQGh");
+/* harmony import */ var _pdf_factura_mobile_pdf_factura_mobile_component__WEBPACK_IMPORTED_MODULE_61__ = __webpack_require__(/*! ./pdf-factura-mobile/pdf-factura-mobile.component */ "lOkK");
+/* harmony import */ var _mapa_publico_mapa_publico_component__WEBPACK_IMPORTED_MODULE_62__ = __webpack_require__(/*! ./mapa-publico/mapa-publico.component */ "flDB");
+/* harmony import */ var _edit_gasto_edit_gasto_component__WEBPACK_IMPORTED_MODULE_63__ = __webpack_require__(/*! ./edit-gasto/edit-gasto.component */ "JYLY");
+/* harmony import */ var _factura_electronica_ticket_factura_electronica_ticket_component__WEBPACK_IMPORTED_MODULE_64__ = __webpack_require__(/*! ./factura-electronica-ticket/factura-electronica-ticket.component */ "lKwx");
+/* harmony import */ var ng_qrcode__WEBPACK_IMPORTED_MODULE_65__ = __webpack_require__(/*! ng-qrcode */ "H7zf");
+/* harmony import */ var _recibos_recibos_component__WEBPACK_IMPORTED_MODULE_66__ = __webpack_require__(/*! ./recibos/recibos.component */ "5s6o");
+/* harmony import */ var _recibo_recibo_component__WEBPACK_IMPORTED_MODULE_67__ = __webpack_require__(/*! ./recibo/recibo.component */ "z1d0");
+/* harmony import */ var _lista_avisos_funebres_lista_avisos_funebres_component__WEBPACK_IMPORTED_MODULE_68__ = __webpack_require__(/*! ./lista-avisos-funebres/lista-avisos-funebres.component */ "BK9l");
+/* harmony import */ var _crear_aviso_funebre_crear_aviso_funebre_component__WEBPACK_IMPORTED_MODULE_69__ = __webpack_require__(/*! ./crear-aviso-funebre/crear-aviso-funebre.component */ "Vxuz");
+/* harmony import */ var _editar_aviso_funebre_editar_aviso_funebre_component__WEBPACK_IMPORTED_MODULE_70__ = __webpack_require__(/*! ./editar-aviso-funebre/editar-aviso-funebre.component */ "IHbd");
+/* harmony import */ var _lista_ordenes_cobro_lista_ordenes_cobro_component__WEBPACK_IMPORTED_MODULE_71__ = __webpack_require__(/*! ./lista-ordenes-cobro/lista-ordenes-cobro.component */ "h+Ay");
+/* harmony import */ var _config_pagos_online_config_pagos_online_component__WEBPACK_IMPORTED_MODULE_72__ = __webpack_require__(/*! ./config-pagos-online/config-pagos-online.component */ "lBCe");
+/* harmony import */ var _flyer_portada_modal_flyer_portada_modal_component__WEBPACK_IMPORTED_MODULE_73__ = __webpack_require__(/*! ./flyer-portada-modal/flyer-portada-modal.component */ "SZZU");
 
 
 
@@ -41885,6 +41967,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 const maskConfig = {
     validation: false,
 };
@@ -41902,7 +41985,7 @@ ComponentsModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdefineI
             ng2_charts__WEBPACK_IMPORTED_MODULE_9__["ChartsModule"], _sweetalert2_ngx_sweetalert2__WEBPACK_IMPORTED_MODULE_26__["SweetAlert2Module"].forRoot(),
             ngx_print__WEBPACK_IMPORTED_MODULE_30__["NgxPrintModule"],
             _ng_select_ng_select__WEBPACK_IMPORTED_MODULE_21__["NgSelectModule"],
-            ng_qrcode__WEBPACK_IMPORTED_MODULE_64__["QrCodeModule"],
+            ng_qrcode__WEBPACK_IMPORTED_MODULE_65__["QrCodeModule"],
             _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"],
             ngx_pagination__WEBPACK_IMPORTED_MODULE_11__["NgxPaginationModule"],
             ngx_loading__WEBPACK_IMPORTED_MODULE_17__["NgxLoadingModule"].forRoot({}),
@@ -41959,24 +42042,25 @@ ComponentsModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdefineI
         _exportar_contratos_pdf_exportar_contratos_pdf_component__WEBPACK_IMPORTED_MODULE_57__["ExportarContratosPdfComponent"],
         _exportar_gastos_pdf_exportar_gastos_pdf_component__WEBPACK_IMPORTED_MODULE_58__["ExportarGastosPdfComponent"],
         _mapa_mapa_component__WEBPACK_IMPORTED_MODULE_59__["MapaComponent"],
-        _pdf_factura_mobile_pdf_factura_mobile_component__WEBPACK_IMPORTED_MODULE_60__["PdfFacturaMobileComponent"],
-        _mapa_publico_mapa_publico_component__WEBPACK_IMPORTED_MODULE_61__["MapaPublicoComponent"],
-        _edit_gasto_edit_gasto_component__WEBPACK_IMPORTED_MODULE_62__["EditGastoComponent"],
-        _factura_electronica_ticket_factura_electronica_ticket_component__WEBPACK_IMPORTED_MODULE_63__["FacturaElectronicaTicketComponent"],
-        _recibos_recibos_component__WEBPACK_IMPORTED_MODULE_65__["RecibosComponent"],
-        _recibo_recibo_component__WEBPACK_IMPORTED_MODULE_66__["ReciboComponent"],
-        _lista_avisos_funebres_lista_avisos_funebres_component__WEBPACK_IMPORTED_MODULE_67__["ListaAvisosFunebresComponent"],
-        _crear_aviso_funebre_crear_aviso_funebre_component__WEBPACK_IMPORTED_MODULE_68__["CrearAvisoFunebreComponent"],
-        _editar_aviso_funebre_editar_aviso_funebre_component__WEBPACK_IMPORTED_MODULE_69__["EditarAvisoFunebreComponent"],
-        _lista_ordenes_cobro_lista_ordenes_cobro_component__WEBPACK_IMPORTED_MODULE_70__["ListaOrdenesCobroComponent"],
-        _config_pagos_online_config_pagos_online_component__WEBPACK_IMPORTED_MODULE_71__["ConfigPagosOnlineComponent"],
-        _flyer_portada_modal_flyer_portada_modal_component__WEBPACK_IMPORTED_MODULE_72__["FlyerPortadaModalComponent"]], imports: [ngx_avatar__WEBPACK_IMPORTED_MODULE_2__["AvatarModule"],
+        _mapa_v2_mapa_v2_component__WEBPACK_IMPORTED_MODULE_60__["MapaV2Component"],
+        _pdf_factura_mobile_pdf_factura_mobile_component__WEBPACK_IMPORTED_MODULE_61__["PdfFacturaMobileComponent"],
+        _mapa_publico_mapa_publico_component__WEBPACK_IMPORTED_MODULE_62__["MapaPublicoComponent"],
+        _edit_gasto_edit_gasto_component__WEBPACK_IMPORTED_MODULE_63__["EditGastoComponent"],
+        _factura_electronica_ticket_factura_electronica_ticket_component__WEBPACK_IMPORTED_MODULE_64__["FacturaElectronicaTicketComponent"],
+        _recibos_recibos_component__WEBPACK_IMPORTED_MODULE_66__["RecibosComponent"],
+        _recibo_recibo_component__WEBPACK_IMPORTED_MODULE_67__["ReciboComponent"],
+        _lista_avisos_funebres_lista_avisos_funebres_component__WEBPACK_IMPORTED_MODULE_68__["ListaAvisosFunebresComponent"],
+        _crear_aviso_funebre_crear_aviso_funebre_component__WEBPACK_IMPORTED_MODULE_69__["CrearAvisoFunebreComponent"],
+        _editar_aviso_funebre_editar_aviso_funebre_component__WEBPACK_IMPORTED_MODULE_70__["EditarAvisoFunebreComponent"],
+        _lista_ordenes_cobro_lista_ordenes_cobro_component__WEBPACK_IMPORTED_MODULE_71__["ListaOrdenesCobroComponent"],
+        _config_pagos_online_config_pagos_online_component__WEBPACK_IMPORTED_MODULE_72__["ConfigPagosOnlineComponent"],
+        _flyer_portada_modal_flyer_portada_modal_component__WEBPACK_IMPORTED_MODULE_73__["FlyerPortadaModalComponent"]], imports: [ngx_avatar__WEBPACK_IMPORTED_MODULE_2__["AvatarModule"],
         _angular_common__WEBPACK_IMPORTED_MODULE_5__["CommonModule"],
         _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormsModule"],
         _angular_forms__WEBPACK_IMPORTED_MODULE_7__["ReactiveFormsModule"],
         ng2_charts__WEBPACK_IMPORTED_MODULE_9__["ChartsModule"], _sweetalert2_ngx_sweetalert2__WEBPACK_IMPORTED_MODULE_26__["SweetAlert2Module"], ngx_print__WEBPACK_IMPORTED_MODULE_30__["NgxPrintModule"],
         _ng_select_ng_select__WEBPACK_IMPORTED_MODULE_21__["NgSelectModule"],
-        ng_qrcode__WEBPACK_IMPORTED_MODULE_64__["QrCodeModule"],
+        ng_qrcode__WEBPACK_IMPORTED_MODULE_65__["QrCodeModule"],
         _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"],
         ngx_pagination__WEBPACK_IMPORTED_MODULE_11__["NgxPaginationModule"], ngx_loading__WEBPACK_IMPORTED_MODULE_17__["NgxLoadingModule"], _pipes_pipe_module__WEBPACK_IMPORTED_MODULE_1__["PipeModule"], ngx_mask__WEBPACK_IMPORTED_MODULE_39__["NgxMaskModule"], ng2_datepicker__WEBPACK_IMPORTED_MODULE_38__["DatepickerModule"],
         _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_40__["MatDatepickerModule"],
@@ -42028,18 +42112,19 @@ ComponentsModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdefineI
                     _exportar_contratos_pdf_exportar_contratos_pdf_component__WEBPACK_IMPORTED_MODULE_57__["ExportarContratosPdfComponent"],
                     _exportar_gastos_pdf_exportar_gastos_pdf_component__WEBPACK_IMPORTED_MODULE_58__["ExportarGastosPdfComponent"],
                     _mapa_mapa_component__WEBPACK_IMPORTED_MODULE_59__["MapaComponent"],
-                    _pdf_factura_mobile_pdf_factura_mobile_component__WEBPACK_IMPORTED_MODULE_60__["PdfFacturaMobileComponent"],
-                    _mapa_publico_mapa_publico_component__WEBPACK_IMPORTED_MODULE_61__["MapaPublicoComponent"],
-                    _edit_gasto_edit_gasto_component__WEBPACK_IMPORTED_MODULE_62__["EditGastoComponent"],
-                    _factura_electronica_ticket_factura_electronica_ticket_component__WEBPACK_IMPORTED_MODULE_63__["FacturaElectronicaTicketComponent"],
-                    _recibos_recibos_component__WEBPACK_IMPORTED_MODULE_65__["RecibosComponent"],
-                    _recibo_recibo_component__WEBPACK_IMPORTED_MODULE_66__["ReciboComponent"],
-                    _lista_avisos_funebres_lista_avisos_funebres_component__WEBPACK_IMPORTED_MODULE_67__["ListaAvisosFunebresComponent"],
-                    _crear_aviso_funebre_crear_aviso_funebre_component__WEBPACK_IMPORTED_MODULE_68__["CrearAvisoFunebreComponent"],
-                    _editar_aviso_funebre_editar_aviso_funebre_component__WEBPACK_IMPORTED_MODULE_69__["EditarAvisoFunebreComponent"],
-                    _lista_ordenes_cobro_lista_ordenes_cobro_component__WEBPACK_IMPORTED_MODULE_70__["ListaOrdenesCobroComponent"],
-                    _config_pagos_online_config_pagos_online_component__WEBPACK_IMPORTED_MODULE_71__["ConfigPagosOnlineComponent"],
-                    _flyer_portada_modal_flyer_portada_modal_component__WEBPACK_IMPORTED_MODULE_72__["FlyerPortadaModalComponent"]
+                    _mapa_v2_mapa_v2_component__WEBPACK_IMPORTED_MODULE_60__["MapaV2Component"],
+                    _pdf_factura_mobile_pdf_factura_mobile_component__WEBPACK_IMPORTED_MODULE_61__["PdfFacturaMobileComponent"],
+                    _mapa_publico_mapa_publico_component__WEBPACK_IMPORTED_MODULE_62__["MapaPublicoComponent"],
+                    _edit_gasto_edit_gasto_component__WEBPACK_IMPORTED_MODULE_63__["EditGastoComponent"],
+                    _factura_electronica_ticket_factura_electronica_ticket_component__WEBPACK_IMPORTED_MODULE_64__["FacturaElectronicaTicketComponent"],
+                    _recibos_recibos_component__WEBPACK_IMPORTED_MODULE_66__["RecibosComponent"],
+                    _recibo_recibo_component__WEBPACK_IMPORTED_MODULE_67__["ReciboComponent"],
+                    _lista_avisos_funebres_lista_avisos_funebres_component__WEBPACK_IMPORTED_MODULE_68__["ListaAvisosFunebresComponent"],
+                    _crear_aviso_funebre_crear_aviso_funebre_component__WEBPACK_IMPORTED_MODULE_69__["CrearAvisoFunebreComponent"],
+                    _editar_aviso_funebre_editar_aviso_funebre_component__WEBPACK_IMPORTED_MODULE_70__["EditarAvisoFunebreComponent"],
+                    _lista_ordenes_cobro_lista_ordenes_cobro_component__WEBPACK_IMPORTED_MODULE_71__["ListaOrdenesCobroComponent"],
+                    _config_pagos_online_config_pagos_online_component__WEBPACK_IMPORTED_MODULE_72__["ConfigPagosOnlineComponent"],
+                    _flyer_portada_modal_flyer_portada_modal_component__WEBPACK_IMPORTED_MODULE_73__["FlyerPortadaModalComponent"]
                 ],
                 imports: [
                     ngx_avatar__WEBPACK_IMPORTED_MODULE_2__["AvatarModule"],
@@ -42049,7 +42134,7 @@ ComponentsModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdefineI
                     ng2_charts__WEBPACK_IMPORTED_MODULE_9__["ChartsModule"], _sweetalert2_ngx_sweetalert2__WEBPACK_IMPORTED_MODULE_26__["SweetAlert2Module"].forRoot(),
                     ngx_print__WEBPACK_IMPORTED_MODULE_30__["NgxPrintModule"],
                     _ng_select_ng_select__WEBPACK_IMPORTED_MODULE_21__["NgSelectModule"],
-                    ng_qrcode__WEBPACK_IMPORTED_MODULE_64__["QrCodeModule"],
+                    ng_qrcode__WEBPACK_IMPORTED_MODULE_65__["QrCodeModule"],
                     _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"],
                     ngx_pagination__WEBPACK_IMPORTED_MODULE_11__["NgxPaginationModule"],
                     ngx_loading__WEBPACK_IMPORTED_MODULE_17__["NgxLoadingModule"].forRoot({}),
@@ -43222,17 +43307,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_exportar_contratos_pdf_exportar_contratos_pdf_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ../components/exportar-contratos-pdf/exportar-contratos-pdf.component */ "zFbA");
 /* harmony import */ var _components_exportar_gastos_pdf_exportar_gastos_pdf_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ../components/exportar-gastos-pdf/exportar-gastos-pdf.component */ "A8wD");
 /* harmony import */ var _components_mapa_mapa_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ../components/mapa/mapa.component */ "GWIG");
-/* harmony import */ var _components_pdf_factura_mobile_pdf_factura_mobile_component__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ../components/pdf-factura-mobile/pdf-factura-mobile.component */ "lOkK");
-/* harmony import */ var _components_mapa_publico_mapa_publico_component__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ../components/mapa-publico/mapa-publico.component */ "flDB");
-/* harmony import */ var _components_edit_gasto_edit_gasto_component__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ../components/edit-gasto/edit-gasto.component */ "JYLY");
-/* harmony import */ var _components_factura_electronica_ticket_factura_electronica_ticket_component__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ../components/factura-electronica-ticket/factura-electronica-ticket.component */ "lKwx");
-/* harmony import */ var _components_recibos_recibos_component__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ../components/recibos/recibos.component */ "5s6o");
-/* harmony import */ var _components_recibo_recibo_component__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ../components/recibo/recibo.component */ "z1d0");
-/* harmony import */ var _components_lista_avisos_funebres_lista_avisos_funebres_component__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ../components/lista-avisos-funebres/lista-avisos-funebres.component */ "BK9l");
-/* harmony import */ var _components_crear_aviso_funebre_crear_aviso_funebre_component__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ../components/crear-aviso-funebre/crear-aviso-funebre.component */ "Vxuz");
-/* harmony import */ var _components_editar_aviso_funebre_editar_aviso_funebre_component__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ../components/editar-aviso-funebre/editar-aviso-funebre.component */ "IHbd");
-/* harmony import */ var _components_lista_ordenes_cobro_lista_ordenes_cobro_component__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ../components/lista-ordenes-cobro/lista-ordenes-cobro.component */ "h+Ay");
-/* harmony import */ var _components_config_pagos_online_config_pagos_online_component__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ../components/config-pagos-online/config-pagos-online.component */ "lBCe");
+/* harmony import */ var _components_mapa_v2_mapa_v2_component__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ../components/mapa-v2/mapa-v2.component */ "eQGh");
+/* harmony import */ var _components_pdf_factura_mobile_pdf_factura_mobile_component__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ../components/pdf-factura-mobile/pdf-factura-mobile.component */ "lOkK");
+/* harmony import */ var _components_mapa_publico_mapa_publico_component__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ../components/mapa-publico/mapa-publico.component */ "flDB");
+/* harmony import */ var _components_edit_gasto_edit_gasto_component__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ../components/edit-gasto/edit-gasto.component */ "JYLY");
+/* harmony import */ var _components_factura_electronica_ticket_factura_electronica_ticket_component__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ../components/factura-electronica-ticket/factura-electronica-ticket.component */ "lKwx");
+/* harmony import */ var _components_recibos_recibos_component__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ../components/recibos/recibos.component */ "5s6o");
+/* harmony import */ var _components_recibo_recibo_component__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ../components/recibo/recibo.component */ "z1d0");
+/* harmony import */ var _components_lista_avisos_funebres_lista_avisos_funebres_component__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ../components/lista-avisos-funebres/lista-avisos-funebres.component */ "BK9l");
+/* harmony import */ var _components_crear_aviso_funebre_crear_aviso_funebre_component__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ../components/crear-aviso-funebre/crear-aviso-funebre.component */ "Vxuz");
+/* harmony import */ var _components_editar_aviso_funebre_editar_aviso_funebre_component__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ../components/editar-aviso-funebre/editar-aviso-funebre.component */ "IHbd");
+/* harmony import */ var _components_lista_ordenes_cobro_lista_ordenes_cobro_component__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ../components/lista-ordenes-cobro/lista-ordenes-cobro.component */ "h+Ay");
+/* harmony import */ var _components_config_pagos_online_config_pagos_online_component__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! ../components/config-pagos-online/config-pagos-online.component */ "lBCe");
+
 
 
 
@@ -43317,7 +43404,7 @@ const routes = [
             { path: 'contrato_pdf/:id', component: _components_contrato_pdf_contrato_pdf_component__WEBPACK_IMPORTED_MODULE_13__["ContratoPdfComponent"] },
             { path: 'editar_contrato/:id', component: _components_editar_contrato_editar_contrato_component__WEBPACK_IMPORTED_MODULE_10__["EditarContratoComponent"] },
             { path: 'gasto/:id', component: _components_gasto_gasto_component__WEBPACK_IMPORTED_MODULE_29__["GastoComponent"] },
-            { path: 'edit_gasto/:id', component: _components_edit_gasto_edit_gasto_component__WEBPACK_IMPORTED_MODULE_38__["EditGastoComponent"] },
+            { path: 'edit_gasto/:id', component: _components_edit_gasto_edit_gasto_component__WEBPACK_IMPORTED_MODULE_39__["EditGastoComponent"] },
             { path: 'info_caja', component: _components_info_caja_info_caja_component__WEBPACK_IMPORTED_MODULE_11__["InfoCajaComponent"], canActivate: [_admin_guard__WEBPACK_IMPORTED_MODULE_31__["AdminGuard"]] },
             { path: 'resumen', component: _components_resumen_resumen_component__WEBPACK_IMPORTED_MODULE_9__["ResumenComponent"] },
             { path: 'transferencia', component: _components_transferencia_transferencia_component__WEBPACK_IMPORTED_MODULE_7__["TransferenciaComponent"], canActivate: [_admin_guard__WEBPACK_IMPORTED_MODULE_31__["AdminGuard"]] },
@@ -43327,25 +43414,27 @@ const routes = [
             { path: 'pagos', component: _components_pagos_pagos_component__WEBPACK_IMPORTED_MODULE_30__["PagosComponent"] },
             { path: 'account-settings', component: _account_settings_account_settings_component__WEBPACK_IMPORTED_MODULE_28__["AccountSettingsComponent"] },
             { path: 'mapa', component: _components_mapa_mapa_component__WEBPACK_IMPORTED_MODULE_35__["MapaComponent"] },
-            { path: 'recibos', component: _components_recibos_recibos_component__WEBPACK_IMPORTED_MODULE_40__["RecibosComponent"] },
-            { path: 'ordenes-cobro', component: _components_lista_ordenes_cobro_lista_ordenes_cobro_component__WEBPACK_IMPORTED_MODULE_45__["ListaOrdenesCobroComponent"] },
-            { path: 'config-pagos-online', component: _components_config_pagos_online_config_pagos_online_component__WEBPACK_IMPORTED_MODULE_46__["ConfigPagosOnlineComponent"] },
-            { path: 'lista_avisos_funebres', component: _components_lista_avisos_funebres_lista_avisos_funebres_component__WEBPACK_IMPORTED_MODULE_42__["ListaAvisosFunebresComponent"] },
-            { path: 'crear_aviso_funebre', component: _components_crear_aviso_funebre_crear_aviso_funebre_component__WEBPACK_IMPORTED_MODULE_43__["CrearAvisoFunebreComponent"] },
-            { path: 'editar_aviso_funebre/:id', component: _components_editar_aviso_funebre_editar_aviso_funebre_component__WEBPACK_IMPORTED_MODULE_44__["EditarAvisoFunebreComponent"] },
+            { path: 'mapa-v2', component: _components_mapa_v2_mapa_v2_component__WEBPACK_IMPORTED_MODULE_36__["MapaV2Component"] },
+            { path: 'recibos', component: _components_recibos_recibos_component__WEBPACK_IMPORTED_MODULE_41__["RecibosComponent"] },
+            { path: 'ordenes-cobro', component: _components_lista_ordenes_cobro_lista_ordenes_cobro_component__WEBPACK_IMPORTED_MODULE_46__["ListaOrdenesCobroComponent"] },
+            { path: 'config-pagos-online', component: _components_config_pagos_online_config_pagos_online_component__WEBPACK_IMPORTED_MODULE_47__["ConfigPagosOnlineComponent"] },
+            { path: 'lista_avisos_funebres', component: _components_lista_avisos_funebres_lista_avisos_funebres_component__WEBPACK_IMPORTED_MODULE_43__["ListaAvisosFunebresComponent"] },
+            { path: 'crear_aviso_funebre', component: _components_crear_aviso_funebre_crear_aviso_funebre_component__WEBPACK_IMPORTED_MODULE_44__["CrearAvisoFunebreComponent"] },
+            { path: 'editar_aviso_funebre/:id', component: _components_editar_aviso_funebre_editar_aviso_funebre_component__WEBPACK_IMPORTED_MODULE_45__["EditarAvisoFunebreComponent"] },
             { path: '**', component: _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_25__["DashboardComponent"] },
         ]
     },
     { path: 'contratos-pdf/:id', component: _components_contrato_pdf_contrato_pdf_component__WEBPACK_IMPORTED_MODULE_13__["ContratoPdfComponent"] },
     { path: 'factura-pdf/:id', component: _components_factura_pdf_factura_pdf_component__WEBPACK_IMPORTED_MODULE_6__["FacturaPdfComponent"] },
-    { path: 'recibo-pdf', component: _components_recibo_recibo_component__WEBPACK_IMPORTED_MODULE_41__["ReciboComponent"] },
+    { path: 'recibo-pdf', component: _components_recibo_recibo_component__WEBPACK_IMPORTED_MODULE_42__["ReciboComponent"] },
     { path: 'extracto-cuotas', component: _components_extracto_pdf_extracto_pdf_component__WEBPACK_IMPORTED_MODULE_0__["ExtractoPdfComponent"] },
     { path: 'extracto-contratos', component: _components_exportar_contratos_pdf_exportar_contratos_pdf_component__WEBPACK_IMPORTED_MODULE_33__["ExportarContratosPdfComponent"] },
     { path: 'extracto-gastos', component: _components_exportar_gastos_pdf_exportar_gastos_pdf_component__WEBPACK_IMPORTED_MODULE_34__["ExportarGastosPdfComponent"] },
     { path: 'factura-ticket/:id', component: _components_factura_ticket_factura_ticket_component__WEBPACK_IMPORTED_MODULE_32__["FacturaTicketComponent"] },
-    { path: 'factura-ticket-kude/:id', component: _components_factura_electronica_ticket_factura_electronica_ticket_component__WEBPACK_IMPORTED_MODULE_39__["FacturaElectronicaTicketComponent"] },
-    { path: 'factura_mobile/:id', component: _components_pdf_factura_mobile_pdf_factura_mobile_component__WEBPACK_IMPORTED_MODULE_36__["PdfFacturaMobileComponent"] },
-    { path: 'mapa', component: _components_mapa_publico_mapa_publico_component__WEBPACK_IMPORTED_MODULE_37__["MapaPublicoComponent"] },
+    { path: 'factura-ticket-kude/:id', component: _components_factura_electronica_ticket_factura_electronica_ticket_component__WEBPACK_IMPORTED_MODULE_40__["FacturaElectronicaTicketComponent"] },
+    { path: 'factura_mobile/:id', component: _components_pdf_factura_mobile_pdf_factura_mobile_component__WEBPACK_IMPORTED_MODULE_37__["PdfFacturaMobileComponent"] },
+    { path: 'mapa', component: _components_mapa_publico_mapa_publico_component__WEBPACK_IMPORTED_MODULE_38__["MapaPublicoComponent"] },
+    { path: 'mapa-v2', component: _components_mapa_v2_mapa_v2_component__WEBPACK_IMPORTED_MODULE_36__["MapaV2Component"], data: { publico: true } },
 ];
 class PagesRoutingModule {
 }
@@ -52471,7 +52560,8 @@ class SidebarService {
                 titulo: 'Mapa',
                 icono: 'mdi mdi-map',
                 submenu: [
-                    { titulo: 'mapa', url: 'mapa' }
+                    { titulo: 'mapa', url: 'mapa' },
+                    { titulo: 'mapa (nuevo)', url: 'mapa-v2' }
                 ]
             },
             {
@@ -53875,4 +53965,4 @@ webpackEmptyAsyncContext.id = "zn8P";
 /***/ })
 
 },[[0,"runtime","vendor"]]]);
-//# sourceMappingURL=main.acd7beaeef5dc23faa4c.js.map
+//# sourceMappingURL=main.36a1886b3107e13d7b0d.js.map
