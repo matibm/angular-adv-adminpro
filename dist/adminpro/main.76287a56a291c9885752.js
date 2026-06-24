@@ -38071,7 +38071,9 @@ class MapaV2Component {
         var _a;
         this.publico = ((_a = this.route.snapshot.data) === null || _a === void 0 ? void 0 : _a.publico) === true;
         const modo = this.publico ? 'publico' : 'admin';
-        let url = `${_config_global__WEBPACK_IMPORTED_MODULE_1__["URL_SERVICIOS"]}/mapa-v2/?modo=${modo}`;
+        // Servido como asset dentro del build de Angular (ver mapa-v2/vite.config.js).
+        // El path /assets/... no es una ruta de Angular, así que no hay colisión.
+        let url = `${_config_global__WEBPACK_IMPORTED_MODULE_1__["URL_SERVICIOS"]}/assets/mapa-v2/?modo=${modo}`;
         const token = this._usuarioService.token;
         if (!this.publico && token) {
             url += `&token=${encodeURIComponent(token)}`;
@@ -53965,4 +53967,4 @@ webpackEmptyAsyncContext.id = "zn8P";
 /***/ })
 
 },[[0,"runtime","vendor"]]]);
-//# sourceMappingURL=main.36a1886b3107e13d7b0d.js.map
+//# sourceMappingURL=main.76287a56a291c9885752.js.map
