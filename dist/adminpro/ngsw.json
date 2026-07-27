@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1782332636960,
+  "timestamp": 1785163148490,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main.76287a56a291c9885752.js",
+        "/main.f07f179fc5c2a05a33da.js",
         "/manifest.webmanifest",
         "/polyfills.f782e0cdb7e1242a13e4.js",
         "/runtime.d6c52737d4587c65265f.js",
@@ -208,7 +208,7 @@
         "/assets/js/widget-charts.js",
         "/assets/js/widget-data.js",
         "/assets/mapa-v2/index.html",
-        "/assets/mapa-v2/static/index-BCHPrR0A.js",
+        "/assets/mapa-v2/static/index-BToLoj-E.js",
         "/assets/mapa-v2/static/index-C5C7IuDf.css",
         "/assets/plugins/Chart.js/Chart.js",
         "/assets/plugins/Chart.js/Chart.min.js",
@@ -4146,8 +4146,8 @@
     "/assets/js/waves.js": "cd8126387b23d95d0aa8929afc06dbb11af79922",
     "/assets/js/widget-charts.js": "1906be45df4c4ab5c96d414db3dbe06c7488f72f",
     "/assets/js/widget-data.js": "890f40dfebb1f6a4cae5765cd7afd56627f6da91",
-    "/assets/mapa-v2/index.html": "5f60e51268ce9147d3c73eaf93166abf8016817d",
-    "/assets/mapa-v2/static/index-BCHPrR0A.js": "2d7e45895afa2ec0a91c1321992b0b5d0e66473c",
+    "/assets/mapa-v2/index.html": "c246fe12a4f912841ec0d5ffb12f874df9af0447",
+    "/assets/mapa-v2/static/index-BToLoj-E.js": "244f2d673d16c73f43566208a9b7750b58633a2c",
     "/assets/mapa-v2/static/index-C5C7IuDf.css": "e3baa6439f4d366f797eb11324e8a977cef610f3",
     "/assets/plugins/Chart.js/Chart.js": "e48fb2ba0bec1873e98db6016472bd661dc54153",
     "/assets/plugins/Chart.js/Chart.min.js": "8322669bec242c44311ee36d5947289f3a3603c6",
@@ -7903,8 +7903,8 @@
     "/assets/scss/widgets/widgets.scss": "ae37f9cba30eca3835f660575145c91a31585a76",
     "/error-bg.9ff9b9625781034c1add.jpg": "d5381105e14b48ce54a804873b8cff5526440769",
     "/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/index.html": "c2b8125b23033215e89aa71ab2dff1c21c467d69",
-    "/main.76287a56a291c9885752.js": "23c1550a15e907499f3980518aed96ea35161126",
+    "/index.html": "24a97b12c923a452f6ee20811bc1a8a3fbc3d73e",
+    "/main.f07f179fc5c2a05a33da.js": "8f4eae521cd17534e2a905992d16c84cec634768",
     "/manifest.webmanifest": "72bdf2a65ee50f97feaafeb41b77a1ebda81dd65",
     "/polyfills.f782e0cdb7e1242a13e4.js": "63d7edb41fd71257de6ef3e3ea174028faf587c5",
     "/runtime.d6c52737d4587c65265f.js": "01ac41e2161be24725e14cf005c2ddd8ad9769f6",
