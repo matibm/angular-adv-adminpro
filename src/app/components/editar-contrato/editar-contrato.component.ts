@@ -558,6 +558,9 @@ export class EditarContratoComponent implements OnInit {
 
       if (res.isConfirmed == true) {
         this.contrato.eliminado = true
+        // al eliminar nunca se regeneran cuotas, aunque se haya abierto
+        // "Modificar Producto" antes de eliminar en esta misma pantalla
+        this.editarproducto = false
 
         this.editarContrato()
       } else {
