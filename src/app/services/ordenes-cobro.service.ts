@@ -12,12 +12,31 @@ export class OrdenesCobroService {
     public _usuarioService: UsuarioService,
   ) {}
 
-  getOrdenes(estado?: string, page = 1, limit = 20) {
+  getOrdenes(estado?: string, page = 1, limit = 20, conciliado?: boolean | null) {
     let url = URL_SERVICIOS + '/ordenes-cobro/all';
     url += `?token=${this._usuarioService.token}`;
     if (estado) url += `&estado=${estado}`;
+    if (conciliado === true || conciliado === false) url += `&conciliado=${conciliado}`;
     url += `&page=${page}&limit=${limit}`;
     return this.http.get(url).toPromise();
+  }
+
+  /** Analiza el CSV de PagoPar sin escribir nada y devuelve qué se marcaría. */
+  previewConciliacion(archivo: File) {
+    const url = URL_SERVICIOS + '/ordenes-cobro/conciliacion/preview?token=' + this._usuarioService.token;
+    const body = new FormData();
+    body.append('archivo', archivo);
+    return this.http.post(url, body).toPromise();
+  }
+
+  /** Marca como conciliadas las órdenes seleccionadas. Se reenvía el CSV para que
+   *  los datos guardados salgan del archivo y no del navegador. */
+  aplicarConciliacion(archivo: File, ordenIds: string[]) {
+    const url = URL_SERVICIOS + '/ordenes-cobro/conciliacion/aplicar?token=' + this._usuarioService.token;
+    const body = new FormData();
+    body.append('archivo', archivo);
+    body.append('orden_ids', JSON.stringify(ordenIds));
+    return this.http.post(url, body).toPromise();
   }
 
   getOrdenById(id: string) {

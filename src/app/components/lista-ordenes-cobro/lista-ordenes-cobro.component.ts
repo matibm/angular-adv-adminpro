@@ -18,12 +18,28 @@ export class ListaOrdenesCobroComponent implements OnInit {
   loadingDetalle = false;
   loadingFE = false;
 
+  conciliadoFiltro: boolean | null = null;
+
+  // Conciliación con el CSV de PagoPar
+  mostrarConciliacion = false;
+  archivoConciliacion: File | null = null;
+  preview: any = null;
+  seleccionadas = new Set<string>();
+  loadingPreview = false;
+  loadingAplicar = false;
+
   estados = [
     { value: null, label: 'Todos' },
     { value: 'PENDIENTE', label: 'Pendiente' },
     { value: 'PAGADO', label: 'Pagado' },
     { value: 'EXPIRADO', label: 'Expirado' },
     { value: 'CANCELADO', label: 'Cancelado' },
+  ];
+
+  conciliados = [
+    { value: null, label: 'Todos' },
+    { value: false, label: 'Sin conciliar' },
+    { value: true, label: 'Conciliados' },
   ];
 
   constructor(
@@ -42,7 +58,8 @@ export class ListaOrdenesCobroComponent implements OnInit {
       const resp: any = await this._ordenesCobroService.getOrdenes(
         this.estadoFiltro || undefined,
         this.page,
-        this.limit
+        this.limit,
+        this.conciliadoFiltro
       );
       this.ordenes = resp.ordenes || [];
       this.count = resp.count || 0;
@@ -121,6 +138,102 @@ export class ListaOrdenesCobroComponent implements OnInit {
       this.notifier.notify('error', 'No se pudo descargar la factura');
     } finally {
       this.loadingFE = false;
+    }
+  }
+
+  // ---- Conciliación con el CSV de PagoPar ----
+
+  abrirConciliacion() {
+    this.mostrarConciliacion = true;
+    this.archivoConciliacion = null;
+    this.preview = null;
+    this.seleccionadas.clear();
+  }
+
+  cerrarConciliacion() {
+    this.mostrarConciliacion = false;
+    this.preview = null;
+    this.archivoConciliacion = null;
+    this.seleccionadas.clear();
+  }
+
+  onArchivoSeleccionado(event: any) {
+    this.archivoConciliacion = event?.target?.files?.[0] || null;
+    this.preview = null;
+    this.seleccionadas.clear();
+  }
+
+  async analizarArchivo() {
+    if (!this.archivoConciliacion) {
+      this.notifier.notify('warning', 'Elegí primero el CSV exportado de PagoPar');
+      return;
+    }
+    this.loadingPreview = true;
+    this.preview = null;
+    try {
+      const resp: any = await this._ordenesCobroService.previewConciliacion(this.archivoConciliacion);
+      this.preview = resp;
+      // Por defecto vienen todas tildadas: el caso normal es conciliar el lote entero.
+      this.seleccionadas = new Set<string>((resp.a_conciliar || []).map((i: any) => i.orden._id));
+    } catch (error: any) {
+      console.error('Error al analizar el CSV:', error);
+      this.notifier.notify('error', error?.error?.mensaje || 'No se pudo leer el archivo');
+    } finally {
+      this.loadingPreview = false;
+    }
+  }
+
+  toggleOrden(id: string) {
+    if (this.seleccionadas.has(id)) {
+      this.seleccionadas.delete(id);
+    } else {
+      this.seleccionadas.add(id);
+    }
+  }
+
+  get todasSeleccionadas(): boolean {
+    const total = this.preview?.a_conciliar?.length || 0;
+    return total > 0 && this.seleccionadas.size === total;
+  }
+
+  toggleTodas() {
+    if (this.todasSeleccionadas) {
+      this.seleccionadas.clear();
+    } else {
+      this.seleccionadas = new Set<string>((this.preview?.a_conciliar || []).map((i: any) => i.orden._id));
+    }
+  }
+
+  /** Totales de lo que está tildado en este momento. */
+  get totalesSeleccion() {
+    const items = (this.preview?.a_conciliar || []).filter((i: any) => this.seleccionadas.has(i.orden._id));
+    return items.reduce(
+      (acc: any, i: any) => ({
+        cantidad: acc.cantidad + 1,
+        monto_bruto: acc.monto_bruto + (i.fila.monto_bruto || 0),
+        monto_comision: acc.monto_comision + (i.fila.monto_comision || 0),
+        monto_neto: acc.monto_neto + (i.fila.monto_neto || 0),
+      }),
+      { cantidad: 0, monto_bruto: 0, monto_comision: 0, monto_neto: 0 }
+    );
+  }
+
+  async aplicarConciliacion() {
+    if (!this.archivoConciliacion || !this.seleccionadas.size) return;
+    this.loadingAplicar = true;
+    try {
+      const resp: any = await this._ordenesCobroService.aplicarConciliacion(
+        this.archivoConciliacion,
+        Array.from(this.seleccionadas)
+      );
+      this.notifier.notify('success', `${resp.marcadas} orden(es) marcadas como conciliadas`);
+      this.cerrarConciliacion();
+      await this.cargarOrdenes();
+    } catch (error: any) {
+      console.error('Error al conciliar:', error);
+      this.notifier.notify('error', error?.error?.mensaje || 'No se pudo conciliar');
+    } finally {
+      this.loadingAplicar = false;
     }
   }
 

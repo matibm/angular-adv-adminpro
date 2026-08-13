@@ -4,12 +4,23 @@
     <p class="text-muted mb-0 small">Órdenes generadas desde la web de pago online</p>
   </div>
   <div class="card-body">
-    <div class="row mb-3">
+    <div class="row mb-3 align-items-end">
       <div class="col-md-4">
         <label class="form-label">Estado</label>
         <select class="form-select" [(ngModel)]="estadoFiltro" (ngModelChange)="onFiltroEstadoChange()">
           <option *ngFor="let e of estados" [ngValue]="e.value">{{ e.label }}</option>
         </select>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">Conciliación</label>
+        <select class="form-select" [(ngModel)]="conciliadoFiltro" (ngModelChange)="onFiltroEstadoChange()">
+          <option *ngFor="let c of conciliados" [ngValue]="c.value">{{ c.label }}</option>
+        </select>
+      </div>
+      <div class="col-md-4 text-md-end mt-3 mt-md-0">
+        <button type="button" class="btn btn-primary" (click)="abrirConciliacion()">
+          Conciliar CSV de PagoPar
+        </button>
       </div>
     </div>
 
@@ -30,6 +41,7 @@
             <th>Email</th>
             <th class="text-end">Monto</th>
             <th class="text-center">Estado</th>
+            <th class="text-center">Conciliado</th>
             <th class="text-center">Acciones</th>
           </tr>
         </thead>
@@ -45,13 +57,20 @@
               <span class="badge" [ngClass]="getBadgeClass(orden.estado)">{{ orden.estado }}</span>
             </td>
             <td class="text-center">
+              <span *ngIf="orden.conciliado" class="badge bg-info"
+                    title="Liquidado por PagoPar el {{ orden.conciliacion?.fecha_cobro | date:'dd/MM/yyyy' }}">
+                CONCILIADO
+              </span>
+              <span *ngIf="!orden.conciliado" class="text-muted">-</span>
+            </td>
+            <td class="text-center">
               <button type="button" class="btn btn-sm btn-outline-primary" (click)="verDetalle(orden)">
                 Ver detalle
               </button>
             </td>
           </tr>
           <tr *ngIf="ordenes.length === 0">
-            <td colspan="8" class="text-center py-4 text-muted">No hay órdenes de cobro</td>
+            <td colspan="9" class="text-center py-4 text-muted">No hay órdenes de cobro</td>
           </tr>
         </tbody>
       </table>
@@ -102,6 +121,17 @@
               <strong>Monto total:</strong> {{ ordenSeleccionada.monto_total | currency:'':'':'2.0' }} Gs
             </div>
           </div>
+
+          <div *ngIf="ordenSeleccionada.conciliado" class="alert alert-info py-2 small mb-3">
+            <strong>Conciliado con PagoPar</strong> — liquidado el
+            {{ ordenSeleccionada.conciliacion?.fecha_cobro | date:'dd/MM/yyyy' }}
+            en el lote {{ ordenSeleccionada.conciliacion?.lote }}.<br>
+            Bruto {{ ordenSeleccionada.conciliacion?.monto_bruto | currency:'':'':'2.0' }} Gs —
+            comisión {{ ordenSeleccionada.conciliacion?.monto_comision | currency:'':'':'2.0' }} Gs —
+            <strong>neto {{ ordenSeleccionada.conciliacion?.monto_neto | currency:'':'':'2.0' }} Gs</strong><br>
+            Transacción {{ ordenSeleccionada.conciliacion?.transaccion }} ·
+            Factura PagoPar {{ ordenSeleccionada.conciliacion?.numero_factura_pagopar }}
+          </div>
           <div *ngIf="ordenSeleccionada.factura_ids?.length" class="mt-3">
             <strong>Facturas asociadas:</strong>
             <table class="table table-sm mt-2">
@@ -134,6 +164,149 @@
           </button>
         </ng-container>
         <button type="button" class="btn btn-secondary" (click)="cerrarDetalle()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="mostrarConciliacion" class="modal show d-block" tabindex="-1" style="background: rgba(0,0,0,0.5);">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Conciliar con el CSV de PagoPar</h5>
+        <button type="button" class="btn-close" (click)="cerrarConciliacion()"></button>
+      </div>
+
+      <div class="modal-body">
+        <p class="text-muted small">
+          Subí el archivo que baja PagoPar desde <em>Ventas → Exportar transacciones</em>.
+          Se van a marcar como conciliadas las órdenes que figuran en el archivo con la
+          liquidación ya acreditada a la cuenta de la empresa.
+        </p>
+
+        <div class="row g-2 align-items-end mb-3">
+          <div class="col-md-8">
+            <label class="form-label">Archivo CSV</label>
+            <input type="file" class="form-control" accept=".csv,text/csv" (change)="onArchivoSeleccionado($event)">
+          </div>
+          <div class="col-md-4">
+            <button type="button" class="btn btn-outline-primary w-100"
+                    [disabled]="!archivoConciliacion || loadingPreview" (click)="analizarArchivo()">
+              <span *ngIf="!loadingPreview">Analizar</span>
+              <span *ngIf="loadingPreview" class="spinner-border spinner-border-sm"></span>
+            </button>
+          </div>
+        </div>
+
+        <div *ngIf="preview">
+          <div *ngIf="preview.lotes?.length" class="mb-3">
+            <div *ngFor="let l of preview.lotes" class="alert alert-success py-2 mb-2 small">
+              <strong>Lote {{ l.lote }}</strong> · acreditado el {{ l.fecha_cobro | date:'dd/MM/yyyy' }}
+              <span *ngIf="l.numero_factura_pagopar"> · factura PagoPar {{ l.numero_factura_pagopar }}</span><br>
+              {{ l.cantidad }} cobro(s) — bruto {{ l.monto_bruto | currency:'':'':'2.0' }} Gs,
+              comisión {{ l.monto_comision | currency:'':'':'2.0' }} Gs,
+              <strong>neto {{ l.monto_neto | currency:'':'':'2.0' }} Gs</strong>
+            </div>
+          </div>
+
+          <div *ngIf="preview.a_conciliar?.length; else nadaQueConciliar">
+            <h6>Cobros reconocidos en ambos sistemas ({{ preview.a_conciliar.length }})</h6>
+            <div class="table-responsive">
+              <table class="table table-sm table-hover align-middle">
+                <thead>
+                  <tr>
+                    <th class="text-center" style="width:40px">
+                      <input type="checkbox" class="form-check-input"
+                             [checked]="todasSeleccionadas" (change)="toggleTodas()">
+                    </th>
+                    <th>Cliente</th>
+                    <th class="text-center">Documento</th>
+                    <th class="text-center">Pagó</th>
+                    <th>Forma de pago</th>
+                    <th class="text-end">Bruto</th>
+                    <th class="text-end">Comisión</th>
+                    <th class="text-end">Neto</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let i of preview.a_conciliar">
+                    <td class="text-center">
+                      <input type="checkbox" class="form-check-input"
+                             [checked]="seleccionadas.has(i.orden._id)" (change)="toggleOrden(i.orden._id)">
+                    </td>
+                    <td>{{ i.orden.titular_nombre || i.fila.comprador_nombre }}</td>
+                    <td class="text-center">{{ i.orden.documento }}</td>
+                    <td class="text-center">{{ i.fila.fecha_pago | date:'dd/MM/yyyy HH:mm' }}</td>
+                    <td>{{ i.fila.forma_pago }}</td>
+                    <td class="text-end">{{ i.fila.monto_bruto | currency:'':'':'2.0' }}</td>
+                    <td class="text-end text-muted">{{ i.fila.monto_comision | currency:'':'':'2.0' }}</td>
+                    <td class="text-end fw-bold">{{ i.fila.monto_neto | currency:'':'':'2.0' }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <ng-template #nadaQueConciliar>
+            <div class="alert alert-secondary py-2 small">
+              No hay cobros nuevos para conciliar en este archivo.
+            </div>
+          </ng-template>
+
+          <div *ngIf="preview.pendientes_en_imperial?.length" class="alert alert-warning py-2 small">
+            <strong>{{ preview.pendientes_en_imperial.length }} cobro(s) que PagoPar dio por pagado pero
+            en imperial quedaron PENDIENTE.</strong>
+            Revisalos: la deuda del cliente puede haber quedado sin marcar. No se tocan desde acá.
+            <ul class="mb-0 mt-1">
+              <li *ngFor="let i of preview.pendientes_en_imperial">
+                {{ i.orden.titular_nombre || i.fila.comprador_nombre }} —
+                {{ i.fila.monto_bruto | currency:'':'':'2.0' }} Gs —
+                {{ i.fila.fecha_pago | date:'dd/MM/yyyy' }}
+              </li>
+            </ul>
+          </div>
+
+          <div *ngIf="preview.sin_liquidar?.length" class="alert alert-light border py-2 small">
+            {{ preview.sin_liquidar.length }} cobro(s) pagados por el cliente pero todavía sin
+            liquidar a la cuenta. Van a aparecer cuando PagoPar los gire.
+          </div>
+
+          <div *ngIf="preview.sin_orden?.length" class="alert alert-light border py-2 small">
+            <strong>{{ preview.sin_orden.length }} cobro(s) del archivo que no salieron de imperial</strong>
+            (cobrados por otro canal, como venta rápida o QR desde el panel de PagoPar).
+            Son informativos, no se marcan.
+            <ul class="mb-0 mt-1">
+              <li *ngFor="let i of preview.sin_orden">
+                {{ i.fila.comprador_nombre || 'Sin nombre' }} —
+                {{ i.fila.monto_bruto | currency:'':'':'2.0' }} Gs —
+                {{ i.fila.forma_pago }} — {{ i.fila.fecha_pago | date:'dd/MM/yyyy' }}
+              </li>
+            </ul>
+          </div>
+
+          <div *ngIf="preview.reversadas?.length" class="alert alert-danger py-2 small">
+            <strong>{{ preview.reversadas.length }} transacción(es) reversada(s)</strong> en el archivo.
+            Revisar a mano.
+          </div>
+
+          <div *ngIf="preview.ya_conciliadas?.length" class="text-muted small">
+            {{ preview.ya_conciliadas.length }} cobro(s) del archivo ya estaban conciliados.
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer justify-content-between">
+        <div *ngIf="preview && totalesSeleccion.cantidad" class="small">
+          Seleccionados: <strong>{{ totalesSeleccion.cantidad }}</strong> ·
+          neto a acreditar <strong>{{ totalesSeleccion.monto_neto | currency:'':'':'2.0' }} Gs</strong>
+        </div>
+        <div class="ms-auto">
+          <button type="button" class="btn btn-secondary me-2" (click)="cerrarConciliacion()">Cancelar</button>
+          <button type="button" class="btn btn-success"
+                  [disabled]="!totalesSeleccion.cantidad || loadingAplicar" (click)="aplicarConciliacion()">
+            <span *ngIf="!loadingAplicar">Marcar {{ totalesSeleccion.cantidad }} como conciliados</span>
+            <span *ngIf="loadingAplicar" class="spinner-border spinner-border-sm"></span>
+          </button>
+        </div>
       </div>
     </div>
   </div>
