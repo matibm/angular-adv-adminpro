@@ -1,3 +1,70 @@
 .pointer {
   cursor: pointer;
 }
+
+/* OJO: el proyecto vendoriza Bootstrap 4.0.0-beta (src/assets/plugins/bootstrap),
+   no Bootstrap 5. Faltan modal-xl, modal-dialog-scrollable y spinner-border, así
+   que esas tres cosas se resuelven acá abajo con CSS propio. */
+
+/* El modal de conciliación muestra una tabla ancha (bruto/comisión/neto por cobro),
+   así que se le da casi toda la pantalla. Reemplaza a modal-xl. */
+.modal-dialog.modal-ancho {
+  max-width: 90vw;
+  width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Reemplaza a modal-dialog-scrollable: que scrollee el cuerpo y no la página,
+   dejando header y footer siempre visibles. */
+.modal-dialog .modal-body {
+  max-height: calc(100vh - 14rem);
+  overflow-y: auto;
+}
+
+/* Encabezados y montos en una sola línea: si no, "Forma de pago" y los importes
+   se apilan en vertical y la tabla se vuelve ilegible. */
+.modal-ancho table th,
+.modal-ancho table td.text-right {
+  white-space: nowrap;
+}
+
+/* Los checkboxes van sin .form-check-input a propósito: en BS4 esa clase es
+   position:absolute con margin-left:-1.25rem y los saca fuera de la celda. */
+.modal-ancho table input[type='checkbox'] {
+  width: 1rem;
+  height: 1rem;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+/* Reemplaza a spinner-border, que recién aparece en Bootstrap 4.2. */
+.spinner-mini {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  vertical-align: -0.125em;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spinner-mini-giro 0.75s linear infinite;
+}
+
+.spinner-mini-lg {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-width: 3px;
+  color: #007bff;
+}
+
+@keyframes spinner-mini-giro {
+  to { transform: rotate(360deg); }
+}
+
+/* En celular no tiene sentido dejar márgenes: va de lado a lado. */
+@media (max-width: 576px) {
+  .modal-dialog.modal-ancho {
+    max-width: 96vw;
+    width: 96vw;
+  }
+}

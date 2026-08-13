@@ -7,17 +7,17 @@
     <div class="row mb-3 align-items-end">
       <div class="col-md-4">
         <label class="form-label">Estado</label>
-        <select class="form-select" [(ngModel)]="estadoFiltro" (ngModelChange)="onFiltroEstadoChange()">
+        <select class="form-control" [(ngModel)]="estadoFiltro" (ngModelChange)="onFiltroEstadoChange()">
           <option *ngFor="let e of estados" [ngValue]="e.value">{{ e.label }}</option>
         </select>
       </div>
       <div class="col-md-4">
         <label class="form-label">Conciliación</label>
-        <select class="form-select" [(ngModel)]="conciliadoFiltro" (ngModelChange)="onFiltroEstadoChange()">
+        <select class="form-control" [(ngModel)]="conciliadoFiltro" (ngModelChange)="onFiltroEstadoChange()">
           <option *ngFor="let c of conciliados" [ngValue]="c.value">{{ c.label }}</option>
         </select>
       </div>
-      <div class="col-md-4 text-md-end mt-3 mt-md-0">
+      <div class="col-md-4 text-md-right mt-3 mt-md-0">
         <button type="button" class="btn btn-primary" (click)="abrirConciliacion()">
           Conciliar CSV de PagoPar
         </button>
@@ -25,8 +25,8 @@
     </div>
 
     <div *ngIf="loading" class="text-center py-5">
-      <div class="spinner-border text-primary" role="status">
-        <span class="visually-hidden">Cargando...</span>
+      <div class="spinner-mini spinner-mini-lg" role="status">
+        <span class="sr-only">Cargando...</span>
       </div>
     </div>
 
@@ -39,7 +39,7 @@
             <th>Cliente</th>
             <th class="text-center">Documento</th>
             <th>Email</th>
-            <th class="text-end">Monto</th>
+            <th class="text-right">Monto</th>
             <th class="text-center">Estado</th>
             <th class="text-center">Conciliado</th>
             <th class="text-center">Acciones</th>
@@ -52,12 +52,12 @@
             <td>{{ getNombreCliente(orden) }}</td>
             <td class="text-center">{{ orden.documento }}</td>
             <td>{{ orden.email || '-' }}</td>
-            <td class="text-end">{{ orden.monto_total | currency:'':'':'2.0' }} Gs</td>
+            <td class="text-right">{{ orden.monto_total | currency:'':'':'2.0' }} Gs</td>
             <td class="text-center">
               <span class="badge" [ngClass]="getBadgeClass(orden.estado)">{{ orden.estado }}</span>
             </td>
             <td class="text-center">
-              <span *ngIf="orden.conciliado" class="badge bg-info"
+              <span *ngIf="orden.conciliado" class="badge badge-info"
                     title="Liquidado por PagoPar el {{ orden.conciliacion?.fecha_cobro | date:'dd/MM/yyyy' }}">
                 CONCILIADO
               </span>
@@ -96,15 +96,15 @@
 </div>
 
 <div *ngIf="ordenSeleccionada" class="modal show d-block" tabindex="-1" style="background: rgba(0,0,0,0.5);">
-  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Orden de cobro #{{ ordenSeleccionada._id?.slice(-8) }}</h5>
-        <button type="button" class="btn-close" (click)="cerrarDetalle()"></button>
+        <button type="button" class="close" aria-label="Cerrar" (click)="cerrarDetalle()"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
         <div *ngIf="loadingDetalle" class="text-center py-4">
-          <div class="spinner-border text-primary"></div>
+          <div class="spinner-mini spinner-mini-lg"></div>
         </div>
         <div *ngIf="!loadingDetalle && ordenSeleccionada">
           <div class="row mb-3">
@@ -138,14 +138,14 @@
               <thead>
                 <tr>
                   <th>Concepto</th>
-                  <th class="text-end">Monto</th>
+                  <th class="text-right">Monto</th>
                   <th class="text-center">Vencimiento</th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let f of ordenSeleccionada.factura_ids">
                   <td>{{ f.servicio?.NOMBRE || f.nombre_concepto || '-' }}</td>
-                  <td class="text-end">{{ f.haber | currency:'':'':'2.0' }} Gs</td>
+                  <td class="text-right">{{ f.haber | currency:'':'':'2.0' }} Gs</td>
                   <td class="text-center">{{ f.vencimiento | date:'dd/MM/yyyy' }}</td>
                 </tr>
               </tbody>
@@ -155,11 +155,11 @@
       </div>
       <div class="modal-footer">
         <ng-container *ngIf="ordenSeleccionada?.estado === 'PAGADO' && getPagoId(ordenSeleccionada)">
-          <button type="button" class="btn btn-outline-primary me-2" [disabled]="loadingFE" (click)="descargarFacturaPDF()">
+          <button type="button" class="btn btn-outline-primary mr-2" [disabled]="loadingFE" (click)="descargarFacturaPDF()">
             <span *ngIf="!loadingFE">Factura PDF</span>
-            <span *ngIf="loadingFE" class="spinner-border spinner-border-sm"></span>
+            <span *ngIf="loadingFE" class="spinner-mini"></span>
           </button>
-          <button type="button" class="btn btn-outline-secondary me-2" [disabled]="loadingFE" (click)="abrirKUDETicket()">
+          <button type="button" class="btn btn-outline-secondary mr-2" [disabled]="loadingFE" (click)="abrirKUDETicket()">
             KUDE Ticket
           </button>
         </ng-container>
@@ -170,11 +170,11 @@
 </div>
 
 <div *ngIf="mostrarConciliacion" class="modal show d-block" tabindex="-1" style="background: rgba(0,0,0,0.5);">
-  <div class="modal-dialog modal-xl modal-dialog-scrollable">
+  <div class="modal-dialog modal-ancho">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Conciliar con el CSV de PagoPar</h5>
-        <button type="button" class="btn-close" (click)="cerrarConciliacion()"></button>
+        <button type="button" class="close" aria-label="Cerrar" (click)="cerrarConciliacion()"><span aria-hidden="true">&times;</span></button>
       </div>
 
       <div class="modal-body">
@@ -184,7 +184,7 @@
           liquidación ya acreditada a la cuenta de la empresa.
         </p>
 
-        <div class="row g-2 align-items-end mb-3">
+        <div class="row align-items-end mb-3">
           <div class="col-md-8">
             <label class="form-label">Archivo CSV</label>
             <input type="file" class="form-control" accept=".csv,text/csv" (change)="onArchivoSeleccionado($event)">
@@ -193,7 +193,7 @@
             <button type="button" class="btn btn-outline-primary w-100"
                     [disabled]="!archivoConciliacion || loadingPreview" (click)="analizarArchivo()">
               <span *ngIf="!loadingPreview">Analizar</span>
-              <span *ngIf="loadingPreview" class="spinner-border spinner-border-sm"></span>
+              <span *ngIf="loadingPreview" class="spinner-mini"></span>
             </button>
           </div>
         </div>
@@ -216,31 +216,31 @@
                 <thead>
                   <tr>
                     <th class="text-center" style="width:40px">
-                      <input type="checkbox" class="form-check-input"
+                      <input type="checkbox"
                              [checked]="todasSeleccionadas" (change)="toggleTodas()">
                     </th>
                     <th>Cliente</th>
                     <th class="text-center">Documento</th>
                     <th class="text-center">Pagó</th>
                     <th>Forma de pago</th>
-                    <th class="text-end">Bruto</th>
-                    <th class="text-end">Comisión</th>
-                    <th class="text-end">Neto</th>
+                    <th class="text-right">Bruto</th>
+                    <th class="text-right">Comisión</th>
+                    <th class="text-right">Neto</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let i of preview.a_conciliar">
                     <td class="text-center">
-                      <input type="checkbox" class="form-check-input"
+                      <input type="checkbox"
                              [checked]="seleccionadas.has(i.orden._id)" (change)="toggleOrden(i.orden._id)">
                     </td>
                     <td>{{ i.orden.titular_nombre || i.fila.comprador_nombre }}</td>
                     <td class="text-center">{{ i.orden.documento }}</td>
                     <td class="text-center">{{ i.fila.fecha_pago | date:'dd/MM/yyyy HH:mm' }}</td>
                     <td>{{ i.fila.forma_pago }}</td>
-                    <td class="text-end">{{ i.fila.monto_bruto | currency:'':'':'2.0' }}</td>
-                    <td class="text-end text-muted">{{ i.fila.monto_comision | currency:'':'':'2.0' }}</td>
-                    <td class="text-end fw-bold">{{ i.fila.monto_neto | currency:'':'':'2.0' }}</td>
+                    <td class="text-right">{{ i.fila.monto_bruto | currency:'':'':'2.0' }}</td>
+                    <td class="text-right text-muted">{{ i.fila.monto_comision | currency:'':'':'2.0' }}</td>
+                    <td class="text-right font-weight-bold">{{ i.fila.monto_neto | currency:'':'':'2.0' }}</td>
                   </tr>
                 </tbody>
               </table>
@@ -299,12 +299,12 @@
           Seleccionados: <strong>{{ totalesSeleccion.cantidad }}</strong> ·
           neto a acreditar <strong>{{ totalesSeleccion.monto_neto | currency:'':'':'2.0' }} Gs</strong>
         </div>
-        <div class="ms-auto">
-          <button type="button" class="btn btn-secondary me-2" (click)="cerrarConciliacion()">Cancelar</button>
+        <div class="ml-auto">
+          <button type="button" class="btn btn-secondary mr-2" (click)="cerrarConciliacion()">Cancelar</button>
           <button type="button" class="btn btn-success"
                   [disabled]="!totalesSeleccion.cantidad || loadingAplicar" (click)="aplicarConciliacion()">
             <span *ngIf="!loadingAplicar">Marcar {{ totalesSeleccion.cantidad }} como conciliados</span>
-            <span *ngIf="loadingAplicar" class="spinner-border spinner-border-sm"></span>
+            <span *ngIf="loadingAplicar" class="spinner-mini"></span>
           </button>
         </div>
       </div>
