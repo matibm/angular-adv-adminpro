@@ -37,7 +37,14 @@ export class FacturaService {
     let url = URL_SERVICIOS + '/factura/aplicar_interes';
     url += `?token=${this._usuarioService.token}`;
     if (options) {
+      // 'pagado' se manda aparte y siempre en false: si el selector de estado
+      // quedó en "TODOS" viene undefined y el forEach lo descarta, y el interés
+      // termina cayendo sobre cuotas ya pagadas y ya facturadas.
+      // Mandarlo dos veces tampoco sirve: Express lo recibe como array.
       Object.entries(options).forEach(([key, value]) => {
+        if (key === 'pagado') {
+          return;
+        }
         if (value) {
           url += `&${key}=${value}`;
         } else if (value == false) {
@@ -45,6 +52,7 @@ export class FacturaService {
         }
       });
     }
+    url += `&pagado=false`;
     url += `&interes=${interes}`;
 
     return this.http
