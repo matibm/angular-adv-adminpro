@@ -39,7 +39,6 @@ export class CrearContratoComponent implements OnInit, AfterViewInit {
   nro_contrato_relacionado: number
   titularAlternativo: Usuario;
   fecha_creacion = new Date();
-  fecha_primer_pago = new Date().getTime();
   productos: Producto[] = null;
   vendedores: Usuario[] = null;
   clientesSearch = this.clientes;
@@ -73,6 +72,7 @@ export class CrearContratoComponent implements OnInit, AfterViewInit {
   facturas;
   radioValue = 'OFICINA';
   fechaPago = new Date();
+  private fechaPagoManual = false;
   pagoradioValue = 'contado';
   stringFechaPago;
   servicioCMP;
@@ -195,29 +195,13 @@ export class CrearContratoComponent implements OnInit, AfterViewInit {
   }
 
   calcularSaldo(entrega) {
-    // log(entrega);
-
-    if (entrega) {
-      this.saldo = this.producto.PRECIO_MAYORISTA - parseInt(entrega);
-    } else {
-      this.saldo = parseInt(this.producto.PRECIO_MAYORISTA.toString());
-    }
-
-    const d = new Date();
-    d.setMonth(d.getMonth() + 1);
-    d.setHours(0, 0, 0, 0);
-    this.fechaPago = d;
-    console.log(d);
-
-    console.log(d.getMonth(), d.getUTCMonth());
-
-    // this.fechaPago = new Date(`${d.getFullYear()}-${d.getUTCMonth()}-${d.getDate()}`)
-    // console.log(new Date(`${d.getFullYear()}-${d.getUTCMonth()}-${d.getDate()}`));
-
+    this.entrega = Number(entrega) || 0;
+    this.calcularCuotas();
   }
 
   calcularCuotas() {
-    this.saldo = this.precioTotal - this.entrega;
+    this.saldo = Number(this.precioTotal) + this.saldoPlusEdad - this.entrega;
+    this.actualizarFechaPagoSugerida();
     if (this.plazo > 0) {
 
       this.pagoradioValue = 'cuota';
@@ -235,11 +219,27 @@ export class CrearContratoComponent implements OnInit, AfterViewInit {
 
   }
   calcularFechaPago() {
-    console.log('se cambio fecha', this.fecha_primer_pago);
-
-    // this.fechaPago = this.fecha_primer_pago
+    this.fechaPagoManual = true;
     this.facturas = this.crearFacturas(this.montoCuotas, this.plazo);
+  }
 
+  cambiarFechaContrato() {
+    this.calcularCuotas();
+  }
+
+  private actualizarFechaPagoSugerida() {
+    if (this.fechaPagoManual || !this.fecha_creacion || isNaN(this.fecha_creacion.getTime())) {
+      return;
+    }
+    // La entrega inicial se genera con la fecha de creación del contrato.
+    this.fechaPago = this.sumarMeses(this.fecha_creacion, !this.esPsm && this.entrega > 0 ? 1 : 0);
+  }
+
+  private sumarMeses(fecha: Date, meses: number): Date {
+    const resultado = new Date(fecha.getFullYear(), fecha.getMonth() + meses, 1);
+    const ultimoDia = new Date(resultado.getFullYear(), resultado.getMonth() + 1, 0).getDate();
+    resultado.setDate(Math.min(fecha.getDate(), ultimoDia));
+    return resultado;
   }
   calcularFechaMantenimiento() {
 
@@ -271,6 +271,7 @@ export class CrearContratoComponent implements OnInit, AfterViewInit {
       return
     }
 
+    this.calcularCuotas();
     if (!this.facturas && this.pagoradioValue === 'contado') {
       this.plazo = 1;
       this.facturas = this.crearFacturas(this.saldo, 1);
@@ -311,10 +312,14 @@ export class CrearContratoComponent implements OnInit, AfterViewInit {
 
     }
 
+    // El servidor usa una versión de la zona horaria de Paraguay anterior al
+    // cambio a UTC-3 permanente. A mediodía conserva el día elegido al convertirlo.
+    const fechaPago = new Date(this.fechaPago.getTime());
+    fechaPago.setHours(12, 0, 0, 0);
     const send = {
       contrato: nuevo_contrato,
       facturas: null,
-      fechaPago: this.fechaPago,
+      fechaPago,
       crearCMP: this.esUdp,
       cantidadCoutas: this.cantidadCuotaPSM,
       pagoInicial: this.pagoInicial,
@@ -398,8 +403,7 @@ export class CrearContratoComponent implements OnInit, AfterViewInit {
     } else if (producto.COD_CORTO == 'P.S.V.') {
       this.esPsv = true;
     }
-
-
+    this.calcularCuotas();
   }
   seleccionarCliente(cliente) {
     this.cliente = cliente;
@@ -422,28 +426,20 @@ export class CrearContratoComponent implements OnInit, AfterViewInit {
     return true;
   }
   crearFacturas(monto, cantidad) {
-    if (!cantidad) {
+    if (!cantidad || !this.fechaPago || isNaN(this.fechaPago.getTime())) {
       return null;
     }
     const factura = [];
-    let mes = this.fechaPago.getMonth() + 1;
-    let year = this.fechaPago.getFullYear();
-    const dia = this.fechaPago.getDate();
     for (let i = 0; i < cantidad; i++) {
-      if (mes > 12) {
-        year++;
-        mes = 1;
-      }
       factura.push({
         numero: i + 1,
-        vencimiento: new Date(`${year}/${mes}/${dia}`),
+        vencimiento: this.sumarMeses(this.fechaPago, i),
         monto,
         haber: monto,
         titular: this.cliente,
         servicio: this.producto._id,
         fecha_creacion_unix: new Date().getTime()
       });
-      mes++;
     }
     return factura;
   }
@@ -465,7 +461,7 @@ export class CrearContratoComponent implements OnInit, AfterViewInit {
 
     }
 
-    console.log(this.saldoPlusEdad);
+    this.calcularCuotas();
 
   }
   observableBuscadores() {

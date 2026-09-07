@@ -265,7 +265,7 @@
                     <mat-form-field appearance="fill">
                         <mat-label>Fecha de creacion</mat-label>
                         <input matInput name="asdas" [(ngModel)]="fecha_creacion" [matDatepicker]="picker"
-                            (dateChange)="fechaPago = fecha_creacion ">
+                            (dateChange)="cambiarFechaContrato()">
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
@@ -322,15 +322,15 @@
                                 <div class="form-group">
                                     <label for="">Entrega</label>
                                     <input [disabled]="sinCuota" name="asdsfgsda" type="number" class="form-control"
-                                        (ngModelChange)="calcularSaldo(en.value)" #en [(ngModel)]="entrega">
+                                        [ngModel]="entrega" (ngModelChange)="calcularSaldo($event)">
                                 </div>
                                 <!-- <h5>saldo <b>{{saldo | currency:'':'':'2.0'}} Gs</b></h5> -->
 
                                 <div class="form-group">
                                     <label for="">Precio Total</label>
                                     <input [disabled]="sinCuota" type="number" class="form-control"
-                                        (ngModelChange)="calcularCuotas()" name="afdsgdfrwetgervfr"
-                                        [(ngModel)]="precioTotal" name="sadasfswertbh" id="" aria-describedby="helpId"
+                                        [ngModel]="precioTotal" (ngModelChange)="precioTotal = $event; calcularCuotas()"
+                                        name="precioTotal" id="" aria-describedby="helpId"
                                         placeholder="">
                                     <small>saldo <b>{{precioTotal | currency:'':'':'2.0'}} Gs</b></small>
                                 </div>
@@ -339,7 +339,7 @@
                                 <div class="form-group">
                                     <label for="">plazo</label>
                                     <input [disabled]="sinCuota" name="assasavvv" type="number" class="form-control"
-                                        [(ngModel)]="plazo" (ngModelChange)="calcularCuotas()">
+                                        [ngModel]="plazo" (ngModelChange)="plazo = $event; calcularCuotas()">
                                 </div>
                                 <h5>Monto Cuotas: <b>{{montoCuotas | currency:'':'':'2.0' }} Gs</b></h5>
                             </div>
