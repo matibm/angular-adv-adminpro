@@ -104,7 +104,11 @@
   <hr class="dashed" />
 
   <div class="line">
-    <span>Cond de Venta:</span> <span class="text-bold">CONTADO</span>
+    <span>Cond de Venta:</span>
+    <span class="text-bold">{{
+      factura.data.condicion?.tipo == 1 ? 'CONTADO' :
+      factura.data.condicion?.tipo == 2 ? 'CRÉDITO' : ''
+    }}</span>
   </div>
   <div class="line">
     <span>Emisión:</span>
