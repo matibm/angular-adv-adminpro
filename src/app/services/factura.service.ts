@@ -599,7 +599,7 @@ export class FacturaService {
       const queryString = params.toString();
       const urlCompleta = `${url}?${queryString}`;
 
-      const response = await fetch(urlCompleta, { method: 'GET' });
+      const response = await fetch(urlCompleta, { method: 'POST' });
 
       if (!response.ok) {
         const errorResponse = await response.json();
@@ -638,7 +638,7 @@ export class FacturaService {
       params.set('is_ticket', 'yes');
       const queryString = params.toString();
       const urlCompleta = `${url}?${queryString}`;
-      return this.http.get(urlCompleta).toPromise();
+      return this.http.post(urlCompleta, {}).toPromise();
     } catch (error) {
       console.error('Error al descargar el archivo:', error);
       throw error.message;
@@ -657,7 +657,7 @@ export class FacturaService {
       const queryString = params.toString();
       const urlCompleta = `${url}?${queryString}`;
 
-      const response = await fetch(urlCompleta, { method: 'GET' });
+      const response = await fetch(urlCompleta, { method: 'POST' });
       
       if (!response.ok) {
         const errorResponse = await response.json();
@@ -693,7 +693,7 @@ export class FacturaService {
     url += `?token=${this._usuarioService.token}`;
     url += `&pago_id=${pago_id}`;
     return this.http
-      .get(url)
+      .post(url, {})
       .toPromise()
       .then(
         (resp: any) => {

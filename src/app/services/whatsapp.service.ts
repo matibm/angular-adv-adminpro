@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 //  import  { io }  from 'socket.io-client';
 //  import * as io  from 'socket.io-client';
-import { io } from 'socket.io-client/build/index';
+import { io } from 'socket.io-client';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class WhatsappService {
   constructor(public http: HttpClient,
     public _usuarioService: UsuarioService,
   ) {
-    this.socket = io(URL_SERVICIOS);
+    this.socket = io(URL_SERVICIOS, { auth: (cb) => cb({ token: localStorage.getItem('token') }) });
   }
 
   generateQr() {

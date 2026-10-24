@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1788899622188,
+  "timestamp": 1792882238802,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main.9f49f4e66b8e0f420d06.js",
+        "/main.c4ab0e9ffda2841f416b.js",
         "/manifest.webmanifest",
         "/polyfills.8c151b8375e767ff858f.js",
         "/runtime.0e49e2b53282f40c8925.js",
@@ -5800,7 +5800,7 @@
     "/assets/plugins/jquery.easy-pie-chart/src/easypiechart.js": "a1d8ef9d6d65fef91287146d1036c720dc3c72c5",
     "/assets/plugins/jquery.easy-pie-chart/src/jquery.plugin.js": "4e10e63d002807a05184fd2b9c18a409e0212af8",
     "/assets/plugins/jquery.easy-pie-chart/src/renderer/canvas.js": "5ed917533d28226fb9d6b2eec226cb7de92cdf0f",
-    "/assets/plugins/jquery/jquery.min.js": "0baf29230047c9cd896f14c59618c9948ea79451",
+    "/assets/plugins/jquery/jquery.min.js": "ee48592d1fff952fcf06ce0b666ed4785493afdc",
     "/assets/plugins/jqueryui/AUTHORS.txt": "131842146d2b11d742a638f42739d7e0741dc026",
     "/assets/plugins/jqueryui/LICENSE.txt": "15df6665dfd90f5cd8fdfde4c0c43051fbb76dae",
     "/assets/plugins/jqueryui/external/jquery/jquery.js": "433836da7e015f2eb3fc386817de88b78248f6ef",
@@ -7902,8 +7902,8 @@
     "/assets/scss/widgets/widgets.scss": "ae37f9cba30eca3835f660575145c91a31585a76",
     "/error-bg.9ff9b9625781034c1add.jpg": "d5381105e14b48ce54a804873b8cff5526440769",
     "/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/index.html": "1d52c0a36e1992153d9b444de110c22673d6c03a",
-    "/main.9f49f4e66b8e0f420d06.js": "e158147ae6583ec8cf86437576c6c4f221e13f51",
+    "/index.html": "e210964752eeeb7bee54f30affe1c543e0fa0ab2",
+    "/main.c4ab0e9ffda2841f416b.js": "076a4f563b6bda5b5dbd9046dfc7a8ea3cdabaf5",
     "/manifest.webmanifest": "72bdf2a65ee50f97feaafeb41b77a1ebda81dd65",
     "/polyfills.8c151b8375e767ff858f.js": "763cd3b34dfa4600ebb9d9588ec7116988e98920",
     "/runtime.0e49e2b53282f40c8925.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { URL_SERVICIOS } from './../config/global';
 import { Injectable } from '@angular/core';
-import {io} from 'socket.io-client/build/index';
+import {io} from 'socket.io-client';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ import {io} from 'socket.io-client/build/index';
 export class ComentarioService {
   socket;
   constructor(public http: HttpClient) {
-  this.socket = io(URL_SERVICIOS);
+  this.socket = io(URL_SERVICIOS, { auth: (cb) => cb({ token: localStorage.getItem('token') }) });
 
   }
 

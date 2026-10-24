@@ -1,4 +1,4 @@
-import { io } from 'socket.io-client/build/index';
+import { io } from 'socket.io-client';
 import { Router } from '@angular/router';
 import { Factura } from './../../models/factura';
 import { FacturaService } from './../../services/factura.service';
