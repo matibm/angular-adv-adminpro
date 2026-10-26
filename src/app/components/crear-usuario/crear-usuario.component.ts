@@ -33,6 +33,7 @@ export class CrearUsuarioComponent implements OnInit {
   usuario: Usuario = {};
   notas = ''
   fechaCreacion = new Date()
+  guardando = false;
   ngOnInit(): void {
     // this.usuario.fantasia
     this.usuario.fantasia = [{ value: '' }]
@@ -42,33 +43,36 @@ export class CrearUsuarioComponent implements OnInit {
     }, 100);
   }
   async crearUsuario() {
-    console.log(this.usuario);
-    this.isVendedor == true ? this.usuario.VENDEDORES = '1' : this.usuario.VENDEDORES = '0';
-    this.isProveedor == true ? this.usuario.PROVEEDORES = '1' : this.usuario.PROVEEDORES = '0';
-    this.isCobrador == true ? this.usuario.COBRADORES = '1' : this.usuario.COBRADORES = '0';
-    this.isContratado == true ? this.usuario.CONTRATADO = '1' : this.usuario.CONTRATADO = '0';
-    this.isCliente == true ? this.usuario.CLIENTES = '1' : this.usuario.CLIENTES = '0';
-    this.isEmpleado == true ? this.usuario.EMPLEADOS = '1' : this.usuario.EMPLEADOS = '0';
-    this.isPersona == true ? this.usuario.PERSONA = '1' : this.usuario.PERSONA = '0';
-    this.isEmpresa == true ? this.usuario.EMPRESA = '1' : this.usuario.EMPRESA = '0';
-    this.isBanco == true ? this.usuario.BANCOS = '1' : this.usuario.BANCOS = '0';
-    this.manejaCaja == true ? this.usuario.MANEJA_CAJA = '1' : this.usuario.MANEJA_CAJA = '0';
-    this.usuario.NOTAS = this.notas
-    this.usuario.nro_talonario = this.nro_talonario
-    this.usuario.nro_factura_actual = this.nro_factura_actual
-    this.usuario.fecha_creacion = this.fechaCreacion.getTime()
-
-    this.usuario.fantasia = this.usuario.fantasia.map((value)=>{
-      return value.value
-    })
-
-    const us = await this._usuarioService.crearUsuario(this.usuario);
-
-    this.router.navigateByUrl('/admin/usuario/' + us._id);
+    if (!this.allowCreate()) return;
+    this.guardando = true;
+    const payload: Usuario = {
+      ...this.usuario,
+      VENDEDORES: this.isVendedor === true ? '1' : '0',
+      PROVEEDORES: this.isProveedor === true ? '1' : '0',
+      COBRADORES: this.isCobrador === true ? '1' : '0',
+      CONTRATADO: this.isContratado === true ? '1' : '0',
+      CLIENTES: this.isCliente === true ? '1' : '0',
+      EMPLEADOS: this.isEmpleado === true ? '1' : '0',
+      PERSONA: this.isPersona === true ? '1' : '0',
+      EMPRESA: this.isEmpresa === true ? '1' : '0',
+      BANCOS: this.isBanco === true ? '1' : '0',
+      MANEJA_CAJA: this.manejaCaja === true ? '1' : '0',
+      NOTAS: this.notas,
+      nro_talonario: this.nro_talonario,
+      nro_factura_actual: this.nro_factura_actual,
+      fecha_creacion: this.fechaCreacion.getTime(),
+      fantasia: this.usuario.fantasia.map(nombre => nombre.value)
+    };
+    try {
+      const us = await this._usuarioService.crearUsuario(payload);
+      if (us && us._id) this.router.navigateByUrl('/admin/usuario/' + us._id);
+    } finally {
+      this.guardando = false;
+    }
   }
 
   allowCreate(): boolean {
-    if ( this.usuario.APELLIDOS ) {
+    if ( !this.guardando && this.usuario.APELLIDOS ) {
       return true;
     } else {
       return false;

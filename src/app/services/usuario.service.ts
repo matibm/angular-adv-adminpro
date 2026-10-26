@@ -147,7 +147,7 @@ export class UsuarioService {
     )
   }
 
-  crearUsuario(usuario) {
+  crearUsuario(usuario): Promise<Usuario | null> {
     let url = `${URL_SERVICIOS}/usuario/crear_usuario`;
     url += `?token=${this.token}`;
     return this.http.post(url, usuario).toPromise().then((resp: any) => {
@@ -163,10 +163,10 @@ export class UsuarioService {
       swal.fire({
         icon: 'error',
         title: 'Error al crear usuario',
-        text: error
+        text: error.error?.message || error.error?.mensaje || 'No se pudo guardar el usuario. Volvé a intentarlo.'
 
       });
-      return error;
+      return null;
     });
   }
 
