@@ -145,7 +145,9 @@ export class MovimientoService {
       });
   }
   async getFondosActuales() {
-    let resp: any = await this.http.get(`${URL_SERVICIOS}/movimientos/get_actual_fondos`).toPromise()
+    let resp: any = await this.http.get(`${URL_SERVICIOS}/movimientos/get_actual_fondos`, {
+      headers: { Authorization: `Bearer ${this._usuarioService.token}` }
+    }).toPromise()
     return resp.list
   }
   crearCuentaGasto(cuenta) {
