@@ -118,6 +118,13 @@ export class UsuarioService {
         timer: 2000,
       });
       return resp;
+    }, (error) => {
+      swal.fire({
+        icon: 'error',
+        title: 'Error al modificar usuario',
+        text: error.error?.message || error.error?.mensaje || 'No se pudo guardar el usuario. Volvé a intentarlo.'
+      });
+      return null;
     });
   }
 

@@ -78,6 +78,7 @@ export class PerfilUsuarioComponent implements OnInit {
   role
   is_admin_role = false
   is_internal_role = false
+  guardando = false;
   async ngOnInit() {
     let user = await this._usuarioService.inicializarUsuario()
     if (user?.role == 'ADMIN_ROLE') {
@@ -153,33 +154,34 @@ export class PerfilUsuarioComponent implements OnInit {
 
 
   async actualizarUsuario(usuario: Usuario) {
-    console.log(this.nro_factura_actual);
-    // usuario.timbrado.fechaSolicitud = this.fechaSolicitud
-    // usuario.timbrado.fechaVigenciaInicio = this.fechaVigenciaInicio
-    // usuario.timbrado.fechaVigenciaFin = this.fechaVigenciaFin
-    usuario.VENDEDORES = this.isVendedor ? '1' : '0';
-    usuario.COBRADORES = this.isCobrador ? '1' : '0';
-    usuario.CLIENTES = this.isCliente ? '1' : '0';
-    usuario.EMPLEADOS = this.isEmpleado ? '1' : '0';
-    usuario.PERSONA = this.isPersona ? '1' : '0';
-    usuario.EMPRESA = this.isEmpresa ? '1' : '0';
-    usuario.CONTRATADO = this.isContratado ? '1' : '0';
-    usuario.BANCOS = this.isBanco ? '1' : '0';
-    usuario.PROVEEDORES = this.isProveedor ? '1' : '0';
-    usuario.MANEJA_CAJA = this.manejaCaja ? '1' : '0';
-    usuario.fondo_online = this.cobroOnline ? '1' : '0';
-    usuario.role = this.role
-    // usuario.nro_factura_actual = this.nro_factura_actual
-    // usuario.nro_talonario = this.nro_talonario
-    console.log(usuario);
-    usuario.fantasia = usuario.fantasia.map((value)=>{
-      return value.value
-    })
-    const resp = await this._usuarioService.modificarUsuarios(usuario);
-
-    usuario.fantasia = usuario.fantasia.map((value)=>{
-      return { value: value}
-    })
+    if (this.guardando) return;
+    this.guardando = true;
+    const payload: Usuario = {
+      ...usuario,
+      VENDEDORES: this.isVendedor ? '1' : '0',
+      COBRADORES: this.isCobrador ? '1' : '0',
+      CLIENTES: this.isCliente ? '1' : '0',
+      EMPLEADOS: this.isEmpleado ? '1' : '0',
+      PERSONA: this.isPersona ? '1' : '0',
+      EMPRESA: this.isEmpresa ? '1' : '0',
+      CONTRATADO: this.isContratado ? '1' : '0',
+      BANCOS: this.isBanco ? '1' : '0',
+      PROVEEDORES: this.isProveedor ? '1' : '0',
+      MANEJA_CAJA: this.manejaCaja ? '1' : '0',
+      fondo_online: this.cobroOnline ? '1' : '0',
+      role: this.role,
+      fantasia: (usuario.fantasia || []).map(nombre => typeof nombre === 'string' ? nombre : nombre.value)
+    };
+    if (!this.is_admin_role) {
+      delete payload.password;
+      delete payload.role;
+    }
+    try {
+      const response = await this._usuarioService.modificarUsuarios(payload);
+      if (response && response.ok) Object.assign(usuario, payload, { fantasia: usuario.fantasia, password: null });
+    } finally {
+      this.guardando = false;
+    }
   }
   async eliminarUsuario(id) {
     this._usuarioService.eliminarUsuario(id)

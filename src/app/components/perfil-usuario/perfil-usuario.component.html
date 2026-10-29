@@ -374,7 +374,7 @@
                     <label for="">Número de Cuenta</label>
                     <input [(ngModel)]="usuario.nro_cuenta_bancaria" type="text" class="form-control" name="nrocuenta" autocomplete="nope">
                   </div>
-                  <div class="form-group">
+                  <div class="form-group" *ngIf="is_admin_role">
                     <label>Contraseña</label>
                     <div>
                       <input autocomplete="nope" [(ngModel)]="usuario.password" type="password" name="pass" placeholder="contraseña para ingresar al sistema"
@@ -616,7 +616,7 @@
                 </div>
                 <div class="d-flex mt-3 form-group">
 
-                  <button type="button" (click)="actualizarUsuario(usuario)" class="btn mx-auto btn-success">Guardar Cambios</button>
+                  <button type="button" [disabled]="guardando" (click)="actualizarUsuario(usuario)" class="btn mx-auto btn-success">Guardar Cambios</button>
 
                 </div>
               </div>
